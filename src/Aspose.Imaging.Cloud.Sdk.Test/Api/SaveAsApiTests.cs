@@ -245,7 +245,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         delegate (Stream inputStream, string outPath)
                         {
                             var request =
-                                new PostImageSaveAsRequest(inputStream, format, outPath);
+                                new PostImageSaveAsRequest(inputStream, format, outPath, storage);
                             return ImagingApi.PostImageSaveAs(request);
                         },
                         null,

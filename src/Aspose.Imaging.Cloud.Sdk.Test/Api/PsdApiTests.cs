@@ -125,7 +125,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 "Psd",
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImagePsdRequest(inputStream, channelsCount, compressionMethod, fromScratch, outPath);
+                    var request = new PostImagePsdRequest(inputStream, channelsCount, compressionMethod, fromScratch, outPath, storage);
                     return ImagingApi.PostImagePsd(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

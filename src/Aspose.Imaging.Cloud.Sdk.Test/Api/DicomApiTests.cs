@@ -120,7 +120,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 "Dicom",
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageDicomRequest(inputStream, fromScratch, outPath);
+                    var request = new PostImageDicomRequest(inputStream, fromScratch, outPath, storage);
                     return ImagingApi.PostImageDicom(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

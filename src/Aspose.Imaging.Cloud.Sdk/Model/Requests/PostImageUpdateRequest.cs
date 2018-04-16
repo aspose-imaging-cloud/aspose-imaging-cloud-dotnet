@@ -52,7 +52,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="rectHeight">Height of cropping rectangle.</param>
         /// <param name="rotateFlipMethod">RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        public PostImageUpdateRequest(System.IO.Stream imageData, string format, int? newWidth, int? newHeight, int? x, int? y, int? rectWidth, int? rectHeight, string rotateFlipMethod, string outPath = null)             
+        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        public PostImageUpdateRequest(System.IO.Stream imageData, string format, int? newWidth, int? newHeight, int? x, int? y, int? rectWidth, int? rectHeight, string rotateFlipMethod, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
             this.format = format;
@@ -64,6 +65,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.rectHeight = rectHeight;
             this.rotateFlipMethod = rotateFlipMethod;
             this.outPath = outPath;
+            this.storage = storage;
         }
 		
         /// <summary>
@@ -115,5 +117,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Path to updated file (if this is empty, response contains streamed image).
         /// </summary>  
         public string outPath { get; set; }
+
+        /// <summary>
+        /// Your Aspose Cloud Storage name.
+        /// </summary>  
+        public string storage { get; set; }
   }
 }

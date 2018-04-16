@@ -50,7 +50,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="borderY">Border height.</param>
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        public PostImageEmfRequest(System.IO.Stream imageData, string bkColor, int? pageWidth, int? pageHeight, int? borderX, int? borderY, bool? fromScratch = null, string outPath = null)             
+        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        public PostImageEmfRequest(System.IO.Stream imageData, string bkColor, int? pageWidth, int? pageHeight, int? borderX, int? borderY, bool? fromScratch = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
             this.bkColor = bkColor;
@@ -60,6 +61,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.borderY = borderY;
             this.fromScratch = fromScratch;
             this.outPath = outPath;
+            this.storage = storage;
         }
 		
         /// <summary>
@@ -101,5 +103,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Path to updated file (if this is empty, response contains streamed image).
         /// </summary>  
         public string outPath { get; set; }
+
+        /// <summary>
+        /// Your Aspose Cloud Storage name.
+        /// </summary>  
+        public string storage { get; set; }
   }
 }

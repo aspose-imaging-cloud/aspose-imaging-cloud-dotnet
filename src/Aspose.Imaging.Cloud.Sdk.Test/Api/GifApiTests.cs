@@ -136,7 +136,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImageGifRequest(inputStream, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted,
-                        pixelAspectRatio, fromScratch, outPath);
+                        pixelAspectRatio, fromScratch, outPath, storage);
                     return ImagingApi.PostImageGif(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

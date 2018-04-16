@@ -127,7 +127,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImageWmfRequest(inputStream, bkColor, pageWidth, pageHeigth, borderX, borderY,
-                        fromScratch, outPath);
+                        fromScratch, outPath, storage);
                     return ImagingApi.PostImageWmf(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

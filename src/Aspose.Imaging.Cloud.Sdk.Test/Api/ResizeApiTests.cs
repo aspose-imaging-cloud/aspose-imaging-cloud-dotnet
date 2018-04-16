@@ -90,6 +90,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".jpg", false)]
         [TestCase(".jpeg", false)]
         [TestCase(".tif", false)]
+        [TestCase(".tiff", false)]
         [TestCase(".webp", false)]
         [TestCase(".psd", false)]
         [TestCase(".j2k", false)]
@@ -239,7 +240,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         "Resize",
                         delegate (Stream inputStream, string outPath)
                         {
-                            var request = new PostImageResizeRequest(inputStream, format, newWidth, newHeight, outPath);
+                            var request = new PostImageResizeRequest(inputStream, format, newWidth, newHeight, outPath, storage);
                             return ImagingApi.PostImageResize(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

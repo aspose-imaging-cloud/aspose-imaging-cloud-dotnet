@@ -174,7 +174,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 "Tiff",
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageTiffRequest(inputStream, compression, resolutionUnit, bitDepth, fromScratch, horizontalResolution, verticalResolution, outPath);
+                    var request = new PostImageTiffRequest(inputStream, compression, resolutionUnit, bitDepth, fromScratch, horizontalResolution, verticalResolution, outPath, storage);
                     return ImagingApi.PostImageTiff(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

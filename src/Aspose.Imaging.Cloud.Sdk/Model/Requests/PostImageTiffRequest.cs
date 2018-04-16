@@ -50,7 +50,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="horizontalResolution">New horizontal resolution.</param>
         /// <param name="verticalResolution">New verstical resolution.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        public PostImageTiffRequest(System.IO.Stream imageData, string compression, string resolutionUnit, int? bitDepth, bool? fromScratch = null, double? horizontalResolution = null, double? verticalResolution = null, string outPath = null)             
+        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        public PostImageTiffRequest(System.IO.Stream imageData, string compression, string resolutionUnit, int? bitDepth, bool? fromScratch = null, double? horizontalResolution = null, double? verticalResolution = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
             this.compression = compression;
@@ -60,6 +61,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.horizontalResolution = horizontalResolution;
             this.verticalResolution = verticalResolution;
             this.outPath = outPath;
+            this.storage = storage;
         }
 		
         /// <summary>
@@ -101,5 +103,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Path to updated file (if this is empty, response contains streamed image).
         /// </summary>  
         public string outPath { get; set; }
+
+        /// <summary>
+        /// Your Aspose Cloud Storage name.
+        /// </summary>  
+        public string storage { get; set; }
   }
 }

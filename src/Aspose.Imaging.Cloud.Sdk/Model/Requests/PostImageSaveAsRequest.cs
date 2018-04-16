@@ -45,11 +45,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="imageData">Input image</param>
         /// <param name="format">Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        public PostImageSaveAsRequest(System.IO.Stream imageData, string format, string outPath = null)             
+        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        public PostImageSaveAsRequest(System.IO.Stream imageData, string format, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
             this.format = format;
             this.outPath = outPath;
+            this.storage = storage;
         }
 		
         /// <summary>
@@ -66,5 +68,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Path to updated file (if this is empty, response contains streamed image).
         /// </summary>  
         public string outPath { get; set; }
+
+        /// <summary>
+        /// Your Aspose Cloud Storage name.
+        /// </summary>  
+        public string storage { get; set; }
   }
 }

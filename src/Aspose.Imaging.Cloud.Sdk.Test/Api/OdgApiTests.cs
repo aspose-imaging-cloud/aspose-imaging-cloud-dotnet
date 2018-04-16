@@ -123,7 +123,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 "Odg",
                 delegate (Stream inpuStream, string outPath)
                 {
-                    var request = new PostImageOdgRequest(inpuStream, fromScratch, outPath);
+                    var request = new PostImageOdgRequest(inpuStream, fromScratch, outPath, storage);
                     return ImagingApi.PostImageOdg(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

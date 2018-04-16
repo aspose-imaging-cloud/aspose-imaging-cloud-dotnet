@@ -47,13 +47,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="newWidth">New width.</param>
         /// <param name="newHeight">New height.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        public PostImageResizeRequest(System.IO.Stream imageData, string format, int? newWidth, int? newHeight, string outPath = null)             
+        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        public PostImageResizeRequest(System.IO.Stream imageData, string format, int? newWidth, int? newHeight, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
             this.format = format;
             this.newWidth = newWidth;
             this.newHeight = newHeight;
             this.outPath = outPath;
+            this.storage = storage;
         }
 		
         /// <summary>
@@ -80,5 +82,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Path to updated file (if this is empty, response contains streamed image).
         /// </summary>  
         public string outPath { get; set; }
+
+        /// <summary>
+        /// Your Aspose Cloud Storage name.
+        /// </summary>  
+        public string storage { get; set; }
   }
 }
