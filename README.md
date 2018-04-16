@@ -3,7 +3,7 @@
 
 This repository contains Aspose.Imaging for Cloud .NET SDK source code. This SDK allows you to work with Aspose.Imaging for Cloud REST APIs in your .NET applications quickly and easily, with zero initial cost.
 
-To use this SDKs, you will need App SID and App Key which can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) (free registration in Aspose Cloud is required for this).
+To use this SDK, you will need App SID and App Key which can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) (free registration in Aspose Cloud is required for this).
 
 # Licensing
 All Aspose.Imaging for Cloud SDKs, helper scripts and templates are licensed under [MIT License](LICENSE).
