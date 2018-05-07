@@ -117,7 +117,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 "Dng",
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageDngRequest(inputStream, fromScratch, outPath);
+                    var request = new PostImageDngRequest(inputStream, fromScratch, outPath, storage);
                     return ImagingApi.PostImageDng(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

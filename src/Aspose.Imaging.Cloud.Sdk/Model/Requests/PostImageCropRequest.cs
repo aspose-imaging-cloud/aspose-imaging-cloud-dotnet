@@ -49,7 +49,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="width">Width of cropping rectangle.</param>
         /// <param name="height">Height of cropping rectangle.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        public PostImageCropRequest(System.IO.Stream imageData, string format, int? x, int? y, int? width, int? height, string outPath = null)             
+        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        public PostImageCropRequest(System.IO.Stream imageData, string format, int? x, int? y, int? width, int? height, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
             this.format = format;
@@ -58,6 +59,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.width = width;
             this.height = height;
             this.outPath = outPath;
+            this.storage = storage;
         }
 		
         /// <summary>
@@ -94,5 +96,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Path to updated file (if this is empty, response contains streamed image).
         /// </summary>  
         public string outPath { get; set; }
+
+        /// <summary>
+        /// Your Aspose Cloud Storage name.
+        /// </summary>  
+        public string storage { get; set; }
   }
 }

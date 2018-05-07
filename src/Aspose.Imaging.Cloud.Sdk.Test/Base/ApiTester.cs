@@ -78,7 +78,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// The cloud test folder
         /// </summary>
-        protected const string CloudTestFolder = "CloudTest";
+        protected const string CloudTestFolder = "CloudTestDotNet";
 
         /// <summary>
         /// The cloud references folder

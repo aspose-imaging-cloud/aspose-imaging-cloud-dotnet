@@ -123,7 +123,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 "Png",
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImagePngRequest(inputStream, fromScratch, outPath);
+                    var request = new PostImagePngRequest(inputStream, fromScratch, outPath, storage);
                     return ImagingApi.PostImagePng(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

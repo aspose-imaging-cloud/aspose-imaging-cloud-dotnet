@@ -58,7 +58,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
         /// <summary>
         /// Test GetImageJpeg2000
-        /// TODO: improve test when IMAGINGNET-2872 is done 
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
@@ -90,8 +89,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     Assert.NotNull(resultProperties.Jpeg2000Properties);
                     Assert.IsTrue(resultProperties.Jpeg2000Properties.Codec.HasValue);
 
-                    // TODO: uncomment when IMAGINGNET-2872 is done 
-                    //Assert.AreEqual(outProperties.Jpeg2000Properties.Codec.ToString().ToLower(), codec);
+                    Assert.NotNull(resultProperties.Jpeg2000Properties.Codec);
+                    Assert.AreEqual(resultProperties.Jpeg2000Properties.Codec.ToString().ToLower(), codec);
                     Assert.NotNull(resultProperties.Jpeg2000Properties.Comments);
                     Assert.IsTrue(resultProperties.Jpeg2000Properties.Comments.Contains(comment));
 
@@ -107,7 +106,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
         /// <summary>
         /// Test PostImageJpeg2000
-        /// TODO: improve test when IMAGINGNET-2872 is done 
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
@@ -131,7 +129,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 "Jpeg2000",
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageJpeg2000Request(inputStream, comment, codec, fromScratch, outPath);
+                    var request = new PostImageJpeg2000Request(inputStream, comment, codec, fromScratch, outPath, storage);
                     return ImagingApi.PostImageJpeg2000(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
@@ -139,8 +137,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     Assert.NotNull(resultProperties.Jpeg2000Properties);
                     Assert.IsTrue(resultProperties.Jpeg2000Properties.Codec.HasValue);
 
-                    // TODO: uncomment when IMAGINGNET-2872 is done 
-                    //Assert.AreEqual(outProperties.Jpeg2000Properties.Codec.ToString().ToLower(), codec);
+                    Assert.NotNull(resultProperties.Jpeg2000Properties.Codec);
+                    Assert.AreEqual(resultProperties.Jpeg2000Properties.Codec.ToString().ToLower(), codec);
                     Assert.NotNull(resultProperties.Jpeg2000Properties.Comments);
                     Assert.IsTrue(resultProperties.Jpeg2000Properties.Comments.Contains(comment));
 

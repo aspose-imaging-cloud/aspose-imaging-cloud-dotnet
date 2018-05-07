@@ -45,11 +45,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="imageData">Input image</param>
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        public PostImageDngRequest(System.IO.Stream imageData, bool? fromScratch = null, string outPath = null)             
+        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        public PostImageDngRequest(System.IO.Stream imageData, bool? fromScratch = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
             this.fromScratch = fromScratch;
             this.outPath = outPath;
+            this.storage = storage;
         }
 		
         /// <summary>
@@ -66,5 +68,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Path to updated file (if this is empty, response contains streamed image).
         /// </summary>  
         public string outPath { get; set; }
+
+        /// <summary>
+        /// Your Aspose Cloud Storage name.
+        /// </summary>  
+        public string storage { get; set; }
   }
 }

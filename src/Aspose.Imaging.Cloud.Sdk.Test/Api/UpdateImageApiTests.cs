@@ -65,7 +65,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="additionalExportFormats">Additional formats to export to</param>
         [TestCase(".bmp", true)]
         [TestCase(".dng", true)]
-        [TestCase(".gif", true)]
+        // TODO: enable after IMAGINGCLOUD-51 is resolved
+        // [TestCase(".gif", true)]
         [TestCase(".png", true)]
         [TestCase(".jpg", true)]
         [TestCase(".jpeg", true)]
@@ -82,7 +83,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".mjp2", true)]
         [TestCase(".bmp", false)]
         [TestCase(".dng", false)]
-        [TestCase(".gif", false)]
+        // TODO: enable after IMAGINGCLOUD-51 is resolved
+        // [TestCase(".gif", false)]
         [TestCase(".png", false)]
         [TestCase(".jpg", false)]
         [TestCase(".jpeg", false)]
@@ -167,7 +169,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="additionalExportFormats">Additional formats to export to</param>
         [TestCase(".bmp", true)]
         [TestCase(".dng", true)]
-        [TestCase(".gif", true)]
+        // TODO: enable after IMAGINGCLOUD-51 is resolved
+        // [TestCase(".gif", true)]
         [TestCase(".png", true)]
         [TestCase(".jpg", true)]
         [TestCase(".jpeg", true)]
@@ -184,7 +187,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".mjp2", true)]
         [TestCase(".bmp", false)]
         [TestCase(".dng", false)]
-        [TestCase(".gif", false)]
+        // TODO: enable after IMAGINGCLOUD-51 is resolved
+        // [TestCase(".gif", false)]
         [TestCase(".png", false)]
         [TestCase(".jpg", false)]
         [TestCase(".jpeg", false)]
@@ -247,7 +251,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         "Update",
                         delegate (Stream inputStream, string outPath)
                         {
-                            var request = new PostImageUpdateRequest(inputStream, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath);
+                            var request = new PostImageUpdateRequest(inputStream, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, storage);
                             return ImagingApi.PostImageUpdate(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

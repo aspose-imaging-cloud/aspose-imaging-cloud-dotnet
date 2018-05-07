@@ -128,7 +128,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 "Bmp",
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageBmpRequest(inputStream, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath);
+                    var request = new PostImageBmpRequest(inputStream, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
                     return ImagingApi.PostImageBmp(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

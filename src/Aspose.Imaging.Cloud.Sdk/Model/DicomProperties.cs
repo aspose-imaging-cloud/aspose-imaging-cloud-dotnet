@@ -149,6 +149,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         public bool? IsLittleEndian { get; set; }
 
         /// <summary>
+        /// Gets or sets the offset.
+        /// </summary>  
+        public int? Offset { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether \"DICOM\" data is found.
+        /// </summary>  
+        public bool? DicomFound { get; set; }
+
+        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -178,6 +188,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
           sb.Append("  NumberOfFrames: ").Append(this.NumberOfFrames).Append("\n");
           sb.Append("  LengthValue: ").Append(this.LengthValue).Append("\n");
           sb.Append("  IsLittleEndian: ").Append(this.IsLittleEndian).Append("\n");
+          sb.Append("  Offset: ").Append(this.Offset).Append("\n");
+          sb.Append("  DicomFound: ").Append(this.DicomFound).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

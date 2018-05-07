@@ -63,7 +63,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        [Ignore("Remove this attribute when IMAGINGNET-2869 is resolved")]
         public void GetImageWebPTest(bool saveResultToStorage)
         {
             string name = "Animation.webp";
@@ -85,15 +84,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 "Webp",
                 delegate(string fileName, string outPath)
                 {
-                    var request = new GetImageWebPRequest(fileName, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, storage, folder);
+                    var request = new GetImageWebPRequest(fileName, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, folder, storage);
                     return ImagingApi.GetImageWebP(request);
                 },
                 delegate(ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
                     Assert.NotNull(resultProperties.WebPProperties);
+
+                    /* TODO: uncomment after IMAGINGNET-2869 is done
                     Assert.AreEqual(resultProperties.WebPProperties.Lossless, lossless);
                     Assert.AreEqual(resultProperties.WebPProperties.AnimLoopCount, animLoopCount);
                     Assert.AreEqual((int) Math.Ceiling((double) resultProperties.WebPProperties.Quality), quality);
+                    */
 
                     Assert.NotNull(originalProperties.WebPProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);
@@ -109,7 +111,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        [Ignore("Remove this attribute when IMAGINGNET-2869 is resolved")]
         public void PostImageWebPTest(bool saveResultToStorage)
         {
             string name = "Animation.webp";
@@ -131,15 +132,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 "Webp",
                 delegate(Stream inputStream, string outPath)
                 {
-                    var request = new PostImageWebPRequest(inputStream, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath);
+                    var request = new PostImageWebPRequest(inputStream, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, storage);
                     return ImagingApi.PostImageWebP(request);
                 },
                 delegate(ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
                     Assert.NotNull(resultProperties.WebPProperties);
+
+                    /* TODO: uncomment after IMAGINGNET-2869 is done
                     Assert.AreEqual(resultProperties.WebPProperties.Lossless, lossless);
                     Assert.AreEqual(resultProperties.WebPProperties.AnimLoopCount, animLoopCount);
                     Assert.AreEqual((int) Math.Ceiling((double) resultProperties.WebPProperties.Quality), quality);
+                    */
 
                     Assert.NotNull(originalProperties.WebPProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);

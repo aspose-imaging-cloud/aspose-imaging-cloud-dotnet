@@ -165,9 +165,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
         [TestCase(".bmp", true)]
+        [TestCase(".dng", true)]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
-        // [TestCase(".dng", true)]
-        [TestCase(".gif", true)]
+        // [TestCase(".gif", true)]
         [TestCase(".png", true)]
         [TestCase(".jpg", true)]
         [TestCase(".jpeg", true)]
@@ -190,6 +190,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".jpg", false)]
         [TestCase(".jpeg", false)]
         [TestCase(".tif", false)]
+        [TestCase(".tiff", false)]
         [TestCase(".webp", false)]
         [TestCase(".psd", false)]
         [TestCase(".j2k", false)]
@@ -243,7 +244,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         "Crop",
                         delegate (Stream inputStream, string outPath)
                         {
-                            var request = new PostImageCropRequest(inputStream, format, x, y, width, height, outPath);
+                            var request = new PostImageCropRequest(inputStream, format, x, y, width, height, outPath, storage);
                             return ImagingApi.PostImageCrop(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)

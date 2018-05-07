@@ -1907,6 +1907,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "verticalResolution", request.verticalResolution);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2005,6 +2006,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "width", request.width);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "height", request.height);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2069,6 +2071,7 @@ namespace Aspose.Imaging.Cloud.Sdk
 			var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2133,6 +2136,7 @@ namespace Aspose.Imaging.Cloud.Sdk
 			var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2232,6 +2236,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "borderY", request.borderY);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2302,6 +2307,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pixelAspectRatio", request.pixelAspectRatio);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2374,6 +2380,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "codec", request.codec);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2440,6 +2447,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "compressionType", request.compressionType);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2504,6 +2512,7 @@ namespace Aspose.Imaging.Cloud.Sdk
 			var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2568,6 +2577,7 @@ namespace Aspose.Imaging.Cloud.Sdk
 			var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2634,6 +2644,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "compressionMethod", request.compressionMethod);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2718,6 +2729,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2795,6 +2807,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2865,6 +2878,7 @@ namespace Aspose.Imaging.Cloud.Sdk
 			var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -2952,6 +2966,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "horizontalResolution", request.horizontalResolution);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "verticalResolution", request.verticalResolution);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -3071,6 +3086,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -3163,6 +3179,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "animBackgroundColor", request.animBackgroundColor);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -3262,6 +3279,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "borderY", request.borderY);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {

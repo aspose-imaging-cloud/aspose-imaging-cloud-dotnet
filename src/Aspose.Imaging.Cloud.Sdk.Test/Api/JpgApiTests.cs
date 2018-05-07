@@ -122,7 +122,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 "Jpg",
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageJpgRequest(inputStream, quality, compressionType, fromScratch, outPath);
+                    var request = new PostImageJpgRequest(inputStream, quality, compressionType, fromScratch, outPath, storage);
                     return ImagingApi.PostImageJpg(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
