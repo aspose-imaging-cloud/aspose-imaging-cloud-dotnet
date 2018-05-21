@@ -38,25 +38,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class JpgApiTests : ApiTester
     {
         /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
-        /// <summary>
         /// Test GetImageJpg
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>

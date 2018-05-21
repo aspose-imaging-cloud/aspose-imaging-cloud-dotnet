@@ -95,15 +95,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 {
                     Assert.NotNull(resultProperties.TiffProperties);
                     Assert.NotNull(resultProperties.TiffProperties.Frames);
-                    Assert.AreEqual(resultProperties.TiffProperties.Frames.Count, 1);
+                    Assert.AreEqual(1, resultProperties.TiffProperties.Frames.Count);
 
                     // please note that rotation was performed, so switching of width and height comparison is valid
-                    Assert.AreEqual(resultProperties.TiffProperties.Frames[0].Width, rectHeight);
-                    Assert.AreEqual(resultProperties.TiffProperties.Frames[0].Height, rectWidth);
+                    Assert.AreEqual(rectHeight, resultProperties.TiffProperties.Frames[0].Width);
+                    Assert.AreEqual(rectWidth, resultProperties.TiffProperties.Frames[0].Height);
                     Assert.AreEqual(resultProperties.TiffProperties.Frames[0].FrameOptions.ImageWidth, rectHeight);
-                    Assert.AreEqual(resultProperties.TiffProperties.Frames[0].FrameOptions.ImageLength, rectWidth);
-                    Assert.AreEqual(resultProperties.Width, rectHeight);
-                    Assert.AreEqual(resultProperties.Height, rectWidth);
+                    Assert.AreEqual(rectWidth, resultProperties.TiffProperties.Frames[0].FrameOptions.ImageLength);
+                    Assert.AreEqual(rectHeight, resultProperties.Width);
+                    Assert.AreEqual(rectWidth, resultProperties.Height);
 
                     var framePropertiesRequest = new GetImageFramePropertiesRequest(outName, 0, folder, storage);
                     var framePropertiesResponse = ImagingApi.GetImageFrameProperties(framePropertiesRequest);
@@ -166,44 +166,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     Assert.NotNull(resultProperties);
                     Assert.NotNull(resultProperties.TiffProperties);
                     Assert.NotNull(resultProperties.TiffProperties.Frames);
-                    Assert.AreEqual(resultProperties.TiffProperties.Frames.Count, originalProperties.TiffProperties.Frames.Count);
-                    Assert.AreEqual(resultProperties.Width, originalProperties.Width);
-                    Assert.AreEqual(resultProperties.Height, originalProperties.Height);
+                    Assert.AreEqual(originalProperties.TiffProperties.Frames.Count, resultProperties.TiffProperties.Frames.Count);
+                    Assert.AreEqual(originalProperties.Width, resultProperties.Width);
+                    Assert.AreEqual(originalProperties.Height, resultProperties.Height);
 
                     // please note that rotation was performed, so switching of width and height comparison is valid
-                    Assert.AreEqual(resultProperties.TiffProperties.Frames[frameId.Value].Width, rectHeight);
-                    Assert.AreEqual(resultProperties.TiffProperties.Frames[frameId.Value].Height, rectWidth);
-                    Assert.AreEqual(resultProperties.TiffProperties.Frames[frameId.Value].FrameOptions.ImageWidth, rectHeight);
-                    Assert.AreEqual(resultProperties.TiffProperties.Frames[frameId.Value].FrameOptions.ImageLength, rectWidth);
-
-                    for (int frameIndex = 0; frameIndex < resultProperties.TiffProperties.Frames.Count; frameIndex++)
-                    {
-                        var framePropertiesRequest = new GetImageFramePropertiesRequest(outName, frameIndex, folder, storage);
-                        var framePropertiesResponse = ImagingApi.GetImageFrameProperties(framePropertiesRequest);
-                        Assert.NotNull(framePropertiesResponse);
-                        Assert.NotNull(framePropertiesResponse.TiffProperties);
-                        Assert.NotNull(framePropertiesResponse.TiffProperties.Frames);
-                        Assert.AreEqual(framePropertiesResponse.TiffProperties.Frames.Count, 1);
-                        Assert.AreEqual(resultProperties.TiffProperties.Frames[frameIndex].Width, framePropertiesResponse.TiffProperties.Frames[0].Width);
-                        Assert.AreEqual(resultProperties.TiffProperties.Frames[frameIndex].Height, framePropertiesResponse.TiffProperties.Frames[0].Height);
-                        Assert.AreEqual(resultProperties.TiffProperties.Frames[frameIndex].Width, framePropertiesResponse.TiffProperties.Frames[0].FrameOptions.ImageWidth);
-                        Assert.AreEqual(resultProperties.TiffProperties.Frames[frameIndex].Height, framePropertiesResponse.TiffProperties.Frames[0].FrameOptions.ImageLength);
-
-                        if (frameId.Value == frameIndex)
-                        {
-                            Assert.AreNotEqual(resultProperties.TiffProperties.Frames[frameIndex].Width, originalProperties.TiffProperties.Frames[frameIndex].Width);
-                            Assert.AreNotEqual(resultProperties.TiffProperties.Frames[frameIndex].Height, originalProperties.TiffProperties.Frames[frameIndex].Height);
-                            Assert.AreNotEqual(resultProperties.TiffProperties.Frames[frameIndex].FrameOptions.ImageWidth, originalProperties.TiffProperties.Frames[frameIndex].FrameOptions.ImageWidth);
-                            Assert.AreNotEqual(resultProperties.TiffProperties.Frames[frameIndex].FrameOptions.ImageLength, originalProperties.TiffProperties.Frames[frameIndex].FrameOptions.ImageLength);
-                        }
-                        else
-                        {
-                            Assert.AreEqual(resultProperties.TiffProperties.Frames[frameIndex].Width, originalProperties.TiffProperties.Frames[frameIndex].Width);
-                            Assert.AreEqual(resultProperties.TiffProperties.Frames[frameIndex].Height, originalProperties.TiffProperties.Frames[frameIndex].Height);
-                            Assert.AreEqual(resultProperties.TiffProperties.Frames[frameIndex].FrameOptions.ImageWidth, originalProperties.TiffProperties.Frames[frameIndex].FrameOptions.ImageWidth);
-                            Assert.AreEqual(resultProperties.TiffProperties.Frames[frameIndex].FrameOptions.ImageLength, originalProperties.TiffProperties.Frames[frameIndex].FrameOptions.ImageLength);
-                        }
-                    }
+                    Assert.AreEqual(rectHeight, resultProperties.TiffProperties.Frames[frameId.Value].Width);
+                    Assert.AreEqual(rectWidth, resultProperties.TiffProperties.Frames[frameId.Value].Height);
+                    Assert.AreEqual(rectHeight, resultProperties.TiffProperties.Frames[frameId.Value].FrameOptions.ImageWidth);
+                    Assert.AreEqual(rectWidth, resultProperties.TiffProperties.Frames[frameId.Value].FrameOptions.ImageLength);
                 },
                 folder,
                 storage);

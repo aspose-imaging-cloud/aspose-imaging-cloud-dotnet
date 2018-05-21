@@ -39,25 +39,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class BmpApiTests : ApiTester
     {
         /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
-        /// <summary>
         /// Test GetImageBmp
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// </summary>
@@ -88,13 +69,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.BmpProperties);
-                    Assert.AreEqual(resultProperties.BitsPerPixel, bitsPerPixel);
-                    Assert.AreEqual((int)Math.Ceiling((double)resultProperties.VerticalResolution), verticalResolution);
-                    Assert.AreEqual((int)Math.Ceiling((double)resultProperties.HorizontalResolution), horizontalResolution);
+                    Assert.IsNotNull(resultProperties.BmpProperties);
+                    Assert.AreEqual(bitsPerPixel, resultProperties.BitsPerPixel);
+                    Assert.AreEqual(verticalResolution, (int)Math.Ceiling((double)resultProperties.VerticalResolution));
+                    Assert.AreEqual(horizontalResolution, (int)Math.Ceiling((double)resultProperties.HorizontalResolution));
 
-                    Assert.NotNull(originalProperties.BmpProperties);
-                    Assert.AreEqual(originalProperties.BmpProperties.Compression, resultProperties.BmpProperties.Compression);
+                    Assert.IsNotNull(originalProperties.BmpProperties);
+                    Assert.AreEqual(originalProperties.BmpProperties.Compression,
+                        resultProperties.BmpProperties.Compression);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);
                     Assert.AreEqual(originalProperties.Height, resultProperties.Height);
                 },
@@ -133,13 +115,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.BmpProperties);
-                    Assert.AreEqual(resultProperties.BitsPerPixel, bitsPerPixel);
-                    Assert.AreEqual((int)Math.Ceiling((double)resultProperties.VerticalResolution), verticalResolution);
-                    Assert.AreEqual((int)Math.Ceiling((double)resultProperties.HorizontalResolution), horizontalResolution);
+                    Assert.IsNotNull(resultProperties.BmpProperties);
+                    Assert.AreEqual(bitsPerPixel, resultProperties.BitsPerPixel);
+                    Assert.AreEqual(verticalResolution, (int)Math.Ceiling((double)resultProperties.VerticalResolution));
+                    Assert.AreEqual(horizontalResolution, (int)Math.Ceiling((double)resultProperties.HorizontalResolution));
 
-                    Assert.NotNull(originalProperties.BmpProperties);
-                    Assert.AreEqual(originalProperties.BmpProperties.Compression, resultProperties.BmpProperties.Compression);
+                    Assert.IsNotNull(originalProperties.BmpProperties);
+                    Assert.AreEqual(originalProperties.BmpProperties.Compression,
+                        resultProperties.BmpProperties.Compression);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);
                     Assert.AreEqual(originalProperties.Height, resultProperties.Height);
                 },
