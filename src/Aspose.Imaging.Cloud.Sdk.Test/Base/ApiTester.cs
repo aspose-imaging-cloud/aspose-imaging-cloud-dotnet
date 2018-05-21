@@ -23,25 +23,25 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Net;
-using System.Text;
-using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-using Aspose.Imaging.Cloud.Sdk.Test.Base;
-using Com.Aspose.Storage.Model;
-using Newtonsoft.Json.Serialization;
-using NUnit.Framework;
-
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
+    using System.Net;
+    using System.Text;
 
     using Aspose.Imaging.Cloud.Sdk.Client;
     using Aspose.Imaging.Cloud.Sdk.Model;
+    using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+    using Aspose.Imaging.Cloud.Sdk.Test.Base;
+
     using Com.Aspose.Storage.Api;
+    using Com.Aspose.Storage.Model;
 
     using Newtonsoft.Json;
+
+    using NUnit.Framework;
 
     /// <summary>
     /// Base class for API tester
@@ -95,6 +95,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// </summary>
         protected const long SizeDiffDivision = 20;
 
+        /// <summary>
+        /// Original test data folder
+        /// </summary>
+        private const string OriginalDataFolder = "CloudTest";
+
         #endregion
 
         #region Fields
@@ -117,13 +122,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         protected readonly string[] BasicExportFormats = new string[]
         {
             "bmp",
-            "jpg",
-            "psd",
-            "tiff",
             "gif",
+            "jpg",
             "png",
-            "j2k",
-            "webp"
+            "psd",
+            "tiff"
         };
 
         #endregion
@@ -171,6 +174,30 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         ///   <c>true</c> if [automatic recover reference]; otherwise, <c>false</c>.
         /// </value>
         public bool AutoRecoverReference { get; set; } = false;
+
+        #endregion
+
+        #region Configuration
+
+        [TestFixtureSetUp]
+        public void InitFixture()
+        {
+            this.CreateApiInstances();
+            if (this.StorageApi.GetIsExist(CloudTestFolder, "", DefaultStorage).FileExist.IsExist)
+            {
+                this.StorageApi.DeleteFolder(CloudTestFolder, DefaultStorage, true);
+                this.StorageApi.PutCreateFolder(CloudTestFolder, DefaultStorage, DefaultStorage);
+            }
+        }
+
+        [TestFixtureTearDown]
+        public void FinilizeFixture()
+        {
+            if (this.StorageApi.GetIsExist(CloudTestFolder, "", DefaultStorage).FileExist.IsExist)
+            {
+                this.StorageApi.DeleteFolder(CloudTestFolder, DefaultStorage, true);
+            }
+        }
 
         #endregion
 
@@ -318,8 +345,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <returns></returns>
         private List<FilesList.StorageFileInfo> FetchInputTestFilesInfo()
         {
-            ResponseMessage filesResponse = StorageApi.GetListFiles(CloudTestFolder, DefaultStorage);
-            Assert.AreEqual(filesResponse.Code, (int)HttpStatusCode.OK);
+            ResponseMessage filesResponse = StorageApi.GetListFiles(OriginalDataFolder, DefaultStorage);
+            Assert.AreEqual((int)HttpStatusCode.OK, filesResponse.Code);
             string responseString = Encoding.UTF8.GetString(filesResponse.ResponseStream);
             var filesList = JsonConvert.DeserializeObject<FilesList>(responseString);
             return filesList.Files;
@@ -358,7 +385,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         private long ObtainPostResponseLength(string inputPath, string outPath, string storage, PostRequestInvokerDelegate requestInvoker)
         {
             var inputDownloadResponse = StorageApi.GetDownload(inputPath, "", storage);
-            Assert.AreEqual(inputDownloadResponse.Code, (int)HttpStatusCode.OK);
+            Assert.AreEqual((int)HttpStatusCode.OK, inputDownloadResponse.Code);
             using (MemoryStream ms = new MemoryStream(inputDownloadResponse.ResponseStream))
             {
                 using (var response = requestInvoker.Invoke(ms, outPath))
@@ -388,7 +415,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
         private void TestRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, string resultFileName, string referenceSubfolder,
-            Func<long> invokeRequestFunc, PropertiesTesterDelegate propertiesTester, string folder = CloudTestFolder, string storage = DefaultStorage)
+            Newtonsoft.Json.Serialization.Func<long> invokeRequestFunc, PropertiesTesterDelegate propertiesTester, string folder = CloudTestFolder, string storage = DefaultStorage)
         {
             Console.WriteLine(testMethodName);
 
@@ -396,6 +423,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             {
                 throw new ArgumentException(
                     $"Input file {inputFileName} doesn't exist in the specified storage folder: {folder}. Please, upload it first.");
+            }
+
+            if (!this.StorageApi.GetIsExist(folder + "/" + inputFileName, "", storage).FileExist.IsExist)
+            {
+                var downResponse = this.StorageApi.GetDownload(OriginalDataFolder + "/" + inputFileName, "", storage);
+                Assert.AreEqual(HttpStatusCode.OK.ToString(), downResponse.Status.ToUpperInvariant());
+                var putResponse = this.StorageApi.PutCreate(folder + "/" + inputFileName, "", storage, downResponse.ResponseStream);
+                Assert.AreEqual(HttpStatusCode.OK.ToString(), putResponse.Status.ToUpperInvariant());
             }
 
             bool passed = false;
@@ -466,7 +501,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 if (saveResultToStorage && !passed && this.AutoRecoverReference && StorageApi.GetIsExist(outPath, "", storage).FileExist.IsExist)
                 {
                     var moveFileResponse = StorageApi.PostMoveFile(outPath, referencePath + "/" + resultFileName, "", storage, storage);
-                    Assert.AreEqual(moveFileResponse.Status, HttpStatusCode.OK.ToString());
+                    Assert.AreEqual(HttpStatusCode.OK.ToString(), moveFileResponse.Status);
                 }
                 else if (saveResultToStorage && this.RemoveResult && StorageApi.GetIsExist(outPath, "", storage).FileExist.IsExist)
                 {

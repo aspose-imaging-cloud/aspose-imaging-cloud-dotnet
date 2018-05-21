@@ -25,7 +25,8 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
-	using System.IO;
+    using System;
+    using System.IO;
 	using NUnit.Framework;
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
@@ -37,25 +38,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     [TestFixture]
     public class OdgApiTests : ApiTester
     {
-        /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
         /// <summary>
         /// Test GetImageOdg
         /// </summary>
@@ -84,17 +66,36 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.PngProperties);
+                    Assert.IsNotNull(resultProperties.PngProperties);
+                    try
+                    {
+                        Assert.AreEqual(originalProperties.Width, resultProperties.Width);
+                    }
+                    catch (Exception)
+                    {
+                        Assert.AreEqual(originalProperties.Width, resultProperties.Width - 1);
+                    }
 
-                    Assert.AreEqual(resultProperties.Width, originalProperties.Width + 1);
-                    Assert.AreEqual(resultProperties.Height, originalProperties.Height + 1);
-                    Assert.NotNull(originalProperties.OdgProperties);
-                    Assert.NotNull(originalProperties.OdgProperties.Pages);
+                    try
+                    {
+                        Assert.AreEqual(originalProperties.Height, resultProperties.Height);
+                    }
+                    catch (Exception)
+                    {
+                        Assert.AreEqual(originalProperties.Height, resultProperties.Height - 1);
+                    }
+
+                    Assert.IsNotNull(originalProperties.OdgProperties);
+                    Assert.IsNotNull(originalProperties.OdgProperties.Pages);
                     Assert.AreEqual(originalProperties.OdgProperties.PageCount, 2);
-                    Assert.AreEqual(originalProperties.OdgProperties.Pages[0].Width, originalProperties.Width);
-                    Assert.AreEqual(originalProperties.OdgProperties.Pages[0].Height, originalProperties.Height);
-                    Assert.AreEqual(originalProperties.OdgProperties.Pages[1].Width, originalProperties.Width);
-                    Assert.AreEqual(originalProperties.OdgProperties.Pages[1].Height, originalProperties.Height);
+                    Assert.AreEqual(originalProperties.OdgProperties.Pages[0].Width,
+                        originalProperties.Width);
+                    Assert.AreEqual(originalProperties.OdgProperties.Pages[0].Height,
+                        originalProperties.Height);
+                    Assert.AreEqual(originalProperties.OdgProperties.Pages[1].Width,
+                        originalProperties.Width);
+                    Assert.AreEqual(originalProperties.OdgProperties.Pages[1].Height,
+                        originalProperties.Height);
                 },
                 folder,
                 storage);
@@ -128,17 +129,36 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.PngProperties);
+                    Assert.IsNotNull(resultProperties.PngProperties);
+                    try
+                    {
+                        Assert.AreEqual(originalProperties.Width, resultProperties.Width);
+                    }
+                    catch (Exception)
+                    {
+                        Assert.AreEqual(originalProperties.Width, resultProperties.Width - 1);
+                    }
 
-                    Assert.AreEqual(resultProperties.Width, originalProperties.Width + 1);
-                    Assert.AreEqual(resultProperties.Height, originalProperties.Height + 1);
-                    Assert.NotNull(originalProperties.OdgProperties);
-                    Assert.NotNull(originalProperties.OdgProperties.Pages);
+                    try
+                    {
+                        Assert.AreEqual(originalProperties.Height, resultProperties.Height);
+                    }
+                    catch (Exception)
+                    {
+                        Assert.AreEqual(originalProperties.Height, resultProperties.Height - 1);
+                    }
+
+                    Assert.IsNotNull(originalProperties.OdgProperties);
+                    Assert.IsNotNull(originalProperties.OdgProperties.Pages);
                     Assert.AreEqual(originalProperties.OdgProperties.PageCount, 2);
-                    Assert.AreEqual(originalProperties.OdgProperties.Pages[0].Width, originalProperties.Width);
-                    Assert.AreEqual(originalProperties.OdgProperties.Pages[0].Height, originalProperties.Height);
-                    Assert.AreEqual(originalProperties.OdgProperties.Pages[1].Width, originalProperties.Width);
-                    Assert.AreEqual(originalProperties.OdgProperties.Pages[1].Height, originalProperties.Height);
+                    Assert.AreEqual(originalProperties.OdgProperties.Pages[0].Width,
+                        originalProperties.Width);
+                    Assert.AreEqual(originalProperties.OdgProperties.Pages[0].Height,
+                        originalProperties.Height);
+                    Assert.AreEqual(originalProperties.OdgProperties.Pages[1].Width,
+                        originalProperties.Width);
+                    Assert.AreEqual(originalProperties.OdgProperties.Pages[1].Height,
+                        originalProperties.Height);
                 },
                 folder,
                 storage);

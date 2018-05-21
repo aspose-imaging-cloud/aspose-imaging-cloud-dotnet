@@ -39,72 +39,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class SaveAsApiTests : ApiTester
     {
         /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
-        /// <summary>
         /// Performs SaveAs (export to another format) operation test with GET method, taking input data from storage.
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If resulting image should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".bmp", false)]
-        [TestCase(".bmp", true)]
-        [TestCase(".dicom", true)]
-        [TestCase(".dicom", false)]
-        [TestCase(".dng", true)]
-        [TestCase(".dng", false)]
-        [TestCase(".gif", true)]
-        [TestCase(".gif", false)]
-        [TestCase(".png", true)]
-        [TestCase(".png", false)]
         [TestCase(".jpg", true)]
         [TestCase(".jpg", false)]
-        [TestCase(".jpeg", true)]
-        [TestCase(".jpeg", false)]
-        [TestCase(".tif", true)]
-        [TestCase(".tif", false)]
-        [TestCase(".tiff", true)]
-        [TestCase(".tiff", false)]
-        [TestCase(".webp", true)]
-        [TestCase(".webp", false)]
-        [TestCase(".psd", true)]
-        [TestCase(".psd", false)]
-        [TestCase(".j2k", true)]
-        [TestCase(".j2k", false)]
-        [TestCase(".jpf", true)]
-        [TestCase(".jpf", false)]
-        [TestCase(".jpx", true)]
-        [TestCase(".jpx", false)]
-        [TestCase(".jpm", true)]
-        [TestCase(".jpm", false)]
-        [TestCase(".mj2", true)]
-        [TestCase(".mj2", false)]
-        [TestCase(".jpg2", true)]
-        [TestCase(".jpg2", false)]
-        [TestCase(".mjp2", true)]
-        [TestCase(".mjp2", false)]
-        [TestCase(".odg", true)]
-        [TestCase(".odg", false)]
-        [TestCase(".emf", true)]
-        [TestCase(".emf", false)]
-        [TestCase(".wmf", true)]
-        [TestCase(".wmf", false)]
         public void GetImageSaveAsTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
@@ -162,48 +103,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If resulting image should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".bmp", false)]
-        [TestCase(".bmp", true)]
-        [TestCase(".dicom", true)]
-        [TestCase(".dicom", false)]
-        [TestCase(".dng", true)]
-        [TestCase(".dng", false)]
-        [TestCase(".gif", true)]
-        [TestCase(".gif", false)]
-        [TestCase(".png", true)]
-        [TestCase(".png", false)]
         [TestCase(".jpg", true)]
         [TestCase(".jpg", false)]
-        [TestCase(".jpeg", true)]
-        [TestCase(".jpeg", false)]
-        [TestCase(".tif", true)]
-        [TestCase(".tif", false)]
-        [TestCase(".tiff", true)]
-        [TestCase(".tiff", false)]
-        [TestCase(".webp", true)]
-        [TestCase(".webp", false)]
-        [TestCase(".psd", true)]
-        [TestCase(".psd", false)]
-        [TestCase(".j2k", true)]
-        [TestCase(".j2k", false)]
-        [TestCase(".jpf", true)]
-        [TestCase(".jpf", false)]
-        [TestCase(".jpx", true)]
-        [TestCase(".jpx", false)]
-        [TestCase(".jpm", true)]
-        [TestCase(".jpm", false)]
-        [TestCase(".mj2", true)]
-        [TestCase(".mj2", false)]
-        [TestCase(".jpg2", true)]
-        [TestCase(".jpg2", false)]
-        [TestCase(".mjp2", true)]
-        [TestCase(".mjp2", false)]
-        [TestCase(".odg", true)]
-        [TestCase(".odg", false)]
-        [TestCase(".emf", true)]
-        [TestCase(".emf", false)]
-        [TestCase(".wmf", true)]
-        [TestCase(".wmf", false)]
         public void PostImageSaveAsTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;

@@ -44,25 +44,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class TiffApiTests : ApiTester
     {
         /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
-        /// <summary>
         /// Test GetTiffToFax
         /// </summary>
         [Test]
@@ -88,11 +69,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
                     Assert.NotNull(resultProperties.TiffProperties);
-                    Assert.AreEqual(resultProperties.BitsPerPixel, 1);
-                    Assert.AreEqual((int)Math.Ceiling((double)resultProperties.VerticalResolution), 196);
-                    Assert.AreEqual((int)Math.Ceiling((double)resultProperties.HorizontalResolution), 204);
-                    Assert.AreEqual(resultProperties.Width, 1728);
-                    Assert.AreEqual(resultProperties.Height, 2200);
+                    Assert.AreEqual(1, resultProperties.BitsPerPixel);
+                    Assert.AreEqual(196, (int)Math.Ceiling((double)resultProperties.VerticalResolution));
+                    Assert.AreEqual(204, (int)Math.Ceiling((double)resultProperties.HorizontalResolution));
+                    Assert.AreEqual(1728, resultProperties.Width);
+                    Assert.AreEqual(2200, resultProperties.Height);
                 },
                 folder,
                 storage);
@@ -133,9 +114,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
                     Assert.NotNull(resultProperties.TiffProperties);
-                    Assert.AreEqual(resultProperties.BitsPerPixel, bitDepth > 1 ? bitDepth * 4 : bitDepth);
-                    Assert.AreEqual((int)Math.Ceiling((double)resultProperties.VerticalResolution), (int)verticalResolution);
-                    Assert.AreEqual((int)Math.Ceiling((double)resultProperties.HorizontalResolution), (int)horizontalResolution);
+                    Assert.AreEqual(bitDepth > 1 ? bitDepth * 4 : bitDepth, resultProperties.BitsPerPixel);
+                    Assert.AreEqual((int)verticalResolution, (int)Math.Ceiling((double)resultProperties.VerticalResolution));
+                    Assert.AreEqual((int)horizontalResolution, (int)Math.Ceiling((double)resultProperties.HorizontalResolution));
 
                     Assert.NotNull(originalProperties.TiffProperties);
                     Assert.AreEqual(originalProperties.TiffProperties.Frames.Count, resultProperties.TiffProperties.Frames.Count);
@@ -180,9 +161,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
                     Assert.NotNull(resultProperties.TiffProperties);
-                    Assert.AreEqual(resultProperties.BitsPerPixel, bitDepth > 1 ? bitDepth * 4 : bitDepth);
-                    Assert.AreEqual((int)Math.Ceiling((double)resultProperties.VerticalResolution), (int)verticalResolution);
-                    Assert.AreEqual((int)Math.Ceiling((double)resultProperties.HorizontalResolution), (int)horizontalResolution);
+                    Assert.AreEqual(bitDepth > 1 ? bitDepth * 4 : bitDepth, resultProperties.BitsPerPixel);
+                    Assert.AreEqual((int)verticalResolution, (int)Math.Ceiling((double)resultProperties.VerticalResolution));
+                    Assert.AreEqual((int)horizontalResolution, (int)Math.Ceiling((double)resultProperties.HorizontalResolution));
 
                     Assert.NotNull(originalProperties.TiffProperties);
                     Assert.AreEqual(originalProperties.TiffProperties.Frames.Count, resultProperties.TiffProperties.Frames.Count);

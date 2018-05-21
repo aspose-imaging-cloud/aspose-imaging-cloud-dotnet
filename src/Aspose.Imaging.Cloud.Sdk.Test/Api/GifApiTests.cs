@@ -92,12 +92,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.GifProperties);
+                    Assert.IsNotNull(resultProperties.GifProperties);
 
-                    //Assert.AreEqual(outProperties.GifProperties.HasTrailer, hasTrailer);
-                    Assert.AreEqual(resultProperties.GifProperties.PixelAspectRatio, pixelAspectRatio);
+                    // TODO: enable when IMAGINGCLOUD-51 is done
+                    //Assert.AreEqual(hasTrailer, resultProperties.GifProperties.HasTrailer);
+                    Assert.AreEqual(pixelAspectRatio, resultProperties.GifProperties.PixelAspectRatio);
 
-                    Assert.NotNull(originalProperties.GifProperties);
+                    Assert.IsNotNull(originalProperties.GifProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);
                     Assert.AreEqual(originalProperties.Height, resultProperties.Height);
                 },
@@ -141,12 +142,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.GifProperties);
+                    Assert.IsNotNull(resultProperties.GifProperties);
 
-                    //Assert.AreEqual(outProperties.GifProperties.HasTrailer, hasTrailer);
-                    Assert.AreEqual(resultProperties.GifProperties.PixelAspectRatio, pixelAspectRatio);
+                    // TODO: enable when IMAGINGCLOUD-51 is done
+                    //Assert.AreEqual(hasTrailer, resultProperties.GifProperties.HasTrailer);
+                    Assert.AreEqual(pixelAspectRatio, resultProperties.GifProperties.PixelAspectRatio);
 
-                    Assert.NotNull(originalProperties.GifProperties);
+                    Assert.IsNotNull(originalProperties.GifProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);
                     Assert.AreEqual(originalProperties.Height, resultProperties.Height);
                 },

@@ -38,25 +38,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class WmfApiTests : ApiTester
     {
         /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
-        /// <summary>
         /// Test GetImageWmf
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
@@ -91,8 +72,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
                     Assert.NotNull(resultProperties.PngProperties);
-                    Assert.AreEqual(resultProperties.Width, pageWidth + borderX * 2);
-                    Assert.AreEqual(resultProperties.Height, pageHeigth + borderY * 2);
+                    Assert.AreEqual(pageWidth + borderX * 2, resultProperties.Width);
+                    Assert.AreEqual(pageHeigth + borderY * 2, resultProperties.Height);
                 },
                 folder,
                 storage);
@@ -133,8 +114,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
                     Assert.NotNull(resultProperties.PngProperties);
-                    Assert.AreEqual(resultProperties.Width, pageWidth + borderX * 2);
-                    Assert.AreEqual(resultProperties.Height, pageHeigth + borderY * 2);
+                    Assert.AreEqual(pageWidth + borderX * 2, resultProperties.Width);
+                    Assert.AreEqual(pageHeigth + borderY * 2, resultProperties.Height);
                 },
                 folder,
                 storage);

@@ -38,25 +38,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class DicomApiTests : ApiTester
     {
         /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
-        /// <summary>
         /// Test GetImageDicom
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
@@ -84,14 +65,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.PngProperties);
+                    Assert.IsNotNull(resultProperties.PngProperties);
+                    Assert.AreEqual(originalProperties.Width, resultProperties.Width);
+                    Assert.AreEqual(originalProperties.Height, resultProperties.Height);
 
-                    Assert.AreEqual(resultProperties.Width, originalProperties.Width);
-                    Assert.AreEqual(resultProperties.Height, originalProperties.Height);
-                    Assert.NotNull(originalProperties.DicomProperties);
+                    Assert.IsNotNull(originalProperties.DicomProperties);
                     Assert.AreEqual(10, originalProperties.DicomProperties.NumberOfFrames);
                     Assert.AreEqual(originalProperties.Width, originalProperties.DicomProperties.Width);
-                    Assert.AreEqual(originalProperties.Height, originalProperties.DicomProperties.Height);
+                    Assert.AreEqual(originalProperties.Height,
+                        originalProperties.DicomProperties.Height);
                 },
                 folder,
                 storage);
@@ -125,14 +107,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.PngProperties);
+                    Assert.IsNotNull(resultProperties.PngProperties);
+                    Assert.AreEqual(originalProperties.Width, resultProperties.Width);
+                    Assert.AreEqual(originalProperties.Height, resultProperties.Height);
 
-                    Assert.AreEqual(resultProperties.Width, originalProperties.Width);
-                    Assert.AreEqual(resultProperties.Height, originalProperties.Height);
-                    Assert.NotNull(originalProperties.DicomProperties);
+                    Assert.IsNotNull(originalProperties.DicomProperties);
                     Assert.AreEqual(10, originalProperties.DicomProperties.NumberOfFrames);
                     Assert.AreEqual(originalProperties.Width, originalProperties.DicomProperties.Width);
-                    Assert.AreEqual(originalProperties.Height, originalProperties.DicomProperties.Height);
+                    Assert.AreEqual(originalProperties.Height,
+                        originalProperties.DicomProperties.Height);
                 },
                 folder,
                 storage);
