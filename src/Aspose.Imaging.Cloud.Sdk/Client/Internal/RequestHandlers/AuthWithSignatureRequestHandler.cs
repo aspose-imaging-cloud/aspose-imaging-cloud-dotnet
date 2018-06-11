@@ -107,6 +107,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
         /// <returns>Signed URL.</returns>
         private string Sign(string url)
         {
+            url = url.Replace("//", "/").Replace(":/", "://");
             UriBuilder uriBuilder = new UriBuilder(url);
 
             // Remove final slash here as it can be added automatically.

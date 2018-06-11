@@ -35,7 +35,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// <summary>
         /// The default base URL
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.aspose.cloud";
+        public const string DefaultBaseUrl = "https://api.aspose.cloud/";
 
         /// <summary>
         /// The default API version
@@ -78,6 +78,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
             set
             {
                 this.apiBaseUrl = value;
+                if (!this.apiBaseUrl.EndsWith("/"))
+                {
+                    this.apiBaseUrl += "/";
+                }
             }
         }
 
@@ -136,9 +140,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// <returns></returns>
         internal string GetApiRootUrl()
         {
-            var result = this.ApiBaseUrl + "/" + this.ApiVersion;
-
-            return result.EndsWith("/") ? result.Substring(0, result.Length - 1) : result;
+            return this.ApiBaseUrl + this.ApiVersion;
         }
 
         #endregion
