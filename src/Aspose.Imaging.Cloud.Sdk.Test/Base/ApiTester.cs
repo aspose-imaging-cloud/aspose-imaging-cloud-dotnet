@@ -210,7 +210,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="authType">Type of the authentication.</param>
         /// <param name="debug">if set to <c>true</c> [debug].</param>
         /// <exception cref="System.ArgumentException">Please, specify valid access data (AppKey, AppSid, Base URL)</exception>
-        protected void CreateApiInstances(string appKey = AppKey, string appSid = AppSid, string baseUrl = BaseUrl, string apiVersion = "v1",
+        protected void CreateApiInstances(string appKey = AppKey, string appSid = AppSid, string baseUrl = BaseUrl, string apiVersion = "v2",
             Client.AuthType authType = Client.AuthType.OAuth2, bool debug = false)
         {
             if (appKey == AppKey || appSid == AppSid || string.IsNullOrEmpty(baseUrl))

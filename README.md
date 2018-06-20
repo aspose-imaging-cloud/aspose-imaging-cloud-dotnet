@@ -11,7 +11,7 @@ The solution is updated using [code generator](https://github.com/aspose-imaging
 ```csharp
 // optional parameters are base URL, API version, authentication type and debug mode
 // default base URL is https://api.aspose.cloud/
-// default API version is v1
+// default API version is v2
 // default authentication type is OAuth2.0
 // default debug mode is false
 var imagingApi = new ImagingApi("yourAppKey", "yourAppSID");

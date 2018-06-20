@@ -40,7 +40,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// <summary>
         /// The default API version
         /// </summary>
-        public const string DefaultApiVersion = "v1";
+        public const string DefaultApiVersion = "v2";
 
         #endregion
 
