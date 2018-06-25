@@ -49,11 +49,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         public string SearchStatus { get; set; }
 
         /// <summary>
-        /// Gets or sets the progress (in %).
-        /// </summary>  
-        public double? Progress { get; set; }
-
-        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -63,7 +58,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
           sb.Append("class SearchContextStatus {\n");
           sb.Append("  Id: ").Append(this.Id).Append("\n");
           sb.Append("  SearchStatus: ").Append(this.SearchStatus).Append("\n");
-          sb.Append("  Progress: ").Append(this.Progress).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }
