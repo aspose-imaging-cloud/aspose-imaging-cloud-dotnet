@@ -42,25 +42,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSearchContextImageRequest"/> class.
         /// </summary>
-        /// <param name="imageData">Input image</param>
         /// <param name="searchContextId">Search context identifier.</param>
         /// <param name="imageId">Image identifier.</param>
         /// <param name="folder">Folder.</param>
         /// <param name="storage">Storage</param>
-        public GetSearchContextImageRequest(System.IO.Stream imageData, string searchContextId, string imageId, string folder = null, string storage = null)             
+        public GetSearchContextImageRequest(string searchContextId, string imageId, string folder = null, string storage = null)             
         {
-            this.imageData = imageData;
             this.searchContextId = searchContextId;
             this.imageId = imageId;
             this.folder = folder;
             this.storage = storage;
         }
 		
-        /// <summary>
-        /// Input image
-        /// </summary>  
-        public System.IO.Stream imageData { get; set; }
-
         /// <summary>
         /// Search context identifier.
         /// </summary>  

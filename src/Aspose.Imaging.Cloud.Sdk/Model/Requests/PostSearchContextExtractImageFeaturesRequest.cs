@@ -43,12 +43,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="PostSearchContextExtractImageFeaturesRequest"/> class.
         /// </summary>
         /// <param name="searchContextId">The search context identifier.</param>
+        /// <param name="imageData">Input image</param>
         /// <param name="imageId">The image identifier.</param>
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
-        public PostSearchContextExtractImageFeaturesRequest(string searchContextId, string imageId = null, string folder = null, string storage = null)             
+        public PostSearchContextExtractImageFeaturesRequest(string searchContextId, System.IO.Stream imageData = null, string imageId = null, string folder = null, string storage = null)             
         {
             this.searchContextId = searchContextId;
+            this.imageData = imageData;
             this.imageId = imageId;
             this.folder = folder;
             this.storage = storage;
@@ -58,6 +60,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// The search context identifier.
         /// </summary>  
         public string searchContextId { get; set; }
+
+        /// <summary>
+        /// Input image
+        /// </summary>  
+        public System.IO.Stream imageData { get; set; }
 
         /// <summary>
         /// The image identifier.

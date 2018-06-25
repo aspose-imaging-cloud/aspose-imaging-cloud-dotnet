@@ -2222,12 +2222,6 @@ namespace Aspose.Imaging.Cloud.Sdk
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetSearchContextImage(GetSearchContextImageRequest request)
         {
-            // verify the required parameter 'imageData' is set
-            if (request.imageData == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageData' when calling GetSearchContextImage");
-            }
-
             // verify the required parameter 'searchContextId' is set
             if (request.searchContextId == null) 
             {
@@ -2252,10 +2246,6 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            if (request.imageData != null) 
-            {
-                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
-            }
             try 
             {                               
 				var response = this.apiInvoker.InvokeApi(
@@ -4242,6 +4232,10 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
             try 
             {                               
 				var response = this.apiInvoker.InvokeApi(
@@ -4286,6 +4280,12 @@ namespace Aspose.Imaging.Cloud.Sdk
         /// <returns><see cref="SearchResultsSet"/></returns>            
         public SearchResultsSet PostSearchContextFindByTags(PostSearchContextFindByTagsRequest request)
         {
+            // verify the required parameter 'tags' is set
+            if (request.tags == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'tags' when calling PostSearchContextFindByTags");
+            }
+
             // verify the required parameter 'searchContextId' is set
             if (request.searchContextId == null) 
             {
@@ -4314,13 +4314,13 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "maxCount", request.maxCount);
-            
+            var postBody = SerializationHelper.Serialize(request.tags); // http body (model) parameter
             try 
             {                               
 				var response = this.apiInvoker.InvokeApi(
                         resourcePath, 
                         "POST", 
-                        null, 
+                        postBody, 
                         null, 
                         formParams);
 				

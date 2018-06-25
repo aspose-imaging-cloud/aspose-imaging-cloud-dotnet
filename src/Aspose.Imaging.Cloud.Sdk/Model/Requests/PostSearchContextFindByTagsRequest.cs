@@ -42,16 +42,23 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="PostSearchContextFindByTagsRequest"/> class.
         /// </summary>
+        /// <param name="tags">Tags for searching</param>
         /// <param name="searchContextId">The search context identifier.</param>
         /// <param name="similarityThreshold">The similarity threshold.</param>
         /// <param name="maxCount">The maximum count.</param>
-        public PostSearchContextFindByTagsRequest(string searchContextId, double? similarityThreshold, int? maxCount)             
+        public PostSearchContextFindByTagsRequest( tags, string searchContextId, double? similarityThreshold, int? maxCount)             
         {
+            this.tags = tags;
             this.searchContextId = searchContextId;
             this.similarityThreshold = similarityThreshold;
             this.maxCount = maxCount;
         }
 		
+        /// <summary>
+        /// Tags for searching
+        /// </summary>  
+        public  tags { get; set; }
+
         /// <summary>
         /// The search context identifier.
         /// </summary>  
