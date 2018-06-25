@@ -4314,13 +4314,17 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "maxCount", request.maxCount);
-            var postBody = SerializationHelper.Serialize(request.tags); // http body (model) parameter
+            
+            if (request.tags != null) 
+            {
+                formParams.Add("tags", request.tags); // form parameter
+            }
             try 
             {                               
 				var response = this.apiInvoker.InvokeApi(
                         resourcePath, 
                         "POST", 
-                        postBody, 
+                        null, 
                         null, 
                         formParams);
 				

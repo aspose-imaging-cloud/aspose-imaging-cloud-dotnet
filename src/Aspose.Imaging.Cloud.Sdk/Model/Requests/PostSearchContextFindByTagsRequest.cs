@@ -46,7 +46,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="searchContextId">The search context identifier.</param>
         /// <param name="similarityThreshold">The similarity threshold.</param>
         /// <param name="maxCount">The maximum count.</param>
-        public PostSearchContextFindByTagsRequest( tags, string searchContextId, double? similarityThreshold, int? maxCount)             
+        public PostSearchContextFindByTagsRequest(string tags, string searchContextId, double? similarityThreshold, int? maxCount)             
         {
             this.tags = tags;
             this.searchContextId = searchContextId;
@@ -57,7 +57,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Tags array for searching
         /// </summary>  
-        public  tags { get; set; }
+        public string tags { get; set; }
 
         /// <summary>
         /// The search context identifier.
