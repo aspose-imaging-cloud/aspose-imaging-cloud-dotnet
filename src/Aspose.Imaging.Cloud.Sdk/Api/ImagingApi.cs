@@ -175,201 +175,6 @@ namespace Aspose.Imaging.Cloud.Sdk
 		#region Methods
 		
         /// <summary>
-        /// Deletes the search context. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="DeleteSearchContextRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream DeleteSearchContext(DeleteSearchContextRequest request)
-        {
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling DeleteSearchContext");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
-            
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "DELETE", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
-        /// Delete image and images features from search context 
-        /// </summary>
-        /// <param name="request">Request. <see cref="DeleteSearchContextImageRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream DeleteSearchContextImage(DeleteSearchContextImageRequest request)
-        {
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling DeleteSearchContextImage");
-            }
-
-            // verify the required parameter 'imageId' is set
-            if (request.imageId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageId' when calling DeleteSearchContextImage");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "DELETE", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
-        /// Deletes image features from search context. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="DeleteSearchContextImageFeaturesRequest" /></param> 
-        /// <returns><see cref="SaaSposeResponse"/></returns>            
-        public SaaSposeResponse DeleteSearchContextImageFeatures(DeleteSearchContextImageFeaturesRequest request)
-        {
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling DeleteSearchContextImageFeatures");
-            }
-
-            // verify the required parameter 'imageId' is set
-            if (request.imageId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageId' when calling DeleteSearchContextImageFeatures");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "DELETE", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(SaaSposeResponse) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<SaaSposeResponse>(StreamHelper.ToString(response));
-				}
-				
-				return (SaaSposeResponse)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
         /// Update parameters of existing BMP image. 
         /// </summary>
         /// <param name="request">Request. <see cref="GetImageBmpRequest" /></param> 
@@ -1998,431 +1803,6 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Extract features from image without adding to search context. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextExtractImageFeaturesRequest" /></param> 
-        /// <returns><see cref="ImageFeatures"/></returns>            
-        public ImageFeatures GetSearchContextExtractImageFeatures(GetSearchContextExtractImageFeaturesRequest request)
-        {
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling GetSearchContextExtractImageFeatures");
-            }
-
-            // verify the required parameter 'imageId' is set
-            if (request.imageId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageId' when calling GetSearchContextExtractImageFeatures");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image2features";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            if (request.imageData != null) 
-            {
-                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
-            }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(ImageFeatures) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<ImageFeatures>(StreamHelper.ToString(response));
-				}
-				
-				return (ImageFeatures)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
-        /// Find images duplicates. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextFindDuplicatesRequest" /></param> 
-        /// <returns><see cref="ImageDuplicatesSet"/></returns>            
-        public ImageDuplicatesSet GetSearchContextFindDuplicates(GetSearchContextFindDuplicatesRequest request)
-        {
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling GetSearchContextFindDuplicates");
-            }
-
-            // verify the required parameter 'similarityThreshold' is set
-            if (request.similarityThreshold == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'similarityThreshold' when calling GetSearchContextFindDuplicates");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findDuplicates";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
-            
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(ImageDuplicatesSet) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<ImageDuplicatesSet>(StreamHelper.ToString(response));
-				}
-				
-				return (ImageDuplicatesSet)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
-        /// Find similar images. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextFindSimilarRequest" /></param> 
-        /// <returns><see cref="SearchResultsSet"/></returns>            
-        public SearchResultsSet GetSearchContextFindSimilar(GetSearchContextFindSimilarRequest request)
-        {
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling GetSearchContextFindSimilar");
-            }
-
-            // verify the required parameter 'similarityThreshold' is set
-            if (request.similarityThreshold == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'similarityThreshold' when calling GetSearchContextFindSimilar");
-            }
-
-            // verify the required parameter 'maxCount' is set
-            if (request.maxCount == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'maxCount' when calling GetSearchContextFindSimilar");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findSimilar";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "maxCount", request.maxCount);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            if (request.imageData != null) 
-            {
-                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
-            }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(SearchResultsSet) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
-				}
-				
-				return (SearchResultsSet)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
-        /// Get image from search context 
-        /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextImageRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream GetSearchContextImage(GetSearchContextImageRequest request)
-        {
-<<<<<<< HEAD
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
-<<<<<<< HEAD
-=======
-                throw new ApiException(400, "Missing required parameter 'imageData' when calling GetSearchContextImage");
-            }
-
-=======
->>>>>>> SDK regenerated by CI server
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
->>>>>>> SDK regenerated by CI server
-                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling GetSearchContextImage");
-            }
-
-            // verify the required parameter 'imageId' is set
-            if (request.imageId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageId' when calling GetSearchContextImage");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
-        /// Gets image features from search context. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextImageFeaturesRequest" /></param> 
-        /// <returns><see cref="ImageFeatures"/></returns>            
-        public ImageFeatures GetSearchContextImageFeatures(GetSearchContextImageFeaturesRequest request)
-        {
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling GetSearchContextImageFeatures");
-            }
-
-            // verify the required parameter 'imageId' is set
-            if (request.imageId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageId' when calling GetSearchContextImageFeatures");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(ImageFeatures) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<ImageFeatures>(StreamHelper.ToString(response));
-				}
-				
-				return (ImageFeatures)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
-        /// Gets the search context status. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextStatusRequest" /></param> 
-        /// <returns><see cref="SearchContextStatus"/></returns>            
-        public SearchContextStatus GetSearchContextStatus(GetSearchContextStatusRequest request)
-        {
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling GetSearchContextStatus");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/status";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
-            
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(SearchContextStatus) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<SearchContextStatus>(StreamHelper.ToString(response));
-				}
-				
-				return (SearchContextStatus)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
         /// Update parameters of existing TIFF image accordingly to fax parameters. 
         /// </summary>
         /// <param name="request">Request. <see cref="GetTiffToFaxRequest" /></param> 
@@ -2472,62 +1852,6 @@ namespace Aspose.Imaging.Cloud.Sdk
 				}
 				
 				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
-        /// Create new search context. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="PostCreateSearchContextRequest" /></param> 
-        /// <returns><see cref="SearchContextStatus"/></returns>            
-        public SearchContextStatus PostCreateSearchContext(PostCreateSearchContextRequest request)
-        {
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/create";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "detector", request.detector);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "matchingAlgorithm", request.matchingAlgorithm);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(SearchContextStatus) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<SearchContextStatus>(StreamHelper.ToString(response));
-				}
-				
-				return (SearchContextStatus)finalResponse;
             } 
             catch (ApiException ex) 
             {
@@ -2732,8 +2056,31 @@ namespace Aspose.Imaging.Cloud.Sdk
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageDicom(PostImageDicomRequest request)
         {
+<<<<<<< HEAD
+<<<<<<< HEAD
+            // verify the required parameter 'searchContextId' is set
+            if (request.searchContextId == null) 
+            {
+<<<<<<< HEAD
+=======
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling GetSearchContextImage");
+            }
+
+=======
+>>>>>>> SDK regenerated by CI server
+            // verify the required parameter 'searchContextId' is set
+            if (request.searchContextId == null) 
+            {
+>>>>>>> SDK regenerated by CI server
+                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling GetSearchContextImage");
+            }
+
+            // verify the required parameter 'imageId' is set
+            if (request.imageId == null) 
+=======
             // verify the required parameter 'imageData' is set
             if (request.imageData == null) 
+>>>>>>> SDK regenerated by CI server
             {
                 throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageDicom");
             }
@@ -3100,6 +2447,356 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
+        /// Update parameters of JPEG image. Image is passed in a request stream. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostImageJpgRequest" /></param> 
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream PostImageJpg(PostImageJpgRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageJpg");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/jpg";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "quality", request.quality);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "compressionType", request.compressionType);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "POST", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
+				}
+				
+				return (System.IO.Stream)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
+        /// Rasterize ODG image to PNG using given parameters. Image is passed in a request stream. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostImageOdgRequest" /></param> 
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream PostImageOdg(PostImageOdgRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageOdg");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/odg";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "POST", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
+				}
+				
+				return (System.IO.Stream)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
+        /// Update parameters of PNG image. Image is passed in a request stream. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostImagePngRequest" /></param> 
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream PostImagePng(PostImagePngRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImagePng");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/png";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "POST", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
+				}
+				
+				return (System.IO.Stream)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
+        /// Update parameters of PSD image. Image is passed in a request stream. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostImagePsdRequest" /></param> 
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream PostImagePsd(PostImagePsdRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImagePsd");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/psd";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "channelsCount", request.channelsCount);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "compressionMethod", request.compressionMethod);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "POST", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
+				}
+				
+				return (System.IO.Stream)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
+        /// Resize an image. Image is passed in a request stream. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostImageResizeRequest" /></param> 
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream PostImageResize(PostImageResizeRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageResize");
+            }
+
+            // verify the required parameter 'format' is set
+            if (request.format == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'format' when calling PostImageResize");
+            }
+
+            // verify the required parameter 'newWidth' is set
+            if (request.newWidth == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'newWidth' when calling PostImageResize");
+            }
+
+            // verify the required parameter 'newHeight' is set
+            if (request.newHeight == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'newHeight' when calling PostImageResize");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/resize";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "POST", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
+				}
+				
+				return (System.IO.Stream)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
+<<<<<<< HEAD
         /// Update parameters of JPEG image. Image is passed in a request stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageJpgRequest" /></param> 
@@ -4088,6 +3785,8 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
+=======
+>>>>>>> SDK regenerated by CI server
         /// Rotate and/or flip an image. Image is passed in a request stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageRotateFlipRequest" /></param> 
@@ -4245,6 +3944,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         {
             // verify the required parameter 'imageData' is set
             if (request.imageData == null) 
+<<<<<<< HEAD
             {
                 throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageTiff");
             }
@@ -4264,17 +3964,42 @@ namespace Aspose.Imaging.Cloud.Sdk
             // verify the required parameter 'bitDepth' is set
             if (request.bitDepth == null) 
             {
+=======
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageTiff");
+            }
+
+            // verify the required parameter 'compression' is set
+            if (request.compression == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'compression' when calling PostImageTiff");
+            }
+
+            // verify the required parameter 'resolutionUnit' is set
+            if (request.resolutionUnit == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'resolutionUnit' when calling PostImageTiff");
+            }
+
+            // verify the required parameter 'bitDepth' is set
+            if (request.bitDepth == null) 
+            {
+>>>>>>> SDK regenerated by CI server
                 throw new ApiException(400, "Missing required parameter 'bitDepth' when calling PostImageTiff");
             }
 
             // create path and map variables
             var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/tiff";
+<<<<<<< HEAD
+>>>>>>> SDK regenerated by CI server
+=======
 >>>>>>> SDK regenerated by CI server
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
 			var formParams = new Dictionary<string, object>();
+<<<<<<< HEAD
 <<<<<<< HEAD
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageWidth", request.pageWidth);
@@ -4283,12 +4008,17 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "borderY", request.borderY);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
 =======
+=======
+>>>>>>> SDK regenerated by CI server
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "compression", request.compression);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "resolutionUnit", request.resolutionUnit);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bitDepth", request.bitDepth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "horizontalResolution", request.horizontalResolution);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "verticalResolution", request.verticalResolution);
+<<<<<<< HEAD
+>>>>>>> SDK regenerated by CI server
+=======
 >>>>>>> SDK regenerated by CI server
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
@@ -4336,21 +4066,60 @@ namespace Aspose.Imaging.Cloud.Sdk
 		
         /// <summary>
 <<<<<<< HEAD
+<<<<<<< HEAD
         /// Add image and images features to search context. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostSearchContextAddImageRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostSearchContextAddImage(PostSearchContextAddImageRequest request)
+=======
+        /// Perform scaling, cropping and flipping of an image in a single request. Image is passed in a request stream.              
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostImageUpdateRequest" /></param> 
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream PostImageUpdate(PostImageUpdateRequest request)
+>>>>>>> SDK regenerated by CI server
         {
-            // verify the required parameter 'tags' is set
-            if (request.tags == null) 
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
             {
-                throw new ApiException(400, "Missing required parameter 'tags' when calling PostSearchContextFindByTags");
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageUpdate");
             }
 
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
+            // verify the required parameter 'format' is set
+            if (request.format == null) 
             {
+                throw new ApiException(400, "Missing required parameter 'format' when calling PostImageUpdate");
+            }
+
+            // verify the required parameter 'newWidth' is set
+            if (request.newWidth == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'newWidth' when calling PostImageUpdate");
+            }
+
+            // verify the required parameter 'newHeight' is set
+            if (request.newHeight == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'newHeight' when calling PostImageUpdate");
+            }
+
+            // verify the required parameter 'x' is set
+            if (request.x == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'x' when calling PostImageUpdate");
+            }
+
+            // verify the required parameter 'y' is set
+            if (request.y == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'y' when calling PostImageUpdate");
+            }
+
+            // verify the required parameter 'rectWidth' is set
+            if (request.rectWidth == null) 
+            {
+<<<<<<< HEAD
                 throw new ApiException(400, "Missing required parameter 'searchContextId' when calling PostSearchContextAddImage");
             }
 
@@ -4420,11 +4189,28 @@ namespace Aspose.Imaging.Cloud.Sdk
             // verify the required parameter 'rotateFlipMethod' is set
             if (request.rotateFlipMethod == null) 
             {
+=======
+                throw new ApiException(400, "Missing required parameter 'rectWidth' when calling PostImageUpdate");
+            }
+
+            // verify the required parameter 'rectHeight' is set
+            if (request.rectHeight == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'rectHeight' when calling PostImageUpdate");
+            }
+
+            // verify the required parameter 'rotateFlipMethod' is set
+            if (request.rotateFlipMethod == null) 
+            {
+>>>>>>> SDK regenerated by CI server
                 throw new ApiException(400, "Missing required parameter 'rotateFlipMethod' when calling PostImageUpdate");
             }
 
             // create path and map variables
             var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/updateImage";
+<<<<<<< HEAD
+>>>>>>> SDK regenerated by CI server
+=======
 >>>>>>> SDK regenerated by CI server
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
@@ -4432,11 +4218,14 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace("/?", "?");
 			var formParams = new Dictionary<string, object>();
 <<<<<<< HEAD
+<<<<<<< HEAD
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
 <<<<<<< HEAD
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
 =======
+=======
+>>>>>>> SDK regenerated by CI server
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
@@ -4446,6 +4235,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+<<<<<<< HEAD
 >>>>>>> SDK regenerated by CI server
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -5070,10 +4860,13 @@ namespace Aspose.Imaging.Cloud.Sdk
             var postBody = SerializationHelper.Serialize(request.tags); // http body (model) parameter
 >>>>>>> SDK regenerated by CI server
 =======
+=======
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+>>>>>>> SDK regenerated by CI server
             
-            if (request.tags != null) 
+            if (request.imageData != null) 
             {
-                formParams.Add("tags", request.tags); // form parameter
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
 >>>>>>> SDK regenerated by CI server
             try 
@@ -5091,16 +4884,209 @@ namespace Aspose.Imaging.Cloud.Sdk
 				}
 				
 				object finalResponse;
-				if (typeof(SearchResultsSet) == typeof(System.IO.Stream))
+				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
 				{
 					finalResponse = response;
 				}
 				else
 				{
-					finalResponse = SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
+					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
 				}
 				
-				return (SearchResultsSet)finalResponse;
+				return (System.IO.Stream)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
+        /// Update parameters of WEBP image. Image is passed in a request stream. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostImageWebPRequest" /></param> 
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream PostImageWebP(PostImageWebPRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageWebP");
+            }
+
+            // verify the required parameter 'lossLess' is set
+            if (request.lossLess == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'lossLess' when calling PostImageWebP");
+            }
+
+            // verify the required parameter 'quality' is set
+            if (request.quality == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'quality' when calling PostImageWebP");
+            }
+
+            // verify the required parameter 'animLoopCount' is set
+            if (request.animLoopCount == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'animLoopCount' when calling PostImageWebP");
+            }
+
+            // verify the required parameter 'animBackgroundColor' is set
+            if (request.animBackgroundColor == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'animBackgroundColor' when calling PostImageWebP");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/webp";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "lossLess", request.lossLess);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "quality", request.quality);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "animLoopCount", request.animLoopCount);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "animBackgroundColor", request.animBackgroundColor);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "POST", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
+				}
+				
+				return (System.IO.Stream)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
+        /// Rasterize WMF image to PNG using given parameters. Image is passed in a request stream. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostImageWmfRequest" /></param> 
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream PostImageWmf(PostImageWmfRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageWmf");
+            }
+
+            // verify the required parameter 'bkColor' is set
+            if (request.bkColor == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'bkColor' when calling PostImageWmf");
+            }
+
+            // verify the required parameter 'pageWidth' is set
+            if (request.pageWidth == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'pageWidth' when calling PostImageWmf");
+            }
+
+            // verify the required parameter 'pageHeight' is set
+            if (request.pageHeight == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'pageHeight' when calling PostImageWmf");
+            }
+
+            // verify the required parameter 'borderX' is set
+            if (request.borderX == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'borderX' when calling PostImageWmf");
+            }
+
+            // verify the required parameter 'borderY' is set
+            if (request.borderY == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'borderY' when calling PostImageWmf");
+            }
+
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/wmf";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageWidth", request.pageWidth);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageHeight", request.pageHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "borderX", request.borderX);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "borderY", request.borderY);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "POST", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
+				}
+				
+				return (System.IO.Stream)finalResponse;
             } 
             catch (ApiException ex) 
             {
@@ -5169,150 +5155,6 @@ namespace Aspose.Imaging.Cloud.Sdk
 				}
 				
 				return (SaaSposeResponse)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
-        /// Update image and images features in search context. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="PutSearchContextImageRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream PutSearchContextImage(PutSearchContextImageRequest request)
-        {
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling PutSearchContextImage");
-            }
-
-            // verify the required parameter 'imageId' is set
-            if (request.imageId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageId' when calling PutSearchContextImage");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            if (request.imageData != null) 
-            {
-                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
-            }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "PUT", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
-        }
-		
-        /// <summary>
-        /// Update images features in search context. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="PutSearchContextImageFeaturesRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream PutSearchContextImageFeatures(PutSearchContextImageFeaturesRequest request)
-        {
-            // verify the required parameter 'searchContextId' is set
-            if (request.searchContextId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling PutSearchContextImageFeatures");
-            }
-
-            // verify the required parameter 'imageId' is set
-            if (request.imageId == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageId' when calling PutSearchContextImageFeatures");
-            }
-
-            // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            if (request.imageData != null) 
-            {
-                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
-            }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "PUT", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
             } 
             catch (ApiException ex) 
             {
