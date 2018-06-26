@@ -49,6 +49,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AI\CompareImagesTests.cs" />
+    <Compile Include="Api\AI\FindDuplicatesTests.cs" />
+    <Compile Include="Api\AI\FindImagesTests.cs" />
+    <Compile Include="Api\AI\SearchContextTests.cs" />
+    <Compile Include="Api\AI\TestImagingAIBase.cs" />
     <Compile Include="Base\ApiTester.cs" />
     <Compile Include="Api\BmpApiTests.cs" />
     <Compile Include="Api\CropApiTests.cs" />
@@ -81,6 +86,9 @@
       <Project>{D0BEC495-7D0F-4FD4-8179-958FFF0E99F6}</Project>
       <Name>Aspose.Imaging.Cloud.Sdk</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <PropertyGroup>
     <PreBuildEvent>$(SolutionDir).nuget\nuget.exe restore $(SolutionDir)</PreBuildEvent>
