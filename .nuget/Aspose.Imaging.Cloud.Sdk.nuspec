@@ -4,8 +4,8 @@
         <id>Aspose.Imaging-Cloud</id>
 		<version>18.6</version>
         <title>Aspose.Imaging for Cloud .NET SDK</title>
-        <authors>Maksym Shnurenok</authors>
-        <owners>asposecloud</owners>
+        <authors>Aspose</authors>
+        <owners>Aspose</owners>
 		<licenseUrl>https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-dotnet/blob/master/LICENSE</licenseUrl>
         <projectUrl>https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-dotnet</projectUrl>
 		<iconUrl>https://www.aspose.cloud/templates/aspose/App_Themes/V3/images/imaging/272x272/aspose_imaging-for-net-min.png</iconUrl> 
