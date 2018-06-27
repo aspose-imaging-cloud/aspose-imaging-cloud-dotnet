@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="DngApiTests.cs">
-//   Copyright (c) 2018 Aspose.Imaging for Cloud
+//   Copyright (c) 2018 Aspose Pty Ltd.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,25 +38,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class DngApiTests : ApiTester
     {
         /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
-        /// <summary>
         /// Test GetImageDng
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
@@ -84,11 +65,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.PngProperties);
+                    Assert.IsNotNull(resultProperties.PngProperties);
+                    Assert.AreEqual(originalProperties.Width, resultProperties.Width);
+                    Assert.AreEqual(originalProperties.Height, resultProperties.Height);
 
-                    Assert.AreEqual(resultProperties.Width, originalProperties.Width);
-                    Assert.AreEqual(resultProperties.Height, originalProperties.Height);
-                    Assert.NotNull(originalProperties.DngProperties);
+                    Assert.IsNotNull(originalProperties.DngProperties);
                 },
                 folder,
                 storage);
@@ -122,11 +103,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.PngProperties);
+                    Assert.IsNotNull(resultProperties.PngProperties);
+                    Assert.AreEqual(originalProperties.Width, resultProperties.Width);
+                    Assert.AreEqual(originalProperties.Height, resultProperties.Height);
 
-                    Assert.AreEqual(resultProperties.Width, originalProperties.Width);
-                    Assert.AreEqual(resultProperties.Height, originalProperties.Height);
-                    Assert.NotNull(originalProperties.DngProperties);
+                    Assert.IsNotNull(originalProperties.DngProperties);
                 },
                 folder,
                 storage);

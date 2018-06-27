@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="AuthWithSignatureRequestHandler.cs">
-//   Copyright (c) 2018 Aspose.Imaging for Cloud
+//   Copyright (c) 2018 Aspose Pty Ltd.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -107,6 +107,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
         /// <returns>Signed URL.</returns>
         private string Sign(string url)
         {
+            url = url.Replace("//", "/").Replace(":/", "://");
             UriBuilder uriBuilder = new UriBuilder(url);
 
             // Remove final slash here as it can be added automatically.

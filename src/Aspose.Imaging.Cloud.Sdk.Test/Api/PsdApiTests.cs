@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="PsdApiTests.cs">
-//   Copyright (c) 2018 Aspose.Imaging for Cloud
+//   Copyright (c) 2018 Aspose Pty Ltd.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,25 +38,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class PsdApiTests : ApiTester
     {
         /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
-        /// <summary>
         /// Test GetImagePsd
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
@@ -88,8 +69,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
                     Assert.NotNull(resultProperties.PsdProperties);
-                    Assert.AreEqual(resultProperties.PsdProperties.Compression.ToLower(), compressionMethod);
-                    Assert.AreEqual(resultProperties.PsdProperties.ChannelsCount, channelsCount);
+                    Assert.AreEqual(compressionMethod, resultProperties.PsdProperties.Compression.ToLower());
+                    Assert.AreEqual(channelsCount, resultProperties.PsdProperties.ChannelsCount);
 
                     Assert.NotNull(originalProperties.PsdProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);
@@ -131,8 +112,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
                     Assert.NotNull(resultProperties.PsdProperties);
-                    Assert.AreEqual(resultProperties.PsdProperties.Compression.ToLower(), compressionMethod);
-                    Assert.AreEqual(resultProperties.PsdProperties.ChannelsCount, channelsCount);
+                    Assert.AreEqual(compressionMethod, resultProperties.PsdProperties.Compression.ToLower());
+                    Assert.AreEqual(channelsCount, resultProperties.PsdProperties.ChannelsCount);
 
                     Assert.NotNull(originalProperties.PsdProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);

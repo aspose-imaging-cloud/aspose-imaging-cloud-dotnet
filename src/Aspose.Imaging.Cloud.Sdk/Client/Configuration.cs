@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="Configuration.cs">
-//   Copyright (c) 2018 Aspose.Imaging for Cloud
+//   Copyright (c) 2018 Aspose Pty Ltd.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,12 +35,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// <summary>
         /// The default base URL
         /// </summary>
-        public const string DefaultBaseUrl = "https://api.aspose.cloud";
+        public const string DefaultBaseUrl = "https://api.aspose.cloud/";
 
         /// <summary>
         /// The default API version
         /// </summary>
-        public const string DefaultApiVersion = "v1.1";
+        public const string DefaultApiVersion = "v2";
 
         #endregion
 
@@ -78,6 +78,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
             set
             {
                 this.apiBaseUrl = value;
+                if (!this.apiBaseUrl.EndsWith("/"))
+                {
+                    this.apiBaseUrl += "/";
+                }
             }
         }
 
@@ -136,9 +140,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// <returns></returns>
         internal string GetApiRootUrl()
         {
-            var result = this.ApiBaseUrl + "/" + this.ApiVersion;
-
-            return result.EndsWith("/") ? result.Substring(0, result.Length - 1) : result;
+            return this.ApiBaseUrl + this.ApiVersion;
         }
 
         #endregion

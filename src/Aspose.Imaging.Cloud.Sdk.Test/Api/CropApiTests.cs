@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="CropApiTests.cs">
-//   Copyright (c) 2018 Aspose.Imaging for Cloud
+//   Copyright (c) 2018 Aspose Pty Ltd.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,7 +31,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-	using Aspose.Imaging.Cloud.Sdk.Test.Base;
+	using Aspose.Storage.Cloud.Sdk.Model;
 
     /// <summary>
     ///  Class for testing CropApi
@@ -40,66 +40,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class CropApiTests : ApiTester
     {
         /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
-        /// <summary>
         /// Test GetImageCrop
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".bmp", true)]
-        [TestCase(".dng", true)]
-        // TODO: enable after IMAGINGCLOUD-51 is resolved
-        // [TestCase(".gif", true)]
-        [TestCase(".png", true)]
         [TestCase(".jpg", true)]
-        [TestCase(".jpeg", true)]
-        [TestCase(".tif", true)]
-        [TestCase(".tiff", true)]
-        [TestCase(".webp", true)]
-        [TestCase(".psd", true)]
-        [TestCase(".j2k", true)]
-        [TestCase(".jpf", true)]
-        [TestCase(".jpx", true)]
-        [TestCase(".jpm", true)]
-        [TestCase(".mj2", true)]
-        [TestCase(".jpg2", true)]
-        [TestCase(".mjp2", true)]
-        [TestCase(".bmp", false)]
-        [TestCase(".dng", false)]
-        // TODO: enable after IMAGINGCLOUD-51 is resolved
-        // [TestCase(".gif", false)]
-        [TestCase(".png", false)]
         [TestCase(".jpg", false)]
-        [TestCase(".jpeg", false)]
-        [TestCase(".tif", false)]
-        [TestCase(".tiff", false)]
-        [TestCase(".webp", false)]
-        [TestCase(".psd", false)]
-        [TestCase(".j2k", false)]
-        [TestCase(".jpf", false)]
-        [TestCase(".jpx", false)]
-        [TestCase(".jpm", false)]
-        [TestCase(".mj2", false)]
-        [TestCase(".jpg2", false)]
-        [TestCase(".mjp2", false)]
         public void GetImageCropTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
@@ -120,7 +67,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 }
             }
             
-            foreach (FilesList.StorageFileInfo inputFile in InputTestFiles)
+            foreach (FileResponse inputFile in InputTestFiles)
             {
                 if (inputFile.Name.EndsWith(formatExtension))
                 {
@@ -149,8 +96,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                         {
-                            Assert.AreEqual(resultProperties.Width, width);
-                            Assert.AreEqual(resultProperties.Height, height);
+                            Assert.AreEqual(width, resultProperties.Width);
+                            Assert.AreEqual(height, resultProperties.Height);
                         },
                         folder,
                         storage);
@@ -164,42 +111,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".bmp", true)]
-        [TestCase(".dng", true)]
-        // TODO: enable after IMAGINGCLOUD-51 is resolved
-        // [TestCase(".gif", true)]
-        [TestCase(".png", true)]
         [TestCase(".jpg", true)]
-        [TestCase(".jpeg", true)]
-        [TestCase(".tif", true)]
-        [TestCase(".tiff", true)]
-        [TestCase(".webp", true)]
-        [TestCase(".psd", true)]
-        [TestCase(".j2k", true)]
-        [TestCase(".jpf", true)]
-        [TestCase(".jpx", true)]
-        [TestCase(".jpm", true)]
-        [TestCase(".mj2", true)]
-        [TestCase(".jpg2", true)]
-        [TestCase(".mjp2", true)]
-        [TestCase(".bmp", false)]
-        [TestCase(".dng", false)]
-        // TODO: enable after IMAGINGCLOUD-51 is resolved
-        // [TestCase(".gif", false)]
-        [TestCase(".png", false)]
         [TestCase(".jpg", false)]
-        [TestCase(".jpeg", false)]
-        [TestCase(".tif", false)]
-        [TestCase(".tiff", false)]
-        [TestCase(".webp", false)]
-        [TestCase(".psd", false)]
-        [TestCase(".j2k", false)]
-        [TestCase(".jpf", false)]
-        [TestCase(".jpx", false)]
-        [TestCase(".jpm", false)]
-        [TestCase(".mj2", false)]
-        [TestCase(".jpg2", false)]
-        [TestCase(".mjp2", false)]
         public void PostImageCropTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
@@ -220,7 +133,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 }
             }
 
-            foreach (FilesList.StorageFileInfo inputFile in InputTestFiles)
+            foreach (FileResponse inputFile in InputTestFiles)
             {
                 if (inputFile.Name.EndsWith(formatExtension))
                 {
@@ -249,8 +162,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                         {
-                            Assert.AreEqual(resultProperties.Width, width);
-                            Assert.AreEqual(resultProperties.Height, height);
+                            Assert.AreEqual(width, resultProperties.Width);
+                            Assert.AreEqual(height, resultProperties.Height);
                         },
                         folder,
                         storage);
