@@ -62,11 +62,14 @@ Tests are intended for internal usage only.
 # Licensing
 All Aspose.Imaging for Cloud SDKs, helper scripts and templates are licensed under [MIT License](LICENSE).
 
+## Contact Us
+Your feedback is very important to us. Please feel free to contact via
++ [**Free Support Forum**](https://forum.aspose.cloud/c/imaging)
++ [**Paid Support Helpdesk**](https://helpdesk.aspose.imaging/)
+
 # Resources
 + [**Web API reference**](https://apireference.aspose.cloud/imaging/)
 + [**Website**](https://www.aspose.cloud)
 + [**Product Home**](https://products.aspose.cloud/imaging/cloud)
 + [**Documentation**](https://docs.aspose.cloud/display/imagingcloud/Home)
-+ [**Free Support Forum**](https://forum.aspose.cloud/c/imaging)
-+ [**Paid Support Helpdesk**](https://helpdesk.aspose.imaging/)
 + [**Blog**](https://blog.aspose.cloud/category/aspose-products/aspose.imaging-cloud/)
