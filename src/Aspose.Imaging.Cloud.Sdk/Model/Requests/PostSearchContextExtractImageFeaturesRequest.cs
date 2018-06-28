@@ -45,13 +45,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="searchContextId">The search context identifier.</param>
         /// <param name="imageData">Input image</param>
         /// <param name="imageId">The image identifier.</param>
+        /// <param name="imagesFolder">Images folder.</param>
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
-        public PostSearchContextExtractImageFeaturesRequest(string searchContextId, System.IO.Stream imageData = null, string imageId = null, string folder = null, string storage = null)             
+        public PostSearchContextExtractImageFeaturesRequest(string searchContextId, System.IO.Stream imageData = null, string imageId = null, string imagesFolder = null, string folder = null, string storage = null)             
         {
             this.searchContextId = searchContextId;
             this.imageData = imageData;
             this.imageId = imageId;
+            this.imagesFolder = imagesFolder;
             this.folder = folder;
             this.storage = storage;
         }
@@ -70,6 +72,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// The image identifier.
         /// </summary>  
         public string imageId { get; set; }
+
+        /// <summary>
+        /// Images folder.
+        /// </summary>  
+        public string imagesFolder { get; set; }
 
         /// <summary>
         /// The folder.
