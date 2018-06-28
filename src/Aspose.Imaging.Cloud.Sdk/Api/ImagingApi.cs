@@ -195,6 +195,8 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace("/?", "?");
 			var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             try 
             {                               
@@ -2097,6 +2099,8 @@ namespace Aspose.Imaging.Cloud.Sdk
 			var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             try 
             {                               
@@ -2400,6 +2404,8 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace("/?", "?");
 			var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             try 
             {                               
@@ -6052,6 +6058,8 @@ namespace Aspose.Imaging.Cloud.Sdk
 			var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "tagName", request.tagName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.imageData != null) 
             {
@@ -6189,6 +6197,7 @@ namespace Aspose.Imaging.Cloud.Sdk
 			var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imagesFolder", request.imagesFolder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -6274,6 +6283,8 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "maxCount", request.maxCount);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
             if (request.tags != null) 
             {
