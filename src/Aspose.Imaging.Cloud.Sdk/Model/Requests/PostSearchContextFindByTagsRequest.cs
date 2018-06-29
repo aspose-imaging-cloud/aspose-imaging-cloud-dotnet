@@ -46,12 +46,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="searchContextId">The search context identifier.</param>
         /// <param name="similarityThreshold">The similarity threshold.</param>
         /// <param name="maxCount">The maximum count.</param>
-        public PostSearchContextFindByTagsRequest(string tags, string searchContextId, double? similarityThreshold, int? maxCount)             
+        /// <param name="folder">The folder.</param>
+        /// <param name="storage">The storage.</param>
+        public PostSearchContextFindByTagsRequest(string tags, string searchContextId, double? similarityThreshold, int? maxCount, string folder = null, string storage = null)             
         {
             this.tags = tags;
             this.searchContextId = searchContextId;
             this.similarityThreshold = similarityThreshold;
             this.maxCount = maxCount;
+            this.folder = folder;
+            this.storage = storage;
         }
 		
         /// <summary>
@@ -73,5 +77,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// The maximum count.
         /// </summary>  
         public int? maxCount { get; set; }
+
+        /// <summary>
+        /// The folder.
+        /// </summary>  
+        public string folder { get; set; }
+
+        /// <summary>
+        /// The storage.
+        /// </summary>  
+        public string storage { get; set; }
   }
 }

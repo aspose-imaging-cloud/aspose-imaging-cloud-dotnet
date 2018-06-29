@@ -45,11 +45,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="imageData">Input image</param>
         /// <param name="searchContextId">The search context identifier.</param>
         /// <param name="tagName">The tag.</param>
-        public PostSearchContextAddTagRequest(System.IO.Stream imageData, string searchContextId, string tagName)             
+        /// <param name="folder">The folder.</param>
+        /// <param name="storage">The storage.</param>
+        public PostSearchContextAddTagRequest(System.IO.Stream imageData, string searchContextId, string tagName, string folder = null, string storage = null)             
         {
             this.imageData = imageData;
             this.searchContextId = searchContextId;
             this.tagName = tagName;
+            this.folder = folder;
+            this.storage = storage;
         }
 		
         /// <summary>
@@ -66,5 +70,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// The tag.
         /// </summary>  
         public string tagName { get; set; }
+
+        /// <summary>
+        /// The folder.
+        /// </summary>  
+        public string folder { get; set; }
+
+        /// <summary>
+        /// The storage.
+        /// </summary>  
+        public string storage { get; set; }
   }
 }

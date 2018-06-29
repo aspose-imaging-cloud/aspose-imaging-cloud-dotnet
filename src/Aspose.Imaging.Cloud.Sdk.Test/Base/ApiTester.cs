@@ -177,7 +177,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         #region Configuration
 
         [TestFixtureSetUp]
-        public void InitFixture()
+        public virtual void InitFixture()
         {
             this.CreateApiInstances();
             if (this.StorageApi.GetIsExist(new GetIsExistRequest(CloudTestFolder, null, DefaultStorage)).FileExist.IsExist.Value)
@@ -188,7 +188,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         [TestFixtureTearDown]
-        public void FinilizeFixture()
+        public virtual void FinilizeFixture()
         {
             if (this.StorageApi.GetIsExist(new GetIsExistRequest(CloudTestFolder, null, DefaultStorage)).FileExist.IsExist.Value)
             {

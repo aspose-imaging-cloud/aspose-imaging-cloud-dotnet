@@ -43,14 +43,28 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="DeleteSearchContextRequest"/> class.
         /// </summary>
         /// <param name="searchContextId">The search context identifier.</param>
-        public DeleteSearchContextRequest(string searchContextId)             
+        /// <param name="folder">The folder.</param>
+        /// <param name="storage">The storage.</param>
+        public DeleteSearchContextRequest(string searchContextId, string folder = null, string storage = null)             
         {
             this.searchContextId = searchContextId;
+            this.folder = folder;
+            this.storage = storage;
         }
 		
         /// <summary>
         /// The search context identifier.
         /// </summary>  
         public string searchContextId { get; set; }
+
+        /// <summary>
+        /// The folder.
+        /// </summary>  
+        public string folder { get; set; }
+
+        /// <summary>
+        /// The storage.
+        /// </summary>  
+        public string storage { get; set; }
   }
 }
