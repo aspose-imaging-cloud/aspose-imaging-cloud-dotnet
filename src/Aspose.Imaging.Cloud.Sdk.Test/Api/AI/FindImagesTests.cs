@@ -61,7 +61,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var tagImageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, null, DefaultStorage));
             Assert.NotNull(tagImageStream);
             this.ImagingApi.PostSearchContextAddTag(
-                new PostSearchContextAddTagRequest(tagImageStream, this.SearchContextId, tag));
+                new PostSearchContextAddTagRequest(tagImageStream, this.SearchContextId, tag, storage: DefaultStorage));
 
             var tags = JsonConvert.SerializeObject(new[] { tag });
             var response = this.ImagingApi.PostSearchContextFindByTags(
