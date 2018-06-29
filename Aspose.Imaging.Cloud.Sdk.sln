@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspose.Imaging.Cloud.Sdk", "src\Aspose.Imaging.Cloud.Sdk\Aspose.Imaging.Cloud.Sdk.csproj", "{2915ECC4-C05E-4996-9AAC-E4E245687986}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspose.Imaging.Cloud.Sdk", "src\Aspose.Imaging.Cloud.Sdk\Aspose.Imaging.Cloud.Sdk.csproj", "{6B7E8039-6C4C-4856-8C04-6225DF59DDFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspose.Imaging.Cloud.Sdk.Test", "src\Aspose.Imaging.Cloud.Sdk.Test\Aspose.Imaging.Cloud.Sdk.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2915ECC4-C05E-4996-9AAC-E4E245687986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2915ECC4-C05E-4996-9AAC-E4E245687986}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2915ECC4-C05E-4996-9AAC-E4E245687986}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2915ECC4-C05E-4996-9AAC-E4E245687986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B7E8039-6C4C-4856-8C04-6225DF59DDFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B7E8039-6C4C-4856-8C04-6225DF59DDFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B7E8039-6C4C-4856-8C04-6225DF59DDFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B7E8039-6C4C-4856-8C04-6225DF59DDFB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU
