@@ -37,7 +37,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         [SetUp]
         public void InitTest()
         {
-
             this.SearchContextId = this.CreateSearchContext();
         }
 
@@ -69,19 +68,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
         protected string CreateSearchContext()
         {
-            var response = this.ImagingApi.PostCreateSearchContext(new PostCreateSearchContextRequest());
+            var response = this.ImagingApi.PostCreateSearchContext(new PostCreateSearchContextRequest(storage: DefaultStorage));
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             return response.Id;
         }
 
         protected void DeleteSearchContext(string searchContextId)
         {
-            this.ImagingApi.DeleteSearchContext(new DeleteSearchContextRequest(searchContextId));
+            this.ImagingApi.DeleteSearchContext(new DeleteSearchContextRequest(searchContextId, storage: DefaultStorage));
         }
 
         protected string GetSearchContextStatus(string searchContextId)
         {
-            var response =  this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId));
+            var response =  this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: DefaultStorage));
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             return response.SearchStatus;
         }
@@ -89,8 +88,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         protected void AddImageFeaturesToSearchContext(string storageSourcePath, bool isFolder = false)
         {
             var request = isFolder
-                ? new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: null, folder: storageSourcePath)
-                : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath);
+                ? new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: null, imagesFolder: storageSourcePath, storage: DefaultStorage)
+                : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: DefaultStorage);
             this.ImagingApi.PostSearchContextExtractImageFeatures(request);
         }
     }

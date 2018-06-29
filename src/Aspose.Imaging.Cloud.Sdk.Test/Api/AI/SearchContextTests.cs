@@ -51,7 +51,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             this.DeleteSearchContext(this.SearchContextId);
 
             var errorMessage = Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextStatus(
-                new GetSearchContextStatusRequest(this.SearchContextId))).Message;
+                new GetSearchContextStatusRequest(this.SearchContextId, storage: DefaultStorage))).Message;
 
             Assert.IsTrue(errorMessage.Contains("not found"));
         }
@@ -73,10 +73,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var destServerPath = $"{this.TempFolder}/{image}";
 
             this.ImagingApi.DeleteSearchContextImage(
-                new DeleteSearchContextImageRequest(this.SearchContextId, destServerPath));
+                new DeleteSearchContextImageRequest(this.SearchContextId, destServerPath, storage: DefaultStorage));
 
             var errorMessage = Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextImage(
-                new GetSearchContextImageRequest(this.SearchContextId, destServerPath))).Message;
+                new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: DefaultStorage))).Message;
             Assert.IsTrue(errorMessage.Contains("not found"));
         }
 
@@ -105,7 +105,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             Assert.NotNull(imageStream);
 
             this.ImagingApi.PutSearchContextImage(
-                new PutSearchContextImageRequest(this.SearchContextId, destServerPath, imageStream));
+                new PutSearchContextImageRequest(this.SearchContextId, destServerPath, imageStream, storage: DefaultStorage));
 
             responseStream = this.GetImage(image);
             Assert.IsTrue((int)responseStream.Length < 40000);
@@ -121,7 +121,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var destServerPath = $"{this.TempFolder}/{image}";
 
             var response = this.ImagingApi.GetSearchContextExtractImageFeatures(
-                new GetSearchContextExtractImageFeaturesRequest(this.SearchContextId, destServerPath));
+                new GetSearchContextExtractImageFeaturesRequest(this.SearchContextId, destServerPath, storage: DefaultStorage));
 
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             Assert.IsTrue(response.ImageId.Contains(image));
@@ -139,10 +139,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         {
             this.ImagingApi.PostSearchContextExtractImageFeatures(
                 new PostSearchContextExtractImageFeaturesRequest(
-                    this.SearchContextId, null, null, $"{this.OriginalDataFolder}/FindSimilar"));
+                    this.SearchContextId, null, null, $"{this.OriginalDataFolder}/FindSimilar", DefaultStorage));
 
             var response = this.ImagingApi.GetSearchContextImageFeatures(
-                new GetSearchContextImageFeaturesRequest(this.SearchContextId, $"{this.OriginalDataFolder}/FindSimilar/3.jpg"));
+                new GetSearchContextImageFeaturesRequest(this.SearchContextId, $"{this.OriginalDataFolder}/FindSimilar/3.jpg", storage:DefaultStorage));
 
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             Assert.IsTrue(response.ImageId.Contains("3.jp"));
@@ -166,10 +166,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             this.AddImageFeatures(image);
             var destServerPath = $"{this.TempFolder}/{image}";
             this.ImagingApi.DeleteSearchContextImage(
-                new DeleteSearchContextImageRequest(SearchContextId, destServerPath));
+                new DeleteSearchContextImageRequest(SearchContextId, destServerPath, storage: DefaultStorage));
 
             var errorMessage = Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextImage(
-                new GetSearchContextImageRequest(this.SearchContextId, destServerPath))).Message;
+                new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: DefaultStorage))).Message;
             Assert.IsTrue(errorMessage.Contains("not found"));
         }
 
@@ -186,11 +186,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var destServerPath = $"{this.OriginalDataFolder}/{image}";
 
             var storagePath = this.OriginalDataFolder + "/" + SmallTestImage;
-            var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, null, DefaultStorage));
+            var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, storage: DefaultStorage));
             Assert.NotNull(imageStream);
 
             this.ImagingApi.PutSearchContextImageFeatures(
-                new PutSearchContextImageFeaturesRequest(this.SearchContextId, destServerPath, imageStream));
+                new PutSearchContextImageFeaturesRequest(this.SearchContextId, destServerPath, imageStream, storage: DefaultStorage));
 
             response = this.GetImageFeatures(image);
             Assert.IsTrue(response.ImageId.Contains(TestImage));
@@ -202,14 +202,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var destServerPath = $"{this.TempFolder}/{image}";
 
             var storagePath = this.OriginalDataFolder + "/" + image;
-            var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, null, DefaultStorage));
+            var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, storage:DefaultStorage));
             Assert.NotNull(imageStream);
 
             this.ImagingApi.PostSearchContextAddImage(
-                new PostSearchContextAddImageRequest(this.SearchContextId, destServerPath, imageStream));
+                new PostSearchContextAddImageRequest(this.SearchContextId, destServerPath, imageStream, storage: DefaultStorage));
            
-            var existResponse = this.StorageApi.GetIsExist(
-                new GetIsExistRequest(this.TempFolder + "/" + image));
+            var existResponse = this.StorageApi.GetIsExist(new GetIsExistRequest(destServerPath, storage: DefaultStorage));
             Assert.IsNotNull(existResponse);
             Assert.IsTrue(existResponse.FileExist.IsExist == true);
         }
@@ -218,7 +217,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         {
             var destServerPath = $"{this.TempFolder}/{image}";
             var response = this.ImagingApi.GetSearchContextImage(
-                new GetSearchContextImageRequest(this.SearchContextId, destServerPath));
+                new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: DefaultStorage));
            
             return response;
         }
@@ -228,14 +227,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var destServerPath = $"{this.OriginalDataFolder}/{image}";
 
             this.ImagingApi.PostSearchContextExtractImageFeatures(
-                new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, null, destServerPath));
+                new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, null, destServerPath, storage: DefaultStorage));
         }
 
         private ImageFeatures GetImageFeatures(string image)
         {
             var destServerPath = $"{this.OriginalDataFolder}/{image}";
             var response = this.ImagingApi.GetSearchContextImageFeatures(
-                new GetSearchContextImageFeaturesRequest(this.SearchContextId, destServerPath));
+                new GetSearchContextImageFeaturesRequest(this.SearchContextId, destServerPath, storage: DefaultStorage));
 
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             return response;
