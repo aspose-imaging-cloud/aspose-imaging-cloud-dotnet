@@ -47,7 +47,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             this.AddImageFeaturesToSearchContext(image2);
 
             var response = this.ImagingApi.PostSearchContextCompareImages(
-                new PostSearchContextCompareImagesRequest(this.SearchContextId, image1, null, image2));
+                new PostSearchContextCompareImagesRequest(this.SearchContextId, image1, null, image2, storage: DefaultStorage));
 
             Assert.AreEqual(1, response.Results.Count);
             Assert.IsTrue(response.Results[0].Similarity >= 70);
@@ -65,7 +65,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             Assert.NotNull(imageStream);
 
             var response = this.ImagingApi.PostSearchContextCompareImages(
-                new PostSearchContextCompareImagesRequest(this.SearchContextId, image, imageStream));
+                new PostSearchContextCompareImagesRequest(this.SearchContextId, image, imageStream, storage: DefaultStorage));
 
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             Assert.AreEqual(1, response.Results.Count);

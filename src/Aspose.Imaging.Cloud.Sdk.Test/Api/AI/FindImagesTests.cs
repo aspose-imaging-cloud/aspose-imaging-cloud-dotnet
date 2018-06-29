@@ -26,7 +26,6 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
     using System.Net;
-    using System.Text;
     using Model.Requests;
     using Newtonsoft.Json;
     using NUnit.Framework;
@@ -44,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             this.AddImageFeaturesToSearchContext($"{this.OriginalDataFolder}/FindSimilar", true);
             var findImageId = $"{this.OriginalDataFolder}/FindSimilar/{ImageToFind}";
             var response = this.ImagingApi.GetSearchContextFindSimilar(
-                new GetSearchContextFindSimilarRequest(this.SearchContextId, 3, 3, imageId: findImageId));
+                new GetSearchContextFindSimilarRequest(this.SearchContextId, 3, 3, imageId: findImageId, storage: DefaultStorage));
 
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             Assert.AreEqual(2, response.Results.Count);
@@ -66,10 +65,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
             var tags = JsonConvert.SerializeObject(new[] { tag });
             var response = this.ImagingApi.PostSearchContextFindByTags(
-                new PostSearchContextFindByTagsRequest(tags, this.SearchContextId, 60, 5));
+                new PostSearchContextFindByTagsRequest(tags, this.SearchContextId, 60, 5, storage: DefaultStorage));
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             Assert.AreEqual(1, response.Results.Count);
-            Assert.IsTrue(((string)response.Results[0].ImageId).Contains("2.jpg"));
+            Assert.IsTrue(response.Results[0].ImageId.Contains("2.jpg"));
         }
     }
 }
