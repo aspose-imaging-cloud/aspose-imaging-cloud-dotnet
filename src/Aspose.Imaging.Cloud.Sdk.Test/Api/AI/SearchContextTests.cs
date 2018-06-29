@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="ResizeApiTests.cs">
-//   Copyright (c) 2018 Aspose.Imaging for Cloud
+// <copyright company="Aspose" file="FindImagesTests.cs">
+//   Copyright (c) 2018 Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,7 +34,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     using Storage.Cloud.Sdk.Model.Requests;
 
     [TestFixture]
-    public class SearchContextTests : TestImagingAIBase
+    public class с : TestImagingAIBase
     {
         private const string SmallTestImage = "ComparableImage.jpg";
         private const string TestImage = "ComparingImageSimilar15.jpg";
