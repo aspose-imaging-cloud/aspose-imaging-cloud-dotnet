@@ -372,6 +372,58 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
+        /// Gets the file manager. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="GetFileManagerRequest" /></param> 
+        /// <returns><see cref="IFileManager"/></returns>            
+        public IFileManager GetFileManager(GetFileManagerRequest request)
+        {
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/ImagingAiApi/GetFileManager";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "GET", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(IFileManager) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<IFileManager>(StreamHelper.ToString(response));
+				}
+				
+				return (IFileManager)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
         /// Update parameters of existing BMP image. 
         /// </summary>
         /// <param name="request">Request. <see cref="GetImageBmpRequest" /></param> 
@@ -4567,6 +4619,162 @@ namespace Aspose.Imaging.Cloud.Sdk
 				}
 				
 				return (System.IO.Stream)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
+        /// Gets the file manager. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="SearchContextFeaturesGetFileManagerRequest" /></param> 
+        /// <returns><see cref="IFileManager"/></returns>            
+        public IFileManager SearchContextFeaturesGetFileManager(SearchContextFeaturesGetFileManagerRequest request)
+        {
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch//features";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "GET", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(IFileManager) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<IFileManager>(StreamHelper.ToString(response));
+				}
+				
+				return (IFileManager)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
+        /// Gets the file manager. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="SearchContextGetFileManagerRequest" /></param> 
+        /// <returns><see cref="IFileManager"/></returns>            
+        public IFileManager SearchContextGetFileManager(SearchContextGetFileManagerRequest request)
+        {
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "GET", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(IFileManager) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<IFileManager>(StreamHelper.ToString(response));
+				}
+				
+				return (IFileManager)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
+        /// Gets the file manager. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="SearchContextImagesGetFileManagerRequest" /></param> 
+        /// <returns><see cref="IFileManager"/></returns>            
+        public IFileManager SearchContextImagesGetFileManager(SearchContextImagesGetFileManagerRequest request)
+        {
+            // create path and map variables
+            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch//image";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "GET", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(IFileManager) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<IFileManager>(StreamHelper.ToString(response));
+				}
+				
+				return (IFileManager)finalResponse;
             } 
             catch (ApiException ex) 
             {
