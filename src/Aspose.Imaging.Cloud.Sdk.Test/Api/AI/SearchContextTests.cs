@@ -34,7 +34,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     using Storage.Cloud.Sdk.Model.Requests;
 
     [TestFixture]
-    public class с : TestImagingAIBase
+    public class SearchContextTests : TestImagingAIBase
     {
         private const string SmallTestImage = "ComparableImage.jpg";
         private const string TestImage = "ComparingImageSimilar15.jpg";
