@@ -31,6 +31,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     using NUnit.Framework;
     using Storage.Cloud.Sdk.Model.Requests;
 
+    [Category("AI")]
+    [Category("v2.0")]
     [TestFixture]
     public abstract class TestImagingAIBase: ApiTester
     {
@@ -48,16 +50,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 this.DeleteSearchContext(this.SearchContextId);
             }
 
-            if (this.StorageApi.GetIsExist(new GetIsExistRequest(TempFolder, null, DefaultStorage)).FileExist.IsExist.Value)
+            if (this.StorageApi.GetIsExist(new GetIsExistRequest(TempFolder, null, this.TestStorage)).FileExist.IsExist.Value)
             {
-                this.StorageApi.DeleteFolder(new DeleteFolderRequest(TempFolder, DefaultStorage, true));
+                this.StorageApi.DeleteFolder(new DeleteFolderRequest(TempFolder, this.TestStorage, true));
             }
 
         }
 
         protected string SearchContextId { get; private set; }
 
-        protected string OriginalDataFolder => "ImagingAI";
+        protected override string OriginalDataFolder => "ImagingAI";
 
         protected string TempFolder => "TempImagingAI";
 
@@ -68,19 +70,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
         protected string CreateSearchContext()
         {
-            var response = this.ImagingApi.PostCreateSearchContext(new PostCreateSearchContextRequest(storage: DefaultStorage));
+            var response = this.ImagingApi.PostCreateSearchContext(new PostCreateSearchContextRequest(storage: this.TestStorage));
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             return response.Id;
         }
 
         protected void DeleteSearchContext(string searchContextId)
         {
-            this.ImagingApi.DeleteSearchContext(new DeleteSearchContextRequest(searchContextId, storage: DefaultStorage));
+            this.ImagingApi.DeleteSearchContext(new DeleteSearchContextRequest(searchContextId, storage: this.TestStorage));
         }
 
         protected string GetSearchContextStatus(string searchContextId)
         {
-            var response =  this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: DefaultStorage));
+            var response =  this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: this.TestStorage));
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             return response.SearchStatus;
         }
@@ -88,8 +90,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         protected void AddImageFeaturesToSearchContext(string storageSourcePath, bool isFolder = false)
         {
             var request = isFolder
-                ? new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: null, imagesFolder: storageSourcePath, storage: DefaultStorage)
-                : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: DefaultStorage);
+                ? new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: null, imagesFolder: storageSourcePath, storage: this.TestStorage)
+                : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: this.TestStorage);
             this.ImagingApi.PostSearchContextExtractImageFeatures(request);
         }
     }

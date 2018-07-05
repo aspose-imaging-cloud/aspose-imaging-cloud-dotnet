@@ -54,6 +54,7 @@
     <Compile Include="Api\AI\FindImagesTests.cs" />
     <Compile Include="Api\AI\SearchContextTests.cs" />
     <Compile Include="Api\AI\TestImagingAIBase.cs" />
+    <Compile Include="Api\ImagingApiTester.cs" />
     <Compile Include="Base\ApiTester.cs" />
     <Compile Include="Api\BmpApiTests.cs" />
     <Compile Include="Api\CropApiTests.cs" />

@@ -34,8 +34,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing WebPApi
     /// </summary>
+    [Category("Webp")]
     [TestFixture]
-    public class WebPApiTests : ApiTester
+    public class WebPApiTests : ImagingApiTester
     {
         /// <summary>
         /// Test GetImageWebP
@@ -53,7 +54,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.webp";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageWebPTest",
@@ -101,7 +102,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.webp";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestPostRequest(
                 "PostImageWebPTest",

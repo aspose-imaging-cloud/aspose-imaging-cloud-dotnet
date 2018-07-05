@@ -37,8 +37,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing RotateFlipApi
     /// </summary>
+    [Category("RotateFlip")]
     [TestFixture]
-    public class RotateFlipApiTests : ApiTester
+    public class RotateFlipApiTests : ImagingApiTester
     {
         /// <summary>
         /// Test GetImageRotateFlip
@@ -48,13 +49,32 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="additionalExportFormats">Additional formats to export to</param>
         [TestCase(".jpg", true)]
         [TestCase(".jpg", false)]
+#if EXTENDED_TEST
+        [TestCase(".bmp", true)]
+        [TestCase(".bmp", false)]
+        [TestCase(".dicom", true)]
+        [TestCase(".dicom", false)]
+        // TODO: enable after IMAGINGCLOUD-51 is resolved
+        //[TestCase(".gif", true)]
+        //[TestCase(".gif", false)]
+        [TestCase(".j2k", true)]
+        [TestCase(".j2k", false)]
+        [TestCase(".png", true)]
+        [TestCase(".png", false)]
+        [TestCase(".psd", true)]
+        [TestCase(".psd", false)]
+        [TestCase(".tiff", true)]
+        [TestCase(".tiff", false)]
+        [TestCase(".webp", true)]
+        [TestCase(".webp", false)]
+#endif
         public void GetImageRotateFlipTest(string formatExtension, bool saveResultToStorage,
             params string[] additionalExportFormats)
         {
             string name = null;
             string method = "Rotate90FlipX";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
             string outName = null;
 
             List<string> formatsToExport = new List<string>(this.BasicExportFormats);
@@ -128,12 +148,31 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="additionalExportFormats">Additional formats to export to</param>
         [TestCase(".jpg", true)]
         [TestCase(".jpg", false)]
+#if EXTENDED_TEST
+        [TestCase(".bmp", true)]
+        [TestCase(".bmp", false)]
+        [TestCase(".dicom", true)]
+        [TestCase(".dicom", false)]
+        // TODO: enable after IMAGINGCLOUD-51 is resolved
+        //[TestCase(".gif", true)]
+        //[TestCase(".gif", false)]
+        [TestCase(".j2k", true)]
+        [TestCase(".j2k", false)]
+        [TestCase(".png", true)]
+        [TestCase(".png", false)]
+        [TestCase(".psd", true)]
+        [TestCase(".psd", false)]
+        [TestCase(".tiff", true)]
+        [TestCase(".tiff", false)]
+        [TestCase(".webp", true)]
+        [TestCase(".webp", false)]
+#endif
         public void PostImageRotateFlipTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
             string method = "Rotate90FlipX";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
             string outName = null;
 
             List<string> formatsToExport = new List<string>(this.BasicExportFormats);

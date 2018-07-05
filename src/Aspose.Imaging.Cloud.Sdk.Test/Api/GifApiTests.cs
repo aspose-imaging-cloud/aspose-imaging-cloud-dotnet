@@ -30,32 +30,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-	
+
     /// <summary>
     ///  Class for testing GifApi
     /// </summary>
+    [Category("Gif")]
     [TestFixture]
-    public class GifApiTests : ApiTester
+    public class GifApiTests : ImagingApiTester
     {
-        /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
         /// <summary>
         /// Test GetImageGif
         /// </summary>
@@ -74,7 +56,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.gif";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageGifTest",
@@ -124,7 +106,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.gif";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestPostRequest(
                 "PostImageGifTest",

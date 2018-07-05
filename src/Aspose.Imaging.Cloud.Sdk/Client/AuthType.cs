@@ -33,11 +33,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// <summary>
         /// OAuth2.0
         /// </summary>
-        OAuth2 = 0,
-
-        /// <summary>
-        /// Authentification with signing of url.
-        /// </summary>
-        RequestSignature = 1
+        OAuth2 = 0
     }
 }

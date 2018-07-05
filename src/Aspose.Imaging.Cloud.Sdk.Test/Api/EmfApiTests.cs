@@ -30,12 +30,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-	
+
     /// <summary>
     ///  Class for testing EmfApi
     /// </summary>
+    [Category("Emf")]
     [TestFixture]
-    public class EmfApiTests : ApiTester
+    public class EmfApiTests : ImagingApiTester
     {
         /// <summary>
         /// Test GetImageEmf
@@ -54,7 +55,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.png";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageEmfTest",
@@ -98,7 +99,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.png";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestPostRequest(
                 "PostImageEmfTest",

@@ -31,12 +31,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-	
+
     /// <summary>
     ///  Class for testing BmpApi
     /// </summary>
+    [Category("Bmp")]
     [TestFixture]
-    public class BmpApiTests : ApiTester
+    public class BmpApiTests : ImagingApiTester
     {
         /// <summary>
         /// Test GetImageBmp
@@ -53,7 +54,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.bmp";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageBmpTest", 
@@ -99,7 +100,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.bmp";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestPostRequest(
                 "PostImageBmpTest",
