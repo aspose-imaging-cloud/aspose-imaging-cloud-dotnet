@@ -30,12 +30,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-	
+
     /// <summary>
     ///  Class for testing DicomApi
     /// </summary>
+    [Category("Dicom")]
     [TestFixture]
-    public class DicomApiTests : ApiTester
+    public class DicomApiTests : ImagingApiTester
     {
         /// <summary>
         /// Test GetImageDicom
@@ -49,7 +50,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.png";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageDicomTest",
@@ -91,7 +92,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.png";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestPostRequest(
                 "PostImageDicomTest",

@@ -29,32 +29,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 	
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-	
+
     /// <summary>
     ///  Class for testing FramesApi
     /// </summary>
+    [Category("Tiff")]
     [TestFixture]
-    public class FramesApiTests : ApiTester
+    public class FramesApiTests : ImagingApiTester
     {
-        /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
         /// <summary>
         /// Test GetImageFrame
         /// </summary>
@@ -74,7 +56,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string rotateFlipMethod = "Rotate90FlipX";
             bool? saveOtherFrames = false;
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
             string outName = $"{name}_singleFrame.tiff";
 
             this.TestGetRequest(
@@ -140,7 +122,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string rotateFlipMethod = "Rotate90FlipX";
             bool? saveOtherFrames = true;
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
             string outName = $"{name}_allFrames.tiff";
 
             this.TestGetRequest(

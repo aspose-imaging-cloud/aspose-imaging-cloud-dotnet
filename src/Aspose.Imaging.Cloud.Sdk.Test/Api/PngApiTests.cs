@@ -30,12 +30,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-	
+
     /// <summary>
     ///  Class for testing PngApi
     /// </summary>
+    [Category("Png")]
     [TestFixture]
-    public class PngApiTests : ApiTester
+    public class PngApiTests : ImagingApiTester
     {
         /// <summary>
         /// Test GetImagePng
@@ -50,7 +51,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = false;
             string outName = $"{name}_specific.png";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImagePngTest",
@@ -93,7 +94,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = false;
             string outName = $"{name}_specific.png";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestPostRequest(
                 "PostImagePngTest",

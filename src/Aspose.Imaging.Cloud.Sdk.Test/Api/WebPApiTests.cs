@@ -34,8 +34,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing WebPApi
     /// </summary>
+    [Category("Webp")]
     [TestFixture]
-    public class WebPApiTests : ApiTester
+    public class WebPApiTests : ImagingApiTester
     {
         /// <summary>
         /// Test GetImageWebP
@@ -53,7 +54,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.webp";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageWebPTest",
@@ -70,12 +71,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 delegate(ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
                     Assert.NotNull(resultProperties.WebPProperties);
-
-                    /* TODO: uncomment after IMAGINGNET-2869 is done
-                    Assert.AreEqual(lossless, resultProperties.WebPProperties.Lossless);
-                    Assert.AreEqual(animLoopCount, resultProperties.WebPProperties.AnimLoopCount);
-                    Assert.AreEqual(quality, (int) Math.Ceiling((double) resultProperties.WebPProperties.Quality));
-                    */
 
                     Assert.NotNull(originalProperties.WebPProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);
@@ -101,7 +96,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.webp";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestPostRequest(
                 "PostImageWebPTest",
@@ -118,12 +113,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 delegate(ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
                     Assert.NotNull(resultProperties.WebPProperties);
-
-                    /* TODO: uncomment after IMAGINGNET-2869 is done
-                     Assert.AreEqual(lossless, resultProperties.WebPProperties.Lossless);
-                    Assert.AreEqual(animLoopCount, resultProperties.WebPProperties.AnimLoopCount);
-                    Assert.AreEqual(quality, (int) Math.Ceiling((double) resultProperties.WebPProperties.Quality));
-                    */
 
                     Assert.NotNull(originalProperties.WebPProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);

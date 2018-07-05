@@ -53,6 +53,6 @@
   </ItemGroup>
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir).nuget\nuget.exe restore $(SolutionDir)</PreBuildEvent>
+    <PreBuildEvent>nuget.exe restore $(SolutionDir)</PreBuildEvent>
   </PropertyGroup>
 </Project>

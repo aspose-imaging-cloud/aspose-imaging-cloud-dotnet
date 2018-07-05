@@ -30,12 +30,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-	
+
     /// <summary>
     ///  Class for testing Jpeg2000Api
     /// </summary>
+    [Category("Jpeg2000")]
     [TestFixture]
-    public class Jpeg2000ApiTests : ApiTester
+    public class Jpeg2000ApiTests : ImagingApiTester
     {
         /// <summary>
         /// Test GetImageJpeg2000
@@ -51,7 +52,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.jp2";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageJpeg2000Test",
@@ -98,7 +99,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.jp2";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestPostRequest(
                 "PostImageJpeg2000Test",
