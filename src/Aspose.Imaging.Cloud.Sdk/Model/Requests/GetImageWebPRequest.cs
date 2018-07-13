@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="GetImageWebPRequest.cs">
-//   Copyright (c) 2018 Aspose.Imaging for Cloud
+//   Copyright (c) 2018 Aspose Pty Ltd.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy

@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="Jpeg2000ApiTests.cs">
-//   Copyright (c) 2018 Aspose.Imaging for Cloud
+//   Copyright (c) 2018 Aspose Pty Ltd.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -38,25 +38,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class Jpeg2000ApiTests : ApiTester
     {
         /// <summary>
-        /// Setup before each unit test
-        /// </summary>
-        [SetUp]
-        public void Init()
-        {
-			// you can pass your own parameters here
-            this.CreateApiInstances();
-        }
-
-        /// <summary>
-        /// Clean up after each unit test
-        /// </summary>
-        [TearDown]
-        public void Cleanup()
-        {
-
-        }
-
-        /// <summary>
         /// Test GetImageJpeg2000
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
@@ -86,19 +67,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.Jpeg2000Properties);
-                    Assert.IsTrue(resultProperties.Jpeg2000Properties.Codec.HasValue);
+                    Assert.IsNotNull(resultProperties.Jpeg2000Properties);
 
-                    Assert.NotNull(resultProperties.Jpeg2000Properties.Codec);
-                    Assert.AreEqual(resultProperties.Jpeg2000Properties.Codec.ToString().ToLower(), codec);
-                    Assert.NotNull(resultProperties.Jpeg2000Properties.Comments);
-                    Assert.IsTrue(resultProperties.Jpeg2000Properties.Comments.Contains(comment));
+                    Assert.IsNotNull(resultProperties.Jpeg2000Properties.Codec);
+                    Assert.AreEqual(codec, resultProperties.Jpeg2000Properties.Codec.ToString().ToLower());
+                    Assert.IsNotNull(resultProperties.Jpeg2000Properties.Comments);
+                    Assert.AreEqual(comment, resultProperties.Jpeg2000Properties.Comments[0]);
 
-                    Assert.NotNull(originalProperties.Jpeg2000Properties);
+                    Assert.IsNotNull(originalProperties.Jpeg2000Properties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);
                     Assert.AreEqual(originalProperties.Height, resultProperties.Height);
-                    Assert.NotNull(originalProperties.Jpeg2000Properties.Comments);
-                    Assert.IsFalse(originalProperties.Jpeg2000Properties.Comments.Contains(comment));
+                    Assert.IsNotNull(originalProperties.Jpeg2000Properties.Comments);
+                    Assert.AreNotEqual(comment, originalProperties.Jpeg2000Properties.Comments[0]);
                 },
                 folder,
                 storage);
@@ -134,19 +114,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
                 {
-                    Assert.NotNull(resultProperties.Jpeg2000Properties);
-                    Assert.IsTrue(resultProperties.Jpeg2000Properties.Codec.HasValue);
+                    Assert.IsNotNull(resultProperties.Jpeg2000Properties);
 
-                    Assert.NotNull(resultProperties.Jpeg2000Properties.Codec);
-                    Assert.AreEqual(resultProperties.Jpeg2000Properties.Codec.ToString().ToLower(), codec);
-                    Assert.NotNull(resultProperties.Jpeg2000Properties.Comments);
-                    Assert.IsTrue(resultProperties.Jpeg2000Properties.Comments.Contains(comment));
+                    Assert.IsNotNull(resultProperties.Jpeg2000Properties.Codec);
+                    Assert.AreEqual(codec, resultProperties.Jpeg2000Properties.Codec.ToString().ToLower());
+                    Assert.IsNotNull(resultProperties.Jpeg2000Properties.Comments);
+                    Assert.AreEqual(comment, resultProperties.Jpeg2000Properties.Comments[0]);
 
-                    Assert.NotNull(originalProperties.Jpeg2000Properties);
+                    Assert.IsNotNull(originalProperties.Jpeg2000Properties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);
                     Assert.AreEqual(originalProperties.Height, resultProperties.Height);
-                    Assert.NotNull(originalProperties.Jpeg2000Properties.Comments);
-                    Assert.IsFalse(originalProperties.Jpeg2000Properties.Comments.Contains(comment));
+                    Assert.IsNotNull(originalProperties.Jpeg2000Properties.Comments);
+                    Assert.AreNotEqual(comment, originalProperties.Jpeg2000Properties.Comments[0]);
                 },
                 folder,
                 storage);

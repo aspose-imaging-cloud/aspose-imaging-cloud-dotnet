@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspose.Imaging.Cloud.Sdk", "src\Aspose.Imaging.Cloud.Sdk\Aspose.Imaging.Cloud.Sdk.csproj", "{6B7E8039-6C4C-4856-8C04-6225DF59DDFB}"
 EndProject
@@ -23,5 +23,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3303CA74-2DD0-477D-B7AC-915853EEF2E6}
 	EndGlobalSection
 EndGlobal

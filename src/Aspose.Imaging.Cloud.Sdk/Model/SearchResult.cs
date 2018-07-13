@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="SwaggerDateConverter.cs">
-//   Copyright (c) 2018 Aspose.Imaging for Cloud
+// <copyright company="Aspose" file="SearchResult.cs">
+//   Copyright (c) 2018 Aspose Pty Ltd.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,23 +23,43 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Newtonsoft.Json.Converters;
-
-namespace Aspose.Imaging.Cloud.Sdk.Client
+namespace Aspose.Imaging.Cloud.Sdk.Model 
 {
-    /// <summary>
-    /// Formatter for 'date' swagger formats ss defined by full-date - RFC3339
-    /// see https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types
-    /// </summary>
-    public class SwaggerDateConverter : IsoDateTimeConverter
-    {
+  using System;  
+  using System.Collections;
+  using System.Collections.Generic;
+  using System.Runtime.Serialization;
+  using System.Text;
+  using Newtonsoft.Json;
+  using Newtonsoft.Json.Converters;
+
+  /// <summary>
+  /// Search result.
+  /// </summary>  
+  public class SearchResult 
+  {                       
         /// <summary>
-        /// Initializes a new instance of the <see cref="SwaggerDateConverter" /> class.
+        /// Gets the image identifier.
+        /// </summary>  
+        public string ImageId { get; set; }
+
+        /// <summary>
+        /// Gets the similarity.
+        /// </summary>  
+        public double? Similarity { get; set; }
+
+        /// <summary>
+        /// Get the string presentation of the object
         /// </summary>
-        public SwaggerDateConverter()
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()  
         {
-            // full-date   = date-fullyear "-" date-month "-" date-mday
-            DateTimeFormat = "yyyy-MM-dd";
+          var sb = new StringBuilder();
+          sb.Append("class SearchResult {\n");
+          sb.Append("  ImageId: ").Append(this.ImageId).Append("\n");
+          sb.Append("  Similarity: ").Append(this.Similarity).Append("\n");
+          sb.Append("}\n");
+          return sb.ToString();
         }
     }
 }
