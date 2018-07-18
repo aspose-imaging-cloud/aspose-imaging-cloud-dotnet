@@ -43,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             this.AddImageFeaturesToSearchContext($"{this.OriginalDataFolder}/FindSimilar", true);
             var findImageId = $"{this.OriginalDataFolder}/FindSimilar/{ImageToFind}";
             var response = this.ImagingApi.GetSearchContextFindSimilar(
-                new GetSearchContextFindSimilarRequest(this.SearchContextId, 3, 3, imageId: findImageId, storage: DefaultStorage));
+                new GetSearchContextFindSimilarRequest(this.SearchContextId, 3, 3, imageId: findImageId, storage: this.TestStorage));
 
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             Assert.AreEqual(2, response.Results.Count);
@@ -58,14 +58,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
             var storagePath = this.OriginalDataFolder + "/" + ImageToFindByTag;
 
-            var tagImageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, null, DefaultStorage));
+            var tagImageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, null, this.TestStorage));
             Assert.NotNull(tagImageStream);
             this.ImagingApi.PostSearchContextAddTag(
-                new PostSearchContextAddTagRequest(tagImageStream, this.SearchContextId, tag, storage: DefaultStorage));
+                new PostSearchContextAddTagRequest(tagImageStream, this.SearchContextId, tag, storage: this.TestStorage));
 
             var tags = JsonConvert.SerializeObject(new[] { tag });
             var response = this.ImagingApi.PostSearchContextFindByTags(
-                new PostSearchContextFindByTagsRequest(tags, this.SearchContextId, 60, 5, storage: DefaultStorage));
+                new PostSearchContextFindByTagsRequest(tags, this.SearchContextId, 60, 5, storage: this.TestStorage));
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             Assert.AreEqual(1, response.Results.Count);
             Assert.IsTrue(response.Results[0].ImageId.Contains("2.jpg"));

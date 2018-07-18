@@ -29,6 +29,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     using System.Collections.Generic;
     using System.IO;
     using System.Net;
+    using System.Threading;
 
     using Aspose.Imaging.Cloud.Sdk.Model;
     using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -37,6 +38,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
     using Aspose.Storage.Cloud.Sdk.Api;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
 
     using NUnit.Framework;
 
@@ -51,6 +53,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// The server access file
         /// </summary>
         private const string ServerAccessFile = "serverAccess.json";
+
+        /// <summary>
+        /// The API version
+        /// </summary>
+        private const string ApiVersion = "v2.0";
 
         /// <summary>
         /// The application key
@@ -75,12 +82,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// The cloud test folder
         /// </summary>
-        protected const string CloudTestFolder = "CloudTestDotNet";
+        protected const string CloudTestFolder = "ImagingCloudTestDotNet";
 
         /// <summary>
         /// The cloud references folder
         /// </summary>
-        protected const string CloudReferencesFolder = "CloudTestReferences";
+        protected const string PreviousCloudReferencesFolder = "ImagingCloudTestReferences_18.4";
+
+        /// <summary>
+        /// The cloud references folder
+        /// </summary>
+        protected const string CurrentCloudReferencesFolder = "ImagingCloudTestReferences_18.6";
 
         /// <summary>
         /// The default storage
@@ -91,11 +103,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// The size difference division
         /// </summary>
         protected const long SizeDiffDivision = 20;
-
-        /// <summary>
-        /// Original test data folder
-        /// </summary>
-        private const string OriginalDataFolder = "CloudTest";
 
         #endregion
 
@@ -114,6 +121,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         protected StorageApi StorageApi;
 
         /// <summary>
+        /// Aspose.Storage API with default credentials
+        /// </summary>
+        protected StorageApi DefaultStorageApi;
+
+        /// <summary>
+        /// The test references folder
+        /// </summary>
+        protected string TestReferencesFolder;
+
+        /// <summary>
         /// The basic export formats
         /// </summary>
         protected readonly string[] BasicExportFormats = new string[]
@@ -124,6 +141,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             "png",
             "psd",
             "tiff"
+        };
+
+        /// <summary>
+        /// The depreacted test references
+        /// </summary>
+        private readonly Dictionary<string, string> deprecatedTestReferences = new Dictionary<string, string>()
+        {
+            {"v1.0", "ImagingCloudTestReferences_18.4"}
         };
 
         #endregion
@@ -156,6 +181,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         #region Properties
 
         /// <summary>
+        /// The default storage
+        /// </summary>
+        protected string TestStorage { get; private set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether resulting images should be removed from cloud storage.
         /// </summary>
         /// <value>
@@ -172,6 +202,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// </value>
         public bool AutoRecoverReference { get; set; } = false;
 
+        /// <summary>
+        /// Original test data folder
+        /// </summary>
+        protected virtual string OriginalDataFolder => "ImagingCloudInputTestData";
+
         #endregion
 
         #region Configuration
@@ -179,20 +214,28 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestFixtureSetUp]
         public virtual void InitFixture()
         {
-            this.CreateApiInstances();
-            if (this.StorageApi.GetIsExist(new GetIsExistRequest(CloudTestFolder, null, DefaultStorage)).FileExist.IsExist.Value)
+            this.TestStorage = this.GetEnvironmentVariable("StorageName");
+
+            if (string.IsNullOrEmpty(this.TestStorage))
             {
-                this.StorageApi.DeleteFolder(new DeleteFolderRequest(CloudTestFolder, DefaultStorage, true));
-                this.StorageApi.PutCreateFolder(new PutCreateFolderRequest(CloudTestFolder, DefaultStorage, DefaultStorage));
+                Console.WriteLine("Storage name is not set by environment variable. Using the default one.");
+                this.TestStorage = DefaultStorage;
+            }
+
+            this.CreateApiInstances();
+            if (this.StorageApi.GetIsExist(new GetIsExistRequest(CloudTestFolder, null, this.TestStorage)).FileExist.IsExist.Value)
+            {
+                this.StorageApi.DeleteFolder(new DeleteFolderRequest(CloudTestFolder, this.TestStorage, true));
+                this.StorageApi.PutCreateFolder(new PutCreateFolderRequest(CloudTestFolder, this.TestStorage, this.TestStorage));
             }
         }
 
         [TestFixtureTearDown]
         public virtual void FinilizeFixture()
         {
-            if (this.StorageApi.GetIsExist(new GetIsExistRequest(CloudTestFolder, null, DefaultStorage)).FileExist.IsExist.Value)
+            if (this.StorageApi.GetIsExist(new GetIsExistRequest(CloudTestFolder, null, this.TestStorage)).FileExist.IsExist.Value)
             {
-                this.StorageApi.DeleteFolder(new DeleteFolderRequest(CloudTestFolder, DefaultStorage, true));
+                this.StorageApi.DeleteFolder(new DeleteFolderRequest(CloudTestFolder, this.TestStorage, true));
             }
         }
 
@@ -210,35 +253,81 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="authType">Type of the authentication.</param>
         /// <param name="debug">if set to <c>true</c> [debug].</param>
         /// <exception cref="System.ArgumentException">Please, specify valid access data (AppKey, AppSid, Base URL)</exception>
-        protected void CreateApiInstances(string appKey = AppKey, string appSid = AppSid, string baseUrl = BaseUrl, string apiVersion = "v2",
+        protected void CreateApiInstances(string appKey = AppKey, string appSid = AppSid, string baseUrl = BaseUrl, string apiVersion = ApiVersion,
             Client.AuthType authType = Client.AuthType.OAuth2, bool debug = false)
         {
-            if (appKey == AppKey || appSid == AppSid || string.IsNullOrEmpty(baseUrl))
+            if (appKey == AppKey || appSid == AppSid)
             {
-                string serverAccessPath = Path.Combine(LocalTestFolder, ServerAccessFile);
-                FileInfo serverFileInfo = new FileInfo(serverAccessPath);
-                if (serverFileInfo.Exists && serverFileInfo.Length > 0)
-                {
-                    var accessData = JsonConvert.DeserializeObject<ServerAccessData>(File.ReadAllText(serverAccessPath));
-                    appKey = accessData.AppKey;
-                    appSid = accessData.AppSid;
-                    baseUrl = accessData.BaseURL;
-                }
-                else
-                {
-                    throw new ArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
-                }
+                Console.WriteLine("Access data isn't set explicitly. Trying to obtain it from environment variables.");
+
+                appKey = this.GetEnvironmentVariable("AppKEY");
+                appSid = this.GetEnvironmentVariable("AppSID");
+                baseUrl = this.GetEnvironmentVariable("ApiEndpoint");
+                apiVersion = this.GetEnvironmentVariable("ApiVersion");
             }
 
+            if (string.IsNullOrEmpty(appKey) || string.IsNullOrEmpty(appSid) || string.IsNullOrEmpty(baseUrl) || string.IsNullOrEmpty(apiVersion))
+            {
+                Console.WriteLine("Access data isn't set completely by environment variables. Filling unset data with default values.");
+            }
+
+            if (string.IsNullOrEmpty(apiVersion))
+            {
+                apiVersion = ApiVersion;
+                Console.WriteLine("Set default API version");
+            }
+
+            string serverAccessPath = Path.Combine(LocalTestFolder, ServerAccessFile);
+            FileInfo serverFileInfo = new FileInfo(serverAccessPath);
+            if (serverFileInfo.Exists && serverFileInfo.Length > 0)
+            {
+                var accessData = JsonConvert.DeserializeObject<ServerAccessData>(File.ReadAllText(serverAccessPath));
+                if (string.IsNullOrEmpty(appKey))
+                {
+                    appKey = accessData.AppKey;
+                    Console.WriteLine("Set default App key");
+                }
+
+                if (string.IsNullOrEmpty(appSid))
+                {
+                    appSid = accessData.AppSid;
+                    Console.WriteLine("Set default App SID");
+                }
+
+                if (string.IsNullOrEmpty(baseUrl))
+                {
+                    baseUrl = accessData.BaseURL;
+                    Console.WriteLine("Set default base URL");
+                }
+
+                this.DefaultStorageApi = new StorageApi(new Storage.Cloud.Sdk.Configuration()
+                {
+                    ApiBaseUrl = accessData.BaseURL,
+                    AppKey = accessData.AppKey,
+                    AppSid = accessData.AppSid
+                });
+            }
+            else
+            {
+                throw new ArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
+            }
+
+            Console.WriteLine($"App key: {appKey}");
+            Console.WriteLine($"App SID: {appSid}");
+            Console.WriteLine($"Storage: {this.TestStorage}");
+            Console.WriteLine($"Base URL: {baseUrl}");
+            Console.WriteLine($"API version: {apiVersion}");
+
             this.ImagingApi = new ImagingApi(appKey, appSid, baseUrl, apiVersion, authType, debug);
-            this.StorageApi = new StorageApi(new Storage.Cloud.Sdk.Configuration()
+            this.StorageApi = this.TestStorage == DefaultStorage ? this.DefaultStorageApi : new StorageApi(new Storage.Cloud.Sdk.Configuration()
             {
                 ApiBaseUrl = baseUrl,
                 AppKey = appKey,
                 AppSid = appSid
             });
 
-            InputTestFiles = FetchInputTestFilesInfo();
+            this.SyncTestFiles();
+            InputTestFiles = this.FetchInputTestFilesInfo();
         }
 
         /// <summary>
@@ -347,7 +436,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <returns></returns>
         private List<FileResponse> FetchInputTestFilesInfo()
         {
-            var filesResponse = this.StorageApi.GetListFiles(new GetListFilesRequest(OriginalDataFolder, DefaultStorage));
+            var filesResponse = this.StorageApi.GetListFiles(new GetListFilesRequest(OriginalDataFolder, this.TestStorage));
             return filesResponse.Files;
         }
 
@@ -431,7 +520,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             bool passed = false;
             string outPath = null;
-            string referencePath = CloudReferencesFolder + "/" + referenceSubfolder;
+            string referencePath = this.TestReferencesFolder + "/" + referenceSubfolder;
 
             try
             {
@@ -505,6 +594,201 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 }
 
                 Console.WriteLine($"Test passed: {passed}");
+            }
+        }
+
+        /// <summary>
+        /// Returns environment variable value
+        /// </summary>
+        /// <param name="variableName"></param>
+        /// <returns>Environment variable value</returns>
+        private string GetEnvironmentVariable(string variableName)
+        {
+            return (Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Machine) ??
+                   Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.User)) ??
+                   Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Process);
+        }
+
+        /// <summary>
+        /// Synchronizes test files.
+        /// </summary>
+        private void SyncTestFiles()
+        {
+            if (!this.StorageApi
+                .GetIsExist(new GetIsExistRequest(CurrentCloudReferencesFolder, null, DefaultStorage)).FileExist
+                .IsExist.Value)
+            {
+                this.DefaultStorageApi.PutCopyFolder(new PutCopyFolderRequest(PreviousCloudReferencesFolder,
+                    CurrentCloudReferencesFolder, DefaultStorage, DefaultStorage));
+            }
+
+            string apiVersion = this.GetEnvironmentVariable("ApiVersion");
+            string currentApiVersion = this.GetEnvironmentVariable("CurrentApiVersion");
+
+            List<Thread> copyThreads = new List<Thread>();
+            if (apiVersion != currentApiVersion)
+            {
+                this.TestReferencesFolder = this.deprecatedTestReferences[apiVersion];
+            }
+            else
+            {
+                this.TestReferencesFolder = CurrentCloudReferencesFolder;
+            }
+
+            if (this.TestStorage != DefaultStorage)
+            {
+                this.SyncFilesRecursively(OriginalDataFolder, copyThreads);
+
+                if (!this.StorageApi
+                    .GetIsExist(new GetIsExistRequest(this.TestReferencesFolder, null, this.TestStorage)).FileExist
+                    .IsExist.Value)
+                {
+                    this.SyncFilesRecursively(this.TestReferencesFolder, copyThreads);
+                }
+                
+                foreach (var thread in copyThreads)
+                {
+                    thread.Join();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Synchronizes files recursively from the top passed folder.
+        /// </summary>
+        /// <param name="folder">The folder.</param>
+        /// <param name="threads">Threads to perform copying.</param>
+        private void SyncFilesRecursively(string folder, List<Thread> threads)
+        {
+            if (threads == null)
+            {
+                threads = new List<Thread>();
+            }
+
+            var folderContents = InvokeWithRetry(() => this.DefaultStorageApi.GetListFiles(new GetListFilesRequest(folder, DefaultStorage)), 5, false);
+            if (folderContents?.Files == null || folderContents.Files.Count == 0) return;
+
+            foreach (var folderMember in folderContents.Files)
+            {
+                if (folderMember.IsFolder != null && folderMember.IsFolder.Value)
+                {
+                    if (!this.StorageApi
+                        .GetIsExist(new GetIsExistRequest(folderMember.Path, null, this.TestStorage)).FileExist
+                        .IsExist.Value)
+                    {
+                        var folderResponse = this.StorageApi.PutCreateFolder(new PutCreateFolderRequest(
+                            folderMember.Path, this.TestStorage,
+                            this.TestStorage));
+                        Console.WriteLine(folderResponse.Code.Value != (int) HttpStatusCode.OK
+                            ? $"Failed to create {folderMember.Path} folder in {this.TestStorage}. Status: {folderResponse.Status}"
+                            : $"Created {folderMember.Path} in {this.TestStorage} succesfully.");
+                    }
+
+                    this.SyncFilesRecursively(folderMember.Path, threads);
+                }
+                else
+                {
+                    if (!this.StorageApi
+                        .GetIsExist(new GetIsExistRequest(folderMember.Path, null, this.TestStorage)).FileExist
+                        .IsExist.Value)
+                    {
+                        Thread copyThread = new Thread(() =>
+                        {
+                            var file = folderMember;
+                            InvokeWithRetry(() => {
+                                using (var stream =
+                                    this.DefaultStorageApi.GetDownload(new GetDownloadRequest(file.Path, null,
+                                        DefaultStorage)))
+                                {
+                                    if (stream == null)
+                                    {
+                                        Console.WriteLine($"Download stream for {file.Path} was null");
+                                        return;
+                                    }
+
+                                    var uploadResponse = this.StorageApi.PutCreate(new PutCreateRequest(file.Path,
+                                        stream, null,
+                                        this.TestStorage));
+
+                                    Console.WriteLine((uploadResponse?.Code == null || uploadResponse.Code.Value != (int)HttpStatusCode.OK)
+                                            ? $"Failed to copy {file.Path} from {DefaultStorage} to {this.TestStorage}."
+                                            : $"Copied {file.Path} from {DefaultStorage} to {this.TestStorage} succesfully.");
+                                }
+                            }, 5, true);
+                        });
+
+                        threads.Add(copyThread);
+                        copyThread.Start();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Invokes action with retry.
+        /// </summary>
+        /// <param name="action">The action.</param>
+        /// <param name="retryCount">The retry count.</param>
+        /// <param name="sleepThread">If Thread.Sleep is performed.</param>
+        private void InvokeWithRetry(Newtonsoft.Json.Serialization.Action action, int retryCount, bool sleepThread)
+        {
+            try
+            {
+                action.Invoke();
+            }
+            catch (Exception ex)
+            {
+                if (ex is IOException || ex is WebException)
+                {
+                    if (--retryCount >= 0)
+                    {
+                        throw;
+                    }
+
+                    if (sleepThread)
+                    {
+                        Thread.Sleep(3000);
+                    }
+
+                    InvokeWithRetry(action, retryCount, sleepThread);
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Invokes function with retry.
+        /// </summary>
+        /// <param name="function">The function.</param>
+        /// <param name="retryCount">The retry count.</param>
+        /// <param name="sleepThread">If Thread.Sleep is performed.</param>
+        private T InvokeWithRetry<T>(Newtonsoft.Json.Serialization.Func<T> function, int retryCount, bool sleepThread)
+        {
+            try
+            {
+                return function.Invoke();
+            }
+            catch (Exception ex)
+            {
+                if (ex is IOException || ex is WebException)
+                {
+                    if (--retryCount >= 0)
+                    {
+                        throw;
+                    }
+
+                    if (sleepThread)
+                    {
+                        Thread.Sleep(3000);
+                    }
+
+                    return InvokeWithRetry(function, retryCount, sleepThread);
+                }
+
+                throw;
             }
         }
 

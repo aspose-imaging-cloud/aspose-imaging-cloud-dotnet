@@ -166,7 +166,6 @@ namespace Aspose.Imaging.Cloud.Sdk
             requestHandlers.Add(new OAuthRequestHandler(this.configuration));
             requestHandlers.Add(new DebugLogRequestHandler(this.configuration));
             requestHandlers.Add(new ApiExceptionRequestHandler());
-            requestHandlers.Add(new AuthWithSignatureRequestHandler(this.configuration));
             this.apiInvoker = new ApiInvoker(requestHandlers);
         }
 
