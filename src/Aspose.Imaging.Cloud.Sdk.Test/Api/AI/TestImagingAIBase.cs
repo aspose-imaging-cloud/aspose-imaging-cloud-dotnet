@@ -106,7 +106,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var timeout = TimeSpan.FromSeconds(10);
             var spentTime = TimeSpan.Zero;
 
-            while (this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: DefaultStorage)).SearchStatus != "Idle" || maxTime < spentTime)
+            while (this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: DefaultStorage)).SearchStatus != "Idle" && spentTime < maxTime)
             {
                 Thread.Sleep(timeout);
                 spentTime += timeout;
