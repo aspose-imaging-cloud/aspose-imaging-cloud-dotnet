@@ -28,6 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     using System;
     using System.IO;
     using System.Net;
+    using System.Threading;
     using Model.Requests;
     using NUnit.Framework;
     using Storage.Cloud.Sdk.Model.Requests;
@@ -55,7 +56,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             {
                 this.StorageApi.DeleteFolder(new DeleteFolderRequest(TempFolder, DefaultStorage, true));
             }
-
         }
 
         protected string SearchContextId { get; private set; }
@@ -94,6 +94,23 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 ? new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: null, imagesFolder: storageSourcePath, storage: DefaultStorage)
                 : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: DefaultStorage);
             this.ImagingApi.PostSearchContextExtractImageFeatures(request);
+
+            if (isFolder)
+            {
+                this.WaitSearchContextIdle(TimeSpan.FromMinutes(2));
+            }
+        }
+
+        protected void WaitSearchContextIdle(TimeSpan maxTime)
+        {
+            var timeout = TimeSpan.FromSeconds(10);
+            var spentTime = TimeSpan.Zero;
+
+            while (this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: DefaultStorage)).SearchStatus != "Idle" || maxTime < spentTime)
+            {
+                Thread.Sleep(timeout);
+                spentTime += timeout;
+            }
         }
 
         protected void RunTestWithLogging(string testMethodWithParams, TestAction testAction)

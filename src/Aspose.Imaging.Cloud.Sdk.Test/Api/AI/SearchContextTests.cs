@@ -25,6 +25,7 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
+    using System;
     using System.IO;
     using System.Net;
     using Client;
@@ -162,8 +163,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                     () =>
                     {
                         this.ImagingApi.PostSearchContextExtractImageFeatures(
-                new PostSearchContextExtractImageFeaturesRequest(
-                    this.SearchContextId, null, null, $"{this.OriginalDataFolder}/FindSimilar", DefaultStorage));
+                            new PostSearchContextExtractImageFeaturesRequest(
+                                this.SearchContextId, null, null, $"{this.OriginalDataFolder}/FindSimilar", DefaultStorage));
+
+                        this.WaitSearchContextIdle(TimeSpan.FromMinutes(2));
 
                         var response = this.ImagingApi.GetSearchContextImageFeatures(
                             new GetSearchContextImageFeaturesRequest(this.SearchContextId, $"{this.OriginalDataFolder}/FindSimilar/3.jpg", storage: DefaultStorage));
@@ -236,22 +239,20 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
         private void AddImage(string image)
         {
-            RunTestWithLogging("FindSimilarImagesTest",
-                    () =>
-                    {
-                        var destServerPath = $"{this.TempFolder}/{image}";
+            var destServerPath = $"{this.TempFolder}/{image}";
 
-                        var storagePath = this.OriginalDataFolder + "/" + image;
-                        var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, storage: DefaultStorage));
-                        Assert.NotNull(imageStream);
+            var storagePath = this.OriginalDataFolder + "/" + image;
+            var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, storage: DefaultStorage));
+            Assert.NotNull(imageStream);
 
-                        this.ImagingApi.PostSearchContextAddImage(
-                            new PostSearchContextAddImageRequest(this.SearchContextId, destServerPath, imageStream, storage: DefaultStorage));
+            this.ImagingApi.PostSearchContextAddImage(
+                new PostSearchContextAddImageRequest(this.SearchContextId, destServerPath, imageStream,
+                    storage: DefaultStorage));
 
-                        var existResponse = this.StorageApi.GetIsExist(new GetIsExistRequest(destServerPath, storage: DefaultStorage));
-                        Assert.IsNotNull(existResponse);
-                        Assert.IsTrue(existResponse.FileExist.IsExist == true);
-                    });
+            var existResponse =
+                this.StorageApi.GetIsExist(new GetIsExistRequest(destServerPath, storage: DefaultStorage));
+            Assert.IsNotNull(existResponse);
+            Assert.IsTrue(existResponse.FileExist.IsExist == true);
         }
 
         private Stream GetImage(string image)

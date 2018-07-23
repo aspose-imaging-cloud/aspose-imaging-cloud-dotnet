@@ -49,7 +49,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                         new GetSearchContextFindSimilarRequest(this.SearchContextId, 3, 3, imageId: findImageId, storage: DefaultStorage));
 
                     Assert.AreEqual(HttpStatusCode.OK, response.Code);
-                    Assert.AreEqual(2, response.Results.Count);
+                    Assert.IsTrue(response.Results.Count >= 1);
                 });
         }
 
