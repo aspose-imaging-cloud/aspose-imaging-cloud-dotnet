@@ -25,11 +25,14 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
+    using System;
     using System.IO;
     using System.Net;
     using Model.Requests;
     using NUnit.Framework;
     using Storage.Cloud.Sdk.Model.Requests;
+
+    public delegate void TestAction();
 
     [TestFixture]
     public abstract class TestImagingAIBase: ApiTester
@@ -91,6 +94,25 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 ? new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: null, imagesFolder: storageSourcePath, storage: DefaultStorage)
                 : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: DefaultStorage);
             this.ImagingApi.PostSearchContextExtractImageFeatures(request);
+        }
+
+        protected void RunTestWithLogging(string testMethodWithParams, TestAction testAction)
+        {
+            var passed = false;
+
+            Console.WriteLine(testMethodWithParams);
+            try
+            {
+                testAction();
+                passed = true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
+            Console.WriteLine($"Test passed: {passed}");
         }
     }
 }
