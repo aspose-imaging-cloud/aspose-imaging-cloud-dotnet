@@ -25,15 +25,21 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
+    using System;
+    using System.Diagnostics;
     using System.IO;
     using System.Net;
+    using System.Threading;
     using Model.Requests;
     using NUnit.Framework;
     using Storage.Cloud.Sdk.Model.Requests;
 
+    public delegate void TestAction();
+
     [TestFixture]
     public abstract class TestImagingAIBase: ApiTester
     {
+        private const int WaitTimeoutInMinutes = 5;
         [SetUp]
         public void InitTest()
         {
@@ -52,7 +58,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             {
                 this.StorageApi.DeleteFolder(new DeleteFolderRequest(TempFolder, DefaultStorage, true));
             }
-
         }
 
         protected string SearchContextId { get; private set; }
@@ -91,6 +96,44 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 ? new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: null, imagesFolder: storageSourcePath, storage: DefaultStorage)
                 : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: DefaultStorage);
             this.ImagingApi.PostSearchContextExtractImageFeatures(request);
+
+
+            this.WaitSearchContextIdle();
+        }
+
+        protected void WaitSearchContextIdle()
+        {
+            this.WaitSearchContextIdle(TimeSpan.FromMinutes(WaitTimeoutInMinutes));
+        }
+
+        protected void WaitSearchContextIdle(TimeSpan maxTime)
+        {
+            var timeout = TimeSpan.FromSeconds(10);
+            var startTime = DateTime.UtcNow;
+
+            while (this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: DefaultStorage)).SearchStatus != "Idle" && DateTime.UtcNow - startTime < maxTime)
+            {
+                Thread.Sleep(timeout);
+            }
+        }
+
+        protected void RunTestWithLogging(string testMethodWithParams, TestAction testAction)
+        {
+            var passed = false;
+
+            Console.WriteLine(testMethodWithParams);
+            try
+            {
+                testAction();
+                passed = true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
+            Console.WriteLine($"Test passed: {passed}");
         }
     }
 }
