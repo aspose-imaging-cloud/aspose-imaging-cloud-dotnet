@@ -26,6 +26,7 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
     using System;
+    using System.Diagnostics;
     using System.IO;
     using System.Net;
     using System.Threading;
@@ -38,7 +39,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     [TestFixture]
     public abstract class TestImagingAIBase: ApiTester
     {
-        private const int WaitTimeoutInMinutes = 2;
+        private const int WaitTimeoutInMinutes = 5;
         [SetUp]
         public void InitTest()
         {
@@ -108,12 +109,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         protected void WaitSearchContextIdle(TimeSpan maxTime)
         {
             var timeout = TimeSpan.FromSeconds(10);
-            var spentTime = TimeSpan.Zero;
+            var startTime = DateTime.UtcNow;
 
-            while (this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: DefaultStorage)).SearchStatus != "Idle" && spentTime < maxTime)
+            while (this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: DefaultStorage)).SearchStatus != "Idle" && DateTime.UtcNow - startTime < maxTime)
             {
                 Thread.Sleep(timeout);
-                spentTime += timeout;
             }
         }
 
