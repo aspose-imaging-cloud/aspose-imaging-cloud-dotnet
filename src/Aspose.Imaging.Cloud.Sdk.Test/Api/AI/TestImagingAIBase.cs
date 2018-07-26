@@ -38,6 +38,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     [TestFixture]
     public abstract class TestImagingAIBase: ApiTester
     {
+        private const int WaitTimeoutInMinutes = 2;
         [SetUp]
         public void InitTest()
         {
@@ -95,10 +96,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: DefaultStorage);
             this.ImagingApi.PostSearchContextExtractImageFeatures(request);
 
-            if (isFolder)
-            {
-                this.WaitSearchContextIdle(TimeSpan.FromMinutes(2));
-            }
+
+            this.WaitSearchContextIdle();
+        }
+
+        protected void WaitSearchContextIdle()
+        {
+            this.WaitSearchContextIdle(TimeSpan.FromMinutes(WaitTimeoutInMinutes));
         }
 
         protected void WaitSearchContextIdle(TimeSpan maxTime)
