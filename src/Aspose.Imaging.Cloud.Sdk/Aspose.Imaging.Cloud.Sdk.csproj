@@ -4,7 +4,7 @@
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{99C6BA63-6A2B-4398-9EB8-F9BFF1376E6C}</ProjectGuid>
+    <ProjectGuid>{3FC537F4-8883-49F3-A400-04AE49F6D767}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Aspose.Imaging.Cloud.Sdk</RootNamespace>
