@@ -35,8 +35,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing SaveAsApi
     /// </summary>
+    [Category("SaveAs")]
     [TestFixture]
-    public class SaveAsApiTests : ApiTester
+    public class SaveAsApiTests : ImagingApiTester
     {
         /// <summary>
         /// Performs SaveAs (export to another format) operation test with GET method, taking input data from storage.
@@ -46,11 +47,30 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="additionalExportFormats">Additional formats to export to</param>
         [TestCase(".jpg", true)]
         [TestCase(".jpg", false)]
+#if EXTENDED_TEST
+        [TestCase(".bmp", true)]
+        [TestCase(".bmp", false)]
+        [TestCase(".dicom", true)]
+        [TestCase(".dicom", false)]
+        // TODO: enable after IMAGINGCLOUD-51 is resolved
+        //[TestCase(".gif", true)]
+        //[TestCase(".gif", false)]
+        [TestCase(".j2k", true)]
+        [TestCase(".j2k", false)]
+        [TestCase(".png", true)]
+        [TestCase(".png", false)]
+        [TestCase(".psd", true)]
+        [TestCase(".psd", false)]
+        [TestCase(".tiff", true)]
+        [TestCase(".tiff", false)]
+        [TestCase(".webp", true)]
+        [TestCase(".webp", false)]
+#endif
         public void GetImageSaveAsTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
             string outName = null;
 
             List<string> formatsToExport = new List<string>(this.BasicExportFormats);
@@ -105,11 +125,30 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="additionalExportFormats">Additional formats to export to</param>
         [TestCase(".jpg", true)]
         [TestCase(".jpg", false)]
+#if EXTENDED_TEST
+        [TestCase(".bmp", true)]
+        [TestCase(".bmp", false)]
+        [TestCase(".dicom", true)]
+        [TestCase(".dicom", false)]
+        // TODO: enable after IMAGINGCLOUD-51 is resolved
+        //[TestCase(".gif", true)]
+        //[TestCase(".gif", false)]
+        [TestCase(".j2k", true)]
+        [TestCase(".j2k", false)]
+        [TestCase(".png", true)]
+        [TestCase(".png", false)]
+        [TestCase(".psd", true)]
+        [TestCase(".psd", false)]
+        [TestCase(".tiff", true)]
+        [TestCase(".tiff", false)]
+        [TestCase(".webp", true)]
+        [TestCase(".webp", false)]
+#endif
         public void PostImageSaveAsTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
             string outName = null;
 
             List<string> formatsToExport = new List<string>(this.BasicExportFormats);

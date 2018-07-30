@@ -39,7 +39,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     ///  Class for testing TiffApi
     /// </summary>
     [TestFixture]
-    public class TiffApiTests : ApiTester
+    [Category("Tiff")]
+    public class TiffApiTests : ImagingApiTester
     {
         /// <summary>
         /// Test GetTiffToFax
@@ -50,7 +51,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string name = "test.tiff";
             string outName = $"{name}_fax.tiff";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetTiffToFaxTest",
@@ -94,7 +95,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.tiff";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageTiffTest",
@@ -142,7 +143,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.tiff";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestPostRequest(
                 "PostImageTiffTest",
@@ -192,7 +193,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string resultFileName = $"{inputFileName}_merged.tiff";
             string outPath = null;
             string inputPath = CloudTestFolder + "/" + inputFileName;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
             string referencePath = CloudReferencesFolder + "/Tiff";
 
             try
