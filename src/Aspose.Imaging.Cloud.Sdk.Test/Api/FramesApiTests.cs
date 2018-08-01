@@ -55,7 +55,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int? rectHeight = 300;
             string rotateFlipMethod = "Rotate90FlipX";
             bool? saveOtherFrames = false;
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
             string outName = $"{name}_singleFrame.tiff";
 
@@ -121,7 +121,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int? rectHeight = 300;
             string rotateFlipMethod = "Rotate90FlipX";
             bool? saveOtherFrames = true;
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
             string outName = $"{name}_allFrames.tiff";
 

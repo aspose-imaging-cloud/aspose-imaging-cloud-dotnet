@@ -50,7 +50,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         {
             string name = "test.tiff";
             string outName = $"{name}_fax.tiff";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
@@ -94,7 +94,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             double verticalResolution = 150;
             bool? fromScratch = null;
             string outName = $"{name}_specific.tiff";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
@@ -142,7 +142,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             double verticalResolution = 150;
             bool? fromScratch = null;
             string outName = $"{name}_specific.tiff";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestPostRequest(
@@ -182,7 +182,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             Console.WriteLine("PostTiffAppendTest");
 
             string inputFileName = "test.tiff";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
 
             if (!CheckInputFileExists(inputFileName))
             {
@@ -192,7 +192,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             string resultFileName = $"{inputFileName}_merged.tiff";
             string outPath = null;
-            string inputPath = CloudTestFolder + "/" + inputFileName;
+            string inputPath = TempFolder + "/" + inputFileName;
             string storage = this.TestStorage;
             string referencePath = CloudReferencesFolder + "/Tiff";
 
@@ -200,7 +200,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             {
                 Console.WriteLine($"Input image: {inputFileName}");
 
-                outPath = CloudTestFolder + "/" + resultFileName;
+                outPath = TempFolder + "/" + resultFileName;
 
                 // remove output file from the storage (if exists)
                 if (this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value)

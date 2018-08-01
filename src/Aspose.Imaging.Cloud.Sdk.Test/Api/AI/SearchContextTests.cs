@@ -164,7 +164,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                     {
                         this.ImagingApi.PostSearchContextExtractImageFeatures(
                             new PostSearchContextExtractImageFeaturesRequest(
-                                this.SearchContextId, null, null, $"{this.OriginalDataFolder}/FindSimilar", this.TestStorage));
+                                this.SearchContextId, null, null, $"{this.OriginalDataFolder}/FindSimilar", storage: this.TestStorage));
 
                         this.WaitSearchContextIdle();
 
