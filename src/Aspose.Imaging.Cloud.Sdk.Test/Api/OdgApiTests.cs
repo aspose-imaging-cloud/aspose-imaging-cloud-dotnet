@@ -31,12 +31,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-	
+
     /// <summary>
     ///  Class for testing OdgApi
     /// </summary>
+    [Category("Odg")]
     [TestFixture]
-    public class OdgApiTests : ApiTester
+    public class OdgApiTests : ImagingApiTester
     {
         /// <summary>
         /// Test GetImageOdg
@@ -50,7 +51,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.png";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageOdgTest",
@@ -113,7 +114,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool? fromScratch = null;
             string outName = $"{name}_specific.png";
             string folder = CloudTestFolder;
-            string storage = DefaultStorage;
+            string storage = this.TestStorage;
 
             this.TestPostRequest(
                 "PostImageOdgTest",

@@ -40,35 +40,43 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         [Test]
         public void FindSimilarImagesTest()
         {
-            this.AddImageFeaturesToSearchContext($"{this.OriginalDataFolder}/FindSimilar", true);
-            var findImageId = $"{this.OriginalDataFolder}/FindSimilar/{ImageToFind}";
-            var response = this.ImagingApi.GetSearchContextFindSimilar(
-                new GetSearchContextFindSimilarRequest(this.SearchContextId, 3, 3, imageId: findImageId, storage: DefaultStorage));
+            RunTestWithLogging("FindSimilarImagesTest",
+                () =>
+                {
+                    this.AddImageFeaturesToSearchContext($"{this.OriginalDataFolder}/FindSimilar", true);
+                    var findImageId = $"{this.OriginalDataFolder}/FindSimilar/{ImageToFind}";
+                    var response = this.ImagingApi.GetSearchContextFindSimilar(
+                        new GetSearchContextFindSimilarRequest(this.SearchContextId, 3, 3, imageId: findImageId, storage: this.TestStorage));
 
-            Assert.AreEqual(HttpStatusCode.OK, response.Code);
-            Assert.AreEqual(2, response.Results.Count);
+                    Assert.AreEqual(HttpStatusCode.OK, response.Code);
+                    Assert.IsTrue(response.Results.Count >= 1);
+                });
         }
 
         [Test]
         public void FindSimilarImagesByTagTest()
         {
-            this.AddImageFeaturesToSearchContext($"{this.OriginalDataFolder}/FindSimilar", true);
+            RunTestWithLogging("FindSimilarImagesByTagTest",
+                 () =>
+                 {
+                     this.AddImageFeaturesToSearchContext($"{this.OriginalDataFolder}/FindSimilar", true);
 
-            var tag = "TestTag";
+                     var tag = "TestTag";
 
-            var storagePath = this.OriginalDataFolder + "/" + ImageToFindByTag;
+                     var storagePath = this.OriginalDataFolder + "/" + ImageToFindByTag;
 
-            var tagImageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, null, DefaultStorage));
-            Assert.NotNull(tagImageStream);
-            this.ImagingApi.PostSearchContextAddTag(
-                new PostSearchContextAddTagRequest(tagImageStream, this.SearchContextId, tag, storage: DefaultStorage));
+                     var tagImageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, null, this.TestStorage));
+                     Assert.NotNull(tagImageStream);
+                     this.ImagingApi.PostSearchContextAddTag(
+                         new PostSearchContextAddTagRequest(tagImageStream, this.SearchContextId, tag, storage: this.TestStorage));
 
-            var tags = JsonConvert.SerializeObject(new[] { tag });
-            var response = this.ImagingApi.PostSearchContextFindByTags(
-                new PostSearchContextFindByTagsRequest(tags, this.SearchContextId, 60, 5, storage: DefaultStorage));
-            Assert.AreEqual(HttpStatusCode.OK, response.Code);
-            Assert.AreEqual(1, response.Results.Count);
-            Assert.IsTrue(response.Results[0].ImageId.Contains("2.jpg"));
+                     var tags = JsonConvert.SerializeObject(new[] { tag });
+                     var response = this.ImagingApi.PostSearchContextFindByTags(
+                         new PostSearchContextFindByTagsRequest(tags, this.SearchContextId, 60, 5, storage: this.TestStorage));
+                     Assert.AreEqual(HttpStatusCode.OK, response.Code);
+                     Assert.AreEqual(1, response.Results.Count);
+                     Assert.IsTrue(response.Results[0].ImageId.Contains("2.jpg"));
+                 });
         }
     }
 }

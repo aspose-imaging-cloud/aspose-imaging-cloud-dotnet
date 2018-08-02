@@ -25,15 +25,22 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
+    using System;
+    using System.Diagnostics;
     using System.IO;
     using System.Net;
+    using System.Threading;
     using Model.Requests;
     using NUnit.Framework;
     using Storage.Cloud.Sdk.Model.Requests;
 
+    public delegate void TestAction();
+    [Category("AI")]
+    [Category("v2.0")]
     [TestFixture]
     public abstract class TestImagingAIBase: ApiTester
     {
+        private const int WaitTimeoutInMinutes = 5;
         [SetUp]
         public void InitTest()
         {
@@ -48,16 +55,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 this.DeleteSearchContext(this.SearchContextId);
             }
 
-            if (this.StorageApi.GetIsExist(new GetIsExistRequest(TempFolder, null, DefaultStorage)).FileExist.IsExist.Value)
+            if (this.StorageApi.GetIsExist(new GetIsExistRequest(TempFolder, null, this.TestStorage)).FileExist.IsExist.Value)
             {
-                this.StorageApi.DeleteFolder(new DeleteFolderRequest(TempFolder, DefaultStorage, true));
+                this.StorageApi.DeleteFolder(new DeleteFolderRequest(TempFolder, this.TestStorage, true));
             }
-
         }
 
         protected string SearchContextId { get; private set; }
 
-        protected string OriginalDataFolder => "ImagingAI";
+        protected override string OriginalDataFolder => "ImagingAI";
 
         protected string TempFolder => "TempImagingAI";
 
@@ -68,19 +74,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
         protected string CreateSearchContext()
         {
-            var response = this.ImagingApi.PostCreateSearchContext(new PostCreateSearchContextRequest(storage: DefaultStorage));
+            var response = this.ImagingApi.PostCreateSearchContext(new PostCreateSearchContextRequest(storage: this.TestStorage));
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             return response.Id;
         }
 
         protected void DeleteSearchContext(string searchContextId)
         {
-            this.ImagingApi.DeleteSearchContext(new DeleteSearchContextRequest(searchContextId, storage: DefaultStorage));
+            this.ImagingApi.DeleteSearchContext(new DeleteSearchContextRequest(searchContextId, storage: this.TestStorage));
         }
 
         protected string GetSearchContextStatus(string searchContextId)
         {
-            var response =  this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: DefaultStorage));
+            var response =  this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: this.TestStorage));
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             return response.SearchStatus;
         }
@@ -88,9 +94,47 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         protected void AddImageFeaturesToSearchContext(string storageSourcePath, bool isFolder = false)
         {
             var request = isFolder
-                ? new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: null, imagesFolder: storageSourcePath, storage: DefaultStorage)
-                : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: DefaultStorage);
+                ? new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: null, imagesFolder: storageSourcePath, storage: this.TestStorage)
+                : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: this.TestStorage);
             this.ImagingApi.PostSearchContextExtractImageFeatures(request);
+
+
+            this.WaitSearchContextIdle();
+        }
+
+        protected void WaitSearchContextIdle()
+        {
+            this.WaitSearchContextIdle(TimeSpan.FromMinutes(WaitTimeoutInMinutes));
+    }
+
+        protected void WaitSearchContextIdle(TimeSpan maxTime)
+        {
+            var timeout = TimeSpan.FromSeconds(10);
+            var startTime = DateTime.UtcNow;
+
+            while (this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: this.TestStorage)).SearchStatus != "Idle" && DateTime.UtcNow - startTime < maxTime)
+            {
+                Thread.Sleep(timeout);
+            }
+        }
+
+        protected void RunTestWithLogging(string testMethodWithParams, TestAction testAction)
+        {
+            var passed = false;
+
+            Console.WriteLine(testMethodWithParams);
+            try
+            {
+                testAction();
+                passed = true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
+            Console.WriteLine($"Test passed: {passed}");
         }
     }
 }

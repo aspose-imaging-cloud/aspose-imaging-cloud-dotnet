@@ -39,21 +39,25 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         [Test]
         public void FindDuplicatesTest()
         {
-            this.AddImageFeaturesToSearchContext($"{this.OriginalDataFolder}/FindSimilar", true);
+            RunTestWithLogging("FindDuplicatesTest",
+                  () =>
+                  {
+                      this.AddImageFeaturesToSearchContext($"{this.OriginalDataFolder}/FindSimilar", true);
 
-            var image = this.GetStoragePath(ComparableImage);
-            this.AddImageFeaturesToSearchContext(image);
+                      var image = this.GetStoragePath(ComparableImage);
+                      this.AddImageFeaturesToSearchContext(image);
 
-            image = this.GetStoragePath(ComparingImageSimilarLess15);
-            this.AddImageFeaturesToSearchContext(image);
+                      image = this.GetStoragePath(ComparingImageSimilarLess15);
+                      this.AddImageFeaturesToSearchContext(image);
 
-            image = this.GetStoragePath(ComparingImageSimilarMore75);
-            this.AddImageFeaturesToSearchContext(image);
+                      image = this.GetStoragePath(ComparingImageSimilarMore75);
+                      this.AddImageFeaturesToSearchContext(image);
 
-            var response = this.ImagingApi.GetSearchContextFindDuplicates(
-                new GetSearchContextFindDuplicatesRequest(this.SearchContextId, 80));
-            Assert.AreEqual(HttpStatusCode.OK, response.Code);
-            Assert.AreEqual(1, response.Duplicates.Count);
+                      var response = this.ImagingApi.GetSearchContextFindDuplicates(
+                          new GetSearchContextFindDuplicatesRequest(this.SearchContextId, 80));
+                      Assert.AreEqual(HttpStatusCode.OK, response.Code);
+                      Assert.AreEqual(1, response.Duplicates.Count);
+                  });
         }
     }
 }

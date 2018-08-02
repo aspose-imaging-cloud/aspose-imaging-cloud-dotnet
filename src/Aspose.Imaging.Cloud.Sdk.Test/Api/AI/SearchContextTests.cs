@@ -25,6 +25,7 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
+    using System;
     using System.IO;
     using System.Net;
     using Client;
@@ -42,159 +43,198 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         [Test]
         public void CreateSearchContextTest()
         {
-            Assert.IsNotNull(this.SearchContextId);
+            RunTestWithLogging("CreateSearchContextTest",
+                  () => Assert.IsNotNull(this.SearchContextId));
         }
 
         [Test]
         public void DeleteSearchContextTest()
         {
-            this.DeleteSearchContext(this.SearchContextId);
+            RunTestWithLogging("DeleteSearchContextTest",
+                  () =>
+                  {
+                      this.DeleteSearchContext(this.SearchContextId);
 
-            var errorMessage = Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextStatus(
-                new GetSearchContextStatusRequest(this.SearchContextId, storage: DefaultStorage))).Message;
+                      var errorMessage = Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextStatus(
+                          new GetSearchContextStatusRequest(this.SearchContextId, storage: this.TestStorage))).Message;
 
-            Assert.IsTrue(errorMessage.Contains("not found"));
+                      Assert.IsTrue(errorMessage.Contains("not found"));
+                  });
         }
 
         [Test]
         public void AddImageTest()
         {
-            var image = TestImage;
-
-            this.AddImage(image);
+            RunTestWithLogging("AddImageTest",
+               () => this.AddImage(TestImage));
         }
 
         [Test]
         public void DeleteImageTest()
         {
-            var image = TestImage;
-            this.AddImage(image);
+            RunTestWithLogging("DeleteImageTest",
+                    () =>
+                    {
+                        var image = TestImage;
+                        this.AddImage(image);
 
-            var destServerPath = $"{this.TempFolder}/{image}";
+                        var destServerPath = $"{this.TempFolder}/{image}";
 
-            this.ImagingApi.DeleteSearchContextImage(
-                new DeleteSearchContextImageRequest(this.SearchContextId, destServerPath, storage: DefaultStorage));
+                        this.ImagingApi.DeleteSearchContextImage(
+                            new DeleteSearchContextImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
 
-            var errorMessage = Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextImage(
-                new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: DefaultStorage))).Message;
-            Assert.IsTrue(errorMessage.Contains("not found"));
+                        var errorMessage = Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextImage(
+                            new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage))).Message;
+                        Assert.IsTrue(errorMessage.Contains("not found"));
+                    });
         }
 
         [Test]
         public void GetImageTest()
         {
-            var image = TestImage;
-            this.AddImage(image);
-            var responseStream = this.GetImage(image);
-            Assert.IsTrue((int)responseStream.Length > 50000);
+            RunTestWithLogging("GetImageTest",
+                    () =>
+                    {
+                        var image = TestImage;
+                        this.AddImage(image);
+                        var responseStream = this.GetImage(image);
+                        Assert.IsTrue((int)responseStream.Length > 50000);
+                    });
         }
 
         [Test]
         public void UpdateImageTest()
         {
-            var image = TestImage;
-            this.AddImage(image);
-            var responseStream = this.GetImage(image);
-            Assert.IsTrue(responseStream.Length > 50000);
+            RunTestWithLogging("UpdateImageTest",
+                 () =>
+                 {
+                     var image = TestImage;
+                     this.AddImage(image);
+                     var responseStream = this.GetImage(image);
+                     Assert.IsTrue(responseStream.Length > 50000);
 
-            image = SmallTestImage;
-            var destServerPath = $"{this.TempFolder}/{image}";
+                     image = SmallTestImage;
+                     var destServerPath = $"{this.TempFolder}/{image}";
 
-            var storagePath = this.OriginalDataFolder + "/" + image;
-            var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, null, DefaultStorage));
-            Assert.NotNull(imageStream);
+                     var storagePath = this.OriginalDataFolder + "/" + image;
+                     var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, null, this.TestStorage));
+                     Assert.NotNull(imageStream);
 
-            this.ImagingApi.PutSearchContextImage(
-                new PutSearchContextImageRequest(this.SearchContextId, destServerPath, imageStream, storage: DefaultStorage));
+                     this.ImagingApi.PutSearchContextImage(
+                         new PutSearchContextImageRequest(this.SearchContextId, destServerPath, imageStream, storage: this.TestStorage));
 
-            responseStream = this.GetImage(image);
-            Assert.IsTrue((int)responseStream.Length < 40000);
+                     responseStream = this.GetImage(image);
+                     Assert.IsTrue((int)responseStream.Length < 40000);
+                 });
         }
 
         [Test]
         public void ExtractImageFeaturesTest()
         {
-            var image = TestImage;
+            RunTestWithLogging("ExtractImageFeaturesTest",
+                    () =>
+                    {
+                        var image = TestImage;
 
-            this.AddImage(image);
+                        this.AddImage(image);
 
-            var destServerPath = $"{this.TempFolder}/{image}";
+                        var destServerPath = $"{this.TempFolder}/{image}";
 
-            var response = this.ImagingApi.GetSearchContextExtractImageFeatures(
-                new GetSearchContextExtractImageFeaturesRequest(this.SearchContextId, destServerPath, storage: DefaultStorage));
+                        var response = this.ImagingApi.GetSearchContextExtractImageFeatures(
+                            new GetSearchContextExtractImageFeaturesRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
 
-            Assert.AreEqual(HttpStatusCode.OK, response.Code);
-            Assert.IsTrue(response.ImageId.Contains(image));
-            Assert.IsTrue(response.Features.Length > 0);
+                        Assert.AreEqual(HttpStatusCode.OK, response.Code);
+                        Assert.IsTrue(response.ImageId.Contains(image));
+                        Assert.IsTrue(response.Features.Length > 0);
+                    });
         }
 
         [Test]
         public void ExtractAndAddImageFeaturesTest()
         {
-            this.AddImageFeatures(TestImage);
+            RunTestWithLogging("ExtractAndAddImageFeaturesTest",
+                  () => this.AddImageFeatures(TestImage));
         }
 
         [Test]
         public void ExtractAndAddImageFeaturesFromFolderTest()
         {
-            this.ImagingApi.PostSearchContextExtractImageFeatures(
-                new PostSearchContextExtractImageFeaturesRequest(
-                    this.SearchContextId, null, null, $"{this.OriginalDataFolder}/FindSimilar", DefaultStorage));
+            RunTestWithLogging("ExtractAndAddImageFeaturesFromFolderTest",
+                    () =>
+                    {
+                        this.ImagingApi.PostSearchContextExtractImageFeatures(
+                            new PostSearchContextExtractImageFeaturesRequest(
+                                this.SearchContextId, null, null, $"{this.OriginalDataFolder}/FindSimilar", this.TestStorage));
 
-            var response = this.ImagingApi.GetSearchContextImageFeatures(
-                new GetSearchContextImageFeaturesRequest(this.SearchContextId, $"{this.OriginalDataFolder}/FindSimilar/3.jpg", storage:DefaultStorage));
+                        this.WaitSearchContextIdle();
 
-            Assert.AreEqual(HttpStatusCode.OK, response.Code);
-            Assert.IsTrue(response.ImageId.Contains("3.jp"));
-            Assert.IsTrue(response.Features.Length > 0);
+                        var response = this.ImagingApi.GetSearchContextImageFeatures(
+                            new GetSearchContextImageFeaturesRequest(this.SearchContextId, $"{this.OriginalDataFolder}/FindSimilar/3.jpg", storage: this.TestStorage));
+
+                        Assert.AreEqual(HttpStatusCode.OK, response.Code);
+                        Assert.IsTrue(response.ImageId.Contains("3.jp"));
+                        Assert.IsTrue(response.Features.Length > 0);
+                    });
         }
 
         [Test]
         public void GetImageFeaturesTest()
         {
-             this.AddImageFeatures(TestImage);
-            var response = this.GetImageFeatures(TestImage);
-            Assert.IsTrue(response.ImageId.Contains(TestImage));
-            var features = response.Features;
-            Assert.IsTrue(features.Length > 0);
+            RunTestWithLogging("GetImageFeaturesTest",
+                 () =>
+                 {
+                     this.AddImageFeatures(TestImage);
+                     var response = this.GetImageFeatures(TestImage);
+                     Assert.IsTrue(response.ImageId.Contains(TestImage));
+                     var features = response.Features;
+                     Assert.IsTrue(features.Length > 0);
+                 });
         }
 
         [Test]
         public void DeleteImageFeaturesTest()
         {
-            var image = TestImage;
-            this.AddImageFeatures(image);
-            var destServerPath = $"{this.TempFolder}/{image}";
-            this.ImagingApi.DeleteSearchContextImage(
-                new DeleteSearchContextImageRequest(SearchContextId, destServerPath, storage: DefaultStorage));
+            RunTestWithLogging("DeleteImageFeaturesTest",
+                 () =>
+                 {
+                     var image = TestImage;
+                     this.AddImageFeatures(image);
+                     var destServerPath = $"{this.TempFolder}/{image}";
+                     this.ImagingApi.DeleteSearchContextImage(
+                         new DeleteSearchContextImageRequest(SearchContextId, destServerPath, storage: this.TestStorage));
 
-            var errorMessage = Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextImage(
-                new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: DefaultStorage))).Message;
-            Assert.IsTrue(errorMessage.Contains("not found"));
+                     var errorMessage = Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextImage(
+                         new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage))).Message;
+                     Assert.IsTrue(errorMessage.Contains("not found"));
+                 });
         }
 
         [Test]
         public void UpdateImageFeaturesTest()
         {
-            var image = TestImage;
-            this.AddImageFeatures(image);
-            var response = this.GetImageFeatures(image);
-            Assert.IsTrue(response.ImageId.Contains(TestImage));
-            var features = response.Features;
-            var featuresLength = features.Length;
+            RunTestWithLogging("UpdateImageFeaturesTest",
+                 () =>
+                 {
+                     var image = TestImage;
+                     this.AddImageFeatures(image);
+                     var response = this.GetImageFeatures(image);
+                     Assert.IsTrue(response.ImageId.Contains(TestImage));
+                     var features = response.Features;
+                     var featuresLength = features.Length;
 
-            var destServerPath = $"{this.OriginalDataFolder}/{image}";
+                     var destServerPath = $"{this.OriginalDataFolder}/{image}";
 
-            var storagePath = this.OriginalDataFolder + "/" + SmallTestImage;
-            var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, storage: DefaultStorage));
-            Assert.NotNull(imageStream);
+                     var storagePath = this.OriginalDataFolder + "/" + SmallTestImage;
+                     var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, storage: this.TestStorage));
+                     Assert.NotNull(imageStream);
 
-            this.ImagingApi.PutSearchContextImageFeatures(
-                new PutSearchContextImageFeaturesRequest(this.SearchContextId, destServerPath, imageStream, storage: DefaultStorage));
+                     this.ImagingApi.PutSearchContextImageFeatures(
+                         new PutSearchContextImageFeaturesRequest(this.SearchContextId, destServerPath, imageStream, storage: this.TestStorage));
 
-            response = this.GetImageFeatures(image);
-            Assert.IsTrue(response.ImageId.Contains(TestImage));
-            Assert.IsTrue(featuresLength != response.Features.Length);
+                     response = this.GetImageFeatures(image);
+                     Assert.IsTrue(response.ImageId.Contains(TestImage));
+                     Assert.IsTrue(featuresLength != response.Features.Length);
+                 });
         }
 
         private void AddImage(string image)
@@ -202,13 +242,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var destServerPath = $"{this.TempFolder}/{image}";
 
             var storagePath = this.OriginalDataFolder + "/" + image;
-            var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, storage:DefaultStorage));
+            var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, storage: this.TestStorage));
             Assert.NotNull(imageStream);
 
             this.ImagingApi.PostSearchContextAddImage(
-                new PostSearchContextAddImageRequest(this.SearchContextId, destServerPath, imageStream, storage: DefaultStorage));
-           
-            var existResponse = this.StorageApi.GetIsExist(new GetIsExistRequest(destServerPath, storage: DefaultStorage));
+                new PostSearchContextAddImageRequest(this.SearchContextId, destServerPath, imageStream,
+                    storage: this.TestStorage));
+
+            var existResponse =
+                this.StorageApi.GetIsExist(new GetIsExistRequest(destServerPath, storage: this.TestStorage));
             Assert.IsNotNull(existResponse);
             Assert.IsTrue(existResponse.FileExist.IsExist == true);
         }
@@ -217,7 +259,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         {
             var destServerPath = $"{this.TempFolder}/{image}";
             var response = this.ImagingApi.GetSearchContextImage(
-                new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: DefaultStorage));
+                new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
            
             return response;
         }
@@ -227,14 +269,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var destServerPath = $"{this.OriginalDataFolder}/{image}";
 
             this.ImagingApi.PostSearchContextExtractImageFeatures(
-                new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, null, destServerPath, storage: DefaultStorage));
+                new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, null, destServerPath, storage: this.TestStorage));
         }
 
         private ImageFeatures GetImageFeatures(string image)
         {
             var destServerPath = $"{this.OriginalDataFolder}/{image}";
             var response = this.ImagingApi.GetSearchContextImageFeatures(
-                new GetSearchContextImageFeaturesRequest(this.SearchContextId, destServerPath, storage: DefaultStorage));
+                new GetSearchContextImageFeaturesRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
 
             Assert.AreEqual(HttpStatusCode.OK, response.Code);
             return response;

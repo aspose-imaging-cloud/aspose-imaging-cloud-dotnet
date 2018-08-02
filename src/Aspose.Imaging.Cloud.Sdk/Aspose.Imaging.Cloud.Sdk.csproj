@@ -4,7 +4,7 @@
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3FC537F4-8883-49F3-A400-04AE49F6D767}</ProjectGuid>
+    <ProjectGuid>{4C565593-E45B-4547-956B-E8B992DFDD20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Aspose.Imaging.Cloud.Sdk</RootNamespace>
@@ -53,6 +53,6 @@
   </ItemGroup>
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>$(SolutionDir).nuget\nuget.exe restore $(SolutionDir)</PreBuildEvent>
+    <PreBuildEvent>nuget.exe restore $(SolutionDir)</PreBuildEvent>
   </PropertyGroup>
 </Project>
