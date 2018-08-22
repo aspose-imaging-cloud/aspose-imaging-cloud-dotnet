@@ -54,7 +54,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int borderY = 50;
             bool? fromScratch = null;
             string outName = $"{name}_specific.png";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
@@ -96,7 +96,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int borderY = 50;
             bool? fromScratch = null;
             string outName = $"{name}_specific.png";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestPostRequest(

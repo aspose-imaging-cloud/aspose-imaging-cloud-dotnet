@@ -69,7 +69,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         public void GetImageSaveAsTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
             string outName = null;
 
@@ -147,7 +147,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         public void PostImageSaveAsTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
             string outName = null;
 

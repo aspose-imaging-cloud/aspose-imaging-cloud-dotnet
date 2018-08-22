@@ -51,7 +51,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string compressionType = "progressive";
             bool? fromScratch = null;
             string outName = $"{name}_specific.jpg";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
@@ -92,7 +92,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string compressionType = "progressive";
             bool? fromScratch = null;
             string outName = $"{name}_specific.jpg";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestPostRequest(

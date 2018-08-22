@@ -41,6 +41,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     public abstract class TestImagingAIBase: ApiTester
     {
         private const int WaitTimeoutInMinutes = 5;
+
         [SetUp]
         public void InitTest()
         {
@@ -63,9 +64,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
         protected string SearchContextId { get; private set; }
 
-        protected override string OriginalDataFolder => "ImagingAI";
+        protected override string CloudTestFolderPrefix => "ImagingAICloudTestDotNet";
 
-        protected string TempFolder => "TempImagingAI";
+        protected override string OriginalDataFolder => "ImagingAiSdk";
 
         protected string GetStoragePath(string imageName, string folder = null)
         {

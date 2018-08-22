@@ -51,7 +51,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string comment = "Aspose";
             bool? fromScratch = null;
             string outName = $"{name}_specific.jp2";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
@@ -98,7 +98,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string comment = "Aspose";
             bool? fromScratch = null;
             string outName = $"{name}_specific.jp2";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestPostRequest(
