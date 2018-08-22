@@ -7,54 +7,8 @@ To use this SDK, you will need App SID and App Key which can be looked up at [As
 
 The solution is updated using [code generator](https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-codegen).
 
-# Example
-```csharp
-// optional parameters are base URL, API version, authentication type and debug mode
-// default base URL is https://api.aspose.cloud/
-// default API version is v2
-// default authentication type is OAuth2.0
-// default debug mode is false
-var imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
-
-// this GET request converts image files
-// optional parameters are output file path, input file folder and Aspose storage name (if you have more than one storage and want to use non-default one) 
-// if output file path is not set, resulting image is returned in a stream; otherwise, it's saved at the specified path in the storage and null is returned
-var getSaveRequest = new GetImageSaveAsRequest("inputImage.jpg", "png", "ResultFolder/resultImage.png", "InputFolder");
-
-// returns null, saves result to storage
-imagingApi.GetImageSaveAs(getSaveRequest);
-
-var getStreamRequest = new GetImageSaveAsRequest("inputImage.jpg", "png", null, "InputFolder");
-
-// returns resulting stream
-using (Stream resultGetImageStream = imagingApi.GetImageSaveAs(getStreamRequest))
-{
-	// process resulting stream
-}
-
-// another option is to use POST request and send image in a stream, if it's not present in your storage
-
-using (FileStream inputImageStream = new FileStream(@"D:\test\localInputImage.jpg", FileMode.Open, FileAccess.Read))
-{
-	var postSaveRequest = new PostImageSaveAsRequest(inputImageStream, "png", "ResultFolder/resultImage.png");
-	
-	// returns null, saves result to storage
-	imagingApi.PostImageSaveAs(postSaveRequest);
-}
-
-using (FileStream inputImageStream = new FileStream(@"D:\test\localInputImage.jpg", FileMode.Open, FileAccess.Read))
-{
-	var postStreamRequest = new PostImageSaveAsRequest(inputImageStream, "png");
-	
-	// returns resulting stream
-	using (Stream resultPostImageStream = imagingApi.PostImageSaveAs(postStreamRequest))
-	{
-		// process resulting stream
-	}
-}
-
-// another requests typically follow the same principles
-```
+# Examples
+Please, look at [Examples](EXAMPLES.md) document.
 
 # Tests
 Tests are intended for internal usage only.
