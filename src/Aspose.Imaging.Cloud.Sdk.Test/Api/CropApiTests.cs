@@ -74,7 +74,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int? y = 10;
             int? width = 100;
             int? height = 150;
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
             string outName = null;
 
@@ -159,7 +159,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int? y = 10;
             int? width = 100;
             int? height = 150;
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
             string outName = null;
 

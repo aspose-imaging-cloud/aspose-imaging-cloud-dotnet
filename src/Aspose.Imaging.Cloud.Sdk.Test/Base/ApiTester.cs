@@ -78,11 +78,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         protected const string LocalTestFolder = "..\\..\\..\\..\\TestData\\";
 
         /// <summary>
-        /// The cloud test folder
-        /// </summary>
-        protected const string CloudTestFolder = "ImagingCloudTestDotNet";
-
-        /// <summary>
         /// The cloud references folder
         /// </summary>
         protected const string CloudReferencesFolder = "ImagingCloudSdkTestReferences";
@@ -101,6 +96,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
         #region Fields
 
+        /// <summary>
+        /// If any test failed
+        /// </summary>
+        private static bool failedAnyTest = false;
+
+        /// <summary>
+        /// The temporary folder
+        /// </summary>
+        protected string TempFolder;
+
+        /// <summary>
+        /// The input test files
+        /// </summary>
         protected List<FileResponse> InputTestFiles;
 
         /// <summary>
@@ -156,6 +164,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         #region Properties
 
         /// <summary>
+        /// The cloud test folder prefix
+        /// </summary>
+        protected virtual string CloudTestFolderPrefix => "ImagingCloudTestDotNet";
+
+        /// <summary>
+        /// Original test data folder
+        /// </summary>
+        protected virtual string OriginalDataFolder => "ImagingCloudSdkInputTestData";
+
+        /// <summary>
         /// The default storage
         /// </summary>
         protected string TestStorage { get; private set; }
@@ -168,20 +186,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// </value>
         public bool RemoveResult { get; set; } = true;
 
-        /// <summary>
-        /// Gets or sets a value indicating whether [automatic recover reference] (i.e. if resulting images of failed tests are considered as new valid references).
-        /// Please, change this value ONLY if you clearly understand the consequences, or it may lead to replacement of the images you need, so they will be lost.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [automatic recover reference]; otherwise, <c>false</c>.
-        /// </value>
-        public bool AutoRecoverReference { get; set; } = false;
-
-        /// <summary>
-        /// Original test data folder
-        /// </summary>
-        protected virtual string OriginalDataFolder => "ImagingCloudSdkInputTestData";
-
         #endregion
 
         #region Configuration
@@ -189,6 +193,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestFixtureSetUp]
         public virtual void InitFixture()
         {
+            this.TempFolder = $"{this.CloudTestFolderPrefix}_{this.GetEnvironmentVariable("BUILD_NUMBER") ?? Environment.UserName}";
+
             this.TestStorage = this.GetEnvironmentVariable("StorageName");
 
             if (string.IsNullOrEmpty(this.TestStorage))
@@ -198,19 +204,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             }
 
             this.CreateApiInstances();
-            if (this.StorageApi.GetIsExist(new GetIsExistRequest(CloudTestFolder, null, this.TestStorage)).FileExist.IsExist.Value)
+            if (!failedAnyTest && this.RemoveResult && this.StorageApi.GetIsExist(new GetIsExistRequest(this.TempFolder, null, this.TestStorage)).FileExist.IsExist.Value)
             {
-                this.StorageApi.DeleteFolder(new DeleteFolderRequest(CloudTestFolder, this.TestStorage, true));
-                this.StorageApi.PutCreateFolder(new PutCreateFolderRequest(CloudTestFolder, this.TestStorage, this.TestStorage));
+                this.StorageApi.DeleteFolder(new DeleteFolderRequest(this.TempFolder, this.TestStorage, true));
+                this.StorageApi.PutCreateFolder(new PutCreateFolderRequest(this.TempFolder, this.TestStorage, this.TestStorage));
             }
         }
 
         [TestFixtureTearDown]
         public virtual void FinilizeFixture()
         {
-            if (this.StorageApi.GetIsExist(new GetIsExistRequest(CloudTestFolder, null, this.TestStorage)).FileExist.IsExist.Value)
+            if (!failedAnyTest && this.RemoveResult && this.StorageApi.GetIsExist(new GetIsExistRequest(this.TempFolder, null, this.TestStorage)).FileExist.IsExist.Value)
             {
-                this.StorageApi.DeleteFolder(new DeleteFolderRequest(CloudTestFolder, this.TestStorage, true));
+                this.StorageApi.DeleteFolder(new DeleteFolderRequest(this.TempFolder, this.TestStorage, true));
             }
         }
 
@@ -312,7 +318,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
         protected void TestGetRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, string resultFileName, string localSubfolder,
-            GetRequestInvokerDelegate requestInvoker, PropertiesTesterDelegate propertiesTester, string folder = CloudTestFolder, string storage = DefaultStorage)
+            GetRequestInvokerDelegate requestInvoker, PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
         {
             this.TestRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName, localSubfolder,
                 () => this.ObtainGetResponseLength(inputFileName, saveResultToStorage ? $"{folder}/{resultFileName}" : null, requestInvoker),
@@ -333,7 +339,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
         protected void TestPostRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, string resultFileName, string localSubfolder,
-            PostRequestInvokerDelegate requestInvoker, PropertiesTesterDelegate propertiesTester, string folder = CloudTestFolder, string storage = DefaultStorage)
+            PostRequestInvokerDelegate requestInvoker, PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
         {
             this.TestRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName, localSubfolder,
                 () => this.ObtainPostResponseLength(folder + "/" + inputFileName, saveResultToStorage ? $"{folder}/{resultFileName}" : null, storage, requestInvoker),
@@ -467,8 +473,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="propertiesTester">The properties tester.</param>
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
+        /// <param name="tryFallback">If test fails and Fallback folder is to be checked for another reference.</param>
         private void TestRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, string resultFileName, string referenceSubfolder,
-            Newtonsoft.Json.Serialization.Func<long> invokeRequestFunc, PropertiesTesterDelegate propertiesTester, string folder = CloudTestFolder, string storage = DefaultStorage)
+            Newtonsoft.Json.Serialization.Func<long> invokeRequestFunc, PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage, bool tryFallback = true)
         {
             Console.WriteLine(testMethodName);
 
@@ -486,6 +493,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 Assert.AreEqual(HttpStatusCode.OK.ToString(), putResponse.Status.ToUpperInvariant());
             }
 
+            bool usedFallback = false;
             bool passed = false;
             string outPath = null;
             string referencePath = CloudReferencesFolder + "/" + referenceSubfolder;
@@ -516,52 +524,80 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
                 long responseLength = invokeRequestFunc.Invoke();
 
-                if (saveResultToStorage)
+                try
                 {
-                    FileResponse resultInfo = this.GetStorageFileInfo(folder, resultFileName, storage);
-                    if (resultInfo == null)
+                    if (saveResultToStorage)
                     {
-                        throw new ArgumentException(
-                            $"Result file {resultFileName} doesn't exist in the specified storage folder: {folder}. Result isn't present in the storage by an unknown reason.");
+                        FileResponse resultInfo = this.GetStorageFileInfo(folder, resultFileName, storage);
+                        if (resultInfo == null)
+                        {
+                            throw new ArgumentException(
+                                $"Result file {resultFileName} doesn't exist in the specified storage folder: {folder}. Result isn't present in the storage by an unknown reason.");
+                        }
+
+                        this.CheckSizeDiff(referenceLength, resultInfo.Size.Value);
+
+                        ImagingResponse resultProperties =
+                            this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
+                        Assert.NotNull(resultProperties);
+                        ImagingResponse originalProperties =
+                            this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(inputFileName, folder, storage));
+                        Assert.NotNull(originalProperties);
+
+                        propertiesTester?.Invoke(originalProperties, resultProperties);
                     }
-
-                    this.CheckSizeDiff(referenceLength, resultInfo.Size.Value);
-
-                    ImagingResponse resultProperties =
-                        this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
-                    Assert.NotNull(resultProperties);
-                    ImagingResponse originalProperties =
-                        this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(inputFileName, folder, storage));
-                    Assert.NotNull(originalProperties);
-
-                    propertiesTester?.Invoke(originalProperties, resultProperties);
+                    else
+                    {
+                        // check resulting image from response stream
+                        this.CheckSizeDiff(referenceLength, responseLength);
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    // check resulting image from response stream
-                    this.CheckSizeDiff(referenceLength, responseLength);
+                    if (tryFallback)
+                    {
+                        Console.WriteLine($"Test failed. Trying to scan Fallback folder for {resultFileName} in {this.TestStorage}.");
+                        if (this.StorageApi
+                            .GetIsExist(new GetIsExistRequest($"{referencePath}/Fallback/{resultFileName}", null,
+                                this.TestStorage)).FileExist.IsExist.Value)
+                        {
+                            usedFallback = true;
+                            string fallbackSubfolder = $"{referenceSubfolder}/Fallback";
+                            this.TestRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName, 
+                                fallbackSubfolder, invokeRequestFunc, propertiesTester, folder, storage, false);
+                            return;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"No Fallback folder or {resultFileName} in it exists in {this.TestStorage}.");
+                            throw;
+                        }
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
 
                 passed = true;
             }
             catch (Exception ex)
             {
+                failedAnyTest = true;
                 Console.WriteLine(ex.Message);
                 throw;
             }
             finally
             {
-                if (saveResultToStorage && !passed && this.AutoRecoverReference && this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value)
+                if (!usedFallback)
                 {
-                    var moveFileResponse = this.StorageApi.PostMoveFile(new PostMoveFileRequest(outPath, referencePath + "/" + resultFileName, null, storage, storage));
-                    Assert.AreEqual(HttpStatusCode.OK.ToString(), moveFileResponse.Status);
-                }
-                else if (saveResultToStorage && this.RemoveResult && this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value)
-                {
-                    this.StorageApi.DeleteFile(new DeleteFileRequest(outPath, null, storage));
-                }
+                    if (passed && saveResultToStorage && this.RemoveResult && this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value)
+                    {
+                        this.StorageApi.DeleteFile(new DeleteFileRequest(outPath, null, storage));
+                    }
 
-                Console.WriteLine($"Test passed: {passed}");
+                    Console.WriteLine($"Test passed: {passed}");
+                }
             }
         }
 

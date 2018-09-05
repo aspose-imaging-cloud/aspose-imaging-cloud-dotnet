@@ -55,7 +55,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int pixelAspectRatio = 4;
             bool? fromScratch = null;
             string outName = $"{name}_specific.gif";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
@@ -105,7 +105,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int pixelAspectRatio = 4;
             bool? fromScratch = null;
             string outName = $"{name}_specific.gif";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestPostRequest(

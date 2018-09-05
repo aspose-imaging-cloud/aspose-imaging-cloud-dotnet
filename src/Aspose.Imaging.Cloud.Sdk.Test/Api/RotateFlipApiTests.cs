@@ -73,7 +73,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         {
             string name = null;
             string method = "Rotate90FlipX";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
             string outName = null;
 
@@ -171,7 +171,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         {
             string name = null;
             string method = "Rotate90FlipX";
-            string folder = CloudTestFolder;
+            string folder = TempFolder;
             string storage = this.TestStorage;
             string outName = null;
 
