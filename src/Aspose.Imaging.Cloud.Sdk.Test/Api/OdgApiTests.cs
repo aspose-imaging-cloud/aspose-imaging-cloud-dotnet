@@ -35,6 +35,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing OdgApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Odg")]
     [TestFixture]
     public class OdgApiTests : ImagingApiTester
@@ -59,13 +61,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}",
                 name,
                 outName,
-                "Odg",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageOdgRequest(fileName, fromScratch, outPath, folder, storage);
                     return ImagingApi.GetImageOdg(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.PngProperties);
                     try
@@ -122,13 +123,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}",
                 name,
                 outName,
-                "Odg",
                 delegate (Stream inpuStream, string outPath)
                 {
                     var request = new PostImageOdgRequest(inpuStream, fromScratch, outPath, storage);
                     return ImagingApi.PostImageOdg(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.PngProperties);
                     try

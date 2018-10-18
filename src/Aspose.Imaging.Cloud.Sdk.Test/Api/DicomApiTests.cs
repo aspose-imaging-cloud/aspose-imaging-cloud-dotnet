@@ -26,7 +26,7 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System.IO;
-	using NUnit.Framework;
+    using NUnit.Framework;
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -34,6 +34,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing DicomApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Dicom")]
     [TestFixture]
     public class DicomApiTests : ImagingApiTester
@@ -58,13 +60,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}",
                 name,
                 outName,
-                "Dicom",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageDicomRequest(fileName, fromScratch, outPath, folder, storage);
                     return ImagingApi.GetImageDicom(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.PngProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);
@@ -100,13 +101,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}",
                 name,
                 outName,
-                "Dicom",
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImageDicomRequest(inputStream, fromScratch, outPath, storage);
                     return ImagingApi.PostImageDicom(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.PngProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);

@@ -36,6 +36,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing ResizeApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Resize")]
     [TestFixture]
     public class ResizeApiTests : ImagingApiTester
@@ -106,13 +108,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         $"Input image: {name}; Output format: {format}; New width: {newWidth}; New height: {newHeight}",
                         name,
                         outName,
-                        "Resize",
                         delegate (string fileName, string outPath)
                         {
                             var request = new GetImageResizeRequest(fileName, format, newWidth, newHeight, outPath, folder, storage);
                             return ImagingApi.GetImageResize(request);
                         },
-                        delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                        delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
                             Assert.AreEqual(newWidth, resultProperties.Width);
                             Assert.AreEqual(newHeight, resultProperties.Height);
@@ -189,13 +190,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         $"Input image: {name}; Output format: {format}; New width: {newWidth}; New height: {newHeight}",
                         name,
                         outName,
-                        "Resize",
                         delegate (Stream inputStream, string outPath)
                         {
                             var request = new PostImageResizeRequest(inputStream, format, newWidth, newHeight, outPath, storage);
                             return ImagingApi.PostImageResize(request);
                         },
-                        delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                        delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
                             Assert.AreEqual(newWidth, resultProperties.Width);
                             Assert.AreEqual(newHeight, resultProperties.Height);

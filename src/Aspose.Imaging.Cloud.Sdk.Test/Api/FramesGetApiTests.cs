@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FramesApiTests.cs">
+// <copyright company="Aspose" file="FramesGetApiTests.cs">
 //   Copyright (c) 2018 Aspose Pty Ltd.
 // </copyright>
 // <summary>
@@ -22,20 +22,21 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
-	using NUnit.Framework;
-	
-	using Aspose.Imaging.Cloud.Sdk.Model;
+    using NUnit.Framework;
+    using System.IO;
+    using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
     /// <summary>
     ///  Class for testing FramesApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Tiff")]
     [TestFixture]
-    public class FramesApiTests : ImagingApiTester
+    public class FramesGetApiTests : ImagingApiTester
     {
         /// <summary>
         /// Test GetImageFrame
@@ -66,14 +67,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Save other frames: {saveOtherFrames}; X: {x}; Y: {y}; Rect width: {rectWidth}; Rect height: {rectHeight}",
                 name,
                 outName,
-                "Tiff",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageFrameRequest(name, frameId, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod,
                         saveOtherFrames, outPath, folder, storage);
                     return ImagingApi.GetImageFrame(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.TiffProperties);
                     Assert.NotNull(resultProperties.TiffProperties.Frames);
@@ -86,6 +86,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     Assert.AreEqual(rectWidth, resultProperties.TiffProperties.Frames[0].FrameOptions.ImageLength);
                     Assert.AreEqual(rectHeight, resultProperties.Width);
                     Assert.AreEqual(rectWidth, resultProperties.Height);
+
+                    if (!saveResultToStorage) return;
 
                     var framePropertiesRequest = new GetImageFramePropertiesRequest(outName, 0, folder, storage);
                     var framePropertiesResponse = ImagingApi.GetImageFrameProperties(framePropertiesRequest);
@@ -132,14 +134,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Save other frames: {saveOtherFrames}; X: {x}; Y: {y}; Rect width: {rectWidth}; Rect height: {rectHeight}",
                 name,
                 outName,
-                "Tiff",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageFrameRequest(name, frameId, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod,
                         saveOtherFrames, outPath, folder, storage);
                     return ImagingApi.GetImageFrame(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(originalProperties);
                     Assert.NotNull(originalProperties.TiffProperties);

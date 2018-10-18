@@ -26,7 +26,7 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System.IO;
-	using NUnit.Framework;
+    using NUnit.Framework;
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -34,6 +34,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing Jpeg2000Api
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Jpeg2000")]
     [TestFixture]
     public class Jpeg2000ApiTests : ImagingApiTester
@@ -60,13 +62,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; Comment: {comment}; Codec: {codec}",
                 name,
                 outName,
-                "Jpeg2000",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageJpeg2000Request(name, comment, codec, fromScratch, outPath, folder, storage);
                     return ImagingApi.GetImageJpeg2000(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.Jpeg2000Properties);
 
@@ -107,13 +108,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; Comment: {comment}; Codec: {codec}",
                 name,
                 outName,
-                "Jpeg2000",
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImageJpeg2000Request(inputStream, comment, codec, fromScratch, outPath, storage);
                     return ImagingApi.PostImageJpeg2000(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.Jpeg2000Properties);
 

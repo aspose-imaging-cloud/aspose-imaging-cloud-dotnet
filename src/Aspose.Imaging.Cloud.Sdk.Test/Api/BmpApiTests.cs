@@ -26,7 +26,7 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System;
-	using System.IO;
+    using System.IO;
 	using NUnit.Framework;
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
@@ -35,6 +35,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing BmpApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Bmp")]
     [TestFixture]
     public class BmpApiTests : ImagingApiTester
@@ -62,13 +64,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; Bits per pixel: {bitsPerPixel}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
                 outName,
-                "Bmp",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageBmpRequest(fileName, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, folder, storage);
                     return ImagingApi.GetImageBmp(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.BmpProperties);
                     Assert.AreEqual(bitsPerPixel, resultProperties.BitsPerPixel);
@@ -108,13 +109,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; Bits per pixel: {bitsPerPixel}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
                 outName,
-                "Bmp",
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImageBmpRequest(inputStream, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
                     return ImagingApi.PostImageBmp(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.BmpProperties);
                     Assert.AreEqual(bitsPerPixel, resultProperties.BitsPerPixel);

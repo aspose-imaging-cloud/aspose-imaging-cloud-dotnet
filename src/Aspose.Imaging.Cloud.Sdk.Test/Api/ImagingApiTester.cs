@@ -13,8 +13,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// </summary>
     /// <seealso cref="Aspose.Imaging.Cloud.Sdk.Test.Api.ApiTester" />
     [Category("Imaging")]
-    [Category("v1.0")]
-    [Category("v2.0")]
     public abstract class ImagingApiTester : ApiTester
     {
     }

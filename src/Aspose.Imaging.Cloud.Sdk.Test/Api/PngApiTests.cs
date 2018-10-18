@@ -26,7 +26,7 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System.IO;
-	using NUnit.Framework;
+    using NUnit.Framework;
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -34,6 +34,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing PngApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Png")]
     [TestFixture]
     public class PngApiTests : ImagingApiTester
@@ -59,13 +61,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}",
                 name,
                 outName,
-                "Png",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImagePngRequest(fileName, fromScratch, outPath, folder, storage);
                     return ImagingApi.GetImagePng(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.PngProperties);
 
@@ -102,13 +103,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}",
                 name,
                 outName,
-                "Png",
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImagePngRequest(inputStream, fromScratch, outPath, storage);
                     return ImagingApi.PostImagePng(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.PngProperties);
 

@@ -37,6 +37,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing RotateFlipApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("RotateFlip")]
     [TestFixture]
     public class RotateFlipApiTests : ImagingApiTester
@@ -107,14 +109,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         $"Input image: {name}; Output format: {format}; Method: {method}",
                         name,
                         outName,
-                        "RotateFlip",
                         delegate(string fileName, string outPath)
                         {
                             var request =
                                 new GetImageRotateFlipRequest(fileName, format, method, outPath, folder, storage);
                             return ImagingApi.GetImageRotateFlip(request);
                         },
-                        delegate(ImagingResponse originalProperties, ImagingResponse resultProperties)
+                        delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
                             try
                             {
@@ -205,14 +206,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         $"Input image: {name}; Output format: {format}; Method: {method}",
                         name,
                         outName,
-                        "RotateFlip",
                         delegate (Stream inputStream, string outPath)
                         {
                             var request =
                                 new PostImageRotateFlipRequest(inputStream, format, method, outPath, storage);
                             return ImagingApi.PostImageRotateFlip(request);
                         },
-                        delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                        delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
                             try
                             {

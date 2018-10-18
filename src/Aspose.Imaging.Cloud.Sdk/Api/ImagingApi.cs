@@ -40,15 +40,15 @@ namespace Aspose.Imaging.Cloud.Sdk
     {                 
         #region Fields
 
+	/// <summary>
+        /// The configuration
+        /// </summary>
+        public readonly Configuration Configuration;
+		
         /// <summary>
         /// The API invoker
         /// </summary>
         private readonly ApiInvoker apiInvoker;
-
-        /// <summary>
-        /// The configuration
-        /// </summary>
-        private readonly Configuration configuration;
 
         #endregion
 
@@ -160,11 +160,11 @@ namespace Aspose.Imaging.Cloud.Sdk
         /// <param name="configuration">Configuration settings</param>
         private ImagingApi(Configuration configuration)
         {
-            this.configuration = configuration;
+            this.Configuration = configuration;
 
             var requestHandlers = new List<IRequestHandler>();
-            requestHandlers.Add(new OAuthRequestHandler(this.configuration));
-            requestHandlers.Add(new DebugLogRequestHandler(this.configuration));
+            requestHandlers.Add(new OAuthRequestHandler(this.Configuration));
+            requestHandlers.Add(new DebugLogRequestHandler(this.Configuration));
             requestHandlers.Add(new ApiExceptionRequestHandler());
             this.apiInvoker = new ApiInvoker(requestHandlers);
         }
@@ -187,7 +187,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -254,7 +254,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -322,7 +322,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -402,7 +402,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/bmp";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/bmp";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -498,7 +498,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/crop";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/crop";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -565,7 +565,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/dicom";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/dicom";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -628,7 +628,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/dng";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/dng";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -721,7 +721,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/emf";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/emf";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -795,7 +795,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/frames/{frameId}";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/frames/{frameId}";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -872,7 +872,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/frames/{frameId}/properties";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/frames/{frameId}/properties";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -934,7 +934,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/gif";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/gif";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1009,7 +1009,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/jpg2000";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/jpg2000";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1074,7 +1074,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/jpg";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/jpg";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1139,7 +1139,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/odg";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/odg";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1202,7 +1202,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/png";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/png";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1265,7 +1265,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/properties";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/properties";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1326,7 +1326,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/psd";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/psd";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1409,7 +1409,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/resize";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/resize";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1486,7 +1486,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/rotateflip";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/rotateflip";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1556,7 +1556,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/saveAs";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/saveAs";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1637,7 +1637,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/tiff";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/tiff";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1753,7 +1753,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/updateImage";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/updateImage";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1847,7 +1847,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/webp";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/webp";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -1944,7 +1944,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/{name}/wmf";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/wmf";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2018,7 +2018,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image2features";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image2features";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2090,7 +2090,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findDuplicates";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findDuplicates";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2164,7 +2164,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findSimilar";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findSimilar";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2238,7 +2238,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2306,7 +2306,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2368,7 +2368,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/status";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/status";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2429,7 +2429,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/tiff/{name}/toFax";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/tiff/{name}/toFax";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2485,7 +2485,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         public SearchContextStatus PostCreateSearchContext(PostCreateSearchContextRequest request)
         {
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/create";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/create";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2565,7 +2565,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/bmp";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/bmp";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2663,7 +2663,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/crop";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/crop";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2732,7 +2732,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/dicom";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/dicom";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2797,7 +2797,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/dng";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/dng";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2892,7 +2892,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/emf";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/emf";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -2949,6 +2949,154 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
+        /// Get separate frame from existing TIFF image. Image is passed in a request stream. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostImageFrameRequest" /></param> 
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream PostImageFrame(PostImageFrameRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageFrame");
+            }
+
+            // verify the required parameter 'frameId' is set
+            if (request.frameId == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'frameId' when calling PostImageFrame");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/frames/{frameId}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "frameId", request.frameId);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "x", request.x);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "y", request.y);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectWidth", request.rectWidth);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "saveOtherFrames", request.saveOtherFrames);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "POST", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
+				}
+				
+				return (System.IO.Stream)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
+        /// Get separate frame properties of existing TIFF image. Image is passed in a request stream. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostImageFramePropertiesRequest" /></param> 
+        /// <returns><see cref="ImagingResponse"/></returns>            
+        public ImagingResponse PostImageFrameProperties(PostImageFramePropertiesRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageFrameProperties");
+            }
+
+            // verify the required parameter 'frameId' is set
+            if (request.frameId == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'frameId' when calling PostImageFrameProperties");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/frames/{frameId}/properties";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "frameId", request.frameId);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "POST", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(ImagingResponse) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
+				}
+				
+				return (ImagingResponse)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
         /// Update parameters of GIF image. Image is passed in a request stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageGifRequest" /></param> 
@@ -2962,7 +3110,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/gif";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/gif";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3039,7 +3187,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/jpg2000";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/jpg2000";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3106,7 +3254,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/jpg";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/jpg";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3173,7 +3321,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/odg";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/odg";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3238,7 +3386,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/png";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/png";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3290,6 +3438,68 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
+        /// Get properties of an image. Image is passed in a request stream. 
+        /// </summary>
+        /// <param name="request">Request. <see cref="PostImagePropertiesRequest" /></param> 
+        /// <returns><see cref="ImagingResponse"/></returns>            
+        public ImagingResponse PostImageProperties(PostImagePropertiesRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageProperties");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/properties";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+			var formParams = new Dictionary<string, object>();
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            try 
+            {                               
+				var response = this.apiInvoker.InvokeApi(
+                        resourcePath, 
+                        "POST", 
+                        null, 
+                        null, 
+                        formParams);
+				
+				if (response == null)
+				{
+					return null;
+				}
+				
+				object finalResponse;
+				if (typeof(ImagingResponse) == typeof(System.IO.Stream))
+				{
+					finalResponse = response;
+				}
+				else
+				{
+					finalResponse = SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
+				}
+				
+				return (ImagingResponse)finalResponse;
+            } 
+            catch (ApiException ex) 
+            {
+                if (ex.ErrorCode == 404) 
+                {
+                    return null;
+                }
+                
+                throw;                
+            }
+        }
+		
+        /// <summary>
         /// Update parameters of PSD image. Image is passed in a request stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImagePsdRequest" /></param> 
@@ -3303,7 +3513,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/psd";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/psd";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3388,7 +3598,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/resize";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/resize";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3467,7 +3677,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/rotateflip";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/rotateflip";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3539,7 +3749,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/saveAs";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/saveAs";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3622,7 +3832,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/tiff";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/tiff";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3740,7 +3950,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/updateImage";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/updateImage";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3836,7 +4046,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/webp";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/webp";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -3935,7 +4145,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/wmf";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/wmf";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -4011,7 +4221,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -4089,7 +4299,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/addTag";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/addTag";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -4161,7 +4371,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/compare";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/compare";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -4228,7 +4438,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -4313,7 +4523,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findByTags";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/findByTags";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -4386,7 +4596,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/tiff/{name}/appendTiff";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/tiff/{name}/appendTiff";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -4454,7 +4664,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/image";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
@@ -4526,7 +4736,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
 
             // create path and map variables
-            var resourcePath = this.configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features";
             resourcePath = Regex
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")

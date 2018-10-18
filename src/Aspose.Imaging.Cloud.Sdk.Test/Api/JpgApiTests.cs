@@ -26,7 +26,8 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System.IO;
-	using NUnit.Framework;
+	using System.Collections.Generic;
+    using NUnit.Framework;
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -34,6 +35,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing JpgApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Jpg")]
     [TestFixture]
     public class JpgApiTests : ImagingApiTester
@@ -60,14 +63,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; Quality: {quality}; Compression type: {compressionType}",
                 name,
                 outName,
-                "Jpg",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageJpgRequest(name, quality, compressionType, fromScratch, outPath,
                         folder, storage);
                     return ImagingApi.GetImageJpg(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.JpegProperties);
 
@@ -101,13 +103,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; Quality: {quality}; Compression type: {compressionType}",
                 name,
                 outName,
-                "Jpg",
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImageJpgRequest(inputStream, quality, compressionType, fromScratch, outPath, storage);
                     return ImagingApi.PostImageJpg(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.JpegProperties);
 
