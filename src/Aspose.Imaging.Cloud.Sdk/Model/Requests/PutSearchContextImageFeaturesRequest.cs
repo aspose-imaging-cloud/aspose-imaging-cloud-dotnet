@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="PutSearchContextImageFeaturesRequest.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy

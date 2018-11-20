@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="ImagingApi.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,7 +40,7 @@ namespace Aspose.Imaging.Cloud.Sdk
     {                 
         #region Fields
 
-	/// <summary>
+        /// <summary>
         /// The configuration
         /// </summary>
         public readonly Configuration Configuration;
@@ -197,41 +197,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "DELETE", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "DELETE", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -265,41 +238,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "DELETE", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "DELETE", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -333,41 +279,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "DELETE", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(SaaSposeResponse) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<SaaSposeResponse>(StreamHelper.ToString(response));
-				}
-				
-				return (SaaSposeResponse)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "DELETE", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (SaaSposeResponse)SerializationHelper.Deserialize<SaaSposeResponse>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -417,41 +341,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -514,41 +411,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -577,41 +447,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -640,41 +483,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -738,41 +554,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -815,41 +604,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -883,41 +645,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(ImagingResponse) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
-				}
-				
-				return (ImagingResponse)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -952,41 +692,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1023,41 +736,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1088,41 +774,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1151,41 +810,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1214,41 +846,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1275,41 +880,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(ImagingResponse) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
-				}
-				
-				return (ImagingResponse)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -1340,41 +923,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1423,41 +979,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1499,41 +1028,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1568,41 +1070,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1654,41 +1129,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1772,41 +1220,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1863,41 +1284,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -1961,41 +1355,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -2033,41 +1400,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(ImageFeatures) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<ImageFeatures>(StreamHelper.ToString(response));
-				}
-				
-				return (ImageFeatures)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (ImageFeatures)SerializationHelper.Deserialize<ImageFeatures>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -2101,41 +1446,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(ImageDuplicatesSet) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<ImageDuplicatesSet>(StreamHelper.ToString(response));
-				}
-				
-				return (ImageDuplicatesSet)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (ImageDuplicatesSet)SerializationHelper.Deserialize<ImageDuplicatesSet>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -2181,41 +1504,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(SearchResultsSet) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
-				}
-				
-				return (SearchResultsSet)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (SearchResultsSet)SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -2249,41 +1550,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -2317,41 +1591,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(ImageFeatures) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<ImageFeatures>(StreamHelper.ToString(response));
-				}
-				
-				return (ImageFeatures)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (ImageFeatures)SerializationHelper.Deserialize<ImageFeatures>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -2378,41 +1630,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(SearchContextStatus) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<SearchContextStatus>(StreamHelper.ToString(response));
-				}
-				
-				return (SearchContextStatus)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (SearchContextStatus)SerializationHelper.Deserialize<SearchContextStatus>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -2440,41 +1670,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "GET", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -2496,41 +1699,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(SearchContextStatus) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<SearchContextStatus>(StreamHelper.ToString(response));
-				}
-				
-				return (SearchContextStatus)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (SearchContextStatus)SerializationHelper.Deserialize<SearchContextStatus>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -2582,41 +1763,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -2681,41 +1835,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -2746,41 +1873,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -2811,41 +1911,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -2911,41 +1984,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -2990,41 +2036,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -3059,41 +2078,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(ImagingResponse) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
-				}
-				
-				return (ImagingResponse)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -3130,41 +2127,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -3203,41 +2173,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -3270,41 +2213,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -3335,41 +2251,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -3400,41 +2289,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -3462,41 +2324,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(ImagingResponse) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
-				}
-				
-				return (ImagingResponse)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -3529,41 +2369,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -3614,41 +2427,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -3692,41 +2478,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -3763,41 +2522,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -3851,41 +2583,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -3971,41 +2676,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -4064,41 +2742,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -4164,41 +2815,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -4236,41 +2860,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -4314,41 +2911,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -4387,41 +2957,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(SearchResultsSet) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
-				}
-				
-				return (SearchResultsSet)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (SearchResultsSet)SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -4454,41 +3002,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -4539,41 +3060,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("tags", request.tags); // form parameter
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(SearchResultsSet) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
-				}
-				
-				return (SearchResultsSet)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (SearchResultsSet)SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -4607,41 +3106,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "POST", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(SaaSposeResponse) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<SaaSposeResponse>(StreamHelper.ToString(response));
-				}
-				
-				return (SaaSposeResponse)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+	        
+	        if (response == null)
+	        {
+	            return null;
+	        }
+	  
+	        return (SaaSposeResponse)SerializationHelper.Deserialize<SaaSposeResponse>(StreamHelper.ToString(response));
         }
 		
         /// <summary>
@@ -4679,41 +3156,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "PUT", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "PUT", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
         /// <summary>
@@ -4751,41 +3201,14 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-            try 
-            {                               
-				var response = this.apiInvoker.InvokeApi(
-                        resourcePath, 
-                        "PUT", 
-                        null, 
-                        null, 
-                        formParams);
-				
-				if (response == null)
-				{
-					return null;
-				}
-				
-				object finalResponse;
-				if (typeof(System.IO.Stream) == typeof(System.IO.Stream))
-				{
-					finalResponse = response;
-				}
-				else
-				{
-					finalResponse = SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
-				}
-				
-				return (System.IO.Stream)finalResponse;
-            } 
-            catch (ApiException ex) 
-            {
-                if (ex.ErrorCode == 404) 
-                {
-                    return null;
-                }
-                
-                throw;                
-            }
+			var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "PUT", 
+                null, 
+                null, 
+                formParams);
+	        return response;
+	        
         }
 		
 		#endregion

@@ -1,6 +1,6 @@
 ﻿//-----------------------------------------------------------------------------------------------------------
 // <copyright file="ImagingApiTester.cs" company="Aspose Pty Ltd." author="Maksym Shnurenok" date="05.07.2018 16:50:26">
-//    Copyright (c) 2001-2018 Aspose Pty Ltd. All rights reserved.
+//    Copyright (c) 2001-2018 Aspose Pty Ltd.
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
