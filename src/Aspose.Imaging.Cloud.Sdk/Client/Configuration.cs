@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="Configuration.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,7 +40,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// <summary>
         /// The default API version
         /// </summary>
-        public const string DefaultApiVersion = "v2";
+        public const string DefaultApiVersion = "v2.0";
 
         #endregion
 
@@ -60,6 +60,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// The debug mode
         /// </summary>
         private bool debugMode = false;
+
+        /// <summary>
+        /// Authentication type.
+        /// Default is URL signing.
+        /// </summary>
+        private AuthType authType = AuthType.OAuth2;
 
         #endregion
 
@@ -85,6 +91,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
             }
         }
 
+        /// <summary>
+        /// Gets or sets the API version.
+        /// </summary>
+        /// <value>
+        /// The API version.
+        /// </value>
         public string ApiVersion
         {
             get
@@ -128,7 +140,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// Authentication type.
         /// Default is URL signing.
         /// </summary>
-        public AuthType AuthType { get; set; }
+        public AuthType AuthType
+        {
+            get
+            {
+                return this.authType;
+            }
+
+            set
+            {
+                this.authType = value;
+            }
+        }
 
         #endregion
 

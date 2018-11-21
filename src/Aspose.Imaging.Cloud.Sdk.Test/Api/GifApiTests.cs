@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="GifApiTests.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,8 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System.IO;
-	using NUnit.Framework;
+	using System.Collections.Generic;
+    using NUnit.Framework;
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -34,6 +35,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing GifApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Gif")]
     [TestFixture]
     public class GifApiTests : ImagingApiTester
@@ -65,14 +68,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Interlaced: {interlaced}; Is palette sorted: {isPaletteSorted}; Pixel aspect ratio: {pixelAspectRatio}",
                 name,
                 outName,
-                "Gif",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageGifRequest(name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted,
                         pixelAspectRatio, fromScratch, outPath, folder, storage);
                     return ImagingApi.GetImageGif(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.GifProperties);
 
@@ -115,14 +117,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Interlaced: {interlaced}; Is palette sorted: {isPaletteSorted}; Pixel aspect ratio: {pixelAspectRatio}",
                 name,
                 outName,
-                "Gif",
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImageGifRequest(inputStream, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted,
                         pixelAspectRatio, fromScratch, outPath, storage);
                     return ImagingApi.PostImageGif(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.GifProperties);
 

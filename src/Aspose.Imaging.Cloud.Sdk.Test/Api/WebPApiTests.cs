@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="WebPApiTests.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,7 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System.IO;
-	using NUnit.Framework;
+    using NUnit.Framework;
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -34,6 +34,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing WebPApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Webp")]
     [TestFixture]
     public class WebPApiTests : ImagingApiTester
@@ -62,13 +64,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; AnimBackgroundColor: {animBackgroundColor}; Lossless: {lossless}; Quality: {quality}; AnimLoopCount: {animLoopCount}",
                 name,
                 outName,
-                "Webp",
                 delegate(string fileName, string outPath)
                 {
                     var request = new GetImageWebPRequest(fileName, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, folder, storage);
                     return ImagingApi.GetImageWebP(request);
                 },
-                delegate(ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.WebPProperties);
 
@@ -104,13 +105,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; AnimBackgroundColor: {animBackgroundColor}; Lossless: {lossless}; Quality: {quality}; AnimLoopCount: {animLoopCount}",
                 name,
                 outName,
-                "Webp",
                 delegate(Stream inputStream, string outPath)
                 {
                     var request = new PostImageWebPRequest(inputStream, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, storage);
                     return ImagingApi.PostImageWebP(request);
                 },
-                delegate(ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.WebPProperties);
 

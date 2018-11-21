@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="WebPApiTests.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36,6 +36,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     ///  Class for testing UpdateImageApi
     /// </summary>
     [TestFixture]
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Update")]
     public class UpdateImageApiTests : ImagingApiTester
     {
@@ -111,13 +113,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         $"X: {x}; Y: {y}; Rect width: {rectWidth}; Rect height: {rectHeight}",
                         name,
                         outName,
-                        "Update",
                         delegate (string fileName, string outPath)
                         {
                             var request = new GetImageUpdateRequest(fileName, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, folder, storage);
                             return ImagingApi.GetImageUpdate(request);
                         },
-                        delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                        delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
                             Assert.AreEqual(rectHeight, resultProperties.Width);
                             Assert.AreEqual(rectWidth, resultProperties.Height);
@@ -200,13 +201,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         $"X: {x}; Y: {y}; Rect width: {rectWidth}; Rect height: {rectHeight}",
                         name,
                         outName,
-                        "Update",
                         delegate (Stream inputStream, string outPath)
                         {
                             var request = new PostImageUpdateRequest(inputStream, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, storage);
                             return ImagingApi.PostImageUpdate(request);
                         },
-                        delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                        delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
                             Assert.AreEqual(rectHeight, resultProperties.Width);
                             Assert.AreEqual(rectWidth, resultProperties.Height);

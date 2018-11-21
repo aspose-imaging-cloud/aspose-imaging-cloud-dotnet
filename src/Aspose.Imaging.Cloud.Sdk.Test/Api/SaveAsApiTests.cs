@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="SaveAsApiTests.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,6 +35,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing SaveAsApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("SaveAs")]
     [TestFixture]
     public class SaveAsApiTests : ImagingApiTester
@@ -103,7 +105,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         $"Input image: {name}; Output format: {format}",
                         name,
                         outName,
-                        "Common",
                         delegate (string fileName, string outPath)
                         {
                             var request =
@@ -181,7 +182,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         $"Input image: {name}; Output format: {format}",
                         name,
                         outName,
-                        "Common",
                         delegate (Stream inputStream, string outPath)
                         {
                             var request =
