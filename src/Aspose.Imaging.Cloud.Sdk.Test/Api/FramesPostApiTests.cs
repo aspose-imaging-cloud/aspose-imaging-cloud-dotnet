@@ -1,6 +1,6 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="FramesApiTests.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright company="Aspose" file="FramesPostApiTests.cs">
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,25 +25,26 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
-	using NUnit.Framework;
-	
-	using Aspose.Imaging.Cloud.Sdk.Model;
-	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+    using NUnit.Framework;
+    using System.IO;
+    using Aspose.Imaging.Cloud.Sdk.Model;
+    using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
     /// <summary>
     ///  Class for testing FramesApi
     /// </summary>
+    [Category("v2.0")]
     [Category("Tiff")]
     [TestFixture]
-    public class FramesApiTests : ImagingApiTester
+    public class FramesPostApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageFrame
+        /// Test PostImageFrame
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void GetImageSingleFrameTest(bool saveResultToStorage)
+        public void PostImageSingleFrameTest(bool saveResultToStorage)
         {
             string name = "test.tiff";
             int? frameId = 2;
@@ -59,21 +60,20 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
             string outName = $"{name}_singleFrame.tiff";
 
-            this.TestGetRequest(
+            this.TestPostRequest(
                 "GetImageSingleFrameTest",
                 saveResultToStorage,
                 $"Input image: {name}; Frame ID: {frameId}; New width: {newWidth}; New height: {newHeight}; Rotate/flip method: {rotateFlipMethod}; " +
                 $"Save other frames: {saveOtherFrames}; X: {x}; Y: {y}; Rect width: {rectWidth}; Rect height: {rectHeight}",
                 name,
                 outName,
-                "Tiff",
-                delegate (string fileName, string outPath)
+                delegate (Stream inputStream, string outPath)
                 {
-                    var request = new GetImageFrameRequest(name, frameId, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod,
-                        saveOtherFrames, outPath, folder, storage);
-                    return ImagingApi.GetImageFrame(request);
+                    var request = new PostImageFrameRequest(inputStream, frameId, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod,
+                        saveOtherFrames, outPath, storage);
+                    return ImagingApi.PostImageFrame(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.TiffProperties);
                     Assert.NotNull(resultProperties.TiffProperties.Frames);
@@ -87,8 +87,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     Assert.AreEqual(rectHeight, resultProperties.Width);
                     Assert.AreEqual(rectWidth, resultProperties.Height);
 
-                    var framePropertiesRequest = new GetImageFramePropertiesRequest(outName, 0, folder, storage);
-                    var framePropertiesResponse = ImagingApi.GetImageFrameProperties(framePropertiesRequest);
+                    ImagingResponse framePropertiesResponse = null;
+                    if (saveResultToStorage)
+                    {
+                        var framePropertiesRequest = new GetImageFramePropertiesRequest(outName, 0, folder, storage);
+                        framePropertiesResponse = ImagingApi.GetImageFrameProperties(framePropertiesRequest);
+                    }
+                    else
+                    {
+                        resultStream.Seek(0, SeekOrigin.Begin);
+                        var framePropertiesRequest = new PostImageFramePropertiesRequest(resultStream, 0);
+                        framePropertiesResponse = ImagingApi.PostImageFrameProperties(framePropertiesRequest);
+                    }
+
                     Assert.NotNull(framePropertiesResponse);
                     Assert.NotNull(framePropertiesResponse.TiffProperties);
                     Assert.NotNull(framePropertiesResponse.TiffProperties.Frames);
@@ -104,12 +115,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test GetImageFrame
+        /// Test PostImageFrame
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void GetImageAllFramesTest(bool saveResultToStorage)
+        public void PostImageAllFramesTest(bool saveResultToStorage)
         {
             string name = "test.tiff";
             int? frameId = 2;
@@ -125,21 +136,20 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
             string outName = $"{name}_allFrames.tiff";
 
-            this.TestGetRequest(
+            this.TestPostRequest(
                 "GetImageAllFramesTest",
                 saveResultToStorage,
                 $"Input image: {name}; Frame ID: {frameId}; New width: {newWidth}; New height: {newHeight}; Rotate/flip method: {rotateFlipMethod}; " +
                 $"Save other frames: {saveOtherFrames}; X: {x}; Y: {y}; Rect width: {rectWidth}; Rect height: {rectHeight}",
                 name,
                 outName,
-                "Tiff",
-                delegate (string fileName, string outPath)
+                delegate (Stream inputStream, string outPath)
                 {
-                    var request = new GetImageFrameRequest(name, frameId, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod,
-                        saveOtherFrames, outPath, folder, storage);
-                    return ImagingApi.GetImageFrame(request);
+                    var request = new PostImageFrameRequest(inputStream, frameId, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod,
+                        saveOtherFrames, outPath, storage);
+                    return ImagingApi.PostImageFrame(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(originalProperties);
                     Assert.NotNull(originalProperties.TiffProperties);

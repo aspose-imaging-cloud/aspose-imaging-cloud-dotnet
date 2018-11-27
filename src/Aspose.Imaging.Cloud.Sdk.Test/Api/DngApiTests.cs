@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="DngApiTests.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,7 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System.IO;
-	using NUnit.Framework;
+    using NUnit.Framework;
 
     using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -34,6 +34,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing DngApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Dng")]
     [TestFixture]
     public class DngApiTests : ImagingApiTester
@@ -58,13 +60,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}",
                 name,
                 outName,
-                "Dng",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageDngRequest(fileName, fromScratch, outPath, folder, storage);
                     return ImagingApi.GetImageDng(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.PngProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);
@@ -96,13 +97,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}",
                 name,
                 outName,
-                "Dng",
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImageDngRequest(inputStream, fromScratch, outPath, storage);
                     return ImagingApi.PostImageDng(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.PngProperties);
                     Assert.AreEqual(originalProperties.Width, resultProperties.Width);

@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="TiffApiTests.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,7 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System;
-	using System.IO;
+    using System.IO;
 	using System.Net;
 	using NUnit.Framework;
 	
@@ -39,6 +39,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     ///  Class for testing TiffApi
     /// </summary>
     [TestFixture]
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Tiff")]
     public class TiffApiTests : ImagingApiTester
     {
@@ -59,13 +61,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}",
                 name,
                 outName,
-                "Tiff",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetTiffToFaxRequest(name, storage, folder, outPath);
                     return ImagingApi.GetTiffToFax(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.TiffProperties);
                     Assert.AreEqual(1, resultProperties.BitsPerPixel);
@@ -103,14 +104,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; Compression: {compression}; Bit depth: {bitDepth}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
                 outName,
-                "Tiff",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageTiffRequest(name, compression, resolutionUnit, bitDepth, fromScratch, horizontalResolution, verticalResolution, outPath,
                         folder, storage);
                     return ImagingApi.GetImageTiff(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.TiffProperties);
                     Assert.AreEqual(bitDepth > 1 ? bitDepth * 4 : bitDepth, resultProperties.BitsPerPixel);
@@ -151,13 +151,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; Compression: {compression}; Bit depth: {bitDepth}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
                 outName,
-                "Tiff",
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImageTiffRequest(inputStream, compression, resolutionUnit, bitDepth, fromScratch, horizontalResolution, verticalResolution, outPath, storage);
                     return ImagingApi.PostImageTiff(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.TiffProperties);
                     Assert.AreEqual(bitDepth > 1 ? bitDepth * 4 : bitDepth, resultProperties.BitsPerPixel);
@@ -176,6 +175,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test PostTiffAppend
         /// </summary>
+        [Test]
         public void PostTiffAppendTest()
         {
             bool passed = false;
@@ -194,7 +194,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string outPath = null;
             string inputPath = TempFolder + "/" + inputFileName;
             string storage = this.TestStorage;
-            string referencePath = CloudReferencesFolder + "/Tiff";
 
             try
             {
@@ -206,6 +205,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 if (this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value)
                 {
                     this.StorageApi.DeleteFile(new DeleteFileRequest(outPath, null, storage));
+                }
+
+                if (!this.StorageApi.GetIsExist(new GetIsExistRequest(inputPath, null, storage)).FileExist.IsExist.Value)
+                {
+                    var downStream = this.StorageApi.GetDownload(new GetDownloadRequest(OriginalDataFolder + "/" + inputFileName, null, storage));
+                    Assert.NotNull(downStream);
+                    var putResponse = this.StorageApi.PutCreate(new PutCreateRequest(folder + "/" + inputFileName, downStream, null, storage));
+                    Assert.AreEqual(HttpStatusCode.OK.ToString(), putResponse.Status.ToUpperInvariant());
                 }
 
                 var storageResponseStream = this.StorageApi.GetDownload(new GetDownloadRequest(inputPath, null, storage));
@@ -220,23 +227,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 Assert.NotNull(response);
                 Assert.AreEqual((int)response.Code, (int)HttpStatusCode.OK);
 
-                FileResponse referenceInfo = this.GetStorageFileInfo(referencePath, resultFileName, storage);
-                if (referenceInfo == null)
-                {
-                    throw new ArgumentException(
-                        $"Reference result file {resultFileName} doesn't exist in the specified storage folder: {referencePath}. Please, upload it first.");
-                }
-
-                long referenceLength = referenceInfo.Size.Value;
-
                 FileResponse resultInfo = this.GetStorageFileInfo(folder, resultFileName, storage);
                 if (resultInfo == null)
                 {
                     throw new ArgumentException(
                         $"Result file {resultFileName} doesn't exist in the specified storage folder: {folder}. Result isn't present in the storage by an unknown reason.");
                 }
-
-                this.CheckSizeDiff(referenceLength, resultInfo.Size.Value);
 
                 ImagingResponse resultProperties =
                     ImagingApi.GetImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
@@ -255,6 +251,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             }
             catch (Exception ex)
             {
+                FailedAnyTest = true;
                 Console.WriteLine(ex.Message);
                 throw;
             }

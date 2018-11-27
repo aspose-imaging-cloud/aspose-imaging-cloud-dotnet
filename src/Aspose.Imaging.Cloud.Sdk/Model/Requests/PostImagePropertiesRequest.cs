@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="JfifData.cs">
+// <copyright company="Aspose" file="PostImagePropertiesRequest.cs">
 //   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -23,55 +23,34 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Aspose.Imaging.Cloud.Sdk.Model 
+namespace Aspose.Imaging.Cloud.Sdk.Model.Requests 
 {
-  using System;  
-  using System.Collections;
-  using System.Collections.Generic;
-  using System.Runtime.Serialization;
-  using System.Text;
-  using Newtonsoft.Json;
-  using Newtonsoft.Json.Converters;
+  using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Represents JFIF data.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.PostImageProperties" /> operation.
   /// </summary>  
-  public class JfifData 
-  {                       
+  public class PostImagePropertiesRequest  
+  {
         /// <summary>
-        /// Gets or sets the density units.
-        /// </summary>  
-        public string DensityUnits { get; set; }
-
-        /// <summary>
-        /// Gets or sets the version.
-        /// </summary>  
-        public int? Version { get; set; }
-
-        /// <summary>
-        /// Gets or sets the X density.
-        /// </summary>  
-        public int? XDensity { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Y density.
-        /// </summary>  
-        public int? YDensity { get; set; }
-
-        /// <summary>
-        /// Get the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()  
+        /// Initializes a new instance of the <see cref="PostImagePropertiesRequest"/> class.
+        /// </summary>        
+        public PostImagePropertiesRequest()
         {
-          var sb = new StringBuilder();
-          sb.Append("class JfifData {\n");
-          sb.Append("  DensityUnits: ").Append(this.DensityUnits).Append("\n");
-          sb.Append("  Version: ").Append(this.Version).Append("\n");
-          sb.Append("  XDensity: ").Append(this.XDensity).Append("\n");
-          sb.Append("  YDensity: ").Append(this.YDensity).Append("\n");
-          sb.Append("}\n");
-          return sb.ToString();
         }
-    }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PostImagePropertiesRequest"/> class.
+        /// </summary>
+        /// <param name="imageData">Input image</param>
+        public PostImagePropertiesRequest(System.IO.Stream imageData)             
+        {
+            this.imageData = imageData;
+        }
+		
+        /// <summary>
+        /// Input image
+        /// </summary>  
+        public System.IO.Stream imageData { get; set; }
+  }
 }

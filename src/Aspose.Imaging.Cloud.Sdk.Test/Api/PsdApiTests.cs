@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="PsdApiTests.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,7 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System.IO;
-	using NUnit.Framework;
+    using NUnit.Framework;
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -34,6 +34,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing PsdApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Psd")]
     [TestFixture]
     public class PsdApiTests : ImagingApiTester
@@ -60,14 +62,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; Channel count: {channelsCount}; Compression method: {compressionMethod}",
                 name,
                 outName,
-                "Psd",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImagePsdRequest(name, channelsCount, compressionMethod, fromScratch, outPath,
                         folder, storage);
                     return ImagingApi.GetImagePsd(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.PsdProperties);
                     Assert.AreEqual(compressionMethod, resultProperties.PsdProperties.Compression.ToLower());
@@ -104,13 +105,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; Channel count: {channelsCount}; Compression method: {compressionMethod}",
                 name,
                 outName,
-                "Psd",
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImagePsdRequest(inputStream, channelsCount, compressionMethod, fromScratch, outPath, storage);
                     return ImagingApi.PostImagePsd(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.PsdProperties);
                     Assert.AreEqual(compressionMethod, resultProperties.PsdProperties.Compression.ToLower());

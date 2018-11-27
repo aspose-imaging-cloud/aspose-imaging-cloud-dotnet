@@ -209,3 +209,16 @@ foreach (var searchResult in response.Results)
 // search context is stored in the storage, and in case if search context is not needed anymore it should be removed
 imagingApi.DeleteSearchContext(new DeleteSearchContextRequest(searchContextId));
 ```
+
+### Exception handling and error codes
+```csharp
+try
+{
+    imagingApi.DeleteSearchContext(new DeleteSearchContextRequest(searchContextId));
+}
+catch (ApiException ex) 
+{
+    Console.WriteLine(ex.ErrorCode);
+    Console.WriteLine(ex.Message);
+}
+```

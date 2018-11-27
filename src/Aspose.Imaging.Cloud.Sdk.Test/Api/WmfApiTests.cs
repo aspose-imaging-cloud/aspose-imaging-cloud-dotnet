@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="WmfApiTests.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,7 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System.IO;
-	using NUnit.Framework;
+    using NUnit.Framework;
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -34,6 +34,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing WmfApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Wmf")]
     [TestFixture]
     public class WmfApiTests : ImagingApiTester
@@ -63,14 +65,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeigth}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
                 outName,
-                "Wmf",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageWmfRequest(name, bkColor, pageWidth, pageHeigth, borderX, borderY,
                         fromScratch, outPath, folder, storage);
                     return ImagingApi.GetImageWmf(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.PngProperties);
                     Assert.AreEqual(pageWidth + borderX * 2, resultProperties.Width);
@@ -105,14 +106,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeigth}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
                 outName,
-                "Wmf",
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImageWmfRequest(inputStream, bkColor, pageWidth, pageHeigth, borderX, borderY,
                         fromScratch, outPath, storage);
                     return ImagingApi.PostImageWmf(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.NotNull(resultProperties.PngProperties);
                     Assert.AreEqual(pageWidth + borderX * 2, resultProperties.Width);

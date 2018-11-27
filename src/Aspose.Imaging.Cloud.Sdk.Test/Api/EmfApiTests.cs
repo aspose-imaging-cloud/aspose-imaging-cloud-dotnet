@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="EmfApiTests.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd.
+//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,7 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
 	using System.IO;
-	using NUnit.Framework;
+    using NUnit.Framework;
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -34,6 +34,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing EmfApi
     /// </summary>
+    [Category("v1.0")]
+    [Category("v2.0")]
     [Category("Emf")]
     [TestFixture]
     public class EmfApiTests : ImagingApiTester
@@ -63,14 +65,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeigth}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
                 outName,
-                "Emf",
                 delegate (string fileName, string outPath)
                 {
                     var request = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeigth, borderX, borderY,
                         fromScratch, outPath, folder, storage);
                     return ImagingApi.GetImageEmf(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.PngProperties);
                     Assert.AreEqual((int)((pageWidth + borderX * 2) * (resultProperties.HorizontalResolution / 72)),
@@ -107,14 +108,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeigth}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
                 outName,
-                "Emf",
                 delegate (Stream inputStream, string outPath)
                 {
                     var request = new PostImageEmfRequest(inputStream, bkColor, pageWidth, pageHeigth, borderX, borderY,
                         fromScratch, outPath, storage);
                     return ImagingApi.PostImageEmf(request);
                 },
-                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties)
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     Assert.IsNotNull(resultProperties.PngProperties);
                     Assert.AreEqual((int)((pageWidth + borderX * 2) * (resultProperties.HorizontalResolution / 72)),
