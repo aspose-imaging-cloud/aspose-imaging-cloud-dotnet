@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="ImagingApi.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,7 +34,7 @@ namespace Aspose.Imaging.Cloud.Sdk
     using Aspose.Imaging.Cloud.Sdk.Model.Requests;
     
     /// <summary>
-    /// Aspose.Imaging for Cloud API.
+    /// Aspose.Imaging Cloud API.
     /// </summary>
     public class ImagingApi
     {                 
