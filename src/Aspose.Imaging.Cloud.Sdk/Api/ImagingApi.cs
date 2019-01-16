@@ -166,7 +166,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             requestHandlers.Add(new OAuthRequestHandler(this.Configuration));
             requestHandlers.Add(new DebugLogRequestHandler(this.Configuration));
             requestHandlers.Add(new ApiExceptionRequestHandler());
-            this.apiInvoker = new ApiInvoker(requestHandlers);
+            this.apiInvoker = new ApiInvoker(requestHandlers, this.Configuration);
         }
 
         #endregion
@@ -1366,7 +1366,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Extract features from image without adding to search context. 
+        /// Extract features from image without adding to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="GetSearchContextExtractImageFeaturesRequest" /></param> 
         /// <returns><see cref="ImageFeatures"/></returns>            
@@ -1462,7 +1462,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Find similar images. 
+        /// Find similar images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="GetSearchContextFindSimilarRequest" /></param> 
         /// <returns><see cref="SearchResultsSet"/></returns>            
@@ -1715,7 +1715,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Update parameters of BMP image. Image is passed in a request stream. 
+        /// Update parameters of BMP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageBmpRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -1774,7 +1774,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Crop an image. Image is passed in a request stream. 
+        /// Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageCropRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -1846,7 +1846,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Rasterize DICOM image to PNG using given parameters. Image is passed in a request stream. 
+        /// Rasterize DICOM image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageDicomRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -1884,7 +1884,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Rasterize DNG image to PNG using given parameters. Image is passed in a request stream. 
+        /// Rasterize DNG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageDngRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -1922,7 +1922,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Rasterize EMF image to PNG using given parameters. Image is passed in a request stream. 
+        /// Rasterize EMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageEmfRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -1995,7 +1995,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Get separate frame from existing TIFF image. Image is passed in a request stream. 
+        /// Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageFrameRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2047,7 +2047,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Get separate frame properties of existing TIFF image. Image is passed in a request stream. 
+        /// Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageFramePropertiesRequest" /></param> 
         /// <returns><see cref="ImagingResponse"/></returns>            
@@ -2094,7 +2094,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Update parameters of GIF image. Image is passed in a request stream. 
+        /// Update parameters of GIF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageGifRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2138,7 +2138,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Update parameters of JPEG2000 image. Image is passed in a request stream. 
+        /// Update parameters of JPEG2000 image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageJpeg2000Request" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2184,7 +2184,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Update parameters of JPEG image. Image is passed in a request stream. 
+        /// Update parameters of JPEG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageJpgRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2224,7 +2224,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Rasterize ODG image to PNG using given parameters. Image is passed in a request stream. 
+        /// Rasterize ODG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageOdgRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2262,7 +2262,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Update parameters of PNG image. Image is passed in a request stream. 
+        /// Update parameters of PNG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImagePngRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2300,7 +2300,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Get properties of an image. Image is passed in a request stream. 
+        /// Get properties of an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImagePropertiesRequest" /></param> 
         /// <returns><see cref="ImagingResponse"/></returns>            
@@ -2340,7 +2340,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Update parameters of PSD image. Image is passed in a request stream. 
+        /// Update parameters of PSD image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImagePsdRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2380,7 +2380,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Resize an image. Image is passed in a request stream. 
+        /// Resize an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageResizeRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2438,7 +2438,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Rotate and/or flip an image. Image is passed in a request stream. 
+        /// Rotate and/or flip an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageRotateFlipRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2489,7 +2489,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Export existing image to another format. Image is passed in a request stream.              
+        /// Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.              
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageSaveAsRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2533,7 +2533,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Update parameters of TIFF image. Image is passed in a request stream. 
+        /// Update parameters of TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageTiffRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2594,7 +2594,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Perform scaling, cropping and flipping of an image in a single request. Image is passed in a request stream.              
+        /// Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.              
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageUpdateRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2687,7 +2687,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Update parameters of WEBP image. Image is passed in a request stream. 
+        /// Update parameters of WEBP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageWebPRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2753,7 +2753,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Rasterize WMF image to PNG using given parameters. Image is passed in a request stream. 
+        /// Rasterize WMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostImageWmfRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2826,7 +2826,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Add image and images features to search context. 
+        /// Add image and images features to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostSearchContextAddImageRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2871,7 +2871,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Add tag and reference image to search context. 
+        /// Add tag and reference image to search context. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostSearchContextAddTagRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2922,7 +2922,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Compare two images. 
+        /// Compare two images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostSearchContextCompareImagesRequest" /></param> 
         /// <returns><see cref="SearchResultsSet"/></returns>            
@@ -2973,7 +2973,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Extract images features and add them to search context 
+        /// Extract images features and add them to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostSearchContextExtractImageFeaturesRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -3013,7 +3013,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Find images by tag. 
+        /// Find images by tags. Tags JSON string is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PostSearchContextFindByTagsRequest" /></param> 
         /// <returns><see cref="SearchResultsSet"/></returns>            
@@ -3058,7 +3058,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             
             if (request.tags != null) 
             {
-                formParams.Add("tags", request.tags); // form parameter
+                formParams.Add("tags", request.tags);
             }
 			var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
@@ -3122,7 +3122,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Update image and images features in search context. 
+        /// Update image and images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PutSearchContextImageRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -3167,7 +3167,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         }
 		
         /// <summary>
-        /// Update images features in search context. 
+        /// Update images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Request. <see cref="PutSearchContextImageFeaturesRequest" /></param> 
         /// <returns><see cref="System.IO.Stream"/></returns>            

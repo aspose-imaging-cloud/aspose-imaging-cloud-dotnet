@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
     <metadata>
         <id>Aspose.Imaging-Cloud</id>
-		<version>19.01</version>
+		<version>19.1</version>
         <title>Aspose.Imaging Cloud .NET SDK</title>
         <authors>Aspose</authors>
         <owners>Aspose</owners>

@@ -73,11 +73,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
+                    int width = this.ImagingApi.Configuration.ApiVersion.Contains("v1.") ? 
+                        (int)((pageWidth + borderX * 2) * (resultProperties.HorizontalResolution / 72)) :
+                        pageWidth + borderX * 2;
+                    int heigth = this.ImagingApi.Configuration.ApiVersion.Contains("v1.") ?
+                        (int)((pageHeigth + borderY * 2) * (resultProperties.VerticalResolution / 72)) :
+                        pageHeigth + borderY * 2;
                     Assert.IsNotNull(resultProperties.PngProperties);
-                    Assert.AreEqual((int)((pageWidth + borderX * 2) * (resultProperties.HorizontalResolution / 72)),
-                        resultProperties.Width);
-                    Assert.AreEqual((int)((pageHeigth + borderY * 2) * (resultProperties.VerticalResolution / 72)),
-                        resultProperties.Height);
+                    Assert.AreEqual(width, resultProperties.Width);
+                    Assert.AreEqual(heigth, resultProperties.Height);
                 },
                 folder,
                 storage);
@@ -116,11 +120,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
+                    int width = this.ImagingApi.Configuration.ApiVersion.Contains("v1.") ?
+                        (int)((pageWidth + borderX * 2) * (resultProperties.HorizontalResolution / 72)) :
+                        pageWidth + borderX * 2;
+                    int heigth = this.ImagingApi.Configuration.ApiVersion.Contains("v1.") ?
+                        (int)((pageHeigth + borderY * 2) * (resultProperties.VerticalResolution / 72)) :
+                        pageHeigth + borderY * 2;
                     Assert.IsNotNull(resultProperties.PngProperties);
-                    Assert.AreEqual((int)((pageWidth + borderX * 2) * (resultProperties.HorizontalResolution / 72)),
-                        resultProperties.Width);
-                    Assert.AreEqual((int)((pageHeigth + borderY * 2) * (resultProperties.VerticalResolution / 72)),
-                        resultProperties.Height);
+                    Assert.AreEqual(width, resultProperties.Width);
+                    Assert.AreEqual(heigth, resultProperties.Height);
                 },
                 folder,
                 storage);
