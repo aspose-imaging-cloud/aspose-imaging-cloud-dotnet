@@ -59,7 +59,7 @@ All Aspose.Imaging Cloud SDKs, helper scripts and templates are licensed under [
 # Contact Us
 Your feedback is very important to us. Please feel free to contact via
 + [**Free Support Forum**](https://forum.aspose.cloud/c/imaging)
-+ [**Paid Support Helpdesk**](https://helpdesk.aspose.imaging/)
++ [**Paid Support Helpdesk**](https://helpdesk.aspose.cloud/)
 
 # Resources
 + [**Web API reference**](https://apireference.aspose.cloud/imaging/)
