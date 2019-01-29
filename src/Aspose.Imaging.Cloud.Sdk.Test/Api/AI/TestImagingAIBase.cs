@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="TestImagingAIBase.cs">
-//  Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
+//  Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -42,6 +42,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
         private const int WaitTimeoutInMinutes = 5;
 
+        protected string SearchContextId { get; private set; }
+
+        protected override string CloudTestFolderPrefix => "ImagingAICloudTestDotNet";
+
+        protected override string OriginalDataFolder => "ImagingAiSdk";
+
         [SetUp]
         public void InitTest()
         {
@@ -61,12 +67,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 this.StorageApi.DeleteFolder(new DeleteFolderRequest(TempFolder, this.TestStorage, true));
             }
         }
-
-        protected string SearchContextId { get; private set; }
-
-        protected override string CloudTestFolderPrefix => "ImagingAICloudTestDotNet";
-
-        protected override string OriginalDataFolder => "ImagingAiSdk";
 
         protected string GetStoragePath(string imageName, string folder = null)
         {
@@ -95,7 +95,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         protected void AddImageFeaturesToSearchContext(string storageSourcePath, bool isFolder = false)
         {
             var request = isFolder
-                ? new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: null, imagesFolder: storageSourcePath, storage: this.TestStorage)
+                ? new PostSearchContextExtractImageFeaturesRequest(
+                    this.SearchContextId, imageId: null, imagesFolder: storageSourcePath, storage: this.TestStorage)
                 : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: this.TestStorage);
             this.ImagingApi.PostSearchContextExtractImageFeatures(request);
 
@@ -113,7 +114,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var timeout = TimeSpan.FromSeconds(10);
             var startTime = DateTime.UtcNow;
 
-            while (this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: this.TestStorage)).SearchStatus != "Idle" && DateTime.UtcNow - startTime < maxTime)
+            while (this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: this.TestStorage)).
+                SearchStatus != "Idle" && DateTime.UtcNow - startTime < maxTime)
             {
                 Thread.Sleep(timeout);
             }
@@ -129,7 +131,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 testAction();
                 passed = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 throw;

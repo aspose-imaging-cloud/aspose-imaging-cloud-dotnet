@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="OAuthRequestHandler.cs">
-//   Copyright (c) 2018 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -75,7 +75,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
             var requestHandlers = new List<IRequestHandler>();
             requestHandlers.Add(new DebugLogRequestHandler(this.configuration));
             requestHandlers.Add(new ApiExceptionRequestHandler());
-            this.apiInvoker = new ApiInvoker(requestHandlers);
+            this.apiInvoker = new ApiInvoker(requestHandlers, this.configuration);
         }
 
         #endregion
@@ -150,21 +150,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
             var postData = "grant_type=refresh_token";
             postData += "&refresh_token=" + this.refreshToken;
 
-            string responseString = string.Empty;
             using (StreamReader reader = new StreamReader(this.apiInvoker.InvokeApi(
                 requestUrl,
                 "POST",
                 postData,
                 contentType: "application/x-www-form-urlencoded")))
             {
-                responseString = reader.ReadToEnd();
+                string responseString = reader.ReadToEnd();
+                var result =
+                    (GetAccessTokenResult)SerializationHelper.Deserialize<GetAccessTokenResult>(responseString);
+
+                this.accessToken = result.AccessToken;
+                this.refreshToken = result.RefreshToken;
             }
-
-            var result =
-                (GetAccessTokenResult)SerializationHelper.Deserialize<GetAccessTokenResult>(responseString);
-
-            this.accessToken = result.AccessToken;
-            this.refreshToken = result.RefreshToken;
         }
 
         /// <summary>
@@ -178,21 +176,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
             postData += "&client_id=" + this.configuration.AppSid;
             postData += "&client_secret=" + this.configuration.AppKey;
 
-            string responseString = string.Empty;
             using (StreamReader reader = new StreamReader(this.apiInvoker.InvokeApi(
                 requestUrl,
                 "POST",
                 postData,
                 contentType: "application/x-www-form-urlencoded")))
             {
-                responseString = reader.ReadToEnd();
+                string responseString = reader.ReadToEnd();
+                var result =
+                    (GetAccessTokenResult)SerializationHelper.Deserialize<GetAccessTokenResult>(responseString);
+
+                this.accessToken = result.AccessToken;
+                this.refreshToken = result.RefreshToken;
             }
-
-            var result =
-                (GetAccessTokenResult)SerializationHelper.Deserialize<GetAccessTokenResult>(responseString);
-
-            this.accessToken = result.AccessToken;
-            this.refreshToken = result.RefreshToken;
         }
 
         #endregion
