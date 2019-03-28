@@ -27,14 +27,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
     using System;
     using System.IO;
-    using System.Net;
     using System.Threading;
     using Model.Requests;
     using NUnit.Framework;
-    using Storage.Cloud.Sdk.Model.Requests;
 
     [Category("AI")]
-    [Category("v2.0")]
+    [Category("v3.0")]
     [TestFixture]
     public abstract class TestImagingAIBase: ApiTester
     {
@@ -46,7 +44,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
         protected override string CloudTestFolderPrefix => "ImagingAICloudTestDotNet";
 
-        protected override string OriginalDataFolder => "ImagingAiSdk";
+        protected override string OriginalDataFolder => base.OriginalDataFolder + "/AI";
 
         [SetUp]
         public void InitTest()
@@ -62,9 +60,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 this.DeleteSearchContext(this.SearchContextId);
             }
 
-            if (this.StorageApi.GetIsExist(new GetIsExistRequest(TempFolder, null, this.TestStorage)).FileExist.IsExist.Value)
+            if (this.ImagingApi.ObjectExists(new ObjectExistsRequest(TempFolder, this.TestStorage)).Exists.Value)
             {
-                this.StorageApi.DeleteFolder(new DeleteFolderRequest(TempFolder, this.TestStorage, true));
+                this.ImagingApi.DeleteFolder(new DeleteFolderRequest(TempFolder, this.TestStorage, true));
             }
         }
 
@@ -76,7 +74,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         protected string CreateSearchContext()
         {
             var response = this.ImagingApi.PostCreateSearchContext(new PostCreateSearchContextRequest(storage: this.TestStorage));
-            Assert.AreEqual(HttpStatusCode.OK, response.Code);
             return response.Id;
         }
 
@@ -88,7 +85,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         protected string GetSearchContextStatus(string searchContextId)
         {
             var response =  this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(searchContextId, storage: this.TestStorage));
-            Assert.AreEqual(HttpStatusCode.OK, response.Code);
             return response.SearchStatus;
         }
 

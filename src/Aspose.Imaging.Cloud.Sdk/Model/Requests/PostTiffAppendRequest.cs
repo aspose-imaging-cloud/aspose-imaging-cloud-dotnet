@@ -53,7 +53,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.storage = storage;
             this.folder = folder;
         }
-		
+        
         /// <summary>
         /// Original image file name.
         /// </summary>  

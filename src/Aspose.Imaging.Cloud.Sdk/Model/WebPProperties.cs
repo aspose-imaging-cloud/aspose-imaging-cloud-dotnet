@@ -39,7 +39,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   public class WebPProperties 
   {                       
         /// <summary>
-        /// Gets or sets a value indicating whether these  is lossless.
+        /// Gets or sets a value indicating whether these WebPOptions is lossless.
         /// </summary>  
         public bool? Lossless { get; set; }
 

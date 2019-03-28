@@ -26,17 +26,13 @@
 namespace Aspose.Imaging.Cloud.Sdk.Client 
 {
     using System;
+    using Aspose.Imaging.Cloud.Sdk.Model;
 
     /// <summary>
     /// Imaging API Exception
     /// </summary>
-  public class ApiException : Exception 
-  {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiException"/> class.
-        /// </summary>
-        public ApiException() {}
-
+    public class ApiException : Exception
+    {
         /// <summary>
         /// Gets the error code.
         /// </summary>
@@ -46,13 +42,30 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         public int ErrorCode { get; private set; }
 
         /// <summary>
+        /// Gets the error.
+        /// </summary>
+        /// <value>
+        /// The error.
+        /// </value>
+        public Error Error { get; private set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiException"/> class.
+        /// </summary>
+        public ApiException()
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ApiException"/> class.
         /// </summary>
         /// <param name="errorCode">The error code.</param>
         /// <param name="message">The message.</param>
-        public ApiException(int errorCode, string message) : base(message) 
-	    {
-    	    this.ErrorCode = errorCode;
+        /// <param name="error">The error.</param>
+        public ApiException(int errorCode, string message, Error error = null) : base(message)
+        {
+            this.ErrorCode = errorCode;
+            this.Error = error;
         }
     }
 }

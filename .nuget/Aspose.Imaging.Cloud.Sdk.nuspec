@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
     <metadata>
         <id>Aspose.Imaging-Cloud</id>
-		<version>19.1</version>
+		<version>19.3</version>
         <title>Aspose.Imaging Cloud .NET SDK</title>
         <authors>Aspose</authors>
         <owners>Aspose</owners>
@@ -22,7 +22,7 @@ Reverse image search features include: search for sample image in the image set,
 		<summary>Aspose.Imaging Cloud .NET SDK lets you use a REST API to inspect, convert, and transform images in the cloud; do reverse image search. It supports the most popular image formats such as PSD, PNG, GIF, BMP, TIFF, and JPEG, and conversion between them.</summary>
 		<tags>aspose imaging cloud rest api sdk image bmp dicom dng djvu djv emf gif jpg jpe jpeg jpeg2000 jp2 jpx jpm j2k odg png psd tiff tif webp wmf reverse search</tags>
         <dependencies>
-            <dependency id="NewtonSoft.Json" version="9.0.1" />
+            <dependency id="NewtonSoft.Json" version="10.0.1" />
         </dependencies>
     </metadata>
 </package>

@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="AuthType.cs">
+// <copyright company="Aspose" file="FilesUploadResult.cs">
 //   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -23,16 +23,43 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Aspose.Imaging.Cloud.Sdk.Client
+namespace Aspose.Imaging.Cloud.Sdk.Model 
 {
-    /// <summary>
-    /// Supported types of authentification.
-    /// </summary>
-    public enum AuthType
-    {
+  using System;  
+  using System.Collections;
+  using System.Collections.Generic;
+  using System.Runtime.Serialization;
+  using System.Text;
+  using Newtonsoft.Json;
+  using Newtonsoft.Json.Converters;
+
+  /// <summary>
+  /// File upload result
+  /// </summary>  
+  public class FilesUploadResult 
+  {                       
         /// <summary>
-        /// OAuth2.0
+        /// List of uploaded file names
+        /// </summary>  
+        public List<string> Uploaded { get; set; }
+
+        /// <summary>
+        /// List of errors.
+        /// </summary>  
+        public List<Error> Errors { get; set; }
+
+        /// <summary>
+        /// Get the string presentation of the object
         /// </summary>
-        OAuth2 = 0
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()  
+        {
+          var sb = new StringBuilder();
+          sb.Append("class FilesUploadResult {\n");
+          sb.Append("  Uploaded: ").Append(this.Uploaded).Append("\n");
+          sb.Append("  Errors: ").Append(this.Errors).Append("\n");
+          sb.Append("}\n");
+          return sb.ToString();
+        }
     }
 }

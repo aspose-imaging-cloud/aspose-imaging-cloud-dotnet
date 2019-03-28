@@ -47,7 +47,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         {
             this.imageData = imageData;
         }
-		
+        
         /// <summary>
         /// Input image
         /// </summary>  

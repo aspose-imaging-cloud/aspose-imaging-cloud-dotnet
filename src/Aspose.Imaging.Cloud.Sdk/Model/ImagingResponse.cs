@@ -36,7 +36,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   /// <summary>
   /// Represents information about image.
   /// </summary>  
-  public class ImagingResponse : SaaSposeResponse 
+  public class ImagingResponse 
   {                       
         /// <summary>
         /// Gets or sets the height of image.

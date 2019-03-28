@@ -49,7 +49,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.imageData = imageData;
             this.frameId = frameId;
         }
-		
+        
         /// <summary>
         /// Input image
         /// </summary>  

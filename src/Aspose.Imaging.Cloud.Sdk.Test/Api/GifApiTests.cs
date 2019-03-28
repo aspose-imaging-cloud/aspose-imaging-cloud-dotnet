@@ -35,8 +35,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing GifApi
     /// </summary>
-    [Category("v1.0")]
-    [Category("v2.0")]
+    [Category("v3.0")]
     [Category("Gif")]
     [TestFixture]
     public class GifApiTests : ImagingApiTester

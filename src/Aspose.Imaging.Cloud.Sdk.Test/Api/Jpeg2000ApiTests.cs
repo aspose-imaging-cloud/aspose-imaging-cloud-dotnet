@@ -34,8 +34,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     /// <summary>
     ///  Class for testing Jpeg2000Api
     /// </summary>
-    [Category("v1.0")]
-    [Category("v2.0")]
+    [Category("v3.0")]
     [Category("Jpeg2000")]
     [TestFixture]
     public class Jpeg2000ApiTests : ImagingApiTester

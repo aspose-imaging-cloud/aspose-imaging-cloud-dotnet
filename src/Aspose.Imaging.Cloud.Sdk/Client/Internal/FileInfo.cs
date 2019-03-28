@@ -43,6 +43,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal
         /// <summary>
         /// The file bytes
         /// </summary>
-        public byte[] file;
+        public byte[] File;
     }
 }

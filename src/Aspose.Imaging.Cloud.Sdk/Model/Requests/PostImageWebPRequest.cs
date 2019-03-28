@@ -61,7 +61,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.outPath = outPath;
             this.storage = storage;
         }
-		
+        
         /// <summary>
         /// Input image
         /// </summary>  

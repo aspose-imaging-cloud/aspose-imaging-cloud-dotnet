@@ -29,7 +29,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
     using System.IO;
     using System.Net;
 
-    using Aspose.Imaging.Cloud.Sdk.Model;
     using Aspose.Imaging.Cloud.Sdk.Client;
 
     /// <summary>
@@ -81,24 +80,20 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
         private void ThrowApiException(HttpWebResponse webResponse, Stream resultStream)
         {
             Exception resutException;
+            string responseData = null;
             try
             {
                 resultStream.Position = 0;
                 using (var responseReader = new StreamReader(resultStream))
                 {
-                    var responseData = responseReader.ReadToEnd();
-                    var errorResponse = (SaaSposeResponse)SerializationHelper.Deserialize<SaaSposeResponse>(responseData);
-                    if (string.IsNullOrEmpty(errorResponse.Status))
-                    {
-                        errorResponse.Status = responseData;
-                    }
-
-                    resutException = new ApiException((int)webResponse.StatusCode, errorResponse.Status);
+                    responseData = responseReader.ReadToEnd();
+                    var error = (ApiError)SerializationHelper.Deserialize<ApiError>(responseData);
+                    resutException = new ApiException((int)webResponse.StatusCode, error.Error.Message, error.Error);
                 }
             }
             catch (Exception)
             {
-                throw new ApiException((int)webResponse.StatusCode, webResponse.StatusDescription);
+                resutException = new ApiException((int)webResponse.StatusCode, responseData ?? webResponse.StatusDescription);
             }
 
             throw resutException;

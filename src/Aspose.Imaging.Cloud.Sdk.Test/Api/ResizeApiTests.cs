@@ -31,13 +31,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
 	using Aspose.Imaging.Cloud.Sdk.Model;
 	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-	using Aspose.Storage.Cloud.Sdk.Model;
 
     /// <summary>
     ///  Class for testing ResizeApi
     /// </summary>
-    [Category("v1.0")]
-    [Category("v2.0")]
+    [Category("v3.0")]
     [Category("Resize")]
     [TestFixture]
     public class ResizeApiTests : ImagingApiTester
@@ -87,7 +85,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 }
             }
 
-            foreach (FileResponse inputFile in InputTestFiles)
+            foreach (StorageFile inputFile in InputTestFiles)
             {
                 if (inputFile.Name.EndsWith(formatExtension))
                 {
@@ -169,7 +167,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 }
             }
 
-            foreach (FileResponse inputFile in InputTestFiles)
+            foreach (StorageFile inputFile in InputTestFiles)
             {
                 if (inputFile.Name.EndsWith(formatExtension))
                 {

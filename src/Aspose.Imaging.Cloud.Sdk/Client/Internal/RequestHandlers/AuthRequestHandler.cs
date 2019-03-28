@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="OAuthRequestHandler.cs">
+// <copyright company="Aspose" file="AuthRequestHandler.cs">
 //   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -33,10 +33,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
     using Newtonsoft.Json;
 
     /// <summary>
-    /// OAuth request hanlder.
+    /// Auth request hanlder.
     /// </summary>
     /// <seealso cref="Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers.IRequestHandler" />
-    internal class OAuthRequestHandler : IRequestHandler
+    internal class AuthRequestHandler : IRequestHandler
     {
         #region Fields
 
@@ -55,20 +55,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
         /// </summary>
         private string accessToken;
 
-        /// <summary>
-        /// The refresh token
-        /// </summary>
-        private string refreshToken;
-
         #endregion
 
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OAuthRequestHandler"/> class.
+        /// Initializes a new instance of the <see cref="AuthRequestHandler"/> class.
         /// </summary>
         /// <param name="configuration">The configuration.</param>
-        public OAuthRequestHandler(Configuration configuration)
+        public AuthRequestHandler(Configuration configuration)
         {
             this.configuration = configuration;
 
@@ -91,16 +86,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
         /// </returns>
         public string ProcessUrl(string url)
         {
-            if (this.configuration.AuthType != AuthType.OAuth2)
-            {
-                return url;
-            }
-
-            if (string.IsNullOrEmpty(this.accessToken))
-            {
-                this.RequestToken();
-            }
-
             return url;
         }
 
@@ -111,9 +96,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
         /// <param name="streamToSend">The stream to send.</param>
         public void BeforeSend(WebRequest request, Stream streamToSend)
         {
-            if (this.configuration.AuthType != AuthType.OAuth2)
+            if (string.IsNullOrEmpty(this.accessToken))
             {
-                return;
+                this.RequestJwtToken();
             }
 
             request.Headers.Add("Authorization", "Bearer " + this.accessToken);
@@ -127,57 +112,29 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
         /// <exception cref="Aspose.Imaging.Cloud.Sdk.Client.Internal.NeedRepeatRequestException"></exception>
         public void ProcessResponse(HttpWebResponse response, Stream resultStream)
         {
-            if (this.configuration.AuthType != AuthType.OAuth2)
-            {
-                return;
-            }
-
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
-            {
-                this.RefreshToken();
-
-                throw new NeedRepeatRequestException();
-            }
         }
 
         /// <summary>
-        /// Refreshes the token.
+        /// Requests the JWT token.
         /// </summary>
-        private void RefreshToken()
+        private void RequestJwtToken()
         {
-            var requestUrl = this.configuration.ApiBaseUrl + "/oauth2/token";
-
-            var postData = "grant_type=refresh_token";
-            postData += "&refresh_token=" + this.refreshToken;
-
-            using (StreamReader reader = new StreamReader(this.apiInvoker.InvokeApi(
-                requestUrl,
-                "POST",
-                postData,
-                contentType: "application/x-www-form-urlencoded")))
-            {
-                string responseString = reader.ReadToEnd();
-                var result =
-                    (GetAccessTokenResult)SerializationHelper.Deserialize<GetAccessTokenResult>(responseString);
-
-                this.accessToken = result.AccessToken;
-                this.refreshToken = result.RefreshToken;
-            }
-        }
-
-        /// <summary>
-        /// Requests the token.
-        /// </summary>
-        private void RequestToken()
-        {
-            var requestUrl = this.configuration.ApiBaseUrl + "/oauth2/token";
+            var requestUrl = this.configuration.ApiBaseUrl + "/connect/token";
 
             var postData = "grant_type=client_credentials";
             postData += "&client_id=" + this.configuration.AppSid;
             postData += "&client_secret=" + this.configuration.AppKey;
 
+            this.RequestToken(requestUrl, postData);
+        }
+
+        /// <summary>
+        /// Requests the token.
+        /// </summary>
+        private void RequestToken(string tokenUrl, string postData)
+        {
             using (StreamReader reader = new StreamReader(this.apiInvoker.InvokeApi(
-                requestUrl,
+                tokenUrl,
                 "POST",
                 postData,
                 contentType: "application/x-www-form-urlencoded")))
@@ -187,7 +144,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
                     (GetAccessTokenResult)SerializationHelper.Deserialize<GetAccessTokenResult>(responseString);
 
                 this.accessToken = result.AccessToken;
-                this.refreshToken = result.RefreshToken;
             }
         }
 
@@ -206,15 +162,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
             /// </value>
             [JsonProperty(PropertyName = "access_token")]
             public string AccessToken { get; set; }
-
-            /// <summary>
-            /// Gets or sets the refresh token.
-            /// </summary>
-            /// <value>
-            /// The refresh token.
-            /// </value>
-            [JsonProperty(PropertyName = "refresh_token")]
-            public string RefreshToken { get; set; }
         }        
     }
 }

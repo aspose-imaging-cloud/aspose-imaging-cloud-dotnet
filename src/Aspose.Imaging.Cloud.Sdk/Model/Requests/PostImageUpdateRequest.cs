@@ -43,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="PostImageUpdateRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="format">Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.</param>
+        /// <param name="format">Resulting image format.</param>
         /// <param name="newWidth">New width of the scaled image.</param>
         /// <param name="newHeight">New height of the scaled image.</param>
         /// <param name="x">X position of start point for cropping rectangle.</param>
@@ -67,14 +67,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.outPath = outPath;
             this.storage = storage;
         }
-		
+        
         /// <summary>
         /// Input image
         /// </summary>  
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+        /// Resulting image format.
         /// </summary>  
         public string format { get; set; }
 

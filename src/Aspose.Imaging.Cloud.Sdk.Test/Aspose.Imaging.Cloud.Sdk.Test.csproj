@@ -10,6 +10,8 @@
     <AssemblyName>Aspose.Imaging.Cloud.Sdk.Test</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,11 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Storage.Cloud.Sdk, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Aspose.Storage-Cloud.18.3.0\lib\net20\Aspose.Storage.Cloud.Sdk.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.1\lib\net20\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,9 +46,6 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web" />
-    <Reference Include="nunit.framework">
-      <HintPath>$(SolutionDir)packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\AI\CompareImagesTests.cs" />
@@ -59,15 +58,11 @@
     <Compile Include="Base\ApiTester.cs" />
     <Compile Include="Api\BmpApiTests.cs" />
     <Compile Include="Api\CropApiTests.cs" />
-    <Compile Include="Api\DicomApiTests.cs" />
-    <Compile Include="Api\DngApiTests.cs" />
     <Compile Include="Api\EmfApiTests.cs" />
     <Compile Include="Api\FramesGetApiTests.cs" />
     <Compile Include="Api\GifApiTests.cs" />
     <Compile Include="Api\Jpeg2000ApiTests.cs" />
     <Compile Include="Api\JpgApiTests.cs" />
-    <Compile Include="Api\OdgApiTests.cs" />
-    <Compile Include="Api\PngApiTests.cs" />
     <Compile Include="Api\PsdApiTests.cs" />
     <Compile Include="Api\ResizeApiTests.cs" />
     <Compile Include="Api\RotateFlipApiTests.cs" />

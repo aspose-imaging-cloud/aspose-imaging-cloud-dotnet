@@ -43,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="GetImageRotateFlipRequest"/> class.
         /// </summary>
         /// <param name="name">Filename of an image.</param>
-        /// <param name="format">Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.</param>
+        /// <param name="format">Resulting image format.</param>
         /// <param name="method">RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="folder">Folder with image to process.</param>
@@ -57,14 +57,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.folder = folder;
             this.storage = storage;
         }
-		
+        
         /// <summary>
         /// Filename of an image.
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+        /// Resulting image format.
         /// </summary>  
         public string format { get; set; }
 
