@@ -28,7 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.GetImageJpg" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.GetImageJpg" /> operation.
   /// </summary>  
   public class GetImageJpgRequest  
   {

@@ -55,6 +55,10 @@
     <Compile Include="Api\AI\TestImagingAIBase.cs" />
     <Compile Include="Api\FramesPostApiTests.cs" />
     <Compile Include="Api\ImagingApiTester.cs" />
+    <Compile Include="Api\Storage\FileApiTests.cs" />
+    <Compile Include="Api\Storage\FolderApiTests.cs" />
+    <Compile Include="Api\Storage\StorageApiTester.cs" />
+    <Compile Include="Api\Storage\StorageApiTests.cs" />
     <Compile Include="Base\ApiTester.cs" />
     <Compile Include="Api\BmpApiTests.cs" />
     <Compile Include="Api\CropApiTests.cs" />
@@ -87,4 +91,5 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
 </Project>

@@ -34,17 +34,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// 
+  /// Image search result.
   /// </summary>  
   public class SearchResult 
   {                       
         /// <summary>
-        /// Gets or sets ImageId
+        /// Gets or sets the image identifier.
         /// </summary>  
         public string ImageId { get; set; }
 
         /// <summary>
-        /// Gets or sets Similarity
+        /// Gets or sets the similarity.
         /// </summary>  
         public double? Similarity { get; set; }
 

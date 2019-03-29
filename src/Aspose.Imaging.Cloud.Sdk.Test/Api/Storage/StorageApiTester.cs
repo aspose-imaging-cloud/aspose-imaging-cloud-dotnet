@@ -1,5 +1,5 @@
-// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="ImageDuplicates.cs">
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright company="Aspose" file="StorageApiTester.cs">
 //   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -23,37 +23,27 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Aspose.Imaging.Cloud.Sdk.Model 
+namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
 {
-  using System;  
-  using System.Collections;
-  using System.Collections.Generic;
-  using System.Runtime.Serialization;
-  using System.Text;
-  using Newtonsoft.Json;
-  using Newtonsoft.Json.Converters;
+    using NUnit.Framework;
 
-  /// <summary>
-  /// Image duplicates.
-  /// </summary>  
-  public class ImageDuplicates 
-  {                       
+    /// <summary>
+    /// Storage API tester.
+    /// </summary>
+    /// <seealso cref="Aspose.Imaging.Cloud.Sdk.Test.Api.ApiTester" />
+    [Category("v3.0")]
+    [Category("Storage")]
+    [TestFixture]
+    public class StorageApiTester : ApiTester
+    {
         /// <summary>
-        /// Gets or sets the duplicate images.
-        /// </summary>  
-        public List<SearchResult> DuplicateImages { get; set; }
-
-        /// <summary>
-        /// Get the string presentation of the object
+        /// Original test data folder
         /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()  
-        {
-          var sb = new StringBuilder();
-          sb.Append("class ImageDuplicates {\n");
-          sb.Append("  DuplicateImages: ").Append(this.DuplicateImages).Append("\n");
-          sb.Append("}\n");
-          return sb.ToString();
-        }
+        protected override string OriginalDataFolder => base.OriginalDataFolder + "/Storage";
+
+        /// <summary>
+        /// The cloud test folder prefix
+        /// </summary>
+        protected override string CloudTestFolderPrefix => "ImagingStorageCloudTestDotNet";
     }
 }

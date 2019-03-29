@@ -28,7 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.GetSearchContextExtractImageFeatures" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.GetSearchContextExtractImageFeatures" /> operation.
   /// </summary>  
   public class GetSearchContextExtractImageFeaturesRequest  
   {
