@@ -53,6 +53,7 @@
     <Compile Include="Api\AI\FindImagesTests.cs" />
     <Compile Include="Api\AI\SearchContextTests.cs" />
     <Compile Include="Api\AI\TestImagingAIBase.cs" />
+    <Compile Include="Api\ExamplesTests.cs" />
     <Compile Include="Api\FramesPostApiTests.cs" />
     <Compile Include="Api\ImagingApiTester.cs" />
     <Compile Include="Api\Storage\FileApiTests.cs" />

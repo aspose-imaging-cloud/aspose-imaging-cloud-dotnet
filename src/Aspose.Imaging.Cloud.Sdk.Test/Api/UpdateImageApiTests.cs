@@ -25,11 +25,11 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
-	using System.IO;
-	using System.Collections.Generic;
-	using NUnit.Framework;
-	using Aspose.Imaging.Cloud.Sdk.Model;
-	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+    using System.IO;
+    using System.Collections.Generic;
+    using NUnit.Framework;
+    using Aspose.Imaging.Cloud.Sdk.Model;
+    using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
     /// <summary>
     ///  Class for testing UpdateImageApi

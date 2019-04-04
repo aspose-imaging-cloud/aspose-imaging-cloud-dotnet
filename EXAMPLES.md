@@ -1,59 +1,104 @@
-### Imaging - Convert to another format (other operations are similar to use)
+### Imaging - Save as: convert image from storage to another format
 ```csharp
-// optional parameters are base URL, API version, authentication type and debug mode
-// default base URL is https://api.aspose.cloud/
-// default API version is v2
-// default authentication type is OAuth2.0
-// default debug mode is false
-var imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
-
-// this GET request converts image files
-// optional parameters are output file path, input file folder and Aspose storage name (if you have more than one storage and want to use non-default one) 
-// if output file path is not set, resulting image is returned in a stream; otherwise, it's saved at the specified path in the storage and null is returned
-var getSaveRequest = new GetImageSaveAsRequest("inputImage.jpg", "png", "ResultFolder/resultImage.png", "InputFolder");
-
-// returns null, saves result to storage
-imagingApi.GetImageSaveAs(getSaveRequest);
-
-var getStreamRequest = new GetImageSaveAsRequest("inputImage.jpg", "png", null, "InputFolder");
-
-// returns resulting stream
-using (Stream resultGetImageStream = imagingApi.GetImageSaveAs(getStreamRequest))
+// optional parameters are base URL, API version and debug mode
+var imagingApi = new ImagingApi("yourAppKey", "yourAppSid");
+try
 {
-	// process resulting stream
+    // upload local image to storage
+    using (FileStream localInputImage = File.OpenRead("test.png"))
+    {
+        var uploadFileRequest = new UploadFileRequest("ExampleFolderNet/inputImage.png", localInputImage);
+        FilesUploadResult result = imagingApi.UploadFile(uploadFileRequest);
+        // inspect result.Errors list if there were any
+        // inspect result.Uploaded list for uploaded file names
+    }
+
+    // convert image from storage to JPEG and save it to storage
+    // please, use outPath parameter for saving the result to storage
+    var getSaveToStorageRequest =
+        new GetImageSaveAsRequest("inputImage.png", "jpg", "ExampleFolderNet/resultImage.jpg",
+        "ExampleFolderNet");
+
+    imagingApi.GetImageSaveAs(getSaveToStorageRequest);
+
+    // download saved image from storage
+    using (Stream savedFile =
+        imagingApi.DownloadFile(
+        new DownloadFileRequest("ExampleFolderNet/resultImage.jpg")))
+    {
+        // process resulting image from storage
+    }
+
+    // convert image from storage to JPEG and read it from resulting stream
+    // please, set outPath parameter as null to return result in response stream instead of saving to storage
+    var getSaveToStreamRequest =
+        new GetImageSaveAsRequest("inputImage.png", "jpg", null, "ExampleFolderNet");
+
+    using (Stream resultGetImageStream = imagingApi.GetImageSaveAs(getSaveToStreamRequest))
+    {
+        // process resulting image from response stream
+    }
+}
+finally
+{
+    // remove files from storage
+    imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/inputImage.jpg"));
+    imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.png"));
 }
 
-// another option is to use POST request and send image in a stream, if it's not present in your storage
+// other Imaging requests typically follow the same principles regarding stream/storage relations
+```
 
-using (FileStream inputImageStream = new FileStream(@"D:\test\localInputImage.jpg", FileMode.Open, FileAccess.Read))
+### Imaging - Save as: convert image from request stream to another format
+```csharp
+// optional parameters are base URL, API version and debug mode
+var imagingApi = new ImagingApi("yourAppKey", "yourAppSid");
+    
+try
 {
-	var postSaveRequest = new PostImageSaveAsRequest(inputImageStream, "png", "ResultFolder/resultImage.png");
-	
-	// returns null, saves result to storage
-	imagingApi.PostImageSaveAs(postSaveRequest);
+    // get local image stream
+    using (FileStream localInputImage = File.OpenRead("test.png"))
+    {
+        // convert image from request stream to JPEG and save it to storage
+        // please, use outPath parameter for saving the result to storage
+        var postSaveToStorageRequest =
+            new PostImageSaveAsRequest(localInputImage, "jpg", "ExampleFolderNet/resultImage.png");
+
+        imagingApi.PostImageSaveAs(postSaveToStorageRequest);
+
+        // download saved image from storage
+        using (Stream savedFile =
+            imagingApi.DownloadFile(new DownloadFileRequest("ExampleFolderNet/resultImage.jpg")))
+        {
+            // process resulting image from storage
+        }
+
+        localInputImage.Seek(0, SeekOrigin.Begin);
+
+        // convert image from request stream to JPEG and read it from resulting stream
+        // please, set outPath parameter as null to return result in response stream instead of saving to storage
+        var postSaveToStreamRequest =
+            new PostImageSaveAsRequest(localInputImage, "jpg");
+
+        using (Stream resultPostImageStream = 
+            imagingApi.PostImageSaveAs(postSaveToStreamRequest))
+        {
+            // process resulting image from response stream
+        }
+    }
+}
+finally
+{
+    // remove file from storage
+    imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.png"));
 }
 
-using (FileStream inputImageStream = new FileStream(@"D:\test\localInputImage.jpg", FileMode.Open, FileAccess.Read))
-{
-	var postStreamRequest = new PostImageSaveAsRequest(inputImageStream, "png");
-	
-	// returns resulting stream
-	using (Stream resultPostImageStream = imagingApi.PostImageSaveAs(postStreamRequest))
-	{
-		// process resulting stream
-	}
-}
-
-// another Imaging requests typically follow the same principles
+// other Imaging requests typically follow the same principles regarding stream/storage relations
 ```
 
 ### Imaging.AI - Compare two images
 ```csharp
-// optional parameters are base URL, API version, authentication type and debug mode
-// default base URL is https://api.aspose.cloud/
-// default API version is v2
-// default authentication type is OAuth2.0
-// default debug mode is false
+// optional parameters are base URL, API version and debug mode
 var imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
  
 // create search context or use existing search context ID if search context was created earlier
@@ -66,17 +111,14 @@ var imageInStorage2 = @"WorkFolder\Image2.jpg";
   
 // compare images
 var response = imagingApi.PostSearchContextCompareImages(
-    new PostSearchContextCompareImagesRequest(searchContextId, imageInStorage1, imageId2: imageInStorage2));
+    new PostSearchContextCompareImagesRequest(
+    searchContextId, imageInStorage1, imageId2: imageInStorage2));
 var similarity = response.Results[0].Similarity;
 ```
 
 ### Imaging.AI - Find similar images
 ```csharp
-// optional parameters are base URL, API version, authentication type and debug mode
-// default base URL is https://api.aspose.cloud/
-// default API version is v2
-// default authentication type is OAuth2.0
-// default debug mode is false
+// optional parameters are base URL, API version and debug mode
 var imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
  
 // create search context or use existing search context ID if search context was created earlier
@@ -85,10 +127,12 @@ var searchContextId = apiResponse.Id;
  
 // extract images features if it was not done before
 imagingApi.PostSearchContextExtractImageFeatures(
-    new PostSearchContextExtractImageFeaturesRequest(searchContextId, imageId: null, imagesFolder: "WorkFolder"))
+    new PostSearchContextExtractImageFeaturesRequest(
+    searchContextId, imageId: null, imagesFolder: "WorkFolder"))
  
 // wait 'till image features extraction is completed
-while (imagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(searchContextId)).SearchStatus != "Idle")
+while (imagingApi.GetSearchContextStatus(
+    new GetSearchContextStatusRequest(searchContextId)).SearchStatus != "Idle")
 {
     Thread.Sleep(TimeSpan.FromSeconds(10));
 }    
@@ -106,13 +150,14 @@ if (imageFromStorage)
 else
 {
     // load search image as a stream
-    using (FileStream imageStream = new FileStream(@"D:\test\localInputImage.jpg", FileMode.Open, FileAccess.Read))
+    using (FileStream imageStream = 
+        new FileStream(@"D:\test\localInputImage.jpg", FileMode.Open, FileAccess.Read))
     {      
         results = imagingApi.GetSearchContextFindSimilar(
             new GetSearchContextFindSimilarRequest(apiResponse.Id, 90, 5, imageStream));
     }
 }
-             
+ 
 // process search results
 foreach (var searchResult in results.Results)
 {
@@ -122,11 +167,7 @@ foreach (var searchResult in results.Results)
 
 ### Imaging.AI - Find duplicate images
 ```csharp
-// optional parameters are base URL, API version, authentication type and debug mode
-// default base URL is https://api.aspose.cloud/
-// default API version is v2
-// default authentication type is OAuth2.0
-// default debug mode is false
+// optional parameters are base URL, API version and debug mode
 var imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
  
 // create search context or use existing search context ID if search context was created earlier
@@ -135,10 +176,12 @@ var searchContextId = apiResponse.Id;
  
 // extract images features if it was not done before
 imagingApi.PostSearchContextExtractImageFeatures(
-    new PostSearchContextExtractImageFeaturesRequest(searchContextId, imageId: null, imagesFolder: "WorkFolder"))
+    new PostSearchContextExtractImageFeaturesRequest(
+    searchContextId, imageId: null, imagesFolder: "WorkFolder"))
  
 // wait 'till image features extraction is completed
-while (imagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(searchContextId)).SearchStatus != "Idle")
+while (imagingApi.GetSearchContextStatus(
+    new GetSearchContextStatusRequest(searchContextId)).SearchStatus != "Idle")
 {
     Thread.Sleep(TimeSpan.FromSeconds(10));
 }    
@@ -161,11 +204,7 @@ foreach (var duplicates in response.Duplicates)
 
 ### Imaging.AI - Search images by tags
 ```csharp
-// optional parameters are base URL, API version, authentication type and debug mode
-// default base URL is https://api.aspose.cloud/
-// default API version is v2
-// default authentication type is OAuth2.0
-// default debug mode is false
+// optional parameters are base URL, API version and debug mode
 var imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
  
 // create search context or use existing search context ID if search context was created earlier
@@ -174,17 +213,20 @@ var searchContextId = apiResponse.Id;
  
 // extract images features if it was not done before
 imagingApi.PostSearchContextExtractImageFeatures(
-    new PostSearchContextExtractImageFeaturesRequest(searchContextId, imageId: null, imagesFolder: "WorkFolder"))
+    new PostSearchContextExtractImageFeaturesRequest(
+    searchContextId, imageId: null, imagesFolder: "WorkFolder"))
  
 // wait 'till image features extraction is completed
-while (imagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(searchContextId)).SearchStatus != "Idle")
+while (imagingApi.GetSearchContextStatus(
+    new GetSearchContextStatusRequest(searchContextId)).SearchStatus != "Idle")
 {
     Thread.Sleep(TimeSpan.FromSeconds(10));
 }    
  
 var tag = "MyTag";
 // load tag image as a stream
-using (FileStream tagImageStream = new FileStream(@"D:\test\tagImage.jpg", FileMode.Open, FileAccess.Read))
+using (FileStream tagImageStream = 
+    new FileStream(@"D:\test\tagImage.jpg", FileMode.Open, FileAccess.Read))
 {       
     imagingApi.PostSearchContextAddTag(
         new PostSearchContextAddTagRequest(tagImageStream, searchContextId, tag));
@@ -220,5 +262,6 @@ catch (ApiException ex)
 {
     Console.WriteLine(ex.ErrorCode);
     Console.WriteLine(ex.Message);
+    // inspect ex.Error
 }
 ```

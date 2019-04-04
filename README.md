@@ -60,6 +60,15 @@ Process options, change and return images in any supported export format:
 * Image comparison and similarity detection
 * Image features extraction (for now, AKAZE detector is supported)
 
+# Storage API support
+#### Since version 19.4, SDK includes support of storage operations for better user experience and unification, so now there's no need to use 2 different SDKs!
+
+It gives you an ability to:
+* Upload, download, copy, move and delete files, including versions handling (if you are using Cloud storage that supports this feature - true by default)
+* Create, copy, move and delete folders
+* Copy and move files and folders accross separate storages in scope of a single operation
+* Check if certain file, folder or storage exists
+
 # Usage
 Please, add the following [NuGet package](https://www.nuget.org/packages/Aspose.Imaging-Cloud/) to your project.
 

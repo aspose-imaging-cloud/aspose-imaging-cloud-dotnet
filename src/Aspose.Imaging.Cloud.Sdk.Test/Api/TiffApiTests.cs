@@ -25,12 +25,12 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
-	using System;
+    using System;
     using System.IO;
-	using NUnit.Framework;
-	
-	using Aspose.Imaging.Cloud.Sdk.Model;
-	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+    using NUnit.Framework;
+    
+    using Aspose.Imaging.Cloud.Sdk.Model;
+    using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
     /// <summary>
     ///  Class for testing TiffApi
