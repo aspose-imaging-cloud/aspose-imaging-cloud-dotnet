@@ -58,4 +58,17 @@
      <PackageReference Include="System.Net.Requests" Version="4.3.0" />
   </ItemGroup>
   
+  <Target Name="SignAndVerify" BeforeTargets="Pack" Condition="'$(Configuration)' == 'Release'">
+    <Exec Command="signtool.exe sign /f C:\Workspace\Aspose.pfx /p &quot;$(CertificatePassword)&quot; /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp C:\Workspace\aspose-imaging-cloud-dotnet\src\Aspose.Imaging.Cloud.Sdk\bin\Release\net20\Aspose.Imaging.Cloud.Sdk.dll" />
+    <Exec Command="signtool.exe sign /f C:\Workspace\Aspose.pfx /p &quot;$(CertificatePassword)&quot; /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp C:\Workspace\aspose-imaging-cloud-dotnet\src\Aspose.Imaging.Cloud.Sdk\bin\Release\net35\Aspose.Imaging.Cloud.Sdk.dll" />
+    <Exec Command="signtool.exe sign /f C:\Workspace\Aspose.pfx /p &quot;$(CertificatePassword)&quot; /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp C:\Workspace\aspose-imaging-cloud-dotnet\src\Aspose.Imaging.Cloud.Sdk\bin\Release\net4\Aspose.Imaging.Cloud.Sdk.dll" />
+    <Exec Command="signtool.exe sign /f C:\Workspace\Aspose.pfx /p &quot;$(CertificatePassword)&quot; /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp C:\Workspace\aspose-imaging-cloud-dotnet\src\Aspose.Imaging.Cloud.Sdk\bin\Release\net45\Aspose.Imaging.Cloud.Sdk.dll" />
+    <Exec Command="signtool.exe sign /f C:\Workspace\Aspose.pfx /p &quot;$(CertificatePassword)&quot; /tr http://sha256timestamp.ws.symantec.com/sha256/timestamp C:\Workspace\aspose-imaging-cloud-dotnet\src\Aspose.Imaging.Cloud.Sdk\bin\Release\netstandard2.0\Aspose.Imaging.Cloud.Sdk.dll" />
+    <Exec Command="sn.exe -v C:\Workspace\aspose-imaging-cloud-dotnet\src\Aspose.Imaging.Cloud.Sdk\bin\Release\net20\Aspose.Imaging.Cloud.Sdk.dll" />
+    <Exec Command="sn.exe -v C:\Workspace\aspose-imaging-cloud-dotnet\src\Aspose.Imaging.Cloud.Sdk\bin\Release\net35\Aspose.Imaging.Cloud.Sdk.dll" />
+    <Exec Command="sn.exe -v C:\Workspace\aspose-imaging-cloud-dotnet\src\Aspose.Imaging.Cloud.Sdk\bin\Release\net4\Aspose.Imaging.Cloud.Sdk.dll" />
+    <Exec Command="sn.exe -v C:\Workspace\aspose-imaging-cloud-dotnet\src\Aspose.Imaging.Cloud.Sdk\bin\Release\net45\Aspose.Imaging.Cloud.Sdk.dll" />
+    <Exec Command="sn.exe -v C:\Workspace\aspose-imaging-cloud-dotnet\src\Aspose.Imaging.Cloud.Sdk\bin\Release\netstandard2.0\Aspose.Imaging.Cloud.Sdk.dll" />
+  </Target>
+  
 </Project>
