@@ -28,6 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Reflection;
 
     using Aspose.Imaging.Cloud.Sdk.Api;
     using Aspose.Imaging.Cloud.Sdk.Model;
@@ -69,11 +70,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         private const string BaseUrl = "http://api.aspose.cloud/";
 
         /// <summary>
-        /// The local test folder
-        /// </summary>
-        protected const string LocalTestFolder = "..\\..\\..\\..\\TestData\\";
-
-        /// <summary>
         /// The default storage
         /// </summary>
         protected const string DefaultStorage = "Imaging-QA";
@@ -86,6 +82,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// If any test failed
         /// </summary>
         protected static bool FailedAnyTest = false;
+
+        /// <summary>
+        /// The local test folder
+        /// </summary>
+        protected readonly string LocalTestFolder = Path.Combine(Assembly.GetExecutingAssembly().Location,
+            "..\\..\\..\\..\\..\\..\\TestData\\");
 
         /// <summary>
         /// The temporary folder
@@ -174,7 +176,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
         #region Configuration
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public virtual void InitFixture()
         {
             this.TempFolder = $"{this.CloudTestFolderPrefix}_{this.GetEnvironmentVariable("BUILD_NUMBER") ?? Environment.UserName}";
@@ -183,7 +185,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             if (string.IsNullOrEmpty(this.TestStorage))
             {
-                Console.WriteLine("Storage name is not set by environment variable. Using the default one.");
+                TestContext.Progress.WriteLine("Storage name is not set by environment variable. Using the default one.");
                 this.TestStorage = DefaultStorage;
             }
 
@@ -196,7 +198,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             }
         }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public virtual void FinilizeFixture()
         {
             if (!FailedAnyTest && this.RemoveResult && 
@@ -224,7 +226,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         {
             if (appKey == AppKey || appSid == AppSid)
             {
-                Console.WriteLine("Access data isn't set explicitly. Trying to obtain it from environment variables.");
+                TestContext.Progress.WriteLine("Access data isn't set explicitly. Trying to obtain it from environment variables.");
 
                 appKey = this.GetEnvironmentVariable("AppKey");
                 appSid = this.GetEnvironmentVariable("AppSid");
@@ -235,36 +237,37 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             if (string.IsNullOrEmpty(appKey) || string.IsNullOrEmpty(appSid) || string.IsNullOrEmpty(baseUrl) || 
                 string.IsNullOrEmpty(apiVersion))
             {
-                Console.WriteLine("Access data isn't set completely by environment variables. Filling unset data with default values.");
+                TestContext.Progress.WriteLine("Access data isn't set completely by environment variables. Filling unset data with default values.");
             }
 
             if (string.IsNullOrEmpty(apiVersion))
             {
                 apiVersion = ApiVersion;
-                Console.WriteLine("Set default API version");
+                TestContext.Progress.WriteLine("Set default API version");
             }
 
             string serverAccessPath = Path.Combine(LocalTestFolder, ServerAccessFile);
             FileInfo serverFileInfo = new FileInfo(serverAccessPath);
+
             if (serverFileInfo.Exists && serverFileInfo.Length > 0)
             {
                 var accessData = JsonConvert.DeserializeObject<ServerAccessData>(File.ReadAllText(serverAccessPath));
                 if (string.IsNullOrEmpty(appKey))
                 {
                     appKey = accessData.AppKey;
-                    Console.WriteLine("Set default App key");
+                    TestContext.Progress.WriteLine("Set default App key");
                 }
 
                 if (string.IsNullOrEmpty(appSid))
                 {
                     appSid = accessData.AppSid;
-                    Console.WriteLine("Set default App SID");
+                    TestContext.Progress.WriteLine("Set default App SID");
                 }
 
                 if (string.IsNullOrEmpty(baseUrl))
                 {
                     baseUrl = accessData.BaseURL;
-                    Console.WriteLine("Set default base URL");
+                    TestContext.Progress.WriteLine("Set default base URL");
                 }
 
             }
@@ -273,12 +276,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 throw new ArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
             }
 
-            Console.WriteLine($"App key: {appKey}");
-            Console.WriteLine($"App SID: {appSid}");
-            Console.WriteLine($"Storage: {this.TestStorage}");
-            Console.WriteLine($"Base URL: {baseUrl}");
-            Console.WriteLine($"API version: {apiVersion}");
-
+            TestContext.Progress.WriteLine($"App key: {appKey}");
+            TestContext.Progress.WriteLine($"App SID: {appSid}");
+            TestContext.Progress.WriteLine($"Storage: {this.TestStorage}");
+            TestContext.Progress.WriteLine($"Base URL: {baseUrl}");
+            TestContext.Progress.WriteLine($"API version: {apiVersion}");
             this.ImagingApi = new ImagingApi(appKey, appSid, baseUrl, apiVersion, debug);
             InputTestFiles = this.FetchInputTestFilesInfo();
         }
@@ -433,10 +435,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
         private void TestRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, 
-            string resultFileName, Newtonsoft.Json.Serialization.Func<Stream> invokeRequestAction, 
+            string resultFileName,
+#if NET20
+            Newtonsoft.Json.Serialization.Func<Stream> invokeRequestAction,
+#else
+            System.Func<Stream> invokeRequestAction,
+#endif
             PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
         {
-            Console.WriteLine(testMethodName);
+            TestContext.Progress.WriteLine(testMethodName);
 
             if (!CheckInputFileExists(inputFileName))
             {
@@ -455,7 +462,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             try
             {
-                Console.WriteLine(parametersLine);
+                TestContext.Progress.WriteLine(parametersLine);
 
                 if (saveResultToStorage)
                 {
@@ -511,7 +518,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             catch (Exception ex)
             {
                 FailedAnyTest = true;
-                Console.WriteLine(ex.Message);
+                TestContext.Progress.WriteLine(ex.Message);
                 throw;
             }
             finally
@@ -522,7 +529,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     this.ImagingApi.DeleteFile(new DeleteFileRequest(outPath, storage));
                 }
 
-                Console.WriteLine($"Test passed: {passed}");
+                TestContext.Progress.WriteLine($"Test passed: {passed}");
             }
         }
 
@@ -538,6 +545,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                    ?? Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Machine);
         }
 
-        #endregion
+#endregion
     }
 }

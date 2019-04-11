@@ -175,7 +175,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         public void PostTiffAppendTest()
         {
             bool passed = false;
-            Console.WriteLine("PostTiffAppendTest");
+            TestContext.Progress.WriteLine("PostTiffAppendTest");
 
             string inputFileName = "test.tiff";
             string folder = TempFolder;
@@ -193,7 +193,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             try
             {
-                Console.WriteLine($"Input image: {inputFileName}");
+                TestContext.Progress.WriteLine($"Input image: {inputFileName}");
 
                 outPath = TempFolder + "/" + resultFileName;
 
@@ -240,7 +240,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             catch (Exception ex)
             {
                 FailedAnyTest = true;
-                Console.WriteLine(ex.Message);
+                TestContext.Progress.WriteLine(ex.Message);
                 throw;
             }
             finally
@@ -250,7 +250,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     this.ImagingApi.DeleteFile(new DeleteFileRequest(outPath, storage));
                 }
 
-                Console.WriteLine($"Test passed: {passed}");
+                TestContext.Progress.WriteLine($"Test passed: {passed}");
             }
         }
     }

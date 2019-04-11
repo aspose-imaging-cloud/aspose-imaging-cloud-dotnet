@@ -1,96 +1,40 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{19F1DEBC-DE5E-4517-8062-F000CD499087}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aspose.Imaging.Cloud.Sdk.Test</RootNamespace>
-    <AssemblyName>Aspose.Imaging.Cloud.Sdk.Test</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFrameworks>netcoreapp2.0;net20</TargetFrameworks>
+    <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+    <TestProjectType>UnitTest</TestProjectType>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+  
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.10.0.1\lib\net20\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Web" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Api\AI\CompareImagesTests.cs" />
-    <Compile Include="Api\AI\FindDuplicatesTests.cs" />
-    <Compile Include="Api\AI\FindImagesTests.cs" />
-    <Compile Include="Api\AI\SearchContextTests.cs" />
-    <Compile Include="Api\AI\TestImagingAIBase.cs" />
-    <Compile Include="Api\ExamplesTests.cs" />
-    <Compile Include="Api\FramesPostApiTests.cs" />
-    <Compile Include="Api\ImagingApiTester.cs" />
-    <Compile Include="Api\Storage\FileApiTests.cs" />
-    <Compile Include="Api\Storage\FolderApiTests.cs" />
-    <Compile Include="Api\Storage\StorageApiTester.cs" />
-    <Compile Include="Api\Storage\StorageApiTests.cs" />
-    <Compile Include="Base\ApiTester.cs" />
-    <Compile Include="Api\BmpApiTests.cs" />
-    <Compile Include="Api\CropApiTests.cs" />
-    <Compile Include="Api\EmfApiTests.cs" />
-    <Compile Include="Api\FramesGetApiTests.cs" />
-    <Compile Include="Api\GifApiTests.cs" />
-    <Compile Include="Api\Jpeg2000ApiTests.cs" />
-    <Compile Include="Api\JpgApiTests.cs" />
-    <Compile Include="Api\PsdApiTests.cs" />
-    <Compile Include="Api\ResizeApiTests.cs" />
-    <Compile Include="Api\RotateFlipApiTests.cs" />
-    <Compile Include="Api\SaveAsApiTests.cs" />
-    <Compile Include="Api\TiffApiTests.cs" />
-    <Compile Include="Api\UpdateImageApiTests.cs" />
-    <Compile Include="Api\WebPApiTests.cs" />
-    <Compile Include="Api\WmfApiTests.cs" />
-    <Compile Include="Base\ServerAccessData.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
+ 
   <ItemGroup>
     <ProjectReference Include="..\Aspose.Imaging.Cloud.Sdk\Aspose.Imaging.Cloud.Sdk.csproj">
-      <Project>{D0BEC495-7D0F-4FD4-8179-958FFF0E99F6}</Project>
-      <Name>Aspose.Imaging.Cloud.Sdk</Name>
+      <Private>true</Private>
     </ProjectReference>
   </ItemGroup>
+  
   <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="NUnit" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.13.0" />
   </ItemGroup>
-  <ItemGroup />
 </Project>
