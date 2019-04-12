@@ -37,6 +37,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
     public class StorageApiTests : StorageApiTester
     {
         [Test]
+        [Ignore("IMAGINGCLOUD-292")]
         public void GetDiscUsageTest()
         {
             try
