@@ -43,8 +43,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
             {
                 var discUsage = this.ImagingApi.GetDiscUsage(new GetDiscUsageRequest(this.TestStorage));
                 Assert.Less(discUsage.UsedSize, discUsage.TotalSize);
-                Assert.Greater(discUsage.TotalSize, 0);
-                Assert.Greater(discUsage.UsedSize, 0);
             }
             catch (ApiException ex)
             {
