@@ -121,7 +121,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         {
             var passed = false;
 
-            TestContext.Progress.WriteLine(testMethodWithParams);
+            WriteLineEverywhere(testMethodWithParams);
             try
             {
                 testAction();
@@ -129,11 +129,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             }
             catch (Exception ex)
             {
-                TestContext.Progress.WriteLine(ex.Message);
+                WriteLineEverywhere(ex.Message);
                 throw;
             }
 
-            TestContext.Progress.WriteLine($"Test passed: {passed}");
+            WriteLineEverywhere($"Test passed: {passed}");
         }
     }
 }

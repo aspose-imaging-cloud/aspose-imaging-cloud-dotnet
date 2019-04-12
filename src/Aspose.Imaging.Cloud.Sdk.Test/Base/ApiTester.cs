@@ -185,7 +185,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             if (string.IsNullOrEmpty(this.TestStorage))
             {
-                TestContext.Progress.WriteLine("Storage name is not set by environment variable. Using the default one.");
+                WriteLineEverywhere("Storage name is not set by environment variable. Using the default one.");
                 this.TestStorage = DefaultStorage;
             }
 
@@ -226,7 +226,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         {
             if (appKey == AppKey || appSid == AppSid)
             {
-                TestContext.Progress.WriteLine("Access data isn't set explicitly. Trying to obtain it from environment variables.");
+                WriteLineEverywhere("Access data isn't set explicitly. Trying to obtain it from environment variables.");
 
                 appKey = this.GetEnvironmentVariable("AppKey");
                 appSid = this.GetEnvironmentVariable("AppSid");
@@ -237,13 +237,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             if (string.IsNullOrEmpty(appKey) || string.IsNullOrEmpty(appSid) || string.IsNullOrEmpty(baseUrl) || 
                 string.IsNullOrEmpty(apiVersion))
             {
-                TestContext.Progress.WriteLine("Access data isn't set completely by environment variables. Filling unset data with default values.");
+                WriteLineEverywhere("Access data isn't set completely by environment variables. Filling unset data with default values.");
             }
 
             if (string.IsNullOrEmpty(apiVersion))
             {
                 apiVersion = ApiVersion;
-                TestContext.Progress.WriteLine("Set default API version");
+                WriteLineEverywhere("Set default API version");
             }
 
             string serverAccessPath = Path.Combine(LocalTestFolder, ServerAccessFile);
@@ -255,19 +255,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 if (string.IsNullOrEmpty(appKey))
                 {
                     appKey = accessData.AppKey;
-                    TestContext.Progress.WriteLine("Set default App key");
+                    WriteLineEverywhere("Set default App key");
                 }
 
                 if (string.IsNullOrEmpty(appSid))
                 {
                     appSid = accessData.AppSid;
-                    TestContext.Progress.WriteLine("Set default App SID");
+                    WriteLineEverywhere("Set default App SID");
                 }
 
                 if (string.IsNullOrEmpty(baseUrl))
                 {
                     baseUrl = accessData.BaseURL;
-                    TestContext.Progress.WriteLine("Set default base URL");
+                    WriteLineEverywhere("Set default base URL");
                 }
 
             }
@@ -276,11 +276,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 throw new ArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
             }
 
-            TestContext.Progress.WriteLine($"App key: {appKey}");
-            TestContext.Progress.WriteLine($"App SID: {appSid}");
-            TestContext.Progress.WriteLine($"Storage: {this.TestStorage}");
-            TestContext.Progress.WriteLine($"Base URL: {baseUrl}");
-            TestContext.Progress.WriteLine($"API version: {apiVersion}");
+            WriteLineEverywhere($"App key: {appKey}");
+            WriteLineEverywhere($"App SID: {appSid}");
+            WriteLineEverywhere($"Storage: {this.TestStorage}");
+            WriteLineEverywhere($"Base URL: {baseUrl}");
+            WriteLineEverywhere($"API version: {apiVersion}");
             this.ImagingApi = new ImagingApi(appKey, appSid, baseUrl, apiVersion, debug);
             InputTestFiles = this.FetchInputTestFilesInfo();
         }
@@ -443,7 +443,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 #endif
             PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
         {
-            TestContext.Progress.WriteLine(testMethodName);
+            WriteLineEverywhere(testMethodName);
 
             if (!CheckInputFileExists(inputFileName))
             {
@@ -462,7 +462,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             try
             {
-                TestContext.Progress.WriteLine(parametersLine);
+                WriteLineEverywhere(parametersLine);
 
                 if (saveResultToStorage)
                 {
@@ -518,7 +518,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             catch (Exception ex)
             {
                 FailedAnyTest = true;
-                TestContext.Progress.WriteLine(ex.Message);
+                WriteLineEverywhere(ex.Message);
                 throw;
             }
             finally
@@ -529,8 +529,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     this.ImagingApi.DeleteFile(new DeleteFileRequest(outPath, storage));
                 }
 
-                TestContext.Progress.WriteLine($"Test passed: {passed}");
+                WriteLineEverywhere($"Test passed: {passed}");
             }
+        }
+
+        /// <summary>
+        /// Writes the line everywhere to support different use-cases.
+        /// </summary>
+        /// <param name="line">The line.</param>
+        protected void WriteLineEverywhere(string line)
+        {
+            Console.WriteLine(line);
+            TestContext.WriteLine(line);
+            TestContext.Progress.WriteLine(line);
         }
 
         /// <summary>
@@ -545,6 +556,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                    ?? Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Machine);
         }
 
-#endregion
+        #endregion
     }
 }
