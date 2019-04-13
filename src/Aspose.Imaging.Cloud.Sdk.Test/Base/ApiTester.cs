@@ -72,7 +72,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// The default storage
         /// </summary>
-        protected const string DefaultStorage = "Imaging-QA";
+        protected const string DefaultStorage = "Imaging-CI";
 
         #endregion
 
