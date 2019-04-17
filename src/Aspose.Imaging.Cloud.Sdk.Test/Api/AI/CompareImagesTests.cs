@@ -29,7 +29,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     using NUnit.Framework;
 
     [TestFixture]
-    [Ignore("IMAGINGCLOUD-291")]
     public class CompareImagesTests : TestImagingAIBase
     {
         private const string ComparableImage = "ComparableImage.jpg";
