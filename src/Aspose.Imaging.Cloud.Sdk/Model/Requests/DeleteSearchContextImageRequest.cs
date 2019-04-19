@@ -28,7 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.DeleteSearchContextImage" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.DeleteSearchContextImage" /> operation.
   /// </summary>  
   public class DeleteSearchContextImageRequest  
   {
@@ -53,7 +53,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.folder = folder;
             this.storage = storage;
         }
-		
+        
         /// <summary>
         /// Search context identifier.
         /// </summary>  

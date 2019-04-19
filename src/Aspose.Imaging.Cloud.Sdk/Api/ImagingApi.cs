@@ -23,7 +23,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Aspose.Imaging.Cloud.Sdk
+namespace Aspose.Imaging.Cloud.Sdk.Api
 {
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
@@ -44,7 +44,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         /// The configuration
         /// </summary>
         public readonly Configuration Configuration;
-		
+        
         /// <summary>
         /// The API invoker
         /// </summary>
@@ -130,32 +130,6 @@ namespace Aspose.Imaging.Cloud.Sdk
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ImagingApi"/> class.
-        /// </summary>
-        /// <param name="appKey">
-        /// The app key.
-        /// </param>
-        /// <param name="appSid">
-        /// The app SID.
-        /// </param>
-        /// <param name="baseUrl">
-        /// The base URL. Use <see cref="Configuration.DefaultBaseUrl"/> to set the default base URL.
-        /// </param>
-        /// <param name="apiVersion">
-        /// API version.
-        /// </param>
-        /// <param name="authType">
-        /// Authentication type.
-        /// </param>
-        /// <param name="debug">
-        /// If debug mode is enabled.
-        /// </param>
-        public ImagingApi(string appKey, string appSid, string baseUrl, string apiVersion, AuthType authType, bool debug)
-            : this(new Configuration { AppKey = appKey, AppSid = appSid, ApiBaseUrl = baseUrl, ApiVersion = apiVersion, AuthType = authType, DebugMode = debug })
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ImagingApi"/> class.
         /// </summary>    
         /// <param name="configuration">Configuration settings</param>
         private ImagingApi(Configuration configuration)
@@ -163,22 +137,190 @@ namespace Aspose.Imaging.Cloud.Sdk
             this.Configuration = configuration;
 
             var requestHandlers = new List<IRequestHandler>();
-            requestHandlers.Add(new OAuthRequestHandler(this.Configuration));
+            requestHandlers.Add(new AuthRequestHandler(this.Configuration));
             requestHandlers.Add(new DebugLogRequestHandler(this.Configuration));
             requestHandlers.Add(new ApiExceptionRequestHandler());
             this.apiInvoker = new ApiInvoker(requestHandlers, this.Configuration);
         }
 
         #endregion
-	
-		#region Methods
-		
+    
+        #region Methods
+        
+        /// <summary>
+        /// Copy file 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CopyFileRequest" /></param>            
+        public void CopyFile(CopyFileRequest request)
+        {
+            // verify the required parameter 'srcPath' is set
+            if (request.srcPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'srcPath' when calling CopyFile");
+            }
+
+            // verify the required parameter 'destPath' is set
+            if (request.destPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'destPath' when calling CopyFile");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/file/copy/{srcPath}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "srcPath", request.srcPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destPath", request.destPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "srcStorageName", request.srcStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destStorageName", request.destStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "versionId", request.versionId);
+            
+            this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "PUT", 
+                null, 
+                null, 
+                formParams);
+        }
+        
+        /// <summary>
+        /// Copy folder 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CopyFolderRequest" /></param>            
+        public void CopyFolder(CopyFolderRequest request)
+        {
+            // verify the required parameter 'srcPath' is set
+            if (request.srcPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'srcPath' when calling CopyFolder");
+            }
+
+            // verify the required parameter 'destPath' is set
+            if (request.destPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'destPath' when calling CopyFolder");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/folder/copy/{srcPath}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "srcPath", request.srcPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destPath", request.destPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "srcStorageName", request.srcStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destStorageName", request.destStorageName);
+            
+            this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "PUT", 
+                null, 
+                null, 
+                formParams);
+        }
+        
+        /// <summary>
+        /// Create the folder 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CreateFolderRequest" /></param>            
+        public void CreateFolder(CreateFolderRequest request)
+        {
+            // verify the required parameter 'path' is set
+            if (request.path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling CreateFolder");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/folder/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.storageName);
+            
+            this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+        }
+        
+        /// <summary>
+        /// Delete file 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="DeleteFileRequest" /></param>            
+        public void DeleteFile(DeleteFileRequest request)
+        {
+            // verify the required parameter 'path' is set
+            if (request.path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling DeleteFile");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/file/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.storageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "versionId", request.versionId);
+            
+            this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "DELETE", 
+                null, 
+                null, 
+                formParams);
+        }
+        
+        /// <summary>
+        /// Delete folder 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="DeleteFolderRequest" /></param>            
+        public void DeleteFolder(DeleteFolderRequest request)
+        {
+            // verify the required parameter 'path' is set
+            if (request.path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling DeleteFolder");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/folder/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.storageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "recursive", request.recursive);
+            
+            this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "DELETE", 
+                null, 
+                null, 
+                formParams);
+        }
+        
         /// <summary>
         /// Deletes the search context. 
         /// </summary>
-        /// <param name="request">Request. <see cref="DeleteSearchContextRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream DeleteSearchContext(DeleteSearchContextRequest request)
+        /// <param name="request">Specific request.<see cref="DeleteSearchContextRequest" /></param>            
+        public void DeleteSearchContext(DeleteSearchContextRequest request)
         {
             // verify the required parameter 'searchContextId' is set
             if (request.searchContextId == null) 
@@ -192,27 +334,24 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "DELETE", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
         }
-		
+        
         /// <summary>
         /// Delete image and images features from search context 
         /// </summary>
-        /// <param name="request">Request. <see cref="DeleteSearchContextImageRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream DeleteSearchContextImage(DeleteSearchContextImageRequest request)
+        /// <param name="request">Specific request.<see cref="DeleteSearchContextImageRequest" /></param>            
+        public void DeleteSearchContextImage(DeleteSearchContextImageRequest request)
         {
             // verify the required parameter 'searchContextId' is set
             if (request.searchContextId == null) 
@@ -232,28 +371,25 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "DELETE", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
         }
-		
+        
         /// <summary>
         /// Deletes image features from search context. 
         /// </summary>
-        /// <param name="request">Request. <see cref="DeleteSearchContextImageFeaturesRequest" /></param> 
-        /// <returns><see cref="SaaSposeResponse"/></returns>            
-        public SaaSposeResponse DeleteSearchContextImageFeatures(DeleteSearchContextImageFeaturesRequest request)
+        /// <param name="request">Specific request.<see cref="DeleteSearchContextImageFeaturesRequest" /></param>            
+        public void DeleteSearchContextImageFeatures(DeleteSearchContextImageFeaturesRequest request)
         {
             // verify the required parameter 'searchContextId' is set
             if (request.searchContextId == null) 
@@ -273,31 +409,165 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "DELETE", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (SaaSposeResponse)SerializationHelper.Deserialize<SaaSposeResponse>(StreamHelper.ToString(response));
         }
-		
+        
+        /// <summary>
+        /// Download file 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="DownloadFileRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream DownloadFile(DownloadFileRequest request)
+        {
+            // verify the required parameter 'path' is set
+            if (request.path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling DownloadFile");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/file/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.storageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "versionId", request.versionId);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
+        }
+        
+        /// <summary>
+        /// Get disc usage 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="GetDiscUsageRequest" /></param>
+        /// <returns><see cref="DiscUsage"/></returns>            
+        public DiscUsage GetDiscUsage(GetDiscUsageRequest request)
+        {
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/disc";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.storageName);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (DiscUsage)SerializationHelper.Deserialize<DiscUsage>(StreamHelper.ToString(response));
+        }
+        
+        /// <summary>
+        /// Get file versions 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="GetFileVersionsRequest" /></param>
+        /// <returns><see cref="FileVersions"/></returns>            
+        public FileVersions GetFileVersions(GetFileVersionsRequest request)
+        {
+            // verify the required parameter 'path' is set
+            if (request.path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling GetFileVersions");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/version/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.storageName);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (FileVersions)SerializationHelper.Deserialize<FileVersions>(StreamHelper.ToString(response));
+        }
+        
+        /// <summary>
+        /// Get all files and folders within a folder 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="GetFilesListRequest" /></param>
+        /// <returns><see cref="FilesList"/></returns>            
+        public FilesList GetFilesList(GetFilesListRequest request)
+        {
+            // verify the required parameter 'path' is set
+            if (request.path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling GetFilesList");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/folder/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.storageName);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (FilesList)SerializationHelper.Deserialize<FilesList>(StreamHelper.ToString(response));
+        }
+        
         /// <summary>
         /// Update parameters of existing BMP image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageBmpRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageBmpRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageBmp(GetImageBmpRequest request)
         {
@@ -331,7 +601,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bitsPerPixel", request.bitsPerPixel);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "horizontalResolution", request.horizontalResolution);
@@ -341,20 +611,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Crop an existing image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageCropRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageCropRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageCrop(GetImageCropRequest request)
         {
@@ -400,7 +670,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "x", request.x);
@@ -411,92 +681,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
-        }
-		
-        /// <summary>
-        /// Rasterize existing DICOM image to PNG using given parameters. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="GetImageDicomRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream GetImageDicom(GetImageDicomRequest request)
-        {
-            // verify the required parameter 'name' is set
-            if (request.name == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetImageDicom");
-            }
-
-            // create path and map variables
-            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/dicom";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            return response;
             
-			var response = this.apiInvoker.InvokeApi(
-                resourcePath, 
-                "GET", 
-                null, 
-                null, 
-                formParams);
-	        return response;
-	        
         }
-		
+        
         /// <summary>
-        /// Rasterize existing DNG image to PNG using given parameters. 
+        /// Process existing EMF imaging using given parameters. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageDngRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream GetImageDng(GetImageDngRequest request)
-        {
-            // verify the required parameter 'name' is set
-            if (request.name == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetImageDng");
-            }
-
-            // create path and map variables
-            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/dng";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-			var response = this.apiInvoker.InvokeApi(
-                resourcePath, 
-                "GET", 
-                null, 
-                null, 
-                formParams);
-	        return response;
-	        
-        }
-		
-        /// <summary>
-        /// Rasterize existing EMF image to PNG using given parameters. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="GetImageEmfRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageEmfRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageEmf(GetImageEmfRequest request)
         {
@@ -542,7 +740,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageWidth", request.pageWidth);
@@ -553,21 +751,22 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Get separate frame from existing TIFF image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageFrameRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageFrameRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageFrame(GetImageFrameRequest request)
         {
@@ -589,7 +788,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "frameId", request.frameId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
@@ -604,20 +803,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Get separate frame properties of existing TIFF image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageFramePropertiesRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageFramePropertiesRequest" /></param>
         /// <returns><see cref="ImagingResponse"/></returns>            
         public ImagingResponse GetImageFrameProperties(GetImageFramePropertiesRequest request)
         {
@@ -639,31 +838,31 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "frameId", request.frameId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Update parameters of existing GIF image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageGifRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageGifRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageGif(GetImageGifRequest request)
         {
@@ -679,7 +878,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "backgroundColorIndex", request.backgroundColorIndex);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "colorResolution", request.colorResolution);
@@ -692,20 +891,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Update parameters of existing JPEG2000 image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageJpeg2000Request" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageJpeg2000Request" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageJpeg2000(GetImageJpeg2000Request request)
         {
@@ -727,7 +926,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "comment", request.comment);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "codec", request.codec);
@@ -736,20 +935,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Update parameters of existing JPEG image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageJpgRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageJpgRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageJpg(GetImageJpgRequest request)
         {
@@ -765,7 +964,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "quality", request.quality);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "compressionType", request.compressionType);
@@ -774,92 +973,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
-        }
-		
-        /// <summary>
-        /// Rasterize existing ODG image to PNG using given parameters. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="GetImageOdgRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream GetImageOdg(GetImageOdgRequest request)
-        {
-            // verify the required parameter 'name' is set
-            if (request.name == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetImageOdg");
-            }
-
-            // create path and map variables
-            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/odg";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            return response;
             
-			var response = this.apiInvoker.InvokeApi(
-                resourcePath, 
-                "GET", 
-                null, 
-                null, 
-                formParams);
-	        return response;
-	        
         }
-		
-        /// <summary>
-        /// Update parameters of existing PNG image. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="GetImagePngRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream GetImagePng(GetImagePngRequest request)
-        {
-            // verify the required parameter 'name' is set
-            if (request.name == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'name' when calling GetImagePng");
-            }
-
-            // create path and map variables
-            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/png";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-			var response = this.apiInvoker.InvokeApi(
-                resourcePath, 
-                "GET", 
-                null, 
-                null, 
-                formParams);
-	        return response;
-	        
-        }
-		
+        
         /// <summary>
         /// Get properties of an image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImagePropertiesRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImagePropertiesRequest" /></param>
         /// <returns><see cref="ImagingResponse"/></returns>            
         public ImagingResponse GetImageProperties(GetImagePropertiesRequest request)
         {
@@ -875,30 +1002,30 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Update parameters of existing PSD image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImagePsdRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImagePsdRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImagePsd(GetImagePsdRequest request)
         {
@@ -914,7 +1041,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "channelsCount", request.channelsCount);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "compressionMethod", request.compressionMethod);
@@ -923,20 +1050,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Resize an existing image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageResizeRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageResizeRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageResize(GetImageResizeRequest request)
         {
@@ -970,7 +1097,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
@@ -979,20 +1106,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Rotate and/or flip an existing image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageRotateFlipRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageRotateFlipRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageRotateFlip(GetImageRotateFlipRequest request)
         {
@@ -1020,7 +1147,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
@@ -1028,20 +1155,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Export existing image to another format. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageSaveAsRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageSaveAsRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageSaveAs(GetImageSaveAsRequest request)
         {
@@ -1063,27 +1190,27 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Update parameters of existing TIFF image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageTiffRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageTiffRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageTiff(GetImageTiffRequest request)
         {
@@ -1117,7 +1244,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "compression", request.compression);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "resolutionUnit", request.resolutionUnit);
@@ -1129,20 +1256,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Perform scaling, cropping and flipping of an existing image in a single request. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageUpdateRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageUpdateRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageUpdate(GetImageUpdateRequest request)
         {
@@ -1206,7 +1333,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
@@ -1220,20 +1347,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Update parameters of existing WEBP image. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageWebPRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageWebPRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageWebP(GetImageWebPRequest request)
         {
@@ -1273,7 +1400,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "lossLess", request.lossLess);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "quality", request.quality);
@@ -1284,20 +1411,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
-        /// Rasterize existing WMF image to PNG using given parameters. 
+        /// Process existing WMF image using given parameters. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetImageWmfRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetImageWmfRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetImageWmf(GetImageWmfRequest request)
         {
@@ -1343,7 +1470,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageWidth", request.pageWidth);
@@ -1354,21 +1481,22 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Extract features from image without adding to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextExtractImageFeaturesRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetSearchContextExtractImageFeaturesRequest" /></param>
         /// <returns><see cref="ImageFeatures"/></returns>            
         public ImageFeatures GetSearchContextExtractImageFeatures(GetSearchContextExtractImageFeaturesRequest request)
         {
@@ -1390,7 +1518,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
@@ -1400,25 +1528,25 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (ImageFeatures)SerializationHelper.Deserialize<ImageFeatures>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (ImageFeatures)SerializationHelper.Deserialize<ImageFeatures>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Find images duplicates. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextFindDuplicatesRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetSearchContextFindDuplicatesRequest" /></param>
         /// <returns><see cref="ImageDuplicatesSet"/></returns>            
         public ImageDuplicatesSet GetSearchContextFindDuplicates(GetSearchContextFindDuplicatesRequest request)
         {
@@ -1440,31 +1568,31 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (ImageDuplicatesSet)SerializationHelper.Deserialize<ImageDuplicatesSet>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (ImageDuplicatesSet)SerializationHelper.Deserialize<ImageDuplicatesSet>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Find similar images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextFindSimilarRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetSearchContextFindSimilarRequest" /></param>
         /// <returns><see cref="SearchResultsSet"/></returns>            
         public SearchResultsSet GetSearchContextFindSimilar(GetSearchContextFindSimilarRequest request)
         {
@@ -1492,7 +1620,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "maxCount", request.maxCount);
@@ -1504,25 +1632,25 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (SearchResultsSet)SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (SearchResultsSet)SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Get image from search context 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextImageRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetSearchContextImageRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetSearchContextImage(GetSearchContextImageRequest request)
         {
@@ -1544,26 +1672,26 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Gets image features from search context. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextImageFeaturesRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetSearchContextImageFeaturesRequest" /></param>
         /// <returns><see cref="ImageFeatures"/></returns>            
         public ImageFeatures GetSearchContextImageFeatures(GetSearchContextImageFeaturesRequest request)
         {
@@ -1585,31 +1713,31 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (ImageFeatures)SerializationHelper.Deserialize<ImageFeatures>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (ImageFeatures)SerializationHelper.Deserialize<ImageFeatures>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Gets the search context status. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetSearchContextStatusRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetSearchContextStatusRequest" /></param>
         /// <returns><see cref="SearchContextStatus"/></returns>            
         public SearchContextStatus GetSearchContextStatus(GetSearchContextStatusRequest request)
         {
@@ -1625,30 +1753,30 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (SearchContextStatus)SerializationHelper.Deserialize<SearchContextStatus>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (SearchContextStatus)SerializationHelper.Deserialize<SearchContextStatus>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Update parameters of existing TIFF image accordingly to fax parameters. 
         /// </summary>
-        /// <param name="request">Request. <see cref="GetTiffToFaxRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="GetTiffToFaxRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream GetTiffToFax(GetTiffToFaxRequest request)
         {
@@ -1664,26 +1792,142 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "GET", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
+        /// <summary>
+        /// Move file 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="MoveFileRequest" /></param>            
+        public void MoveFile(MoveFileRequest request)
+        {
+            // verify the required parameter 'srcPath' is set
+            if (request.srcPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'srcPath' when calling MoveFile");
+            }
+
+            // verify the required parameter 'destPath' is set
+            if (request.destPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'destPath' when calling MoveFile");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/file/move/{srcPath}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "srcPath", request.srcPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destPath", request.destPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "srcStorageName", request.srcStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destStorageName", request.destStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "versionId", request.versionId);
+            
+            this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "PUT", 
+                null, 
+                null, 
+                formParams);
+        }
+        
+        /// <summary>
+        /// Move folder 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="MoveFolderRequest" /></param>            
+        public void MoveFolder(MoveFolderRequest request)
+        {
+            // verify the required parameter 'srcPath' is set
+            if (request.srcPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'srcPath' when calling MoveFolder");
+            }
+
+            // verify the required parameter 'destPath' is set
+            if (request.destPath == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'destPath' when calling MoveFolder");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/folder/move/{srcPath}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "srcPath", request.srcPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destPath", request.destPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "srcStorageName", request.srcStorageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "destStorageName", request.destStorageName);
+            
+            this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "PUT", 
+                null, 
+                null, 
+                formParams);
+        }
+        
+        /// <summary>
+        /// Check if file or folder exists 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="ObjectExistsRequest" /></param>
+        /// <returns><see cref="ObjectExist"/></returns>            
+        public ObjectExist ObjectExists(ObjectExistsRequest request)
+        {
+            // verify the required parameter 'path' is set
+            if (request.path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling ObjectExists");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/exist/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.storageName);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "versionId", request.versionId);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (ObjectExist)SerializationHelper.Deserialize<ObjectExist>(StreamHelper.ToString(response));
+        }
+        
         /// <summary>
         /// Create new search context. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostCreateSearchContextRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostCreateSearchContextRequest" /></param>
         /// <returns><see cref="SearchContextStatus"/></returns>            
         public SearchContextStatus PostCreateSearchContext(PostCreateSearchContextRequest request)
         {
@@ -1693,31 +1937,31 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "detector", request.detector);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "matchingAlgorithm", request.matchingAlgorithm);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (SearchContextStatus)SerializationHelper.Deserialize<SearchContextStatus>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (SearchContextStatus)SerializationHelper.Deserialize<SearchContextStatus>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Update parameters of BMP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageBmpRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageBmpRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageBmp(PostImageBmpRequest request)
         {
@@ -1751,7 +1995,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bitsPerPixel", request.bitsPerPixel);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "horizontalResolution", request.horizontalResolution);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "verticalResolution", request.verticalResolution);
@@ -1763,20 +2007,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageCropRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageCropRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageCrop(PostImageCropRequest request)
         {
@@ -1822,7 +2066,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "x", request.x);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "y", request.y);
@@ -1835,96 +2079,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
-        }
-		
-        /// <summary>
-        /// Rasterize DICOM image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="PostImageDicomRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream PostImageDicom(PostImageDicomRequest request)
-        {
-            // verify the required parameter 'imageData' is set
-            if (request.imageData == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageDicom");
-            }
-
-            // create path and map variables
-            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/dicom";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            return response;
             
-            if (request.imageData != null) 
-            {
-                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
-            }
-			var response = this.apiInvoker.InvokeApi(
-                resourcePath, 
-                "POST", 
-                null, 
-                null, 
-                formParams);
-	        return response;
-	        
         }
-		
+        
         /// <summary>
-        /// Rasterize DNG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
+        /// Process existing EMF imaging using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageDngRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream PostImageDng(PostImageDngRequest request)
-        {
-            // verify the required parameter 'imageData' is set
-            if (request.imageData == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageDng");
-            }
-
-            // create path and map variables
-            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/dng";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            if (request.imageData != null) 
-            {
-                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
-            }
-			var response = this.apiInvoker.InvokeApi(
-                resourcePath, 
-                "POST", 
-                null, 
-                null, 
-                formParams);
-	        return response;
-	        
-        }
-		
-        /// <summary>
-        /// Rasterize EMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="PostImageEmfRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageEmfRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageEmf(PostImageEmfRequest request)
         {
@@ -1970,7 +2138,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageWidth", request.pageWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageHeight", request.pageHeight);
@@ -1979,25 +2147,26 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             
             if (request.imageData != null) 
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageFrameRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageFrameRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageFrame(PostImageFrameRequest request)
         {
@@ -2019,7 +2188,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "frameId", request.frameId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
@@ -2036,20 +2205,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageFramePropertiesRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageFramePropertiesRequest" /></param>
         /// <returns><see cref="ImagingResponse"/></returns>            
         public ImagingResponse PostImageFrameProperties(PostImageFramePropertiesRequest request)
         {
@@ -2071,32 +2240,32 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "frameId", request.frameId);
             
             if (request.imageData != null) 
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Update parameters of GIF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageGifRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageGifRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageGif(PostImageGifRequest request)
         {
@@ -2112,7 +2281,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "backgroundColorIndex", request.backgroundColorIndex);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "colorResolution", request.colorResolution);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "hasTrailer", request.hasTrailer);
@@ -2127,20 +2296,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Update parameters of JPEG2000 image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageJpeg2000Request" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageJpeg2000Request" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageJpeg2000(PostImageJpeg2000Request request)
         {
@@ -2162,7 +2331,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "comment", request.comment);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "codec", request.codec);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
@@ -2173,20 +2342,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Update parameters of JPEG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageJpgRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageJpgRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageJpg(PostImageJpgRequest request)
         {
@@ -2202,7 +2371,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "quality", request.quality);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "compressionType", request.compressionType);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
@@ -2213,96 +2382,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
-        }
-		
-        /// <summary>
-        /// Rasterize ODG image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="PostImageOdgRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream PostImageOdg(PostImageOdgRequest request)
-        {
-            // verify the required parameter 'imageData' is set
-            if (request.imageData == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImageOdg");
-            }
-
-            // create path and map variables
-            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/odg";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            return response;
             
-            if (request.imageData != null) 
-            {
-                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
-            }
-			var response = this.apiInvoker.InvokeApi(
-                resourcePath, 
-                "POST", 
-                null, 
-                null, 
-                formParams);
-	        return response;
-	        
         }
-		
-        /// <summary>
-        /// Update parameters of PNG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
-        /// </summary>
-        /// <param name="request">Request. <see cref="PostImagePngRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream PostImagePng(PostImagePngRequest request)
-        {
-            // verify the required parameter 'imageData' is set
-            if (request.imageData == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageData' when calling PostImagePng");
-            }
-
-            // create path and map variables
-            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/png";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            if (request.imageData != null) 
-            {
-                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
-            }
-			var response = this.apiInvoker.InvokeApi(
-                resourcePath, 
-                "POST", 
-                null, 
-                null, 
-                formParams);
-	        return response;
-	        
-        }
-		
+        
         /// <summary>
         /// Get properties of an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImagePropertiesRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImagePropertiesRequest" /></param>
         /// <returns><see cref="ImagingResponse"/></returns>            
         public ImagingResponse PostImageProperties(PostImagePropertiesRequest request)
         {
@@ -2318,31 +2411,31 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             
             if (request.imageData != null) 
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Update parameters of PSD image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImagePsdRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImagePsdRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImagePsd(PostImagePsdRequest request)
         {
@@ -2358,7 +2451,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "channelsCount", request.channelsCount);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "compressionMethod", request.compressionMethod);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
@@ -2369,20 +2462,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Resize an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageResizeRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageResizeRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageResize(PostImageResizeRequest request)
         {
@@ -2416,7 +2509,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
@@ -2427,20 +2520,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Rotate and/or flip an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageRotateFlipRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageRotateFlipRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageRotateFlip(PostImageRotateFlipRequest request)
         {
@@ -2468,7 +2561,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
@@ -2478,20 +2571,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.              
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageSaveAsRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageSaveAsRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageSaveAs(PostImageSaveAsRequest request)
         {
@@ -2513,7 +2606,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
@@ -2522,20 +2615,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Update parameters of TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageTiffRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageTiffRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageTiff(PostImageTiffRequest request)
         {
@@ -2569,7 +2662,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "compression", request.compression);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "resolutionUnit", request.resolutionUnit);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bitDepth", request.bitDepth);
@@ -2583,20 +2676,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.              
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageUpdateRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageUpdateRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageUpdate(PostImageUpdateRequest request)
         {
@@ -2660,7 +2753,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
@@ -2676,20 +2769,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Update parameters of WEBP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageWebPRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageWebPRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageWebP(PostImageWebPRequest request)
         {
@@ -2729,7 +2822,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "lossLess", request.lossLess);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "quality", request.quality);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "animLoopCount", request.animLoopCount);
@@ -2742,20 +2835,20 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
-        /// Rasterize WMF image to PNG using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
+        /// Process existing WMF image using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostImageWmfRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostImageWmfRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
         public System.IO.Stream PostImageWmf(PostImageWmfRequest request)
         {
@@ -2801,7 +2894,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageWidth", request.pageWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageHeight", request.pageHeight);
@@ -2810,27 +2903,27 @@ namespace Aspose.Imaging.Cloud.Sdk
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             
             if (request.imageData != null) 
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
+            return response;
+            
         }
-		
+        
         /// <summary>
         /// Add image and images features to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostSearchContextAddImageRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream PostSearchContextAddImage(PostSearchContextAddImageRequest request)
+        /// <param name="request">Specific request.<see cref="PostSearchContextAddImageRequest" /></param>            
+        public void PostSearchContextAddImage(PostSearchContextAddImageRequest request)
         {
             // verify the required parameter 'searchContextId' is set
             if (request.searchContextId == null) 
@@ -2850,7 +2943,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
@@ -2860,22 +2953,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
         }
-		
+        
         /// <summary>
         /// Add tag and reference image to search context. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostSearchContextAddTagRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream PostSearchContextAddTag(PostSearchContextAddTagRequest request)
+        /// <param name="request">Specific request.<see cref="PostSearchContextAddTagRequest" /></param>            
+        public void PostSearchContextAddTag(PostSearchContextAddTagRequest request)
         {
             // verify the required parameter 'imageData' is set
             if (request.imageData == null) 
@@ -2901,7 +2991,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "tagName", request.tagName);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
@@ -2911,20 +3001,18 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
         }
-		
+        
         /// <summary>
         /// Compare two images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostSearchContextCompareImagesRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostSearchContextCompareImagesRequest" /></param>
         /// <returns><see cref="SearchResultsSet"/></returns>            
         public SearchResultsSet PostSearchContextCompareImages(PostSearchContextCompareImagesRequest request)
         {
@@ -2946,7 +3034,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId1", request.imageId1);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId2", request.imageId2);
@@ -2957,27 +3045,26 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (SearchResultsSet)SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (SearchResultsSet)SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Extract images features and add them to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostSearchContextExtractImageFeaturesRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream PostSearchContextExtractImageFeatures(PostSearchContextExtractImageFeaturesRequest request)
+        /// <param name="request">Specific request.<see cref="PostSearchContextExtractImageFeaturesRequest" /></param>            
+        public void PostSearchContextExtractImageFeatures(PostSearchContextExtractImageFeaturesRequest request)
         {
             // verify the required parameter 'searchContextId' is set
             if (request.searchContextId == null) 
@@ -2991,7 +3078,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imagesFolder", request.imagesFolder);
@@ -3002,20 +3089,18 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
         }
-		
+        
         /// <summary>
         /// Find images by tags. Tags JSON string is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostSearchContextFindByTagsRequest" /></param> 
+        /// <param name="request">Specific request.<see cref="PostSearchContextFindByTagsRequest" /></param>
         /// <returns><see cref="SearchResultsSet"/></returns>            
         public SearchResultsSet PostSearchContextFindByTags(PostSearchContextFindByTagsRequest request)
         {
@@ -3049,7 +3134,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "similarityThreshold", request.similarityThreshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "maxCount", request.maxCount);
@@ -3060,27 +3145,26 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("tags", request.tags);
             }
-			var response = this.apiInvoker.InvokeApi(
+            var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (SearchResultsSet)SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (SearchResultsSet)SerializationHelper.Deserialize<SearchResultsSet>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Appends existing TIFF image to another existing TIFF image (i.e. merges TIFF images). 
         /// </summary>
-        /// <param name="request">Request. <see cref="PostTiffAppendRequest" /></param> 
-        /// <returns><see cref="SaaSposeResponse"/></returns>            
-        public SaaSposeResponse PostTiffAppend(PostTiffAppendRequest request)
+        /// <param name="request">Specific request.<see cref="PostTiffAppendRequest" /></param>            
+        public void PostTiffAppend(PostTiffAppendRequest request)
         {
             // verify the required parameter 'name' is set
             if (request.name == null) 
@@ -3100,33 +3184,25 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "appendFile", request.appendFile);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             
-			var response = this.apiInvoker.InvokeApi(
+            this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
                 null, 
                 null, 
                 formParams);
-	        
-	        if (response == null)
-	        {
-	            return null;
-	        }
-	  
-	        return (SaaSposeResponse)SerializationHelper.Deserialize<SaaSposeResponse>(StreamHelper.ToString(response));
         }
-		
+        
         /// <summary>
         /// Update image and images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PutSearchContextImageRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream PutSearchContextImage(PutSearchContextImageRequest request)
+        /// <param name="request">Specific request.<see cref="PutSearchContextImageRequest" /></param>            
+        public void PutSearchContextImage(PutSearchContextImageRequest request)
         {
             // verify the required parameter 'searchContextId' is set
             if (request.searchContextId == null) 
@@ -3146,7 +3222,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
@@ -3156,22 +3232,19 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "PUT", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
         }
-		
+        
         /// <summary>
         /// Update images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
-        /// <param name="request">Request. <see cref="PutSearchContextImageFeaturesRequest" /></param> 
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream PutSearchContextImageFeatures(PutSearchContextImageFeaturesRequest request)
+        /// <param name="request">Specific request.<see cref="PutSearchContextImageFeaturesRequest" /></param>            
+        public void PutSearchContextImageFeatures(PutSearchContextImageFeaturesRequest request)
         {
             // verify the required parameter 'searchContextId' is set
             if (request.searchContextId == null) 
@@ -3191,7 +3264,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                         .Replace(resourcePath, "\\*", string.Empty)
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
-			var formParams = new Dictionary<string, object>();
+            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imageId", request.imageId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
@@ -3201,16 +3274,99 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
             }
-			var response = this.apiInvoker.InvokeApi(
+            this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "PUT", 
                 null, 
                 null, 
                 formParams);
-	        return response;
-	        
         }
-		
-		#endregion
+        
+        /// <summary>
+        /// Check if storage exists 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="StorageExistsRequest" /></param>
+        /// <returns><see cref="StorageExist"/></returns>            
+        public StorageExist StorageExists(StorageExistsRequest request)
+        {
+            // verify the required parameter 'storageName' is set
+            if (request.storageName == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'storageName' when calling StorageExists");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/{storageName}/exist";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "storageName", request.storageName);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (StorageExist)SerializationHelper.Deserialize<StorageExist>(StreamHelper.ToString(response));
+        }
+        
+        /// <summary>
+        /// Upload file 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="UploadFileRequest" /></param>
+        /// <returns><see cref="FilesUploadResult"/></returns>            
+        public FilesUploadResult UploadFile(UploadFileRequest request)
+        {
+            // verify the required parameter 'path' is set
+            if (request.path == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'path' when calling UploadFile");
+            }
+
+            // verify the required parameter 'file' is set
+            if (request.File == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'file' when calling UploadFile");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/file/{path}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.path);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.storageName);
+            
+            if (request.File != null) 
+            {
+                formParams.Add("file", this.apiInvoker.ToFileInfo(request.File, "File"));
+            }
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (FilesUploadResult)SerializationHelper.Deserialize<FilesUploadResult>(StreamHelper.ToString(response));
+        }
+        
+        #endregion
     }
 }

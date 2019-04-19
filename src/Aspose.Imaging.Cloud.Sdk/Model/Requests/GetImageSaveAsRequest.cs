@@ -28,7 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.GetImageSaveAs" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.GetImageSaveAs" /> operation.
   /// </summary>  
   public class GetImageSaveAsRequest  
   {
@@ -43,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="GetImageSaveAsRequest"/> class.
         /// </summary>
         /// <param name="name">Filename of image.</param>
-        /// <param name="format">Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.</param>
+        /// <param name="format">Resulting image format.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
@@ -55,14 +55,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.folder = folder;
             this.storage = storage;
         }
-		
+        
         /// <summary>
         /// Filename of image.
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+        /// Resulting image format.
         /// </summary>  
         public string format { get; set; }
 

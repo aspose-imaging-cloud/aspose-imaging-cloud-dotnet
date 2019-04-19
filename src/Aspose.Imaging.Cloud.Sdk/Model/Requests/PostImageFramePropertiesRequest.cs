@@ -28,7 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.PostImageFrameProperties" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.PostImageFrameProperties" /> operation.
   /// </summary>  
   public class PostImageFramePropertiesRequest  
   {
@@ -49,7 +49,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.imageData = imageData;
             this.frameId = frameId;
         }
-		
+        
         /// <summary>
         /// Input image
         /// </summary>  

@@ -23,8 +23,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+
 namespace Aspose.Imaging.Cloud.Sdk.Client
 {
+    using System;
+
     /// <summary>
     /// Represents a set of configuration settings.
     /// </summary>
@@ -40,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// <summary>
         /// The default API version
         /// </summary>
-        public const string DefaultApiVersion = "v2.0";
+        public const string DefaultApiVersion = "v3.0";
 
         #endregion
 
@@ -51,22 +54,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// </summary>
         private string apiBaseUrl = DefaultBaseUrl;
 
-        /// <summary>
-        /// The API version
-        /// </summary>
-        private string apiVersion = DefaultApiVersion;
-
-        /// <summary>
-        /// The debug mode
-        /// </summary>
-        private bool debugMode = false;
-
-        /// <summary>
-        /// Authentication type.
-        /// Default is URL signing.
-        /// </summary>
-        private AuthType authType = AuthType.OAuth2;
-
         #endregion
 
         #region Properties
@@ -76,13 +63,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// </summary>
         public string ApiBaseUrl
         {
-            get
-            {
-                return this.apiBaseUrl;
-            }
+            get => this.apiBaseUrl;
 
             set
             {
+                if (value.StartsWith("v1") || value.StartsWith("v2"))
+                {
+                    throw new Exception("This SDK is intended to be used only with API v3 and higher due to breaking changes!");
+                }
+
                 this.apiBaseUrl = value;
                 if (!this.apiBaseUrl.EndsWith("/"))
                 {
@@ -97,18 +86,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// <value>
         /// The API version.
         /// </value>
-        public string ApiVersion
-        {
-            get
-            {
-                return this.apiVersion;
-            }
-
-            set
-            {
-                this.apiVersion = value;
-            }
-        }
+        public string ApiVersion { get; set; } = DefaultApiVersion;
 
         /// <summary>
         /// Gets or sets the app key.
@@ -123,35 +101,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// <summary>
         /// Gets or sets a value indicating whether debug mode.
         /// </summary>
-        public bool DebugMode
-        {
-            get
-            {
-                return this.debugMode;
-            }
-
-            set
-            {
-                this.debugMode = value;
-            }
-        }
-
-        /// <summary>
-        /// Authentication type.
-        /// Default is URL signing.
-        /// </summary>
-        public AuthType AuthType
-        {
-            get
-            {
-                return this.authType;
-            }
-
-            set
-            {
-                this.authType = value;
-            }
-        }
+        public bool DebugMode { get; set; } = false;
 
         #endregion
 

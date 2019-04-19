@@ -36,7 +36,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   /// <summary>
   /// Duplicate images set.  
   /// </summary>  
-  public class ImageDuplicatesSet : SaaSposeResponse 
+  public class ImageDuplicatesSet 
   {                       
         /// <summary>
         /// Gets the duplicate images.

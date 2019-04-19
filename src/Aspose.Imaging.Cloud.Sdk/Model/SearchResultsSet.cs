@@ -36,7 +36,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   /// <summary>
   /// Search results set.
   /// </summary>  
-  public class SearchResultsSet : SaaSposeResponse 
+  public class SearchResultsSet 
   {                       
         /// <summary>
         /// Gets the results.

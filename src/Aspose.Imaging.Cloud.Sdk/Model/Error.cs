@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="SaaSposeResponse.cs">
+// <copyright company="Aspose" file="Error.cs">
 //   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -25,23 +25,38 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Model 
 {
+  using System;  
+  using System.Collections;
+  using System.Collections.Generic;
+  using System.Runtime.Serialization;
   using System.Text;
-  using System.Net;
+  using Newtonsoft.Json;
+  using Newtonsoft.Json.Converters;
 
-    /// <summary>
-    /// The basic SaaSposeResponse response class kept from the old Aspose for Cloud Platform. We keep this base class and use it because most probably users are already using it to get API responses. The plan in future is to get rid of this name, but who knows when ?!
-    /// </summary>  
-    public class SaaSposeResponse 
-    {                       
+  /// <summary>
+  /// Error
+  /// </summary>  
+  public class Error 
+  {                       
         /// <summary>
-        /// Gets or sets Code
-        /// </summary>
-        public HttpStatusCode Code { get; set; }
-
-        /// <summary>
-        /// Gets or sets Status
+        /// Code             
         /// </summary>  
-        public string Status { get; set; }
+        public string Code { get; set; }
+
+        /// <summary>
+        /// Message             
+        /// </summary>  
+        public string Message { get; set; }
+
+        /// <summary>
+        /// Description             
+        /// </summary>  
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Inner Error             
+        /// </summary>  
+        public ErrorDetails InnerError { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object
@@ -50,9 +65,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class SaaSposeResponse {\n");
+          sb.Append("class Error {\n");
           sb.Append("  Code: ").Append(this.Code).Append("\n");
-          sb.Append("  Status: ").Append(this.Status).Append("\n");
+          sb.Append("  Message: ").Append(this.Message).Append("\n");
+          sb.Append("  Description: ").Append(this.Description).Append("\n");
+          sb.Append("  InnerError: ").Append(this.InnerError).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

@@ -28,7 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.GetImageFrameProperties" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.GetImageFrameProperties" /> operation.
   /// </summary>  
   public class GetImageFramePropertiesRequest  
   {
@@ -53,7 +53,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.folder = folder;
             this.storage = storage;
         }
-		
+        
         /// <summary>
         /// Filename with image.
         /// </summary>  

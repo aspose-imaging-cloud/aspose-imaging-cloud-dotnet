@@ -28,7 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.GetImageResize" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.GetImageResize" /> operation.
   /// </summary>  
   public class GetImageResizeRequest  
   {
@@ -43,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="GetImageResizeRequest"/> class.
         /// </summary>
         /// <param name="name">Filename of an image.</param>
-        /// <param name="format">Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.</param>
+        /// <param name="format">Resulting image format.</param>
         /// <param name="newWidth">New width.</param>
         /// <param name="newHeight">New height.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
@@ -59,14 +59,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.folder = folder;
             this.storage = storage;
         }
-		
+        
         /// <summary>
         /// Filename of an image.
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// Resulting image format. Currently, BMP, PSD, JPG, TIFF, GIF, PNG, J2K and WEBP are supported.
+        /// Resulting image format.
         /// </summary>  
         public string format { get; set; }
 

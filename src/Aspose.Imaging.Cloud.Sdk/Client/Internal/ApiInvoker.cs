@@ -90,7 +90,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         {
             var sdkVersion = this.GetType().Assembly.GetName().Version;
             this.AddDefaultHeader(AsposeClientHeaderName, ".net sdk");
-            this.AddDefaultHeader(AsposeClientVersionHeaderName, string.Format("{0}.{1}", sdkVersion.Major, sdkVersion.Minor));
+            this.AddDefaultHeader(AsposeClientVersionHeaderName, $"{sdkVersion.Major}.{sdkVersion.Minor}");
             this.requestHandlers = requestHandlers;
             this.configuration = configuration;
         }
@@ -128,7 +128,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         /// <returns>File information parameter.</returns>
         public FileInfo ToFileInfo(Stream stream, string paramName)
         {
-            return new FileInfo { Name = paramName, MimeType = "application/octet-stream", file = StreamHelper.ReadAsBytes(stream) };
+            return new FileInfo { Name = paramName, MimeType = "application/octet-stream", File = StreamHelper.ReadAsBytes(stream) };
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         /// <returns>File information parameter.</returns>
         public FileInfo ToFileInfo(byte[] data)
         {
-            return new FileInfo { Name = "file", MimeType = "application/octet-stream", file = data };
+            return new FileInfo { Name = "file", MimeType = "application/octet-stream", File = data };
         }
 
         /// <summary>
@@ -173,17 +173,13 @@ namespace Aspose.Imaging.Cloud.Sdk
                     contentStream.Write(Encoding.UTF8.GetBytes(postData), 0, Encoding.UTF8.GetByteCount(postData));
 
                     // Write the file data directly to the Stream, rather than serializing it to a string.
-                    contentStream.Write(fileInfo.file, 0, fileInfo.file.Length);
+                    contentStream.Write(fileInfo.File, 0, fileInfo.File.Length);
                 }
                 else
                 {
                     var stringData = param.Value as string ?? SerializationHelper.Serialize(param.Value);
                     string postData =
-                        string.Format(
-                            "--{0}\r\nContent-Disposition: form-data; name=\"{1}\"\r\n\r\n{2}",
-                            boundary,
-                            param.Key,
-                            stringData);
+                        $"--{boundary}\r\nContent-Disposition: form-data; name=\"{param.Key}\"\r\n\r\n{stringData}";
                     contentStream.Write(Encoding.UTF8.GetBytes(postData), 0, Encoding.UTF8.GetByteCount(postData));
                 }
             }
@@ -272,40 +268,11 @@ namespace Aspose.Imaging.Cloud.Sdk
             {
                 if (formParams.Count > 0)
                 {
-                    if (content != null)
-                    {
-                        content.Dispose();
-                    }
+                    content?.Dispose();
 
-                    if (!this.configuration.ApiVersion.Contains("v1."))
-                    {
-                        string formDataBoundary = "Somthing";
-                        client.ContentType = "multipart/form-data; boundary=" + formDataBoundary;
-                        content = GetMultipartFormData(formParams, formDataBoundary);
-                    }
-                    else
-                    {
-                        content = new MemoryStream();
-                        using (var enumerator = formParams.Values.GetEnumerator())
-                        {
-                            enumerator.MoveNext();
-                            var firstParam = enumerator.Current;
-                            if (firstParam is FileInfo)
-                            {
-                                client.ContentType = "application/octet-stream";
-                                var fileInfo = (FileInfo)firstParam;
-                                content.Write(fileInfo.file, 0, fileInfo.file.Length);
-                            }
-                            else
-                            {
-                                var stringData = firstParam as string ?? SerializationHelper.Serialize(firstParam);
-                                var byteData = Encoding.UTF8.GetBytes(stringData);
-                                content.Write(byteData, 0, byteData.Length);
-                            }
-                        }
-                        
-                        content.Seek(0, SeekOrigin.Begin);
-                    }
+                    string formDataBoundary = "Somthing";
+                    client.ContentType = "multipart/form-data; boundary=" + formDataBoundary;
+                    content = GetMultipartFormData(formParams, formDataBoundary);
                 }
                 else
                 {
@@ -345,10 +312,7 @@ namespace Aspose.Imaging.Cloud.Sdk
             }
             finally
             {
-                if (content != null)
-                {
-                    content.Dispose();
-                }
+                content?.Dispose();
             }
 
             return client;

@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="Jpeg2000Codec.cs">
+// <copyright company="Aspose" file="StorageExistsRequest.cs">
 //   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -23,31 +23,34 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Aspose.Imaging.Cloud.Sdk.Model 
+namespace Aspose.Imaging.Cloud.Sdk.Model.Requests 
 {
-  using System;  
-  using System.Collections;
-  using System.Collections.Generic;
-  using System.Runtime.Serialization;
-  using System.Text;
-  using Newtonsoft.Json;
-  using Newtonsoft.Json.Converters;
+  using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Represents JPEG2000 image type             
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.StorageExists" /> operation.
   /// </summary>  
-  public class Jpeg2000Codec 
-  {                       
+  public class StorageExistsRequest  
+  {
         /// <summary>
-        /// Get the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()  
+        /// Initializes a new instance of the <see cref="StorageExistsRequest"/> class.
+        /// </summary>        
+        public StorageExistsRequest()
         {
-          var sb = new StringBuilder();
-          sb.Append("class Jpeg2000Codec {\n");
-          sb.Append("}\n");
-          return sb.ToString();
         }
-    }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageExistsRequest"/> class.
+        /// </summary>
+        /// <param name="storageName">Storage name</param>
+        public StorageExistsRequest(string storageName)             
+        {
+            this.storageName = storageName;
+        }
+        
+        /// <summary>
+        /// Storage name
+        /// </summary>  
+        public string storageName { get; set; }
+  }
 }

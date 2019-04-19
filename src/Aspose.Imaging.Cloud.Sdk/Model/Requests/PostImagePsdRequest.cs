@@ -28,7 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.PostImagePsd" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.PostImagePsd" /> operation.
   /// </summary>  
   public class PostImagePsdRequest  
   {
@@ -57,7 +57,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.outPath = outPath;
             this.storage = storage;
         }
-		
+        
         /// <summary>
         /// Input image
         /// </summary>  

@@ -25,18 +25,17 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
-	using System.IO;
-	using System.Collections.Generic;
-	using NUnit.Framework;
+    using System.IO;
+    using System.Collections.Generic;
+    using NUnit.Framework;
 
-	using Aspose.Storage.Cloud.Sdk.Model;
+    using Aspose.Imaging.Cloud.Sdk.Model;
     using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
     /// <summary>
     ///  Class for testing SaveAsApi
     /// </summary>
-    [Category("v1.0")]
-    [Category("v2.0")]
+    [Category("v3.0")]
     [Category("SaveAs")]
     [TestFixture]
     public class SaveAsApiTests : ImagingApiTester
@@ -84,7 +83,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 }
             }
 
-            foreach (FileResponse inputFile in InputTestFiles)
+            foreach (StorageFile inputFile in InputTestFiles)
             {
                 if (inputFile.Name.EndsWith(formatExtension))
                 {
@@ -161,7 +160,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 }
             }
 
-            foreach (FileResponse inputFile in InputTestFiles)
+            foreach (StorageFile inputFile in InputTestFiles)
             {
                 if (inputFile.Name.EndsWith(formatExtension))
                 {

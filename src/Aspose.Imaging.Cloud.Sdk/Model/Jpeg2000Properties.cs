@@ -39,37 +39,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   public class Jpeg2000Properties 
   {                       
         /// <summary>
-        /// Gets or sets the JPEG2000 codec
-        /// </summary>
-        /// <value>Gets or sets the JPEG2000 codec</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum Jpeg2000Codec
-        { 
-            /// <summary>
-            /// Enum J2K for J2K
-            /// </summary>            
-            J2K,
-            
-            /// <summary>
-            /// Enum Jp2 for Jp2
-            /// </summary>            
-            Jp2,
-            
-            /// <summary>
-            /// Enum Jpt for Jpt
-            /// </summary>            
-            Jpt            
-        }
-
-        /// <summary>
-        /// Gets or sets the JPEG2000 codec
-        /// </summary>
-        public Jpeg2000Codec? Codec { get; set; }
-
-        /// <summary>
         /// Gets or sets the JPEG comment markers.
         /// </summary>  
         public List<string> Comments { get; set; }
+
+        /// <summary>
+        /// Gets or sets the JPEG2000 codec
+        /// </summary>  
+        public string Codec { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object

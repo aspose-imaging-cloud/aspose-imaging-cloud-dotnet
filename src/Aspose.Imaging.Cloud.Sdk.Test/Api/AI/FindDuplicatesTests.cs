@@ -25,7 +25,6 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
-    using System.Net;
     using Model.Requests;
     using NUnit.Framework;
 
@@ -54,8 +53,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                       this.AddImageFeaturesToSearchContext(image);
 
                       var response = this.ImagingApi.GetSearchContextFindDuplicates(
-                          new GetSearchContextFindDuplicatesRequest(this.SearchContextId, 80));
-                      Assert.AreEqual(HttpStatusCode.OK, response.Code);
+                          new GetSearchContextFindDuplicatesRequest(this.SearchContextId, 80, storage: this.TestStorage));
                       Assert.AreEqual(1, response.Duplicates.Count);
                   });
         }
