@@ -150,6 +150,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         }
 
         [Test]
+        [Ignore("IMAGINGAINET-107")]
         public void ExtractAndAddImageFeaturesFromFolderTest()
         {
             RunTestWithLogging("ExtractAndAddImageFeaturesFromFolderTest",
