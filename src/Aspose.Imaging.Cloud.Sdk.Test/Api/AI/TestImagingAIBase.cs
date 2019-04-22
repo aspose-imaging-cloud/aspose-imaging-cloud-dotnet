@@ -107,7 +107,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
         protected void WaitSearchContextIdle(TimeSpan maxTime)
         {
-            var timeout = TimeSpan.FromSeconds(10);
+            var timeout = TimeSpan.FromSeconds(20);
             var startTime = DateTime.UtcNow;
 
             do
