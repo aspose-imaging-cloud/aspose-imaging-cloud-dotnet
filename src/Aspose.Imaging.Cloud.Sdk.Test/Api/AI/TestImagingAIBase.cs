@@ -110,11 +110,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var timeout = TimeSpan.FromSeconds(10);
             var startTime = DateTime.UtcNow;
 
-            while (this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: this.TestStorage)).
-                SearchStatus != "Idle" && DateTime.UtcNow - startTime < maxTime)
+            do
             {
                 Thread.Sleep(timeout);
-            }
+            } while (this.ImagingApi
+                         .GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId,
+                             storage: this.TestStorage)).SearchStatus != "Idle" &&
+                     DateTime.UtcNow - startTime < maxTime);
+
         }
 
         protected void RunTestWithLogging(string testMethodWithParams, TestAction testAction)
