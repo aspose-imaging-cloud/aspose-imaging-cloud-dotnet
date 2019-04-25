@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostImageDngRequest.cs">
+// <copyright company="Aspose" file="CopyFileRequest.cs">
 //   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -28,50 +28,57 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.PostImageDng" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.CopyFile" /> operation.
   /// </summary>  
-  public class PostImageDngRequest  
+  public class CopyFileRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostImageDngRequest"/> class.
+        /// Initializes a new instance of the <see cref="CopyFileRequest"/> class.
         /// </summary>        
-        public PostImageDngRequest()
+        public CopyFileRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostImageDngRequest"/> class.
+        /// Initializes a new instance of the <see cref="CopyFileRequest"/> class.
         /// </summary>
-        /// <param name="imageData">Input image</param>
-        /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public PostImageDngRequest(System.IO.Stream imageData, bool? fromScratch = null, string outPath = null, string storage = null)             
+        /// <param name="srcPath">Source file path e.g. &#39;/folder/file.ext&#39;</param>
+        /// <param name="destPath">Destination file path</param>
+        /// <param name="srcStorageName">Source storage name</param>
+        /// <param name="destStorageName">Destination storage name</param>
+        /// <param name="versionId">File version ID to copy</param>
+        public CopyFileRequest(string srcPath, string destPath, string srcStorageName = null, string destStorageName = null, string versionId = null)             
         {
-            this.imageData = imageData;
-            this.fromScratch = fromScratch;
-            this.outPath = outPath;
-            this.storage = storage;
+            this.srcPath = srcPath;
+            this.destPath = destPath;
+            this.srcStorageName = srcStorageName;
+            this.destStorageName = destStorageName;
+            this.versionId = versionId;
         }
-		
+        
         /// <summary>
-        /// Input image
+        /// Source file path e.g. '/folder/file.ext'
         /// </summary>  
-        public System.IO.Stream imageData { get; set; }
+        public string srcPath { get; set; }
 
         /// <summary>
-        /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+        /// Destination file path
         /// </summary>  
-        public bool? fromScratch { get; set; }
+        public string destPath { get; set; }
 
         /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
+        /// Source storage name
         /// </summary>  
-        public string outPath { get; set; }
+        public string srcStorageName { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Destination storage name
         /// </summary>  
-        public string storage { get; set; }
+        public string destStorageName { get; set; }
+
+        /// <summary>
+        /// File version ID to copy
+        /// </summary>  
+        public string versionId { get; set; }
   }
 }

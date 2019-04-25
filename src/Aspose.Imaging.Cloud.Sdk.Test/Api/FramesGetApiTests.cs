@@ -27,13 +27,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     using NUnit.Framework;
     using System.IO;
     using Aspose.Imaging.Cloud.Sdk.Model;
-	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+    using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
     /// <summary>
     ///  Class for testing FramesApi
     /// </summary>
-    [Category("v1.0")]
-    [Category("v2.0")]
+    [Category("v3.0")]
     [Category("Tiff")]
     [TestFixture]
     public class FramesGetApiTests : ImagingApiTester

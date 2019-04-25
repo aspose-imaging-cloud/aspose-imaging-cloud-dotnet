@@ -28,14 +28,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Net;
+    using System.Reflection;
 
+    using Aspose.Imaging.Cloud.Sdk.Api;
     using Aspose.Imaging.Cloud.Sdk.Model;
     using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-    using Aspose.Storage.Cloud.Sdk.Model;
-    using Aspose.Storage.Cloud.Sdk.Model.Requests;
-
-    using Aspose.Storage.Cloud.Sdk.Api;
     using Newtonsoft.Json;
 
     using NUnit.Framework;
@@ -55,7 +52,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// The API version
         /// </summary>
-        private const string ApiVersion = "v2.0";
+        private const string ApiVersion = "v3.0";
 
         /// <summary>
         /// The application key
@@ -73,14 +70,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         private const string BaseUrl = "http://api.aspose.cloud/";
 
         /// <summary>
-        /// The local test folder
-        /// </summary>
-        protected const string LocalTestFolder = "..\\..\\..\\..\\TestData\\";
-
-        /// <summary>
         /// The default storage
         /// </summary>
-        protected const string DefaultStorage = "Imaging-QA";
+        protected const string DefaultStorage = "Imaging-CI";
 
         #endregion
 
@@ -92,6 +84,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         protected static bool FailedAnyTest = false;
 
         /// <summary>
+        /// The local test folder
+        /// </summary>
+        protected readonly string LocalTestFolder = Path.Combine(Assembly.GetExecutingAssembly().Location,
+            "..\\..\\..\\..\\..\\..\\TestData\\");
+
+        /// <summary>
         /// The temporary folder
         /// </summary>
         protected string TempFolder;
@@ -99,17 +97,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// The input test files
         /// </summary>
-        protected List<FileResponse> InputTestFiles;
+        protected List<StorageFile> InputTestFiles;
 
         /// <summary>
         /// Aspose.Imaging API
         /// </summary>
         protected ImagingApi ImagingApi;
-
-        /// <summary>
-        /// Aspose.Storage API
-        /// </summary>
-        protected StorageApi StorageApi;
 
         /// <summary>
         /// The basic export formats
@@ -121,7 +114,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             "jpg",
             "png",
             "psd",
-            "tiff"
+            "tiff",
+            "webp",
+            "pdf"
         };
 
         #endregion
@@ -162,7 +157,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// Original test data folder
         /// </summary>
-        protected virtual string OriginalDataFolder => "ImagingCloudSdkInputTestData";
+        protected virtual string OriginalDataFolder => "ImagingIntegrationTestData";
 
         /// <summary>
         /// The default storage
@@ -181,7 +176,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
         #region Configuration
 
-        [TestFixtureSetUp]
+        [OneTimeSetUp]
         public virtual void InitFixture()
         {
             this.TempFolder = $"{this.CloudTestFolderPrefix}_{this.GetEnvironmentVariable("BUILD_NUMBER") ?? Environment.UserName}";
@@ -190,24 +185,26 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             if (string.IsNullOrEmpty(this.TestStorage))
             {
-                Console.WriteLine("Storage name is not set by environment variable. Using the default one.");
+                WriteLineEverywhere("Storage name is not set by environment variable. Using the default one.");
                 this.TestStorage = DefaultStorage;
             }
 
             this.CreateApiInstances();
-            if (!FailedAnyTest && this.RemoveResult && this.StorageApi.GetIsExist(new GetIsExistRequest(this.TempFolder, null, this.TestStorage)).FileExist.IsExist.Value)
+            if (!FailedAnyTest && this.RemoveResult && 
+                this.ImagingApi.ObjectExists(new ObjectExistsRequest(this.TempFolder, this.TestStorage)).Exists.Value)
             {
-                this.StorageApi.DeleteFolder(new DeleteFolderRequest(this.TempFolder, this.TestStorage, true));
-                this.StorageApi.PutCreateFolder(new PutCreateFolderRequest(this.TempFolder, this.TestStorage, this.TestStorage));
+                this.ImagingApi.DeleteFolder(new DeleteFolderRequest(this.TempFolder, this.TestStorage, true));
+                this.ImagingApi.CreateFolder(new CreateFolderRequest(this.TempFolder, this.TestStorage));
             }
         }
 
-        [TestFixtureTearDown]
+        [OneTimeTearDown]
         public virtual void FinilizeFixture()
         {
-            if (!FailedAnyTest && this.RemoveResult && this.StorageApi.GetIsExist(new GetIsExistRequest(this.TempFolder, null, this.TestStorage)).FileExist.IsExist.Value)
+            if (!FailedAnyTest && this.RemoveResult && 
+                this.ImagingApi.ObjectExists(new ObjectExistsRequest(this.TempFolder, this.TestStorage)).Exists.Value)
             {
-                this.StorageApi.DeleteFolder(new DeleteFolderRequest(this.TempFolder, this.TestStorage, true));
+                this.ImagingApi.DeleteFolder(new DeleteFolderRequest(this.TempFolder, this.TestStorage, true));
             }
         }
 
@@ -222,54 +219,55 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="appSid">The application sid.</param>
         /// <param name="baseUrl">The base URL.</param>
         /// <param name="apiVersion">The API version.</param>
-        /// <param name="authType">Type of the authentication.</param>
         /// <param name="debug">if set to <c>true</c> [debug].</param>
         /// <exception cref="System.ArgumentException">Please, specify valid access data (AppKey, AppSid, Base URL)</exception>
-        protected void CreateApiInstances(string appKey = AppKey, string appSid = AppSid, string baseUrl = BaseUrl, string apiVersion = ApiVersion,
-            Client.AuthType authType = Client.AuthType.OAuth2, bool debug = false)
+        protected void CreateApiInstances(string appKey = AppKey, string appSid = AppSid, 
+            string baseUrl = BaseUrl, string apiVersion = ApiVersion, bool debug = false)
         {
             if (appKey == AppKey || appSid == AppSid)
             {
-                Console.WriteLine("Access data isn't set explicitly. Trying to obtain it from environment variables.");
+                WriteLineEverywhere("Access data isn't set explicitly. Trying to obtain it from environment variables.");
 
-                appKey = this.GetEnvironmentVariable("AppKEY");
-                appSid = this.GetEnvironmentVariable("AppSID");
+                appKey = this.GetEnvironmentVariable("AppKey");
+                appSid = this.GetEnvironmentVariable("AppSid");
                 baseUrl = this.GetEnvironmentVariable("ApiEndpoint");
                 apiVersion = this.GetEnvironmentVariable("ApiVersion");
             }
 
-            if (string.IsNullOrEmpty(appKey) || string.IsNullOrEmpty(appSid) || string.IsNullOrEmpty(baseUrl) || string.IsNullOrEmpty(apiVersion))
+            if (string.IsNullOrEmpty(appKey) || string.IsNullOrEmpty(appSid) || string.IsNullOrEmpty(baseUrl) || 
+                string.IsNullOrEmpty(apiVersion))
             {
-                Console.WriteLine("Access data isn't set completely by environment variables. Filling unset data with default values.");
+                WriteLineEverywhere("Access data isn't set completely by environment variables. Filling unset data with default values.");
             }
 
             if (string.IsNullOrEmpty(apiVersion))
             {
                 apiVersion = ApiVersion;
-                Console.WriteLine("Set default API version");
+                WriteLineEverywhere("Set default API version");
             }
 
             string serverAccessPath = Path.Combine(LocalTestFolder, ServerAccessFile);
             FileInfo serverFileInfo = new FileInfo(serverAccessPath);
+
             if (serverFileInfo.Exists && serverFileInfo.Length > 0)
             {
                 var accessData = JsonConvert.DeserializeObject<ServerAccessData>(File.ReadAllText(serverAccessPath));
                 if (string.IsNullOrEmpty(appKey))
                 {
                     appKey = accessData.AppKey;
-                    Console.WriteLine("Set default App key");
+                    WriteLineEverywhere("Set default App key");
                 }
 
                 if (string.IsNullOrEmpty(appSid))
                 {
                     appSid = accessData.AppSid;
-                    Console.WriteLine("Set default App SID");
+                    WriteLineEverywhere("Set default App SID");
                 }
 
                 if (string.IsNullOrEmpty(baseUrl))
                 {
                     baseUrl = accessData.BaseURL;
-                    Console.WriteLine("Set default base URL");
+                    WriteLineEverywhere("Set default base URL");
                 }
 
             }
@@ -278,20 +276,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 throw new ArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
             }
 
-            Console.WriteLine($"App key: {appKey}");
-            Console.WriteLine($"App SID: {appSid}");
-            Console.WriteLine($"Storage: {this.TestStorage}");
-            Console.WriteLine($"Base URL: {baseUrl}");
-            Console.WriteLine($"API version: {apiVersion}");
-
-            this.ImagingApi = new ImagingApi(appKey, appSid, baseUrl, apiVersion, authType, debug);
-            this.StorageApi = new StorageApi(new Storage.Cloud.Sdk.Configuration()
-            {
-                ApiBaseUrl = baseUrl,
-                AppKey = appKey,
-                AppSid = appSid
-            });
-
+            WriteLineEverywhere($"App key: {appKey}");
+            WriteLineEverywhere($"App SID: {appSid}");
+            WriteLineEverywhere($"Storage: {this.TestStorage}");
+            WriteLineEverywhere($"Base URL: {baseUrl}");
+            WriteLineEverywhere($"API version: {apiVersion}");
+            this.ImagingApi = new ImagingApi(appKey, appSid, baseUrl, apiVersion, debug);
             InputTestFiles = this.FetchInputTestFilesInfo();
         }
 
@@ -307,8 +297,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="propertiesTester">The properties tester.</param>
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
-        protected void TestGetRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, string resultFileName,
-            GetRequestInvokerDelegate requestInvoker, PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
+        protected void TestGetRequest(string testMethodName, bool saveResultToStorage, string parametersLine, 
+            string inputFileName, string resultFileName, GetRequestInvokerDelegate requestInvoker, 
+            PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
         {
             this.TestRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName, 
                 () => this.ObtainGetResponse(inputFileName, saveResultToStorage ? $"{folder}/{resultFileName}" : null, requestInvoker),
@@ -327,8 +318,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="propertiesTester">The properties tester.</param>
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
-        protected void TestPostRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, string resultFileName, 
-            PostRequestInvokerDelegate requestInvoker, PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
+        protected void TestPostRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, 
+            string resultFileName, PostRequestInvokerDelegate requestInvoker, PropertiesTesterDelegate propertiesTester, 
+            string folder, string storage = DefaultStorage)
         {
             this.TestRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName,
                 () => this.ObtainPostResponse(folder + "/" + inputFileName, saveResultToStorage ? $"{folder}/{resultFileName}" : null, storage, requestInvoker),
@@ -342,7 +334,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <returns></returns>
         protected bool CheckInputFileExists(string inputFileName)
         {
-            foreach (FileResponse storageFileInfo in InputTestFiles)
+            foreach (StorageFile storageFileInfo in InputTestFiles)
             {
                 if (storageFileInfo.Name == inputFileName)
                 {
@@ -360,12 +352,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="fileName">Name of the file.</param>
         /// <param name="storage">The storage.</param>
         /// <returns></returns>
-        protected FileResponse GetStorageFileInfo(string folder, string fileName,
+        protected StorageFile GetStorageFileInfo(string folder, string fileName,
             string storage)
         {
-            FilesResponse fileListResponse = this.StorageApi.GetListFiles(new GetListFilesRequest(folder, storage));
+            FilesList fileListResponse = this.ImagingApi.GetFilesList(new GetFilesListRequest(folder, storage));
 
-            foreach (FileResponse storageFileInfo in fileListResponse.Files)
+            foreach (StorageFile storageFileInfo in fileListResponse.Value)
             {
                 if (storageFileInfo.Name == fileName)
                 {
@@ -380,10 +372,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// Fetches the input test files info.
         /// </summary>
         /// <returns></returns>
-        private List<FileResponse> FetchInputTestFilesInfo()
+        private List<StorageFile> FetchInputTestFilesInfo()
         {
-            var filesResponse = this.StorageApi.GetListFiles(new GetListFilesRequest(OriginalDataFolder, this.TestStorage));
-            return filesResponse.Files;
+            var filesResponse = this.ImagingApi.GetFilesList(new GetFilesListRequest(OriginalDataFolder, this.TestStorage));
+            return filesResponse.Value;
         }
 
         /// <summary>
@@ -415,7 +407,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="storage">The storage.</param>
         private Stream ObtainPostResponse(string inputPath, string outPath, string storage, PostRequestInvokerDelegate requestInvoker)
         {
-            using (Stream iStream = this.StorageApi.GetDownload(new GetDownloadRequest(inputPath, null, storage)))
+            using (Stream iStream = this.ImagingApi.DownloadFile(new DownloadFileRequest(inputPath, storage)))
             {
                 var response = requestInvoker.Invoke(iStream, outPath);
 
@@ -442,10 +434,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="propertiesTester">The properties tester.</param>
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
-        private void TestRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, string resultFileName, 
-            Newtonsoft.Json.Serialization.Func<Stream> invokeRequestAction, PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
+        private void TestRequest(string testMethodName, bool saveResultToStorage, string parametersLine, string inputFileName, 
+            string resultFileName,
+#if NET20
+            Newtonsoft.Json.Serialization.Func<Stream> invokeRequestAction,
+#else
+            System.Func<Stream> invokeRequestAction,
+#endif
+            PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
         {
-            Console.WriteLine(testMethodName);
+            WriteLineEverywhere(testMethodName);
 
             if (!CheckInputFileExists(inputFileName))
             {
@@ -453,12 +451,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     $"Input file {inputFileName} doesn't exist in the specified storage folder: {folder}. Please, upload it first.");
             }
 
-            if (!this.StorageApi.GetIsExist(new GetIsExistRequest(folder + "/" + inputFileName, null, storage)).FileExist.IsExist.Value)
+            if (!this.ImagingApi.ObjectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage)).Exists.Value)
             {
-                var downStream = this.StorageApi.GetDownload(new GetDownloadRequest(OriginalDataFolder + "/" + inputFileName, null, storage));
-                Assert.NotNull(downStream);
-                var putResponse = this.StorageApi.PutCreate(new PutCreateRequest(folder + "/" + inputFileName, downStream, null, storage));
-                Assert.AreEqual(HttpStatusCode.OK.ToString(), putResponse.Status.ToUpperInvariant());
+                this.ImagingApi.CopyFile(
+                    new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage));
             }
 
             bool passed = false;
@@ -466,16 +462,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             try
             {
-                Console.WriteLine(parametersLine);
+                WriteLineEverywhere(parametersLine);
 
                 if (saveResultToStorage)
                 {
                     outPath = folder + "/" + resultFileName;
 
                     // remove output file from the storage (if exists)
-                    if (this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value)
+                    if (this.ImagingApi.ObjectExists(new ObjectExistsRequest(outPath, storage)).Exists.Value)
                     {
-                        this.StorageApi.DeleteFile(new DeleteFileRequest(outPath, null, storage));
+                        this.ImagingApi.DeleteFile(new DeleteFileRequest(outPath, storage));
                     }
                 }
 
@@ -485,18 +481,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 {
                     if (saveResultToStorage)
                     {
-                        FileResponse resultInfo = this.GetStorageFileInfo(folder, resultFileName, storage);
+                        StorageFile resultInfo = this.GetStorageFileInfo(folder, resultFileName, storage);
                         if (resultInfo == null)
                         {
                             throw new ArgumentException(
-                                $"Result file {resultFileName} doesn't exist in the specified storage folder: {folder}. Result isn't present in the storage by an unknown reason.");
+                                $"Result file {resultFileName} doesn't exist in the specified storage folder: {folder}. " +
+                                $"Result isn't present in the storage by an unknown reason.");
                         }
 
-                        resultProperties =
-                            this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
-                        Assert.NotNull(resultProperties);
+                        if (!resultFileName.EndsWith(".pdf"))
+                        {
+                            resultProperties =
+                                this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
+                            Assert.NotNull(resultProperties);
+                        }
                     }
-                    else if (!this.ImagingApi.Configuration.ApiVersion.Contains("v1."))
+                    else if (!this.ImagingApi.Configuration.ApiVersion.Contains("v1.") && !resultFileName.EndsWith(".pdf"))
                     {
                         resultProperties =
                             this.ImagingApi.PostImageProperties(new PostImagePropertiesRequest(response));
@@ -518,18 +518,30 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             catch (Exception ex)
             {
                 FailedAnyTest = true;
-                Console.WriteLine(ex.Message);
+                WriteLineEverywhere(ex.Message);
                 throw;
             }
             finally
             {
-                if (passed && saveResultToStorage && this.RemoveResult && this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value)
+                if (passed && saveResultToStorage && this.RemoveResult && this.ImagingApi.ObjectExists(
+                    new ObjectExistsRequest(outPath, storage)).Exists.Value)
                 {
-                    this.StorageApi.DeleteFile(new DeleteFileRequest(outPath, null, storage));
+                    this.ImagingApi.DeleteFile(new DeleteFileRequest(outPath, storage));
                 }
 
-                Console.WriteLine($"Test passed: {passed}");
+                WriteLineEverywhere($"Test passed: {passed}");
             }
+        }
+
+        /// <summary>
+        /// Writes the line everywhere to support different use-cases.
+        /// </summary>
+        /// <param name="line">The line.</param>
+        protected void WriteLineEverywhere(string line)
+        {
+            Console.WriteLine(line);
+            TestContext.WriteLine(line);
+            TestContext.Progress.WriteLine(line);
         }
 
         /// <summary>

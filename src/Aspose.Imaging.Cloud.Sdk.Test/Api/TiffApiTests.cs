@@ -25,22 +25,18 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
-	using System;
+    using System;
     using System.IO;
-	using System.Net;
-	using NUnit.Framework;
-	
-	using Aspose.Imaging.Cloud.Sdk.Model;
-	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-	using Aspose.Storage.Cloud.Sdk.Model.Requests;
-	using Aspose.Storage.Cloud.Sdk.Model;
+    using NUnit.Framework;
+    
+    using Aspose.Imaging.Cloud.Sdk.Model;
+    using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
     /// <summary>
     ///  Class for testing TiffApi
     /// </summary>
     [TestFixture]
-    [Category("v1.0")]
-    [Category("v2.0")]
+    [Category("v3.0")]
     [Category("Tiff")]
     public class TiffApiTests : ImagingApiTester
     {
@@ -179,7 +175,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         public void PostTiffAppendTest()
         {
             bool passed = false;
-            Console.WriteLine("PostTiffAppendTest");
+            WriteLineEverywhere("PostTiffAppendTest");
 
             string inputFileName = "test.tiff";
             string folder = TempFolder;
@@ -197,37 +193,29 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             try
             {
-                Console.WriteLine($"Input image: {inputFileName}");
+                WriteLineEverywhere($"Input image: {inputFileName}");
 
                 outPath = TempFolder + "/" + resultFileName;
 
                 // remove output file from the storage (if exists)
-                if (this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value)
+                if (this.ImagingApi.ObjectExists(new ObjectExistsRequest(outPath, storage)).Exists.Value)
                 {
-                    this.StorageApi.DeleteFile(new DeleteFileRequest(outPath, null, storage));
+                    this.ImagingApi.DeleteFile(new DeleteFileRequest(outPath, storage));
                 }
 
-                if (!this.StorageApi.GetIsExist(new GetIsExistRequest(inputPath, null, storage)).FileExist.IsExist.Value)
+                if (!this.ImagingApi.ObjectExists(new ObjectExistsRequest(inputPath, storage)).Exists.Value)
                 {
-                    var downStream = this.StorageApi.GetDownload(new GetDownloadRequest(OriginalDataFolder + "/" + inputFileName, null, storage));
-                    Assert.NotNull(downStream);
-                    var putResponse = this.StorageApi.PutCreate(new PutCreateRequest(folder + "/" + inputFileName, downStream, null, storage));
-                    Assert.AreEqual(HttpStatusCode.OK.ToString(), putResponse.Status.ToUpperInvariant());
+                    this.ImagingApi.CopyFile(new CopyFileRequest(OriginalDataFolder + "/" + inputFileName,
+                        folder + "/" + inputFileName, storage, storage));
                 }
 
-                var storageResponseStream = this.StorageApi.GetDownload(new GetDownloadRequest(inputPath, null, storage));
-                Assert.NotNull(storageResponseStream);
-                var storageResponseMessage = this.StorageApi.PutCreate(new PutCreateRequest(outPath, storageResponseStream, null, storage));
-                Assert.NotNull(storageResponseMessage);
-                Assert.AreEqual(storageResponseMessage.Code, (int)HttpStatusCode.OK);
-                Assert.IsTrue(this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value);
+                this.ImagingApi.CopyFile(new CopyFileRequest(inputPath, outPath, storage, storage));
+                Assert.IsTrue(this.ImagingApi.ObjectExists(new ObjectExistsRequest(outPath, storage)).Exists.Value);
 
                 var request = new PostTiffAppendRequest(resultFileName, inputFileName, storage, folder);
-                var response = ImagingApi.PostTiffAppend(request);
-                Assert.NotNull(response);
-                Assert.AreEqual((int)response.Code, (int)HttpStatusCode.OK);
+                ImagingApi.PostTiffAppend(request);
 
-                FileResponse resultInfo = this.GetStorageFileInfo(folder, resultFileName, storage);
+                StorageFile resultInfo = this.GetStorageFileInfo(folder, resultFileName, storage);
                 if (resultInfo == null)
                 {
                     throw new ArgumentException(
@@ -252,17 +240,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             catch (Exception ex)
             {
                 FailedAnyTest = true;
-                Console.WriteLine(ex.Message);
+                WriteLineEverywhere(ex.Message);
                 throw;
             }
             finally
             {
-                if (this.RemoveResult && this.StorageApi.GetIsExist(new GetIsExistRequest(outPath, null, storage)).FileExist.IsExist.Value)
+                if (this.RemoveResult && this.ImagingApi.ObjectExists(new ObjectExistsRequest(outPath, storage)).Exists.Value)
                 {
-                    this.StorageApi.DeleteFile(new DeleteFileRequest(outPath, null, storage));
+                    this.ImagingApi.DeleteFile(new DeleteFileRequest(outPath, storage));
                 }
 
-                Console.WriteLine($"Test passed: {passed}");
+                WriteLineEverywhere($"Test passed: {passed}");
             }
         }
     }

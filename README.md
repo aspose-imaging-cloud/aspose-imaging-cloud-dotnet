@@ -1,4 +1,4 @@
-# Aspose.Imaging Cloud .NET SDK
+# Aspose.Imaging Cloud .NET SDK [![NuGet](https://img.shields.io/nuget/v/Aspose.Imaging-Cloud.svg)](https://www.nuget.org/packages/Aspose.Imaging-Cloud/)
 [Aspose.Imaging Cloud](https://products.aspose.cloud/imaging/cloud) is a true REST API that enables you to perform a wide range of image processing operations including creation, manipulation and conversion in the cloud, with zero initial costs. Our Cloud SDKs are wrappers around REST API in various programming languages, allowing you to process images in language of your choice quickly and easily, gaining all benefits of strong types and IDE highlights. 
 
 This repository contains Aspose.Imaging Cloud .NET SDK source code. This SDK allows you to work with Aspose.Imaging Cloud REST APIs in your .NET applications quickly and easily, with zero initial cost.
@@ -9,24 +9,40 @@ The solution is updated using [code generator](https://github.com/aspose-imaging
 
 # Features
 ### Image Formats Support
-Process options, change and return image in the same format:
+Export the following images to various formats (generally supported ones are BMP, PSD, JPEG, TIFF, GIF, PNG, JPEG2000, WEBP and PDF):
+* BMP
+* GIF
+* DJVU
+* WMF
+* EMF
+* JPEG
+* JPEG2000
 * PSD
-* JPG
+* TIFF
+* WEBP
 * PNG
+* DICOM
+* CDR
+* ODG
+* DNG
+* SVG
+* CMX
+
+Process options, change and return images in the same format:
+* PSD
+* JPEG
 * TIFF
 * GIF
 * BMP
 * JPEG2000
+* WEBP
 
-Process options, change and return image in the PNG format:
-* DICOM
-* DNG
-* ODG
+Process options, change and return images in any supported export format:
 * EMF
 * WMF
 
 ### Supported Imaging Operations
-* Export to various image formats (currently, all supported formats can be exported to BMP, PSD, JPG, TIFF, GIF, PNG, JPEG2000 or WebP)
+* Export 
 * Resize
 * Crop
 * Rotate and Flip
@@ -43,6 +59,15 @@ Process options, change and return image in the PNG format:
 * Image search by custom registered tags
 * Image comparison and similarity detection
 * Image features extraction (for now, AKAZE detector is supported)
+
+# Storage API support
+#### Since version 19.4, SDK includes support of storage operations for better user experience and unification, so now there's no need to use 2 different SDKs!
+
+It gives you an ability to:
+* Upload, download, copy, move and delete files, including versions handling (if you are using Cloud storage that supports this feature - true by default)
+* Create, copy, move and delete folders
+* Copy and move files and folders accross separate storages in scope of a single operation
+* Check if certain file, folder or storage exists
 
 # Usage
 Please, add the following [NuGet package](https://www.nuget.org/packages/Aspose.Imaging-Cloud/) to your project.

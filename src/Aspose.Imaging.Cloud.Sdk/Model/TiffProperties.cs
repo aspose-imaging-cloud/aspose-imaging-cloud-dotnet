@@ -39,6 +39,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   public class TiffProperties 
   {                       
         /// <summary>
+        /// Frames information.
+        /// </summary>  
+        public List<TiffFrame> Frames { get; set; }
+
+        /// <summary>
         /// Gets or sets the byte order.
         /// </summary>  
         public string ByteOrder { get; set; }
@@ -49,11 +54,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         public ExifData ExifData { get; set; }
 
         /// <summary>
-        /// Frames information.
-        /// </summary>  
-        public List<TiffFrame> Frames { get; set; }
-
-        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -61,9 +61,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         {
           var sb = new StringBuilder();
           sb.Append("class TiffProperties {\n");
+          sb.Append("  Frames: ").Append(this.Frames).Append("\n");
           sb.Append("  ByteOrder: ").Append(this.ByteOrder).Append("\n");
           sb.Append("  ExifData: ").Append(this.ExifData).Append("\n");
-          sb.Append("  Frames: ").Append(this.Frames).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

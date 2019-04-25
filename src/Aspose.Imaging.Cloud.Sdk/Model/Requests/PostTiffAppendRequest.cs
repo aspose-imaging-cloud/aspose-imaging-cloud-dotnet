@@ -28,7 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.PostTiffAppend" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.PostTiffAppend" /> operation.
   /// </summary>  
   public class PostTiffAppendRequest  
   {
@@ -53,7 +53,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.storage = storage;
             this.folder = folder;
         }
-		
+        
         /// <summary>
         /// Original image file name.
         /// </summary>  

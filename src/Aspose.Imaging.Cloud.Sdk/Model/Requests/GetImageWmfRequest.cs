@@ -28,7 +28,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.GetImageWmf" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.GetImageWmf" /> operation.
   /// </summary>  
   public class GetImageWmfRequest  
   {
@@ -52,7 +52,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public GetImageWmfRequest(string name, string bkColor, int? pageWidth, int? pageHeight, int? borderX, int? borderY, bool? fromScratch = null, string outPath = null, string folder = null, string storage = null)             
+        /// <param name="format">Export format (PNG is the default one).</param>
+        public GetImageWmfRequest(string name, string bkColor, int? pageWidth, int? pageHeight, int? borderX, int? borderY, bool? fromScratch = null, string outPath = null, string folder = null, string storage = null, string format = null)             
         {
             this.name = name;
             this.bkColor = bkColor;
@@ -64,8 +65,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.outPath = outPath;
             this.folder = folder;
             this.storage = storage;
+            this.format = format;
         }
-		
+        
         /// <summary>
         /// Filename of image.
         /// </summary>  
@@ -115,5 +117,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Your Aspose Cloud Storage name.
         /// </summary>  
         public string storage { get; set; }
+
+        /// <summary>
+        /// Export format (PNG is the default one).
+        /// </summary>  
+        public string format { get; set; }
   }
 }

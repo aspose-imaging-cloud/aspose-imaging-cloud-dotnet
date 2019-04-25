@@ -36,7 +36,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   /// <summary>
   /// Search context status.
   /// </summary>  
-  public class SearchContextStatus : SaaSposeResponse 
+  public class SearchContextStatus 
   {                       
         /// <summary>
         /// Gets or sets the identifier.

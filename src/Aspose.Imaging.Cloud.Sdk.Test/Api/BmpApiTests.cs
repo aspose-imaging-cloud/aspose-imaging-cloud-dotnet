@@ -25,18 +25,17 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
-	using System;
+    using System;
     using System.IO;
-	using NUnit.Framework;
+    using NUnit.Framework;
 
-	using Aspose.Imaging.Cloud.Sdk.Model;
-	using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+    using Aspose.Imaging.Cloud.Sdk.Model;
+    using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
     /// <summary>
     ///  Class for testing BmpApi
     /// </summary>
-    [Category("v1.0")]
-    [Category("v2.0")]
+    [Category("v3.0")]
     [Category("Bmp")]
     [TestFixture]
     public class BmpApiTests : ImagingApiTester

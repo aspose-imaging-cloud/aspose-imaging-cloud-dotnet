@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="PostImageDicomRequest.cs">
+// <copyright company="Aspose" file="CopyFolderRequest.cs">
 //   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -28,50 +28,50 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.ImagingApi.PostImageDicom" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.CopyFolder" /> operation.
   /// </summary>  
-  public class PostImageDicomRequest  
+  public class CopyFolderRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostImageDicomRequest"/> class.
+        /// Initializes a new instance of the <see cref="CopyFolderRequest"/> class.
         /// </summary>        
-        public PostImageDicomRequest()
+        public CopyFolderRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PostImageDicomRequest"/> class.
+        /// Initializes a new instance of the <see cref="CopyFolderRequest"/> class.
         /// </summary>
-        /// <param name="imageData">Input image</param>
-        /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public PostImageDicomRequest(System.IO.Stream imageData, bool? fromScratch = null, string outPath = null, string storage = null)             
+        /// <param name="srcPath">Source folder path e.g. &#39;/src&#39;</param>
+        /// <param name="destPath">Destination folder path e.g. &#39;/dst&#39;</param>
+        /// <param name="srcStorageName">Source storage name</param>
+        /// <param name="destStorageName">Destination storage name</param>
+        public CopyFolderRequest(string srcPath, string destPath, string srcStorageName = null, string destStorageName = null)             
         {
-            this.imageData = imageData;
-            this.fromScratch = fromScratch;
-            this.outPath = outPath;
-            this.storage = storage;
+            this.srcPath = srcPath;
+            this.destPath = destPath;
+            this.srcStorageName = srcStorageName;
+            this.destStorageName = destStorageName;
         }
-		
+        
         /// <summary>
-        /// Input image
+        /// Source folder path e.g. '/src'
         /// </summary>  
-        public System.IO.Stream imageData { get; set; }
+        public string srcPath { get; set; }
 
         /// <summary>
-        /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+        /// Destination folder path e.g. '/dst'
         /// </summary>  
-        public bool? fromScratch { get; set; }
+        public string destPath { get; set; }
 
         /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
+        /// Source storage name
         /// </summary>  
-        public string outPath { get; set; }
+        public string srcStorageName { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Destination storage name
         /// </summary>  
-        public string storage { get; set; }
+        public string destStorageName { get; set; }
   }
 }

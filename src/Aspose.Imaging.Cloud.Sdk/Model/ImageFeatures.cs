@@ -36,7 +36,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   /// <summary>
   /// Image features.
   /// </summary>  
-  public class ImageFeatures : SaaSposeResponse 
+  public class ImageFeatures 
   {                       
         /// <summary>
         /// Gets the image identifier.

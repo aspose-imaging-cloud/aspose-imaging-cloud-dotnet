@@ -25,10 +25,8 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
-    using System.Net;
     using Model.Requests;
     using NUnit.Framework;
-    using Storage.Cloud.Sdk.Model.Requests;
 
     [TestFixture]
     public class CompareImagesTests : TestImagingAIBase
@@ -68,13 +66,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
                       var storagePath = this.OriginalDataFolder + "/" + ComparingImageSimilarLess15;
 
-                      var imageStream = this.StorageApi.GetDownload(new GetDownloadRequest(storagePath, null, this.TestStorage));
+                      var imageStream = this.ImagingApi.DownloadFile(new DownloadFileRequest(storagePath, this.TestStorage));
                       Assert.NotNull(imageStream);
 
                       var response = this.ImagingApi.PostSearchContextCompareImages(
                           new PostSearchContextCompareImagesRequest(this.SearchContextId, image, imageStream, storage: this.TestStorage));
 
-                      Assert.AreEqual(HttpStatusCode.OK, response.Code);
                       Assert.AreEqual(1, response.Results.Count);
                       Assert.IsTrue(response.Results[0].Similarity <= 15);
                   });
