@@ -119,7 +119,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client.Internal.RequestHandlers
         /// </summary>
         private void RequestJwtToken()
         {
-            var requestUrl = this.configuration.ApiBaseUrl + "/connect/token";
+            var requestUrl = this.configuration.ApiBaseUrl + "connect/token";
 
             var postData = "grant_type=client_credentials";
             postData += "&client_id=" + this.configuration.AppSid;

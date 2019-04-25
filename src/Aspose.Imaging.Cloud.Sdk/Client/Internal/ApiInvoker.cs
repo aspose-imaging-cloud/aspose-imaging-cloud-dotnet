@@ -260,7 +260,7 @@ namespace Aspose.Imaging.Cloud.Sdk
         private WebRequest PrepareRequest(string path, string method, Dictionary<string, object> formParams, 
             Dictionary<string, string> headerParams, string body, string contentType)
         {
-            var client = WebRequest.Create(path);
+            var client = WebRequest.Create(path.Replace(" ", "%20"));
             client.Method = method;
             Stream content = body == null ? null : new MemoryStream(Encoding.UTF8.GetBytes(body));
 
