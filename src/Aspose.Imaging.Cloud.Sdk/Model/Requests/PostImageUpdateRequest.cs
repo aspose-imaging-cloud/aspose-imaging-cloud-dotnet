@@ -43,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="PostImageUpdateRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="format">Resulting image format.</param>
+        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         /// <param name="newWidth">New width of the scaled image.</param>
         /// <param name="newHeight">New height of the scaled image.</param>
         /// <param name="x">X position of start point for cropping rectangle.</param>
@@ -74,7 +74,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Resulting image format.
+        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
         /// </summary>  
         public string format { get; set; }
 

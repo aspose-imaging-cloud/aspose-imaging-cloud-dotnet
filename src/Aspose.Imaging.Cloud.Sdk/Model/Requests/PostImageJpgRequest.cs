@@ -44,7 +44,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// </summary>
         /// <param name="imageData">Input image</param>
         /// <param name="quality">Quality of an image from 0 to 100. Default is 75.</param>
-        /// <param name="compressionType">Compression type.</param>
+        /// <param name="compressionType">Compression type: baseline (default), progressive, lossless or jpegls.</param>
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
@@ -69,7 +69,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public int? quality { get; set; }
 
         /// <summary>
-        /// Compression type.
+        /// Compression type: baseline (default), progressive, lossless or jpegls.
         /// </summary>  
         public string compressionType { get; set; }
 

@@ -31,6 +31,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     using Model.Requests;
     using NUnit.Framework;
 
+    using Aspose.Imaging.Cloud.Sdk.Test.Base;
+
     [Category("AI")]
     [Category("v3.0")]
     [TestFixture]

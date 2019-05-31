@@ -42,10 +42,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetImageWebP
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageWebPTest(bool saveResultToStorage)
+        [Test]
+        public void GetImageWebPTest()
         {
             string name = "Animation.webp";
             bool lossless = true;
@@ -53,19 +51,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int animLoopCount = 5;
             string animBackgroundColor = "gray";
             bool? fromScratch = null;
-            string outName = $"{name}_specific.webp";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageWebPTest",
-                saveResultToStorage,
                 $"Input image: {name}; AnimBackgroundColor: {animBackgroundColor}; Lossless: {lossless}; Quality: {quality}; AnimLoopCount: {animLoopCount}",
                 name,
-                outName,
-                delegate(string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageWebPRequest(fileName, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, folder, storage);
+                    var request = new GetImageWebPRequest(name, lossless, quality, animLoopCount, 
+                        animBackgroundColor, fromScratch, folder, storage);
                     return ImagingApi.GetImageWebP(request);
                 },
                 delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)

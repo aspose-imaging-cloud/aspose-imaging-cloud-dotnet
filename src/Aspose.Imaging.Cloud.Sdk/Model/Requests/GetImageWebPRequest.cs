@@ -43,15 +43,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="GetImageWebPRequest"/> class.
         /// </summary>
         /// <param name="name">Filename of image.</param>
-        /// <param name="lossLess">If WEBP is lossless.</param>
-        /// <param name="quality">Quality.</param>
+        /// <param name="lossLess">If WEBP should be in lossless format.</param>
+        /// <param name="quality">Quality (0-100).</param>
         /// <param name="animLoopCount">The animation loop count.</param>
         /// <param name="animBackgroundColor">Color of the animation background.</param>
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public GetImageWebPRequest(string name, bool? lossLess, int? quality, int? animLoopCount, string animBackgroundColor, bool? fromScratch = null, string outPath = null, string folder = null, string storage = null)             
+        public GetImageWebPRequest(string name, bool? lossLess, int? quality, int? animLoopCount, string animBackgroundColor, bool? fromScratch = null, string folder = null, string storage = null)             
         {
             this.name = name;
             this.lossLess = lossLess;
@@ -59,7 +58,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.animLoopCount = animLoopCount;
             this.animBackgroundColor = animBackgroundColor;
             this.fromScratch = fromScratch;
-            this.outPath = outPath;
             this.folder = folder;
             this.storage = storage;
         }
@@ -70,12 +68,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string name { get; set; }
 
         /// <summary>
-        /// If WEBP is lossless.
+        /// If WEBP should be in lossless format.
         /// </summary>  
         public bool? lossLess { get; set; }
 
         /// <summary>
-        /// Quality.
+        /// Quality (0-100).
         /// </summary>  
         public int? quality { get; set; }
 
@@ -93,11 +91,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
         /// </summary>  
         public bool? fromScratch { get; set; }
-
-        /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
-        /// </summary>  
-        public string outPath { get; set; }
 
         /// <summary>
         /// Folder with image to process.

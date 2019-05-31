@@ -42,28 +42,23 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetImagePsd
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImagePsdTest(bool saveResultToStorage)
+        [Test]
+        public void GetImagePsdTest()
         {
             string name = "test.psd";
             int channelsCount = 3;
             string compressionMethod = "raw";
             bool? fromScratch = null;
-            string outName = $"{name}_specific.psd";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImagePsdTest",
-                saveResultToStorage,
                 $"Input image: {name}; Channel count: {channelsCount}; Compression method: {compressionMethod}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImagePsdRequest(name, channelsCount, compressionMethod, fromScratch, outPath,
+                    var request = new GetImagePsdRequest(name, channelsCount, compressionMethod, fromScratch,
                         folder, storage);
                     return ImagingApi.GetImagePsd(request);
                 },

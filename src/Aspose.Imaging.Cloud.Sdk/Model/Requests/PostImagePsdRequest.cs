@@ -44,7 +44,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// </summary>
         /// <param name="imageData">Input image</param>
         /// <param name="channelsCount">Count of color channels.</param>
-        /// <param name="compressionMethod">Compression method.</param>
+        /// <param name="compressionMethod">Compression method (for now, raw and RLE are supported).</param>
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
@@ -69,7 +69,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public int? channelsCount { get; set; }
 
         /// <summary>
-        /// Compression method.
+        /// Compression method (for now, raw and RLE are supported).
         /// </summary>  
         public string compressionMethod { get; set; }
 

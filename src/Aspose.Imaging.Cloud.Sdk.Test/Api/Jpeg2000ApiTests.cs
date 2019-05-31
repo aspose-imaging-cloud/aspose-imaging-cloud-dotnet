@@ -42,28 +42,23 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetImageJpeg2000
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageJpeg2000Test(bool saveResultToStorage)
+        [Test]
+        public void GetImageJpeg2000Test()
         {
             string name = "test.j2k";
             string codec = "jp2";
             string comment = "Aspose";
             bool? fromScratch = null;
-            string outName = $"{name}_specific.jp2";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageJpeg2000Test",
-                saveResultToStorage,
                 $"Input image: {name}; Comment: {comment}; Codec: {codec}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageJpeg2000Request(name, comment, codec, fromScratch, outPath, folder, storage);
+                    var request = new GetImageJpeg2000Request(name, comment, codec, fromScratch, folder, storage);
                     return ImagingApi.GetImageJpeg2000(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)

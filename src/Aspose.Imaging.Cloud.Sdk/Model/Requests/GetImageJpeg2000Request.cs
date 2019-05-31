@@ -43,19 +43,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="GetImageJpeg2000Request"/> class.
         /// </summary>
         /// <param name="name">Filename of image.</param>
-        /// <param name="comment">The comment.</param>
-        /// <param name="codec">The codec.</param>
+        /// <param name="comment">The comment (can be either single or comma-separated).</param>
+        /// <param name="codec">The codec (j2k or jp2).</param>
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public GetImageJpeg2000Request(string name, string comment, string codec = null, bool? fromScratch = null, string outPath = null, string folder = null, string storage = null)             
+        public GetImageJpeg2000Request(string name, string comment, string codec = null, bool? fromScratch = null, string folder = null, string storage = null)             
         {
             this.name = name;
             this.comment = comment;
             this.codec = codec;
             this.fromScratch = fromScratch;
-            this.outPath = outPath;
             this.folder = folder;
             this.storage = storage;
         }
@@ -66,12 +64,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string name { get; set; }
 
         /// <summary>
-        /// The comment.
+        /// The comment (can be either single or comma-separated).
         /// </summary>  
         public string comment { get; set; }
 
         /// <summary>
-        /// The codec.
+        /// The codec (j2k or jp2).
         /// </summary>  
         public string codec { get; set; }
 
@@ -79,11 +77,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
         /// </summary>  
         public bool? fromScratch { get; set; }
-
-        /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
-        /// </summary>  
-        public string outPath { get; set; }
 
         /// <summary>
         /// Folder with image to process.

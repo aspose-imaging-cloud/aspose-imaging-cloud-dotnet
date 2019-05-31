@@ -49,11 +49,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="borderX">Border width.</param>
         /// <param name="borderY">Border height.</param>
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        /// <param name="format">Export format (PNG is the default one).</param>
-        public GetImageWmfRequest(string name, string bkColor, int? pageWidth, int? pageHeight, int? borderX, int? borderY, bool? fromScratch = null, string outPath = null, string folder = null, string storage = null, string format = null)             
+        /// <param name="format">Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
+        public GetImageWmfRequest(string name, string bkColor, int? pageWidth, int? pageHeight, int? borderX, int? borderY, bool? fromScratch = null, string folder = null, string storage = null, string format = null)             
         {
             this.name = name;
             this.bkColor = bkColor;
@@ -62,7 +61,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.borderX = borderX;
             this.borderY = borderY;
             this.fromScratch = fromScratch;
-            this.outPath = outPath;
             this.folder = folder;
             this.storage = storage;
             this.format = format;
@@ -104,11 +102,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public bool? fromScratch { get; set; }
 
         /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
-        /// </summary>  
-        public string outPath { get; set; }
-
-        /// <summary>
         /// Folder with image to process.
         /// </summary>  
         public string folder { get; set; }
@@ -119,7 +112,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string storage { get; set; }
 
         /// <summary>
-        /// Export format (PNG is the default one).
+        /// Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
         /// </summary>  
         public string format { get; set; }
   }

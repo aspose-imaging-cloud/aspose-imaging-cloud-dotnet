@@ -26,7 +26,6 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     using System.IO;
-    using System.Collections.Generic;
     using NUnit.Framework;
 
     using Aspose.Imaging.Cloud.Sdk.Model;
@@ -43,28 +42,23 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetImageJpg
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageJpgTest(bool saveResultToStorage)
+        [Test]
+        public void GetImageJpgTest()
         {
             string name = "test.jpg";
             int quality = 65;
             string compressionType = "progressive";
             bool? fromScratch = null;
-            string outName = $"{name}_specific.jpg";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageJpgTest",
-                saveResultToStorage,
                 $"Input image: {name}; Quality: {quality}; Compression type: {compressionType}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageJpgRequest(name, quality, compressionType, fromScratch, outPath,
+                    var request = new GetImageJpgRequest(name, quality, compressionType, fromScratch,
                         folder, storage);
                     return ImagingApi.GetImageJpg(request);
                 },

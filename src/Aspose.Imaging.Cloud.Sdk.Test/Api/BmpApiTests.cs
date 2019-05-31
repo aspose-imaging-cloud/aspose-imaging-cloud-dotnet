@@ -42,30 +42,26 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     {
         /// <summary>
         /// Test GetImageBmp
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// </summary>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageBmpTest(bool saveResultToStorage)
+        [Test]
+        public void GetImageBmpTest()
         {
             string name = "test.bmp";
             int? bitsPerPixel = 32;
             int? horizontalResolution = 300;
             int? verticalResolution = 300;
             bool? fromScratch = null;
-            string outName = $"{name}_specific.bmp";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageBmpTest", 
-                saveResultToStorage,
                 $"Input image: {name}; Bits per pixel: {bitsPerPixel}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageBmpRequest(fileName, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, folder, storage);
+                    var request = new GetImageBmpRequest(name, bitsPerPixel, horizontalResolution, verticalResolution, 
+                        fromScratch, folder, storage);
                     return ImagingApi.GetImageBmp(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)

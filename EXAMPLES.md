@@ -13,37 +13,26 @@ try
         // inspect result.Uploaded list for uploaded file names
     }
 
-    // convert image from storage to JPEG and save it to storage
-    // please, use outPath parameter for saving the result to storage
-    var getSaveToStorageRequest =
-        new GetImageSaveAsRequest("inputImage.png", "jpg", "ExampleFolderNet/resultImage.jpg",
-        "ExampleFolderNet");
+    // convert image from storage to JPEG
+    var getSaveAsRequest =
+        new GetImageSaveAsRequest("inputImage.png", "ExampleFolderNet");
 
-    imagingApi.GetImageSaveAs(getSaveToStorageRequest);
-
-    // download saved image from storage
-    using (Stream savedFile =
-        imagingApi.DownloadFile(
-        new DownloadFileRequest("ExampleFolderNet/resultImage.jpg")))
+    using (Stream convertedImage = imagingApi.GetImageSaveAs(getSaveAsRequest))
     {
-        // process resulting image from storage
-    }
-
-    // convert image from storage to JPEG and read it from resulting stream
-    // please, set outPath parameter as null to return result in response stream instead of saving to storage
-    var getSaveToStreamRequest =
-        new GetImageSaveAsRequest("inputImage.png", "jpg", null, "ExampleFolderNet");
-
-    using (Stream resultGetImageStream = imagingApi.GetImageSaveAs(getSaveToStreamRequest))
-    {
-        // process resulting image from response stream
+        // process resulting image
+        // for example, save it to storage
+        var uploadFileRequest =
+            new UploadFileRequest("ExampleFolderNet/resultImage.jpg", convertedImage);
+        FilesUploadResult result = imagingApi.UploadFile(uploadFileRequest);
+        // inspect result.Errors list if there were any
+        // inspect result.Uploaded list for uploaded file names
     }
 }
 finally
 {
     // remove files from storage
-    imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/inputImage.jpg"));
-    imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.png"));
+    imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/inputImage.png"));
+    imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.jpg"));
 }
 
 // other Imaging requests typically follow the same principles regarding stream/storage relations
@@ -62,7 +51,7 @@ try
         // convert image from request stream to JPEG and save it to storage
         // please, use outPath parameter for saving the result to storage
         var postSaveToStorageRequest =
-            new PostImageSaveAsRequest(localInputImage, "jpg", "ExampleFolderNet/resultImage.png");
+            new PostImageSaveAsRequest(localInputImage, "jpg", "ExampleFolderNet/resultImage.jpg");
 
         imagingApi.PostImageSaveAs(postSaveToStorageRequest);
 
@@ -90,7 +79,7 @@ try
 finally
 {
     // remove file from storage
-    imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.png"));
+    imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.jpg"));
 }
 
 // other Imaging requests typically follow the same principles regarding stream/storage relations

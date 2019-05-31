@@ -44,18 +44,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// </summary>
         /// <param name="name">Filename of image.</param>
         /// <param name="channelsCount">Count of color channels.</param>
-        /// <param name="compressionMethod">Compression method.</param>
+        /// <param name="compressionMethod">Compression method (for now, raw and RLE are supported).</param>
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public GetImagePsdRequest(string name, int? channelsCount = null, string compressionMethod = null, bool? fromScratch = null, string outPath = null, string folder = null, string storage = null)             
+        public GetImagePsdRequest(string name, int? channelsCount = null, string compressionMethod = null, bool? fromScratch = null, string folder = null, string storage = null)             
         {
             this.name = name;
             this.channelsCount = channelsCount;
             this.compressionMethod = compressionMethod;
             this.fromScratch = fromScratch;
-            this.outPath = outPath;
             this.folder = folder;
             this.storage = storage;
         }
@@ -71,7 +69,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public int? channelsCount { get; set; }
 
         /// <summary>
-        /// Compression method.
+        /// Compression method (for now, raw and RLE are supported).
         /// </summary>  
         public string compressionMethod { get; set; }
 
@@ -79,11 +77,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
         /// </summary>  
         public bool? fromScratch { get; set; }
-
-        /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
-        /// </summary>  
-        public string outPath { get; set; }
 
         /// <summary>
         /// Folder with image to process.

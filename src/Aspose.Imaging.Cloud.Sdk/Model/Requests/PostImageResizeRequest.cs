@@ -43,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="PostImageResizeRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="format">Resulting image format.</param>
+        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         /// <param name="newWidth">New width.</param>
         /// <param name="newHeight">New height.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
@@ -64,7 +64,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Resulting image format.
+        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
         /// </summary>  
         public string format { get; set; }
 

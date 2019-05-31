@@ -43,8 +43,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="PostImageJpeg2000Request"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="comment">The comment.</param>
-        /// <param name="codec">The codec.</param>
+        /// <param name="comment">The comment (can be either single or comma-separated).</param>
+        /// <param name="codec">The codec (j2k or jp2).</param>
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
@@ -64,12 +64,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// The comment.
+        /// The comment (can be either single or comma-separated).
         /// </summary>  
         public string comment { get; set; }
 
         /// <summary>
-        /// The codec.
+        /// The codec (j2k or jp2).
         /// </summary>  
         public string codec { get; set; }
 

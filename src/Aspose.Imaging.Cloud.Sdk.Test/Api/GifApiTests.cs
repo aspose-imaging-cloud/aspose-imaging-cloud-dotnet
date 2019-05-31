@@ -26,7 +26,6 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     using System.IO;
-    using System.Collections.Generic;
     using NUnit.Framework;
 
     using Aspose.Imaging.Cloud.Sdk.Model;
@@ -43,10 +42,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetImageGif
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageGifTest(bool saveResultToStorage)
+        [Test]
+        public void GetImageGifTest()
         {
             string name = "test.gif";
             int? backgroundColorIndex = 5;
@@ -56,21 +53,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool isPaletteSorted = true;
             int pixelAspectRatio = 4;
             bool? fromScratch = null;
-            string outName = $"{name}_specific.gif";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageGifTest",
-                saveResultToStorage,
                 $"Input image: {name}; Back color index: {backgroundColorIndex}; Color resolution: {colorResolution}; Has trailer: {hasTrailer}; " +
                 $"Interlaced: {interlaced}; Is palette sorted: {isPaletteSorted}; Pixel aspect ratio: {pixelAspectRatio}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
                     var request = new GetImageGifRequest(name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted,
-                        pixelAspectRatio, fromScratch, outPath, folder, storage);
+                        pixelAspectRatio, fromScratch, folder, storage);
                     return ImagingApi.GetImageGif(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)

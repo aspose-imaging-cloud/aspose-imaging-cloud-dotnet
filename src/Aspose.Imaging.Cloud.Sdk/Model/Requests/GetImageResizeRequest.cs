@@ -43,19 +43,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="GetImageResizeRequest"/> class.
         /// </summary>
         /// <param name="name">Filename of an image.</param>
-        /// <param name="format">Resulting image format.</param>
+        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         /// <param name="newWidth">New width.</param>
         /// <param name="newHeight">New height.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public GetImageResizeRequest(string name, string format, int? newWidth, int? newHeight, string outPath = null, string folder = null, string storage = null)             
+        public GetImageResizeRequest(string name, string format, int? newWidth, int? newHeight, string folder = null, string storage = null)             
         {
             this.name = name;
             this.format = format;
             this.newWidth = newWidth;
             this.newHeight = newHeight;
-            this.outPath = outPath;
             this.folder = folder;
             this.storage = storage;
         }
@@ -66,7 +64,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string name { get; set; }
 
         /// <summary>
-        /// Resulting image format.
+        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
         /// </summary>  
         public string format { get; set; }
 
@@ -79,11 +77,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// New height.
         /// </summary>  
         public int? newHeight { get; set; }
-
-        /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
-        /// </summary>  
-        public string outPath { get; set; }
 
         /// <summary>
         /// Folder with image to process.

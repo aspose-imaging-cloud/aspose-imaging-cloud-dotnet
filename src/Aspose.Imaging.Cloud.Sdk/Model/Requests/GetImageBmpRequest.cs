@@ -47,17 +47,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="horizontalResolution">New horizontal resolution.</param>
         /// <param name="verticalResolution">New vertical resolution.</param>
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public GetImageBmpRequest(string name, int? bitsPerPixel, int? horizontalResolution, int? verticalResolution, bool? fromScratch = null, string outPath = null, string folder = null, string storage = null)             
+        public GetImageBmpRequest(string name, int? bitsPerPixel, int? horizontalResolution, int? verticalResolution, bool? fromScratch = null, string folder = null, string storage = null)             
         {
             this.name = name;
             this.bitsPerPixel = bitsPerPixel;
             this.horizontalResolution = horizontalResolution;
             this.verticalResolution = verticalResolution;
             this.fromScratch = fromScratch;
-            this.outPath = outPath;
             this.folder = folder;
             this.storage = storage;
         }
@@ -86,11 +84,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
         /// </summary>  
         public bool? fromScratch { get; set; }
-
-        /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
-        /// </summary>  
-        public string outPath { get; set; }
 
         /// <summary>
         /// Folder with image to process.

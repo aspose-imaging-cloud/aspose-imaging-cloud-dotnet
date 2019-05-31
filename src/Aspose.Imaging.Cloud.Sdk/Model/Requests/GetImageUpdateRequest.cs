@@ -43,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="GetImageUpdateRequest"/> class.
         /// </summary>
         /// <param name="name">Filename of an image.</param>
-        /// <param name="format">Resulting image format.</param>
+        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         /// <param name="newWidth">New width of the scaled image.</param>
         /// <param name="newHeight">New height of the scaled image.</param>
         /// <param name="x">X position of start point for cropping rectangle.</param>
@@ -51,10 +51,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="rectWidth">Width of cropping rectangle.</param>
         /// <param name="rectHeight">Height of cropping rectangle.</param>
         /// <param name="rotateFlipMethod">RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public GetImageUpdateRequest(string name, string format, int? newWidth, int? newHeight, int? x, int? y, int? rectWidth, int? rectHeight, string rotateFlipMethod, string outPath = null, string folder = null, string storage = null)             
+        public GetImageUpdateRequest(string name, string format, int? newWidth, int? newHeight, int? x, int? y, int? rectWidth, int? rectHeight, string rotateFlipMethod, string folder = null, string storage = null)             
         {
             this.name = name;
             this.format = format;
@@ -65,7 +64,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.rectWidth = rectWidth;
             this.rectHeight = rectHeight;
             this.rotateFlipMethod = rotateFlipMethod;
-            this.outPath = outPath;
             this.folder = folder;
             this.storage = storage;
         }
@@ -76,7 +74,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string name { get; set; }
 
         /// <summary>
-        /// Resulting image format.
+        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
         /// </summary>  
         public string format { get; set; }
 
@@ -114,11 +112,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
         /// </summary>  
         public string rotateFlipMethod { get; set; }
-
-        /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
-        /// </summary>  
-        public string outPath { get; set; }
 
         /// <summary>
         /// Folder with image to process.

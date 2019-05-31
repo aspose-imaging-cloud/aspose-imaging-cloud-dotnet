@@ -43,8 +43,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="PostImageWebPRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="lossLess">If WEBP is lossless.</param>
-        /// <param name="quality">Quality.</param>
+        /// <param name="lossLess">If WEBP should be in lossless format.</param>
+        /// <param name="quality">Quality (0-100).</param>
         /// <param name="animLoopCount">The animation loop count.</param>
         /// <param name="animBackgroundColor">Color of the animation background.</param>
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
@@ -68,12 +68,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// If WEBP is lossless.
+        /// If WEBP should be in lossless format.
         /// </summary>  
         public bool? lossLess { get; set; }
 
         /// <summary>
-        /// Quality.
+        /// Quality (0-100).
         /// </summary>  
         public int? quality { get; set; }
 

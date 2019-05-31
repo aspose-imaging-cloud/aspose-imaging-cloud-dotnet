@@ -45,13 +45,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="name">Filename of image.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
         /// <param name="folder">Folder with image to process.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        public GetTiffToFaxRequest(string name, string storage = null, string folder = null, string outPath = null)             
+        public GetTiffToFaxRequest(string name, string storage = null, string folder = null)             
         {
             this.name = name;
             this.storage = storage;
             this.folder = folder;
-            this.outPath = outPath;
         }
         
         /// <summary>
@@ -68,10 +66,5 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Folder with image to process.
         /// </summary>  
         public string folder { get; set; }
-
-        /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
-        /// </summary>  
-        public string outPath { get; set; }
   }
 }

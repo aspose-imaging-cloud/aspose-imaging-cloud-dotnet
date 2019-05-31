@@ -43,15 +43,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="GetImageSaveAsRequest"/> class.
         /// </summary>
         /// <param name="name">Filename of image.</param>
-        /// <param name="format">Resulting image format.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
+        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public GetImageSaveAsRequest(string name, string format, string outPath = null, string folder = null, string storage = null)             
+        public GetImageSaveAsRequest(string name, string format, string folder = null, string storage = null)             
         {
             this.name = name;
             this.format = format;
-            this.outPath = outPath;
             this.folder = folder;
             this.storage = storage;
         }
@@ -62,14 +60,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string name { get; set; }
 
         /// <summary>
-        /// Resulting image format.
+        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
         /// </summary>  
         public string format { get; set; }
-
-        /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
-        /// </summary>  
-        public string outPath { get; set; }
 
         /// <summary>
         /// Folder with image to process.

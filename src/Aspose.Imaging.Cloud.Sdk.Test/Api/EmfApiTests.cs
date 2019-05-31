@@ -42,41 +42,36 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetImageEmf
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageEmfTest(bool saveResultToStorage)
+        [Test]
+        public void GetImageEmfTest()
         {
             string name = "test.emf";
             string bkColor = "gray";
             int pageWidth = 300;
-            int pageHeigth = 300;
+            int pageHeight = 300;
             int borderX = 50;
             int borderY = 50;
             bool? fromScratch = null;
-            string outName = $"{name}_specific.png";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageEmfTest",
-                saveResultToStorage,
-                $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeigth}; BorderX: {borderX}; BorderY: {borderY}",
+                $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeight}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeigth, borderX, borderY,
-                        fromScratch, outPath, folder, storage);
+                    var request = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY,
+                        fromScratch, folder, storage);
                     return ImagingApi.GetImageEmf(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     int width = pageWidth + borderX * 2;
-                    int heigth = pageHeigth + borderY * 2;
+                    int height = pageHeight + borderY * 2;
                     Assert.IsNotNull(resultProperties.PngProperties);
                     Assert.AreEqual(width, resultProperties.Width);
-                    Assert.AreEqual(heigth, resultProperties.Height);
+                    Assert.AreEqual(height, resultProperties.Height);
                 },
                 folder,
                 storage);
@@ -93,7 +88,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string name = "test.emf";
             string bkColor = "gray";
             int pageWidth = 300;
-            int pageHeigth = 300;
+            int pageHeight = 300;
             int borderX = 50;
             int borderY = 50;
             bool? fromScratch = null;
@@ -104,22 +99,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             this.TestPostRequest(
                 "PostImageEmfTest",
                 saveResultToStorage,
-                $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeigth}; BorderX: {borderX}; BorderY: {borderY}",
+                $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeight}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageEmfRequest(inputStream, bkColor, pageWidth, pageHeigth, borderX, borderY,
+                    var request = new PostImageEmfRequest(inputStream, bkColor, pageWidth, pageHeight, borderX, borderY,
                         fromScratch, outPath, storage);
                     return ImagingApi.PostImageEmf(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     int width = pageWidth + borderX * 2;
-                    int heigth = pageHeigth + borderY * 2;
+                    int height = pageHeight + borderY * 2;
                     Assert.IsNotNull(resultProperties.PngProperties);
                     Assert.AreEqual(width, resultProperties.Width);
-                    Assert.AreEqual(heigth, resultProperties.Height);
+                    Assert.AreEqual(height, resultProperties.Height);
                 },
                 folder,
                 storage);

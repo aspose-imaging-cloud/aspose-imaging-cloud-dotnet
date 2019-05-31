@@ -47,19 +47,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         public void GetTiffToFaxTest()
         {
             string name = "test.tiff";
-            string outName = $"{name}_fax.tiff";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetTiffToFaxTest",
-                true,
                 $"Input image: {name}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetTiffToFaxRequest(name, storage, folder, outPath);
+                    var request = new GetTiffToFaxRequest(name, storage, folder);
                     return ImagingApi.GetTiffToFax(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
@@ -78,10 +75,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetImageTiff
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageTiffTest(bool saveResultToStorage)
+        [Test]
+        public void GetImageTiffTest()
         {
             string name = "test.tiff";
             string compression = "adobedeflate";
@@ -90,20 +85,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             double horizontalResolution = 150;
             double verticalResolution = 150;
             bool? fromScratch = null;
-            string outName = $"{name}_specific.tiff";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageTiffTest",
-                saveResultToStorage,
                 $"Input image: {name}; Compression: {compression}; Bit depth: {bitDepth}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageTiffRequest(name, compression, resolutionUnit, bitDepth, fromScratch, horizontalResolution, verticalResolution, outPath,
-                        folder, storage);
+                    var request = new GetImageTiffRequest(name, bitDepth, compression, resolutionUnit, horizontalResolution, 
+                        verticalResolution, fromScratch, folder, storage);
                     return ImagingApi.GetImageTiff(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
@@ -149,7 +141,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageTiffRequest(inputStream, compression, resolutionUnit, bitDepth, fromScratch, horizontalResolution, verticalResolution, outPath, storage);
+                    var request = new PostImageTiffRequest(inputStream, bitDepth, compression, resolutionUnit,
+                        horizontalResolution, verticalResolution, fromScratch, outPath, storage);
                     return ImagingApi.PostImageTiff(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)

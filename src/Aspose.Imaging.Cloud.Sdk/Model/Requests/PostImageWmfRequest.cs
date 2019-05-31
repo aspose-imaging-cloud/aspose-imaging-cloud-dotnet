@@ -51,7 +51,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        /// <param name="format">Export format (PNG is the default one).</param>
+        /// <param name="format">Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         public PostImageWmfRequest(System.IO.Stream imageData, string bkColor, int? pageWidth, int? pageHeight, int? borderX, int? borderY, bool? fromScratch = null, string outPath = null, string storage = null, string format = null)             
         {
             this.imageData = imageData;
@@ -112,7 +112,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string storage { get; set; }
 
         /// <summary>
-        /// Export format (PNG is the default one).
+        /// Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
         /// </summary>  
         public string format { get; set; }
   }

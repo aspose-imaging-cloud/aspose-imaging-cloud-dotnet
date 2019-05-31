@@ -42,10 +42,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// Test GetImageWmf
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageWmfTest(bool saveResultToStorage)
+        [Test]
+        public void GetImageWmfTest()
         {
             string name = "test.wmf";
             string bkColor = "gray";
@@ -54,20 +52,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int borderX = 50;
             int borderY = 50;
             bool? fromScratch = null;
-            string outName = $"{name}_specific.png";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
                 "GetImageWmfTest",
-                saveResultToStorage,
                 $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeigth}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
                     var request = new GetImageWmfRequest(name, bkColor, pageWidth, pageHeigth, borderX, borderY,
-                        fromScratch, outPath, folder, storage);
+                        fromScratch, folder, storage);
                     return ImagingApi.GetImageWmf(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)

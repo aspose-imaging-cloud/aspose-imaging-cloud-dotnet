@@ -52,10 +52,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="rectHeight">Height of cropping rectangle.</param>
         /// <param name="rotateFlipMethod">RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.</param>
         /// <param name="saveOtherFrames">If result will include all other frames or just a specified frame.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public GetImageFrameRequest(string name, int? frameId, int? newWidth = null, int? newHeight = null, int? x = null, int? y = null, int? rectWidth = null, int? rectHeight = null, string rotateFlipMethod = null, bool? saveOtherFrames = null, string outPath = null, string folder = null, string storage = null)             
+        public GetImageFrameRequest(string name, int? frameId, int? newWidth = null, int? newHeight = null, int? x = null, int? y = null, int? rectWidth = null, int? rectHeight = null, string rotateFlipMethod = null, bool? saveOtherFrames = null, string folder = null, string storage = null)             
         {
             this.name = name;
             this.frameId = frameId;
@@ -67,7 +66,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.rectHeight = rectHeight;
             this.rotateFlipMethod = rotateFlipMethod;
             this.saveOtherFrames = saveOtherFrames;
-            this.outPath = outPath;
             this.folder = folder;
             this.storage = storage;
         }
@@ -121,11 +119,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// If result will include all other frames or just a specified frame.
         /// </summary>  
         public bool? saveOtherFrames { get; set; }
-
-        /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
-        /// </summary>  
-        public string outPath { get; set; }
 
         /// <summary>
         /// Folder with image to process.

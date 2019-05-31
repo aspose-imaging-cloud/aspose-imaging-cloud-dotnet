@@ -27,10 +27,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
 {
     using NUnit.Framework;
 
+    using Aspose.Imaging.Cloud.Sdk.Test.Base;
+
     /// <summary>
     /// Storage API tester.
     /// </summary>
-    /// <seealso cref="Aspose.Imaging.Cloud.Sdk.Test.Api.ApiTester" />
+    /// <seealso cref="ApiTester" />
     [Category("v3.0")]
     [Category("Storage")]
     [TestFixture]
