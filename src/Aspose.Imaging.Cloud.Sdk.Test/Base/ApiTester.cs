@@ -490,7 +490,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                     else
                     {
                         resultProperties =
-                            this.ImagingApi.PostImageProperties(new PostImagePropertiesRequest(response));
+                            this.ImagingApi.ExtractImageProperties(new ExtractImagePropertiesRequest(response));
                         Assert.NotNull(resultProperties);
                     }
 

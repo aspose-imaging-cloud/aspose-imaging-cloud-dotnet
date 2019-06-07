@@ -46,9 +46,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
                 // convert image from storage to JPEG
                 var getSaveAsRequest =
-                    new GetImageSaveAsRequest("inputImage.png", "jpg", "ExampleFolderNet");
+                    new SaveImageAsRequest("inputImage.png", "jpg", "ExampleFolderNet");
 
-                using (Stream convertedImage = imagingApi.GetImageSaveAs(getSaveAsRequest))
+                using (Stream convertedImage = imagingApi.SaveImageAs(getSaveAsRequest))
                 {
                     // process resulting image
                     // for example, save it to storage
@@ -84,9 +84,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     // convert image from request stream to JPEG and save it to storage
                     // please, use outPath parameter for saving the result to storage
                     var postSaveToStorageRequest =
-                        new PostImageSaveAsRequest(localInputImage, "jpg", "ExampleFolderNet/resultImage.jpg");
+                        new CreateSavedImageAsRequest(localInputImage, "jpg", "ExampleFolderNet/resultImage.jpg");
 
-                    imagingApi.PostImageSaveAs(postSaveToStorageRequest);
+                    imagingApi.CreateSavedImageAs(postSaveToStorageRequest);
 
                     // download saved image from storage
                     using (Stream savedFile =
@@ -100,9 +100,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     // convert image from request stream to JPEG and read it from resulting stream
                     // please, set outPath parameter as null to return result in request stream instead of saving to storage
                     var postSaveToStreamRequest =
-                        new PostImageSaveAsRequest(localInputImage, "jpg");
+                        new CreateSavedImageAsRequest(localInputImage, "jpg");
 
-                    using (Stream resultPostImageStream = imagingApi.PostImageSaveAs(postSaveToStreamRequest))
+                    using (Stream resultPostImageStream = imagingApi.CreateSavedImageAs(postSaveToStreamRequest))
                     {
                         // process resulting image from response stream
                     }

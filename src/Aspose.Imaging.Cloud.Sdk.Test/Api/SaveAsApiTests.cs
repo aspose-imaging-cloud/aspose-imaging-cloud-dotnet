@@ -57,7 +57,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".tiff")]
         [TestCase(".webp")]
 #endif
-        public void GetImageSaveAsTest(string formatExtension, params string[] additionalExportFormats)
+        public void SaveImageAsTest(string formatExtension, params string[] additionalExportFormats)
         {
             string name = null;
             string folder = TempFolder;
@@ -86,13 +86,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 foreach (string format in formatsToExport)
                 {
                     this.TestGetRequest(
-                        "GetImageSaveAsTest",
+                        "SaveImageAsTest",
                         $"Input image: {name}; Output format: {format}",
                         name,
                         delegate
                         {
-                            var request = new GetImageSaveAsRequest(name, format, folder, storage);
-                            return ImagingApi.GetImageSaveAs(request);
+                            var request = new SaveImageAsRequest(name, format, folder, storage);
+                            return ImagingApi.SaveImageAs(request);
                         },
                         null,
                         folder,
@@ -128,7 +128,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".webp", true)]
         [TestCase(".webp", false)]
 #endif
-        public void PostImageSaveAsTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
+        public void CreateSavedImageAsTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
             string folder = TempFolder;
@@ -160,7 +160,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     outName = $"{name}.{format}";
 
                     this.TestPostRequest(
-                        "PostImageSaveAsTest",
+                        "CreateSavedImageAsTest",
                         saveResultToStorage,
                         $"Input image: {name}; Output format: {format}",
                         name,
@@ -168,8 +168,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         delegate (Stream inputStream, string outPath)
                         {
                             var request =
-                                new PostImageSaveAsRequest(inputStream, format, outPath, storage);
-                            return ImagingApi.PostImageSaveAs(request);
+                                new CreateSavedImageAsRequest(inputStream, format, outPath, storage);
+                            return ImagingApi.CreateSavedImageAs(request);
                         },
                         null,
                         folder,

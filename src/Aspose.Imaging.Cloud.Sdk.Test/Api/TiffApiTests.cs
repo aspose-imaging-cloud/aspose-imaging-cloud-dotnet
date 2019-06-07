@@ -41,23 +41,23 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class TiffApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetTiffToFax
+        /// Test ConvertTiffToFax
         /// </summary>
         [Test]
-        public void GetTiffToFaxTest()
+        public void ConvertTiffToFaxTest()
         {
             string name = "test.tiff";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetTiffToFaxTest",
+                "ConvertTiffToFaxTest",
                 $"Input image: {name}",
                 name,
                 delegate
                 {
-                    var request = new GetTiffToFaxRequest(name, storage, folder);
-                    return ImagingApi.GetTiffToFax(request);
+                    var request = new ConvertTiffToFaxRequest(name, storage, folder);
+                    return ImagingApi.ConvertTiffToFax(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -73,10 +73,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test GetImageTiff
+        /// Test ModifyTiff
         /// </summary>
         [Test]
-        public void GetImageTiffTest()
+        public void ModifyTiffTest()
         {
             string name = "test.tiff";
             string compression = "adobedeflate";
@@ -89,14 +89,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageTiffTest",
+                "ModifyTiffTest",
                 $"Input image: {name}; Compression: {compression}; Bit depth: {bitDepth}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
                 delegate
                 {
-                    var request = new GetImageTiffRequest(name, bitDepth, compression, resolutionUnit, horizontalResolution, 
+                    var request = new ModifyTiffRequest(name, bitDepth, compression, resolutionUnit, horizontalResolution, 
                         verticalResolution, fromScratch, folder, storage);
-                    return ImagingApi.GetImageTiff(request);
+                    return ImagingApi.ModifyTiff(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -120,7 +120,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageTiffTest(bool saveResultToStorage)
+        public void CreateModifiedTiffTest(bool saveResultToStorage)
         {
             string name = "test.tiff";
             string compression = "adobedeflate";
@@ -134,16 +134,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageTiffTest",
+                "CreateModifiedTiffTest",
                 saveResultToStorage,
                 $"Input image: {name}; Compression: {compression}; Bit depth: {bitDepth}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageTiffRequest(inputStream, bitDepth, compression, resolutionUnit,
+                    var request = new CreateModifiedTiffRequest(inputStream, bitDepth, compression, resolutionUnit,
                         horizontalResolution, verticalResolution, fromScratch, outPath, storage);
-                    return ImagingApi.PostImageTiff(request);
+                    return ImagingApi.CreateModifiedTiff(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -162,13 +162,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostTiffAppend
+        /// Test AppendTiff
         /// </summary>
         [Test]
-        public void PostTiffAppendTest()
+        public void AppendTiffTest()
         {
             bool passed = false;
-            WriteLineEverywhere("PostTiffAppendTest");
+            WriteLineEverywhere("AppendTiffTest");
 
             string inputFileName = "test.tiff";
             string folder = TempFolder;
@@ -205,8 +205,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 this.ImagingApi.CopyFile(new CopyFileRequest(inputPath, outPath, storage, storage));
                 Assert.IsTrue(this.ImagingApi.ObjectExists(new ObjectExistsRequest(outPath, storage)).Exists.Value);
 
-                var request = new PostTiffAppendRequest(resultFileName, inputFileName, storage, folder);
-                ImagingApi.PostTiffAppend(request);
+                var request = new AppendTiffRequest(resultFileName, inputFileName, storage, folder);
+                ImagingApi.AppendTiff(request);
 
                 StorageFile resultInfo = this.GetStorageFileInfo(folder, resultFileName, storage);
                 if (resultInfo == null)

@@ -47,8 +47,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                     var image2 = this.GetStoragePath(ComparingImageSimilarMore75);
                     this.AddImageFeaturesToSearchContext(image2);
 
-                    var response = this.ImagingApi.PostSearchContextCompareImages(
-                        new PostSearchContextCompareImagesRequest(this.SearchContextId, image1, null, image2, storage: this.TestStorage));
+                    var response = this.ImagingApi.CompareImages(
+                        new CompareImagesRequest(this.SearchContextId, image1, null, image2, storage: this.TestStorage));
 
                     Assert.AreEqual(1, response.Results.Count);
                     Assert.IsTrue(response.Results[0].Similarity >= 70);
@@ -69,8 +69,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                       var imageStream = this.ImagingApi.DownloadFile(new DownloadFileRequest(storagePath, this.TestStorage));
                       Assert.NotNull(imageStream);
 
-                      var response = this.ImagingApi.PostSearchContextCompareImages(
-                          new PostSearchContextCompareImagesRequest(this.SearchContextId, image, imageStream, storage: this.TestStorage));
+                      var response = this.ImagingApi.CompareImages(
+                          new CompareImagesRequest(this.SearchContextId, image, imageStream, storage: this.TestStorage));
 
                       Assert.AreEqual(1, response.Results.Count);
                       Assert.IsTrue(response.Results[0].Similarity <= 15);

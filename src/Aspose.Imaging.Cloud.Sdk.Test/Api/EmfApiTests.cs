@@ -40,10 +40,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class EmfApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageEmf
+        /// Test ModifyEmf
         /// </summary>
         [Test]
-        public void GetImageEmfTest()
+        public void ModifyEmfTest()
         {
             string name = "test.emf";
             string bkColor = "gray";
@@ -56,14 +56,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageEmfTest",
+                "ModifyEmfTest",
                 $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeight}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
                 delegate
                 {
-                    var request = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY,
+                    var request = new ModifyEmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY,
                         fromScratch, folder, storage);
-                    return ImagingApi.GetImageEmf(request);
+                    return ImagingApi.ModifyEmf(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -78,12 +78,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageEmf
+        /// Test CreateModifiedEmf
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageEmfTest(bool saveResultToStorage)
+        public void CreateModifiedEmfTest(bool saveResultToStorage)
         {
             string name = "test.emf";
             string bkColor = "gray";
@@ -97,16 +97,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageEmfTest",
+                "CreateModifiedEmfTest",
                 saveResultToStorage,
                 $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeight}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageEmfRequest(inputStream, bkColor, pageWidth, pageHeight, borderX, borderY,
+                    var request = new CreateModifiedEmfRequest(inputStream, bkColor, pageWidth, pageHeight, borderX, borderY,
                         fromScratch, outPath, storage);
-                    return ImagingApi.PostImageEmf(request);
+                    return ImagingApi.CreateModifiedEmf(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {

@@ -41,10 +41,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class BmpApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageBmp
+        /// Test ModifyBmp
         /// </summary>
         [Test]
-        public void GetImageBmpTest()
+        public void ModifyBmpTest()
         {
             string name = "test.bmp";
             int? bitsPerPixel = 32;
@@ -55,14 +55,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageBmpTest", 
+                "ModifyBmpTest", 
                 $"Input image: {name}; Bits per pixel: {bitsPerPixel}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
                 delegate
                 {
-                    var request = new GetImageBmpRequest(name, bitsPerPixel, horizontalResolution, verticalResolution, 
+                    var request = new ModifyBmpRequest(name, bitsPerPixel, horizontalResolution, verticalResolution, 
                         fromScratch, folder, storage);
-                    return ImagingApi.GetImageBmp(request);
+                    return ImagingApi.ModifyBmp(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -82,12 +82,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageBmp
+        /// Test CreateModifiedBmp
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// </summary>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageBmpTest(bool saveResultToStorage)
+        public void CreateModifiedBmpTest(bool saveResultToStorage)
         {
             string name = "test.bmp";
             int? bitsPerPixel = 32;
@@ -99,15 +99,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageBmpTest",
+                "CreateModifiedBmpTest",
                 saveResultToStorage,
                 $"Input image: {name}; Bits per pixel: {bitsPerPixel}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageBmpRequest(inputStream, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
-                    return ImagingApi.PostImageBmp(request);
+                    var request = new CreateModifiedBmpRequest(inputStream, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
+                    return ImagingApi.CreateModifiedBmp(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {

@@ -40,7 +40,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class UpdateImageApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageUpdate
+        /// Test UpdateImage
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
@@ -56,7 +56,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".tiff")]
         [TestCase(".webp")]
 #endif
-        public void GetImageUpdateTest(string formatExtension, params string[] additionalExportFormats)
+        public void UpdateImageTest(string formatExtension, params string[] additionalExportFormats)
         {
             string name = null;
             int? newWidth = 300;
@@ -92,15 +92,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 foreach (string format in formatsToExport)
                 {
                     this.TestGetRequest(
-                        "GetImageUpdateTest",
+                        "UpdateImageTest",
                         $"Input image: {name}; Output format: {format}; New width: {newWidth}; New height: {newHeight}; Rotate/flip method: {rotateFlipMethod}; " +
                         $"X: {x}; Y: {y}; Rect width: {rectWidth}; Rect height: {rectHeight}",
                         name,
                         delegate
                         {
-                            var request = new GetImageUpdateRequest(name, format, newWidth, newHeight, x, y, rectWidth, 
+                            var request = new UpdateImageRequest(name, format, newWidth, newHeight, x, y, rectWidth, 
                                 rectHeight, rotateFlipMethod, folder, storage);
-                            return ImagingApi.GetImageUpdate(request);
+                            return ImagingApi.UpdateImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
@@ -114,7 +114,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageUpdate
+        /// Test CreateUpdatedImage
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
@@ -140,7 +140,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".webp", true)]
         [TestCase(".webp", false)]
 #endif
-        public void PostImageUpdateTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
+        public void CreateUpdatedImageTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
             int? newWidth = 300;
@@ -179,7 +179,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     outName = $"{name}_update.{format}";
 
                     this.TestPostRequest(
-                        "PostImageUpdateTest",
+                        "CreateUpdatedImageTest",
                         saveResultToStorage,
                         $"Input image: {name}; Output format: {format}; New width: {newWidth}; New height: {newHeight}; Rotate/flip method: {rotateFlipMethod}; " +
                         $"X: {x}; Y: {y}; Rect width: {rectWidth}; Rect height: {rectHeight}",
@@ -187,8 +187,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         outName,
                         delegate (Stream inputStream, string outPath)
                         {
-                            var request = new PostImageUpdateRequest(inputStream, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, storage);
-                            return ImagingApi.PostImageUpdate(request);
+                            var request = new CreateUpdatedImageRequest(inputStream, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, storage);
+                            return ImagingApi.CreateUpdatedImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {

@@ -40,10 +40,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class WmfApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageWmf
+        /// Test ModifyWmf
         /// </summary>
         [Test]
-        public void GetImageWmfTest()
+        public void ModifyWmfTest()
         {
             string name = "test.wmf";
             string bkColor = "gray";
@@ -56,14 +56,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageWmfTest",
+                "ModifyWmfTest",
                 $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeigth}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
                 delegate
                 {
-                    var request = new GetImageWmfRequest(name, bkColor, pageWidth, pageHeigth, borderX, borderY,
+                    var request = new ModifyWmfRequest(name, bkColor, pageWidth, pageHeigth, borderX, borderY,
                         fromScratch, folder, storage);
-                    return ImagingApi.GetImageWmf(request);
+                    return ImagingApi.ModifyWmf(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -76,12 +76,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageWmf
+        /// Test CreateModifiedWmf
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// </summary>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageWmfTest(bool saveResultToStorage)
+        public void CreateModifiedWmfTest(bool saveResultToStorage)
         {
             string name = "test.wmf";
             string bkColor = "gray";
@@ -95,16 +95,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageWmfTest",
+                "CreateModifiedWmfTest",
                 saveResultToStorage,
                 $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeigth}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageWmfRequest(inputStream, bkColor, pageWidth, pageHeigth, borderX, borderY,
+                    var request = new CreateModifiedWmfRequest(inputStream, bkColor, pageWidth, pageHeigth, borderX, borderY,
                         fromScratch, outPath, storage);
-                    return ImagingApi.PostImageWmf(request);
+                    return ImagingApi.CreateModifiedWmf(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {

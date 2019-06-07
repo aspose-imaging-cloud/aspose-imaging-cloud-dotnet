@@ -40,10 +40,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class JpgApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageJpg
+        /// Test ModifyJpeg
         /// </summary>
         [Test]
-        public void GetImageJpgTest()
+        public void ModifyJpegTest()
         {
             string name = "test.jpg";
             int quality = 65;
@@ -53,14 +53,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageJpgTest",
+                "ModifyJpegTest",
                 $"Input image: {name}; Quality: {quality}; Compression type: {compressionType}",
                 name,
                 delegate
                 {
-                    var request = new GetImageJpgRequest(name, quality, compressionType, fromScratch,
+                    var request = new ModifyJpegRequest(name, quality, compressionType, fromScratch,
                         folder, storage);
-                    return ImagingApi.GetImageJpg(request);
+                    return ImagingApi.ModifyJpeg(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -75,12 +75,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageJpg
+        /// Test CreateModifiedJpeg
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageJpgTest(bool saveResultToStorage)
+        public void CreateModifiedJpegTest(bool saveResultToStorage)
         {
             string name = "test.jpg";
             int quality = 65;
@@ -91,15 +91,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageJpgTest",
+                "CreateModifiedJpegTest",
                 saveResultToStorage,
                 $"Input image: {name}; Quality: {quality}; Compression type: {compressionType}",
                 name,
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageJpgRequest(inputStream, quality, compressionType, fromScratch, outPath, storage);
-                    return ImagingApi.PostImageJpg(request);
+                    var request = new CreateModifiedJpegRequest(inputStream, quality, compressionType, fromScratch, outPath, storage);
+                    return ImagingApi.CreateModifiedJpeg(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {

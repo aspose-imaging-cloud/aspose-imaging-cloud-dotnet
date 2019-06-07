@@ -40,10 +40,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class WebPApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageWebP
+        /// Test ModifyWebP
         /// </summary>
         [Test]
-        public void GetImageWebPTest()
+        public void ModifyWebPTest()
         {
             string name = "Animation.webp";
             bool lossless = true;
@@ -55,14 +55,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageWebPTest",
+                "ModifyWebPTest",
                 $"Input image: {name}; AnimBackgroundColor: {animBackgroundColor}; Lossless: {lossless}; Quality: {quality}; AnimLoopCount: {animLoopCount}",
                 name,
                 delegate
                 {
-                    var request = new GetImageWebPRequest(name, lossless, quality, animLoopCount, 
+                    var request = new ModifyWebPRequest(name, lossless, quality, animLoopCount, 
                         animBackgroundColor, fromScratch, folder, storage);
-                    return ImagingApi.GetImageWebP(request);
+                    return ImagingApi.ModifyWebP(request);
                 },
                 delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -77,12 +77,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageWebP
+        /// Test CreateModifiedWebP
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageWebPTest(bool saveResultToStorage)
+        public void CreateModifiedWebPTest(bool saveResultToStorage)
         {
             string name = "Animation.webp";
             bool lossless = true;
@@ -95,15 +95,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageWebPTest",
+                "CreateModifiedWebPTest",
                 saveResultToStorage,
                 $"Input image: {name}; AnimBackgroundColor: {animBackgroundColor}; Lossless: {lossless}; Quality: {quality}; AnimLoopCount: {animLoopCount}",
                 name,
                 outName,
                 delegate(Stream inputStream, string outPath)
                 {
-                    var request = new PostImageWebPRequest(inputStream, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, storage);
-                    return ImagingApi.PostImageWebP(request);
+                    var request = new CreateModifiedWebPRequest(inputStream, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, storage);
+                    return ImagingApi.CreateModifiedWebP(request);
                 },
                 delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {

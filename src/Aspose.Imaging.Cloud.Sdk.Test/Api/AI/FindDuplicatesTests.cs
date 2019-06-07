@@ -52,8 +52,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                       image = this.GetStoragePath(ComparingImageSimilarMore75);
                       this.AddImageFeaturesToSearchContext(image);
 
-                      var response = this.ImagingApi.GetSearchContextFindDuplicates(
-                          new GetSearchContextFindDuplicatesRequest(this.SearchContextId, 80, storage: this.TestStorage));
+                      var response = this.ImagingApi.FindImageDuplicates(
+                          new FindImageDuplicatesRequest(this.SearchContextId, 80, storage: this.TestStorage));
                       Assert.AreEqual(1, response.Duplicates.Count);
                   });
         }
