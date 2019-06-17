@@ -485,7 +485,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             
             this.apiInvoker.InvokeApi(
                 resourcePath, 
-                "POST", 
+                "PUT", 
                 null, 
                 null, 
                 formParams);
@@ -3314,7 +3314,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             }
             var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
-                "POST", 
+                "PUT", 
                 null, 
                 null, 
                 formParams);
