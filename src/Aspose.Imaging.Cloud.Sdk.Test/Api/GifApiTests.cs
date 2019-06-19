@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="GifApiTests.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,6 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     using System.IO;
-    using System.Collections.Generic;
     using NUnit.Framework;
 
     using Aspose.Imaging.Cloud.Sdk.Model;
@@ -41,12 +40,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class GifApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageGif
+        /// Test ModifyGif
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageGifTest(bool saveResultToStorage)
+        [Test]
+        public void ModifyGifTest()
         {
             string name = "test.gif";
             int? backgroundColorIndex = 5;
@@ -56,22 +53,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool isPaletteSorted = true;
             int pixelAspectRatio = 4;
             bool? fromScratch = null;
-            string outName = $"{name}_specific.gif";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageGifTest",
-                saveResultToStorage,
+                "ModifyGifTest",
                 $"Input image: {name}; Back color index: {backgroundColorIndex}; Color resolution: {colorResolution}; Has trailer: {hasTrailer}; " +
                 $"Interlaced: {interlaced}; Is palette sorted: {isPaletteSorted}; Pixel aspect ratio: {pixelAspectRatio}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageGifRequest(name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted,
-                        pixelAspectRatio, fromScratch, outPath, folder, storage);
-                    return ImagingApi.GetImageGif(request);
+                    var request = new ModifyGifRequest(name, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted,
+                        pixelAspectRatio, fromScratch, folder, storage);
+                    return ImagingApi.ModifyGif(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -90,12 +84,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageGif
+        /// Test CreateModifiedGif
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageGifTest(bool saveResultToStorage)
+        public void CreateModifiedGifTest(bool saveResultToStorage)
         {
             string name = "test.gif";
             int? backgroundColorIndex = 5;
@@ -110,7 +104,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageGifTest",
+                "CreateModifiedGifTest",
                 saveResultToStorage,
                 $"Input image: {name}; Back color index: {backgroundColorIndex}; Color resolution: {colorResolution}; Has trailer: {hasTrailer}; " +
                 $"Interlaced: {interlaced}; Is palette sorted: {isPaletteSorted}; Pixel aspect ratio: {pixelAspectRatio}",
@@ -118,9 +112,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageGifRequest(inputStream, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted,
+                    var request = new CreateModifiedGifRequest(inputStream, backgroundColorIndex, colorResolution, hasTrailer, interlaced, isPaletteSorted,
                         pixelAspectRatio, fromScratch, outPath, storage);
-                    return ImagingApi.PostImageGif(request);
+                    return ImagingApi.CreateModifiedGif(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {

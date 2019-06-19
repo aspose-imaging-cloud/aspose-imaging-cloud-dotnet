@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="FindImagesTests.cs">
-//  Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//  Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,8 +43,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 {
                     this.AddImageFeaturesToSearchContext($"{this.OriginalDataFolder}/FindSimilar", true);
                     var findImageId = $"{this.OriginalDataFolder}/FindSimilar/{ImageToFind}";
-                    var response = this.ImagingApi.GetSearchContextFindSimilar(
-                        new GetSearchContextFindSimilarRequest(this.SearchContextId, 3, 3, imageId: findImageId, storage: this.TestStorage));
+                    var response = this.ImagingApi.FindSimilarImages(
+                        new FindSimilarImagesRequest(this.SearchContextId, 3, 3, imageId: findImageId, storage: this.TestStorage));
 
                     Assert.IsTrue(response.Results.Count >= 1);
                 });
@@ -64,12 +64,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
                      var tagImageStream = this.ImagingApi.DownloadFile(new DownloadFileRequest(storagePath, this.TestStorage));
                      Assert.NotNull(tagImageStream);
-                     this.ImagingApi.PostSearchContextAddTag(
-                         new PostSearchContextAddTagRequest(tagImageStream, this.SearchContextId, tag, storage: this.TestStorage));
+                     this.ImagingApi.CreateImageTag(
+                         new CreateImageTagRequest(tagImageStream, this.SearchContextId, tag, storage: this.TestStorage));
 
                      var tags = JsonConvert.SerializeObject(new[] { tag });
-                     var response = this.ImagingApi.PostSearchContextFindByTags(
-                         new PostSearchContextFindByTagsRequest(tags, this.SearchContextId, 60, 5, storage: this.TestStorage));
+                     var response = this.ImagingApi.FindImagesByTags(
+                         new FindImagesByTagsRequest(tags, this.SearchContextId, 60, 5, storage: this.TestStorage));
                      Assert.AreEqual(1, response.Results.Count);
                      Assert.IsTrue(response.Results[0].ImageId.Contains("2.jpg"));
                  });

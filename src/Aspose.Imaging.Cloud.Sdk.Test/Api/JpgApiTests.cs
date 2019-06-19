@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="JpgApiTests.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,7 +26,6 @@
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     using System.IO;
-    using System.Collections.Generic;
     using NUnit.Framework;
 
     using Aspose.Imaging.Cloud.Sdk.Model;
@@ -41,32 +40,27 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class JpgApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageJpg
+        /// Test ModifyJpeg
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageJpgTest(bool saveResultToStorage)
+        [Test]
+        public void ModifyJpegTest()
         {
             string name = "test.jpg";
             int quality = 65;
             string compressionType = "progressive";
             bool? fromScratch = null;
-            string outName = $"{name}_specific.jpg";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageJpgTest",
-                saveResultToStorage,
+                "ModifyJpegTest",
                 $"Input image: {name}; Quality: {quality}; Compression type: {compressionType}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageJpgRequest(name, quality, compressionType, fromScratch, outPath,
+                    var request = new ModifyJpegRequest(name, quality, compressionType, fromScratch,
                         folder, storage);
-                    return ImagingApi.GetImageJpg(request);
+                    return ImagingApi.ModifyJpeg(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -81,12 +75,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageJpg
+        /// Test CreateModifiedJpeg
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageJpgTest(bool saveResultToStorage)
+        public void CreateModifiedJpegTest(bool saveResultToStorage)
         {
             string name = "test.jpg";
             int quality = 65;
@@ -97,15 +91,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageJpgTest",
+                "CreateModifiedJpegTest",
                 saveResultToStorage,
                 $"Input image: {name}; Quality: {quality}; Compression type: {compressionType}",
                 name,
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageJpgRequest(inputStream, quality, compressionType, fromScratch, outPath, storage);
-                    return ImagingApi.PostImageJpg(request);
+                    var request = new CreateModifiedJpegRequest(inputStream, quality, compressionType, fromScratch, outPath, storage);
+                    return ImagingApi.CreateModifiedJpeg(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {

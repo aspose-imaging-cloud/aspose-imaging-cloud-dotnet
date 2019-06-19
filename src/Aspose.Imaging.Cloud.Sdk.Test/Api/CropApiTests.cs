@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="CropApiTests.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,33 +41,23 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class CropApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageCrop
+        /// Test CropImage
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".jpg", true)]
-        [TestCase(".jpg", false)]
+        [TestCase(".jpg")]
 #if EXTENDED_TEST
-        [TestCase(".bmp", true)]
-        [TestCase(".bmp", false)]
-        [TestCase(".dicom", true)]
-        [TestCase(".dicom", false)]
+        [TestCase(".bmp")]
+        [TestCase(".dicom")]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
-        //[TestCase(".gif", true)]
-        //[TestCase(".gif", false)]
-        [TestCase(".j2k", true)]
-        [TestCase(".j2k", false)]
-        [TestCase(".png", true)]
-        [TestCase(".png", false)]
-        [TestCase(".psd", true)]
-        [TestCase(".psd", false)]
-        [TestCase(".tiff", true)]
-        [TestCase(".tiff", false)]
-        [TestCase(".webp", true)]
-        [TestCase(".webp", false)]
+        //[TestCase(".gif")]
+        [TestCase(".j2k")]
+        [TestCase(".png")]
+        [TestCase(".psd")]
+        [TestCase(".tiff")]
+        [TestCase(".webp")]
 #endif
-        public void GetImageCropTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
+        public void CropImageTest(string formatExtension, params string[] additionalExportFormats)
         {
             string name = null;
             int? x = 10;
@@ -76,7 +66,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int? height = 150;
             string folder = TempFolder;
             string storage = this.TestStorage;
-            string outName = null;
 
             List<string> formatsToExport = new List<string>(this.BasicExportFormats);
             foreach (string additionalExportFormat in additionalExportFormats)
@@ -100,18 +89,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
                 foreach (string format in formatsToExport)
                 {
-                    outName = $"{name}_crop.{format}";
-
                     this.TestGetRequest(
-                        "GetImageCropTest",
-                        saveResultToStorage,
+                        "CropImageTest",
                         $"Input image: {name}; Output format: {format}; Width: {width}; Height: {height}; X: {x}; Y: {y}",
                         name,
-                        outName,
-                        delegate (string fileName, string outPath)
+                        delegate
                         {
-                            var request = new GetImageCropRequest(fileName, format, x, y, width, height, outPath, folder, storage);
-                            return ImagingApi.GetImageCrop(request);
+                            var request = new CropImageRequest(name, format, x, y, width, height, folder, storage);
+                            return ImagingApi.CropImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
@@ -125,7 +110,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageCrop
+        /// Test CreateCroppedImage
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
@@ -151,7 +136,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".webp", true)]
         [TestCase(".webp", false)]
 #endif
-        public void PostImageCropTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
+        public void CreateCroppedImageTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
             int? x = 10;
@@ -187,15 +172,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     outName = $"{name}_crop.{format}";
 
                     this.TestPostRequest(
-                        "GetImageCropTest",
+                        "CropImageTest",
                         saveResultToStorage,
                         $"Input image: {name}; Output format: {format}; Width: {width}; Height: {height}; X: {x}; Y: {y}",
                         name,
                         outName,
                         delegate (Stream inputStream, string outPath)
                         {
-                            var request = new PostImageCropRequest(inputStream, format, x, y, width, height, outPath, storage);
-                            return ImagingApi.PostImageCrop(request);
+                            var request = new CreateCroppedImageRequest(inputStream, format, x, y, width, height, outPath, storage);
+                            return ImagingApi.CreateCroppedImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {

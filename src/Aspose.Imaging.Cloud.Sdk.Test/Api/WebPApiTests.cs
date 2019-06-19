@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="WebPApiTests.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,12 +40,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class WebPApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageWebP
+        /// Test ModifyWebP
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageWebPTest(bool saveResultToStorage)
+        [Test]
+        public void ModifyWebPTest()
         {
             string name = "Animation.webp";
             bool lossless = true;
@@ -53,20 +51,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             int animLoopCount = 5;
             string animBackgroundColor = "gray";
             bool? fromScratch = null;
-            string outName = $"{name}_specific.webp";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageWebPTest",
-                saveResultToStorage,
+                "ModifyWebPTest",
                 $"Input image: {name}; AnimBackgroundColor: {animBackgroundColor}; Lossless: {lossless}; Quality: {quality}; AnimLoopCount: {animLoopCount}",
                 name,
-                outName,
-                delegate(string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageWebPRequest(fileName, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, folder, storage);
-                    return ImagingApi.GetImageWebP(request);
+                    var request = new ModifyWebPRequest(name, lossless, quality, animLoopCount, 
+                        animBackgroundColor, fromScratch, folder, storage);
+                    return ImagingApi.ModifyWebP(request);
                 },
                 delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -81,12 +77,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageWebP
+        /// Test CreateModifiedWebP
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageWebPTest(bool saveResultToStorage)
+        public void CreateModifiedWebPTest(bool saveResultToStorage)
         {
             string name = "Animation.webp";
             bool lossless = true;
@@ -99,15 +95,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageWebPTest",
+                "CreateModifiedWebPTest",
                 saveResultToStorage,
                 $"Input image: {name}; AnimBackgroundColor: {animBackgroundColor}; Lossless: {lossless}; Quality: {quality}; AnimLoopCount: {animLoopCount}",
                 name,
                 outName,
                 delegate(Stream inputStream, string outPath)
                 {
-                    var request = new PostImageWebPRequest(inputStream, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, storage);
-                    return ImagingApi.PostImageWebP(request);
+                    var request = new CreateModifiedWebPRequest(inputStream, lossless, quality, animLoopCount, animBackgroundColor, fromScratch, outPath, storage);
+                    return ImagingApi.CreateModifiedWebP(request);
                 },
                 delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {

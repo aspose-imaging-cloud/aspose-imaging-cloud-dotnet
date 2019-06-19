@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="TestImagingAIBase.cs">
-//  Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//  Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,6 +31,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     using Model.Requests;
     using NUnit.Framework;
 
+    using Aspose.Imaging.Cloud.Sdk.Test.Base;
+
     [Category("AI")]
     [Category("v3.0")]
     [TestFixture]
@@ -57,7 +59,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         {
             if (!string.IsNullOrEmpty(this.SearchContextId))
             {
-                this.DeleteSearchContext(this.SearchContextId);
+                this.DeleteImageSearch(this.SearchContextId);
             }
 
             if (this.ImagingApi.ObjectExists(new ObjectExistsRequest(TempFolder, this.TestStorage)).Exists.Value)
@@ -73,28 +75,28 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
         protected string CreateSearchContext()
         {
-            var response = this.ImagingApi.PostCreateSearchContext(new PostCreateSearchContextRequest(storage: this.TestStorage));
+            var response = this.ImagingApi.CreateImageSearch(new CreateImageSearchRequest(storage: this.TestStorage));
             return response.Id;
         }
 
-        protected void DeleteSearchContext(string searchContextId)
+        protected void DeleteImageSearch(string searchContextId)
         {
-            this.ImagingApi.DeleteSearchContext(new DeleteSearchContextRequest(searchContextId, storage: this.TestStorage));
+            this.ImagingApi.DeleteImageSearch(new DeleteImageSearchRequest(searchContextId, storage: this.TestStorage));
         }
 
-        protected string GetSearchContextStatus(string searchContextId)
+        protected string GetImageSearchStatus(string searchContextId)
         {
-            var response =  this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(searchContextId, storage: this.TestStorage));
+            var response =  this.ImagingApi.GetImageSearchStatus(new GetImageSearchStatusRequest(searchContextId, storage: this.TestStorage));
             return response.SearchStatus;
         }
 
         protected void AddImageFeaturesToSearchContext(string storageSourcePath, bool isFolder = false)
         {
             var request = isFolder
-                ? new PostSearchContextExtractImageFeaturesRequest(
+                ? new CreateImageFeaturesRequest(
                     this.SearchContextId, imageId: null, imagesFolder: storageSourcePath, storage: this.TestStorage)
-                : new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: this.TestStorage);
-            this.ImagingApi.PostSearchContextExtractImageFeatures(request);
+                : new CreateImageFeaturesRequest(this.SearchContextId, imageId: storageSourcePath, storage: this.TestStorage);
+            this.ImagingApi.CreateImageFeatures(request);
 
 
             this.WaitSearchContextIdle();
@@ -110,7 +112,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var timeout = TimeSpan.FromSeconds(10);
             var startTime = DateTime.UtcNow;
 
-            while (this.ImagingApi.GetSearchContextStatus(new GetSearchContextStatusRequest(this.SearchContextId, storage: this.TestStorage)).
+            while (this.ImagingApi.GetImageSearchStatus(new GetImageSearchStatusRequest(this.SearchContextId, storage: this.TestStorage)).
                 SearchStatus != "Idle" && DateTime.UtcNow - startTime < maxTime)
             {
                 Thread.Sleep(timeout);

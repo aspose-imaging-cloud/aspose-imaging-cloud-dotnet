@@ -6,12 +6,14 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
+    using Aspose.Imaging.Cloud.Sdk.Test.Base;
+
     using NUnit.Framework;
 
     /// <summary>
     /// Intermediate worker class for Imaging tests
     /// </summary>
-    /// <seealso cref="Aspose.Imaging.Cloud.Sdk.Test.Api.ApiTester" />
+    /// <seealso cref="ApiTester" />
     [Category("Imaging")]
     public abstract class ImagingApiTester : ApiTester
     {

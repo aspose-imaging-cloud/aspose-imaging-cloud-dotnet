@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="FindImagesTests.cs">
-//  Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//  Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,15 +45,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         }
 
         [Test]
-        public void DeleteSearchContextTest()
+        public void DeleteImageSearchTest()
         {
-            RunTestWithLogging("DeleteSearchContextTest",
+            RunTestWithLogging("DeleteImageSearchTest",
                   () =>
                   {
-                      this.DeleteSearchContext(this.SearchContextId);
+                      this.DeleteImageSearch(this.SearchContextId);
 
-                      Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextStatus(
-                          new GetSearchContextStatusRequest(this.SearchContextId, storage: this.TestStorage)));
+                      Assert.Throws<ApiException>(() => this.ImagingApi.GetImageSearchStatus(
+                          new GetImageSearchStatusRequest(this.SearchContextId, storage: this.TestStorage)));
                   });
         }
 
@@ -75,11 +75,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
                         var destServerPath = $"{this.TempFolder}/{image}";
 
-                        this.ImagingApi.DeleteSearchContextImage(
-                            new DeleteSearchContextImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
+                        this.ImagingApi.DeleteSearchImage(
+                            new DeleteSearchImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
 
-                        Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextImage(
-                            new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage)));
+                        Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchImage(
+                            new GetSearchImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage)));
                     });
         }
 
@@ -114,8 +114,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                      var imageStream = this.ImagingApi.DownloadFile(new DownloadFileRequest(storagePath, this.TestStorage));
                      Assert.NotNull(imageStream);
 
-                     this.ImagingApi.PutSearchContextImage(
-                         new PutSearchContextImageRequest(this.SearchContextId, destServerPath, imageStream, storage: this.TestStorage));
+                     this.ImagingApi.UpdateSearchImage(
+                         new UpdateSearchImageRequest(this.SearchContextId, destServerPath, imageStream, storage: this.TestStorage));
 
                      responseStream = this.GetImage(image);
                      Assert.IsTrue((int)responseStream.Length < 40000);
@@ -134,8 +134,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
                         var destServerPath = $"{this.TempFolder}/{image}";
 
-                        var response = this.ImagingApi.GetSearchContextExtractImageFeatures(
-                            new GetSearchContextExtractImageFeaturesRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
+                        var response = this.ImagingApi.ExtractImageFeatures(
+                            new ExtractImageFeaturesRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
 
                         Assert.IsTrue(response.ImageId.Contains(image));
                         Assert.IsTrue(response.Features.Length > 0);
@@ -155,14 +155,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             RunTestWithLogging("ExtractAndAddImageFeaturesFromFolderTest",
                     () =>
                     {
-                        this.ImagingApi.PostSearchContextExtractImageFeatures(
-                            new PostSearchContextExtractImageFeaturesRequest(
+                        this.ImagingApi.CreateImageFeatures(
+                            new CreateImageFeaturesRequest(
                                 this.SearchContextId, null, null, $"{this.OriginalDataFolder}/FindSimilar", storage: this.TestStorage));
 
                         this.WaitSearchContextIdle();
 
-                        var response = this.ImagingApi.GetSearchContextImageFeatures(
-                            new GetSearchContextImageFeaturesRequest(this.SearchContextId, $"{this.OriginalDataFolder}/FindSimilar/3.jpg", storage: this.TestStorage));
+                        var response = this.ImagingApi.GetImageFeatures(
+                            new GetImageFeaturesRequest(this.SearchContextId, $"{this.OriginalDataFolder}/FindSimilar/3.jpg", storage: this.TestStorage));
 
                         Assert.IsTrue(response.ImageId.Contains("3.jp"));
                         Assert.IsTrue(response.Features.Length > 0);
@@ -192,11 +192,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                      var image = TestImage;
                      this.AddImageFeatures(image);
                      var destServerPath = $"{this.TempFolder}/{image}";
-                     this.ImagingApi.DeleteSearchContextImage(
-                         new DeleteSearchContextImageRequest(SearchContextId, destServerPath, storage: this.TestStorage));
+                     this.ImagingApi.DeleteSearchImage(
+                         new DeleteSearchImageRequest(SearchContextId, destServerPath, storage: this.TestStorage));
 
-                     Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchContextImage(
-                         new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage)));
+                     Assert.Throws<ApiException>(() => this.ImagingApi.GetSearchImage(
+                         new GetSearchImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage)));
                  });
         }
 
@@ -219,8 +219,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                      var imageStream = this.ImagingApi.DownloadFile(new DownloadFileRequest(storagePath, this.TestStorage));
                      Assert.NotNull(imageStream);
 
-                     this.ImagingApi.PutSearchContextImageFeatures(
-                         new PutSearchContextImageFeaturesRequest(this.SearchContextId, destServerPath, imageStream, storage: this.TestStorage));
+                     this.ImagingApi.UpdateImageFeatures(
+                         new UpdateImageFeaturesRequest(this.SearchContextId, destServerPath, imageStream, storage: this.TestStorage));
 
                      response = this.GetImageFeatures(image);
                      Assert.IsTrue(response.ImageId.Contains(TestImage));
@@ -236,8 +236,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var imageStream = this.ImagingApi.DownloadFile(new DownloadFileRequest(storagePath, this.TestStorage));
             Assert.NotNull(imageStream);
 
-            this.ImagingApi.PostSearchContextAddImage(
-                new PostSearchContextAddImageRequest(this.SearchContextId, destServerPath, imageStream,
+            this.ImagingApi.AddSearchImage(
+                new AddSearchImageRequest(this.SearchContextId, destServerPath, imageStream,
                     storage: this.TestStorage));
 
             var existResponse =
@@ -249,8 +249,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         private Stream GetImage(string image)
         {
             var destServerPath = $"{this.TempFolder}/{image}";
-            var response = this.ImagingApi.GetSearchContextImage(
-                new GetSearchContextImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
+            var response = this.ImagingApi.GetSearchImage(
+                new GetSearchImageRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
            
             return response;
         }
@@ -259,15 +259,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         {
             var destServerPath = $"{this.OriginalDataFolder}/{image}";
 
-            this.ImagingApi.PostSearchContextExtractImageFeatures(
-                new PostSearchContextExtractImageFeaturesRequest(this.SearchContextId, null, destServerPath, storage: this.TestStorage));
+            this.ImagingApi.CreateImageFeatures(
+                new CreateImageFeaturesRequest(this.SearchContextId, null, destServerPath, storage: this.TestStorage));
         }
 
         private ImageFeatures GetImageFeatures(string image)
         {
             var destServerPath = $"{this.OriginalDataFolder}/{image}";
-            var response = this.ImagingApi.GetSearchContextImageFeatures(
-                new GetSearchContextImageFeaturesRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
+            var response = this.ImagingApi.GetImageFeatures(
+                new GetImageFeaturesRequest(this.SearchContextId, destServerPath, storage: this.TestStorage));
 
             return response;
         }
