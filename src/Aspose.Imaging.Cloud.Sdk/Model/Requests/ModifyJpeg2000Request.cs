@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="ModifyJpeg2000Request.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
