@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="ApiTester.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Aspose.Imaging.Cloud.Sdk.Test.Api
+namespace Aspose.Imaging.Cloud.Sdk.Test.Base
 {
     using System;
     using System.Collections.Generic;
@@ -115,8 +115,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             "png",
             "psd",
             "tiff",
-            "webp",
-            "pdf"
+            "webp"
         };
 
         #endregion
@@ -129,14 +128,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="originalProperties">The original properties.</param>
         /// <param name="resultProperties">The result properties.</param>
         /// <param name="resultStream">The result stream.</param>
-        protected delegate void PropertiesTesterDelegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream);
-
-        /// <summary>
-        /// Typical GET request delegate that accepts image file name from Storage.
-        /// </summary>
-        /// <param name="fileName">File name of the image.</param>
-        /// <returns></returns>
-        protected delegate Stream GetRequestInvokerDelegate(string fileName, string outPath);
+        protected delegate void PropertiesTesterDelegate(ImagingResponse originalProperties,
+            ImagingResponse resultProperties, Stream resultStream);
 
         /// <summary>
         /// Typical POST request delegate that accepts input image stream.
@@ -289,20 +282,23 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// Tests the typical GET request.
         /// </summary>
         /// <param name="testMethodName">Name of the test method.</param>
-        /// <param name="saveResultToStorage">if set to <c>true</c> [save result to storage].</param>
         /// <param name="parametersLine">The parameters line.</param>
         /// <param name="inputFileName">Name of the input file.</param>
-        /// <param name="resultFileName">Name of the result file.</param>
         /// <param name="requestInvoker">The request invoker.</param>
         /// <param name="propertiesTester">The properties tester.</param>
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
-        protected void TestGetRequest(string testMethodName, bool saveResultToStorage, string parametersLine, 
-            string inputFileName, string resultFileName, GetRequestInvokerDelegate requestInvoker, 
+        protected void TestGetRequest(string testMethodName, string parametersLine, 
+            string inputFileName,
+#if NET20
+            Newtonsoft.Json.Serialization.Func<Stream> requestInvoker,
+#else
+            System.Func<Stream> requestInvoker,
+#endif 
             PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
         {
-            this.TestRequest(testMethodName, saveResultToStorage, parametersLine, inputFileName, resultFileName, 
-                () => this.ObtainGetResponse(inputFileName, saveResultToStorage ? $"{folder}/{resultFileName}" : null, requestInvoker),
+            this.TestRequest(testMethodName, false, parametersLine, inputFileName, null, 
+                () => this.ObtainGetResponse(requestInvoker),
                 propertiesTester, folder, storage);
         }
 
@@ -381,21 +377,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <summary>
         /// Obtains the typical GET request response.
         /// </summary>
-        /// <param name="inputFileName">Name of the input file.</param>
         /// <param name="requestInvoker">The request invoker.</param>
-        /// <param name="outPath">The output path to save the result.</param>
-        private Stream ObtainGetResponse(string inputFileName, string outPath, GetRequestInvokerDelegate requestInvoker)
+        private Stream ObtainGetResponse(
+#if NET20
+            Newtonsoft.Json.Serialization.Func<Stream> requestInvoker
+#else
+            System.Func<Stream> requestInvoker
+#endif 
+            )
         {
-            var response = requestInvoker.Invoke(inputFileName, outPath);
-
-            if (string.IsNullOrEmpty(outPath))
-            {
-                Assert.NotNull(response);
-                Assert.Greater(response.Length, 0);
-                return response;
-            }
-
-            return null;
+            var response = requestInvoker.Invoke();
+            Assert.NotNull(response);
+            Assert.Greater(response.Length, 0);
+            return response;
         }
 
         /// <summary>
@@ -489,17 +483,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                                 $"Result isn't present in the storage by an unknown reason.");
                         }
 
-                        if (!resultFileName.EndsWith(".pdf"))
-                        {
-                            resultProperties =
-                                this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
-                            Assert.NotNull(resultProperties);
-                        }
+                        resultProperties =
+                            this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
+                        Assert.NotNull(resultProperties);
                     }
-                    else if (!this.ImagingApi.Configuration.ApiVersion.Contains("v1.") && !resultFileName.EndsWith(".pdf"))
+                    else
                     {
                         resultProperties =
-                            this.ImagingApi.PostImageProperties(new PostImagePropertiesRequest(response));
+                            this.ImagingApi.ExtractImageProperties(new ExtractImagePropertiesRequest(response));
                         Assert.NotNull(resultProperties);
                     }
 

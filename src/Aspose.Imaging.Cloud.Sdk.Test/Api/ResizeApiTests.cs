@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="ResizeApiTests.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,40 +41,29 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class ResizeApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageResize
+        /// Test ResizeImage
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".jpg", true)]
-        [TestCase(".jpg", false)]
+        [TestCase(".jpg")]
 #if EXTENDED_TEST
-        [TestCase(".bmp", true)]
-        [TestCase(".bmp", false)]
-        [TestCase(".dicom", true)]
-        [TestCase(".dicom", false)]
+        [TestCase(".bmp")]
+        [TestCase(".dicom")]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
-        //[TestCase(".gif", true)]
-        //[TestCase(".gif", false)]
-        [TestCase(".j2k", true)]
-        [TestCase(".j2k", false)]
-        [TestCase(".png", true)]
-        [TestCase(".png", false)]
-        [TestCase(".psd", true)]
-        [TestCase(".psd", false)]
-        [TestCase(".tiff", true)]
-        [TestCase(".tiff", false)]
-        [TestCase(".webp", true)]
-        [TestCase(".webp", false)]
+        //[TestCase(".gif")]
+        [TestCase(".j2k")]
+        [TestCase(".png")]
+        [TestCase(".psd")]
+        [TestCase(".tiff")]
+        [TestCase(".webp")]
 #endif
-        public void GetImageResizeTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
+        public void ResizeImageTest(string formatExtension, params string[] additionalExportFormats)
         {
             string name = null;
             int? newWidth = 100;
             int? newHeight = 150;
             string folder = TempFolder;
             string storage = this.TestStorage;
-            string outName = null;
 
             List<string> formatsToExport = new List<string>(this.BasicExportFormats);
             foreach (string additionalExportFormat in additionalExportFormats)
@@ -98,18 +87,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
                 foreach (string format in formatsToExport)
                 {
-                    outName = $"{name}_resize.{format}";
-
                     this.TestGetRequest(
-                        "GetImageResizeTest",
-                        saveResultToStorage,
+                        "ResizeImageTest",
                         $"Input image: {name}; Output format: {format}; New width: {newWidth}; New height: {newHeight}",
                         name,
-                        outName,
-                        delegate (string fileName, string outPath)
+                        delegate
                         {
-                            var request = new GetImageResizeRequest(fileName, format, newWidth, newHeight, outPath, folder, storage);
-                            return ImagingApi.GetImageResize(request);
+                            var request = new ResizeImageRequest(name, format, newWidth, newHeight, folder, storage);
+                            return ImagingApi.ResizeImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
@@ -123,7 +108,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageResize
+        /// Test CreateResizedImage
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
@@ -149,7 +134,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".webp", true)]
         [TestCase(".webp", false)]
 #endif
-        public void PostImageResizeTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
+        public void CreateResizedImageTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
             int? newWidth = 100;
@@ -183,15 +168,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     outName = $"{name}_resize.{format}";
 
                     this.TestPostRequest(
-                        "PostImageResizeTest",
+                        "CreateResizedImageTest",
                         saveResultToStorage,
                         $"Input image: {name}; Output format: {format}; New width: {newWidth}; New height: {newHeight}",
                         name,
                         outName,
                         delegate (Stream inputStream, string outPath)
                         {
-                            var request = new PostImageResizeRequest(inputStream, format, newWidth, newHeight, outPath, storage);
-                            return ImagingApi.PostImageResize(request);
+                            var request = new CreateResizedImageRequest(inputStream, format, newWidth, newHeight, outPath, storage);
+                            return ImagingApi.CreateResizedImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {

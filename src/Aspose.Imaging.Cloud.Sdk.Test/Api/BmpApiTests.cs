@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="BmpApiTests.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,32 +41,28 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class BmpApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageBmp
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
+        /// Test ModifyBmp
         /// </summary>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageBmpTest(bool saveResultToStorage)
+        [Test]
+        public void ModifyBmpTest()
         {
             string name = "test.bmp";
             int? bitsPerPixel = 32;
             int? horizontalResolution = 300;
             int? verticalResolution = 300;
             bool? fromScratch = null;
-            string outName = $"{name}_specific.bmp";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageBmpTest", 
-                saveResultToStorage,
+                "ModifyBmpTest", 
                 $"Input image: {name}; Bits per pixel: {bitsPerPixel}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageBmpRequest(fileName, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, folder, storage);
-                    return ImagingApi.GetImageBmp(request);
+                    var request = new ModifyBmpRequest(name, bitsPerPixel, horizontalResolution, verticalResolution, 
+                        fromScratch, folder, storage);
+                    return ImagingApi.ModifyBmp(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -86,12 +82,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageBmp
+        /// Test CreateModifiedBmp
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// </summary>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageBmpTest(bool saveResultToStorage)
+        public void CreateModifiedBmpTest(bool saveResultToStorage)
         {
             string name = "test.bmp";
             int? bitsPerPixel = 32;
@@ -103,15 +99,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageBmpTest",
+                "CreateModifiedBmpTest",
                 saveResultToStorage,
                 $"Input image: {name}; Bits per pixel: {bitsPerPixel}; Horizontal resolution: {horizontalResolution}; Vertical resolution: {verticalResolution}",
                 name,
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageBmpRequest(inputStream, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
-                    return ImagingApi.PostImageBmp(request);
+                    var request = new CreateModifiedBmpRequest(inputStream, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
+                    return ImagingApi.CreateModifiedBmp(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {

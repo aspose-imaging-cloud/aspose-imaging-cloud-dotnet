@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="Jpeg2000ApiTests.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,31 +40,26 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class Jpeg2000ApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageJpeg2000
+        /// Test ModifyJpeg2000
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageJpeg2000Test(bool saveResultToStorage)
+        [Test]
+        public void ModifyJpeg2000Test()
         {
             string name = "test.j2k";
             string codec = "jp2";
             string comment = "Aspose";
             bool? fromScratch = null;
-            string outName = $"{name}_specific.jp2";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageJpeg2000Test",
-                saveResultToStorage,
+                "ModifyJpeg2000Test",
                 $"Input image: {name}; Comment: {comment}; Codec: {codec}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageJpeg2000Request(name, comment, codec, fromScratch, outPath, folder, storage);
-                    return ImagingApi.GetImageJpeg2000(request);
+                    var request = new ModifyJpeg2000Request(name, comment, codec, fromScratch, folder, storage);
+                    return ImagingApi.ModifyJpeg2000(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -86,12 +81,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageJpeg2000
+        /// Test CreateModifiedJpeg2000
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageJpeg2000Test(bool saveResultToStorage)
+        public void CreateModifiedJpeg2000Test(bool saveResultToStorage)
         {
             string name = "test.j2k";
             string codec = "jp2";
@@ -102,15 +97,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageJpeg2000Test",
+                "CreateModifiedJpeg2000Test",
                 saveResultToStorage,
                 $"Input image: {name}; Comment: {comment}; Codec: {codec}",
                 name,
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageJpeg2000Request(inputStream, comment, codec, fromScratch, outPath, storage);
-                    return ImagingApi.PostImageJpeg2000(request);
+                    var request = new CreateModifiedJpeg2000Request(inputStream, comment, codec, fromScratch, outPath, storage);
+                    return ImagingApi.CreateModifiedJpeg2000(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {

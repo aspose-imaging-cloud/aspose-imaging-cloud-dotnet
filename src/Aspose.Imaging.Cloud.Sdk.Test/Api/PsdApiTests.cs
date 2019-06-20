@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="PsdApiTests.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,32 +40,27 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class PsdApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImagePsd
+        /// Test ModifyPsd
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImagePsdTest(bool saveResultToStorage)
+        [Test]
+        public void ModifyPsdTest()
         {
             string name = "test.psd";
             int channelsCount = 3;
             string compressionMethod = "raw";
             bool? fromScratch = null;
-            string outName = $"{name}_specific.psd";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImagePsdTest",
-                saveResultToStorage,
+                "ModifyPsdTest",
                 $"Input image: {name}; Channel count: {channelsCount}; Compression method: {compressionMethod}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImagePsdRequest(name, channelsCount, compressionMethod, fromScratch, outPath,
+                    var request = new ModifyPsdRequest(name, channelsCount, compressionMethod, fromScratch,
                         folder, storage);
-                    return ImagingApi.GetImagePsd(request);
+                    return ImagingApi.ModifyPsd(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
@@ -83,12 +78,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImagePsd
+        /// Test CreateModifiedPsd
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImagePsdTest(bool saveResultToStorage)
+        public void CreateModifiedPsdTest(bool saveResultToStorage)
         {
             string name = "test.psd";
             int channelsCount = 3;
@@ -99,15 +94,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImagePsdTest",
+                "CreateModifiedPsdTest",
                 saveResultToStorage,
                 $"Input image: {name}; Channel count: {channelsCount}; Compression method: {compressionMethod}",
                 name,
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImagePsdRequest(inputStream, channelsCount, compressionMethod, fromScratch, outPath, storage);
-                    return ImagingApi.PostImagePsd(request);
+                    var request = new CreateModifiedPsdRequest(inputStream, channelsCount, compressionMethod, fromScratch, outPath, storage);
+                    return ImagingApi.CreateModifiedPsd(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {

@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="StorageApiTester.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,10 +27,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
 {
     using NUnit.Framework;
 
+    using Aspose.Imaging.Cloud.Sdk.Test.Base;
+
     /// <summary>
     /// Storage API tester.
     /// </summary>
-    /// <seealso cref="Aspose.Imaging.Cloud.Sdk.Test.Api.ApiTester" />
+    /// <seealso cref="ApiTester" />
     [Category("v3.0")]
     [Category("Storage")]
     [TestFixture]

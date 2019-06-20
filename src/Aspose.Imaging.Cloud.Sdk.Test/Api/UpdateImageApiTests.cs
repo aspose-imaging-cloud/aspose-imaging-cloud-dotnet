@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="WebPApiTests.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,33 +40,23 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class UpdateImageApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageUpdate
+        /// Test UpdateImage
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".jpg", true)]
-        [TestCase(".jpg", false)]
+        [TestCase(".jpg")]
 #if EXTENDED_TEST
-        [TestCase(".bmp", true)]
-        [TestCase(".bmp", false)]
-        [TestCase(".dicom", true)]
-        [TestCase(".dicom", false)]
+        [TestCase(".bmp")]
+        [TestCase(".dicom")]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
-        //[TestCase(".gif", true)]
-        //[TestCase(".gif", false)]
-        [TestCase(".j2k", true)]
-        [TestCase(".j2k", false)]
-        [TestCase(".png", true)]
-        [TestCase(".png", false)]
-        [TestCase(".psd", true)]
-        [TestCase(".psd", false)]
-        [TestCase(".tiff", true)]
-        [TestCase(".tiff", false)]
-        [TestCase(".webp", true)]
-        [TestCase(".webp", false)]
+        //[TestCase(".gif")]
+        [TestCase(".j2k")]
+        [TestCase(".png")]
+        [TestCase(".psd")]
+        [TestCase(".tiff")]
+        [TestCase(".webp")]
 #endif
-        public void GetImageUpdateTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
+        public void UpdateImageTest(string formatExtension, params string[] additionalExportFormats)
         {
             string name = null;
             int? newWidth = 300;
@@ -78,7 +68,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string rotateFlipMethod = "Rotate90FlipX";
             string folder = TempFolder;
             string storage = this.TestStorage;
-            string outName = null;
 
             List<string> formatsToExport = new List<string>(this.BasicExportFormats);
             foreach (string additionalExportFormat in additionalExportFormats)
@@ -102,19 +91,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
                 foreach (string format in formatsToExport)
                 {
-                    outName = $"{name}_update.{format}";
-
                     this.TestGetRequest(
-                        "GetImageUpdateTest",
-                        saveResultToStorage,
+                        "UpdateImageTest",
                         $"Input image: {name}; Output format: {format}; New width: {newWidth}; New height: {newHeight}; Rotate/flip method: {rotateFlipMethod}; " +
                         $"X: {x}; Y: {y}; Rect width: {rectWidth}; Rect height: {rectHeight}",
                         name,
-                        outName,
-                        delegate (string fileName, string outPath)
+                        delegate
                         {
-                            var request = new GetImageUpdateRequest(fileName, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, folder, storage);
-                            return ImagingApi.GetImageUpdate(request);
+                            var request = new UpdateImageRequest(name, format, newWidth, newHeight, x, y, rectWidth, 
+                                rectHeight, rotateFlipMethod, folder, storage);
+                            return ImagingApi.UpdateImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
@@ -128,7 +114,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Test PostImageUpdate
+        /// Test CreateUpdatedImage
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
@@ -154,7 +140,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".webp", true)]
         [TestCase(".webp", false)]
 #endif
-        public void PostImageUpdateTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
+        public void CreateUpdatedImageTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
             int? newWidth = 300;
@@ -193,7 +179,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     outName = $"{name}_update.{format}";
 
                     this.TestPostRequest(
-                        "PostImageUpdateTest",
+                        "CreateUpdatedImageTest",
                         saveResultToStorage,
                         $"Input image: {name}; Output format: {format}; New width: {newWidth}; New height: {newHeight}; Rotate/flip method: {rotateFlipMethod}; " +
                         $"X: {x}; Y: {y}; Rect width: {rectWidth}; Rect height: {rectHeight}",
@@ -201,8 +187,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         outName,
                         delegate (Stream inputStream, string outPath)
                         {
-                            var request = new PostImageUpdateRequest(inputStream, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, storage);
-                            return ImagingApi.PostImageUpdate(request);
+                            var request = new CreateUpdatedImageRequest(inputStream, format, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, storage);
+                            return ImagingApi.CreateUpdatedImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {

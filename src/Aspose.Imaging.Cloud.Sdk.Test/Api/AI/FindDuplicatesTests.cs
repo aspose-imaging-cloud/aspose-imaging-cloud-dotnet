@@ -1,6 +1,6 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="FindDuplicatesTests.cs">
-//  Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//  Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -52,8 +52,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                       image = this.GetStoragePath(ComparingImageSimilarMore75);
                       this.AddImageFeaturesToSearchContext(image);
 
-                      var response = this.ImagingApi.GetSearchContextFindDuplicates(
-                          new GetSearchContextFindDuplicatesRequest(this.SearchContextId, 80, storage: this.TestStorage));
+                      var response = this.ImagingApi.FindImageDuplicates(
+                          new FindImageDuplicatesRequest(this.SearchContextId, 80, storage: this.TestStorage));
                       Assert.AreEqual(1, response.Duplicates.Count);
                   });
         }

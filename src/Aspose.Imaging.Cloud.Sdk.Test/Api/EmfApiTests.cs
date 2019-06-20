@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="EmfApiTests.cs">
-//   Copyright (c) 2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,60 +40,55 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class EmfApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Test GetImageEmf
+        /// Test ModifyEmf
         /// </summary>
-        /// <param name="saveResultToStorage">If result should be saved to storage</param>
-        [TestCase(true)]
-        [TestCase(false)]
-        public void GetImageEmfTest(bool saveResultToStorage)
+        [Test]
+        public void ModifyEmfTest()
         {
             string name = "test.emf";
             string bkColor = "gray";
             int pageWidth = 300;
-            int pageHeigth = 300;
+            int pageHeight = 300;
             int borderX = 50;
             int borderY = 50;
             bool? fromScratch = null;
-            string outName = $"{name}_specific.png";
             string folder = TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
-                "GetImageEmfTest",
-                saveResultToStorage,
-                $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeigth}; BorderX: {borderX}; BorderY: {borderY}",
+                "ModifyEmfTest",
+                $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeight}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
-                outName,
-                delegate (string fileName, string outPath)
+                delegate
                 {
-                    var request = new GetImageEmfRequest(name, bkColor, pageWidth, pageHeigth, borderX, borderY,
-                        fromScratch, outPath, folder, storage);
-                    return ImagingApi.GetImageEmf(request);
+                    var request = new ModifyEmfRequest(name, bkColor, pageWidth, pageHeight, borderX, borderY,
+                        fromScratch, folder, storage);
+                    return ImagingApi.ModifyEmf(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     int width = pageWidth + borderX * 2;
-                    int heigth = pageHeigth + borderY * 2;
+                    int height = pageHeight + borderY * 2;
                     Assert.IsNotNull(resultProperties.PngProperties);
                     Assert.AreEqual(width, resultProperties.Width);
-                    Assert.AreEqual(heigth, resultProperties.Height);
+                    Assert.AreEqual(height, resultProperties.Height);
                 },
                 folder,
                 storage);
         }
 
         /// <summary>
-        /// Test PostImageEmf
+        /// Test CreateModifiedEmf
         /// </summary>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         [TestCase(true)]
         [TestCase(false)]
-        public void PostImageEmfTest(bool saveResultToStorage)
+        public void CreateModifiedEmfTest(bool saveResultToStorage)
         {
             string name = "test.emf";
             string bkColor = "gray";
             int pageWidth = 300;
-            int pageHeigth = 300;
+            int pageHeight = 300;
             int borderX = 50;
             int borderY = 50;
             bool? fromScratch = null;
@@ -102,24 +97,24 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             this.TestPostRequest(
-                "PostImageEmfTest",
+                "CreateModifiedEmfTest",
                 saveResultToStorage,
-                $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeigth}; BorderX: {borderX}; BorderY: {borderY}",
+                $"Input image: {name}; BackColor: {bkColor}; Page width: {pageWidth}; Page height: {pageHeight}; BorderX: {borderX}; BorderY: {borderY}",
                 name,
                 outName,
                 delegate (Stream inputStream, string outPath)
                 {
-                    var request = new PostImageEmfRequest(inputStream, bkColor, pageWidth, pageHeigth, borderX, borderY,
+                    var request = new CreateModifiedEmfRequest(inputStream, bkColor, pageWidth, pageHeight, borderX, borderY,
                         fromScratch, outPath, storage);
-                    return ImagingApi.PostImageEmf(request);
+                    return ImagingApi.CreateModifiedEmf(request);
                 },
                 delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                 {
                     int width = pageWidth + borderX * 2;
-                    int heigth = pageHeigth + borderY * 2;
+                    int height = pageHeight + borderY * 2;
                     Assert.IsNotNull(resultProperties.PngProperties);
                     Assert.AreEqual(width, resultProperties.Width);
-                    Assert.AreEqual(heigth, resultProperties.Height);
+                    Assert.AreEqual(height, resultProperties.Height);
                 },
                 folder,
                 storage);
