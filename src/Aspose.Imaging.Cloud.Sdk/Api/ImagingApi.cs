@@ -55,58 +55,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImagingApi"/> class.
-        /// </summary>
-        /// <param name="appKey">
-        /// The app key.
-        /// </param>
-        /// <param name="appSid">
-        /// The app SID.
-        /// </param>
-        public ImagingApi(string appKey, string appSid)
-            : this(new Configuration { AppKey = appKey, AppSid = appSid })
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ImagingApi"/> class.
-        /// </summary>
-        /// <param name="appKey">
-        /// The app key.
-        /// </param>
-        /// <param name="appSid">
-        /// The app SID.
-        /// </param>
-        /// <param name="baseUrl">
-        /// The base URL.
-        /// </param>
-        public ImagingApi(string appKey, string appSid, string baseUrl)
-            : this(new Configuration { AppKey = appKey, AppSid = appSid, ApiBaseUrl = baseUrl })
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ImagingApi"/> class.
-        /// </summary>
-        /// <param name="appKey">
-        /// The app key.
-        /// </param>
-        /// <param name="appSid">
-        /// The app SID.
-        /// </param>
-        /// <param name="baseUrl">
-        /// The base URL.
-        /// </param>
-        /// <param name="apiVersion">
-        /// API version.
-        /// </param>
-        public ImagingApi(string appKey, string appSid, string baseUrl, string apiVersion)
-            : this(new Configuration { AppKey = appKey, AppSid = appSid, ApiBaseUrl = baseUrl, ApiVersion = apiVersion })
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ImagingApi"/> class.
+        /// Initializes a new instance of the <see cref="ImagingApi"/> class for Aspose Cloud-hosted solution usage.
         /// </summary>
         /// <param name="appKey">
         /// The app key.
@@ -118,13 +67,45 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         /// The base URL. Use <see cref="Configuration.DefaultBaseUrl"/> to set the default base URL.
         /// </param>
         /// <param name="apiVersion">
-        /// API version.
+        /// The API version.
         /// </param>
         /// <param name="debug">
         /// If debug mode is enabled.
         /// </param>
-        public ImagingApi(string appKey, string appSid, string baseUrl, string apiVersion, bool debug)
-            : this(new Configuration { AppKey = appKey, AppSid = appSid, ApiBaseUrl = baseUrl, ApiVersion = apiVersion, DebugMode = debug })
+        public ImagingApi(string appKey, string appSid, string baseUrl = Configuration.DefaultBaseUrl, 
+            string apiVersion = Configuration.DefaultApiVersion, bool debug = false)
+            : this(new Configuration
+            {
+                AppKey = appKey,
+                AppSid = appSid,
+                ApiBaseUrl = baseUrl,
+                ApiVersion = apiVersion,
+                DebugMode = debug,
+                IsMetered = false
+            })
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImagingApi"/> class for on-premise solution with metered license usage.
+        /// </summary>
+        /// <param name="baseUrl">
+        /// The base URL of your server.
+        /// </param>
+        /// <param name="apiVersion">
+        /// The API version.
+        /// </param>
+        /// <param name="debug">
+        /// If debug mode is enabled.
+        /// </param>
+        public ImagingApi(string baseUrl, string apiVersion = Configuration.DefaultApiVersion, bool debug = false)
+            : this(new Configuration
+            {
+                ApiBaseUrl = baseUrl,
+                ApiVersion = apiVersion,
+                DebugMode = debug,
+                IsMetered = true
+            })
         {
         }
 
@@ -135,9 +116,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         private ImagingApi(Configuration configuration)
         {
             this.Configuration = configuration;
-
             var requestHandlers = new List<IRequestHandler>();
-            requestHandlers.Add(new AuthRequestHandler(this.Configuration));
+            if (!configuration.IsMetered)
+            {
+                requestHandlers.Add(new AuthRequestHandler(this.Configuration));
+            }
+            
             requestHandlers.Add(new DebugLogRequestHandler(this.Configuration));
             requestHandlers.Add(new ApiExceptionRequestHandler());
             this.apiInvoker = new ApiInvoker(requestHandlers, this.Configuration);
