@@ -95,9 +95,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
                 int count = originalFiles.Count;
                 for (int x = 0; x < count; x++)
                 {
-                    Assert.AreEqual(originalFiles[x].IsFolder, copiedFiles[x].IsFolder);
-                    Assert.AreEqual(originalFiles[x].Name, copiedFiles[x].Name);
-                    Assert.AreEqual(originalFiles[x].Size, copiedFiles[x].Size);
+                    var curFile = originalFiles[x];
+                    Assert.NotNull(copiedFiles.Find(f => f.IsFolder == curFile.IsFolder && f.Size == curFile.Size
+                        && f.Name == curFile.Name));
                 }
             }
             finally
@@ -159,9 +159,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
                 int count = originalFiles.Count;
                 for (int x = 0; x < count; x++)
                 {
-                    Assert.AreEqual(originalFiles[x].IsFolder, copiedFiles[x].IsFolder);
-                    Assert.AreEqual(originalFiles[x].Name, copiedFiles[x].Name);
-                    Assert.AreEqual(originalFiles[x].Size, copiedFiles[x].Size);
+                    var curFile = originalFiles[x];
+                    Assert.NotNull(copiedFiles.Find(f => f.IsFolder == curFile.IsFolder && f.Size == curFile.Size 
+                        && f.Name == curFile.Name));
                 }
             }
             finally
