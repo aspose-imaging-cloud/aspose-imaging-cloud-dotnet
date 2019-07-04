@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="ExportImage.cs">
+// <copyright company="Aspose" file="UpdateEMFImageProperties.cs">
 //   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -23,21 +23,18 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-
 using Aspose.Imaging.Cloud.Sdk.Model;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
-    class ExportImage : ImagingBase
+    class UpdateEMFImage : ImagingBase
     {
-        // Export an image to another format.
-        public void SaveImageAsFromStorage()
+        //  Process existing EMF imaging using given parameters
+        public void ModifyEmfFromStorage()
         {
-            // Input formats could be one of the following:
-            // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
+            string fileName = "Sample.emf";
 
             // Upload local image to Cloud Storage
             using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
@@ -46,29 +43,35 @@ namespace AsposeImagingCloudSDKExamples
                 FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
             }
 
-            // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs) 
-            // for possible output formats
-            string format = "pdf";
+            string bkColor = "gray";
+            int pageWidth = 300;
+            int pageHeigth = 300;
+            int borderX = 50;
+            int borderY = 50;
+            string format = "png";
+            // Specifies where additional parameters we do not support should be taken from.
+            // If this is true – they will be taken from default values for standard image,
+            // if it is false – they will be saved from current image. Default is false.
+            bool? fromScratch = null;
             string folder = null; // Input file is saved at the root of the storage
-            string storage = null; // Cloud Storage name
-            
-            var request = new SaveImageAsRequest(fileName, format, folder, storage);
-            Stream updatedImage = this.ImagingApi.SaveImageAs(request);
+            string storage = null; // As we are using default Cloud Storage
+
+            var request = new ModifyEmfRequest(fileName, bkColor, pageWidth, pageHeigth, borderX, borderY,
+                        fromScratch, folder, storage, format);
+            Stream updatedImage = this.ImagingApi.ModifyEmf(request);
 
             // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Watermark_out." + format))
+            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "SampleEMF_out." + format))
             {
                 updatedImage.Seek(0, SeekOrigin.Begin);
                 updatedImage.CopyTo(fileStream);
             }
         }
 
-        // Export an image to another format.
-        public void SaveImageAsAndUploadToStorage()
+        //  Process existing EMF image using given parameters, and upload updated image to Cloud Storage.
+        public void ModifyEmfAndUploadToStorage()
         {
-            // Input formats could be one of the following:
-            // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
+            string fileName = "Sample.emf";
 
             // Upload local image to Cloud Storage
             using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
@@ -77,41 +80,53 @@ namespace AsposeImagingCloudSDKExamples
                 FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
             }
 
-            // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs)
-            // for possible output formats
-            string format = "pdf";
+            string bkColor = "gray";
+            int pageWidth = 300;
+            int pageHeigth = 300;
+            int borderX = 50;
+            int borderY = 50;
+            string format = "png";
+            // Specifies where additional parameters we do not support should be taken from.
+            // If this is true – they will be taken from default values for standard image,
+            // if it is false – they will be saved from current image. Default is false.
+            bool? fromScratch = null;
             string folder = null; // Input file is saved at the root of the storage
-            string storage = null; // Cloud Storage name
+            string storage = null; // As we are using default Cloud Storage
 
-            var request = new SaveImageAsRequest(fileName, format, folder, storage);
-            using (Stream updatedImage = this.ImagingApi.SaveImageAs(request))
+            var request = new ModifyEmfRequest(fileName, bkColor, pageWidth, pageHeigth, borderX, borderY,
+                        fromScratch, folder, storage, format);
+            using (Stream updatedImage = this.ImagingApi.ModifyEmf(request))
             {
                 // Upload updated image to Cloud Storage
-                string outPath = "Watermark_out." + format;
+                string outPath = "SampleEMF_out." + format;
                 var uploadFileRequest = new UploadFileRequest(outPath, updatedImage);
                 FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
             }
         }
 
-        // Export an image to another format. Image data is passed in a request stream.
-        public void CreateSavedImageAsFromRequestBody()
+        // Rasterize EMF image to PNG using given parameters. 
+        // Image data is passed in a request stream.
+        public void CreateModifiedEmfFromRequestBody()
         {
-            // Input formats could be one of the following:
-            // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
+            string fileName = "Sample.emf";
             using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
             {
-                // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs)
-                // for possible output formats
-                string format = "pdf";
+                string bkColor = "gray";
+                int pageWidth = 300;
+                int pageHeigth = 300;
+                int borderX = 50;
+                int borderY = 50;
+                string format = "png";
+                bool? fromScratch = null;
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
-                string storage = null; // Cloud Storage name
+                string storage = null; // As we are using default Cloud Storage
 
-                var request = new CreateSavedImageAsRequest(inputImageStream, format, outPath, storage);
-                Stream updatedImage = this.ImagingApi.CreateSavedImageAs(request);
+                var request = new CreateModifiedEmfRequest(inputImageStream, bkColor, pageWidth, pageHeigth,
+                                                        borderX, borderY, fromScratch, outPath, storage, format);
+                Stream updatedImage = this.ImagingApi.CreateModifiedEmf(request);
 
                 // Save updated image to local storage
-                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Watermark_out." + format))
+                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "SampleEMF_out." + format))
                 {
                     updatedImage.Seek(0, SeekOrigin.Begin);
                     updatedImage.CopyTo(fileStream);

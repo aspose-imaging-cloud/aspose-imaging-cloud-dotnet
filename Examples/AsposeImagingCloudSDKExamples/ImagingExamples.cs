@@ -1,10 +1,29 @@
-﻿using Aspose.Imaging.Cloud.Sdk.Api;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright company="Aspose" file="ImagingExamples.cs">
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
+// </copyright>
+// <summary>
+//   Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+// 
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+// 
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
 using AsposeImagingCloudSDKExamples.ai;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AsposeImagingCloudSDKExamples
 {
@@ -14,95 +33,117 @@ namespace AsposeImagingCloudSDKExamples
         {
             // Update parameters of existing BMP image
             UpdateBMPImage bmpImage = new UpdateBMPImage();
-            bmpImage.updateParametersOfBMPImageInCloud();
-            bmpImage.updateParametersOfBMPImageInRequestBody();
+            bmpImage.ModifyBmpFromStorage();
+            bmpImage.ModifyBmpAndUploadToStorage();
+            bmpImage.CreateModifiedBmpFromRequestBody();
 
             // Crop an existing image
             CropImage cropImage = new CropImage();
-            cropImage.cropImageInCloud();
-            cropImage.cropImageInRequestBody();
+            cropImage.CropImageFromStorage();
+            cropImage.CropImageAndUploadToStorage();
+            cropImage.CreateCroppedImageFromRequestBody();
 
             // Process existing EMF imaging using given parameters
-            UpdateEMFImageProperties updateEMFImage = new UpdateEMFImageProperties();
-            updateEMFImage.processEMFImage();
-            updateEMFImage.processEMFImageWithoutStorage();
+            UpdateEMFImage updateEMFImage = new UpdateEMFImage();
+            updateEMFImage.ModifyEmfFromStorage();
+            updateEMFImage.ModifyEmfAndUploadToStorage();
+            updateEMFImage.CreateModifiedEmfFromRequestBody();
 
             // Export existing image to another format
             ExportImage exportImage = new ExportImage();
-            exportImage.exportImageToAnotherFormat();
-            exportImage.exportImageToAnotherFormatWithoutStorage();
+            exportImage.SaveImageAsFromStorage();
+            exportImage.SaveImageAsAndUploadToStorage();
+            exportImage.CreateSavedImageAsFromRequestBody();
 
             // Get properties of an image
             ImageProperties imageProperties = new ImageProperties();
-            imageProperties.getPropertiesOfAnImageInCloud();
-            imageProperties.getPropertiesOfAnImageInRequestBody();
+            imageProperties.GetImagePropertiesFromStorage();
+            imageProperties.ExtractImagePropertiesFromRequestBody();
 
             // Resize an existing image
             ResizeImage resizeImage = new ResizeImage();
-            resizeImage.resizeAnImageInCloud();
-            resizeImage.resizeAnImageInRequestBody();
+            resizeImage.ResizeImageFromStorage();
+            resizeImage.ResizeImageAndUploadToStorage();
+            resizeImage.CreateResizedImageFromRequestBody();
 
             // Rotate and/or flip an existing image
-            RotateFlipAnImage rotateFlipAnImage = new RotateFlipAnImage();
-            rotateFlipAnImage.rotateFlipAnImageInCloud();
-            rotateFlipAnImage.rotateFlipAnImageInRequestBody();
+            RotateFlipImage rotateFlipImage = new RotateFlipImage();
+            rotateFlipImage.RotateFlipImageFromStorage();
+            rotateFlipImage.RotateFlipImageAndUploadToStorage();
+            rotateFlipImage.CreateRotateFlippedImageFromRequestBody();
 
             // TIFF Frames
             TIFFFrames tiffFrames = new TIFFFrames();
             // Get a specified frame from existing TIFF image
-            tiffFrames.getAFrameFromTIFFImageInCloud();
+            tiffFrames.GetImageFrameFromStorage();
+            // Get a specified frame from existing TIFF image, and upload the frame to Cloud Storage
+            tiffFrames.GetImageFrameAndUploadToStorage();
+            // Resize a TIFF frame
+            tiffFrames.ResizeImageFrameFromStorage();
+            // Crop a TIFF frame
+            tiffFrames.CropImageFrameFromStorage();
+            // RotateFlip a TIFF frame
+            tiffFrames.RotateFlipImageFrameFromStorage();
             // Get other frames from existing TIFF image
-            tiffFrames.getOtherFramesFromTIFFImageInCloud();
+            tiffFrames.GetAllImageFramesFromStorage();
             // Get separate frame from existing TIFF image.
             // Image data is passed as zero-indexed multipart/form-data content or as raw body stream
-            tiffFrames.getAFrameFromTIFFImageInRequestBody();
+            tiffFrames.CreateImageFrameFromRequestBody();
             // Get separate frame properties of existing TIFF image
-            tiffFrames.getFramePropertiesOfTIFFImageInCloud();
+            tiffFrames.GetImageFramePropertiesFromStorage();
             // Get separate frame properties of existing TIFF image.
             // Image data is passed as zero-indexed multipart/form-data content or as raw body stream
-            tiffFrames.getFramePropertiesOfTIFFImageInRequestBody();
+            tiffFrames.ExtractImageFramePropertiesFromRequestBody();
 
             // Update parameters of existing TIFF image
             TIFFImage tiffImage = new TIFFImage();
-            tiffImage.updateParametersOfTIFFImageInCloud();
-            tiffImage.updateParametersOfTIFFImageInRequestBody();
-            tiffImage.updateParametersOfTIFFImageAccordingToFaxParameters();
-            tiffImage.mergeTIFFImages();
+            tiffImage.ModifyTiffFromStorage();
+            tiffImage.ModifyTiffAndUploadToStorage();
+            tiffImage.CreateModifiedTiffFromRequestBody();
+            tiffImage.ConvertTiffToFaxFromStorage();
+            tiffImage.AppendTiffFromStorage();
 
             // Update parameters of existing GIF image
             UpdateGIFImage updateGIFImage = new UpdateGIFImage();
-            updateGIFImage.updateParametersOfGIFImageInCloud();
-            updateGIFImage.updateParametersOfGIFImageInRequestBody();
+            updateGIFImage.ModifyGifFromStorage();
+            updateGIFImage.ModifyGifAndUploadToStorage();
+            updateGIFImage.CreateModifiedGifFromRequestBody();
 
             // Perform scaling, cropping and flipping of an existing image in a single request
             UpdateImage updateImage = new UpdateImage();
-            updateImage.updateImageInCloud();
-            updateImage.updateImageInRequestBody();
+            updateImage.UpdateImageFromStorage();
+            updateImage.UpdateImageAndUploadToStorage();
+            updateImage.CreateUpdatedImageFromRequestBody();
 
             // Update parameters of existing JPEG2000 image
             UpdateJPEG2000Image updateJPEG2000Image = new UpdateJPEG2000Image();
-            updateJPEG2000Image.updateParametersOfJPEG2000ImageInCloud();
-            updateJPEG2000Image.updateParametersOfJPEG2000ImageInRequestBody();
+            updateJPEG2000Image.ModifyJpeg2000FromStorage();
+            updateJPEG2000Image.ModifyJpeg2000AndUploadToStorage();
+            updateJPEG2000Image.CreateModifiedJpeg2000FromRequestBody();
 
             // Update parameters of existing JPEG image
             UpdateJPEGImage updateJPEGImage = new UpdateJPEGImage();
-            updateJPEGImage.updateParametersOfJPEGImageInCloud();
-            updateJPEGImage.updateParametersOfJPEGImageInRequestBody();
+            updateJPEGImage.ModifyJpegFromStorage();
+            updateJPEGImage.ModifyJpegAndUploadToStorage();
+            updateJPEGImage.CreateModifiedJpegFromRequestBody();
 
             // Update parameters of existing PSD image
             UpdatePSDImage updatePSDImage = new UpdatePSDImage();
-            updatePSDImage.updateParametersOfPSDImageInCloud();
-            updatePSDImage.updateParametersOfPSDImageInRequestBody();
+            updatePSDImage.ModifyPsdFromStorage();
+            updatePSDImage.ModifyPsdAndUploadToStorage();
+            updatePSDImage.CreateModifiedPsdFromRequestBody();
 
             // Update parameters of existing WEBP image
             WEBPImage webpImage = new WEBPImage();
-            webpImage.updateParametersOfWEBPImageInCloud();
-            webpImage.updateParametersOfWEBPImageInRequestBody();
+            webpImage.ModifyWebPFromStorage();
+            webpImage.ModifyWebPAndUploadToStorage();
+            webpImage.CreateModifiedWebPFromRequestBody();
 
             // Process existing WMF image using given parameters
             WMFImage wmfImage = new WMFImage();
-            wmfImage.updateParametersOfWMFImageInCloud();
-            wmfImage.updateParametersOfWMFImageInRequestBody();
+            wmfImage.ModifyWmfFromStorage();
+            wmfImage.ModifyWmfAndUploadToStorage();
+            wmfImage.CreateModifiedWmfFromRequestBody();
 
             // AI APIs 
             // Compare two images
@@ -112,12 +153,12 @@ namespace AsposeImagingCloudSDKExamples
 
             // Find Duplicate Images
             FindDuplicateImages findDuplicateImages = new FindDuplicateImages();
-            findDuplicateImages.FindDuplicates();
+            findDuplicateImages.FindImageDuplicates();
 
             // Find Similar Images
             FindImages findImages = new FindImages();
             findImages.FindSimilarImages();
-            findImages.FindSimilarImagesByTag();
+            findImages.FindImagesByTag();
         }
     }
 }

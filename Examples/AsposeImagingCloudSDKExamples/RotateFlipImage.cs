@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="ExportImage.cs">
+// <copyright company="Aspose" file="RotateFlipAnImage.cs">
 //   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -23,21 +23,21 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-
 using Aspose.Imaging.Cloud.Sdk.Model;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+using System;
 using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
-    class ExportImage : ImagingBase
+    class RotateFlipImage : ImagingBase
     {
-        // Export an image to another format.
-        public void SaveImageAsFromStorage()
+        // Rotate and/or flip an image.
+        public void RotateFlipImageFromStorage()
         {
             // Input formats could be one of the following:
             // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
+            string fileName = "Sample.psd";
 
             // Upload local image to Cloud Storage
             using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
@@ -46,29 +46,32 @@ namespace AsposeImagingCloudSDKExamples
                 FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
             }
 
-            // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs) 
+            // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-RotateFlip 
             // for possible output formats
-            string format = "pdf";
-            string folder = null; // Input file is saved at the root of the storage
-            string storage = null; // Cloud Storage name
-            
-            var request = new SaveImageAsRequest(fileName, format, folder, storage);
-            Stream updatedImage = this.ImagingApi.SaveImageAs(request);
+            string format = "gif";
+            string method = "Rotate90FlipX"; // RotateFlip method
+            string folder = null; // Folder with image to process.
+            string storage = null; // We are using default Cloud Storage
+
+            RotateFlipImageRequest getImageRotateFlipRequest = new RotateFlipImageRequest(fileName, format,
+                                                                                method, folder, storage);
+
+            Stream updatedImage = this.ImagingApi.RotateFlipImage(getImageRotateFlipRequest);
 
             // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Watermark_out." + format))
+            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Sample_out." + format))
             {
                 updatedImage.Seek(0, SeekOrigin.Begin);
                 updatedImage.CopyTo(fileStream);
             }
         }
 
-        // Export an image to another format.
-        public void SaveImageAsAndUploadToStorage()
+        // Rotate and/or flip an image, and upload updated image to Cloud Storage
+        public void RotateFlipImageAndUploadToStorage()
         {
             // Input formats could be one of the following:
             // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
+            string fileName = "Sample.psd";
 
             // Upload local image to Cloud Storage
             using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
@@ -77,41 +80,48 @@ namespace AsposeImagingCloudSDKExamples
                 FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
             }
 
-            // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs)
+            // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-RotateFlip 
             // for possible output formats
-            string format = "pdf";
-            string folder = null; // Input file is saved at the root of the storage
-            string storage = null; // Cloud Storage name
+            string format = "gif";
+            string method = "Rotate90FlipX"; // RotateFlip method
+            string folder = null; // Folder with image to process.
+            string storage = null; // We are using default Cloud Storage
 
-            var request = new SaveImageAsRequest(fileName, format, folder, storage);
-            using (Stream updatedImage = this.ImagingApi.SaveImageAs(request))
+            RotateFlipImageRequest getImageRotateFlipRequest = new RotateFlipImageRequest(fileName, format,
+                                                                                method, folder, storage);
+
+            using (Stream updatedImage = this.ImagingApi.RotateFlipImage(getImageRotateFlipRequest))
             {
                 // Upload updated image to Cloud Storage
-                string outPath = "Watermark_out." + format;
+                string outPath = "Sample_out." + format;
                 var uploadFileRequest = new UploadFileRequest(outPath, updatedImage);
                 FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
             }
         }
 
-        // Export an image to another format. Image data is passed in a request stream.
-        public void CreateSavedImageAsFromRequestBody()
+        // Rotate and/or flip an image.
+        // Image data is passed in a request stream.
+        public void CreateRotateFlippedImageFromRequestBody()
         {
             // Input formats could be one of the following:
             // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
+            string fileName = "Sample.psd";
             using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
             {
-                // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs)
+                // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-RotateFlip 
                 // for possible output formats
-                string format = "pdf";
-                string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
-                string storage = null; // Cloud Storage name
+                String format = "gif";
+                String method = "Rotate90FlipX"; // RotateFlip method
+                String outPath = null; // Path to updated file (if this is empty, response contains streamed image).
+                String storage = null; // We are using default Cloud Storage
 
-                var request = new CreateSavedImageAsRequest(inputImageStream, format, outPath, storage);
-                Stream updatedImage = this.ImagingApi.CreateSavedImageAs(request);
+                CreateRotateFlippedImageRequest createRotateFlippedImageRequest = new CreateRotateFlippedImageRequest(inputImageStream, format,
+                                                                                                method, outPath, storage);
+
+                Stream updatedImage = this.ImagingApi.CreateRotateFlippedImage(createRotateFlippedImageRequest);
 
                 // Save updated image to local storage
-                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Watermark_out." + format))
+                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Sample_out." + format))
                 {
                     updatedImage.Seek(0, SeekOrigin.Begin);
                     updatedImage.CopyTo(fileStream);

@@ -62,13 +62,13 @@
     <Compile Include="ImagingExamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResizeImage.cs" />
-    <Compile Include="RotateFlipAnImage.cs" />
+    <Compile Include="RotateFlipImage.cs" />
     <Compile Include="ai\ImagingAIBase.cs" />
     <Compile Include="ai\SearchContextImages.cs" />
     <Compile Include="TIFFFrames.cs" />
     <Compile Include="TIFFImage.cs" />
     <Compile Include="UpdateBMPImage.cs" />
-    <Compile Include="UpdateEMFImageProperties.cs" />
+    <Compile Include="UpdateEMFImage.cs" />
     <Compile Include="ExportImage.cs" />
     <Compile Include="UpdateGIFImage.cs" />
     <Compile Include="UpdateImage.cs" />
