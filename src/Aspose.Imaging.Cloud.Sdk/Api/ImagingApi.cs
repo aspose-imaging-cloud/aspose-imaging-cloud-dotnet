@@ -81,7 +81,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 ApiBaseUrl = baseUrl,
                 ApiVersion = apiVersion,
                 DebugMode = debug,
-                IsMetered = false
+                OnPremise = false
             })
         {
         }
@@ -104,7 +104,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 ApiBaseUrl = baseUrl,
                 ApiVersion = apiVersion,
                 DebugMode = debug,
-                IsMetered = true
+                OnPremise = true
             })
         {
         }
@@ -117,7 +117,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         {
             this.Configuration = configuration;
             var requestHandlers = new List<IRequestHandler>();
-            if (!configuration.IsMetered)
+            if (!configuration.OnPremise)
             {
                 requestHandlers.Add(new AuthRequestHandler(this.Configuration));
             }

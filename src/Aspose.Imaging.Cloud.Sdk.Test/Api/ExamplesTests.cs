@@ -30,7 +30,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         public void SaveAsFromStorageExampleTest()
         {
             var config = this.ImagingApi.Configuration;
-            var imagingApi = config.IsMetered ? new ImagingApi(config.ApiBaseUrl, config.ApiVersion, config.DebugMode) 
+            var imagingApi = config.OnPremise ? new ImagingApi(config.ApiBaseUrl, config.ApiVersion, config.DebugMode) 
                 : new ImagingApi(config.AppKey, config.AppSid, config.ApiBaseUrl);
 
             try
@@ -40,7 +40,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 {
                     var uploadFileRequest =
                         new UploadFileRequest("ExampleFolderNet/inputImage.png", localInputImage,
-                            config.IsMetered ? this.TestStorage : null);
+                            config.OnPremise ? this.TestStorage : null);
                     FilesUploadResult result = imagingApi.UploadFile(uploadFileRequest);
                     // inspect result.Errors list if there were any
                     // inspect result.Uploaded list for uploaded file names
@@ -49,7 +49,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 // convert image from storage to JPEG
                 var getSaveAsRequest =
                     new SaveImageAsRequest("inputImage.png", "jpg", "ExampleFolderNet",
-                        config.IsMetered ? this.TestStorage : null);
+                        config.OnPremise ? this.TestStorage : null);
 
                 using (Stream convertedImage = imagingApi.SaveImageAs(getSaveAsRequest))
                 {
@@ -57,7 +57,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     // for example, save it to storage
                     var uploadFileRequest =
                         new UploadFileRequest("ExampleFolderNet/resultImage.jpg", convertedImage, 
-                            config.IsMetered ? this.TestStorage : null);
+                            config.OnPremise ? this.TestStorage : null);
                     FilesUploadResult result = imagingApi.UploadFile(uploadFileRequest);
                     // inspect result.Errors list if there were any
                     // inspect result.Uploaded list for uploaded file names
@@ -67,9 +67,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             {
                 // remove files from storage
                 imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/inputImage.png", 
-                    config.IsMetered ? this.TestStorage : null));
+                    config.OnPremise ? this.TestStorage : null));
                 imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.jpg", 
-                    config.IsMetered ? this.TestStorage : null));
+                    config.OnPremise ? this.TestStorage : null));
             }
         }
 
@@ -80,7 +80,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         public void SaveAsFromStreamExampleTest()
         {
             var config = this.ImagingApi.Configuration;
-            var imagingApi = config.IsMetered ? new ImagingApi(config.ApiBaseUrl, config.ApiVersion, config.DebugMode)
+            var imagingApi = config.OnPremise ? new ImagingApi(config.ApiBaseUrl, config.ApiVersion, config.DebugMode)
                 : new ImagingApi(config.AppKey, config.AppSid, config.ApiBaseUrl);
 
             try
@@ -92,14 +92,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     // please, use outPath parameter for saving the result to storage
                     var postSaveToStorageRequest =
                         new CreateSavedImageAsRequest(localInputImage, "jpg", "ExampleFolderNet/resultImage.jpg",
-                            config.IsMetered ? this.TestStorage : null);
+                            config.OnPremise ? this.TestStorage : null);
 
                     imagingApi.CreateSavedImageAs(postSaveToStorageRequest);
 
                     // download saved image from storage
                     using (Stream savedFile =
                         imagingApi.DownloadFile(new DownloadFileRequest("ExampleFolderNet/resultImage.jpg",
-                            config.IsMetered ? this.TestStorage : null)))
+                            config.OnPremise ? this.TestStorage : null)))
                     {
                         // process resulting image from storage
                     }
@@ -110,7 +110,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     // please, set outPath parameter as null to return result in request stream instead of saving to storage
                     var postSaveToStreamRequest =
                         new CreateSavedImageAsRequest(localInputImage, "jpg", null, 
-                            config.IsMetered ? this.TestStorage : null);
+                            config.OnPremise ? this.TestStorage : null);
 
                     using (Stream resultPostImageStream = imagingApi.CreateSavedImageAs(postSaveToStreamRequest))
                     {
@@ -122,7 +122,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             {
                 // remove file from storage
                 imagingApi.DeleteFile(new DeleteFileRequest("ExampleFolderNet/resultImage.jpg",
-                    config.IsMetered ? this.TestStorage : null));
+                    config.OnPremise ? this.TestStorage : null));
             }
         }
     }

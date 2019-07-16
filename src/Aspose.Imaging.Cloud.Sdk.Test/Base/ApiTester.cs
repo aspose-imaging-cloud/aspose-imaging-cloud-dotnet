@@ -202,15 +202,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         protected void CreateApiInstances()
         {
             WriteLineEverywhere("Trying to obtain configuration from environment variables.");
-            string meteredString = this.GetEnvironmentVariable("IsMetered");
-            bool isMetered = !string.IsNullOrEmpty(meteredString) &&
-                             bool.Parse(this.GetEnvironmentVariable("IsMetered"));
-            string appKey = isMetered ? string.Empty : this.GetEnvironmentVariable("AppKey");
-            string appSid = isMetered ? string.Empty : this.GetEnvironmentVariable("AppSid");
+            string onPremiseString = this.GetEnvironmentVariable("OnPremise");
+            bool onPremise = !string.IsNullOrEmpty(onPremiseString) &&
+                             bool.Parse(this.GetEnvironmentVariable("OnPremise"));
+            string appKey = onPremise ? string.Empty : this.GetEnvironmentVariable("AppKey");
+            string appSid = onPremise ? string.Empty : this.GetEnvironmentVariable("AppSid");
             string baseUrl = this.GetEnvironmentVariable("ApiEndpoint");
             string apiVersion = this.GetEnvironmentVariable("ApiVersion");
 
-            if ((!isMetered && (string.IsNullOrEmpty(appKey) || string.IsNullOrEmpty(appSid)))
+            if ((!onPremise && (string.IsNullOrEmpty(appKey) || string.IsNullOrEmpty(appSid)))
                 || string.IsNullOrEmpty(baseUrl) || string.IsNullOrEmpty(apiVersion))
             {
                 WriteLineEverywhere("Access data isn't set completely by environment variables. " +
@@ -229,13 +229,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             if (serverFileInfo.Exists && serverFileInfo.Length > 0)
             {
                 var accessData = JsonConvert.DeserializeObject<ServerAccessData>(File.ReadAllText(serverAccessPath));
-                if (string.IsNullOrEmpty(appKey) && !isMetered)
+                if (string.IsNullOrEmpty(appKey) && !onPremise)
                 {
                     appKey = accessData.AppKey;
                     WriteLineEverywhere("Set default App key");
                 }
 
-                if (string.IsNullOrEmpty(appSid) && !isMetered)
+                if (string.IsNullOrEmpty(appSid) && !onPremise)
                 {
                     appSid = accessData.AppSid;
                     WriteLineEverywhere("Set default App SID");
@@ -248,18 +248,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                 }
 
             }
-            else if (!isMetered)
+            else if (!onPremise)
             {
                 throw new ArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
             }
 
-            WriteLineEverywhere($"Is metered: {isMetered}");
+            WriteLineEverywhere($"On-premise: {onPremise}");
             WriteLineEverywhere($"App key: {appKey}");
             WriteLineEverywhere($"App SID: {appSid}");
             WriteLineEverywhere($"Storage: {this.TestStorage}");
             WriteLineEverywhere($"Base URL: {baseUrl}");
             WriteLineEverywhere($"API version: {apiVersion}");
-            this.ImagingApi = isMetered ? new ImagingApi(baseUrl, apiVersion, false) : 
+            this.ImagingApi = onPremise ? new ImagingApi(baseUrl, apiVersion, false) : 
                 new ImagingApi(appKey, appSid, baseUrl, apiVersion);
             
             InputTestFiles = this.FetchInputTestFilesInfo();
