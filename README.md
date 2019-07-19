@@ -24,6 +24,7 @@ Export the following images to various formats (generally supported ones are BMP
 * DICOM
 * CDR
 * ODG
+* OTG
 * DNG
 * SVG
 * CMX
