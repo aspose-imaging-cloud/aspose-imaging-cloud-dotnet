@@ -108,7 +108,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// If you use custom on-premise server with metered license.
         /// This way, you only need to specify the API base URL.
         /// </summary>
-        public bool IsMetered { get; set; } = false;
+        public bool OnPremise { get; set; } = false;
 
         #endregion
 
