@@ -307,7 +307,7 @@ namespace Aspose.Imaging.Cloud.Sdk
                 {
                     // TODO: change the behavior according to IMAGINGCLOUD-52 resolution
                     client.ContentLength = 0;
-                    client.Timeout += 120000;
+                    client.Timeout += 600000;
                 }
             }
             finally

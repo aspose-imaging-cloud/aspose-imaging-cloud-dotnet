@@ -55,16 +55,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         private const string ApiVersion = "v3.0";
 
         /// <summary>
-        /// The application key
-        /// </summary>
-        private const string AppKey = "xxx";
-
-        /// <summary>
-        /// The application SID
-        /// </summary>
-        private const string AppSid = "xxx";
-
-        /// <summary>
         /// The base URL
         /// </summary>
         private const string BaseUrl = "http://api.aspose.cloud/";
@@ -192,7 +182,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         }
 
         [OneTimeTearDown]
-        public virtual void FinilizeFixture()
+        public virtual void FinalizeFixture()
         {
             if (!FailedAnyTest && this.RemoveResult && 
                 this.ImagingApi.ObjectExists(new ObjectExistsRequest(this.TempFolder, this.TestStorage)).Exists.Value)
@@ -208,29 +198,23 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         /// <summary>
         /// Creates the API instances using given access parameters.
         /// </summary>
-        /// <param name="appKey">The application key.</param>
-        /// <param name="appSid">The application sid.</param>
-        /// <param name="baseUrl">The base URL.</param>
-        /// <param name="apiVersion">The API version.</param>
-        /// <param name="debug">if set to <c>true</c> [debug].</param>
         /// <exception cref="System.ArgumentException">Please, specify valid access data (AppKey, AppSid, Base URL)</exception>
-        protected void CreateApiInstances(string appKey = AppKey, string appSid = AppSid, 
-            string baseUrl = BaseUrl, string apiVersion = ApiVersion, bool debug = false)
+        protected void CreateApiInstances()
         {
-            if (appKey == AppKey || appSid == AppSid)
-            {
-                WriteLineEverywhere("Access data isn't set explicitly. Trying to obtain it from environment variables.");
+            WriteLineEverywhere("Trying to obtain configuration from environment variables.");
+            string onPremiseString = this.GetEnvironmentVariable("OnPremise");
+            bool onPremise = !string.IsNullOrEmpty(onPremiseString) &&
+                             bool.Parse(this.GetEnvironmentVariable("OnPremise"));
+            string appKey = onPremise ? string.Empty : this.GetEnvironmentVariable("AppKey");
+            string appSid = onPremise ? string.Empty : this.GetEnvironmentVariable("AppSid");
+            string baseUrl = this.GetEnvironmentVariable("ApiEndpoint");
+            string apiVersion = this.GetEnvironmentVariable("ApiVersion");
 
-                appKey = this.GetEnvironmentVariable("AppKey");
-                appSid = this.GetEnvironmentVariable("AppSid");
-                baseUrl = this.GetEnvironmentVariable("ApiEndpoint");
-                apiVersion = this.GetEnvironmentVariable("ApiVersion");
-            }
-
-            if (string.IsNullOrEmpty(appKey) || string.IsNullOrEmpty(appSid) || string.IsNullOrEmpty(baseUrl) || 
-                string.IsNullOrEmpty(apiVersion))
+            if ((!onPremise && (string.IsNullOrEmpty(appKey) || string.IsNullOrEmpty(appSid)))
+                || string.IsNullOrEmpty(baseUrl) || string.IsNullOrEmpty(apiVersion))
             {
-                WriteLineEverywhere("Access data isn't set completely by environment variables. Filling unset data with default values.");
+                WriteLineEverywhere("Access data isn't set completely by environment variables. " +
+                                    "Filling unset data with default values.");
             }
 
             if (string.IsNullOrEmpty(apiVersion))
@@ -245,13 +229,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             if (serverFileInfo.Exists && serverFileInfo.Length > 0)
             {
                 var accessData = JsonConvert.DeserializeObject<ServerAccessData>(File.ReadAllText(serverAccessPath));
-                if (string.IsNullOrEmpty(appKey))
+                if (string.IsNullOrEmpty(appKey) && !onPremise)
                 {
                     appKey = accessData.AppKey;
                     WriteLineEverywhere("Set default App key");
                 }
 
-                if (string.IsNullOrEmpty(appSid))
+                if (string.IsNullOrEmpty(appSid) && !onPremise)
                 {
                     appSid = accessData.AppSid;
                     WriteLineEverywhere("Set default App SID");
@@ -264,17 +248,20 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                 }
 
             }
-            else
+            else if (!onPremise)
             {
                 throw new ArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
             }
 
+            WriteLineEverywhere($"On-premise: {onPremise}");
             WriteLineEverywhere($"App key: {appKey}");
             WriteLineEverywhere($"App SID: {appSid}");
             WriteLineEverywhere($"Storage: {this.TestStorage}");
             WriteLineEverywhere($"Base URL: {baseUrl}");
             WriteLineEverywhere($"API version: {apiVersion}");
-            this.ImagingApi = new ImagingApi(appKey, appSid, baseUrl, apiVersion, debug);
+            this.ImagingApi = onPremise ? new ImagingApi(baseUrl, apiVersion, false) : 
+                new ImagingApi(appKey, appSid, baseUrl, apiVersion);
+            
             InputTestFiles = this.FetchInputTestFilesInfo();
         }
 
@@ -370,7 +357,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         /// <returns></returns>
         private List<StorageFile> FetchInputTestFilesInfo()
         {
-            var filesResponse = this.ImagingApi.GetFilesList(new GetFilesListRequest(OriginalDataFolder, this.TestStorage));
+            var filesResponse = this.ImagingApi.GetFilesList(
+                new GetFilesListRequest(OriginalDataFolder, this.TestStorage));
             return filesResponse.Value;
         }
 
@@ -399,7 +387,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         /// <param name="requestInvoker">The request invoker.</param>
         /// <param name="outPath">The output path to save the result.</param>
         /// <param name="storage">The storage.</param>
-        private Stream ObtainPostResponse(string inputPath, string outPath, string storage, PostRequestInvokerDelegate requestInvoker)
+        private Stream ObtainPostResponse(string inputPath, string outPath, string storage, 
+            PostRequestInvokerDelegate requestInvoker)
         {
             using (Stream iStream = this.ImagingApi.DownloadFile(new DownloadFileRequest(inputPath, storage)))
             {

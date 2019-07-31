@@ -265,6 +265,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
         [Test]
         public void FileVersionsCreateTest()
         {
+            if (this.ImagingApi.Configuration.OnPremise)
+            {
+                return;
+            }
+
             var folder = $"{this.TempFolder}/Storage";
             var file1 = "Storage.txt";
             var file2 = "Folder1/Folder1.txt";
@@ -316,6 +321,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
         [Test]
         public void FileVersionsDownloadTest()
         {
+            if (this.ImagingApi.Configuration.OnPremise)
+            {
+                return;
+            }
+
             var folder = $"{this.TempFolder}/Storage";
             var file1 = "Storage.txt";
             var file2 = "Folder1/Folder1.txt";
@@ -372,6 +382,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
         [Test]
         public void FileVersionsCopyTest()
         {
+            if (this.ImagingApi.Configuration.OnPremise)
+            {
+                return;
+            }
+
             var folder = $"{this.TempFolder}/Storage";
             var file1 = "Storage.txt";
             var file2 = "Folder1/Folder1.txt";
@@ -432,6 +447,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
         [Test]
         public void FileVersionsMoveTest()
         {
+            if (this.ImagingApi.Configuration.OnPremise)
+            {
+                return;
+            }
+
             var folder = $"{this.TempFolder}/Storage";
             var file1 = "Storage.txt";
             var file2 = "Folder1/Folder1.txt";
@@ -501,6 +521,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
         [Test]
         public void FileVersionsDeleteTest()
         {
+            if (this.ImagingApi.Configuration.OnPremise)
+            {
+                return;
+            }
+
             var folder = $"{this.TempFolder}/Storage";
             var file1 = "Storage.txt";
             var file2 = "Folder1/Folder1.txt";

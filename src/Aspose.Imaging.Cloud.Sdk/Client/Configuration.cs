@@ -69,7 +69,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
             {
                 if (value.StartsWith("v1") || value.StartsWith("v2"))
                 {
-                    throw new Exception("This SDK is intended to be used only with API v3 and higher due to breaking changes!");
+                    throw new Exception("This SDK is intended to be used only with API v3 " +
+                                        "and higher due to breaking changes!");
                 }
 
                 this.apiBaseUrl = value;
@@ -102,6 +103,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// Gets or sets a value indicating whether debug mode.
         /// </summary>
         public bool DebugMode { get; set; } = false;
+
+        /// <summary>
+        /// If you use custom on-premise server with metered license.
+        /// This way, you only need to specify the API base URL.
+        /// </summary>
+        public bool OnPremise { get; set; } = false;
 
         #endregion
 
