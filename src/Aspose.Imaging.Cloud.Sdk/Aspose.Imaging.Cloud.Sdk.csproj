@@ -6,7 +6,7 @@
     <TargetFrameworks>net20;net35;net4;net45;netstandard2.0</TargetFrameworks>
     <AssemblyVersion>19.8.0.0</AssemblyVersion>
     <FileVersion>19.8.0.0</FileVersion>
-    <Version>19.88.0</Version>
+    <Version>19.8.0</Version>
     <DebugType>full</DebugType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Aspose.Imaging.Cloud.Sdk.xml</DocumentationFile>
