@@ -1,7 +1,7 @@
 # Aspose.Imaging Cloud .NET SDK [![NuGet](https://img.shields.io/nuget/v/Aspose.Imaging-Cloud.svg)](https://www.nuget.org/packages/Aspose.Imaging-Cloud/)
 [Aspose.Imaging Cloud](https://products.aspose.cloud/imaging) is a true [REST API](https://apireference.aspose.cloud/imaging/) that enables you to perform a wide range of image processing operations including creation, manipulation and conversion in the cloud, with zero initial costs. Our Cloud SDKs are wrappers around REST API in various programming languages, allowing you to process images in language of your choice quickly and easily, gaining all benefits of strong types and IDE highlights. 
 
-This repository contains Aspose.Imaging Cloud .NET SDK source code. This SDK allows you to work with Aspose.Imaging Cloud REST APIs in your .NET applications quickly and easily, with zero initial cost.
+This repository contains [Aspose.Imaging Cloud .NET SDK](https://products.aspose.cloud/imaging/net) source code. This SDK allows you to work with Aspose.Imaging Cloud REST APIs in your .NET applications quickly and easily, with zero initial cost.
 
 To use this SDK, you will need App SID and App Key which can be looked up at [Aspose Cloud Dashboard](https://dashboard.aspose.cloud/#/apps) (free registration in Aspose Cloud is required for this).
 
@@ -96,7 +96,7 @@ var imagingApi = new ImagingApi("yourServiceUrl");
 You may check our full [API endpoints list](docs/API_README.md#documentation-for-api-endpoints) or [models available](docs/API_README.md#documentation-for-models) in the SDK.
 
 ## Dependencies
-* [.NET Framework 2.0 or later](https://dotnet.microsoft.com/download).
+* [.NET Framework 2.0 or later](https://dotnet.microsoft.com/download)
 * [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/)
 
 ## Licensing
