@@ -43,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="ModifySvgRequest"/> class.
         /// </summary>
         /// <param name="name">Filename of image.</param>
-        /// <param name="colorType">Color type for SVG image.</param>
+        /// <param name="colorType">Color type for SVG image. Only RGB is supported for now.</param>
         /// <param name="textAsShapes">Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false</param>
         /// <param name="scaleX">Scale X.</param>
         /// <param name="scaleY">Scale Y.</param>
@@ -80,7 +80,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string name { get; set; }
 
         /// <summary>
-        /// Color type for SVG image.
+        /// Color type for SVG image. Only RGB is supported for now.
         /// </summary>  
         public string colorType { get; set; }
 

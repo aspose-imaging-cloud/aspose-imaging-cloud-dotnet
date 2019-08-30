@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
  - [Model.SearchResultsSet](SearchResultsSet.md)
  - [Model.StorageExist](StorageExist.md)
  - [Model.StorageFile](StorageFile.md)
+ - [Model.SvgProperties](SvgProperties.md)
  - [Model.TiffFrame](TiffFrame.md)
  - [Model.TiffOptions](TiffOptions.md)
  - [Model.TiffProperties](TiffProperties.md)

@@ -114,6 +114,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         public OdgProperties OdgProperties { get; set; }
 
         /// <summary>
+        /// Gets or sets the SVG properties.
+        /// </summary>  
+        public SvgProperties SvgProperties { get; set; }
+
+        /// <summary>
         /// Gets or sets the horizontal resolution of an image.
         /// </summary>  
         public double? HorizontalResolution { get; set; }
@@ -151,6 +156,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
           sb.Append("  DicomProperties: ").Append(this.DicomProperties).Append("\n");
           sb.Append("  DngProperties: ").Append(this.DngProperties).Append("\n");
           sb.Append("  OdgProperties: ").Append(this.OdgProperties).Append("\n");
+          sb.Append("  SvgProperties: ").Append(this.SvgProperties).Append("\n");
           sb.Append("  HorizontalResolution: ").Append(this.HorizontalResolution).Append("\n");
           sb.Append("  VerticalResolution: ").Append(this.VerticalResolution).Append("\n");
           sb.Append("  IsCached: ").Append(this.IsCached).Append("\n");
