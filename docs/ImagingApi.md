@@ -578,54 +578,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
-<a name="createmodifiedsvg"></a>
-## **CreateModifiedSvg**
-> System.IO.Stream CreateModifiedSvg(CreateModifiedSvgRequest request)
-
-Update parameters of SVG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-
-### **CreateModifiedSvgRequest** Parameters
-```csharp
-CreateModifiedSvgRequest(
-    System.IO.Stream imageData, 
-    string colorType = null, 
-    bool? textAsShapes = null, 
-    double? scaleX = null, 
-    double? scaleY = null, 
-    int? pageWidth = null, 
-    int? pageHeight = null, 
-    int? borderX = null, 
-    int? borderY = null, 
-    string bkColor = null, 
-    bool? fromScratch = null, 
-    string outPath = null, 
-    string storage = null, 
-    string format = null)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **imageData** | **System.IO.Stream**| Input image | 
- **colorType** | **string**| Color type for SVG image. | [optional] [default to Rgb]
- **textAsShapes** | **bool?**| Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false | [optional] [default to false]
- **scaleX** | **double?**| Scale X. | [optional] [default to 0.0]
- **scaleY** | **double?**| Scale Y. | [optional] [default to 0.0]
- **pageWidth** | **int?**| Width of the page. | [optional] 
- **pageHeight** | **int?**| Height of the page. | [optional] 
- **borderX** | **int?**| Border width. | [optional] 
- **borderY** | **int?**| Border height. | [optional] 
- **bkColor** | **string**| Background color (Default is white). | [optional] [default to white]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
- **format** | **string**| Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] [default to png]
-
-### Return type
-
-**System.IO.Stream**
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
 <a name="createmodifiedtiff"></a>
 ## **CreateModifiedTiff**
 > System.IO.Stream CreateModifiedTiff(CreateModifiedTiffRequest request)
@@ -1691,54 +1643,6 @@ Name | Type | Description  | Notes
  **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
  **folder** | **string**| Folder with image to process. | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
-
-### Return type
-
-**System.IO.Stream**
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
-<a name="modifysvg"></a>
-## **ModifySvg**
-> System.IO.Stream ModifySvg(ModifySvgRequest request)
-
-Update parameters of existing SVG image.
-
-### **ModifySvgRequest** Parameters
-```csharp
-ModifySvgRequest(
-    string name, 
-    string colorType = null, 
-    bool? textAsShapes = null, 
-    double? scaleX = null, 
-    double? scaleY = null, 
-    int? pageWidth = null, 
-    int? pageHeight = null, 
-    int? borderX = null, 
-    int? borderY = null, 
-    string bkColor = null, 
-    bool? fromScratch = null, 
-    string folder = null, 
-    string storage = null, 
-    string format = null)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **colorType** | **string**| Color type for SVG image. | [optional] [default to Rgb]
- **textAsShapes** | **bool?**| Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false | [optional] [default to false]
- **scaleX** | **double?**| Scale X. | [optional] [default to 0.0]
- **scaleY** | **double?**| Scale Y. | [optional] [default to 0.0]
- **pageWidth** | **int?**| Width of the page. | [optional] 
- **pageHeight** | **int?**| Height of the page. | [optional] 
- **borderX** | **int?**| Border width. | [optional] 
- **borderY** | **int?**| Border height. | [optional] 
- **bkColor** | **string**| Background color (Default is white). | [optional] [default to white]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
- **format** | **string**| Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] [default to svg]
 
 ### Return type
 
