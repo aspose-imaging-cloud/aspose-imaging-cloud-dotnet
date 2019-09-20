@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="ApiTester.cs">
 //   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
@@ -290,6 +290,30 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         }
 
         /// <summary>
+        /// Tests the typical PUT request.
+        /// </summary>
+        /// <param name="testMethodName">Name of the test method.</param>
+        /// <param name="parametersLine">The parameters line.</param>
+        /// <param name="inputFileName">Name of the input file.</param>
+        /// <param name="requestInvoker">The request invoker.</param>
+        /// <param name="propertiesTester">The properties tester.</param>
+        /// <param name="folder">The folder.</param>
+        /// <param name="storage">The storage.</param>
+        protected void TestPutRequest(string testMethodName, string parametersLine, 
+            string inputFileName, 
+#if NET20
+            Newtonsoft.Json.Serialization.Func<Stream> requestInvoker,
+#else
+            System.Func<Stream> requestInvoker,
+#endif 
+            PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
+        {
+            this.TestRequest(testMethodName, false, parametersLine, inputFileName, null, 
+                () => this.ObtainPutResponse(requestInvoker),
+                propertiesTester, folder, storage);
+        }
+
+        /// <summary>
         /// Tests the typical POST request.
         /// </summary>
         /// <param name="testMethodName">Name of the test method.</param>
@@ -373,6 +397,24 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             System.Func<Stream> requestInvoker
 #endif 
             )
+        {
+            var response = requestInvoker.Invoke();
+            Assert.NotNull(response);
+            Assert.Greater(response.Length, 0);
+            return response;
+        }
+        
+        /// <summary>
+        /// Obtains the typical PUT request response.
+        /// </summary>
+        /// <param name="requestInvoker">The request invoker.</param>
+        private Stream ObtainPutResponse(
+#if NET20
+            Newtonsoft.Json.Serialization.Func<Stream> requestInvoker
+#else
+            System.Func<Stream> requestInvoker
+#endif 
+        )
         {
             var response = requestInvoker.Invoke();
             Assert.NotNull(response);

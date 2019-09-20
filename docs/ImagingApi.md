@@ -1144,6 +1144,38 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="filtereffectimage"></a>
+## **FilterEffectImage**
+> System.IO.Stream FilterEffectImage(FilterEffectImageRequest request)
+
+Performs filtering effects on an existing image.
+
+### **FilterEffectImageRequest** Parameters
+```csharp
+FilterEffectImageRequest(
+    string name, 
+    string format, 
+    string filterType, 
+    FilterPropertiesBase filterProperties, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Filename of an image. | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
+ **filterType** | **string**| Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing). | 
+ **filterProperties** | [**FilterPropertiesBase**](FilterPropertiesBase.md)| Filter properties. | 
+ **folder** | **string**| Folder with image to process. | [optional] 
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+
+### Return type
+
+**System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="findimageduplicates"></a>
 ## **FindImageDuplicates**
 > [ImageDuplicatesSet](ImageDuplicatesSet.md) FindImageDuplicates(FindImageDuplicatesRequest request)
