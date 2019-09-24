@@ -44,12 +44,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
+        [TestCase(".psd")]
+#if EXTENDED_TEST        
         [TestCase(".dicom")]
         [TestCase(".djvu")]
         [TestCase(".gif")]
-        [TestCase(".psd")]
         [TestCase(".tiff")]
         [TestCase(".webp")]
+#endif
         public void FilterEffectTest(string formatExtension, params string[] additionalExportFormats)
         {
             string name = null;
