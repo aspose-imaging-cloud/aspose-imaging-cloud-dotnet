@@ -1842,7 +1842,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
-        /// Performs filtering effects on an existing image. 
+        /// Apply filtering effects to an existing image. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="FilterEffectImageRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            

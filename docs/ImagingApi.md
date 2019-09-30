@@ -1148,7 +1148,7 @@ Name | Type | Description  | Notes
 ## **FilterEffectImage**
 > System.IO.Stream FilterEffectImage(FilterEffectImageRequest request)
 
-Performs filtering effects on an existing image.
+Apply filtering effects to an existing image.
 
 ### **FilterEffectImageRequest** Parameters
 ```csharp
