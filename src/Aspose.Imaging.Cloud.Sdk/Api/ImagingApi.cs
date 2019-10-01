@@ -950,6 +950,54 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
+        /// Update parameters of SVG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CreateModifiedSvgRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream CreateModifiedSvg(CreateModifiedSvgRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateModifiedSvg");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/svg";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "colorType", request.colorType);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "textAsShapes", request.textAsShapes);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "scaleX", request.scaleX);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "scaleY", request.scaleY);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageWidth", request.pageWidth);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageHeight", request.pageHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "borderX", request.borderX);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "borderY", request.borderY);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
+        }
+        
+        /// <summary>
         /// Update parameters of TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="CreateModifiedTiffRequest" /></param>
@@ -2601,6 +2649,51 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
+        }
+        
+        /// <summary>
+        /// Update parameters of existing SVG image. 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="ModifySvgRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream ModifySvg(ModifySvgRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.name == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'name' when calling ModifySvg");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/svg";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "colorType", request.colorType);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "textAsShapes", request.textAsShapes);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "scaleX", request.scaleX);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "scaleY", request.scaleY);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageWidth", request.pageWidth);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "pageHeight", request.pageHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "borderX", request.borderX);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "borderY", request.borderY);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "fromScratch", request.fromScratch);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             
             var response = this.apiInvoker.InvokeApi(
                 resourcePath, 

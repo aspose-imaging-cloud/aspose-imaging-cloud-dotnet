@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **DicomProperties** | [**DicomProperties**](DicomProperties.md) | Gets or sets the DICOM properties. | [optional] 
 **DngProperties** | [**DngProperties**](DngProperties.md) | Gets or sets the DNG properties. | [optional] 
 **OdgProperties** | [**OdgProperties**](OdgProperties.md) | Gets or sets the the ODG properties. | [optional] 
+**SvgProperties** | [**SvgProperties**](SvgProperties.md) | Gets or sets the SVG properties. | [optional] 
 **HorizontalResolution** | **double?** | Gets or sets the horizontal resolution of an image. | 
 **VerticalResolution** | **double?** | Gets or sets the vertical resolution of an image. | 
 **IsCached** | **bool?** | Gets or sets a value indicating whether image is cached. | 
