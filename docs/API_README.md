@@ -41,6 +41,7 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**ExtractImageFeatures**](ImagingApi.md#extractimagefeatures) | **GET** /imaging/ai/imageSearch/{searchContextId}/image2features | Extract features from image without adding to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**ExtractImageFrameProperties**](ImagingApi.md#extractimageframeproperties) | **POST** /imaging/frames/{frameId}/properties | Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**ExtractImageProperties**](ImagingApi.md#extractimageproperties) | **POST** /imaging/properties | Get properties of an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+*ImagingApi* | [**FilterEffectImage**](ImagingApi.md#filtereffectimage) | **PUT** /imaging/{name}/filterEffect | Apply filtering effects to an existing image.
 *ImagingApi* | [**FindImageDuplicates**](ImagingApi.md#findimageduplicates) | **GET** /imaging/ai/imageSearch/{searchContextId}/findDuplicates | Find images duplicates.
 *ImagingApi* | [**FindImagesByTags**](ImagingApi.md#findimagesbytags) | **POST** /imaging/ai/imageSearch/{searchContextId}/findByTags | Find images by tags. Tags JSON string is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**FindSimilarImages**](ImagingApi.md#findsimilarimages) | **GET** /imaging/ai/imageSearch/{searchContextId}/findSimilar | Find similar images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
@@ -90,6 +91,7 @@ Class | Method | HTTP request | Description
  - [Model.FileVersions](FileVersions.md)
  - [Model.FilesList](FilesList.md)
  - [Model.FilesUploadResult](FilesUploadResult.md)
+ - [Model.FilterPropertiesBase](FilterPropertiesBase.md)
  - [Model.GifProperties](GifProperties.md)
  - [Model.ImageDuplicates](ImageDuplicates.md)
  - [Model.ImageDuplicatesSet](ImageDuplicatesSet.md)
@@ -114,6 +116,16 @@ Class | Method | HTTP request | Description
  - [Model.TiffOptions](TiffOptions.md)
  - [Model.TiffProperties](TiffProperties.md)
  - [Model.WebPProperties](WebPProperties.md)
+ - [Model.BigRectangularFilterProperties](BigRectangularFilterProperties.md)
+ - [Model.BilateralSmoothingFilterProperties](BilateralSmoothingFilterProperties.md)
+ - [Model.ConvolutionFilterProperties](ConvolutionFilterProperties.md)
+ - [Model.DeconvolutionFilterProperties](DeconvolutionFilterProperties.md)
  - [Model.FileVersion](FileVersion.md)
  - [Model.JpegExifData](JpegExifData.md)
+ - [Model.MedianFilterProperties](MedianFilterProperties.md)
+ - [Model.SmallRectangularFilterProperties](SmallRectangularFilterProperties.md)
+ - [Model.GaussWienerFilterProperties](GaussWienerFilterProperties.md)
+ - [Model.GaussianBlurFilterProperties](GaussianBlurFilterProperties.md)
+ - [Model.MotionWienerFilterProperties](MotionWienerFilterProperties.md)
+ - [Model.SharpenFilterProperties](SharpenFilterProperties.md)
 

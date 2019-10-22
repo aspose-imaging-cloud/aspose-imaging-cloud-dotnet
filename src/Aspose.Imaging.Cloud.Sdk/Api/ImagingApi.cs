@@ -1842,6 +1842,60 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
+        /// Apply filtering effects to an existing image. 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="FilterEffectImageRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream FilterEffectImage(FilterEffectImageRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.name == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'name' when calling FilterEffectImage");
+            }
+
+            // verify the required parameter 'format' is set
+            if (request.format == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'format' when calling FilterEffectImage");
+            }
+
+            // verify the required parameter 'filterType' is set
+            if (request.filterType == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'filterType' when calling FilterEffectImage");
+            }
+
+            // verify the required parameter 'filterProperties' is set
+            if (request.filterProperties == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'filterProperties' when calling FilterEffectImage");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/filterEffect";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "filterType", request.filterType);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            var postBody = SerializationHelper.Serialize(request.filterProperties);
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "PUT", 
+                postBody, 
+                null, 
+                formParams);
+            return response;
+            
+        }
+        
+        /// <summary>
         /// Find images duplicates. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="FindImageDuplicatesRequest" /></param>

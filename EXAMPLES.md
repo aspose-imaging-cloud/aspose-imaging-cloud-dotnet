@@ -85,6 +85,22 @@ finally
 // other Imaging requests typically follow the same principles regarding stream/storage relations
 ```
 
+### Imaging - Apply a filter to an image
+```csharp
+ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+
+// set the filter properties
+var filterProperties = new Filter("GaussianBlur", new GaussianBlurFilterProperties
+{
+    Radius = 2,
+    Sigma = 2
+});
+
+// apply the filter to the image and obtain the result
+var filteredImage = ImagingApi.FilterEffectImage(
+    new FilterEffectImageRequest(name, format, "GaussianBlur", filter, folder, storage));
+```
+
 ### Imaging.AI - Compare two images
 ```csharp
 // optional parameters are base URL, API version and debug mode
