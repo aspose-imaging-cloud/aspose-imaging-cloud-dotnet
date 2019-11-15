@@ -23,83 +23,102 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-
-using Aspose.Imaging.Cloud.Sdk.Model;
+using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+using System;
 using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
+    /// <summary>
+    /// Export image example.
+    /// </summary>
+    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
     class ExportImage : ImagingBase
     {
-        // Export an image to another format.
+        /// <summary>
+        /// Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        /// The name of the example image file.
+        /// </value>
+        /// <remarks>
+        /// Input formats could be one of the following:
+        /// BMP, GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
+        /// </remarks>
+        protected override string SampleImageFileName => "ExportSampleImage.bmp";
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ExportImage"/> class.
+        /// </summary>
+        /// <param name="imagingApi">The imaging API.</param>
+        public ExportImage(ImagingApi imagingApi) : base(imagingApi)
+        {
+            PrintHeader("Export image example:");
+        }
+
+        /// <summary>
+        /// Export an image to another format.
+        /// </summary>
         public void SaveImageAsFromStorage()
         {
-            // Input formats could be one of the following:
-            // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
+            Console.WriteLine("Export an image to another format");
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs) 
             // for possible output formats
             string format = "pdf";
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // Cloud Storage name
             
-            var request = new SaveImageAsRequest(fileName, format, folder, storage);
-            Stream updatedImage = this.ImagingApi.SaveImageAs(request);
+            var request = new SaveImageAsRequest(SampleImageFileName, format, folder, storage);
 
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Watermark_out." + format))
+            Console.WriteLine($"Call SaveImageAs with params: format:{format}");
+
+            using (Stream updatedImage = this.ImagingApi.SaveImageAs(request))
             {
-                updatedImage.Seek(0, SeekOrigin.Begin);
-                updatedImage.CopyTo(fileStream);
+                SaveUpdatedImageToOutput(updatedImage, false, format);
             }
+
+            Console.WriteLine();
         }
 
-        // Export an image to another format.
+        /// <summary>
+        /// Export an image to another format.
+        /// </summary>
         public void SaveImageAsAndUploadToStorage()
         {
-            // Input formats could be one of the following:
-            // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
+            Console.WriteLine("Export an image to another format and upload to cloud storage");
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs)
             // for possible output formats
             string format = "pdf";
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // Cloud Storage name
 
-            var request = new SaveImageAsRequest(fileName, format, folder, storage);
+            var request = new SaveImageAsRequest(SampleImageFileName, format, folder, storage);
+
+            Console.WriteLine($"Call SaveImageAs with params: format:{format}");
+
             using (Stream updatedImage = this.ImagingApi.SaveImageAs(request))
             {
-                // Upload updated image to Cloud Storage
-                string outPath = "Watermark_out." + format;
-                var uploadFileRequest = new UploadFileRequest(outPath, updatedImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
+                UploadImageToCloud(GetModifiedSampleImageFileName(false, format), updatedImage);              
             }
+
+            Console.WriteLine();
         }
 
-        // Export an image to another format. Image data is passed in a request stream.
+        /// <summary>
+        /// Export an image to another format. Image data is passed in a request stream.
+        /// </summary>
         public void CreateSavedImageAsFromRequestBody()
         {
-            // Input formats could be one of the following:
-            // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
-            using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
+            Console.WriteLine("Export an image to another format. Image data is passed in a request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs)
                 // for possible output formats
@@ -108,14 +127,15 @@ namespace AsposeImagingCloudSDKExamples
                 string storage = null; // Cloud Storage name
 
                 var request = new CreateSavedImageAsRequest(inputImageStream, format, outPath, storage);
-                Stream updatedImage = this.ImagingApi.CreateSavedImageAs(request);
 
-                // Save updated image to local storage
-                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Watermark_out." + format))
+                Console.WriteLine($"Call CreateSavedImageAs with params: format:{format}");
+
+                using (Stream updatedImage = this.ImagingApi.CreateSavedImageAs(request))
                 {
-                    updatedImage.Seek(0, SeekOrigin.Begin);
-                    updatedImage.CopyTo(fileStream);
+                    SaveUpdatedImageToOutput(updatedImage, true, format);
                 }
+
+                Console.WriteLine();
             }
         }
     }

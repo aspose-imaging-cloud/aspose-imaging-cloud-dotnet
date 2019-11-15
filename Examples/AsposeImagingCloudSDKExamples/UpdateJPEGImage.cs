@@ -23,80 +23,100 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Model;
+using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+using System;
 using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
+    /// <summary>
+    /// Update JPEG image example.
+    /// </summary>
+    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
     class UpdateJPEGImage : ImagingBase
     {
-        // Update parameters of existing JPEG image. The image is saved in the cloud.
-        public void ModifyJpegFromStorage()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateJPEGImage"/> class.
+        /// </summary>
+        /// <param name="imagingApi">The imaging API.</param>
+        public UpdateJPEGImage(ImagingApi imagingApi) : base(imagingApi)
         {
-            string fileName = "aspose-logo.jpg";
-
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
-            
-            int? quality = 65;
-            string compressionType = "progressive";
-            bool? fromScratch = null;
-            string folder = null; // Folder with image to process
-            string storage = null; // We are using default Cloud Storage
-
-            ModifyJpegRequest modifyJpegRequest = new ModifyJpegRequest(fileName, quality, compressionType,
-                                                                                fromScratch, folder, storage);
-
-            Stream updatedImage = this.ImagingApi.ModifyJpeg(modifyJpegRequest);
-            
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Sample_out.jpg"))
-            {
-                updatedImage.Seek(0, SeekOrigin.Begin);
-                updatedImage.CopyTo(fileStream);
-            }
+            PrintHeader("Update JPEG image example:");
         }
 
-        // Update parameters of existing JPEG image, and upload updated image to Cloud Storage
-        public void ModifyJpegAndUploadToStorage()
+        /// <summary>
+        /// Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        /// The name of the example image file.
+        /// </value>
+        protected override string SampleImageFileName => "UpdateJPEGSampleImage.jpg";
+
+        /// <summary>
+        /// Update parameters of existing JPEG image. The image is saved in the cloud.
+        /// </summary>
+        public void ModifyJpegFromStorage()
         {
-            string fileName = "aspose-logo.jpg";
+            Console.WriteLine("Update parameters of a JPEG image from cloud storage");
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
-
+            UploadSampleImageToCloud();
+            
             int? quality = 65;
             string compressionType = "progressive";
             bool? fromScratch = null;
-            string folder = null; // Folder with image to process
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            ModifyJpegRequest modifyJpegRequest = new ModifyJpegRequest(fileName, quality, compressionType,
+            ModifyJpegRequest modifyJpegRequest = new ModifyJpegRequest(SampleImageFileName, quality, compressionType,
                                                                                 fromScratch, folder, storage);
+
+            Console.WriteLine($"Call ModifyJpeg with params: quality:{quality}, compression type:{compressionType}");
 
             using (Stream updatedImage = this.ImagingApi.ModifyJpeg(modifyJpegRequest))
             {
-                // Upload updated image to Cloud Storage
-                string outPath = "Sample_out.jpg";
-                var uploadFileRequest = new UploadFileRequest(outPath, updatedImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
+                SaveUpdatedImageToOutput(updatedImage, false);
             }
+
+            Console.WriteLine();
         }
 
-        // Update parameters of existing JPEG image. Image data is passed in a request stream.
+        /// <summary>
+        /// Update parameters of existing JPEG image, and upload updated image to Cloud Storage.
+        /// </summary>
+        public void ModifyJpegAndUploadToStorage()
+        {
+            Console.WriteLine("Update parameters of a JPEG image and upload to cloud storage");
+
+            UploadSampleImageToCloud();
+
+            int? quality = 65;
+            string compressionType = "progressive";
+            bool? fromScratch = null;
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
+
+            ModifyJpegRequest modifyJpegRequest = 
+                new ModifyJpegRequest(SampleImageFileName, quality, compressionType, fromScratch, folder, storage);
+
+            Console.WriteLine($"Call ModifyJpeg with params: quality:{quality}, compression type:{compressionType}");
+
+            using (Stream updatedImage = this.ImagingApi.ModifyJpeg(modifyJpegRequest))
+            {
+                UploadImageToCloud(GetModifiedSampleImageFileName(false), updatedImage);
+            }
+
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Update parameters of existing JPEG image. Image data is passed in a request stream.
+        /// </summary>
         public void CreateModifiedJpegFromRequestBody()
         {
-            string fileName = "aspose-logo.jpg";
-            using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
+            Console.WriteLine("Update parameters of a JPEG image from request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 int? quality = 65;
                 string compressionType = "progressive";
@@ -104,18 +124,18 @@ namespace AsposeImagingCloudSDKExamples
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
                 string storage = null; // We are using default Cloud Storage
 
-                CreateModifiedJpegRequest modifiedJpgRequest = new CreateModifiedJpegRequest(inputImageStream, quality, compressionType,
-                                                                                            fromScratch, outPath, storage);
+                CreateModifiedJpegRequest modifiedJpgRequest =
+                    new CreateModifiedJpegRequest(inputImageStream, quality, compressionType, fromScratch, outPath, storage);
 
-                Stream updatedImage = this.ImagingApi.CreateModifiedJpeg(modifiedJpgRequest);
+                Console.WriteLine($"Call CreateModifiedJpeg with params: quality:{quality}, compression type:{compressionType}");
 
-                // Save updated image to local storage
-                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Sample_out.jpg"))
+                using (Stream updatedImage = this.ImagingApi.CreateModifiedJpeg(modifiedJpgRequest))
                 {
-                    updatedImage.Seek(0, SeekOrigin.Begin);
-                    updatedImage.CopyTo(fileStream);
+                    SaveUpdatedImageToOutput(updatedImage, true);
                 }
             }
+
+            Console.WriteLine();
         }
     }
 }

@@ -23,57 +23,69 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using AsposeImagingCloudSDKExamples.ai;
+using Aspose.Imaging.Cloud.Sdk.Api;
+using AsposeImagingCloudSDKExamples.AI;
+using System;
+using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
     class ImagingExamples
-    {   
+    {
         static void Main(string[] args)
         {
-            // Update parameters of existing BMP image
-            UpdateBMPImage bmpImage = new UpdateBMPImage();
+            string myAppKey = ""; // Get AppKey from https://dashboard.aspose.cloud/
+            string myAppSid = ""; // Get AppSID from https://dashboard.aspose.cloud/
+            var api = new ImagingApi(appKey: myAppKey, appSid: myAppSid);
+
+            PrepareOutput();
+
+            Console.WriteLine("Runnig Imaging Cloud examples:");
+            Console.WriteLine();
+ 
+           // Update parameters of existing BMP image
+            UpdateBMPImage bmpImage = new UpdateBMPImage(api);
             bmpImage.ModifyBmpFromStorage();
             bmpImage.ModifyBmpAndUploadToStorage();
             bmpImage.CreateModifiedBmpFromRequestBody();
 
             // Crop an existing image
-            CropImage cropImage = new CropImage();
+            CropImage cropImage = new CropImage(api);
             cropImage.CropImageFromStorage();
             cropImage.CropImageAndUploadToStorage();
             cropImage.CreateCroppedImageFromRequestBody();
 
             // Process existing EMF imaging using given parameters
-            UpdateEMFImage updateEMFImage = new UpdateEMFImage();
+            UpdateEMFImage updateEMFImage = new UpdateEMFImage(api);
             updateEMFImage.ModifyEmfFromStorage();
             updateEMFImage.ModifyEmfAndUploadToStorage();
             updateEMFImage.CreateModifiedEmfFromRequestBody();
 
             // Export existing image to another format
-            ExportImage exportImage = new ExportImage();
+            ExportImage exportImage = new ExportImage(api);
             exportImage.SaveImageAsFromStorage();
             exportImage.SaveImageAsAndUploadToStorage();
             exportImage.CreateSavedImageAsFromRequestBody();
 
             // Get properties of an image
-            ImageProperties imageProperties = new ImageProperties();
+            ImageProperties imageProperties = new ImageProperties(api);
             imageProperties.GetImagePropertiesFromStorage();
             imageProperties.ExtractImagePropertiesFromRequestBody();
 
             // Resize an existing image
-            ResizeImage resizeImage = new ResizeImage();
+            ResizeImage resizeImage = new ResizeImage(api);
             resizeImage.ResizeImageFromStorage();
             resizeImage.ResizeImageAndUploadToStorage();
             resizeImage.CreateResizedImageFromRequestBody();
 
             // Rotate and/or flip an existing image
-            RotateFlipImage rotateFlipImage = new RotateFlipImage();
+            RotateFlipImage rotateFlipImage = new RotateFlipImage(api);
             rotateFlipImage.RotateFlipImageFromStorage();
             rotateFlipImage.RotateFlipImageAndUploadToStorage();
             rotateFlipImage.CreateRotateFlippedImageFromRequestBody();
 
             // TIFF Frames
-            TIFFFrames tiffFrames = new TIFFFrames();
+            TIFFFrames tiffFrames = new TIFFFrames(api);
             // Get a specified frame from existing TIFF image
             tiffFrames.GetImageFrameFromStorage();
             // Get a specified frame from existing TIFF image, and upload the frame to Cloud Storage
@@ -96,7 +108,7 @@ namespace AsposeImagingCloudSDKExamples
             tiffFrames.ExtractImageFramePropertiesFromRequestBody();
 
             // Update parameters of existing TIFF image
-            TIFFImage tiffImage = new TIFFImage();
+            TIFFImage tiffImage = new TIFFImage(api);
             tiffImage.ModifyTiffFromStorage();
             tiffImage.ModifyTiffAndUploadToStorage();
             tiffImage.CreateModifiedTiffFromRequestBody();
@@ -104,61 +116,87 @@ namespace AsposeImagingCloudSDKExamples
             tiffImage.AppendTiffFromStorage();
 
             // Update parameters of existing GIF image
-            UpdateGIFImage updateGIFImage = new UpdateGIFImage();
+            UpdateGIFImage updateGIFImage = new UpdateGIFImage(api);
             updateGIFImage.ModifyGifFromStorage();
             updateGIFImage.ModifyGifAndUploadToStorage();
             updateGIFImage.CreateModifiedGifFromRequestBody();
 
             // Perform scaling, cropping and flipping of an existing image in a single request
-            UpdateImage updateImage = new UpdateImage();
+            UpdateImage updateImage = new UpdateImage(api);
             updateImage.UpdateImageFromStorage();
             updateImage.UpdateImageAndUploadToStorage();
             updateImage.CreateUpdatedImageFromRequestBody();
 
             // Update parameters of existing JPEG2000 image
-            UpdateJPEG2000Image updateJPEG2000Image = new UpdateJPEG2000Image();
+            UpdateJPEG2000Image updateJPEG2000Image = new UpdateJPEG2000Image(api);
             updateJPEG2000Image.ModifyJpeg2000FromStorage();
             updateJPEG2000Image.ModifyJpeg2000AndUploadToStorage();
             updateJPEG2000Image.CreateModifiedJpeg2000FromRequestBody();
 
             // Update parameters of existing JPEG image
-            UpdateJPEGImage updateJPEGImage = new UpdateJPEGImage();
+            UpdateJPEGImage updateJPEGImage = new UpdateJPEGImage(api);
             updateJPEGImage.ModifyJpegFromStorage();
             updateJPEGImage.ModifyJpegAndUploadToStorage();
             updateJPEGImage.CreateModifiedJpegFromRequestBody();
 
             // Update parameters of existing PSD image
-            UpdatePSDImage updatePSDImage = new UpdatePSDImage();
+            UpdatePSDImage updatePSDImage = new UpdatePSDImage(api);
             updatePSDImage.ModifyPsdFromStorage();
             updatePSDImage.ModifyPsdAndUploadToStorage();
             updatePSDImage.CreateModifiedPsdFromRequestBody();
 
             // Update parameters of existing WEBP image
-            WEBPImage webpImage = new WEBPImage();
+            WEBPImage webpImage = new WEBPImage(api);
             webpImage.ModifyWebPFromStorage();
             webpImage.ModifyWebPAndUploadToStorage();
             webpImage.CreateModifiedWebPFromRequestBody();
 
             // Process existing WMF image using given parameters
-            WMFImage wmfImage = new WMFImage();
+            WMFImage wmfImage = new WMFImage(api);
             wmfImage.ModifyWmfFromStorage();
             wmfImage.ModifyWmfAndUploadToStorage();
             wmfImage.CreateModifiedWmfFromRequestBody();
 
-            // AI APIs 
+            // AI APIs           
+
+            Console.WriteLine("Runnig AI examples:");
+            Console.WriteLine();
+
             // Compare two images
-            CompareImages compareImages = new CompareImages();
-            compareImages.CompareTwoImagesInSearchContext();
-            compareImages.CompareLoadedImageToImageInSearchContext();
+            CompareImages compareImages = new CompareImages(api);
+            compareImages.PrepareSearchContext();
+            compareImages.CompareTwoImagesInCloud();
+            compareImages.CompareLoadedImageToImageInCloud();
+            compareImages.DeleteSearchContext();
 
             // Find Duplicate Images
-            FindDuplicateImages findDuplicateImages = new FindDuplicateImages();
+            FindDuplicateImages findDuplicateImages = new FindDuplicateImages(api);
+            findDuplicateImages.PrepareSearchContext();
             findDuplicateImages.FindImageDuplicates();
+            findDuplicateImages.DeleteSearchContext();
 
             // Find Similar Images
-            FindImages findImages = new FindImages();
+            FindImages findImages = new FindImages(api);
+            findImages.PrepareSearchContext();
             findImages.FindSimilarImages();
             findImages.FindImagesByTag();
+            findImages.DeleteSearchContext();
+
+            Console.WriteLine("Press any key ...");
+            Console.ReadKey();
+        }
+
+        /// <summary>
+        /// Prepare output folder.
+        /// </summary>
+        private static void PrepareOutput()
+        {
+            if (Directory.Exists(ImagingBase.OutputFolder))
+            {
+                Directory.Delete(ImagingBase.OutputFolder, true);
+            }
+
+            Directory.CreateDirectory(ImagingBase.OutputFolder);
         }
     }
 }

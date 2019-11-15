@@ -23,61 +23,44 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Model;
+using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System;
 using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
+    /// <summary>
+    /// TIFF image example.
+    /// </summary>
+    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
     class TIFFImage : ImagingBase
     {
-        // Update parameters of TIFF image. The image is saved in the cloud.
-        public void ModifyTiffFromStorage()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TIFFImage"/> class.
+        /// </summary>
+        /// <param name="imagingApi">The imaging API.</param>
+        public TIFFImage(ImagingApi imagingApi) : base(imagingApi)
         {
-            string fileName = "Sample.tiff";
-
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
-
-            // Update parameters of TIFF image
-            string compression = "adobedeflate";
-            string resolutionUnit = "inch";
-            int? bitDepth = 1;
-            double horizontalResolution = 150;
-            double verticalResolution = 150;
-            bool? fromScratch = null;
-            string folder = null; // Input file is saved at the root of the storage
-            string storage = null; // We are using default Cloud Storage
-
-            ModifyTiffRequest getImageTiffRequest = new ModifyTiffRequest(fileName, bitDepth, compression, resolutionUnit,
-                                                            horizontalResolution, verticalResolution, fromScratch, folder, storage);
-
-            Stream updatedImage = this.ImagingApi.ModifyTiff(getImageTiffRequest);
-            
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Sample_out.tiff"))
-            {
-                updatedImage.Seek(0, SeekOrigin.Begin);
-                updatedImage.CopyTo(fileStream);
-            }
+            PrintHeader("TIFF image example:");
         }
 
-        // Update parameters of TIFF image, and upload updated image to Cloud Storage
-        public void ModifyTiffAndUploadToStorage()
-        {
-            string fileName = "Sample.tiff";
+        /// <summary>
+        /// Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        /// The name of the example image file.
+        /// </value>
+        protected override string SampleImageFileName => "TiffSampleImage.tiff";
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+        /// <summary>
+        /// Update parameters of TIFF image. The image is saved in the cloud.
+        /// </summary>
+        public void ModifyTiffFromStorage()
+        {
+            Console.WriteLine("Update parameters of a TIFF image from cloud storage");
+
+            UploadSampleImageToCloud();
 
             // Update parameters of TIFF image
             string compression = "adobedeflate";
@@ -86,27 +69,65 @@ namespace AsposeImagingCloudSDKExamples
             double horizontalResolution = 150;
             double verticalResolution = 150;
             bool? fromScratch = null;
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            ModifyTiffRequest getImageTiffRequest = new ModifyTiffRequest(fileName, bitDepth, compression, resolutionUnit,
-                                                            horizontalResolution, verticalResolution, fromScratch, folder, storage);
+            ModifyTiffRequest getImageTiffRequest = 
+                new ModifyTiffRequest(SampleImageFileName, bitDepth, compression, resolutionUnit,
+                                      horizontalResolution, verticalResolution, fromScratch, folder, storage);
+
+            Console.WriteLine($"Call ModifyTiff with params: compression:{compression}, resolution unit:{resolutionUnit}, bit depth:{bitDepth}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution} ");
 
             using (Stream updatedImage = this.ImagingApi.ModifyTiff(getImageTiffRequest))
             {
-                // Upload updated image to Cloud Storage
-                string outPath = "Sample_out.tiff";
-                var uploadFileRequest = new UploadFileRequest(outPath, updatedImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
+                SaveUpdatedImageToOutput(updatedImage, false);
             }
+
+            Console.WriteLine();
         }
 
-        // Update parameters of TIFF image.
-        // Image data is passed in a request stream.
+        /// <summary>
+        /// Update parameters of TIFF image, and upload updated image to Cloud Storage.
+        /// </summary>
+        public void ModifyTiffAndUploadToStorage()
+        {
+            Console.WriteLine("Update parameters of a TIFF image and upload to cloud storage");
+
+            UploadSampleImageToCloud();
+
+            // Update parameters of TIFF image
+            string compression = "adobedeflate";
+            string resolutionUnit = "inch";
+            int? bitDepth = 1;
+            double horizontalResolution = 150;
+            double verticalResolution = 150;
+            bool? fromScratch = null;
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
+
+            ModifyTiffRequest getImageTiffRequest =
+                new ModifyTiffRequest(SampleImageFileName, bitDepth, compression, resolutionUnit,
+                                      horizontalResolution, verticalResolution, fromScratch, folder, storage);
+
+            Console.WriteLine($"Call ModifyTiff with params: compression:{compression}, resolution unit:{resolutionUnit}, bit depth:{bitDepth}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution} ");
+
+            using (Stream updatedImage = this.ImagingApi.ModifyTiff(getImageTiffRequest))
+            {
+                UploadImageToCloud(GetModifiedSampleImageFileName(false), updatedImage);
+            }
+
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Update parameters of TIFF image.
+        /// Image data is passed in a request stream.
+        /// </summary>
         public void CreateModifiedTiffFromRequestBody()
         {
-            string fileName = "Sample.tiff";
-            using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
+            Console.WriteLine("Update parameters of a TIFF image from request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 string compression = "adobedeflate";
                 string resolutionUnit = "inch";
@@ -120,82 +141,79 @@ namespace AsposeImagingCloudSDKExamples
                 CreateModifiedTiffRequest postImageTiffRequest = new CreateModifiedTiffRequest(inputImageStream, bitDepth, compression,
                                         resolutionUnit, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
 
-                Stream updatedImage = this.ImagingApi.CreateModifiedTiff(postImageTiffRequest);
+                Console.WriteLine($"Call CreateModifiedTiff with params: compression:{compression}, esolution unit:{resolutionUnit}, bit depth:{bitDepth}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution} ");
 
-                // Save updated image to local storage
-                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Sample_out.tiff"))
+                using (Stream updatedImage = this.ImagingApi.CreateModifiedTiff(postImageTiffRequest))
                 {
-                    updatedImage.Seek(0, SeekOrigin.Begin);
-                    updatedImage.CopyTo(fileStream);
+                    SaveUpdatedImageToOutput(updatedImage, true);
                 }
             }
+
+            Console.WriteLine();
         }
 
-        // Update parameters of TIFF image according to fax parameters.
+        /// <summary>
+        /// Update parameters of TIFF image according to fax parameters.
+        /// </summary>
         public void ConvertTiffToFaxFromStorage()
         {
-            String fileName = "Sample.tiff";
+            Console.WriteLine("Update parameters of TIFF image according to fax parameters.");
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             // Update TIFF Image parameters according to fax parameters
-            String folder = null; // Input file is saved at the root of the storage
-            String storage = null; // We are using default Cloud Storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
 
-            ConvertTiffToFaxRequest getTiffToFaxRequest = new ConvertTiffToFaxRequest(fileName, storage, folder);
+            ConvertTiffToFaxRequest getTiffToFaxRequest = new ConvertTiffToFaxRequest(
+                SampleImageFileName, storage, folder);
 
-            Stream updatedImage = this.ImagingApi.ConvertTiffToFax(getTiffToFaxRequest);
-            
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Sample_out.tiff"))
+            Console.WriteLine($"Call ConvertTiffToFax");
+
+            using (Stream updatedImage = this.ImagingApi.ConvertTiffToFax(getTiffToFaxRequest))
             {
-                updatedImage.Seek(0, SeekOrigin.Begin);
-                updatedImage.CopyTo(fileStream);
+                SaveUpdatedImageToOutput("ConvertTiffToFax.tiff", updatedImage);
             }
+
+            Console.WriteLine();
         }
 
-        // Appends existing TIFF image to another existing TIFF image (i.e. merges TIFF images).
+        /// <summary>
+        /// Appends existing TIFF image to another existing TIFF image (i.e. merges TIFF images).
+        /// </summary>
         public void AppendTiffFromStorage()
         {
-            String fileName = "Sample.tiff"; // Original image file name
-            String appendFileName = "Memorandum.tif"; // Image file name to be appended to original one
-            
-            // Upload original image file to cloud storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            Console.WriteLine(" Appends existing TIFF image to another existing TIFF image.");
+
+            string appendFileName = "Append.tiff"; // Image file name to be appended to original one
+
+            UploadSampleImageToCloud();
 
             // Upload file be appended to cloud storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + appendFileName))
+            using (FileStream localInputImage = File.OpenRead(Path.Combine(ExampleImagesFolder, appendFileName)))
             {
-                var uploadFileRequest = new UploadFileRequest(appendFileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
+                UploadImageToCloud(appendFileName, localInputImage);
             }
 
             // Update TIFF Image parameters according to fax parameters
-            String folder = null; // Input file is saved at the root of the storage
-            String storage = null; // We are using default Cloud Storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
 
-            AppendTiffRequest request = new AppendTiffRequest(fileName, appendFileName, storage, folder);
+            AppendTiffRequest request = new AppendTiffRequest(SampleImageFileName, appendFileName, storage, folder);
+
+            Console.WriteLine($"Call AppendTiff");
+
             this.ImagingApi.AppendTiff(request);
 
             // Download updated file to local storage
-            DownloadFileRequest downloadFileRequest = new DownloadFileRequest(fileName, storage, null);
-            Stream updatedImage = this.ImagingApi.DownloadFile(downloadFileRequest);
-            
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Sample_out.tiff"))
+            DownloadFileRequest downloadFileRequest = new DownloadFileRequest(
+                Path.Combine(CloudPath, SampleImageFileName), storage, null);
+            using (Stream updatedImage = this.ImagingApi.DownloadFile(downloadFileRequest))
             {
-                updatedImage.Seek(0, SeekOrigin.Begin);
-                updatedImage.CopyTo(fileStream);
+                SaveUpdatedImageToOutput("AppendToTiff.tiff", updatedImage);
             }
+
+            Console.WriteLine();
         }
     }
 }

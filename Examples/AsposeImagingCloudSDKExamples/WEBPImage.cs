@@ -23,62 +23,44 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Model;
+using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System;
 using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
+    /// <summary>
+    /// WEBP image example.
+    /// </summary>
+    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
     class WEBPImage : ImagingBase
     {
-        // Update parameters of existing WEBP image. The image is saved in the cloud.
-        public void ModifyWebPFromStorage()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WEBPImage"/> class.
+        /// </summary>
+        /// <param name="imagingApi">The imaging API.</param>
+        public WEBPImage(ImagingApi imagingApi) : base(imagingApi)
         {
-            String fileName = "asposelogo.webp";
-            
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
-
-            bool? lossless = true;
-            int? quality = 90;
-            int? animLoopCount = 5;
-            string animBackgroundColor = "gray";
-            // Specifies where additional parameters we do not support should be taken from.
-            // If this is true – they will be taken from default values for standard image,
-            // if it is false – they will be saved from current image. Default is false.
-            bool? fromScratch = null;
-            string folder = null; // Folder with image to process. The value is null because the file is saved at the root of the storage
-            String storage = null; // We are using default Cloud Storage
-
-            ModifyWebPRequest getImageWebPRequest = new ModifyWebPRequest(fileName, lossless, quality,
-                                            animLoopCount, animBackgroundColor, fromScratch, folder, storage);
-
-            Stream updatedImage = this.ImagingApi.ModifyWebP(getImageWebPRequest);
-
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "asposelogo_out.webp"))
-            {
-                updatedImage.Seek(0, SeekOrigin.Begin);
-                updatedImage.CopyTo(fileStream);
-            }
+            PrintHeader("Update WEBP image example:");
         }
 
-        // Update parameters of existing WEBP image, and upload updated image to Cloud Storage
-        public void ModifyWebPAndUploadToStorage()
-        {
-            String fileName = "asposelogo.webp";
+        /// <summary>
+        /// Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        /// The name of the example image file.
+        /// </value>
+        protected override string SampleImageFileName => "WEBPSampleImage.webp";
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+        /// <summary>
+        /// Update parameters of existing WEBP image. The image is saved in the cloud.
+        /// </summary>
+        public void ModifyWebPFromStorage()
+        {
+            Console.WriteLine("Update parameters of a WEBP image from cloud storage");
+
+            UploadSampleImageToCloud();
 
             bool? lossless = true;
             int? quality = 90;
@@ -88,26 +70,63 @@ namespace AsposeImagingCloudSDKExamples
             // If this is true – they will be taken from default values for standard image,
             // if it is false – they will be saved from current image. Default is false.
             bool? fromScratch = null;
-            string folder = null; // Folder with image to process. The value is null because the file is saved at the root of the storage
-            String storage = null; // We are using default Cloud Storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
 
-            ModifyWebPRequest getImageWebPRequest = new ModifyWebPRequest(fileName, lossless, quality,
+            ModifyWebPRequest getImageWebPRequest = new ModifyWebPRequest(SampleImageFileName, lossless, quality,
                                             animLoopCount, animBackgroundColor, fromScratch, folder, storage);
+
+            Console.WriteLine($"Call ModifyWebP with params: lossless:{lossless}, quality:{quality}, anim loop count:{animLoopCount}, anim background color:{animBackgroundColor}");
 
             using (Stream updatedImage = this.ImagingApi.ModifyWebP(getImageWebPRequest))
             {
-                // Upload updated image to Cloud Storage
-                string outPath = "asposelogo_out.webp";
-                var uploadFileRequest = new UploadFileRequest(outPath, updatedImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
+                SaveUpdatedImageToOutput(updatedImage, false);
             }
+
+            Console.WriteLine();
         }
 
-        // Update parameters of existing Webp image. asposelogo.webpImage data is passed in a request stream.
+        /// <summary>
+        /// Update parameters of existing WEBP image, and upload updated image to Cloud Storage.
+        /// </summary>
+        public void ModifyWebPAndUploadToStorage()
+        {
+            Console.WriteLine("Update parameters of a WEBP image and upload to cloud storage");
+
+            UploadSampleImageToCloud();
+
+            bool? lossless = true;
+            int? quality = 90;
+            int? animLoopCount = 5;
+            string animBackgroundColor = "gray";
+            // Specifies where additional parameters we do not support should be taken from.
+            // If this is true – they will be taken from default values for standard image,
+            // if it is false – they will be saved from current image. Default is false.
+            bool? fromScratch = null;
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
+
+            ModifyWebPRequest getImageWebPRequest = new ModifyWebPRequest(SampleImageFileName, lossless, quality,
+                                            animLoopCount, animBackgroundColor, fromScratch, folder, storage);
+
+            Console.WriteLine($"Call ModifyWebP with params: lossless:{lossless}, quality:{quality}, anim loop count:{animLoopCount}, anim background color:{animBackgroundColor}");
+
+            using (Stream updatedImage = this.ImagingApi.ModifyWebP(getImageWebPRequest))
+            {
+                UploadImageToCloud(GetModifiedSampleImageFileName(false), updatedImage);
+            }
+
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Update parameters of existing Webp image. asposelogo.webpImage data is passed in a request stream.
+        /// </summary>
         public void CreateModifiedWebPFromRequestBody()
         {
-            string fileName = "asposelogo.webp";
-            using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
+            Console.WriteLine("Update parameters of a WEBP image from request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 bool? lossless = true;
                 int? quality = 90;
@@ -120,15 +139,15 @@ namespace AsposeImagingCloudSDKExamples
                 CreateModifiedWebPRequest modifiedImageWebPRequest = new CreateModifiedWebPRequest(inputImageStream, lossless, quality,
                                                         animLoopCount, animBackgroundColor, fromScratch, outPath, storage);
 
-                Stream updatedImage = this.ImagingApi.CreateModifiedWebP(modifiedImageWebPRequest);
+                Console.WriteLine($"Call CreateModifiedWebP with params: lossless:{lossless}, quality:{quality}, anim loop count:{animLoopCount}, anim background color:{animBackgroundColor}");
 
-                // Save updated image to local storage
-                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "asposelogo_out.webp"))
+                using (Stream updatedImage = this.ImagingApi.CreateModifiedWebP(modifiedImageWebPRequest))
                 {
-                    updatedImage.Seek(0, SeekOrigin.Begin);
-                    updatedImage.CopyTo(fileStream);
+                    SaveUpdatedImageToOutput(updatedImage, true);
                 }
             }
+
+            Console.WriteLine();
         }
     }
 }
