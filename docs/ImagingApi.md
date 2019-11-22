@@ -256,7 +256,7 @@ Name | Type | Description  | Notes
  **searchContextId** | **string**| The search context identifier. | 
  **imageData** | **System.IO.Stream**| Input image | [optional] 
  **imageId** | **string**| The image identifier. | [optional] 
- **imagesFolder** | **string**| Images folder. | [optional] 
+ **imagesFolder** | **string**| Images source - a folder | [optional] 
  **folder** | **string**| The folder. | [optional] 
  **storage** | **string**| The storage. | [optional] 
 
@@ -869,6 +869,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 **System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createwebsiteimagefeatures"></a>
+## **CreateWebSiteImageFeatures**
+> void CreateWebSiteImageFeatures(CreateWebSiteImageFeaturesRequest request)
+
+Extract images features from web page and add them to search context
+
+### **CreateWebSiteImageFeaturesRequest** Parameters
+```csharp
+CreateWebSiteImageFeaturesRequest(
+    string searchContextId, 
+    string imagesSource, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchContextId** | **string**| The search context identifier. | 
+ **imagesSource** | **string**| Images source - a web page | 
+ **folder** | **string**| The folder. | [optional] 
+ **storage** | **string**| The storage. | [optional] 
+
+### Return type
+
+void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
