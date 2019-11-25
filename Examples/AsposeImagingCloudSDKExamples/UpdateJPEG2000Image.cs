@@ -1,0 +1,139 @@
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright company="Aspose" file="UpdateJPEG2000Image.cs">
+//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
+// </copyright>
+// <summary>
+//   Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+// 
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+// 
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+using Aspose.Imaging.Cloud.Sdk.Api;
+using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+using System;
+using System.IO;
+
+namespace AsposeImagingCloudSDKExamples
+{
+    /// <summary>
+    /// Update JPEG2000 image example.
+    /// </summary>
+    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
+    class UpdateJPEG2000Image : ImagingBase
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateJPEG2000Image"/> class.
+        /// </summary>
+        /// <param name="imagingApi">The imaging API.</param>
+        public UpdateJPEG2000Image(ImagingApi imagingApi) : base(imagingApi)
+        {
+            PrintHeader("Update JPEG2000 image example:");
+        }
+
+        /// <summary>
+        /// Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        /// The name of the example image file.
+        /// </value>
+        protected override string SampleImageFileName => "UpdateJPEG2000SampleImage.jp2";
+
+        // Update parameters of existing JPEG2000 image. The image is saved in the cloud.
+        public void ModifyJpeg2000FromStorage()
+        {
+            Console.WriteLine("Update parameters of a Jpeg2000 image from cloud storage");
+
+            UploadSampleImageToCloud();
+
+            string codec = "jp2";
+            string comment = "Aspose";
+            bool? fromScratch = null;
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
+
+            ModifyJpeg2000Request getImageJpeg2000Request = 
+                new ModifyJpeg2000Request(SampleImageFileName, comment, codec, fromScratch, folder, storage);
+
+            Console.WriteLine($"Call ModifyJpeg2000 with params: codec:{codec}, comment:{comment}");
+
+            using (Stream updatedImage = this.ImagingApi.ModifyJpeg2000(getImageJpeg2000Request))
+            {
+                SaveUpdatedImageToOutput(updatedImage, false);
+            }
+
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Update parameters of existing JPEG2000 image, and upload updated image to Cloud Storage.
+        /// </summary>
+        public void ModifyJpeg2000AndUploadToStorage()
+        {
+            Console.WriteLine("Update parameters of a Jpeg2000 image and upload to cloud storage");
+
+            UploadSampleImageToCloud();
+
+            string codec = "jp2";
+            string comment = "Aspose";
+            bool? fromScratch = null;
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
+
+            ModifyJpeg2000Request getImageJpeg2000Request = 
+                new ModifyJpeg2000Request(SampleImageFileName, comment, codec, fromScratch, folder, storage);
+
+            Console.WriteLine($"Call ModifyJpeg2000 with params: codec:{codec}, comment:{comment}");
+
+            using (Stream updatedImage = this.ImagingApi.ModifyJpeg2000(getImageJpeg2000Request))
+            {
+                UploadImageToCloud(GetModifiedSampleImageFileName(false), updatedImage);
+            }
+
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Update parameters of existing JPEG2000 image. Image data is passed in a request stream.
+        /// </summary>
+        public void CreateModifiedJpeg2000FromRequestBody()
+        {
+            Console.WriteLine("Update parameters of a Jpeg2000 image from request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
+            {
+                string codec = "jp2";
+                string comment = "Aspose";
+                bool? fromScratch = null;
+                string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
+                string storage = null; // We are using default Cloud Storage
+
+                CreateModifiedJpeg2000Request postImageJpeg2000Request = 
+                    new CreateModifiedJpeg2000Request(inputImageStream, comment, codec, fromScratch, outPath, storage);
+
+                Console.WriteLine($"Call CreateModifiedJpeg2000 with params: codec:{codec}, comment:{comment}");
+
+                using (Stream updatedImage = this.ImagingApi.CreateModifiedJpeg2000(postImageJpeg2000Request))
+                {
+                    SaveUpdatedImageToOutput(updatedImage, true);
+                }
+            }
+
+            Console.WriteLine();
+        }
+    }
+}
