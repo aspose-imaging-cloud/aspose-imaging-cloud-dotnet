@@ -1433,6 +1433,44 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
+        /// Extract images features from web page and add them to search context 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CreateWebSiteImageFeaturesRequest" /></param>            
+        public void CreateWebSiteImageFeatures(CreateWebSiteImageFeaturesRequest request)
+        {
+            // verify the required parameter 'searchContextId' is set
+            if (request.searchContextId == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'searchContextId' when calling CreateWebSiteImageFeatures");
+            }
+
+            // verify the required parameter 'imagesSource' is set
+            if (request.imagesSource == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imagesSource' when calling CreateWebSiteImageFeatures");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/imageSearch/{searchContextId}/features/web";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "searchContextId", request.searchContextId);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "imagesSource", request.imagesSource);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+        }
+        
+        /// <summary>
         /// Crop an existing image. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="CropImageRequest" /></param>
