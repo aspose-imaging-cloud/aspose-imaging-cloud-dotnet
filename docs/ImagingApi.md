@@ -883,6 +883,7 @@ Extract images features from web page and add them to search context
 CreateWebSiteImageFeaturesRequest(
     string searchContextId, 
     string imagesSource, 
+    System.IO.Stream imageData = null, 
     string folder = null, 
     string storage = null)
 ```
@@ -891,6 +892,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **searchContextId** | **string**| The search context identifier. | 
  **imagesSource** | **string**| Images source - a web page | 
+ **imageData** | **System.IO.Stream**| Input image | [optional] 
  **folder** | **string**| The folder. | [optional] 
  **storage** | **string**| The storage. | [optional] 
 
