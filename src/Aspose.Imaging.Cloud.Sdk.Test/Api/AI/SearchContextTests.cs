@@ -55,6 +55,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
                       Assert.Throws<ApiException>(() => this.ImagingApi.GetImageSearchStatus(
                           new GetImageSearchStatusRequest(this.SearchContextId, storage: this.TestStorage)));
+
+                      this.SearchContextId = null;
                   });
         }
 

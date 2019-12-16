@@ -42,7 +42,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
         private const int WaitTimeoutInMinutes = 5;
 
-        protected string SearchContextId { get; private set; }
+        protected string SearchContextId { get; set; }
 
         protected override string CloudTestFolderPrefix => "ImagingAICloudTestDotNet";
 
