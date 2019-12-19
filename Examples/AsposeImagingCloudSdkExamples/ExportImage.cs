@@ -23,33 +23,21 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Api;
-using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System;
 using System.IO;
+using Aspose.Imaging.Cloud.Sdk.Api;
+using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
-namespace AsposeImagingCloudSDKExamples
+namespace AsposeImagingCloudSdkExamples
 {
     /// <summary>
-    /// Export image example.
+    ///     Export image example.
     /// </summary>
-    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
-    class ExportImage : ImagingBase
+    /// <seealso cref="AsposeImagingCloudSdkExamples.ImagingBase" />
+    internal class ExportImage : ImagingBase
     {
         /// <summary>
-        /// Gets the name of the example image file.
-        /// </summary>
-        /// <value>
-        /// The name of the example image file.
-        /// </value>
-        /// <remarks>
-        /// Input formats could be one of the following:
-        /// BMP, GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-        /// </remarks>
-        protected override string SampleImageFileName => "ExportSampleImage.bmp";
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ExportImage"/> class.
+        ///     Initializes a new instance of the <see cref="ExportImage" /> class.
         /// </summary>
         /// <param name="imagingApi">The imaging API.</param>
         public ExportImage(ImagingApi imagingApi) : base(imagingApi)
@@ -58,7 +46,19 @@ namespace AsposeImagingCloudSDKExamples
         }
 
         /// <summary>
-        /// Export an image to another format.
+        ///     Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        ///     The name of the example image file.
+        /// </value>
+        /// <remarks>
+        ///     Input formats could be one of the following:
+        ///     BMP, GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
+        /// </remarks>
+        protected override string SampleImageFileName => "ExportSampleImage.bmp";
+
+        /// <summary>
+        ///     Export an image to another format.
         /// </summary>
         public void SaveImageAsFromStorage()
         {
@@ -68,24 +68,24 @@ namespace AsposeImagingCloudSDKExamples
 
             // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs) 
             // for possible output formats
-            string format = "pdf";
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var format = "pdf";
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // Cloud Storage name
-            
+
             var request = new SaveImageAsRequest(SampleImageFileName, format, folder, storage);
 
             Console.WriteLine($"Call SaveImageAs with params: format:{format}");
 
-            using (Stream updatedImage = this.ImagingApi.SaveImageAs(request))
+            using (var updatedImage = ImagingApi.SaveImageAs(request))
             {
-                SaveUpdatedImageToOutput(updatedImage, false, format);
+                SaveUpdatedSampleImageToOutput(updatedImage, false, format);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Export an image to another format.
+        ///     Export an image to another format.
         /// </summary>
         public void SaveImageAsAndUploadToStorage()
         {
@@ -95,34 +95,34 @@ namespace AsposeImagingCloudSDKExamples
 
             // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs)
             // for possible output formats
-            string format = "pdf";
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var format = "pdf";
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // Cloud Storage name
 
             var request = new SaveImageAsRequest(SampleImageFileName, format, folder, storage);
 
             Console.WriteLine($"Call SaveImageAs with params: format:{format}");
 
-            using (Stream updatedImage = this.ImagingApi.SaveImageAs(request))
+            using (var updatedImage = ImagingApi.SaveImageAs(request))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(false, format), updatedImage);              
+                UploadImageToCloud(GetModifiedSampleImageFileName(false, format), updatedImage);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Export an image to another format. Image data is passed in a request stream.
+        ///     Export an image to another format. Image data is passed in a request stream.
         /// </summary>
         public void CreateSavedImageAsFromRequestBody()
         {
             Console.WriteLine("Export an image to another format. Image data is passed in a request body");
 
-            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
+            using (var inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs)
                 // for possible output formats
-                string format = "pdf";
+                var format = "pdf";
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
                 string storage = null; // Cloud Storage name
 
@@ -130,9 +130,9 @@ namespace AsposeImagingCloudSDKExamples
 
                 Console.WriteLine($"Call CreateSavedImageAs with params: format:{format}");
 
-                using (Stream updatedImage = this.ImagingApi.CreateSavedImageAs(request))
+                using (var updatedImage = ImagingApi.CreateSavedImageAs(request))
                 {
-                    SaveUpdatedImageToOutput(updatedImage, true, format);
+                    SaveUpdatedSampleImageToOutput(updatedImage, true, format);
                 }
 
                 Console.WriteLine();

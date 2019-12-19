@@ -7,11 +7,12 @@
     <ProjectGuid>{25029F50-7409-4E25-81BB-BF0A4ED769FC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AsposeImagingCloudSDKExamples</RootNamespace>
-    <AssemblyName>AsposeImagingCloudSDKExamples</AssemblyName>
+    <RootNamespace>AsposeImagingCloudSdkExamples</RootNamespace>
+    <AssemblyName>AsposeImagingCloudSdkExamples</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -64,18 +65,18 @@
     <Compile Include="ResizeImage.cs" />
     <Compile Include="RotateFlipImage.cs" />
     <Compile Include="AI\ImagingAIBase.cs" />
-    <Compile Include="TIFFFrames.cs" />
-    <Compile Include="TIFFImage.cs" />
-    <Compile Include="UpdateBMPImage.cs" />
-    <Compile Include="UpdateEMFImage.cs" />
+    <Compile Include="TiffFrames.cs" />
+    <Compile Include="UpdateTiffImage.cs" />
+    <Compile Include="UpdateBmpImage.cs" />
+    <Compile Include="UpdateEmfImage.cs" />
     <Compile Include="ExportImage.cs" />
-    <Compile Include="UpdateGIFImage.cs" />
+    <Compile Include="UpdateGifImage.cs" />
     <Compile Include="UpdateImage.cs" />
-    <Compile Include="UpdateJPEG2000Image.cs" />
-    <Compile Include="UpdateJPEGImage.cs" />
-    <Compile Include="UpdatePSDImage.cs" />
-    <Compile Include="WEBPImage.cs" />
-    <Compile Include="WMFImage.cs" />
+    <Compile Include="UpdateJpeg2000Image.cs" />
+    <Compile Include="UpdateJpegImage.cs" />
+    <Compile Include="UpdatePsdImage.cs" />
+    <Compile Include="UpdateWebPImage.cs" />
+    <Compile Include="UpdateWmfImage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

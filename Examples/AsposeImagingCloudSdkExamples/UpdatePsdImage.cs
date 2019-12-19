@@ -23,38 +23,38 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Api;
-using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System;
 using System.IO;
+using Aspose.Imaging.Cloud.Sdk.Api;
+using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
-namespace AsposeImagingCloudSDKExamples
+namespace AsposeImagingCloudSdkExamples
 {
     /// <summary>
-    /// Update PSD image example.
+    ///     Update PSD image example.
     /// </summary>
-    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
-    class UpdatePSDImage : ImagingBase
+    /// <seealso cref="AsposeImagingCloudSdkExamples.ImagingBase" />
+    internal class UpdatePsdImage : ImagingBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdatePSDImage"/> class.
+        ///     Initializes a new instance of the <see cref="UpdatePsdImage" /> class.
         /// </summary>
         /// <param name="imagingApi">The imaging API.</param>
-        public UpdatePSDImage(ImagingApi imagingApi) : base(imagingApi)
+        public UpdatePsdImage(ImagingApi imagingApi) : base(imagingApi)
         {
             PrintHeader("Update PSD image example:");
         }
 
         /// <summary>
-        /// Gets the name of the example image file.
+        ///     Gets the name of the example image file.
         /// </summary>
         /// <value>
-        /// The name of the example image file.
+        ///     The name of the example image file.
         /// </value>
         protected override string SampleImageFileName => "UpdatePSDSampleImage.psd";
 
         /// <summary>
-        /// Update parameters of existing PSD image. The image is saved in the cloud.
+        ///     Update parameters of existing PSD image. The image is saved in the cloud.
         /// </summary>
         public void ModifyPsdFromStorage()
         {
@@ -63,26 +63,28 @@ namespace AsposeImagingCloudSDKExamples
             UploadSampleImageToCloud();
 
             int? channelsCount = 3;
-            string compressionMethod = "raw";
+            var compressionMethod = "raw";
             bool? fromScratch = null;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            ModifyPsdRequest modifyPsdRequest =
-                new ModifyPsdRequest(SampleImageFileName, channelsCount, compressionMethod, fromScratch, folder, storage);
+            var modifyPsdRequest =
+                new ModifyPsdRequest(SampleImageFileName, channelsCount, compressionMethod, fromScratch, folder,
+                    storage);
 
-            Console.WriteLine($"Call ModifyPsd with params: channels count:{channelsCount}, compression method:{compressionMethod}");
+            Console.WriteLine(
+                $"Call ModifyPsd with params: channels count:{channelsCount}, compression method:{compressionMethod}");
 
-            using (Stream updatedImage = this.ImagingApi.ModifyPsd(modifyPsdRequest))
+            using (var updatedImage = ImagingApi.ModifyPsd(modifyPsdRequest))
             {
-                SaveUpdatedImageToOutput(updatedImage, false);
+                SaveUpdatedSampleImageToOutput(updatedImage, false);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Update parameters of existing PSD image, and upload updated image to Cloud Storage.
+        ///     Update parameters of existing PSD image, and upload updated image to Cloud Storage.
         /// </summary>
         public void ModifyPsdAndUploadToStorage()
         {
@@ -91,48 +93,51 @@ namespace AsposeImagingCloudSDKExamples
             UploadSampleImageToCloud();
 
             int? channelsCount = 3;
-            string compressionMethod = "raw";
+            var compressionMethod = "raw";
             bool? fromScratch = null;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            ModifyPsdRequest modifyPsdRequest =
-                new ModifyPsdRequest(SampleImageFileName, channelsCount, compressionMethod, fromScratch, folder, storage);
+            var modifyPsdRequest =
+                new ModifyPsdRequest(SampleImageFileName, channelsCount, compressionMethod, fromScratch, folder,
+                    storage);
 
-            Console.WriteLine($"Call ModifyPsd with params: channels count:{channelsCount}, compression method:{compressionMethod}");
+            Console.WriteLine(
+                $"Call ModifyPsd with params: channels count:{channelsCount}, compression method:{compressionMethod}");
 
-            using (Stream updatedImage = this.ImagingApi.ModifyPsd(modifyPsdRequest))
+            using (var updatedImage = ImagingApi.ModifyPsd(modifyPsdRequest))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(false), updatedImage);
+                UploadImageToCloud(GetModifiedSampleImageFileName(), updatedImage);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Update parameters of existing PSD image. Image data is passed in a request stream.
+        ///     Update parameters of existing PSD image. Image data is passed in a request stream.
         /// </summary>
         public void CreateModifiedPsdFromRequestBody()
         {
             Console.WriteLine("Update parameters of a PSD image from request body");
 
-            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
+            using (var inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 int? channelsCount = 3;
-                string compressionMethod = "raw";
+                var compressionMethod = "raw";
                 bool? fromScratch = null;
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image).
                 string storage = null; // We are using default Cloud Storage
 
-                CreateModifiedPsdRequest modifiedPsdRequest = 
+                var modifiedPsdRequest =
                     new CreateModifiedPsdRequest(inputImageStream, channelsCount,
-                                                 compressionMethod, fromScratch, outPath, storage);
+                        compressionMethod, fromScratch, outPath, storage);
 
-                Console.WriteLine($"Call CreateModifiedPsd with params: channels count:{channelsCount}, compression method:{compressionMethod}");
+                Console.WriteLine(
+                    $"Call CreateModifiedPsd with params: channels count:{channelsCount}, compression method:{compressionMethod}");
 
-                using (Stream updatedImage = this.ImagingApi.CreateModifiedPsd(modifiedPsdRequest))
+                using (var updatedImage = ImagingApi.CreateModifiedPsd(modifiedPsdRequest))
                 {
-                    SaveUpdatedImageToOutput(updatedImage, true);
+                    SaveUpdatedSampleImageToOutput(updatedImage, true);
                 }
             }
 
