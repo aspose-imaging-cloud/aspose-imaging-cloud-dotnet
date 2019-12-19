@@ -210,6 +210,36 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createdeskewedimage"></a>
+## **CreateDeskewedImage**
+> System.IO.Stream CreateDeskewedImage(CreateDeskewedImageRequest request)
+
+Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### **CreateDeskewedImageRequest** Parameters
+```csharp
+CreateDeskewedImageRequest(
+    System.IO.Stream imageData, 
+    bool? resizeProportionally, 
+    string bkColor = null, 
+    string outPath = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **System.IO.Stream**| Input image | 
+ **resizeProportionally** | **bool?**| Resize proportionally | 
+ **bkColor** | **string**| background color | [optional] 
+ **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+
+### Return type
+
+**System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createfolder"></a>
 ## **CreateFolder**
 > void CreateFolder(CreateFolderRequest request)
@@ -256,7 +286,7 @@ Name | Type | Description  | Notes
  **searchContextId** | **string**| The search context identifier. | 
  **imageData** | **System.IO.Stream**| Input image | [optional] 
  **imageId** | **string**| The image identifier. | [optional] 
- **imagesFolder** | **string**| Images folder. | [optional] 
+ **imagesFolder** | **string**| Images source - a folder | [optional] 
  **folder** | **string**| The folder. | [optional] 
  **storage** | **string**| The storage. | [optional] 
 
@@ -872,6 +902,36 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createwebsiteimagefeatures"></a>
+## **CreateWebSiteImageFeatures**
+> void CreateWebSiteImageFeatures(CreateWebSiteImageFeaturesRequest request)
+
+Extract images features from web page and add them to search context
+
+### **CreateWebSiteImageFeaturesRequest** Parameters
+```csharp
+CreateWebSiteImageFeaturesRequest(
+    string searchContextId, 
+    string imagesSource, 
+    System.IO.Stream imageData = null, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchContextId** | **string**| The search context identifier. | 
+ **imagesSource** | **string**| Images source - a web page | 
+ **imageData** | **System.IO.Stream**| Input image | [optional] 
+ **folder** | **string**| The folder. | [optional] 
+ **storage** | **string**| The storage. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="cropimage"></a>
 ## **CropImage**
 > System.IO.Stream CropImage(CropImageRequest request)
@@ -1039,6 +1099,36 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="deskewimage"></a>
+## **DeskewImage**
+> System.IO.Stream DeskewImage(DeskewImageRequest request)
+
+Deskew an existing image.
+
+### **DeskewImageRequest** Parameters
+```csharp
+DeskewImageRequest(
+    string name, 
+    bool? resizePrortionally, 
+    string bkColor = null, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Filename of an image. | 
+ **resizePrortionally** | **bool?**| Resize proportionally | 
+ **bkColor** | **string**| Background color | [optional] 
+ **folder** | **string**| Folder | [optional] 
+ **storage** | **string**| Storage | [optional] 
+
+### Return type
+
+**System.IO.Stream**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 

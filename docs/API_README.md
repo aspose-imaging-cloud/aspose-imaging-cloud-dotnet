@@ -12,6 +12,7 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**CopyFile**](ImagingApi.md#copyfile) | **PUT** /imaging/storage/file/copy/{srcPath} | Copy file
 *ImagingApi* | [**CopyFolder**](ImagingApi.md#copyfolder) | **PUT** /imaging/storage/folder/copy/{srcPath} | Copy folder
 *ImagingApi* | [**CreateCroppedImage**](ImagingApi.md#createcroppedimage) | **POST** /imaging/crop | Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+*ImagingApi* | [**CreateDeskewedImage**](ImagingApi.md#createdeskewedimage) | **POST** /imaging/deskew | Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**CreateFolder**](ImagingApi.md#createfolder) | **PUT** /imaging/storage/folder/{path} | Create the folder
 *ImagingApi* | [**CreateImageFeatures**](ImagingApi.md#createimagefeatures) | **POST** /imaging/ai/imageSearch/{searchContextId}/features | Extract images features and add them to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**CreateImageFrame**](ImagingApi.md#createimageframe) | **POST** /imaging/frames/{frameId} | Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
@@ -31,12 +32,14 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**CreateRotateFlippedImage**](ImagingApi.md#createrotateflippedimage) | **POST** /imaging/rotateflip | Rotate and/or flip an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**CreateSavedImageAs**](ImagingApi.md#createsavedimageas) | **POST** /imaging/saveAs | Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
 *ImagingApi* | [**CreateUpdatedImage**](ImagingApi.md#createupdatedimage) | **POST** /imaging/updateImage | Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+*ImagingApi* | [**CreateWebSiteImageFeatures**](ImagingApi.md#createwebsiteimagefeatures) | **POST** /imaging/ai/imageSearch/{searchContextId}/features/web | Extract images features from web page and add them to search context
 *ImagingApi* | [**CropImage**](ImagingApi.md#cropimage) | **GET** /imaging/{name}/crop | Crop an existing image.
 *ImagingApi* | [**DeleteFile**](ImagingApi.md#deletefile) | **DELETE** /imaging/storage/file/{path} | Delete file
 *ImagingApi* | [**DeleteFolder**](ImagingApi.md#deletefolder) | **DELETE** /imaging/storage/folder/{path} | Delete folder
 *ImagingApi* | [**DeleteImageFeatures**](ImagingApi.md#deleteimagefeatures) | **DELETE** /imaging/ai/imageSearch/{searchContextId}/features | Deletes image features from search context.
 *ImagingApi* | [**DeleteImageSearch**](ImagingApi.md#deleteimagesearch) | **DELETE** /imaging/ai/imageSearch/{searchContextId} | Deletes the search context.
 *ImagingApi* | [**DeleteSearchImage**](ImagingApi.md#deletesearchimage) | **DELETE** /imaging/ai/imageSearch/{searchContextId}/image | Delete image and images features from search context
+*ImagingApi* | [**DeskewImage**](ImagingApi.md#deskewimage) | **GET** /imaging/{name}/deskew | Deskew an existing image.
 *ImagingApi* | [**DownloadFile**](ImagingApi.md#downloadfile) | **GET** /imaging/storage/file/{path} | Download file
 *ImagingApi* | [**ExtractImageFeatures**](ImagingApi.md#extractimagefeatures) | **GET** /imaging/ai/imageSearch/{searchContextId}/image2features | Extract features from image without adding to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**ExtractImageFrameProperties**](ImagingApi.md#extractimageframeproperties) | **POST** /imaging/frames/{frameId}/properties | Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.

@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="CreateImageFeaturesRequest.cs">
+// <copyright company="Aspose" file="CreateDeskewedImageRequest.cs">
 //   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -28,63 +28,56 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.CreateImageFeatures" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.CreateDeskewedImage" /> operation.
   /// </summary>  
-  public class CreateImageFeaturesRequest  
+  public class CreateDeskewedImageRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateImageFeaturesRequest"/> class.
+        /// Initializes a new instance of the <see cref="CreateDeskewedImageRequest"/> class.
         /// </summary>        
-        public CreateImageFeaturesRequest()
+        public CreateDeskewedImageRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateImageFeaturesRequest"/> class.
+        /// Initializes a new instance of the <see cref="CreateDeskewedImageRequest"/> class.
         /// </summary>
-        /// <param name="searchContextId">The search context identifier.</param>
         /// <param name="imageData">Input image</param>
-        /// <param name="imageId">The image identifier.</param>
-        /// <param name="imagesFolder">Images source - a folder</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
-        public CreateImageFeaturesRequest(string searchContextId, System.IO.Stream imageData = null, string imageId = null, string imagesFolder = null, string folder = null, string storage = null)             
+        /// <param name="resizeProportionally">Resize proportionally</param>
+        /// <param name="bkColor">background color</param>
+        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image)</param>
+        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        public CreateDeskewedImageRequest(System.IO.Stream imageData, bool? resizeProportionally, string bkColor = null, string outPath = null, string storage = null)             
         {
-            this.searchContextId = searchContextId;
             this.imageData = imageData;
-            this.imageId = imageId;
-            this.imagesFolder = imagesFolder;
-            this.folder = folder;
+            this.resizeProportionally = resizeProportionally;
+            this.bkColor = bkColor;
+            this.outPath = outPath;
             this.storage = storage;
         }
         
-        /// <summary>
-        /// The search context identifier.
-        /// </summary>  
-        public string searchContextId { get; set; }
-
         /// <summary>
         /// Input image
         /// </summary>  
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// The image identifier.
+        /// Resize proportionally
         /// </summary>  
-        public string imageId { get; set; }
+        public bool? resizeProportionally { get; set; }
 
         /// <summary>
-        /// Images source - a folder
+        /// background color
         /// </summary>  
-        public string imagesFolder { get; set; }
+        public string bkColor { get; set; }
 
         /// <summary>
-        /// The folder.
+        /// Path to updated file (if this is empty, response contains streamed image)
         /// </summary>  
-        public string folder { get; set; }
+        public string outPath { get; set; }
 
         /// <summary>
-        /// The storage.
+        /// Your Aspose Cloud Storage name.
         /// </summary>  
         public string storage { get; set; }
   }

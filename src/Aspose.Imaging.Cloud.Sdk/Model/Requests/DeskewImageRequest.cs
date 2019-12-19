@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="CreateImageFeaturesRequest.cs">
+// <copyright company="Aspose" file="DeskewImageRequest.cs">
 //   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -28,63 +28,56 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.CreateImageFeatures" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.DeskewImage" /> operation.
   /// </summary>  
-  public class CreateImageFeaturesRequest  
+  public class DeskewImageRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateImageFeaturesRequest"/> class.
+        /// Initializes a new instance of the <see cref="DeskewImageRequest"/> class.
         /// </summary>        
-        public CreateImageFeaturesRequest()
+        public DeskewImageRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateImageFeaturesRequest"/> class.
+        /// Initializes a new instance of the <see cref="DeskewImageRequest"/> class.
         /// </summary>
-        /// <param name="searchContextId">The search context identifier.</param>
-        /// <param name="imageData">Input image</param>
-        /// <param name="imageId">The image identifier.</param>
-        /// <param name="imagesFolder">Images source - a folder</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
-        public CreateImageFeaturesRequest(string searchContextId, System.IO.Stream imageData = null, string imageId = null, string imagesFolder = null, string folder = null, string storage = null)             
+        /// <param name="name">Filename of an image.</param>
+        /// <param name="resizeProportionally">Resize proportionally</param>
+        /// <param name="bkColor">Background color</param>
+        /// <param name="folder">Folder</param>
+        /// <param name="storage">Storage</param>
+        public DeskewImageRequest(string name, bool? resizeProportionally, string bkColor = null, string folder = null, string storage = null)             
         {
-            this.searchContextId = searchContextId;
-            this.imageData = imageData;
-            this.imageId = imageId;
-            this.imagesFolder = imagesFolder;
+            this.name = name;
+            this.resizeProportionally = resizeProportionally;
+            this.bkColor = bkColor;
             this.folder = folder;
             this.storage = storage;
         }
         
         /// <summary>
-        /// The search context identifier.
+        /// Filename of an image.
         /// </summary>  
-        public string searchContextId { get; set; }
+        public string name { get; set; }
 
         /// <summary>
-        /// Input image
+        /// Resize proportionally
         /// </summary>  
-        public System.IO.Stream imageData { get; set; }
+        public bool? resizeProportionally { get; set; }
 
         /// <summary>
-        /// The image identifier.
+        /// Background color
         /// </summary>  
-        public string imageId { get; set; }
+        public string bkColor { get; set; }
 
         /// <summary>
-        /// Images source - a folder
-        /// </summary>  
-        public string imagesFolder { get; set; }
-
-        /// <summary>
-        /// The folder.
+        /// Folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// The storage.
+        /// Storage
         /// </summary>  
         public string storage { get; set; }
   }
