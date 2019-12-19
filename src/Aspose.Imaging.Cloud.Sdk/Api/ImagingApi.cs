@@ -1507,10 +1507,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
-            if (request.imageData != null) 
-            {
-                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
-            }
             this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "POST", 
