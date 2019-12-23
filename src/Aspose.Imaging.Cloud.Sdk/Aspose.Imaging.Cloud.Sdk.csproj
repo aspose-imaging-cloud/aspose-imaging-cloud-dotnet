@@ -27,7 +27,7 @@
     <Company>Aspose</Company>
     <Authors>Aspose</Authors>
     <ProductName>Aspose.Imaging Cloud .NET SDK</ProductName>
-    <ProductVersion>19.10</ProductVersion>
+    <ProductVersion>19.12</ProductVersion>
     <Description>      Aspose.Imaging Cloud lets you use a REST API to inspect, convert, and transform images in the cloud; do reverse image search. It supports the most popular image formats such as PSD, PNG, GIF, BMP, TIFF, and JPEG, and conversion between them.
 
       Aspose.Imaging Cloud also provides a rich set of features for manipulating images on-the-fly with cloud based image transformations. You can resize, crop and/or rotate images various ways by simply creating a request that includes the correct transformation instructions.
