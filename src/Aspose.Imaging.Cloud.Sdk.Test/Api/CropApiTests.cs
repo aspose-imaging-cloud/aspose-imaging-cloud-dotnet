@@ -23,14 +23,17 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Net.Mime;
+
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     using System.IO;
     using System.Collections.Generic;
     using NUnit.Framework;
-
+    using System.Drawing;
     using Aspose.Imaging.Cloud.Sdk.Model;
     using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+    using Image = Aspose.Imaging.Image;
 
     /// <summary>
     ///  Class for testing CropApi
@@ -45,17 +48,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".jpg")]
+        [TestCase(".jpg", null)]
 #if EXTENDED_TEST
-        [TestCase(".bmp")]
-        [TestCase(".dicom")]
+        [TestCase(".bmp", null)]
+        [TestCase(".dicom", null)]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
-        //[TestCase(".gif")]
-        [TestCase(".j2k")]
-        [TestCase(".png")]
-        [TestCase(".psd")]
-        [TestCase(".tiff")]
-        [TestCase(".webp")]
+        //[TestCase(".gif", null)]
+        [TestCase(".j2k", null)]
+        [TestCase(".png", null)]
+        [TestCase(".psd", null)]
+        [TestCase(".tiff", null)]
+        [TestCase(".webp", null)]
 #endif
         public void CropImageTest(string formatExtension, params string[] additionalExportFormats)
         {
@@ -68,6 +71,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string storage = this.TestStorage;
 
             List<string> formatsToExport = new List<string>(this.BasicExportFormats);
+
             foreach (string additionalExportFormat in additionalExportFormats)
             {
                 if (!formatsToExport.Contains(additionalExportFormat))
@@ -91,15 +95,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 {
                     this.TestGetRequest(
                         "CropImageTest",
-                        $"Input image: {name}; Output format: {format}; Width: {width}; Height: {height}; X: {x}; Y: {y}",
+                        $"Input image: {name}; Output format: {format ?? "null"}; Width: {width}; Height: {height}; X: {x}; Y: {y}",
                         name,
                         delegate
                         {
-                            var request = new CropImageRequest(name, format, x, y, width, height, folder, storage);
+                            var request = new CropImageRequest(name, x, y, width, height, format, folder, storage);
                             return ImagingApi.CropImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
+                            Assert.AreEqual(Image.GetFileFormat(resultStream), format == null ? formatExtension : format.Substring(1));
                             Assert.AreEqual(width, resultProperties.Width);
                             Assert.AreEqual(height, resultProperties.Height);
                         },
@@ -115,26 +120,26 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".jpg", true)]
-        [TestCase(".jpg", false)]
+        [TestCase(".jpg", true, null)]
+        [TestCase(".jpg", false, null)]
 #if EXTENDED_TEST
-        [TestCase(".bmp", true)]
-        [TestCase(".bmp", false)]
-        [TestCase(".dicom", true)]
-        [TestCase(".dicom", false)]
+        [TestCase(".bmp", true, null)]
+        [TestCase(".bmp", false, null)]
+        [TestCase(".dicom", true, null)]
+        [TestCase(".dicom", false, null)]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
-        //[TestCase(".gif", true)]
-        //[TestCase(".gif", false)]
-        [TestCase(".j2k", true)]
-        [TestCase(".j2k", false)]
-        [TestCase(".png", true)]
-        [TestCase(".png", false)]
-        [TestCase(".psd", true)]
-        [TestCase(".psd", false)]
-        [TestCase(".tiff", true)]
-        [TestCase(".tiff", false)]
-        [TestCase(".webp", true)]
-        [TestCase(".webp", false)]
+        //[TestCase(".gif", true, null)]
+        //[TestCase(".gif", false, null)]
+        [TestCase(".j2k", true, null)]
+        [TestCase(".j2k", false, null)]
+        [TestCase(".png", true, null)]
+        [TestCase(".png", false, null)]
+        [TestCase(".psd", true, null)]
+        [TestCase(".psd", false, null)]
+        [TestCase(".tiff", true, null)]
+        [TestCase(".tiff", false, null)]
+        [TestCase(".webp", true, null)]
+        [TestCase(".webp", false, null)]
 #endif
         public void CreateCroppedImageTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
@@ -169,21 +174,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
                 foreach (string format in formatsToExport)
                 {
-                    outName = $"{name}_crop.{format}";
+                    outName = $"{name}_crop.{format ?? formatExtension.Substring(1)}";
 
                     this.TestPostRequest(
                         "CropImageTest",
                         saveResultToStorage,
-                        $"Input image: {name}; Output format: {format}; Width: {width}; Height: {height}; X: {x}; Y: {y}",
+                        $"Input image: {name}; Output format: {format ?? "null"}; Width: {width}; Height: {height}; X: {x}; Y: {y}",
                         name,
                         outName,
                         delegate (Stream inputStream, string outPath)
                         {
-                            var request = new CreateCroppedImageRequest(inputStream, format, x, y, width, height, outPath, storage);
+                            var request = new CreateCroppedImageRequest(inputStream, x, y, width, height, format, outPath, storage);
                             return ImagingApi.CreateCroppedImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
+                            Assert.AreEqual(Image.GetFileFormat(resultStream), format == null ? formatExtension : format.Substring(1));
                             Assert.AreEqual(width, resultProperties.Width);
                             Assert.AreEqual(height, resultProperties.Height);
                         },

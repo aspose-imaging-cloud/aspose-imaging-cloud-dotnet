@@ -184,11 +184,11 @@ Crop an image. Image data is passed as zero-indexed multipart/form-data content 
 ```csharp
 CreateCroppedImageRequest(
     System.IO.Stream imageData, 
-    string format, 
     int? x, 
     int? y, 
     int? width, 
     int? height, 
+    string format = null, 
     string outPath = null, 
     string storage = null)
 ```
@@ -196,11 +196,11 @@ CreateCroppedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
  **x** | **int?**| X position of start point for cropping rectangle. | 
  **y** | **int?**| Y position of start point for cropping rectangle. | 
  **width** | **int?**| Width of cropping rectangle. | 
  **height** | **int?**| Height of cropping rectangle. | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
  **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 ## **CreateDeskewedImage**
 > System.IO.Stream CreateDeskewedImage(CreateDeskewedImageRequest request)
 
-Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **CreateDeskewedImageRequest** Parameters
 ```csharp
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
  **resizeProportionally** | **bool?**| Resize proportionally | 
- **bkColor** | **string**| background color | [optional] 
+ **bkColor** | **string**| Background color | [optional] 
  **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
@@ -780,9 +780,9 @@ Resize an image. Image data is passed as zero-indexed multipart/form-data conten
 ```csharp
 CreateResizedImageRequest(
     System.IO.Stream imageData, 
-    string format, 
     int? newWidth, 
     int? newHeight, 
+    string format = null, 
     string outPath = null, 
     string storage = null)
 ```
@@ -790,9 +790,9 @@ CreateResizedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
  **newWidth** | **int?**| New width. | 
  **newHeight** | **int?**| New height. | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
  **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
@@ -870,7 +870,6 @@ Perform scaling, cropping and flipping of an image in a single request. Image da
 ```csharp
 CreateUpdatedImageRequest(
     System.IO.Stream imageData, 
-    string format, 
     int? newWidth, 
     int? newHeight, 
     int? x, 
@@ -878,6 +877,7 @@ CreateUpdatedImageRequest(
     int? rectWidth, 
     int? rectHeight, 
     string rotateFlipMethod, 
+    string format = null, 
     string outPath = null, 
     string storage = null)
 ```
@@ -885,7 +885,6 @@ CreateUpdatedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
  **newWidth** | **int?**| New width of the scaled image. | 
  **newHeight** | **int?**| New height of the scaled image. | 
  **x** | **int?**| X position of start point for cropping rectangle. | 
@@ -893,6 +892,7 @@ Name | Type | Description  | Notes
  **rectWidth** | **int?**| Width of cropping rectangle. | 
  **rectHeight** | **int?**| Height of cropping rectangle. | 
  **rotateFlipMethod** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
  **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
@@ -940,11 +940,11 @@ Crop an existing image.
 ```csharp
 CropImageRequest(
     string name, 
-    string format, 
     int? x, 
     int? y, 
     int? width, 
     int? height, 
+    string format = null, 
     string folder = null, 
     string storage = null)
 ```
@@ -952,11 +952,11 @@ CropImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
  **x** | **int?**| X position of start point for cropping rectangle. | 
  **y** | **int?**| Y position of start point for cropping rectangle. | 
  **width** | **int?**| Width of cropping rectangle | 
  **height** | **int?**| Height of cropping rectangle. | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
  **folder** | **string**| Folder with image to process. | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
@@ -1110,7 +1110,7 @@ Deskew an existing image.
 ```csharp
 DeskewImageRequest(
     string name, 
-    bool? resizePrortionally, 
+    bool? resizeProportionally, 
     string bkColor = null, 
     string folder = null, 
     string storage = null)
@@ -1119,7 +1119,7 @@ DeskewImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. | 
- **resizePrortionally** | **bool?**| Resize proportionally | 
+ **resizeProportionally** | **bool?**| Resize proportionally | 
  **bkColor** | **string**| Background color | [optional] 
  **folder** | **string**| Folder | [optional] 
  **storage** | **string**| Storage | [optional] 
@@ -2074,9 +2074,9 @@ Resize an existing image.
 ```csharp
 ResizeImageRequest(
     string name, 
-    string format, 
     int? newWidth, 
     int? newHeight, 
+    string format = null, 
     string folder = null, 
     string storage = null)
 ```
@@ -2084,9 +2084,9 @@ ResizeImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
  **newWidth** | **int?**| New width. | 
  **newHeight** | **int?**| New height. | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
  **folder** | **string**| Folder with image to process. | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
@@ -2186,7 +2186,6 @@ Perform scaling, cropping and flipping of an existing image in a single request.
 ```csharp
 UpdateImageRequest(
     string name, 
-    string format, 
     int? newWidth, 
     int? newHeight, 
     int? x, 
@@ -2194,6 +2193,7 @@ UpdateImageRequest(
     int? rectWidth, 
     int? rectHeight, 
     string rotateFlipMethod, 
+    string format = null, 
     string folder = null, 
     string storage = null)
 ```
@@ -2201,7 +2201,6 @@ UpdateImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
  **newWidth** | **int?**| New width of the scaled image. | 
  **newHeight** | **int?**| New height of the scaled image. | 
  **x** | **int?**| X position of start point for cropping rectangle. | 
@@ -2209,6 +2208,7 @@ Name | Type | Description  | Notes
  **rectWidth** | **int?**| Width of cropping rectangle. | 
  **rectHeight** | **int?**| Height of cropping rectangle. | 
  **rotateFlipMethod** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
  **folder** | **string**| Folder with image to process. | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 

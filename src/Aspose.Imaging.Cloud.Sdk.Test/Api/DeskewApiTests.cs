@@ -80,6 +80,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                     {
                         Assert.NotNull(resultStream);
+                        Assert.AreEqual(Image.GetFileFormat(resultStream), formatExtension);
                         Assert.AreNotEqual(originalProperties.Width, resultProperties.Width);
                     },
                     TempFolder,
@@ -142,6 +143,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         if (!saveResultToStorage)
                         {
                             Assert.NotNull(resultStream);
+                            Assert.AreEqual(Image.GetFileFormat(resultStream), formatExtension);
                             Assert.IsTrue(resultStream.Length > 0);
                         }
                         else
