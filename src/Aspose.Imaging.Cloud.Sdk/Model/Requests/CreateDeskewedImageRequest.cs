@@ -44,7 +44,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// </summary>
         /// <param name="imageData">Input image</param>
         /// <param name="resizeProportionally">Resize proportionally</param>
-        /// <param name="bkColor">background color</param>
+        /// <param name="bkColor">Background color</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image)</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
         public CreateDeskewedImageRequest(System.IO.Stream imageData, bool? resizeProportionally, string bkColor = null, string outPath = null, string storage = null)             
@@ -67,7 +67,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public bool? resizeProportionally { get; set; }
 
         /// <summary>
-        /// background color
+        /// Background color
         /// </summary>  
         public string bkColor { get; set; }
 

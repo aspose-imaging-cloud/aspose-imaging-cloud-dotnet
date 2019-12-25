@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 ## **CreateDeskewedImage**
 > System.IO.Stream CreateDeskewedImage(CreateDeskewedImageRequest request)
 
-Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **CreateDeskewedImageRequest** Parameters
 ```csharp
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
  **resizeProportionally** | **bool?**| Resize proportionally | 
- **bkColor** | **string**| background color | [optional] 
+ **bkColor** | **string**| Background color | [optional] 
  **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
@@ -1110,7 +1110,7 @@ Deskew an existing image.
 ```csharp
 DeskewImageRequest(
     string name, 
-    bool? resizePrortionally, 
+    bool? resizeProportionally, 
     string bkColor = null, 
     string folder = null, 
     string storage = null)
@@ -1119,7 +1119,7 @@ DeskewImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. | 
- **resizePrortionally** | **bool?**| Resize proportionally | 
+ **resizeProportionally** | **bool?**| Resize proportionally | 
  **bkColor** | **string**| Background color | [optional] 
  **folder** | **string**| Folder | [optional] 
  **storage** | **string**| Storage | [optional] 
