@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Imaging.Cloud.Sdk, Version=19.6.0.0, Culture=neutral, PublicKeyToken=70f46a67678f77f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Imaging-Cloud.19.6.0\lib\net45\Aspose.Imaging.Cloud.Sdk.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aspose.Imaging.Cloud.Sdk, Version=19.10.0.0, Culture=neutral, PublicKeyToken=70f46a67678f77f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Imaging-Cloud.19.10.0\lib\net45\Aspose.Imaging.Cloud.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -52,10 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ai\CompareImages.cs" />
-    <Compile Include="ai\FindDuplicateImages.cs" />
-    <Compile Include="ai\FindImages.cs" />
-    <Compile Include="ai\SearchContext.cs" />
+    <Compile Include="AI\CompareImages.cs" />
+    <Compile Include="AI\FindDuplicateImages.cs" />
+    <Compile Include="AI\FindImages.cs" />
     <Compile Include="CropImage.cs" />
     <Compile Include="ImageProperties.cs" />
     <Compile Include="ImagingBase.cs" />
@@ -63,8 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResizeImage.cs" />
     <Compile Include="RotateFlipImage.cs" />
-    <Compile Include="ai\ImagingAIBase.cs" />
-    <Compile Include="ai\SearchContextImages.cs" />
+    <Compile Include="AI\ImagingAIBase.cs" />
     <Compile Include="TIFFFrames.cs" />
     <Compile Include="TIFFImage.cs" />
     <Compile Include="UpdateBMPImage.cs" />

@@ -23,48 +23,79 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+using System;
 using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
+    /// <summary>
+    /// Image properties example.
+    /// </summary>
+    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
     class ImageProperties : ImagingBase
     {
+        /// <summary>
+        /// Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        /// The name of the example image file.
+        /// </value>
+        protected override string SampleImageFileName => "PropertiesOfSampleImage.tiff";
 
-        // Get properties of an image, which is store in the cloud.
-        public void GetImagePropertiesFromStorage()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImageProperties"/> class.
+        /// </summary>
+        /// <param name="imagingApi">The imaging API.</param>
+        public ImageProperties(ImagingApi imagingApi) : base(imagingApi)
         {
-            string fileName = "Sample.tiff";
-
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
-
-            // Get properties of an image
-            // Folder with image to process. The value is null because the file is saved at the root of the storage
-            string folder = null;
-            string storage = null; // We are using default Cloud Storage
-
-            GetImagePropertiesRequest getImagePropertiesRequest = new GetImagePropertiesRequest(fileName, folder,
-                                                                                                            storage);
-
-            ImagingResponse imagingResponse = this.ImagingApi.GetImageProperties(getImagePropertiesRequest);
-            
+            PrintHeader("Image properties example:");
         }
 
-        // Get properties of an image. Image data is passed in a request stream.
+        /// <summary>
+        /// Get properties of an image, which is store in the cloud.
+        /// </summary>
+        public void GetImagePropertiesFromStorage()
+        {
+            Console.WriteLine("Get properties of an image in cloud storage");
+
+            UploadSampleImageToCloud();
+
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
+
+            GetImagePropertiesRequest getImagePropertiesRequest = new GetImagePropertiesRequest(
+                SampleImageFileName, folder, storage);
+
+            Console.WriteLine($"Call GetImageProperties");
+
+            ImagingResponse imagingResponse = this.ImagingApi.GetImageProperties(getImagePropertiesRequest);
+
+            OutputPropertiesToFile("ImageProperties.txt", imagingResponse);
+
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Get properties of an image. Image data is passed in a request stream.
+        /// </summary>
         public void ExtractImagePropertiesFromRequestBody()
         {
-            string fileName = "Sample.tiff";
-            using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
+            Console.WriteLine("Get properties of an image from request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 ExtractImagePropertiesRequest imagePropertiesRequest = new ExtractImagePropertiesRequest(inputImageStream);
+
+                Console.WriteLine($"Call ExtractImageProperties");
+
                 ImagingResponse imagingResponse = this.ImagingApi.ExtractImageProperties(imagePropertiesRequest);
+                OutputPropertiesToFile("ImagePropertiesFromRequest.txt", imagingResponse);
             }
+
+            Console.WriteLine();
         }
     }
 }

@@ -23,80 +23,107 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Model;
+using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+using System;
 using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
+    /// <summary>
+    /// Update BMP image example.
+    /// </summary>
+    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
     class UpdateBMPImage : ImagingBase
     {
-        // Update parameters of a BMP image. The image is saved in the cloud. 
+        /// <summary>
+        /// Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        /// The name of the example image file.
+        /// </value>
+        protected override string SampleImageFileName => "UpdateBmpSampleImage.bmp";
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateBMPImage"/> class.
+        /// </summary>
+        /// <param name="imagingApi">The imaging API.</param>
+        public UpdateBMPImage(ImagingApi imagingApi) : base(imagingApi)
+        {
+            PrintHeader("Update BMP image example:");
+        }
+
+        /// <summary>
+        /// Update parameters of a BMP image. 
+        /// The image is saved in the cloud. 
+        /// </summary>
         public void ModifyBmpFromStorage()
         {
-            string fileName = "WaterMark.bmp";
+            Console.WriteLine("Update parameters of a BMP image from cloud storage");
 
             // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             int? bitsPerPixel = 32;
             int? horizontalResolution = 300;
             int? verticalResolution = 300;
             bool? fromScratch = null;
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            var request = new ModifyBmpRequest(fileName, bitsPerPixel, horizontalResolution, 
-                                        verticalResolution, fromScratch, folder, storage);
-            Stream updatedImage = this.ImagingApi.ModifyBmp(request);
+            var request = new ModifyBmpRequest(
+                SampleImageFileName, bitsPerPixel, horizontalResolution, verticalResolution, 
+                fromScratch, folder, storage);
 
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Watermark_out.bmp"))
+            Console.WriteLine($"Call ModifyBmp with params: bits per pixel:{bitsPerPixel}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution}");
+
+            using (Stream updatedImage = this.ImagingApi.ModifyBmp(request))
             {
-                updatedImage.Seek(0, SeekOrigin.Begin);
-                updatedImage.CopyTo(fileStream);
+                // Save updated image to local storage
+                SaveUpdatedImageToOutput(updatedImage, false);
             }
+
+            Console.WriteLine();
         }
 
         // Update parameters of a BMP image, and upload updated image to Cloud Storage.
         public void ModifyBmpAndUploadToStorage()
         {
-            string fileName = "WaterMark.bmp";
-
+            Console.WriteLine("Update parameters of a BMP image and upload to cloud storage");
+             
             // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             int? bitsPerPixel = 32;
             int? horizontalResolution = 300;
             int? verticalResolution = 300;
             bool? fromScratch = null;
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            var request = new ModifyBmpRequest(fileName, bitsPerPixel, horizontalResolution,
-                                        verticalResolution, fromScratch, folder, storage);
+            var request = new ModifyBmpRequest(
+                SampleImageFileName, bitsPerPixel, horizontalResolution, verticalResolution,
+                fromScratch, folder, storage);
+
+            Console.WriteLine($"Call ModifyBmp with params: bits per pixel:{bitsPerPixel}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution}");
+
             using (Stream updatedImage = this.ImagingApi.ModifyBmp(request))
             {
                 // Upload updated image to Cloud Storage
-                string outPath = "Watermark_out.bmp";
-                var uploadFileRequest = new UploadFileRequest(outPath, updatedImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
+                UploadImageToCloud(GetModifiedSampleImageFileName(false), updatedImage);              
             }
+
+            Console.WriteLine();
         }
 
-        // Update parameters of a BMP image. Image data is passed in a request stream.
+        /// <summary>
+        /// Update parameters of a BMP image. Image data is passed in a request stream.
+        /// </summary>
         public void CreateModifiedBmpFromRequestBody()
         {
-            string fileName = "WaterMark.bmp";
-            using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
+            Console.WriteLine("Update parameters of a BMP image from request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 int? bitsPerPixel = 32;
                 int? horizontalResolution = 300;
@@ -106,15 +133,17 @@ namespace AsposeImagingCloudSDKExamples
                 string storage = null; // We are using default Cloud Storage
 
                 var request = new CreateModifiedBmpRequest(inputImageStream, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
-                Stream updatedImage = this.ImagingApi.CreateModifiedBmp(request);
 
-                // Save updated image to local storage
-                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Watermark_out.bmp"))
+                Console.WriteLine($"Call CreateModifiedBmp with params: bits per pixel:{bitsPerPixel}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution}");
+
+                using (Stream updatedImage = this.ImagingApi.CreateModifiedBmp(request))
                 {
-                    updatedImage.Seek(0, SeekOrigin.Begin);
-                    updatedImage.CopyTo(fileStream);
-                }
+                    // Save updated image to local storage
+                    SaveUpdatedImageToOutput(updatedImage, true);
+                }               
             }
-        }
+
+            Console.WriteLine();
+        }       
     }
 }

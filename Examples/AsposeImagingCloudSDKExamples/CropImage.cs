@@ -23,27 +23,48 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Model;
+using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+using System;
 using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
+    /// <summary>
+    /// Crop image example.
+    /// </summary>
+    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
     class CropImage : ImagingBase
     {
-        // Crop an existing image
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CropImage"/> class.
+        /// </summary>
+        /// <param name="imagingApi">The imaging API.</param>
+        public CropImage(ImagingApi imagingApi) : base(imagingApi)
+        {
+            PrintHeader("Crop image example:");
+        }
+
+        /// <summary>
+        /// Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        /// The name of the example image file.
+        /// </value>
+        /// <remarks>
+        /// Input formats could be one of the following:
+        /// BMP, GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
+        /// </remarks>
+        protected override string SampleImageFileName => "CropSampleImage.bmp";
+
+        /// <summary>
+        /// Crops the image from cloud storage.
+        /// </summary>
         public void CropImageFromStorage()
         {
-            // Input formats could be one of the following:
-            // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
+            Console.WriteLine("Crops the image from cloud storage");
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Crop 
             // for possible output formats
@@ -52,62 +73,60 @@ namespace AsposeImagingCloudSDKExamples
             int? y = 10;
             int? width = 100;
             int? height = 150;
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            var request = new CropImageRequest(fileName, format, x, y, width, height, folder, storage);
-            Stream updatedImage = this.ImagingApi.CropImage(request);
+            var request = new CropImageRequest(SampleImageFileName, format, x, y, width, height, folder, storage);
 
-            // Save updated image to local storage
-            string outPath = "Watermark_out." + format;
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + outPath))
-            {
-                updatedImage.Seek(0, SeekOrigin.Begin);
-                updatedImage.CopyTo(fileStream);
-            }
-        }
+            Console.WriteLine($"Call CropImage with params:x:{x},y:{y}, width:{width}, height:{height}");
 
-        // Crop an existing image, and upload updated image to Cloud Storage
-        public void CropImageAndUploadToStorage()
-        {
-            // Input formats could be one of the following:
-            // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
-
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
-
-            // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Crop 
-            // for possible output formats
-            string format = "jpg"; // Resulting image format.
-            int? x = 10;
-            int? y = 10;
-            int? width = 100;
-            int? height = 150;
-            string folder = null; // Input file is saved at the root of the storage
-            string storage = null; // We are using default Cloud Storage
-
-            var request = new CropImageRequest(fileName, format, x, y, width, height, folder, storage);
             using (Stream updatedImage = this.ImagingApi.CropImage(request))
             {
-                // Upload updated image to Cloud Storage
-                string outPath = "Watermark_out." + format;
-                var uploadFileRequest = new UploadFileRequest(outPath, updatedImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
+                SaveUpdatedImageToOutput(updatedImage, false, format);
             }
+
+            Console.WriteLine();
         }
 
-        //  Crop an image. Image data is passed in a request stream.
+        /// <summary>
+        /// Crop an existing image, and upload updated image to Cloud Storage.
+        /// </summary>
+        public void CropImageAndUploadToStorage()
+        {
+            Console.WriteLine("Crops the image and upload to cloud storage");
+
+            UploadSampleImageToCloud();
+
+            // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Crop 
+            // for possible output formats
+            string format = "jpg"; // Resulting image format.
+            int? x = 10;
+            int? y = 10;
+            int? width = 100;
+            int? height = 150;
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
+
+            var request = new CropImageRequest(SampleImageFileName, format, x, y, width, height, folder, storage);
+
+            Console.WriteLine($"Call CropImage with params:x:{x},y:{y}, width:{width}, height:{height}");
+
+            using (Stream updatedImage = this.ImagingApi.CropImage(request))
+            {
+                UploadImageToCloud(GetModifiedSampleImageFileName(false, format), updatedImage);               
+            }
+
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Crop an image. Image data is passed in a request stream.
+        /// </summary>
         public void CreateCroppedImageFromRequestBody()
         {
-            // Input formats could be one of the following:
-            // BMP,	GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-            string fileName = "WaterMark.bmp";
-            using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
+            Console.WriteLine("Crops the image from request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Crop 
                 // for possible output formats
@@ -120,15 +139,16 @@ namespace AsposeImagingCloudSDKExamples
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
 
                 var request = new CreateCroppedImageRequest(inputImageStream, format, x, y, width, height, outPath, storage);
-                Stream updatedImage = this.ImagingApi.CreateCroppedImage(request);
 
-                // Save updated image to local storage
-                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Watermark_out." + format))
+                Console.WriteLine($"Call CreateCroppedImage with params:x:{x},y:{y}, width:{width}, height:{height}");
+
+                using (Stream updatedImage = this.ImagingApi.CreateCroppedImage(request))
                 {
-                    updatedImage.Seek(0, SeekOrigin.Begin);
-                    updatedImage.CopyTo(fileStream);
-                }
+                    SaveUpdatedImageToOutput(updatedImage, true, format);
+                }              
             }
+
+            Console.WriteLine();
         }
     }
 }

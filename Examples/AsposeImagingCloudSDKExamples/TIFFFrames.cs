@@ -23,6 +23,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System;
@@ -30,57 +31,37 @@ using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
+    /// <summary>
+    /// TIFF frames example.
+    /// </summary>
+    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
     class TIFFFrames : ImagingBase
     {
-        // Get separate frame from existing TIFF image.
-        public void GetImageFrameFromStorage()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TIFFFrames"/> class.
+        /// </summary>
+        /// <param name="imagingApi">The imaging API.</param>
+        public TIFFFrames(ImagingApi imagingApi) : base(imagingApi)
         {
-            String fileName = "Sample.tiff";
-
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
-
-            int? frameId = 1; // Number of a frame
-            int? newWidth = 300;
-            int? newHeight = 450;
-            int? x = 10;
-            int? y = 10;
-            int? rectWidth = 200;
-            int? rectHeight = 300;
-            string rotateFlipMethod = "Rotate90FlipX";
-            // Result will include just the specified frame
-            bool? saveOtherFrames = false;
-            string folder = null; // Input file is saved at the root of the storage
-            string storage = null; // We are using default Cloud Storage
-
-            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(fileName, frameId, newWidth, newHeight,
-                            x, y, rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, folder, storage);
-
-            Stream imageFrame = this.ImagingApi.GetImageFrame(getImageFrameRequest);
-
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "SingleFrame_out.tiff"))
-            {
-                imageFrame.Seek(0, SeekOrigin.Begin);
-                imageFrame.CopyTo(fileStream);
-            }
+            PrintHeader("TIFF frames example:");
         }
 
-        // Get separate frame from existing TIFF image, and upload the frame to Cloud Storage
-        public void GetImageFrameAndUploadToStorage()
-        {
-            String fileName = "Sample.tiff";
+        /// <summary>
+        /// Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        /// The name of the example image file.
+        /// </value>
+        protected override string SampleImageFileName => "TiffFrameSampleImage.tiff";
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+        /// <summary>
+        /// Get separate frame from existing TIFF image.
+        /// </summary>
+        public void GetImageFrameFromStorage()
+        {
+            Console.WriteLine("Get separate frame from existing TIFF image in cloud storage");
+
+            UploadSampleImageToCloud();
 
             int? frameId = 1; // Number of a frame
             int? newWidth = 300;
@@ -92,65 +73,97 @@ namespace AsposeImagingCloudSDKExamples
             string rotateFlipMethod = "Rotate90FlipX";
             // Result will include just the specified frame
             bool? saveOtherFrames = false;
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(fileName, frameId, newWidth, newHeight,
-                            x, y, rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, folder, storage);
+            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(
+                SampleImageFileName, frameId, newWidth, newHeight,
+                x, y, rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, folder, storage);
+
+            Console.WriteLine($"Call GetImageFrame with params: frame Id:{frameId}, new width:{newWidth}, new height:{newHeight}, x:{x}, y:{y}, rect width:{rectWidth}, rectHeight:{rectHeight}, rotate/flip method:{rotateFlipMethod}, save other frames:{saveOtherFrames}");
 
             using (Stream imageFrame = this.ImagingApi.GetImageFrame(getImageFrameRequest))
             {
-                // Upload updated image to Cloud Storage
-                string outPath = "SingleFrame_out.tiff";
-                var uploadFileRequest = new UploadFileRequest(outPath, imageFrame);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
+                SaveUpdatedImageToOutput("SingleFrame.tiff", imageFrame);
             }
+
+            Console.WriteLine();
         }
 
-        // Resize a TIFF frame.
+        /// <summary>
+        /// Get separate frame from existing TIFF image, and upload the frame to Cloud Storage
+        /// </summary>
+        public void GetImageFrameAndUploadToStorage()
+        {
+            Console.WriteLine("Get separate frame from existing TIFF image and upload to cloud storage");
+
+            UploadSampleImageToCloud();
+
+            int? frameId = 1; // Number of a frame
+            int? newWidth = 300;
+            int? newHeight = 450;
+            int? x = 10;
+            int? y = 10;
+            int? rectWidth = 200;
+            int? rectHeight = 300;
+            string rotateFlipMethod = "Rotate90FlipX";
+            // Result will include just the specified frame
+            bool? saveOtherFrames = false;
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
+
+            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(
+                SampleImageFileName, frameId, newWidth, newHeight,
+                x, y, rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, folder, storage);
+
+            Console.WriteLine($"Call GetImageFrame with params: frame Id:{frameId}, new width:{newWidth}, new height:{newHeight}, x:{x}, y:{y}, rect width:{rectWidth}, rectHeight:{rectHeight}, rotate/flip method:{rotateFlipMethod}, save other frames:{saveOtherFrames}");
+
+            using (Stream imageFrame = this.ImagingApi.GetImageFrame(getImageFrameRequest))
+            {
+                UploadImageToCloud("SingleFrame.tiff", imageFrame);
+            }
+
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Resize a TIFF frame.
+        /// </summary>
         public void ResizeImageFrameFromStorage()
         {
-            String fileName = "Sample.tiff";
+            Console.WriteLine("Resize frame from existing TIFF image from cloud storage");
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             int? frameId = 0; // Number of a frame
             int? newWidth = 300;
             int? newHeight = 300;
             // Result will include just the specified frame
             bool? saveOtherFrames = false;
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(fileName, frameId, newWidth, newHeight,
+            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(SampleImageFileName, frameId, newWidth, newHeight,
                                 saveOtherFrames: saveOtherFrames, folder: folder, storage: storage);
 
-            Stream imageFrame = this.ImagingApi.GetImageFrame(getImageFrameRequest);
+            Console.WriteLine($"Call GetImageFrame with params: frame Id:{frameId}, new width:{newWidth}, new height:{newHeight}, save other frames:{saveOtherFrames}");
 
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "SingleFrame_out.tiff"))
+            using (Stream imageFrame = this.ImagingApi.GetImageFrame(getImageFrameRequest))
             {
-                imageFrame.Seek(0, SeekOrigin.Begin);
-                imageFrame.CopyTo(fileStream);
+                SaveUpdatedImageToOutput("ResizeFrame.tiff", imageFrame);
             }
+
+            Console.WriteLine();
         }
 
-        // Crop a TIFF frame.
+        /// <summary>
+        /// Crop a TIFF frame.
+        /// </summary>
         public void CropImageFrameFromStorage()
         {
-            String fileName = "Sample.tiff";
+            Console.WriteLine("Crop frame from existing TIFF image from cloud storage");
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             int? frameId = 0; // Number of a frame
             int? x = 10;
@@ -159,65 +172,59 @@ namespace AsposeImagingCloudSDKExamples
             int? rectHeight = 300;
             // Result will include just the specified frame
             bool? saveOtherFrames = false;
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(fileName, frameId, x: x, y: y, 
+            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(SampleImageFileName, frameId, x: x, y: y, 
                                                             rectWidth: rectWidth, rectHeight: rectHeight, saveOtherFrames: saveOtherFrames, folder: folder, storage: storage);
 
-            Stream imageFrame = this.ImagingApi.GetImageFrame(getImageFrameRequest);
+            Console.WriteLine($"Call GetImageFrame with params: frame Id:{frameId}, x:{x}, y:{y}, rect width:{rectWidth}, rectHeight:{rectHeight}, save other frames:{saveOtherFrames}");
 
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "SingleFrame_out.tiff"))
+            using (Stream imageFrame = this.ImagingApi.GetImageFrame(getImageFrameRequest))
             {
-                imageFrame.Seek(0, SeekOrigin.Begin);
-                imageFrame.CopyTo(fileStream);
+                SaveUpdatedImageToOutput("CropFrame.tiff", imageFrame);
             }
+
+            Console.WriteLine();
         }
 
-        // RotateFlip a TIFF frame.
+        /// <summary>
+        /// Rotate/Flip a TIFF frame.
+        /// </summary>
         public void RotateFlipImageFrameFromStorage()
         {
-            String fileName = "Sample.tiff";
+            Console.WriteLine("Rotate/flip frame from existing TIFF image from cloud storage");
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             int? frameId = 0; // Number of a frame
             string rotateFlipMethod = "Rotate90FlipX";
             // Result will include just the specified frame
             bool? saveOtherFrames = false;
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(fileName, frameId,
+            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(SampleImageFileName, frameId,
                                 rotateFlipMethod: rotateFlipMethod, saveOtherFrames: saveOtherFrames, folder: folder, storage: storage);
 
-            Stream imageFrame = this.ImagingApi.GetImageFrame(getImageFrameRequest);
+            Console.WriteLine($"Call GetImageFrame with params: frame Id:{frameId}, rotate/flip method:{rotateFlipMethod}, save other frames:{saveOtherFrames}");
 
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "SingleFrame_out.tiff"))
+            using (Stream imageFrame = this.ImagingApi.GetImageFrame(getImageFrameRequest))
             {
-                imageFrame.Seek(0, SeekOrigin.Begin);
-                imageFrame.CopyTo(fileStream);
+                SaveUpdatedImageToOutput("RotateFlipFrame.tiff", imageFrame);
             }
+
+            Console.WriteLine();
         }
 
-        // Result will also include all other frames.
+        /// <summary>
+        /// Gets all image frames from storage.
+        /// </summary>
         public void GetAllImageFramesFromStorage()
         {
-            String fileName = "Sample.tiff";
+            Console.WriteLine("Gets all image frames from existing TIFF image from cloud storage");
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             int? frameId = 1; // Number of a frame
             int? newWidth = 300;
@@ -229,27 +236,31 @@ namespace AsposeImagingCloudSDKExamples
             string rotateFlipMethod = "Rotate90FlipX";
             // Result will include all other frames
             bool? saveOtherFrames = true;
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(fileName, frameId, newWidth, newHeight,
-                    x, y, rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, folder, storage);
+            GetImageFrameRequest getImageFrameRequest = new GetImageFrameRequest(
+                SampleImageFileName, frameId, newWidth, newHeight,
+                x, y, rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, folder, storage);
 
-            Stream imageFrame = this.ImagingApi.GetImageFrame(getImageFrameRequest);
+            Console.WriteLine($"Call GetImageFrame with params: frame Id:{frameId}, new width:{newWidth}, new height:{newHeight}, x:{x}, y:{y}, rect width:{rectWidth}, rectHeight:{rectHeight}, rotate/flip method:{rotateFlipMethod}, save other frames:{saveOtherFrames}");
 
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "OtherFrames_out.tiff"))
+            using (Stream imageFrame = this.ImagingApi.GetImageFrame(getImageFrameRequest))
             {
-                imageFrame.Seek(0, SeekOrigin.Begin);
-                imageFrame.CopyTo(fileStream);
+                SaveUpdatedImageToOutput("OtherFrames.tiff", imageFrame);
             }
+
+            Console.WriteLine();
         }
 
-        // Get separate frame from existing TIFF image. Image data is passed in a request stream.
+        /// <summary>
+        /// Get separate frame from existing TIFF image. Image data is passed in a request stream.
+        /// </summary>
         public void CreateImageFrameFromRequestBody()
         {
-            string fileName = "Sample.tiff";
-            using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
+            Console.WriteLine("Get separate frame from existing TIFF image from request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 int? frameId = 1;
                 int? newWidth = 300;
@@ -266,54 +277,63 @@ namespace AsposeImagingCloudSDKExamples
                 CreateImageFrameRequest createImageFrameRequest = new CreateImageFrameRequest(inputImageStream, frameId, newWidth,
                             newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, saveOtherFrames, outPath, storage);
 
-                Stream imageFrame = this.ImagingApi.CreateImageFrame(createImageFrameRequest);
+                Console.WriteLine($"Call CreateImageFrame with params: frame Id:{frameId}, new width:{newWidth}, new height:{newHeight}, x:{x}, y:{y}, rect width:{rectWidth}, rectHeight:{rectHeight}, rotate/flip method:{rotateFlipMethod}, save other frames:{saveOtherFrames}");
 
-                // Save updated image to local storage
-                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "SingleFrame_out.tiff"))
+                using (Stream imageFrame = this.ImagingApi.CreateImageFrame(createImageFrameRequest))
                 {
-                    imageFrame.Seek(0, SeekOrigin.Begin);
-                    imageFrame.CopyTo(fileStream);
+                    SaveUpdatedImageToOutput("SingleFrameFromRequest.tiff", imageFrame);
                 }
             }
+
+            Console.WriteLine();
         }
 
-        // Get separate frame properties of a TIFF image.
+        /// <summary>
+        /// Get separate frame properties of a TIFF image.
+        /// </summary>
         public void GetImageFramePropertiesFromStorage()
         {
-            String fileName = "Sample.tiff";
+            Console.WriteLine("Gets separate frame properties of existing TIFF image from cloud storage");
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             int? frameId = 1; // Number of a frame
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            GetImageFramePropertiesRequest imageFramePropertiesRequest = new GetImageFramePropertiesRequest(fileName,
-                                                                                                frameId, folder, storage);
+            GetImageFramePropertiesRequest imageFramePropertiesRequest = 
+                new GetImageFramePropertiesRequest(SampleImageFileName, frameId, folder, storage);
+
+            Console.WriteLine($"Call GetImageFrameProperties with params: frame Id:{frameId}");
 
             ImagingResponse imagingResponse = this.ImagingApi.GetImageFrameProperties(imageFramePropertiesRequest);
-            Console.WriteLine("Height: " + imagingResponse.Height + "Width: " + imagingResponse.Width);
+            OutputPropertiesToFile("TiffFrameProperties.txt", imagingResponse);
+
+            Console.WriteLine();
         }
 
-        // Get separate frame properties of a TIFF image. Image data is passed in a request stream.
+        /// <summary>
+        /// Get separate frame properties of a TIFF image. 
+        /// Image data is passed in a request stream.
+        /// </summary>
         public void ExtractImageFramePropertiesFromRequestBody()
         {
-            string fileName = "Sample.tiff";
-            using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
+            Console.WriteLine("Get separate frame properties of existing TIFF image from request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 int? frameId = 1;
 
-                ExtractImageFramePropertiesRequest imageFramePropertiesRequest = new ExtractImageFramePropertiesRequest(inputImageStream,
-                                                                                                                    frameId);
+                ExtractImageFramePropertiesRequest imageFramePropertiesRequest = 
+                    new ExtractImageFramePropertiesRequest(inputImageStream, frameId);
+
+                Console.WriteLine($"Call ExtractImageFrameProperties with params: frame Id:{frameId}");
 
                 ImagingResponse imagingResponse = this.ImagingApi.ExtractImageFrameProperties(imageFramePropertiesRequest);
-                Console.WriteLine("Height: " + imagingResponse.Height + "Width: " + imagingResponse.Width);
+                OutputPropertiesToFile("TiffFramePropertiesFromRequest.txt", imagingResponse);
             }
+
+            Console.WriteLine();
         }
     }
 }

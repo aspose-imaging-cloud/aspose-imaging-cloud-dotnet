@@ -23,80 +23,100 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Model;
+using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+using System;
 using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
+    /// <summary>
+    /// Update PSD image example.
+    /// </summary>
+    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
     class UpdatePSDImage : ImagingBase
     {
-        // Update parameters of existing PSD image. The image is saved in the cloud.
-        public void ModifyPsdFromStorage()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdatePSDImage"/> class.
+        /// </summary>
+        /// <param name="imagingApi">The imaging API.</param>
+        public UpdatePSDImage(ImagingApi imagingApi) : base(imagingApi)
         {
-            string fileName = "Sample.psd";
-
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
-
-            int? channelsCount = 3;
-            string compressionMethod = "raw";
-            bool? fromScratch = null;
-            string folder = null;
-            string storage = null; // We are using default Cloud Storage
-
-            ModifyPsdRequest modifyPsdRequest = new ModifyPsdRequest(fileName, channelsCount, compressionMethod,
-                                                                                fromScratch, folder, storage);
-
-            Stream updatedImage = this.ImagingApi.ModifyPsd(modifyPsdRequest);
-            
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Sample_out.psd"))
-            {
-                updatedImage.Seek(0, SeekOrigin.Begin);
-                updatedImage.CopyTo(fileStream);
-            }
+            PrintHeader("Update PSD image example:");
         }
 
-        // Update parameters of existing PSD image, and upload updated image to Cloud Storage
-        public void ModifyPsdAndUploadToStorage()
-        {
-            string fileName = "Sample.psd";
+        /// <summary>
+        /// Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        /// The name of the example image file.
+        /// </value>
+        protected override string SampleImageFileName => "UpdatePSDSampleImage.psd";
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+        /// <summary>
+        /// Update parameters of existing PSD image. The image is saved in the cloud.
+        /// </summary>
+        public void ModifyPsdFromStorage()
+        {
+            Console.WriteLine("Update parameters of a PSD image from cloud storage");
+
+            UploadSampleImageToCloud();
 
             int? channelsCount = 3;
             string compressionMethod = "raw";
             bool? fromScratch = null;
-            string folder = null;
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            ModifyPsdRequest modifyPsdRequest = new ModifyPsdRequest(fileName, channelsCount, compressionMethod,
-                                                                                fromScratch, folder, storage);
+            ModifyPsdRequest modifyPsdRequest =
+                new ModifyPsdRequest(SampleImageFileName, channelsCount, compressionMethod, fromScratch, folder, storage);
+
+            Console.WriteLine($"Call ModifyPsd with params: channels count:{channelsCount}, compression method:{compressionMethod}");
 
             using (Stream updatedImage = this.ImagingApi.ModifyPsd(modifyPsdRequest))
             {
-                // Upload updated image to Cloud Storage
-                string outPath = "Sample_out.psd";
-                var uploadFileRequest = new UploadFileRequest(outPath, updatedImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
+                SaveUpdatedImageToOutput(updatedImage, false);
             }
+
+            Console.WriteLine();
         }
 
-        // Update parameters of existing PSD image. Image data is passed in a request stream.
+        /// <summary>
+        /// Update parameters of existing PSD image, and upload updated image to Cloud Storage.
+        /// </summary>
+        public void ModifyPsdAndUploadToStorage()
+        {
+            Console.WriteLine("Update parameters of a PSD image and upload to cloud storage");
+
+            UploadSampleImageToCloud();
+
+            int? channelsCount = 3;
+            string compressionMethod = "raw";
+            bool? fromScratch = null;
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // We are using default Cloud Storage
+
+            ModifyPsdRequest modifyPsdRequest =
+                new ModifyPsdRequest(SampleImageFileName, channelsCount, compressionMethod, fromScratch, folder, storage);
+
+            Console.WriteLine($"Call ModifyPsd with params: channels count:{channelsCount}, compression method:{compressionMethod}");
+
+            using (Stream updatedImage = this.ImagingApi.ModifyPsd(modifyPsdRequest))
+            {
+                UploadImageToCloud(GetModifiedSampleImageFileName(false), updatedImage);
+            }
+
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Update parameters of existing PSD image. Image data is passed in a request stream.
+        /// </summary>
         public void CreateModifiedPsdFromRequestBody()
         {
-            string fileName = "Sample.psd";
-            using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
+            Console.WriteLine("Update parameters of a PSD image from request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 int? channelsCount = 3;
                 string compressionMethod = "raw";
@@ -104,18 +124,19 @@ namespace AsposeImagingCloudSDKExamples
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image).
                 string storage = null; // We are using default Cloud Storage
 
-                CreateModifiedPsdRequest modifiedPsdRequest = new CreateModifiedPsdRequest(inputImageStream, channelsCount,
-                                                                        compressionMethod, fromScratch, outPath, storage);
+                CreateModifiedPsdRequest modifiedPsdRequest = 
+                    new CreateModifiedPsdRequest(inputImageStream, channelsCount,
+                                                 compressionMethod, fromScratch, outPath, storage);
 
-                Stream updatedImage = this.ImagingApi.CreateModifiedPsd(modifiedPsdRequest);
+                Console.WriteLine($"Call CreateModifiedPsd with params: channels count:{channelsCount}, compression method:{compressionMethod}");
 
-                // Save updated image to local storage
-                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "Sample_out.psd"))
+                using (Stream updatedImage = this.ImagingApi.CreateModifiedPsd(modifiedPsdRequest))
                 {
-                    updatedImage.Seek(0, SeekOrigin.Begin);
-                    updatedImage.CopyTo(fileStream);
+                    SaveUpdatedImageToOutput(updatedImage, true);
                 }
             }
+
+            Console.WriteLine();
         }
     }
 }

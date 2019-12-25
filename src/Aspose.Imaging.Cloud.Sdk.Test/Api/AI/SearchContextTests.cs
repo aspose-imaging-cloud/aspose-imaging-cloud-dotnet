@@ -25,6 +25,7 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
+    using System.Web;
     using System.IO;
     using Client;
     using Model;
@@ -54,6 +55,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 
                       Assert.Throws<ApiException>(() => this.ImagingApi.GetImageSearchStatus(
                           new GetImageSearchStatusRequest(this.SearchContextId, storage: this.TestStorage)));
+
+                      this.SearchContextId = null;
                   });
         }
 
@@ -167,6 +170,28 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                         Assert.IsTrue(response.ImageId.Contains("3.jp"));
                         Assert.IsTrue(response.Features.Length > 0);
                     });
+        }
+
+        [Test]
+        public void ExtractAndAddImageFeaturesFromWebsiteTest()
+        {
+            RunTestWithLogging("ExtractAndAddImageFeaturesFromWebsiteTest",
+                () =>
+                {
+                    var imagesSourceUrl = HttpUtility.UrlEncode("https://www.f1news.ru/interview/hamilton/140909.shtml");
+
+                    this.ImagingApi.CreateWebSiteImageFeatures(
+                        new CreateWebSiteImageFeaturesRequest(this.SearchContextId, imagesSourceUrl, storage: this.TestStorage));
+
+                    this.WaitSearchContextIdle();
+
+
+                    var imageUrl = HttpUtility.UrlEncode("https://cdn.f1ne.ws/userfiles/hamilton/140909.jpg");
+                    var response = this.ImagingApi.GetImageFeatures(
+                        new GetImageFeaturesRequest(this.SearchContextId, imageUrl, storage: this.TestStorage));
+
+                    Assert.Greater(response.Features.Length, 0);
+                });
         }
 
         [Test]

@@ -23,25 +23,44 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Model;
+using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
+using System;
 using System.IO;
 
 namespace AsposeImagingCloudSDKExamples
 {
+    /// <summary>
+    /// Update EMF image example.
+    /// </summary>
+    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
     class UpdateEMFImage : ImagingBase
     {
-        //  Process existing EMF imaging using given parameters
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateEMFImage"/> class.
+        /// </summary>
+        /// <param name="imagingApi">The imaging API.</param>
+        public UpdateEMFImage(ImagingApi imagingApi) : base(imagingApi)
+        {
+            PrintHeader("Update EMF image example:");
+        }
+
+        /// <summary>
+        /// Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        /// The name of the example image file.
+        /// </value>
+        protected override string SampleImageFileName => "UpdateEMFSampleImage.emf";
+
+        /// <summary>
+        /// Modifies the EMF from storage.
+        /// </summary>
         public void ModifyEmfFromStorage()
         {
-            string fileName = "Sample.emf";
+            Console.WriteLine("Update parameters of a EMF image");
 
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
+            UploadSampleImageToCloud();
 
             string bkColor = "gray";
             int pageWidth = 300;
@@ -53,63 +72,68 @@ namespace AsposeImagingCloudSDKExamples
             // If this is true – they will be taken from default values for standard image,
             // if it is false – they will be saved from current image. Default is false.
             bool? fromScratch = null;
-            string folder = null; // Input file is saved at the root of the storage
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // As we are using default Cloud Storage
 
-            var request = new ModifyEmfRequest(fileName, bkColor, pageWidth, pageHeigth, borderX, borderY,
-                        fromScratch, folder, storage, format);
-            Stream updatedImage = this.ImagingApi.ModifyEmf(request);
+            var request = new ModifyEmfRequest(
+                SampleImageFileName, bkColor, pageWidth, pageHeigth, borderX, borderY,
+                fromScratch, folder, storage, format);
 
-            // Save updated image to local storage
-            using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "SampleEMF_out." + format))
-            {
-                updatedImage.Seek(0, SeekOrigin.Begin);
-                updatedImage.CopyTo(fileStream);
-            }
-        }
+            Console.WriteLine($"Call ModifyEmf with params: background color:{bkColor}, width:{pageWidth}, height:{pageHeigth}, border x:{borderX}, border y:{borderY}, format:{format}");
 
-        //  Process existing EMF image using given parameters, and upload updated image to Cloud Storage.
-        public void ModifyEmfAndUploadToStorage()
-        {
-            string fileName = "Sample.emf";
-
-            // Upload local image to Cloud Storage
-            using (FileStream localInputImage = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
-            {
-                var uploadFileRequest = new UploadFileRequest(fileName, localInputImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
-            }
-
-            string bkColor = "gray";
-            int pageWidth = 300;
-            int pageHeigth = 300;
-            int borderX = 50;
-            int borderY = 50;
-            string format = "png";
-            // Specifies where additional parameters we do not support should be taken from.
-            // If this is true – they will be taken from default values for standard image,
-            // if it is false – they will be saved from current image. Default is false.
-            bool? fromScratch = null;
-            string folder = null; // Input file is saved at the root of the storage
-            string storage = null; // As we are using default Cloud Storage
-
-            var request = new ModifyEmfRequest(fileName, bkColor, pageWidth, pageHeigth, borderX, borderY,
-                        fromScratch, folder, storage, format);
             using (Stream updatedImage = this.ImagingApi.ModifyEmf(request))
             {
-                // Upload updated image to Cloud Storage
-                string outPath = "SampleEMF_out." + format;
-                var uploadFileRequest = new UploadFileRequest(outPath, updatedImage);
-                FilesUploadResult result = this.ImagingApi.UploadFile(uploadFileRequest);
+                SaveUpdatedImageToOutput(updatedImage, false, format);
             }
+
+            Console.WriteLine();
         }
 
-        // Rasterize EMF image to PNG using given parameters. 
-        // Image data is passed in a request stream.
+        /// <summary>
+        /// Process existing EMF image using given parameters, and upload updated image to Cloud Storage.
+        /// </summary>
+        public void ModifyEmfAndUploadToStorage()
+        {
+            Console.WriteLine("Update parameters of a EMF image and upload to cloud storage");
+
+            UploadSampleImageToCloud();
+
+            string bkColor = "gray";
+            int pageWidth = 300;
+            int pageHeigth = 300;
+            int borderX = 50;
+            int borderY = 50;
+            string format = "png";
+            // Specifies where additional parameters we do not support should be taken from.
+            // If this is true – they will be taken from default values for standard image,
+            // if it is false – they will be saved from current image. Default is false.
+            bool? fromScratch = null;
+            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string storage = null; // As we are using default Cloud Storage
+
+            var request = new ModifyEmfRequest(
+                SampleImageFileName, bkColor, pageWidth, pageHeigth, borderX, borderY,
+                fromScratch, folder, storage, format);
+
+            Console.WriteLine($"Call ModifyEmf with params: background color:{bkColor}, width:{pageWidth}, height:{pageHeigth}, border x:{borderX}, border y:{borderY}, format:{format}");
+
+            using (Stream updatedImage = this.ImagingApi.ModifyEmf(request))
+            {
+                UploadImageToCloud(GetModifiedSampleImageFileName(false, format), updatedImage);
+            }
+
+            Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Rasterize EMF image to PNG using given parameters. 
+        /// Image data is passed in a request stream.
+        /// </summary>
         public void CreateModifiedEmfFromRequestBody()
         {
-            string fileName = "Sample.emf";
-            using (FileStream inputImageStream = File.OpenRead(ImagingBase.PathToDataFiles + fileName))
+            Console.WriteLine("Update parameters of a EMF image from request body");
+
+            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 string bkColor = "gray";
                 int pageWidth = 300;
@@ -123,15 +147,16 @@ namespace AsposeImagingCloudSDKExamples
 
                 var request = new CreateModifiedEmfRequest(inputImageStream, bkColor, pageWidth, pageHeigth,
                                                         borderX, borderY, fromScratch, outPath, storage, format);
-                Stream updatedImage = this.ImagingApi.CreateModifiedEmf(request);
 
-                // Save updated image to local storage
-                using (var fileStream = File.Create(ImagingBase.PathToDataFiles + "SampleEMF_out." + format))
+                Console.WriteLine($"Call CreateModifiedEmf with params: background color:{bkColor}, width:{pageWidth}, height:{pageHeigth}, border x:{borderX}, border y:{borderY}, format:{format}");
+
+                using (Stream updatedImage = this.ImagingApi.CreateModifiedEmf(request))
                 {
-                    updatedImage.Seek(0, SeekOrigin.Begin);
-                    updatedImage.CopyTo(fileStream);
+                    SaveUpdatedImageToOutput(updatedImage, true, format);
                 }
             }
+
+            Console.WriteLine();
         }
     }
 }
