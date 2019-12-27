@@ -99,6 +99,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         },
                         delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
+                            if (format is null)
+                            {
+                                AssertImageFormatsEqual(resultStream, formatExtension);
+                            }
+
                             try
                             {
                                 Assert.AreEqual(originalProperties.Height, resultProperties.Width);
@@ -129,26 +134,26 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".jpg", true)]
-        [TestCase(".jpg", false)]
+        [TestCase(".jpg", true, null)]
+        [TestCase(".jpg", false, null)]
 #if EXTENDED_TEST
-        [TestCase(".bmp", true)]
-        [TestCase(".bmp", false)]
-        [TestCase(".dicom", true)]
-        [TestCase(".dicom", false)]
+        [TestCase(".bmp", true, null)]
+        [TestCase(".bmp", false, null)]
+        [TestCase(".dicom", true, null)]
+        [TestCase(".dicom", false, null)]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
-        //[TestCase(".gif", true)]
-        //[TestCase(".gif", false)]
-        [TestCase(".j2k", true)]
-        [TestCase(".j2k", false)]
-        [TestCase(".png", true)]
-        [TestCase(".png", false)]
-        [TestCase(".psd", true)]
-        [TestCase(".psd", false)]
-        [TestCase(".tiff", true)]
-        [TestCase(".tiff", false)]
-        [TestCase(".webp", true)]
-        [TestCase(".webp", false)]
+        //[TestCase(".gif", true, null)]
+        //[TestCase(".gif", false, null)]
+        [TestCase(".j2k", true, null)]
+        [TestCase(".j2k", false, null)]
+        [TestCase(".png", true, null)]
+        [TestCase(".png", false, null)]
+        [TestCase(".psd", true, null)]
+        [TestCase(".psd", false, null)]
+        [TestCase(".tiff", true, null)]
+        [TestCase(".tiff", false, null)]
+        [TestCase(".webp", true, null)]
+        [TestCase(".webp", false, null)]
 #endif
         public void CreateRotateFlippedImageTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
@@ -185,7 +190,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     this.TestPostRequest(
                         "CreateRotateFlippedImageTest",
                         saveResultToStorage,
-                        $"Input image: {name}; Output format: {format}; Method: {method}",
+                        $"Input image: {name}; Output format: {format ?? "null"}; Method: {method}",
                         name,
                         outName,
                         delegate (Stream inputStream, string outPath)
@@ -196,6 +201,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
+                            if (!saveResultToStorage && format is null)
+                            {
+                                AssertImageFormatsEqual(resultStream, formatExtension);
+                            }
+
                             try
                             {
                                 Assert.AreEqual(originalProperties.Height, resultProperties.Width);

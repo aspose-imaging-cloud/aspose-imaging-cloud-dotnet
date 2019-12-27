@@ -102,11 +102,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                                 rectHeight, rotateFlipMethod, format, folder, storage);
                             return ImagingApi.UpdateImage(request);
                         },
-                        delegate(ImagingResponse originalProperties, ImagingResponse resultProperties,
-                            Stream resultStream)
+                        delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
-                            Assert.AreEqual(Image.GetFileFormat(resultStream),
-                                format == null ? formatExtension : format.Substring(1));
+                            if (format == null)
+                            {
+                                AssertImageFormatsEqual(resultStream, formatExtension);
+                            }
+
                             Assert.AreEqual(rectHeight, resultProperties.Width);
                             Assert.AreEqual(rectWidth, resultProperties.Height);
                         },
@@ -195,7 +197,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
-                            Assert.AreEqual(Image.GetFileFormat(resultStream), format == null ? formatExtension : format.Substring(1));
+                            if (!saveResultToStorage && format is null)
+                            {
+                                AssertImageFormatsEqual(resultStream, formatExtension);
+                            }
+
                             Assert.AreEqual(rectHeight, resultProperties.Width);
                             Assert.AreEqual(rectWidth, resultProperties.Height);
                         },

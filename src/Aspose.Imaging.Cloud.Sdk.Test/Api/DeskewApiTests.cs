@@ -79,9 +79,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     },
                     delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                     {
-                        Assert.NotNull(resultStream);
-                        resultStream.Position = 0;
-                        Assert.IsTrue(ImageFormatsEqual(Image.Load(resultStream).FileFormat, formatExtension));
+                        AssertImageFormatsEqual(resultStream, formatExtension);
                     },
                     TempFolder,
                     TestStorage);
@@ -142,9 +140,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     {
                         if (!saveResultToStorage)
                         {
-                            Assert.NotNull(resultStream);
-                            Assert.AreEqual(Image.GetFileFormat(resultStream), formatExtension);
-                            Assert.IsTrue(resultStream.Length > 0);
+                            AssertImageFormatsEqual(resultStream, formatExtension);
                         }
                         else
                         {
@@ -154,23 +150,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     TempFolder,
                     TestStorage);
             }
-        }
-
-        private bool ImageFormatsEqual(FileFormat asposeImageFormat, string formatExtension)
-        {
-            formatExtension = formatExtension.ToLower();
-
-            if (asposeImageFormat.ToString() == formatExtension)
-            {
-                return true;
-            }
-
-            if (asposeImageFormat == FileFormat.Jpeg && formatExtension == "jpg")
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }

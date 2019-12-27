@@ -96,8 +96,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                             },
                             delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                             {
-                                Assert.AreEqual(Image.GetFileFormat(resultStream),
-                                    format == null ? formatExtension : format.Substring(1));
+                                if (resultStream != null && format is null)
+                                {
+                                    AssertImageFormatsEqual(resultStream, formatExtension);
+                                }
                             },
                             folder,
                             storage

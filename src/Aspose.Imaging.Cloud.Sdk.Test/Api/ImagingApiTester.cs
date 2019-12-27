@@ -4,6 +4,8 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
+using System.IO;
+
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     using Aspose.Imaging.Cloud.Sdk.Test.Base;
@@ -17,5 +19,38 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     [Category("Imaging")]
     public abstract class ImagingApiTester : ApiTester
     {
+        protected void AssertImageFormatsEqual(Stream resultStream, string formatExtension)
+        {
+            Assert.NotNull(resultStream);
+            resultStream.Position = 0;
+            Assert.IsTrue(ImageFormatsEqual(Image.Load(resultStream).FileFormat, formatExtension));
+        }
+
+        private bool ImageFormatsEqual(FileFormat asposeImageFormat, string formatExtension)
+        {
+            formatExtension = NormalizeImageFormatExtension(formatExtension);
+
+            if (string.Equals(asposeImageFormat.ToString(), formatExtension, System.StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            if (asposeImageFormat == FileFormat.Jpeg && formatExtension == "jpg")
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private string NormalizeImageFormatExtension(string formatExtension)
+        {
+            if (formatExtension.StartsWith("."))
+            {
+                formatExtension = formatExtension.Substring(1);
+            }
+
+            return formatExtension.ToLower();
+        }
     }
 }

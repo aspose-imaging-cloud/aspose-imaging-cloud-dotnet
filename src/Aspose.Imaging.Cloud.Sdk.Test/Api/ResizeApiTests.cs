@@ -98,7 +98,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
-                            Assert.AreEqual(Image.GetFileFormat(resultStream), format == null ? formatExtension : format.Substring(1));
+                            if (format is null)
+                            {
+                                AssertImageFormatsEqual(resultStream, formatExtension);
+                            }
+                            
                             Assert.AreEqual(newWidth, resultProperties.Width);
                             Assert.AreEqual(newHeight, resultProperties.Height);
                         },
@@ -181,7 +185,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
-                            Assert.AreEqual(Image.GetFileFormat(resultStream), format == null ? formatExtension : format.Substring(1));
+                            if (!saveResultToStorage && format is null)
+                            {
+                                AssertImageFormatsEqual(resultStream, formatExtension);
+                            }
+                            
                             Assert.AreEqual(newWidth, resultProperties.Width);
                             Assert.AreEqual(newHeight, resultProperties.Height);
                         },
