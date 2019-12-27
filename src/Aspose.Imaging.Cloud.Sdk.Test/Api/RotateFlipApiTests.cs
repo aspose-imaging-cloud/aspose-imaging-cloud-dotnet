@@ -185,7 +185,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
                 foreach (string format in formatsToExport)
                 {
-                    outName = $"{name}_rotateFlip.{format}";
+                    outName = $"{name}_rotateFlip.{format ?? formatExtension.Substring(1)}";
 
                     this.TestPostRequest(
                         "CreateRotateFlippedImageTest",
