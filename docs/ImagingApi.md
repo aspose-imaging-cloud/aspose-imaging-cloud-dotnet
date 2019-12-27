@@ -812,8 +812,8 @@ Rotate and/or flip an image. Image data is passed as zero-indexed multipart/form
 ```csharp
 CreateRotateFlippedImageRequest(
     System.IO.Stream imageData, 
-    string format, 
     string method, 
+    string format = null, 
     string outPath = null, 
     string storage = null)
 ```
@@ -821,8 +821,8 @@ CreateRotateFlippedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
  **method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
  **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
@@ -1242,9 +1242,9 @@ Apply filtering effects to an existing image.
 ```csharp
 FilterEffectImageRequest(
     string name, 
-    string format, 
     string filterType, 
     FilterPropertiesBase filterProperties, 
+    string format = null, 
     string folder = null, 
     string storage = null)
 ```
@@ -1252,9 +1252,9 @@ FilterEffectImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
  **filterType** | **string**| Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing). | 
  **filterProperties** | [**FilterPropertiesBase**](FilterPropertiesBase.md)| Filter properties. | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
  **folder** | **string**| Folder with image to process. | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
@@ -2106,8 +2106,8 @@ Rotate and/or flip an existing image.
 ```csharp
 RotateFlipImageRequest(
     string name, 
-    string format, 
     string method, 
+    string format = null, 
     string folder = null, 
     string storage = null)
 ```
@@ -2115,8 +2115,8 @@ RotateFlipImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **string**| Filename of an image. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
  **method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
  **folder** | **string**| Folder with image to process. | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 

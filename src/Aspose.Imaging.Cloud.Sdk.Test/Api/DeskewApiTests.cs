@@ -80,8 +80,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                     {
                         Assert.NotNull(resultStream);
-                        Assert.AreEqual(Image.GetFileFormat(resultStream), formatExtension);
-                        Assert.AreNotEqual(originalProperties.Width, resultProperties.Width);
+                        resultStream.Position = 0;
+                        Assert.IsTrue(ImageFormatsEqual(Image.Load(resultStream).FileFormat, formatExtension));
                     },
                     TempFolder,
                     TestStorage);
@@ -134,7 +134,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     outName,
                     delegate(Stream inputStream, string outPath)
                     {
-                        var request = new CreateDeskewedImageRequest(inputStream, resizeProportionally, bkColor, TempFolder, TestStorage);
+                        var request = new CreateDeskewedImageRequest(inputStream, resizeProportionally, bkColor, outPath, TestStorage);
                         return ImagingApi.CreateDeskewedImage(request);
                     },
                     delegate(ImagingResponse originalProperties, ImagingResponse resultProperties,
@@ -154,6 +154,23 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     TempFolder,
                     TestStorage);
             }
+        }
+
+        private bool ImageFormatsEqual(FileFormat asposeImageFormat, string formatExtension)
+        {
+            formatExtension = formatExtension.ToLower();
+
+            if (asposeImageFormat.ToString() == formatExtension)
+            {
+                return true;
+            }
+
+            if (asposeImageFormat == FileFormat.Jpeg && formatExtension == "jpg")
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

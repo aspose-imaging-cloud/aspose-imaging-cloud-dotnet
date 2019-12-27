@@ -1290,12 +1290,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateRotateFlippedImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling CreateRotateFlippedImage");
-            }
-
             // verify the required parameter 'method' is set
             if (request.method == null) 
             {
@@ -1309,8 +1303,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -1955,12 +1949,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'name' when calling FilterEffectImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling FilterEffectImage");
-            }
-
             // verify the required parameter 'filterType' is set
             if (request.filterType == null) 
             {
@@ -1981,8 +1969,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "filterType", request.filterType);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             var postBody = SerializationHelper.Serialize(request.filterProperties);
@@ -3218,12 +3206,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'name' when calling RotateFlipImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling RotateFlipImage");
-            }
-
             // verify the required parameter 'method' is set
             if (request.method == null) 
             {
@@ -3238,8 +3220,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
