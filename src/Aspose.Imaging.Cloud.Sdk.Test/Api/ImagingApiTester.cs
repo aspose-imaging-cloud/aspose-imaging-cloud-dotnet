@@ -35,7 +35,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 return true;
             }
 
-            if (asposeImageFormat == FileFormat.Jpeg && formatExtension == "jpg")
+            if ((asposeImageFormat == FileFormat.Jpeg && formatExtension == "jpg")
+                || (asposeImageFormat == FileFormat.Tiff && formatExtension == "tif"))
             {
                 return true;
             }

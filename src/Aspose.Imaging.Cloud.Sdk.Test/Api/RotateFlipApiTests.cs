@@ -196,7 +196,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         delegate (Stream inputStream, string outPath)
                         {
                             var request =
-                                new CreateRotateFlippedImageRequest(inputStream, format, method, outPath, storage);
+                                new CreateRotateFlippedImageRequest(inputStream, method, format, outPath, storage);
                             return ImagingApi.CreateRotateFlippedImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
