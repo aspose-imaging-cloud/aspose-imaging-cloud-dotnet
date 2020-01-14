@@ -42,7 +42,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="DeskewImageRequest"/> class.
         /// </summary>
-        /// <param name="name">Filename of an image.</param>
+        /// <param name="name">Image file name.</param>
         /// <param name="resizeProportionally">Resize proportionally</param>
         /// <param name="bkColor">Background color</param>
         /// <param name="folder">Folder</param>
@@ -57,7 +57,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// Filename of an image.
+        /// Image file name.
         /// </summary>  
         public string name { get; set; }
 
