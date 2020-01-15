@@ -22,6 +22,8 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+#define EXTENDED_TEST
+using System.Collections.Generic;
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
@@ -35,6 +37,26 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     [TestFixture]
     public class DeskewApiTests : ImagingApiTester
     {
+        private Dictionary<FileFormat, string[]> fileFormatExtensions = new Dictionary<FileFormat, string[]>()
+        {
+            { FileFormat.Bmp, new[] {"dib", "bmp"} },
+            { FileFormat.Cdr, new string[] {"cdr"} },
+            { FileFormat.Cmx, new string[] {"cmx"} },
+            { FileFormat.Dicom, new string[] {"dicom"} },
+            { FileFormat.Djvu, new string[] {"djvu"} },
+            { FileFormat.Dng, new string[] {"dng"} },
+            { FileFormat.Emf, new string[] {"emf"} },
+            { FileFormat.Gif, new string[] {"gif"} },
+            { FileFormat.Jpeg, new string[] {"jpeg", "jpg"} },
+            { FileFormat.Jpeg2000, new string[] {"j2k", "jp2", "jpm", "jpx"} },
+            { FileFormat.Png, new string[] {"png"} },
+            { FileFormat.Psd, new string[] {"psd"} },
+            { FileFormat.Tiff, new string[] {"tiff", "tif"} },
+            { FileFormat.Webp, new string[] {"webp"} },
+            { FileFormat.Wmf, new string[] {"wmf"} }
+        };
+
+
         /// <summary>
         /// Deskew image test
         /// </summary>
@@ -164,19 +186,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <returns>Boolean</returns>
         private bool ImageFormatsEqual(FileFormat asposeImageFormat, string formatExtension)
         {
-            formatExtension = formatExtension.ToLower();
-
-            if (String.Equals(asposeImageFormat.ToString(), formatExtension, StringComparison.InvariantCultureIgnoreCase))
+            if(!fileFormatExtensions.ContainsKey(asposeImageFormat))
             {
-                return true;
+                return false;
             }
 
-            if (asposeImageFormat == FileFormat.Jpeg && formatExtension == "jpg")
-            {
-                return true;
-            }
-
-            return false;
+            return fileFormatExtensions[asposeImageFormat].Contains(formatExtension.ToLower());
         }
     }
 }
