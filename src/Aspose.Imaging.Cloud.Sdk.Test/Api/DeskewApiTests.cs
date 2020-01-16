@@ -22,20 +22,41 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
+#define EXTENDED_TEST
+using System.Collections.Generic;
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
+    using System;
     using System.IO;
     using Aspose.Imaging.Cloud.Sdk.Model;
     using Aspose.Imaging.Cloud.Sdk.Model.Requests;
     using NUnit.Framework;
     using System.Linq;
 
-
     [TestFixture]
     public class DeskewApiTests : ImagingApiTester
     {
+        private Dictionary<FileFormat, string[]> fileFormatExtensions = new Dictionary<FileFormat, string[]>()
+        {
+            { FileFormat.Bmp, new[] {"dib", "bmp"} },
+            { FileFormat.Cdr, new string[] {"cdr"} },
+            { FileFormat.Cmx, new string[] {"cmx"} },
+            { FileFormat.Dicom, new string[] {"dicom"} },
+            { FileFormat.Djvu, new string[] {"djvu"} },
+            { FileFormat.Dng, new string[] {"dng"} },
+            { FileFormat.Emf, new string[] {"emf"} },
+            { FileFormat.Gif, new string[] {"gif"} },
+            { FileFormat.Jpeg, new string[] {"jpeg", "jpg"} },
+            { FileFormat.Jpeg2000, new string[] {"j2k", "jp2", "jpm", "jpx"} },
+            { FileFormat.Png, new string[] {"png"} },
+            { FileFormat.Psd, new string[] {"psd"} },
+            { FileFormat.Tiff, new string[] {"tiff", "tif"} },
+            { FileFormat.Webp, new string[] {"webp"} },
+            { FileFormat.Wmf, new string[] {"wmf"} }
+        };
+
+
         /// <summary>
         /// Deskew image test
         /// </summary>
@@ -47,9 +68,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase("jpg", false, "green")]
 #if EXTENDED_TEST
         [TestCase("bmp", true)]
-        [TestCase("dicom", true)]
-        [TestCase("djvu", true)]
-        [TestCase("dng", true)]
+        //todo: enable after save of images of these fomats is implemented
+        //[TestCase("dicom", true)]
+        //[TestCase("djvu", true)]
+        //[TestCase("dng", true)]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
         //[TestCase("gif", true)]
         [TestCase("j2k", true)]
@@ -98,9 +120,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase("jpg", false, true, "green")]
 #if EXTENDED_TEST
         [TestCase("bmp", true, true)]
-        [TestCase("dicom",  true, true)]
-        [TestCase("djvu", true, true)]
-        [TestCase("dng", true, true)]
+        //todo: enable after save of images of these fomats is implemented
+        //[TestCase("dicom",  true, true)]
+        //[TestCase("djvu", true, true)]
+        //[TestCase("dng", true, true)]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
         //[TestCase("gif", true, true)]
         [TestCase("j2k", true, true)]
@@ -150,6 +173,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     TempFolder,
                     TestStorage);
             }
+        }
+
+        /// <summary>
+        /// Checks if image formats equal
+        /// </summary>
+        /// <param name="asposeImageFormat"></param>
+        /// <param name="formatExtension"></param>
+        /// <returns>Boolean</returns>
+        private bool ImageFormatsEqual(FileFormat asposeImageFormat, string formatExtension)
+        {
+            if(!fileFormatExtensions.ContainsKey(asposeImageFormat))
+            {
+                return false;
+            }
+
+            return fileFormatExtensions[asposeImageFormat].Contains(formatExtension.ToLower());
         }
     }
 }
