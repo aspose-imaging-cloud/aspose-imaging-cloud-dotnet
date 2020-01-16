@@ -22,12 +22,13 @@
 //  SOFTWARE.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-#define EXTENDED_TEST
-using System.Collections.Generic;
+
+
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using Aspose.Imaging.Cloud.Sdk.Model;
     using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -37,7 +38,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     [TestFixture]
     public class DeskewApiTests : ImagingApiTester
     {
-        private Dictionary<FileFormat, string[]> fileFormatExtensions = new Dictionary<FileFormat, string[]>()
+        private readonly Dictionary<FileFormat, string[]> fileFormatExtensions = new Dictionary<FileFormat, string[]>()
         {
             { FileFormat.Bmp, new[] {"dib", "bmp"} },
             { FileFormat.Cdr, new string[] {"cdr"} },
