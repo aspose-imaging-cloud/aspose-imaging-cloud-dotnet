@@ -46,7 +46,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        //[TestCase(".psd", null)]
+        [TestCase(".psd", null)]
 #if EXTENDED_TEST
         //[TestCase(".dicom")]
         //[TestCase(".djvu")]

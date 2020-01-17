@@ -124,8 +124,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        //[TestCase(".jpg", true, null)]
-        //[TestCase(".jpg", false, null)]
+        [TestCase(".jpg", true, null)]
+        [TestCase(".jpg", false, null)]
 #if EXTENDED_TEST
         //[TestCase(".bmp", true, null)]
         //[TestCase(".bmp", false, null)]
