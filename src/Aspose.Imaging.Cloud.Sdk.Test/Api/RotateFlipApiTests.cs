@@ -49,7 +49,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".jpg", null)]
 #if EXTENDED_TEST
         [TestCase(".bmp", null)]
-        [TestCase(".dicom", null)]
+        [TestCase(".dicom")]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
         //[TestCase(".gif", null)]
         [TestCase(".j2k", null)]
@@ -139,8 +139,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 #if EXTENDED_TEST
         [TestCase(".bmp", true, null)]
         [TestCase(".bmp", false, null)]
-        [TestCase(".dicom", true, null)]
-        [TestCase(".dicom", false, null)]
+        [TestCase(".dicom", true)]
+        [TestCase(".dicom", false)]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
         //[TestCase(".gif", true, null)]
         //[TestCase(".gif", false, null)]

@@ -26,22 +26,75 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             Assert.IsTrue(ImageFormatsEqual(Image.Load(resultStream).FileFormat, formatExtension));
         }
 
-        private bool ImageFormatsEqual(FileFormat asposeImageFormat, string formatExtension)
+        private bool ImageFormatsEqual(FileFormat resultImageFormat, string formatExtension)
         {
             formatExtension = NormalizeImageFormatExtension(formatExtension);
+            var originalImageFormat = ResolveFormat(formatExtension);
+            return resultImageFormat == originalImageFormat;
+        }
 
-            if (string.Equals(asposeImageFormat.ToString(), formatExtension, System.StringComparison.OrdinalIgnoreCase))
+        /// <summary>
+        /// Resolves the format.
+        /// </summary>
+        /// <param name="format">The format.</param>
+        /// <returns></returns>
+        protected FileFormat ResolveFormat(string format)
+        {
+            switch (format.ToLower())
             {
-                return true;
+                case "bmp":
+                case "dib":
+                    return Imaging.FileFormat.Bmp;
+                case "png":
+                    return Imaging.FileFormat.Png;
+                case "jpg":
+                case "jpeg":
+                    return Imaging.FileFormat.Jpeg;
+                case "gif":
+                    return Imaging.FileFormat.Gif;
+                case "psd":
+                    return Imaging.FileFormat.Psd;
+                case "tif":
+                case "tiff":
+                    return Imaging.FileFormat.Tiff;
+                case "jp2":
+                case "j2k":
+                case "jpf":
+                case "jpm":
+                case "jpx":
+                case "mj2":
+                case "jpg2":
+                case "mjp2":
+                    return Imaging.FileFormat.Jpeg2000;
+                case "webp":
+                    return Imaging.FileFormat.Webp;
+                case "emf+":
+                case "emf":
+                    return Imaging.FileFormat.Emf;
+                case "wmf":
+                    return Imaging.FileFormat.Wmf;
+                case "svg":
+                    return Imaging.FileFormat.Svg;
+                case "cdr":
+                    return Imaging.FileFormat.Cdr;
+                case "djv":
+                case "djvu":
+                    return Imaging.FileFormat.Djvu;
+                case "dicom":
+                    return Imaging.FileFormat.Dicom;
+                case "dng":
+                    return Imaging.FileFormat.Dng;
+                case "odg":
+                    return Imaging.FileFormat.Odg;
+                case "otg":
+                    return Imaging.FileFormat.Otg;
+                case "eps":
+                    return Imaging.FileFormat.Eps;
+                case "cmx":
+                    return Imaging.FileFormat.Cmx;
+                default:
+                    return FileFormat.Custom;
             }
-
-            if ((asposeImageFormat == FileFormat.Jpeg && formatExtension == "jpg")
-                || (asposeImageFormat == FileFormat.Tiff && formatExtension == "tif"))
-            {
-                return true;
-            }
-
-            return false;
         }
 
         private string NormalizeImageFormatExtension(string formatExtension)

@@ -51,7 +51,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".jpg", null)]
 #if EXTENDED_TEST
         [TestCase(".bmp", null)]
-        [TestCase(".dicom", null)]
+        [TestCase(".dicom")]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
         //[TestCase(".gif", null)]
         [TestCase(".j2k", null)]
@@ -124,13 +124,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".jpg", true, null)]
-        [TestCase(".jpg", false, null)]
+        //[TestCase(".jpg", true, null)]
+        //[TestCase(".jpg", false, null)]
 #if EXTENDED_TEST
-        [TestCase(".bmp", true, null)]
-        [TestCase(".bmp", false, null)]
-        [TestCase(".dicom", true, null)]
-        [TestCase(".dicom", false, null)]
+        //[TestCase(".bmp", true, null)]
+        //[TestCase(".bmp", false, null)]
+        //[TestCase(".dicom", true)]
+        //[TestCase(".dicom", false)]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
         //[TestCase(".gif", true, null)]
         //[TestCase(".gif", false, null)]
