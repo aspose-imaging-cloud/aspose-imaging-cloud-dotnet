@@ -16,7 +16,7 @@ namespace AsposeImagingCloudSdkExamples.AI
     ///     Find images example.
     /// </summary>
     /// <seealso cref="AsposeImagingCloudSdkExamples.AI.ImagingAiBase" />
-    internal class FindImages : ImagingAiBase
+    internal class FindSimilarImages : ImagingAiBase
     {
         private const string ImageToFind = "4.jpg";
 
@@ -25,10 +25,10 @@ namespace AsposeImagingCloudSdkExamples.AI
         private const string ImagesPath = "FindSimilar";
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FindImages" /> class.
+        ///     Initializes a new instance of the <see cref="AI.FindSimilarImages" /> class.
         /// </summary>
         /// <param name="imagingApi">The imaging API.</param>
-        public FindImages(ImagingApi imagingApi) : base(imagingApi)
+        public FindSimilarImages(ImagingApi imagingApi) : base(imagingApi)
         {
             Console.WriteLine("Find images example:");
             Console.WriteLine();
@@ -57,7 +57,7 @@ namespace AsposeImagingCloudSdkExamples.AI
         /// <summary>
         ///     Finds the similar images.
         /// </summary>
-        public void FindSimilarImages()
+        public void FindImagesSimilar()
         {
             Console.WriteLine("Finds the similar images");
 

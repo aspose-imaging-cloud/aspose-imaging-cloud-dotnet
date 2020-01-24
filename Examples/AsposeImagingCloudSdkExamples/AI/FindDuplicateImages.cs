@@ -56,7 +56,7 @@ namespace AsposeImagingCloudSdkExamples.AI
         {
             Console.WriteLine("Finds the image duplicates");
 
-            double? similarityThreshold = 70; // The similarity threshold
+            double? similarityThreshold = 70;
             var folder = CloudPath; // Path to input files
             string storage = null; // We are using default Cloud Storage
 

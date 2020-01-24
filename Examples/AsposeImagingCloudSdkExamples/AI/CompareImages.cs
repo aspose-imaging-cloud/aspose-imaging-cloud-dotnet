@@ -40,11 +40,8 @@ namespace AsposeImagingCloudSdkExamples.AI
         {
             CreateSearchContext();
 
-            // Upload images to Cloud Storage
             string[] images = {ComparableImage, ComparingImageSimilarMore75};
-            foreach (var imageName in images)
-                // Upload local image to Cloud Storage
-                UploadImageToCloud(imageName);
+            foreach (var imageName in images) UploadImageToCloud(imageName);
 
             CreateImageFeatures(ComparableImage, false);
             CreateImageFeatures(ComparingImageSimilarMore75, false);
@@ -66,9 +63,9 @@ namespace AsposeImagingCloudSdkExamples.AI
             Console.WriteLine(
                 $"Call CompareImages with params: image1:{ComparableImage}, image2:{ComparingImageSimilarMore75}");
 
-            var searchResults = ImagingApi.CompareImages(
-                new CompareImagesRequest(SearchContextId, ComparableImage, null, ComparingImageSimilarMore75, folder,
-                    storage));
+            var request = new CompareImagesRequest(SearchContextId, ComparableImage, null, ComparingImageSimilarMore75,
+                folder, storage);
+            var searchResults = ImagingApi.CompareImages(request);
 
             var similarity = searchResults.Results[0].Similarity;
             Console.WriteLine("Images Similarity: " + similarity);
@@ -81,14 +78,15 @@ namespace AsposeImagingCloudSdkExamples.AI
         /// </summary>
         public void CompareLoadedImageToImageInCloud()
         {
-            Console.WriteLine(" Compares the loaded image to image in cloud storage:");
+            Console.WriteLine("Compares the loaded image to image in cloud storage:");
 
             using (var inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, ComparingImageSimilarLess15)))
             {
+                var request = new CompareImagesRequest(SearchContextId, ComparableImage, inputImageStream);
+                
                 Console.WriteLine($"Call CompareImages with params: image:{ComparableImage}");
 
-                var searchResults = ImagingApi.CompareImages(
-                    new CompareImagesRequest(SearchContextId, ComparableImage, inputImageStream));
+                var searchResults = ImagingApi.CompareImages(request);
                 var similarity = searchResults.Results[0].Similarity;
                 Console.WriteLine("Images Similarity: " + similarity);
             }
