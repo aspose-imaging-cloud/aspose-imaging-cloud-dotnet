@@ -23,17 +23,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Net.Mime;
-
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     using System.IO;
     using System.Collections.Generic;
     using NUnit.Framework;
-    using System.Drawing;
     using Aspose.Imaging.Cloud.Sdk.Model;
     using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-    using Image = Aspose.Imaging.Image;
 
     /// <summary>
     ///  Class for testing CropApi
@@ -104,11 +100,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
-                            if (format == null)
-                            {
-                                AssertImageFormatsEqual(resultStream, formatExtension);
-                            }
-
                             Assert.AreEqual(width, resultProperties.Width);
                             Assert.AreEqual(height, resultProperties.Height);
                         },
@@ -193,10 +184,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                         {
-                            if (!saveResultToStorage && format == null)
-                            {
-                                AssertImageFormatsEqual(resultStream, formatExtension);
-                            }
                             Assert.AreEqual(width, resultProperties.Width);
                             Assert.AreEqual(height, resultProperties.Height);
                         },

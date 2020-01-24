@@ -96,10 +96,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                             },
                             delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                             {
-                                if (resultStream != null && format is null)
-                                {
-                                    AssertImageFormatsEqual(resultStream, formatExtension);
-                                }
                             },
                             folder,
                             storage
