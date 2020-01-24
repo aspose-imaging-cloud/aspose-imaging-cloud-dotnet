@@ -4,8 +4,6 @@
 // </copyright>
 //-----------------------------------------------------------------------------------------------------------
 
-using System.IO;
-
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     using Aspose.Imaging.Cloud.Sdk.Test.Base;
