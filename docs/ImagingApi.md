@@ -210,6 +210,36 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createdeskewedimage"></a>
+## **CreateDeskewedImage**
+> System.IO.Stream CreateDeskewedImage(CreateDeskewedImageRequest request)
+
+Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### **CreateDeskewedImageRequest** Parameters
+```csharp
+CreateDeskewedImageRequest(
+    System.IO.Stream imageData, 
+    bool? resizeProportionally, 
+    string bkColor = null, 
+    string outPath = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **System.IO.Stream**| Input image | 
+ **resizeProportionally** | **bool?**| Resize proportionally | 
+ **bkColor** | **string**| Background color | [optional] 
+ **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+
+### Return type
+
+**System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createfolder"></a>
 ## **CreateFolder**
 > void CreateFolder(CreateFolderRequest request)
@@ -1067,6 +1097,36 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="deskewimage"></a>
+## **DeskewImage**
+> System.IO.Stream DeskewImage(DeskewImageRequest request)
+
+Deskew an existing image.
+
+### **DeskewImageRequest** Parameters
+```csharp
+DeskewImageRequest(
+    string name, 
+    bool? resizeProportionally, 
+    string bkColor = null, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Image file name. | 
+ **resizeProportionally** | **bool?**| Resize proportionally | 
+ **bkColor** | **string**| Background color | [optional] 
+ **folder** | **string**| Folder | [optional] 
+ **storage** | **string**| Storage | [optional] 
+
+### Return type
+
+**System.IO.Stream**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 

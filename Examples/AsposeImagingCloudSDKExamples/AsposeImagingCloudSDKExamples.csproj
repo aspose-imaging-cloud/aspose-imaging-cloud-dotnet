@@ -54,6 +54,7 @@
     <Compile Include="AI\CompareImages.cs" />
     <Compile Include="AI\FindDuplicateImages.cs" />
     <Compile Include="AI\FindImages.cs" />
+    <Compile Include="DeskewImage.cs" />
     <Compile Include="CropImage.cs" />
     <Compile Include="ImageProperties.cs" />
     <Compile Include="ImagingBase.cs" />
