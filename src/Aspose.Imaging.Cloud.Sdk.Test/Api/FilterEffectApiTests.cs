@@ -94,9 +94,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                                     filter.FilterProperties, format, folder, storage);
                                 return ImagingApi.FilterEffectImage(request);
                             },
-                            delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
-                            {
-                            },
+                            null,
                             folder,
                             storage
                         );
