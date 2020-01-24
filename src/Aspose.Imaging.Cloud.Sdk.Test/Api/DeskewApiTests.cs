@@ -38,24 +38,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     [TestFixture]
     public class DeskewApiTests : ImagingApiTester
     {
-        private readonly Dictionary<FileFormat, string[]> fileFormatExtensions = new Dictionary<FileFormat, string[]>()
-        {
-            { FileFormat.Bmp, new[] {"dib", "bmp"} },
-            { FileFormat.Cdr, new string[] {"cdr"} },
-            { FileFormat.Cmx, new string[] {"cmx"} },
-            { FileFormat.Dicom, new string[] {"dicom"} },
-            { FileFormat.Djvu, new string[] {"djvu"} },
-            { FileFormat.Dng, new string[] {"dng"} },
-            { FileFormat.Emf, new string[] {"emf"} },
-            { FileFormat.Gif, new string[] {"gif"} },
-            { FileFormat.Jpeg, new string[] {"jpeg", "jpg"} },
-            { FileFormat.Jpeg2000, new string[] {"j2k", "jp2", "jpm", "jpx"} },
-            { FileFormat.Png, new string[] {"png"} },
-            { FileFormat.Psd, new string[] {"psd"} },
-            { FileFormat.Tiff, new string[] {"tiff", "tif"} },
-            { FileFormat.Webp, new string[] {"webp"} },
-            { FileFormat.Wmf, new string[] {"wmf"} }
-        };
+        
 
 
         /// <summary>
@@ -102,7 +85,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     },
                     delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
                     {
-                        AssertImageFormatsEqual(resultStream, formatExtension);
+                        Assert.NotNull(resultStream);
+                        Assert.IsTrue(resultStream.Length > 0);
+                        Assert.AreEqual(originalProperties.BitsPerPixel, resultProperties.BitsPerPixel);
                     },
                     TempFolder,
                     TestStorage);
@@ -164,7 +149,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     {
                         if (!saveResultToStorage)
                         {
-                            AssertImageFormatsEqual(resultStream, formatExtension);
+                            Assert.NotNull(resultStream);
+                            Assert.IsTrue(resultStream.Length > 0);
+                            Assert.AreEqual(originalProperties.BitsPerPixel, resultProperties.BitsPerPixel);
                         }
                         else
                         {
@@ -174,22 +161,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     TempFolder,
                     TestStorage);
             }
-        }
-
-        /// <summary>
-        /// Checks if image formats equal
-        /// </summary>
-        /// <param name="asposeImageFormat"></param>
-        /// <param name="formatExtension"></param>
-        /// <returns>Boolean</returns>
-        private bool ImageFormatsEqual(FileFormat asposeImageFormat, string formatExtension)
-        {
-            if(!fileFormatExtensions.ContainsKey(asposeImageFormat))
-            {
-                return false;
-            }
-
-            return fileFormatExtensions[asposeImageFormat].Contains(formatExtension.ToLower());
         }
     }
 }

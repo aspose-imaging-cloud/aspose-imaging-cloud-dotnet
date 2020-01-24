@@ -228,7 +228,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
 
             if (serverFileInfo.Exists && serverFileInfo.Length > 0)
             {
-                WriteLineEverywhere($"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 var accessData = JsonConvert.DeserializeObject<ServerAccessData>(File.ReadAllText(serverAccessPath));
                 if (string.IsNullOrEmpty(appKey) && !onPremise)
                 {
