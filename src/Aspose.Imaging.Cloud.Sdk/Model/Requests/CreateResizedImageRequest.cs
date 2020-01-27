@@ -43,17 +43,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="CreateResizedImageRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         /// <param name="newWidth">New width.</param>
         /// <param name="newHeight">New height.</param>
+        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public CreateResizedImageRequest(System.IO.Stream imageData, string format, int? newWidth, int? newHeight, string outPath = null, string storage = null)             
+        public CreateResizedImageRequest(System.IO.Stream imageData, int? newWidth, int? newHeight, string format = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
-            this.format = format;
             this.newWidth = newWidth;
             this.newHeight = newHeight;
+            this.format = format;
             this.outPath = outPath;
             this.storage = storage;
         }
@@ -64,11 +64,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-        /// </summary>  
-        public string format { get; set; }
-
-        /// <summary>
         /// New width.
         /// </summary>  
         public int? newWidth { get; set; }
@@ -77,6 +72,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// New height.
         /// </summary>  
         public int? newHeight { get; set; }
+
+        /// <summary>
+        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+        /// </summary>  
+        public string format { get; set; }
 
         /// <summary>
         /// Path to updated file (if this is empty, response contains streamed image).

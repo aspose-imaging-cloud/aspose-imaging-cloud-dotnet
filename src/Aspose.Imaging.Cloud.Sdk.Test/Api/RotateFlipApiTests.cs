@@ -46,17 +46,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".jpg")]
+        [TestCase(".jpg", null)]
 #if EXTENDED_TEST
-        [TestCase(".bmp")]
+        [TestCase(".bmp", null)]
         [TestCase(".dicom")]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
-        //[TestCase(".gif")]
-        [TestCase(".j2k")]
-        [TestCase(".png")]
-        [TestCase(".psd")]
-        [TestCase(".tiff")]
-        [TestCase(".webp")]
+        //[TestCase(".gif", null)]
+        [TestCase(".j2k", null)]
+        [TestCase(".png", null)]
+        [TestCase(".psd", null)]
+        [TestCase(".tiff", null)]
+        [TestCase(".webp", null)]
 #endif
         public void RotateFlipImageTest(string formatExtension, params string[] additionalExportFormats)
         {
@@ -89,12 +89,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 {
                     this.TestGetRequest(
                         "RotateFlipImageTest",
-                        $"Input image: {name}; Output format: {format}; Method: {method}",
+                        $"Input image: {name}; Output format: {format ?? "null"}; Method: {method}",
                         name,
                         delegate
                         {
                             var request =
-                                new RotateFlipImageRequest(name, format, method, folder, storage);
+                                new RotateFlipImageRequest(name, method, format, folder, storage);
                             return ImagingApi.RotateFlipImage(request);
                         },
                         delegate(ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
@@ -129,26 +129,26 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If result should be saved to storage</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".jpg", true)]
-        [TestCase(".jpg", false)]
+        [TestCase(".jpg", true, null)]
+        [TestCase(".jpg", false, null)]
 #if EXTENDED_TEST
-        [TestCase(".bmp", true)]
-        [TestCase(".bmp", false)]
+        [TestCase(".bmp", true, null)]
+        [TestCase(".bmp", false, null)]
         [TestCase(".dicom", true)]
         [TestCase(".dicom", false)]
         // TODO: enable after IMAGINGCLOUD-51 is resolved
-        //[TestCase(".gif", true)]
-        //[TestCase(".gif", false)]
-        [TestCase(".j2k", true)]
-        [TestCase(".j2k", false)]
-        [TestCase(".png", true)]
-        [TestCase(".png", false)]
-        [TestCase(".psd", true)]
-        [TestCase(".psd", false)]
-        [TestCase(".tiff", true)]
-        [TestCase(".tiff", false)]
-        [TestCase(".webp", true)]
-        [TestCase(".webp", false)]
+        //[TestCase(".gif", true, null)]
+        //[TestCase(".gif", false, null)]
+        [TestCase(".j2k", true, null)]
+        [TestCase(".j2k", false, null)]
+        [TestCase(".png", true, null)]
+        [TestCase(".png", false, null)]
+        [TestCase(".psd", true, null)]
+        [TestCase(".psd", false, null)]
+        [TestCase(".tiff", true, null)]
+        [TestCase(".tiff", false, null)]
+        [TestCase(".webp", true, null)]
+        [TestCase(".webp", false, null)]
 #endif
         public void CreateRotateFlippedImageTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
@@ -180,18 +180,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
                 foreach (string format in formatsToExport)
                 {
-                    outName = $"{name}_rotateFlip.{format}";
+                    outName = $"{name}_rotateFlip.{format ?? formatExtension.Substring(1)}";
 
                     this.TestPostRequest(
                         "CreateRotateFlippedImageTest",
                         saveResultToStorage,
-                        $"Input image: {name}; Output format: {format}; Method: {method}",
+                        $"Input image: {name}; Output format: {format ?? "null"}; Method: {method}",
                         name,
                         outName,
                         delegate (Stream inputStream, string outPath)
                         {
                             var request =
-                                new CreateRotateFlippedImageRequest(inputStream, format, method, outPath, storage);
+                                new CreateRotateFlippedImageRequest(inputStream, method, format, outPath, storage);
                             return ImagingApi.CreateRotateFlippedImage(request);
                         },
                         delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)

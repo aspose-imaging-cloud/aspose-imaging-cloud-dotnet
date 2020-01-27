@@ -43,17 +43,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="ResizeImageRequest"/> class.
         /// </summary>
         /// <param name="name">Filename of an image.</param>
-        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         /// <param name="newWidth">New width.</param>
         /// <param name="newHeight">New height.</param>
+        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public ResizeImageRequest(string name, string format, int? newWidth, int? newHeight, string folder = null, string storage = null)             
+        public ResizeImageRequest(string name, int? newWidth, int? newHeight, string format = null, string folder = null, string storage = null)             
         {
             this.name = name;
-            this.format = format;
             this.newWidth = newWidth;
             this.newHeight = newHeight;
+            this.format = format;
             this.folder = folder;
             this.storage = storage;
         }
@@ -64,11 +64,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string name { get; set; }
 
         /// <summary>
-        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-        /// </summary>  
-        public string format { get; set; }
-
-        /// <summary>
         /// New width.
         /// </summary>  
         public int? newWidth { get; set; }
@@ -77,6 +72,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// New height.
         /// </summary>  
         public int? newHeight { get; set; }
+
+        /// <summary>
+        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+        /// </summary>  
+        public string format { get; set; }
 
         /// <summary>
         /// Folder with image to process.
