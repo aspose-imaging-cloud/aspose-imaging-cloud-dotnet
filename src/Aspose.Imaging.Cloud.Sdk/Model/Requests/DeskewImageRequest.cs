@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="RotateFlipImageRequest.cs">
+// <copyright company="Aspose" file="DeskewImageRequest.cs">
 //   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -28,56 +28,56 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.RotateFlipImage" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.DeskewImage" /> operation.
   /// </summary>  
-  public class RotateFlipImageRequest  
+  public class DeskewImageRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RotateFlipImageRequest"/> class.
+        /// Initializes a new instance of the <see cref="DeskewImageRequest"/> class.
         /// </summary>        
-        public RotateFlipImageRequest()
+        public DeskewImageRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RotateFlipImageRequest"/> class.
+        /// Initializes a new instance of the <see cref="DeskewImageRequest"/> class.
         /// </summary>
-        /// <param name="name">Filename of an image.</param>
-        /// <param name="method">RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).</param>
-        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
-        /// <param name="folder">Folder with image to process.</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public RotateFlipImageRequest(string name, string method, string format = null, string folder = null, string storage = null)             
+        /// <param name="name">Image file name.</param>
+        /// <param name="resizeProportionally">Resize proportionally</param>
+        /// <param name="bkColor">Background color</param>
+        /// <param name="folder">Folder</param>
+        /// <param name="storage">Storage</param>
+        public DeskewImageRequest(string name, bool? resizeProportionally, string bkColor = null, string folder = null, string storage = null)             
         {
             this.name = name;
-            this.method = method;
-            this.format = format;
+            this.resizeProportionally = resizeProportionally;
+            this.bkColor = bkColor;
             this.folder = folder;
             this.storage = storage;
         }
         
         /// <summary>
-        /// Filename of an image.
+        /// Image file name.
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY).
+        /// Resize proportionally
         /// </summary>  
-        public string method { get; set; }
+        public bool? resizeProportionally { get; set; }
 
         /// <summary>
-        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+        /// Background color
         /// </summary>  
-        public string format { get; set; }
+        public string bkColor { get; set; }
 
         /// <summary>
-        /// Folder with image to process.
+        /// Folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Storage
         /// </summary>  
         public string storage { get; set; }
   }

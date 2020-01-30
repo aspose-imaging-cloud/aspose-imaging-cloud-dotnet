@@ -24,6 +24,8 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
+using System.IO;
+
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     using NUnit.Framework;
@@ -44,13 +46,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
-        [TestCase(".psd")]
-#if EXTENDED_TEST        
-        [TestCase(".dicom")]
-        [TestCase(".djvu")]
-        [TestCase(".gif")]
-        [TestCase(".tiff")]
-        [TestCase(".webp")]
+        [TestCase(".psd", null)]
+#if EXTENDED_TEST
+        //[TestCase(".dicom")]
+        //[TestCase(".djvu")]
+        //[TestCase(".gif", null)]
+        //[TestCase(".tiff", null)]
+        [TestCase(".webp", null)]
 #endif
         public void FilterEffectTest(string formatExtension, params string[] additionalExportFormats)
         {
@@ -84,18 +86,20 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     {
                         this.TestGetRequest(
                             "FilterEffectTest",
-                            $"Input image: {name}; Output format: {format}; Filter type: {filter.FilterType}",
+                            $"Input image: {name}; Output format: {format ?? "null"}; Filter type: {filter.FilterType}",
                             name,
                             delegate
                             {
-                                var request = new FilterEffectImageRequest(name, format, filter.FilterType,
-                                    filter.FilterProperties, folder, storage);
+                                var request = new FilterEffectImageRequest(name,  filter.FilterType,
+                                    filter.FilterProperties, format, folder, storage);
                                 return ImagingApi.FilterEffectImage(request);
                             },
                             null,
                             folder,
                             storage
                         );
+
+
                     }
                 }
             }

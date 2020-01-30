@@ -386,12 +386,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateCroppedImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling CreateCroppedImage");
-            }
-
             // verify the required parameter 'x' is set
             if (request.x == null) 
             {
@@ -423,11 +417,56 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "x", request.x);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "y", request.y);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "width", request.width);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "height", request.height);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
+        }
+        
+        /// <summary>
+        /// Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CreateDeskewedImageRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream CreateDeskewedImage(CreateDeskewedImageRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateDeskewedImage");
+            }
+
+            // verify the required parameter 'resizeProportionally' is set
+            if (request.resizeProportionally == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'resizeProportionally' when calling CreateDeskewedImage");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/deskew";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "resizeProportionally", request.resizeProportionally);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -1199,12 +1238,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateResizedImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling CreateResizedImage");
-            }
-
             // verify the required parameter 'newWidth' is set
             if (request.newWidth == null) 
             {
@@ -1224,9 +1257,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -1257,12 +1290,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateRotateFlippedImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling CreateRotateFlippedImage");
-            }
-
             // verify the required parameter 'method' is set
             if (request.method == null) 
             {
@@ -1276,8 +1303,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -1352,12 +1379,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateUpdatedImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling CreateUpdatedImage");
-            }
-
             // verify the required parameter 'newWidth' is set
             if (request.newWidth == null) 
             {
@@ -1407,7 +1428,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("&amp;", "&")
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "x", request.x);
@@ -1415,6 +1435,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectWidth", request.rectWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -1483,12 +1504,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'name' when calling CropImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling CropImage");
-            }
-
             // verify the required parameter 'x' is set
             if (request.x == null) 
             {
@@ -1521,11 +1536,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "x", request.x);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "y", request.y);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "width", request.width);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "height", request.height);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -1706,6 +1721,48 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 null, 
                 null, 
                 formParams);
+        }
+        
+        /// <summary>
+        /// Deskew an existing image. 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="DeskewImageRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream DeskewImage(DeskewImageRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.name == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'name' when calling DeskewImage");
+            }
+
+            // verify the required parameter 'resizeProportionally' is set
+            if (request.resizeProportionally == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'resizeProportionally' when calling DeskewImage");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/deskew";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "resizeProportionally", request.resizeProportionally);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "bkColor", request.bkColor);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
         }
         
         /// <summary>
@@ -1892,12 +1949,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'name' when calling FilterEffectImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling FilterEffectImage");
-            }
-
             // verify the required parameter 'filterType' is set
             if (request.filterType == null) 
             {
@@ -1918,8 +1969,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "filterType", request.filterType);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             var postBody = SerializationHelper.Serialize(request.filterProperties);
@@ -3106,12 +3157,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'name' when calling ResizeImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling ResizeImage");
-            }
-
             // verify the required parameter 'newWidth' is set
             if (request.newWidth == null) 
             {
@@ -3132,9 +3177,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -3161,12 +3206,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'name' when calling RotateFlipImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling RotateFlipImage");
-            }
-
             // verify the required parameter 'method' is set
             if (request.method == null) 
             {
@@ -3181,8 +3220,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -3287,12 +3326,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'name' when calling UpdateImage");
             }
 
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling UpdateImage");
-            }
-
             // verify the required parameter 'newWidth' is set
             if (request.newWidth == null) 
             {
@@ -3343,7 +3376,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "x", request.x);
@@ -3351,6 +3383,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectWidth", request.rectWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             

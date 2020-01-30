@@ -43,17 +43,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="FilterEffectImageRequest"/> class.
         /// </summary>
         /// <param name="name">Filename of an image.</param>
-        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         /// <param name="filterType">Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing).</param>
         /// <param name="filterProperties">Filter properties.</param>
+        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
         /// <param name="folder">Folder with image to process.</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public FilterEffectImageRequest(string name, string format, string filterType, FilterPropertiesBase filterProperties, string folder = null, string storage = null)             
+        public FilterEffectImageRequest(string name, string filterType, FilterPropertiesBase filterProperties, string format = null, string folder = null, string storage = null)             
         {
             this.name = name;
-            this.format = format;
             this.filterType = filterType;
             this.filterProperties = filterProperties;
+            this.format = format;
             this.folder = folder;
             this.storage = storage;
         }
@@ -64,11 +64,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string name { get; set; }
 
         /// <summary>
-        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-        /// </summary>  
-        public string format { get; set; }
-
-        /// <summary>
         /// Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing).
         /// </summary>  
         public string filterType { get; set; }
@@ -77,6 +72,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Filter properties.
         /// </summary>  
         public FilterPropertiesBase filterProperties { get; set; }
+
+        /// <summary>
+        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+        /// </summary>  
+        public string format { get; set; }
 
         /// <summary>
         /// Folder with image to process.
