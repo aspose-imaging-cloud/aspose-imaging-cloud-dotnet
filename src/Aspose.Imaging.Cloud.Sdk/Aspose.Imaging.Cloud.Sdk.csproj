@@ -15,7 +15,7 @@
   
   <PropertyGroup>
     <PackageId>Aspose.Imaging-Cloud</PackageId>
-    <PackageVersion>20.1.0</PackageVersion>
+    <PackageVersion>20.1.1</PackageVersion>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>aspose imaging cloud rest api sdk image bmp dicom dng djvu djv emf gif jpg jpe jpeg jpeg2000 jp2 jpx jpm j2k odg otg png psd tiff tif webp wmf cdr cmx pdf svg reverse search image-effects image-filters deskewing image-crop image-rotate image-conversion image-metadata</PackageTags>
     <PackageProjectUrl>https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-dotnet</PackageProjectUrl>
