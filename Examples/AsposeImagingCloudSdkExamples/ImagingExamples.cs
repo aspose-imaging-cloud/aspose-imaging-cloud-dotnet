@@ -66,6 +66,12 @@ namespace AsposeImagingCloudSdkExamples
                 cropImage.CropImageAndUploadToStorage();
                 cropImage.CreateCroppedImageFromRequestBody();
 
+                // Deskew an existing image
+                var deskewImage = new DeskewImage(api);
+                deskewImage.DeskewImageFromStorage();
+                deskewImage.DeskewImageAndUploadToStorage();
+                deskewImage.CreateDeskewedImageFromRequestBody();
+
                 // Process existing EMF imaging using given parameters
                 var updateEmfImage = new UpdateEmfImage(api);
                 updateEmfImage.ModifyEmfFromStorage();
