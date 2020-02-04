@@ -189,3 +189,4 @@ $RECYCLE.BIN/
 
 /.swagger-codegen
 .swagger-codegen-ignore
+/Examples/Output

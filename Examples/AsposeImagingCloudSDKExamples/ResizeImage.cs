@@ -76,7 +76,7 @@ namespace AsposeImagingCloudSDKExamples
             string storage = null; // We are using default Cloud Storage
             
             ResizeImageRequest resizeImageRequest = new ResizeImageRequest(
-                SampleImageFileName, format, newWidth, newHeight, folder, storage);
+                SampleImageFileName, newWidth, newHeight, format, folder, storage);
 
             Console.WriteLine($"Call ResizeImage with params: new width:{newWidth}, new height:{newHeight}, format:{format}");
 
@@ -108,7 +108,7 @@ namespace AsposeImagingCloudSDKExamples
             string storage = null; // We are using default Cloud Storage
 
             ResizeImageRequest resizeImageRequest = new ResizeImageRequest(
-                SampleImageFileName, format, newWidth, newHeight, folder, storage);
+                SampleImageFileName, newWidth, newHeight, format, folder, storage);
 
             Console.WriteLine($"Call ResizeImage with params: new width:{newWidth}, new height:{newHeight}, format:{format}");
 
@@ -137,7 +137,7 @@ namespace AsposeImagingCloudSDKExamples
                 string storage = null; // We are using default Cloud Storage
 
                 CreateResizedImageRequest createResizedImageRequest = new CreateResizedImageRequest(
-                    inputImageStream, format, newWidth, newHeight, outPath, storage);
+                    inputImageStream, newWidth, newHeight, format, outPath, storage);
 
                 Console.WriteLine($"Call CreateResizedImage with params: new width:{newWidth}, new height:{newHeight}, format:{format}");
 

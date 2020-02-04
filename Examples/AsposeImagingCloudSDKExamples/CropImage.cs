@@ -76,7 +76,7 @@ namespace AsposeImagingCloudSDKExamples
             string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            var request = new CropImageRequest(SampleImageFileName, format, x, y, width, height, folder, storage);
+            var request = new CropImageRequest(SampleImageFileName, x, y, width, height, format, folder, storage);
 
             Console.WriteLine($"Call CropImage with params:x:{x},y:{y}, width:{width}, height:{height}");
 
@@ -107,7 +107,7 @@ namespace AsposeImagingCloudSDKExamples
             string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            var request = new CropImageRequest(SampleImageFileName, format, x, y, width, height, folder, storage);
+            var request = new CropImageRequest(SampleImageFileName, x, y, width, height, format, folder, storage);
 
             Console.WriteLine($"Call CropImage with params:x:{x},y:{y}, width:{width}, height:{height}");
 
@@ -138,7 +138,7 @@ namespace AsposeImagingCloudSDKExamples
                 string storage = null; // We are using default Cloud Storage
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
 
-                var request = new CreateCroppedImageRequest(inputImageStream, format, x, y, width, height, outPath, storage);
+                var request = new CreateCroppedImageRequest(inputImageStream, x, y, width, height, format, outPath, storage);
 
                 Console.WriteLine($"Call CreateCroppedImage with params:x:{x},y:{y}, width:{width}, height:{height}");
 

@@ -74,7 +74,7 @@ namespace AsposeImagingCloudSDKExamples
             string storage = null; // We are using default Cloud Storage
 
             RotateFlipImageRequest getImageRotateFlipRequest = new RotateFlipImageRequest(
-                SampleImageFileName, format, method, folder, storage);
+                SampleImageFileName, method, format, folder, storage);
 
             Console.WriteLine($"Call RotateFlipImage with params: method:{method}, format:{format}");
 
@@ -103,7 +103,7 @@ namespace AsposeImagingCloudSDKExamples
             string storage = null; // We are using default Cloud Storage
 
             RotateFlipImageRequest getImageRotateFlipRequest = new RotateFlipImageRequest(
-                SampleImageFileName, format, method, folder, storage);
+                SampleImageFileName, method, format, folder, storage);
 
             Console.WriteLine($"Call RotateFlipImage with params: method:{method}, format:{format}");
 
@@ -133,7 +133,7 @@ namespace AsposeImagingCloudSDKExamples
                 string storage = null; // We are using default Cloud Storage
 
                 CreateRotateFlippedImageRequest createRotateFlippedImageRequest = 
-                    new CreateRotateFlippedImageRequest(inputImageStream, format, method, outPath, storage);
+                    new CreateRotateFlippedImageRequest(inputImageStream, method, format, outPath, storage);
 
                 Console.WriteLine($"Call CreateRotateFlippedImage with params: method:{method}, format:{format}");
 
