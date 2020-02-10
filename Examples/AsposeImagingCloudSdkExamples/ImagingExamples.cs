@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="ImagingExamples.cs">
 //   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
@@ -196,7 +196,9 @@ namespace AsposeImagingCloudSdkExamples
             catch (Exception ex)
             {
                 Console.WriteLine($"Something goes wrong: {ex}");
+                Environment.Exit(1);
             }
+            Environment.Exit(0);
         }
 
         /// <summary>
