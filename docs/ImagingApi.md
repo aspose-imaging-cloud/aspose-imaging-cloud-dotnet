@@ -264,6 +264,32 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="creategrayscaledimage"></a>
+## **CreateGrayscaledImage**
+> System.IO.Stream CreateGrayscaledImage(CreateGrayscaledImageRequest request)
+
+Grayscales an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### **CreateGrayscaledImageRequest** Parameters
+```csharp
+CreateGrayscaledImageRequest(
+    System.IO.Stream imageData, 
+    string outPath = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **System.IO.Stream**| Input image | 
+ **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+
+### Return type
+
+**System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createimagefeatures"></a>
 ## **CreateImageFeatures**
 > void CreateImageFeatures(CreateImageFeaturesRequest request)
@@ -1600,6 +1626,32 @@ Name | Type | Description  | Notes
  **searchContextId** | **string**| Search context identifier. | 
  **imageId** | **string**| Image identifier. | 
  **folder** | **string**| Folder. | [optional] 
+ **storage** | **string**| Storage | [optional] 
+
+### Return type
+
+**System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="grayscaleimage"></a>
+## **GrayscaleImage**
+> System.IO.Stream GrayscaleImage(GrayscaleImageRequest request)
+
+Grayscale an existing image.
+
+### **GrayscaleImageRequest** Parameters
+```csharp
+GrayscaleImageRequest(
+    string name, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Image file name. | 
+ **folder** | **string**| Folder | [optional] 
  **storage** | **string**| Storage | [optional] 
 
 ### Return type
