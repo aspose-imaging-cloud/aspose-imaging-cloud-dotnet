@@ -88,7 +88,7 @@ namespace AsposeImagingCloudSdkExamples.AI
         ///     Waits the idle.
         /// </summary>
         /// <param name="searchContextId">The search context identifier.</param>
-        private void WaitIdle(string searchContextId)
+        protected void WaitIdle(string searchContextId)
         {
             Console.WriteLine("Waiting Search context Idle...");
 

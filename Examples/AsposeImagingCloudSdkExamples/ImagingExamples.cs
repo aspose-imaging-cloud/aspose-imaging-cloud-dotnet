@@ -192,6 +192,12 @@ namespace AsposeImagingCloudSdkExamples
                 findImages.FindImagesSimilar();
                 findImages.FindImagesByTag();
                 findImages.DeleteSearchContext();
+                
+                // Search Images
+                var searchImages = new SearchImages(api);
+                searchImages.PrepareSearchContext();
+                searchImages.SearchImageFromWebSource();
+                searchImages.DeleteSearchContext();
             }
             catch (Exception ex)
             {
