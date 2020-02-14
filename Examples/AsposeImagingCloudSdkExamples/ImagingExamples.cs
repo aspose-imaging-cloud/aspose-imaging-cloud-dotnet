@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="ImagingExamples.cs">
 //   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
@@ -23,81 +23,81 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Api;
-using AsposeImagingCloudSDKExamples.AI;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using Aspose.Imaging.Cloud.Sdk.Api;
+using AsposeImagingCloudSdkExamples.AI;
 
-namespace AsposeImagingCloudSDKExamples
+namespace AsposeImagingCloudSdkExamples
 {
-    class ImagingExamples
+    /// <summary>
+    ///     Launcher for examples.
+    /// </summary>
+    internal static class ImagingExamples
     {
-        static void Main(string[] args)
+        /// <summary>
+        ///     Main function.
+        /// </summary>
+        /// <param name="args"><c>--appKey</c> and <c>--appSid</c> are required arguments, <c>--baseUrl</c> is optional.</param>
+        private static void Main(string[] args)
         {
-            string myAppSid = ""; // Get AppSID from https://dashboard.aspose.cloud/
-            string myAppKey = ""; // Get AppKey from https://dashboard.aspose.cloud/
-          
-            if (string.IsNullOrEmpty(myAppSid) || string.IsNullOrEmpty(myAppKey))
-            {
-                Console.WriteLine("Please, initialize AppSid, AppKey with your valid credentials from https://dashboard.aspose.cloud/");
-                Console.WriteLine("If you haven't the credentials, please, Sign Up.");
-                Console.WriteLine("Press any key ...");
-                Console.ReadKey();
-                return;
-            }
+            string appKey, appSid, baseUrl;
+            ProcessArguments(args, out appKey, out appSid, out baseUrl);
 
             try
             {
-                var api = new ImagingApi(appKey: myAppKey, appSid: myAppSid);
+                var api = new ImagingApi(appKey, appSid, baseUrl);
 
                 PrepareOutput();
 
-                Console.WriteLine("Runnig Imaging Cloud examples:");
+                Console.WriteLine("Running Imaging Cloud examples:");
                 Console.WriteLine();
 
                 // Update parameters of existing BMP image
-                UpdateBMPImage bmpImage = new UpdateBMPImage(api);
+                var bmpImage = new UpdateBmpImage(api);
                 bmpImage.ModifyBmpFromStorage();
                 bmpImage.ModifyBmpAndUploadToStorage();
                 bmpImage.CreateModifiedBmpFromRequestBody();
 
                 // Crop an existing image
-                CropImage cropImage = new CropImage(api);
+                var cropImage = new CropImage(api);
                 cropImage.CropImageFromStorage();
                 cropImage.CropImageAndUploadToStorage();
                 cropImage.CreateCroppedImageFromRequestBody();
 
                 // Process existing EMF imaging using given parameters
-                UpdateEMFImage updateEMFImage = new UpdateEMFImage(api);
-                updateEMFImage.ModifyEmfFromStorage();
-                updateEMFImage.ModifyEmfAndUploadToStorage();
-                updateEMFImage.CreateModifiedEmfFromRequestBody();
+                var updateEmfImage = new UpdateEmfImage(api);
+                updateEmfImage.ModifyEmfFromStorage();
+                updateEmfImage.ModifyEmfAndUploadToStorage();
+                updateEmfImage.CreateModifiedEmfFromRequestBody();
 
                 // Export existing image to another format
-                ExportImage exportImage = new ExportImage(api);
+                var exportImage = new ExportImage(api);
                 exportImage.SaveImageAsFromStorage();
                 exportImage.SaveImageAsAndUploadToStorage();
                 exportImage.CreateSavedImageAsFromRequestBody();
 
                 // Get properties of an image
-                ImageProperties imageProperties = new ImageProperties(api);
+                var imageProperties = new ImageProperties(api);
                 imageProperties.GetImagePropertiesFromStorage();
                 imageProperties.ExtractImagePropertiesFromRequestBody();
 
                 // Resize an existing image
-                ResizeImage resizeImage = new ResizeImage(api);
+                var resizeImage = new ResizeImage(api);
                 resizeImage.ResizeImageFromStorage();
                 resizeImage.ResizeImageAndUploadToStorage();
                 resizeImage.CreateResizedImageFromRequestBody();
 
                 // Rotate and/or flip an existing image
-                RotateFlipImage rotateFlipImage = new RotateFlipImage(api);
+                var rotateFlipImage = new RotateFlipImage(api);
                 rotateFlipImage.RotateFlipImageFromStorage();
                 rotateFlipImage.RotateFlipImageAndUploadToStorage();
                 rotateFlipImage.CreateRotateFlippedImageFromRequestBody();
 
                 // TIFF Frames
-                TIFFFrames tiffFrames = new TIFFFrames(api);
+                var tiffFrames = new TiffFrames(api);
                 // Get a specified frame from existing TIFF image
                 tiffFrames.GetImageFrameFromStorage();
                 // Get a specified frame from existing TIFF image, and upload the frame to Cloud Storage
@@ -120,7 +120,7 @@ namespace AsposeImagingCloudSDKExamples
                 tiffFrames.ExtractImageFramePropertiesFromRequestBody();
 
                 // Update parameters of existing TIFF image
-                TIFFImage tiffImage = new TIFFImage(api);
+                var tiffImage = new TiffImage(api);
                 tiffImage.ModifyTiffFromStorage();
                 tiffImage.ModifyTiffAndUploadToStorage();
                 tiffImage.CreateModifiedTiffFromRequestBody();
@@ -128,92 +128,146 @@ namespace AsposeImagingCloudSDKExamples
                 tiffImage.AppendTiffFromStorage();
 
                 // Update parameters of existing GIF image
-                UpdateGIFImage updateGIFImage = new UpdateGIFImage(api);
-                updateGIFImage.ModifyGifFromStorage();
-                updateGIFImage.ModifyGifAndUploadToStorage();
-                updateGIFImage.CreateModifiedGifFromRequestBody();
+                var updateGifImage = new UpdateGifImage(api);
+                updateGifImage.ModifyGifFromStorage();
+                updateGifImage.ModifyGifAndUploadToStorage();
+                updateGifImage.CreateModifiedGifFromRequestBody();
 
                 // Perform scaling, cropping and flipping of an existing image in a single request
-                UpdateImage updateImage = new UpdateImage(api);
+                var updateImage = new UpdateImage(api);
                 updateImage.UpdateImageFromStorage();
                 updateImage.UpdateImageAndUploadToStorage();
                 updateImage.CreateUpdatedImageFromRequestBody();
 
                 // Update parameters of existing JPEG2000 image
-                UpdateJPEG2000Image updateJPEG2000Image = new UpdateJPEG2000Image(api);
-                updateJPEG2000Image.ModifyJpeg2000FromStorage();
-                updateJPEG2000Image.ModifyJpeg2000AndUploadToStorage();
-                updateJPEG2000Image.CreateModifiedJpeg2000FromRequestBody();
+                var updateJpeg2000Image = new UpdateJpeg2000Image(api);
+                updateJpeg2000Image.ModifyJpeg2000FromStorage();
+                updateJpeg2000Image.ModifyJpeg2000AndUploadToStorage();
+                updateJpeg2000Image.CreateModifiedJpeg2000FromRequestBody();
 
                 // Update parameters of existing JPEG image
-                UpdateJPEGImage updateJPEGImage = new UpdateJPEGImage(api);
-                updateJPEGImage.ModifyJpegFromStorage();
-                updateJPEGImage.ModifyJpegAndUploadToStorage();
-                updateJPEGImage.CreateModifiedJpegFromRequestBody();
+                var updateJpegImage = new UpdateJpegImage(api);
+                updateJpegImage.ModifyJpegFromStorage();
+                updateJpegImage.ModifyJpegAndUploadToStorage();
+                updateJpegImage.CreateModifiedJpegFromRequestBody();
 
                 // Update parameters of existing PSD image
-                UpdatePSDImage updatePSDImage = new UpdatePSDImage(api);
-                updatePSDImage.ModifyPsdFromStorage();
-                updatePSDImage.ModifyPsdAndUploadToStorage();
-                updatePSDImage.CreateModifiedPsdFromRequestBody();
+                var updatePsdImage = new UpdatePsdImage(api);
+                updatePsdImage.ModifyPsdFromStorage();
+                updatePsdImage.ModifyPsdAndUploadToStorage();
+                updatePsdImage.CreateModifiedPsdFromRequestBody();
 
                 // Update parameters of existing WEBP image
-                WEBPImage webpImage = new WEBPImage(api);
+                var webpImage = new UpdateWebPImage(api);
                 webpImage.ModifyWebPFromStorage();
                 webpImage.ModifyWebPAndUploadToStorage();
                 webpImage.CreateModifiedWebPFromRequestBody();
 
                 // Process existing WMF image using given parameters
-                WMFImage wmfImage = new WMFImage(api);
+                var wmfImage = new UpdateWmfImage(api);
                 wmfImage.ModifyWmfFromStorage();
                 wmfImage.ModifyWmfAndUploadToStorage();
                 wmfImage.CreateModifiedWmfFromRequestBody();
 
-                // AI APIs           
-
-                Console.WriteLine("Runnig AI examples:");
+                // AI APIs
+                Console.WriteLine("Running AI examples:");
                 Console.WriteLine();
 
                 // Compare two images
-                CompareImages compareImages = new CompareImages(api);
+                var compareImages = new CompareImages(api);
                 compareImages.PrepareSearchContext();
                 compareImages.CompareTwoImagesInCloud();
                 compareImages.CompareLoadedImageToImageInCloud();
                 compareImages.DeleteSearchContext();
 
                 // Find Duplicate Images
-                FindDuplicateImages findDuplicateImages = new FindDuplicateImages(api);
+                var findDuplicateImages = new FindDuplicateImages(api);
                 findDuplicateImages.PrepareSearchContext();
                 findDuplicateImages.FindImageDuplicates();
                 findDuplicateImages.DeleteSearchContext();
 
                 // Find Similar Images
-                FindImages findImages = new FindImages(api);
+                var findImages = new FindSimilarImages(api);
                 findImages.PrepareSearchContext();
-                findImages.FindSimilarImages();
+                findImages.FindImagesSimilar();
                 findImages.FindImagesByTag();
                 findImages.DeleteSearchContext();
+                
+                // Search Images
+                var searchImages = new SearchImages(api);
+                searchImages.PrepareSearchContext();
+                searchImages.SearchImageFromWebSource();
+                searchImages.DeleteSearchContext();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine($"Something goes wrong: {ex}");
+                Environment.Exit(1);
             }
-
-            Console.WriteLine("Press any key ...");
-            Console.ReadKey();
+            Environment.Exit(0);
         }
 
         /// <summary>
-        /// Prepare output folder.
+        ///     Prepare output folder.
         /// </summary>
         private static void PrepareOutput()
         {
-            if (Directory.Exists(ImagingBase.OutputFolder))
-            {
-                Directory.Delete(ImagingBase.OutputFolder, true);
-            }
+            if (Directory.Exists(ImagingBase.OutputFolder)) Directory.Delete(ImagingBase.OutputFolder, true);
 
             Directory.CreateDirectory(ImagingBase.OutputFolder);
+        }
+
+        /// <summary>
+        ///     Process CLI arguments, exit on invalid input.
+        /// </summary>
+        /// <param name="args">CLI arguments.</param>
+        /// <param name="appKey">The app key.</param>
+        /// <param name="appSid">The app SID.</param>
+        /// <param name="baseUrl">The base URL.</param>
+        private static void ProcessArguments(string[] args, out string appKey, out string appSid,
+            out string baseUrl)
+        {
+            var errors = new List<string>(2);
+
+            appKey = ProcessArgument(args, "--appKey", "app key", errors);
+            appSid = ProcessArgument(args, "--appSid", "app sid", errors);
+            baseUrl = ProcessArgument(args, "--baseUrl", "Base url", errors, "https://api.aspose.cloud/");
+
+            if (!errors.Any()) return;
+
+            Console.WriteLine("Failed to launch examples:" + Environment.NewLine +
+                              string.Join(Environment.NewLine, errors));
+            Environment.Exit(1);
+        }
+
+        /// <summary>
+        ///     Retrieves argument value or writes error message.
+        /// </summary>
+        /// <param name="args">CLI arguments.</param>
+        /// <param name="key">Argument key.</param>
+        /// <param name="description">Argument description (for error message).</param>
+        /// <param name="errors">Errors to append to.</param>
+        /// <param name="defaultValue">Default value for optional parameter.</param>
+        /// <returns>Argument value, if found.</returns>
+        private static string ProcessArgument(string[] args, string key, string description, ICollection<string> errors,
+            string defaultValue = null)
+        {
+            var argumentValue = args.FirstOrDefault(p => p.StartsWith(key + "="))?.Split('=').Last();
+            if (argumentValue == null)
+            {
+                var argumentKeyIndex = Array.IndexOf(args, key);
+                if (argumentKeyIndex != -1)
+                    argumentValue = args.ElementAtOrDefault(argumentKeyIndex + 1);
+            }
+
+            if (!string.IsNullOrEmpty(argumentValue)) return argumentValue;
+
+            if (defaultValue == null)
+                errors.Add($"Please, provide {description}: \'{key} <value>\' or \'{key}=<value>\'");
+            else
+                argumentValue = defaultValue;
+
+            return argumentValue;
         }
     }
 }

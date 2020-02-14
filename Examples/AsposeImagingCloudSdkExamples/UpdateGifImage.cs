@@ -23,38 +23,38 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Api;
-using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System;
 using System.IO;
+using Aspose.Imaging.Cloud.Sdk.Api;
+using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
-namespace AsposeImagingCloudSDKExamples
+namespace AsposeImagingCloudSdkExamples
 {
     /// <summary>
-    /// Update GIF image example.
+    ///     Update GIF image example.
     /// </summary>
-    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
-    class UpdateGIFImage : ImagingBase
+    /// <seealso cref="AsposeImagingCloudSdkExamples.ImagingBase" />
+    internal class UpdateGifImage : ImagingBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateGIFImage"/> class.
+        ///     Initializes a new instance of the <see cref="UpdateGifImage" /> class.
         /// </summary>
         /// <param name="imagingApi">The imaging API.</param>
-        public UpdateGIFImage(ImagingApi imagingApi) : base(imagingApi)
+        public UpdateGifImage(ImagingApi imagingApi) : base(imagingApi)
         {
             PrintHeader("Update GIF image example:");
         }
 
         /// <summary>
-        /// Gets the name of the example image file.
+        ///     Gets the name of the example image file.
         /// </summary>
         /// <value>
-        /// The name of the example image file.
+        ///     The name of the example image file.
         /// </value>
         protected override string SampleImageFileName => "UpdateGIFSampleImage.gif";
 
         /// <summary>
-        /// Update parameters of existing GIF image. The image is saved in the cloud.
+        ///     Update parameters of existing GIF image. The image is saved in the cloud.
         /// </summary>
         public void ModifyGifFromStorage()
         {
@@ -69,25 +69,26 @@ namespace AsposeImagingCloudSDKExamples
             bool? isPaletteSorted = true;
             int? pixelAspectRatio = 4;
             bool? fromScratch = null;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            ModifyGifRequest getImageGifRequest = new ModifyGifRequest(SampleImageFileName, backgroundColorIndex,
-                                                            colorResolution, hasTrailer, interlaced, isPaletteSorted,
-                                                            pixelAspectRatio, fromScratch, folder, storage);
+            var getImageGifRequest = new ModifyGifRequest(SampleImageFileName, backgroundColorIndex,
+                colorResolution, hasTrailer, interlaced, isPaletteSorted,
+                pixelAspectRatio, fromScratch, folder, storage);
 
-            Console.WriteLine($"Call ModifyGif with params: background color index:{backgroundColorIndex}, color resolution:{colorResolution}, has trailer:{hasTrailer}, interlaced:{interlaced}, is palette sorted:{isPaletteSorted}, pixel aspect ratio:{pixelAspectRatio}");
+            Console.WriteLine(
+                $"Call ModifyGif with params: background color index:{backgroundColorIndex}, color resolution:{colorResolution}, has trailer:{hasTrailer}, interlaced:{interlaced}, is palette sorted:{isPaletteSorted}, pixel aspect ratio:{pixelAspectRatio}");
 
-            using (Stream updatedImage = this.ImagingApi.ModifyGif(getImageGifRequest))
+            using (var updatedImage = ImagingApi.ModifyGif(getImageGifRequest))
             {
-                SaveUpdatedImageToOutput(updatedImage, false);
+                SaveUpdatedSampleImageToOutput(updatedImage, false);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Update parameters of existing GIF image. The image is saved in the cloud.
+        ///     Update parameters of existing GIF image. The image is saved in the cloud.
         /// </summary>
         public void ModifyGifAndUploadToStorage()
         {
@@ -102,31 +103,32 @@ namespace AsposeImagingCloudSDKExamples
             bool? isPaletteSorted = true;
             int? pixelAspectRatio = 4;
             bool? fromScratch = null;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            ModifyGifRequest getImageGifRequest = new ModifyGifRequest(SampleImageFileName, backgroundColorIndex,
-                                                            colorResolution, hasTrailer, interlaced, isPaletteSorted,
-                                                            pixelAspectRatio, fromScratch, folder, storage);
+            var getImageGifRequest = new ModifyGifRequest(SampleImageFileName, backgroundColorIndex,
+                colorResolution, hasTrailer, interlaced, isPaletteSorted,
+                pixelAspectRatio, fromScratch, folder, storage);
 
-            Console.WriteLine($"Call ModifyGif with params: background color index:{backgroundColorIndex}, color resolution:{colorResolution}, has trailer:{hasTrailer}, interlaced:{interlaced}, is palette sorted:{isPaletteSorted}, pixel aspect ratio:{pixelAspectRatio}");
+            Console.WriteLine(
+                $"Call ModifyGif with params: background color index:{backgroundColorIndex}, color resolution:{colorResolution}, has trailer:{hasTrailer}, interlaced:{interlaced}, is palette sorted:{isPaletteSorted}, pixel aspect ratio:{pixelAspectRatio}");
 
-            using (Stream updatedImage = this.ImagingApi.ModifyGif(getImageGifRequest))
+            using (var updatedImage = ImagingApi.ModifyGif(getImageGifRequest))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(false), updatedImage);
+                UploadImageToCloud(GetModifiedSampleImageFileName(), updatedImage);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Update parameters of GIF image. Image data is passed in a request stream.
+        ///     Update parameters of GIF image. Image data is passed in a request stream.
         /// </summary>
         public void CreateModifiedGifFromRequestBody()
         {
             Console.WriteLine("Update parameters of a GIF image from request body");
 
-            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
+            using (var inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 int? backgroundColorIndex = 5;
                 int? colorResolution = 4;
@@ -138,15 +140,16 @@ namespace AsposeImagingCloudSDKExamples
                 string outPath = null;
                 string storage = null; // We are using default Cloud Storage
 
-                CreateModifiedGifRequest postImageGifRequest = new CreateModifiedGifRequest(inputImageStream, backgroundColorIndex,
-                                                colorResolution, hasTrailer, interlaced, isPaletteSorted, pixelAspectRatio,
-                                                                                            fromScratch, outPath, storage);
+                var postImageGifRequest = new CreateModifiedGifRequest(inputImageStream, backgroundColorIndex,
+                    colorResolution, hasTrailer, interlaced, isPaletteSorted, pixelAspectRatio,
+                    fromScratch, outPath, storage);
 
-                Console.WriteLine($"Call CreateModifiedGif with params: background color index:{backgroundColorIndex}, color resolution:{colorResolution}, has trailer:{hasTrailer}, interlaced:{interlaced}, is palette sorted:{isPaletteSorted}, pixel aspect ratio:{pixelAspectRatio}");
+                Console.WriteLine(
+                    $"Call CreateModifiedGif with params: background color index:{backgroundColorIndex}, color resolution:{colorResolution}, has trailer:{hasTrailer}, interlaced:{interlaced}, is palette sorted:{isPaletteSorted}, pixel aspect ratio:{pixelAspectRatio}");
 
-                using (Stream updatedImage = this.ImagingApi.CreateModifiedGif(postImageGifRequest))
+                using (var updatedImage = ImagingApi.CreateModifiedGif(postImageGifRequest))
                 {
-                    SaveUpdatedImageToOutput(updatedImage, true);
+                    SaveUpdatedSampleImageToOutput(updatedImage, true);
                 }
             }
 
