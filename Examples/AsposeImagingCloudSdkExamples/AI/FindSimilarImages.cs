@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------
 // <copyright file="FindImages.cs" company="Aspose" author="A. Ermakov" date="11/12/2019 2:52:13 PM">
 //   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
@@ -6,6 +6,8 @@
 
 using System;
 using System.IO;
+using System.Net;
+using System.Web;
 using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using Newtonsoft.Json;
@@ -46,11 +48,11 @@ namespace AsposeImagingCloudSdkExamples.AI
                 "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
                 "6.jpg", "7.jpg", "8.jpg", "9.jpg", "10.jpg"
             };
-
+            
             foreach (var imageName in images) UploadImageToCloud(imageName, ImagesPath);
-
+            
             CreateImageFeatures(ImagesPath, true);
-
+            
             Console.WriteLine();
         }
 
@@ -104,6 +106,49 @@ namespace AsposeImagingCloudSdkExamples.AI
                                   ", Similarity: " + searchResult.Similarity);
 
             Console.WriteLine();
+        }
+
+        /// <summary>
+        ///     Finds the similar images from the URL source.
+        /// </summary>
+        public void FindSimilarImagesFromUrl()
+        {
+            Console.WriteLine("Finds similar images from URL:");
+
+            double? similarityThreshold = 3; // The similarity threshold
+            int? maxCount = 3; // The maximum count
+            var folder = CloudPath; // Path to input files
+            string storage = null; // We are using default Cloud Storage
+
+            var imagesSourceUrl = HttpUtility.UrlEncode("https://www.f1news.ru/interview/hamilton/140909.shtml");
+
+            // Add images from the website to the search context
+            ImagingApi.CreateWebSiteImageFeatures(
+                new CreateWebSiteImageFeaturesRequest(SearchContextId, imagesSourceUrl, folder, storage));
+
+            WaitIdle(SearchContextId);
+
+            using (var webClient = new WebClient())
+            {
+                // Download the image from the website
+                var imageData = webClient.DownloadData("https://cdn.f1ne.ws/userfiles/hamilton/140909.jpg");
+
+                using (var imageStream = new MemoryStream(imageData))
+                {
+                    // Rotate and flip downloaded image
+                    var rotatedImage = ImagingApi.CreateRotateFlippedImage(
+                        new CreateRotateFlippedImageRequest(imageStream, "jpg", "Rotate180FlipX", null, storage));
+
+                    var uploadFileRequest = new UploadFileRequest(CloudPath + "/" + "ReverseSearch.jpg", rotatedImage);
+                    ImagingApi.UploadFile(uploadFileRequest);
+                    
+                    // Find similar images in the search context
+                    var findResponse = ImagingApi.FindSimilarImages(new FindSimilarImagesRequest(SearchContextId,
+                        similarityThreshold, maxCount, imageId: CloudPath + "/" + "ReverseSearch.jpg", folder: folder, storage: storage));
+                    
+                    Console.WriteLine("Similar images found: " + findResponse.Results.Count);
+                }
+            }
         }
     }
 }
