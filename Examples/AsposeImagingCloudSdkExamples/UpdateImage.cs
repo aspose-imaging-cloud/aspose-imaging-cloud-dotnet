@@ -79,9 +79,8 @@ namespace AsposeImagingCloudSdkExamples
             var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            var getImageUpdateRequest = new UpdateImageRequest(
-                SampleImageFileName, format, newWidth,
-                newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, folder, storage);
+            var getImageUpdateRequest = new UpdateImageRequest(SampleImageFileName, newWidth, newHeight, x, y,
+                rectWidth, rectHeight, rotateFlipMethod, format, folder, storage);
 
             Console.WriteLine(
                 $"Call UpdateImage with params: new width:{newWidth}, new height:{newHeight}, x:{x}, y:{y}, rect width:{rectWidth}, rectHeight:{rectHeight}, rotate/flip method:{rotateFlipMethod}, format:{format}");
@@ -117,8 +116,7 @@ namespace AsposeImagingCloudSdkExamples
             var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            var getImageUpdateRequest = new UpdateImageRequest(SampleImageFileName, format, newWidth,
-                newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, folder, storage);
+            var getImageUpdateRequest = new UpdateImageRequest(SampleImageFileName, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, format, folder, storage);
 
             Console.WriteLine(
                 $"Call UpdateImage with params: new width:{newWidth}, new height:{newHeight}, x:{x}, y:{y}, rect width:{rectWidth}, rectHeight:{rectHeight}, rotate/flip method:{rotateFlipMethod}, format:{format}");
@@ -153,9 +151,7 @@ namespace AsposeImagingCloudSdkExamples
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
                 string storage = null; // We are using default Cloud Storage
 
-                var postImageUpdateRequest = new CreateUpdatedImageRequest(
-                    inputImageStream, format, newWidth,
-                    newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, outPath, storage);
+                var postImageUpdateRequest = new CreateUpdatedImageRequest(inputImageStream, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, format, outPath, storage);
 
                 Console.WriteLine(
                     $"Call CreateUpdatedImage with params: new width:{newWidth}, new height:{newHeight}, x:{x}, y:{y}, rect width:{rectWidth}, rectHeight:{rectHeight}, rotate/flip method:{rotateFlipMethod}, format:{format}");
