@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------------------------------------
 // <copyright file="FindImages.cs" company="Aspose" author="A. Ermakov" date="11/12/2019 2:52:13 PM">
 //   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
@@ -115,7 +115,7 @@ namespace AsposeImagingCloudSdkExamples.AI
         {
             Console.WriteLine("Finds similar images from URL:");
 
-            double? similarityThreshold = 3; // The similarity threshold
+            double? similarityThreshold = 30.0; // The similarity threshold
             int? maxCount = 3; // The maximum count
             var folder = CloudPath; // Path to input files
             string storage = null; // We are using default Cloud Storage
@@ -128,25 +128,41 @@ namespace AsposeImagingCloudSdkExamples.AI
 
             WaitIdle(SearchContextId);
 
+            // Upload a sample file from that website
+            // It will be resized to demonstrate search capabilities
+            var imageName = CloudPath + "/" + "ReverseSearch.jpg";
+            CreateSampleFile("https://cdn.f1ne.ws/userfiles/hamilton/140909.jpg", imageName, storage);
+
+            // Find similar images in the search context
+            var findResponse = ImagingApi.FindSimilarImages(new FindSimilarImagesRequest(SearchContextId,
+                similarityThreshold, maxCount, imageId: CloudPath + "/" + "ReverseSearch.jpg", folder: folder,
+                storage: storage));
+
+            Console.WriteLine("Similar images found: " + findResponse.Results.Count);
+        }
+
+        /// <summary>
+        ///     Creates a sample file in the cloud: downloads file from the url, resizes it and uploads to cloud.
+        /// </summary>
+        /// <param name="url">The file url.</param>
+        /// <param name="path">The path in the cloud.</param>
+        /// <param name="storage">The storage name.</param>
+        private void CreateSampleFile(string url, string path, string storage = null)
+        {
             using (var webClient = new WebClient())
             {
                 // Download the image from the website
-                var imageData = webClient.DownloadData("https://cdn.f1ne.ws/userfiles/hamilton/140909.jpg");
+                var imageData = webClient.DownloadData(url);
 
                 using (var imageStream = new MemoryStream(imageData))
                 {
-                    // Rotate and flip downloaded image
-                    var rotatedImage = ImagingApi.CreateRotateFlippedImage(
-                        new CreateRotateFlippedImageRequest(imageStream, "jpg", "Rotate180FlipX", null, storage));
+                    // Resize downloaded image
+                    var rotatedImage = ImagingApi.CreateResizedImage(
+                        new CreateResizedImageRequest(imageStream, 600, 400, "jpg", storage: storage));
 
-                    var uploadFileRequest = new UploadFileRequest(CloudPath + "/" + "ReverseSearch.jpg", rotatedImage);
+                    var uploadFileRequest =
+                        new UploadFileRequest(path, rotatedImage, storage);
                     ImagingApi.UploadFile(uploadFileRequest);
-                    
-                    // Find similar images in the search context
-                    var findResponse = ImagingApi.FindSimilarImages(new FindSimilarImagesRequest(SearchContextId,
-                        similarityThreshold, maxCount, imageId: CloudPath + "/" + "ReverseSearch.jpg", folder: folder, storage: storage));
-                    
-                    Console.WriteLine("Similar images found: " + findResponse.Results.Count);
                 }
             }
         }
