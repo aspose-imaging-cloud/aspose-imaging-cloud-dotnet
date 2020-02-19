@@ -121,7 +121,7 @@ namespace AsposeImagingCloudSdkExamples
             using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 bool resizeProportionally = true;
-                string bkColor = "green";
+                string bkColor = "white";
                 string storage = null; // We are using default Cloud Storage
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
 
