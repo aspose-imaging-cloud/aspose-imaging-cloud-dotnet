@@ -55,9 +55,9 @@ namespace AsposeImagingCloudSdkExamples
         /// Input formats could be one of the following:
         /// BMP, GIF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG
         /// </remarks>
-        protected override string SampleImageFileName => "DeskewSampleImage.bmp";
+        protected override string SampleImageFileName => "Sample_05_Scan1_SkewToLeft.tif";
 
-        private const string SaveImageFormat = "bmp";
+        private const string SaveImageFormat = "tif";
 
         /// <summary>
         /// Deskews an image from a cloud storage.
@@ -69,7 +69,7 @@ namespace AsposeImagingCloudSdkExamples
             UploadSampleImageToCloud();
 
             bool resizeProportionally = true;
-            string bkColor = "green";
+            string bkColor = "white";
             string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
