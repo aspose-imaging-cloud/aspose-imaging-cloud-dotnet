@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CropImage.cs" />
+    <Compile Include="FilterImage.cs" />
     <Compile Include="ImageProperties.cs" />
     <Compile Include="ImagingBase.cs" />
     <Compile Include="ImagingExamples.cs" />

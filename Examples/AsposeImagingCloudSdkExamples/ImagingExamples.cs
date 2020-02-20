@@ -78,6 +78,11 @@ namespace AsposeImagingCloudSdkExamples
                 exportImage.SaveImageAsAndUploadToStorage();
                 exportImage.CreateSavedImageAsFromRequestBody();
 
+                // Apply a filtering effect to an image
+                var filterImage = new FilterImage(api);
+                filterImage.FilterImageFromStorage();
+                filterImage.FilterImageAndUploadToStorage();
+
                 // Get properties of an image
                 var imageProperties = new ImageProperties(api);
                 imageProperties.GetImagePropertiesFromStorage();
@@ -173,6 +178,7 @@ namespace AsposeImagingCloudSdkExamples
                 Console.WriteLine($"Something goes wrong: {ex}");
                 Environment.Exit(1);
             }
+
             Environment.Exit(0);
         }
 
