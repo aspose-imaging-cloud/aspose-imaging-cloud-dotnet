@@ -5,7 +5,7 @@ This project provides examples of using Aspose.Imaging Cloud SDK for .NET.
 .NET Framework v4.5.2 is required.
 
 ### Running the examples
- ```c#
+ ```
 nuget restore
 msbuild.exe AsposeImagingCloudSdkExamples.sln /p:Configuration=Release /t:Clean,Build
 cd .\AsposeImagingCloudSdkExamples\bin\Release\
