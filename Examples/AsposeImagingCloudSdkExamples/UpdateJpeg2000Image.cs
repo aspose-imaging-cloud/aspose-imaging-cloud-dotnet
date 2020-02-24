@@ -23,33 +23,33 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Api;
-using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System;
 using System.IO;
+using Aspose.Imaging.Cloud.Sdk.Api;
+using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
-namespace AsposeImagingCloudSDKExamples
+namespace AsposeImagingCloudSdkExamples
 {
     /// <summary>
-    /// Update JPEG2000 image example.
+    ///     Update JPEG2000 image example.
     /// </summary>
-    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
-    class UpdateJPEG2000Image : ImagingBase
+    /// <seealso cref="AsposeImagingCloudSdkExamples.ImagingBase" />
+    internal class UpdateJpeg2000Image : ImagingBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateJPEG2000Image"/> class.
+        ///     Initializes a new instance of the <see cref="UpdateJpeg2000Image" /> class.
         /// </summary>
         /// <param name="imagingApi">The imaging API.</param>
-        public UpdateJPEG2000Image(ImagingApi imagingApi) : base(imagingApi)
+        public UpdateJpeg2000Image(ImagingApi imagingApi) : base(imagingApi)
         {
             PrintHeader("Update JPEG2000 image example:");
         }
 
         /// <summary>
-        /// Gets the name of the example image file.
+        ///     Gets the name of the example image file.
         /// </summary>
         /// <value>
-        /// The name of the example image file.
+        ///     The name of the example image file.
         /// </value>
         protected override string SampleImageFileName => "UpdateJPEG2000SampleImage.jp2";
 
@@ -60,27 +60,27 @@ namespace AsposeImagingCloudSDKExamples
 
             UploadSampleImageToCloud();
 
-            string codec = "jp2";
-            string comment = "Aspose";
+            var codec = "jp2";
+            var comment = "Aspose";
             bool? fromScratch = null;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            ModifyJpeg2000Request getImageJpeg2000Request = 
+            var getImageJpeg2000Request =
                 new ModifyJpeg2000Request(SampleImageFileName, comment, codec, fromScratch, folder, storage);
 
             Console.WriteLine($"Call ModifyJpeg2000 with params: codec:{codec}, comment:{comment}");
 
-            using (Stream updatedImage = this.ImagingApi.ModifyJpeg2000(getImageJpeg2000Request))
+            using (var updatedImage = ImagingApi.ModifyJpeg2000(getImageJpeg2000Request))
             {
-                SaveUpdatedImageToOutput(updatedImage, false);
+                SaveUpdatedSampleImageToOutput(updatedImage, false);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Update parameters of existing JPEG2000 image, and upload updated image to Cloud Storage.
+        ///     Update parameters of existing JPEG2000 image, and upload updated image to Cloud Storage.
         /// </summary>
         public void ModifyJpeg2000AndUploadToStorage()
         {
@@ -88,48 +88,48 @@ namespace AsposeImagingCloudSDKExamples
 
             UploadSampleImageToCloud();
 
-            string codec = "jp2";
-            string comment = "Aspose";
+            var codec = "jp2";
+            var comment = "Aspose";
             bool? fromScratch = null;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            ModifyJpeg2000Request getImageJpeg2000Request = 
+            var getImageJpeg2000Request =
                 new ModifyJpeg2000Request(SampleImageFileName, comment, codec, fromScratch, folder, storage);
 
             Console.WriteLine($"Call ModifyJpeg2000 with params: codec:{codec}, comment:{comment}");
 
-            using (Stream updatedImage = this.ImagingApi.ModifyJpeg2000(getImageJpeg2000Request))
+            using (var updatedImage = ImagingApi.ModifyJpeg2000(getImageJpeg2000Request))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(false), updatedImage);
+                UploadImageToCloud(GetModifiedSampleImageFileName(), updatedImage);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Update parameters of existing JPEG2000 image. Image data is passed in a request stream.
+        ///     Update parameters of existing JPEG2000 image. Image data is passed in a request stream.
         /// </summary>
         public void CreateModifiedJpeg2000FromRequestBody()
         {
             Console.WriteLine("Update parameters of a Jpeg2000 image from request body");
 
-            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
+            using (var inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
-                string codec = "jp2";
-                string comment = "Aspose";
+                var codec = "jp2";
+                var comment = "Aspose";
                 bool? fromScratch = null;
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
                 string storage = null; // We are using default Cloud Storage
 
-                CreateModifiedJpeg2000Request postImageJpeg2000Request = 
+                var postImageJpeg2000Request =
                     new CreateModifiedJpeg2000Request(inputImageStream, comment, codec, fromScratch, outPath, storage);
 
                 Console.WriteLine($"Call CreateModifiedJpeg2000 with params: codec:{codec}, comment:{comment}");
 
-                using (Stream updatedImage = this.ImagingApi.CreateModifiedJpeg2000(postImageJpeg2000Request))
+                using (var updatedImage = ImagingApi.CreateModifiedJpeg2000(postImageJpeg2000Request))
                 {
-                    SaveUpdatedImageToOutput(updatedImage, true);
+                    SaveUpdatedSampleImageToOutput(updatedImage, true);
                 }
             }
 

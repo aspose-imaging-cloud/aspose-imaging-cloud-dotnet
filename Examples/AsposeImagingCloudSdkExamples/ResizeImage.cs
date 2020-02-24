@@ -23,21 +23,21 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Api;
-using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System;
 using System.IO;
+using Aspose.Imaging.Cloud.Sdk.Api;
+using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
-namespace AsposeImagingCloudSDKExamples
+namespace AsposeImagingCloudSdkExamples
 {
     /// <summary>
-    /// Resize image example.
+    ///     Resize image example.
     /// </summary>
-    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
-    class ResizeImage : ImagingBase
+    /// <seealso cref="AsposeImagingCloudSdkExamples.ImagingBase" />
+    internal class ResizeImage : ImagingBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ResizeImage"/> class.
+        ///     Initializes a new instance of the <see cref="ResizeImage" /> class.
         /// </summary>
         /// <param name="imagingApi">The imaging API.</param>
         public ResizeImage(ImagingApi imagingApi) : base(imagingApi)
@@ -46,19 +46,19 @@ namespace AsposeImagingCloudSDKExamples
         }
 
         /// <summary>
-        /// Gets the name of the example image file.
+        ///     Gets the name of the example image file.
         /// </summary>
         /// <value>
-        /// The name of the example image file.
+        ///     The name of the example image file.
         /// </value>
         /// <remarks>
-        /// Input formats could be one of the following:
-        /// BMP, GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
+        ///     Input formats could be one of the following:
+        ///     BMP, GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
         /// </remarks>
         protected override string SampleImageFileName => "ResizeSampleImage.psd";
 
         /// <summary>
-        /// Resizes the image.
+        ///     Resizes the image.
         /// </summary>
         public void ResizeImageFromStorage()
         {
@@ -69,28 +69,29 @@ namespace AsposeImagingCloudSDKExamples
 
             // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Resize 
             // for possible output formats
-            string format = "gif";
+            var format = "gif";
             int? newWidth = 100;
             int? newHeight = 150;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
-            
-            ResizeImageRequest resizeImageRequest = new ResizeImageRequest(
+
+            var resizeImageRequest = new ResizeImageRequest(
                 SampleImageFileName, format, newWidth, newHeight, folder, storage);
 
-            Console.WriteLine($"Call ResizeImage with params: new width:{newWidth}, new height:{newHeight}, format:{format}");
+            Console.WriteLine(
+                $"Call ResizeImage with params: new width:{newWidth}, new height:{newHeight}, format:{format}");
 
-            using (Stream updatedImage = ImagingApi.ResizeImage(resizeImageRequest))
+            using (var updatedImage = ImagingApi.ResizeImage(resizeImageRequest))
             {
                 // Save updated image to local storage
-                SaveUpdatedImageToOutput(updatedImage, false);
+                SaveUpdatedSampleImageToOutput(updatedImage, false);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Resizes the sample image and upload to Cloud Storage
+        ///     Resizes the sample image and upload to Cloud Storage
         /// </summary>
         public void ResizeImageAndUploadToStorage()
         {
@@ -101,50 +102,54 @@ namespace AsposeImagingCloudSDKExamples
 
             // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Resize 
             // for possible output formats
-            string format = "gif";
+            var format = "gif";
             int? newWidth = 100;
             int? newHeight = 150;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            ResizeImageRequest resizeImageRequest = new ResizeImageRequest(
+            var resizeImageRequest = new ResizeImageRequest(
                 SampleImageFileName, format, newWidth, newHeight, folder, storage);
 
-            Console.WriteLine($"Call ResizeImage with params: new width:{newWidth}, new height:{newHeight}, format:{format}");
+            Console.WriteLine(
+                $"Call ResizeImage with params: new width:{newWidth}, new height:{newHeight}, format:{format}");
 
-            using (Stream updatedImage = this.ImagingApi.ResizeImage(resizeImageRequest))
+            using (var updatedImage = ImagingApi.ResizeImage(resizeImageRequest))
             {
                 // Upload updated image to Cloud Storage
-                UploadImageToCloud(GetModifiedSampleImageFileName(false, format), updatedImage);   
+                UploadImageToCloud(GetModifiedSampleImageFileName(false, format), updatedImage);
             }
 
             Console.WriteLine();
         }
 
-        // Resize an image. Image data is passed in a request stream.
+        /// <summary>
+        ///     Resize an image. Image data is passed in a request stream.
+        /// </summary>
         public void CreateResizedImageFromRequestBody()
         {
             Console.WriteLine("Resize an image from request body");
 
-            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
+            using (var inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Resize 
                 // for possible output formats
-                string format = "gif";
+                var format = "gif";
                 int? newWidth = 100;
                 int? newHeight = 150;
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image).
                 string storage = null; // We are using default Cloud Storage
 
-                CreateResizedImageRequest createResizedImageRequest = new CreateResizedImageRequest(
+                var createResizedImageRequest = new CreateResizedImageRequest(
                     inputImageStream, format, newWidth, newHeight, outPath, storage);
 
-                Console.WriteLine($"Call CreateResizedImage with params: new width:{newWidth}, new height:{newHeight}, format:{format}");
+                Console.WriteLine(
+                    $"Call CreateResizedImage with params: new width:{newWidth}, new height:{newHeight}, format:{format}");
 
-                using (Stream updatedImage = this.ImagingApi.CreateResizedImage(createResizedImageRequest))
-                {  
+                using (var updatedImage = ImagingApi.CreateResizedImage(createResizedImageRequest))
+                {
                     // Save updated image to local storage
-                    SaveUpdatedImageToOutput(updatedImage, true, format);   
+                    SaveUpdatedSampleImageToOutput(updatedImage, true, format);
                 }
             }
 

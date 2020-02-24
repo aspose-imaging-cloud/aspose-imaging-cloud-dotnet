@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -7,11 +7,12 @@
     <ProjectGuid>{25029F50-7409-4E25-81BB-BF0A4ED769FC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AsposeImagingCloudSDKExamples</RootNamespace>
-    <AssemblyName>AsposeImagingCloudSDKExamples</AssemblyName>
+    <RootNamespace>AsposeImagingCloudSdkExamples</RootNamespace>
+    <AssemblyName>AsposeImagingCloudSdkExamples</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <LangVersion>6</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,8 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Imaging.Cloud.Sdk, Version=19.10.0.0, Culture=neutral, PublicKeyToken=70f46a67678f77f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Imaging-Cloud.19.10.0\lib\net45\Aspose.Imaging.Cloud.Sdk.dll</HintPath>
+    <Reference Include="Aspose.Imaging.Cloud.Sdk, Version=19.12.0.0, Culture=neutral, PublicKeyToken=70f46a67678f77f1">
+      <HintPath>..\packages\Aspose.Imaging-Cloud.19.12.0\lib\net45\Aspose.Imaging.Cloud.Sdk.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -53,8 +55,8 @@
   <ItemGroup>
     <Compile Include="AI\CompareImages.cs" />
     <Compile Include="AI\FindDuplicateImages.cs" />
-    <Compile Include="AI\FindImages.cs" />
-    <Compile Include="DeskewImage.cs" />
+    <Compile Include="AI\FindSimilarImages.cs" />
+    <Compile Include="AI\SearchImages.cs" />
     <Compile Include="CropImage.cs" />
     <Compile Include="ImageProperties.cs" />
     <Compile Include="ImagingBase.cs" />
@@ -63,18 +65,18 @@
     <Compile Include="ResizeImage.cs" />
     <Compile Include="RotateFlipImage.cs" />
     <Compile Include="AI\ImagingAIBase.cs" />
-    <Compile Include="TIFFFrames.cs" />
-    <Compile Include="TIFFImage.cs" />
-    <Compile Include="UpdateBMPImage.cs" />
-    <Compile Include="UpdateEMFImage.cs" />
+    <Compile Include="TiffFrames.cs" />
+    <Compile Include="UpdateTiffImage.cs" />
+    <Compile Include="UpdateBmpImage.cs" />
+    <Compile Include="UpdateEmfImage.cs" />
     <Compile Include="ExportImage.cs" />
-    <Compile Include="UpdateGIFImage.cs" />
+    <Compile Include="UpdateGifImage.cs" />
     <Compile Include="UpdateImage.cs" />
-    <Compile Include="UpdateJPEG2000Image.cs" />
-    <Compile Include="UpdateJPEGImage.cs" />
-    <Compile Include="UpdatePSDImage.cs" />
-    <Compile Include="WEBPImage.cs" />
-    <Compile Include="WMFImage.cs" />
+    <Compile Include="UpdateJpeg2000Image.cs" />
+    <Compile Include="UpdateJpegImage.cs" />
+    <Compile Include="UpdatePsdImage.cs" />
+    <Compile Include="UpdateWebPImage.cs" />
+    <Compile Include="UpdateWmfImage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -23,39 +23,39 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Api;
-using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System;
 using System.IO;
+using Aspose.Imaging.Cloud.Sdk.Api;
+using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
-namespace AsposeImagingCloudSDKExamples
+namespace AsposeImagingCloudSdkExamples
 {
     /// <summary>
-    /// WMF image example.
+    ///     WMF image example.
     /// </summary>
-    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
-    class WMFImage : ImagingBase
+    /// <seealso cref="AsposeImagingCloudSdkExamples.ImagingBase" />
+    internal class UpdateWmfImage : ImagingBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WMFImage"/> class.
+        ///     Initializes a new instance of the <see cref="UpdateWmfImage" /> class.
         /// </summary>
         /// <param name="imagingApi">The imaging API.</param>
-        public WMFImage(ImagingApi imagingApi) : base(imagingApi)
+        public UpdateWmfImage(ImagingApi imagingApi) : base(imagingApi)
         {
             PrintHeader("Update WMF image example:");
         }
 
         /// <summary>
-        /// Gets the name of the example image file.
+        ///     Gets the name of the example image file.
         /// </summary>
         /// <value>
-        /// The name of the example image file.
+        ///     The name of the example image file.
         /// </value>
         protected override string SampleImageFileName => "WMFSampleImage.wmf";
 
         /// <summary>
-        /// Process existing WMF image using given parameters. 
-        /// The image is saved in the cloud.
+        ///     Process existing WMF image using given parameters.
+        ///     The image is saved in the cloud.
         /// </summary>
         public void ModifyWmfFromStorage()
         {
@@ -63,34 +63,35 @@ namespace AsposeImagingCloudSDKExamples
 
             UploadSampleImageToCloud();
 
-            string bkColor = "gray";
+            var bkColor = "gray";
             int? pageWidth = 300;
             int? pageHeight = 300;
             int? borderX = 50;
             int? borderY = 50;
             bool? fromScratch = null;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
 
             string storage = null; // We are using default Cloud Storage
-            string exportFormat = "png";
+            var exportFormat = "png";
 
-            ModifyWmfRequest getImageWmfRequest = 
+            var getImageWmfRequest =
                 new ModifyWmfRequest(SampleImageFileName, bkColor, pageWidth, pageHeight,
-                                     borderX, borderY, fromScratch, folder,
-                                     storage, exportFormat);
+                    borderX, borderY, fromScratch, folder,
+                    storage, exportFormat);
 
-            Console.WriteLine($"Call ModifyWmf with params: background color:{bkColor}, page width:{pageWidth}, page height:{pageHeight}, border X:{borderX}, border Y:{borderY}");
+            Console.WriteLine(
+                $"Call ModifyWmf with params: background color:{bkColor}, page width:{pageWidth}, page height:{pageHeight}, border X:{borderX}, border Y:{borderY}");
 
-            using (Stream updatedImage = this.ImagingApi.ModifyWmf(getImageWmfRequest))
+            using (var updatedImage = ImagingApi.ModifyWmf(getImageWmfRequest))
             {
-                SaveUpdatedImageToOutput(updatedImage, false);
+                SaveUpdatedSampleImageToOutput(updatedImage, false);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Process existing WMF image using given parameters, and upload updated image to Cloud Storage.
+        ///     Process existing WMF image using given parameters, and upload updated image to Cloud Storage.
         /// </summary>
         public void ModifyWmfAndUploadToStorage()
         {
@@ -98,43 +99,44 @@ namespace AsposeImagingCloudSDKExamples
 
             UploadSampleImageToCloud();
 
-            string bkColor = "gray";
+            var bkColor = "gray";
             int? pageWidth = 300;
             int? pageHeight = 300;
             int? borderX = 50;
             int? borderY = 50;
             bool? fromScratch = null;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
 
             string storage = null; // We are using default Cloud Storage
-            string exportFormat = "png";
+            var exportFormat = "png";
 
-            ModifyWmfRequest getImageWmfRequest = 
+            var getImageWmfRequest =
                 new ModifyWmfRequest(SampleImageFileName, bkColor, pageWidth, pageHeight,
-                                     borderX, borderY, fromScratch, folder,
-                                     storage, exportFormat);
+                    borderX, borderY, fromScratch, folder,
+                    storage, exportFormat);
 
-            Console.WriteLine($"Call ModifyWmf with params: background color:{bkColor}, page width:{pageWidth}, page height:{pageHeight}, border X:{borderX}, border Y:{borderY}");
+            Console.WriteLine(
+                $"Call ModifyWmf with params: background color:{bkColor}, page width:{pageWidth}, page height:{pageHeight}, border X:{borderX}, border Y:{borderY}");
 
-            using (Stream updatedImage = this.ImagingApi.ModifyWmf(getImageWmfRequest))
+            using (var updatedImage = ImagingApi.ModifyWmf(getImageWmfRequest))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(false), updatedImage);
+                UploadImageToCloud(GetModifiedSampleImageFileName(), updatedImage);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Process existing WMF image using given parameters.
-        /// Image data is passed in a request stream.
+        ///     Process existing WMF image using given parameters.
+        ///     Image data is passed in a request stream.
         /// </summary>
         public void CreateModifiedWmfFromRequestBody()
         {
             Console.WriteLine("Update parameters of a WMF image from request body");
 
-            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
+            using (var inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
-                string bkColor = "gray";
+                var bkColor = "gray";
                 int? pageWidth = 300;
                 int? pageHeight = 300;
                 int? borderX = 50;
@@ -142,18 +144,19 @@ namespace AsposeImagingCloudSDKExamples
                 bool? fromScratch = null;
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image).
                 string storage = null; // We are using default Cloud Storage
-                string exportFormat = "png";
+                var exportFormat = "png";
 
-                CreateModifiedWmfRequest postImageWmfRequest = 
+                var postImageWmfRequest =
                     new CreateModifiedWmfRequest(inputImageStream, bkColor, pageWidth,
-                                                 pageHeight, borderX, borderY, fromScratch, outPath,
-                                                 storage, exportFormat);
+                        pageHeight, borderX, borderY, fromScratch, outPath,
+                        storage, exportFormat);
 
-                Console.WriteLine($"Call CreateModifiedWmf with params: background color:{bkColor}, page width:{pageWidth}, page height:{pageHeight}, border X:{borderX}, border Y:{borderY}");
+                Console.WriteLine(
+                    $"Call CreateModifiedWmf with params: background color:{bkColor}, page width:{pageWidth}, page height:{pageHeight}, border X:{borderX}, border Y:{borderY}");
 
-                using (Stream updatedImage = this.ImagingApi.CreateModifiedWmf(postImageWmfRequest))
+                using (var updatedImage = ImagingApi.CreateModifiedWmf(postImageWmfRequest))
                 {
-                    SaveUpdatedImageToOutput(updatedImage, true);
+                    SaveUpdatedSampleImageToOutput(updatedImage, true);
                 }
             }
 

@@ -23,39 +23,39 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Api;
-using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System;
 using System.IO;
+using Aspose.Imaging.Cloud.Sdk.Api;
+using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
-namespace AsposeImagingCloudSDKExamples
+namespace AsposeImagingCloudSdkExamples
 {
     /// <summary>
-    /// Update BMP image example.
+    ///     Update BMP image example.
     /// </summary>
-    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
-    class UpdateBMPImage : ImagingBase
+    /// <seealso cref="AsposeImagingCloudSdkExamples.ImagingBase" />
+    internal class UpdateBmpImage : ImagingBase
     {
         /// <summary>
-        /// Gets the name of the example image file.
-        /// </summary>
-        /// <value>
-        /// The name of the example image file.
-        /// </value>
-        protected override string SampleImageFileName => "UpdateBmpSampleImage.bmp";
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="UpdateBMPImage"/> class.
+        ///     Initializes a new instance of the <see cref="UpdateBmpImage" /> class.
         /// </summary>
         /// <param name="imagingApi">The imaging API.</param>
-        public UpdateBMPImage(ImagingApi imagingApi) : base(imagingApi)
+        public UpdateBmpImage(ImagingApi imagingApi) : base(imagingApi)
         {
             PrintHeader("Update BMP image example:");
         }
 
         /// <summary>
-        /// Update parameters of a BMP image. 
-        /// The image is saved in the cloud. 
+        ///     Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        ///     The name of the example image file.
+        /// </value>
+        protected override string SampleImageFileName => "UpdateBmpSampleImage.bmp";
+
+        /// <summary>
+        ///     Update parameters of a BMP image.
+        ///     The image is saved in the cloud.
         /// </summary>
         public void ModifyBmpFromStorage()
         {
@@ -68,19 +68,20 @@ namespace AsposeImagingCloudSDKExamples
             int? horizontalResolution = 300;
             int? verticalResolution = 300;
             bool? fromScratch = null;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var request = new ModifyBmpRequest(
-                SampleImageFileName, bitsPerPixel, horizontalResolution, verticalResolution, 
+                SampleImageFileName, bitsPerPixel, horizontalResolution, verticalResolution,
                 fromScratch, folder, storage);
 
-            Console.WriteLine($"Call ModifyBmp with params: bits per pixel:{bitsPerPixel}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution}");
+            Console.WriteLine(
+                $"Call ModifyBmp with params: bits per pixel:{bitsPerPixel}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution}");
 
-            using (Stream updatedImage = this.ImagingApi.ModifyBmp(request))
+            using (var updatedImage = ImagingApi.ModifyBmp(request))
             {
                 // Save updated image to local storage
-                SaveUpdatedImageToOutput(updatedImage, false);
+                SaveUpdatedSampleImageToOutput(updatedImage, false);
             }
 
             Console.WriteLine();
@@ -90,7 +91,7 @@ namespace AsposeImagingCloudSDKExamples
         public void ModifyBmpAndUploadToStorage()
         {
             Console.WriteLine("Update parameters of a BMP image and upload to cloud storage");
-             
+
             // Upload local image to Cloud Storage
             UploadSampleImageToCloud();
 
@@ -98,32 +99,33 @@ namespace AsposeImagingCloudSDKExamples
             int? horizontalResolution = 300;
             int? verticalResolution = 300;
             bool? fromScratch = null;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var request = new ModifyBmpRequest(
                 SampleImageFileName, bitsPerPixel, horizontalResolution, verticalResolution,
                 fromScratch, folder, storage);
 
-            Console.WriteLine($"Call ModifyBmp with params: bits per pixel:{bitsPerPixel}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution}");
+            Console.WriteLine(
+                $"Call ModifyBmp with params: bits per pixel:{bitsPerPixel}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution}");
 
-            using (Stream updatedImage = this.ImagingApi.ModifyBmp(request))
+            using (var updatedImage = ImagingApi.ModifyBmp(request))
             {
                 // Upload updated image to Cloud Storage
-                UploadImageToCloud(GetModifiedSampleImageFileName(false), updatedImage);              
+                UploadImageToCloud(GetModifiedSampleImageFileName(), updatedImage);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Update parameters of a BMP image. Image data is passed in a request stream.
+        ///     Update parameters of a BMP image. Image data is passed in a request stream.
         /// </summary>
         public void CreateModifiedBmpFromRequestBody()
         {
             Console.WriteLine("Update parameters of a BMP image from request body");
 
-            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
+            using (var inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 int? bitsPerPixel = 32;
                 int? horizontalResolution = 300;
@@ -132,18 +134,20 @@ namespace AsposeImagingCloudSDKExamples
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
                 string storage = null; // We are using default Cloud Storage
 
-                var request = new CreateModifiedBmpRequest(inputImageStream, bitsPerPixel, horizontalResolution, verticalResolution, fromScratch, outPath, storage);
+                var request = new CreateModifiedBmpRequest(inputImageStream, bitsPerPixel, horizontalResolution,
+                    verticalResolution, fromScratch, outPath, storage);
 
-                Console.WriteLine($"Call CreateModifiedBmp with params: bits per pixel:{bitsPerPixel}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution}");
+                Console.WriteLine(
+                    $"Call CreateModifiedBmp with params: bits per pixel:{bitsPerPixel}, horizontal resolution:{horizontalResolution}, vertical resolution:{verticalResolution}");
 
-                using (Stream updatedImage = this.ImagingApi.CreateModifiedBmp(request))
+                using (var updatedImage = ImagingApi.CreateModifiedBmp(request))
                 {
                     // Save updated image to local storage
-                    SaveUpdatedImageToOutput(updatedImage, true);
-                }               
+                    SaveUpdatedSampleImageToOutput(updatedImage, true);
+                }
             }
 
             Console.WriteLine();
-        }       
+        }
     }
 }
