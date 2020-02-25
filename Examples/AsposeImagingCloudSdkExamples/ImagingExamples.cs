@@ -28,7 +28,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Aspose.Imaging.Cloud.Sdk.Api;
-using AsposeImagingCloudSdkExamples.AI;
 
 namespace AsposeImagingCloudSdkExamples
 {
@@ -78,6 +77,11 @@ namespace AsposeImagingCloudSdkExamples
                 exportImage.SaveImageAsFromStorage();
                 exportImage.SaveImageAsAndUploadToStorage();
                 exportImage.CreateSavedImageAsFromRequestBody();
+
+                // Apply a filtering effect to an image
+                var filterImage = new FilterImage(api);
+                filterImage.FilterImageFromStorage();
+                filterImage.FilterImageAndUploadToStorage();
 
                 // Get properties of an image
                 var imageProperties = new ImageProperties(api);
@@ -168,42 +172,13 @@ namespace AsposeImagingCloudSdkExamples
                 wmfImage.ModifyWmfFromStorage();
                 wmfImage.ModifyWmfAndUploadToStorage();
                 wmfImage.CreateModifiedWmfFromRequestBody();
-
-                // AI APIs
-                Console.WriteLine("Running AI examples:");
-                Console.WriteLine();
-
-                // Compare two images
-                var compareImages = new CompareImages(api);
-                compareImages.PrepareSearchContext();
-                compareImages.CompareTwoImagesInCloud();
-                compareImages.CompareLoadedImageToImageInCloud();
-                compareImages.DeleteSearchContext();
-
-                // Find Duplicate Images
-                var findDuplicateImages = new FindDuplicateImages(api);
-                findDuplicateImages.PrepareSearchContext();
-                findDuplicateImages.FindImageDuplicates();
-                findDuplicateImages.DeleteSearchContext();
-
-                // Find Similar Images
-                var findImages = new FindSimilarImages(api);
-                findImages.PrepareSearchContext();
-                findImages.FindImagesSimilar();
-                findImages.FindImagesByTag();
-                findImages.DeleteSearchContext();
-                
-                // Search Images
-                var searchImages = new SearchImages(api);
-                searchImages.PrepareSearchContext();
-                searchImages.SearchImageFromWebSource();
-                searchImages.DeleteSearchContext();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Something goes wrong: {ex}");
                 Environment.Exit(1);
             }
+
             Environment.Exit(0);
         }
 

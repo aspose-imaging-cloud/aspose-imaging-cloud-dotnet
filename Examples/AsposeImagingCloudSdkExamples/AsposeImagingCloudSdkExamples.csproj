@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Imaging.Cloud.Sdk, Version=19.12.0.0, Culture=neutral, PublicKeyToken=70f46a67678f77f1">
-      <HintPath>..\packages\Aspose.Imaging-Cloud.19.12.0\lib\net45\Aspose.Imaging.Cloud.Sdk.dll</HintPath>
+    <Reference Include="Aspose.Imaging.Cloud.Sdk, Version=20.1.0.0, Culture=neutral, PublicKeyToken=70f46a67678f77f1">
+      <HintPath>..\packages\Aspose.Imaging-Cloud.20.1.1\lib\net45\Aspose.Imaging.Cloud.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -53,18 +53,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AI\CompareImages.cs" />
-    <Compile Include="AI\FindDuplicateImages.cs" />
-    <Compile Include="AI\FindSimilarImages.cs" />
-    <Compile Include="AI\SearchImages.cs" />
     <Compile Include="CropImage.cs" />
+    <Compile Include="FilterImage.cs" />
     <Compile Include="ImageProperties.cs" />
     <Compile Include="ImagingBase.cs" />
     <Compile Include="ImagingExamples.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResizeImage.cs" />
     <Compile Include="RotateFlipImage.cs" />
-    <Compile Include="AI\ImagingAIBase.cs" />
     <Compile Include="TiffFrames.cs" />
     <Compile Include="UpdateTiffImage.cs" />
     <Compile Include="UpdateBmpImage.cs" />
