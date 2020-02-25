@@ -66,9 +66,13 @@ namespace AsposeImagingCloudSdkExamples
 
             UploadSampleImageToCloud();
 
-            var filterType = "BigRectangular";
-            var filterProperties = new BigRectangularFilterProperties();
-            var format = "gif";
+            var filterType = "GaussianBlur";
+            var filterProperties = new GaussianBlurFilterProperties
+            {
+                Radius = 4,
+                Sigma = 2.1
+            };
+            var format = "bmp";
             var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
@@ -76,7 +80,7 @@ namespace AsposeImagingCloudSdkExamples
                 format, folder, storage);
 
             Console.WriteLine(
-                $"Call FilterEffectImage with params: filter type:{filterType}, format:{format}");
+                $"Call FilterEffectImage with params: filter type:{filterType}, radius: {filterProperties.Radius}, sigma: {filterProperties.Sigma} format:{format}");
 
             using (var updatedImage = ImagingApi.FilterEffectImage(filterEffectRequest))
             {
@@ -95,9 +99,13 @@ namespace AsposeImagingCloudSdkExamples
 
             UploadSampleImageToCloud();
 
-            var filterType = "BigRectangular";
-            var filterProperties = new BigRectangularFilterProperties();
-            var format = "gif";
+            var filterType = "GaussianBlur";
+            var filterProperties = new GaussianBlurFilterProperties
+            {
+                Radius = 4,
+                Sigma = 1.1
+            };
+            var format = "bmp";
             var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
@@ -105,7 +113,7 @@ namespace AsposeImagingCloudSdkExamples
                 format, folder, storage);
 
             Console.WriteLine(
-                $"Call FilterEffectImage with params: filter type:{filterType}, format:{format}");
+                $"Call FilterEffectImage with params: filter type:{filterType}, radius: {filterProperties.Radius}, sigma: {filterProperties.Sigma} format:{format}");
 
             using (var updatedImage = ImagingApi.FilterEffectImage(filterEffectRequest))
             {
