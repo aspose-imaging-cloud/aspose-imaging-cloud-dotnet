@@ -55,7 +55,7 @@ namespace AsposeImagingCloudSdkExamples
         /// Input formats could be one of the following:
         /// BMP, GIF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG
         /// </remarks>
-        protected override string SampleImageFileName => "Sample_05_Scan1_SkewToLeft.tif";
+        protected override string SampleImageFileName => "DeskewSampleImage.tif";
 
         private const string SaveImageFormat = "tif";
 
