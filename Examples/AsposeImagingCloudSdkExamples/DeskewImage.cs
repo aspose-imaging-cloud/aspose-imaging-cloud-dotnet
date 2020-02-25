@@ -33,7 +33,7 @@ namespace AsposeImagingCloudSdkExamples
     /// <summary>
     /// Deskew image example.
     /// </summary>
-    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
+    /// <seealso cref="ImagingBase" />
     class DeskewImage : ImagingBase
     {
         /// <summary>
