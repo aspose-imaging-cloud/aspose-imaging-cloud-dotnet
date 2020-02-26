@@ -9,12 +9,12 @@
 
 # Build results
 
-**/[Dd]ebug/
-**/[Rr]elease/
-**/x64/
-**/build/
-**/[Bb]in/
-**/[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+[Bb]in/
+[Oo]bj/
 
 # NuGet Packages
 *.nupkg
@@ -189,8 +189,3 @@ $RECYCLE.BIN/
 
 /.swagger-codegen
 .swagger-codegen-ignore
-/Examples/Output
-
-
-# ReSharper
-**/.idea
