@@ -23,33 +23,21 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Aspose.Imaging.Cloud.Sdk.Api;
-using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using System;
 using System.IO;
+using Aspose.Imaging.Cloud.Sdk.Api;
+using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
-namespace AsposeImagingCloudSDKExamples
+namespace AsposeImagingCloudSdkExamples
 {
     /// <summary>
-    /// Rotate and/or flip an image example.
+    ///     Rotate and/or flip an image example.
     /// </summary>
-    /// <seealso cref="AsposeImagingCloudSDKExamples.ImagingBase" />
-    class RotateFlipImage : ImagingBase
+    /// <seealso cref="AsposeImagingCloudSdkExamples.ImagingBase" />
+    internal class RotateFlipImage : ImagingBase
     {
         /// <summary>
-        /// Gets the name of the example image file.
-        /// </summary>
-        /// <value>
-        /// The name of the example image file.
-        /// </value>
-        /// <remarks>
-        /// Input formats could be one of the following:
-        /// BMP, GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
-        /// </remarks>
-        protected override string SampleImageFileName => "RotateFlipSampleImage.psd";
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RotateFlipImage"/> class.
+        ///     Initializes a new instance of the <see cref="RotateFlipImage" /> class.
         /// </summary>
         /// <param name="imagingApi">The imaging API.</param>
         public RotateFlipImage(ImagingApi imagingApi) : base(imagingApi)
@@ -58,7 +46,19 @@ namespace AsposeImagingCloudSDKExamples
         }
 
         /// <summary>
-        /// Rotate and/or flip an image.
+        ///     Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        ///     The name of the example image file.
+        /// </value>
+        /// <remarks>
+        ///     Input formats could be one of the following:
+        ///     BMP, GIF, DJVU, WMF, EMF, JPEG, JPEG2000, PSD, TIFF, WEBP, PNG, DICOM, CDR, CMX, ODG, DNG and SVG
+        /// </remarks>
+        protected override string SampleImageFileName => "RotateFlipSampleImage.psd";
+
+        /// <summary>
+        ///     Rotate and/or flip an image.
         /// </summary>
         public void RotateFlipImageFromStorage()
         {
@@ -68,26 +68,26 @@ namespace AsposeImagingCloudSDKExamples
 
             // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-RotateFlip 
             // for possible output formats
-            string format = "gif";
-            string method = "Rotate90FlipX"; // RotateFlip method
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var format = "gif";
+            var method = "Rotate90FlipX"; // RotateFlip method
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            RotateFlipImageRequest getImageRotateFlipRequest = new RotateFlipImageRequest(
-                SampleImageFileName, format, method, folder, storage);
+            var getImageRotateFlipRequest = new RotateFlipImageRequest(
+                SampleImageFileName, method, format, folder, storage);
 
             Console.WriteLine($"Call RotateFlipImage with params: method:{method}, format:{format}");
 
-            using (Stream updatedImage = this.ImagingApi.RotateFlipImage(getImageRotateFlipRequest))
+            using (var updatedImage = ImagingApi.RotateFlipImage(getImageRotateFlipRequest))
             {
-                SaveUpdatedImageToOutput(updatedImage, false, format);
+                SaveUpdatedSampleImageToOutput(updatedImage, false, format);
             }
 
             Console.WriteLine();
         }
 
         /// <summary>
-        /// Rotate and/or flip an image, and upload updated image to Cloud Storage
+        ///     Rotate and/or flip an image, and upload updated image to Cloud Storage
         /// </summary>
         public void RotateFlipImageAndUploadToStorage()
         {
@@ -97,17 +97,17 @@ namespace AsposeImagingCloudSDKExamples
 
             // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-RotateFlip 
             // for possible output formats
-            string format = "gif";
-            string method = "Rotate90FlipX"; // RotateFlip method
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var format = "gif";
+            var method = "Rotate90FlipX"; // RotateFlip method
+            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            RotateFlipImageRequest getImageRotateFlipRequest = new RotateFlipImageRequest(
-                SampleImageFileName, format, method, folder, storage);
+            var getImageRotateFlipRequest = new RotateFlipImageRequest(
+                SampleImageFileName, method, format, folder, storage);
 
             Console.WriteLine($"Call RotateFlipImage with params: method:{method}, format:{format}");
 
-            using (Stream updatedImage = this.ImagingApi.RotateFlipImage(getImageRotateFlipRequest))
+            using (var updatedImage = ImagingApi.RotateFlipImage(getImageRotateFlipRequest))
             {
                 UploadImageToCloud(GetModifiedSampleImageFileName(false, format), updatedImage);
             }
@@ -116,30 +116,30 @@ namespace AsposeImagingCloudSDKExamples
         }
 
         /// <summary>
-        /// Rotate and/or flip an image.
-        /// Image data is passed in a request stream.
+        ///     Rotate and/or flip an image.
+        ///     Image data is passed in a request stream.
         /// </summary>
         public void CreateRotateFlippedImageFromRequestBody()
         {
             Console.WriteLine("Rotate/flip an image from request body");
 
-            using (FileStream inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
+            using (var inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-RotateFlip 
                 // for possible output formats
-                string format = "gif";
-                string method = "Rotate90FlipX"; // RotateFlip method
+                var format = "gif";
+                var method = "Rotate90FlipX"; // RotateFlip method
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image).
                 string storage = null; // We are using default Cloud Storage
 
-                CreateRotateFlippedImageRequest createRotateFlippedImageRequest = 
-                    new CreateRotateFlippedImageRequest(inputImageStream, format, method, outPath, storage);
+                var createRotateFlippedImageRequest =
+                    new CreateRotateFlippedImageRequest(inputImageStream, method, format, outPath, storage);
 
                 Console.WriteLine($"Call CreateRotateFlippedImage with params: method:{method}, format:{format}");
 
-                using (Stream updatedImage = this.ImagingApi.CreateRotateFlippedImage(createRotateFlippedImageRequest))
+                using (var updatedImage = ImagingApi.CreateRotateFlippedImage(createRotateFlippedImageRequest))
                 {
-                    SaveUpdatedImageToOutput(updatedImage, true, format);
+                    SaveUpdatedSampleImageToOutput(updatedImage, true, format);
                 }
 
                 Console.WriteLine();

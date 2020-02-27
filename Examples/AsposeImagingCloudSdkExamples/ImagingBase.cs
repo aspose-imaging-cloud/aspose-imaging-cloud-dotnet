@@ -23,110 +23,132 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
-using System;
-using System.IO;
 
-namespace AsposeImagingCloudSDKExamples
+namespace AsposeImagingCloudSdkExamples
 {
     /// <summary>
-    /// Modify image example.
+    ///     Modify image example.
     /// </summary>
-    abstract class ImagingBase
+    internal abstract class ImagingBase
     {
         /// <summary>
-        /// The example images folder path.
-        /// </summary>
-        public const string ExampleImagesFolder = @"..\..\..\..\Examples\Images";
-
-        /// <summary>
-        /// The output folder path.
-        /// </summary>
-        public const string OutputFolder = @"..\..\..\..\Examples\Output";
-
-        /// <summary>
-        /// The cloud path.
+        ///     The cloud path.
         /// </summary>
         protected const string CloudPath = "Examples";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImagingBase"/> class.
+        ///     Initializes a new instance of the <see cref="ImagingBase" /> class.
         /// </summary>
         /// <param name="imagingApi">The imaging API.</param>
-        public ImagingBase(ImagingApi imagingApi)
+        protected ImagingBase(ImagingApi imagingApi)
         {
-            this.ImagingApi = imagingApi;
+            ImagingApi = imagingApi;
         }
 
         /// <summary>
-        /// Gets the imaging API.
+        ///     The example images folder path.
         /// </summary>
-        /// <value>
-        /// The imaging API.
-        /// </value>
-        protected ImagingApi ImagingApi { get; private set; }
+        protected static string ExampleImagesFolder
+        {
+            get
+            {
+                var rootDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.Parent?.Parent
+                    ?.FullName;
+
+                if (rootDirectory == null)
+                    throw new InvalidOperationException("Invalid path to example images folder");
+
+                return Path.Combine(rootDirectory, "Examples", "Images");
+            }
+        }
 
         /// <summary>
-        /// Gets the name of the example image file.
+        ///     The output folder path.
+        /// </summary>
+        public static string OutputFolder
+        {
+            get
+            {
+                var rootDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent?.Parent?.Parent
+                    ?.FullName;
+
+                if (rootDirectory == null)
+                    throw new InvalidOperationException("Invalid path to output folder");
+
+                return Path.Combine(rootDirectory, "Examples", "Output");
+            }
+        }
+
+        /// <summary>
+        ///     Gets the imaging API.
         /// </summary>
         /// <value>
-        /// The name of the example image file.
+        ///     The imaging API.
+        /// </value>
+        protected ImagingApi ImagingApi { get; }
+
+        /// <summary>
+        ///     Gets the name of the example image file.
+        /// </summary>
+        /// <value>
+        ///     The name of the example image file.
         /// </value>
         protected abstract string SampleImageFileName { get; }
 
         /// <summary>
-        /// Gets the name of the modified sample image file.
+        ///     Gets the name of the modified sample image file.
         /// </summary>
-        /// <param name="fromRequest">if set to <c>true</c> [created from request].</param>
+        /// <param name="fromRequest">If set to <c>true</c> [created from request].</param>
         /// <param name="newFormatExtension">The new format extension.</param>
         /// <returns>The name of the modified sample image file.</returns>
         protected string GetModifiedSampleImageFileName(bool fromRequest = false, string newFormatExtension = null)
         {
-            var nameWithNewExtension = newFormatExtension != null 
+            var nameWithNewExtension = newFormatExtension != null
                 ? Path.ChangeExtension(SampleImageFileName, newFormatExtension)
                 : SampleImageFileName;
             return fromRequest
-                ? $"ModifiedFromRequest{nameWithNewExtension}" 
-                : $"Modified{nameWithNewExtension}";           
+                ? $"ModifiedFromRequest{nameWithNewExtension}"
+                : $"Modified{nameWithNewExtension}";
         }
 
         /// <summary>
-        /// Uploads the example image to cloud.
+        ///     Uploads the example image to cloud.
         /// </summary>
         protected void UploadSampleImageToCloud()
         {
-            using (FileStream localInputImage = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
+            using (var localInputImage = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
                 UploadImageToCloud(SampleImageFileName, localInputImage);
             }
         }
 
         /// <summary>
-        /// Uploads the image to cloud.
+        ///     Uploads the image to cloud.
         /// </summary>
         /// <param name="imageName">Name of the image.</param>
         /// <param name="image">The image.</param>
         protected void UploadImageToCloud(string imageName, Stream image)
         {
             var uploadFileRequest = new UploadFileRequest(Path.Combine(CloudPath, imageName), image);
-            FilesUploadResult result = ImagingApi.UploadFile(uploadFileRequest);
-            if (result.Errors?.Count > 0)
-            {
-                Console.WriteLine($"Uploading erros count: {result.Errors.Count}");
-            }
-            else
-            {
-                Console.WriteLine($"Image {imageName} is uploaded to cloud storage");
-            }
+            var result = ImagingApi.UploadFile(uploadFileRequest);
+            Console.WriteLine(result.Errors?.Count > 0
+                ? $"Uploading errors count: {result.Errors.Count}"
+                : $"Image {imageName} is uploaded to cloud storage");
         }
 
         /// <summary>
-        /// Saves the updated image to local output folder.
+        ///     Saves the updated image to local output folder.
         /// </summary>
         /// <param name="updatedImage">The updated image.</param>
-        protected void SaveUpdatedImageToOutput(Stream updatedImage, bool fromRequest, string newFormatExtension = null)
+        /// <param name="fromRequest">If set to <c>true</c> [created from request].</param>
+        /// <param name="newFormatExtension">The new format extension.</param>
+        protected void SaveUpdatedSampleImageToOutput(Stream updatedImage, bool fromRequest,
+            string newFormatExtension = null)
         {
             var newFileName = GetModifiedSampleImageFileName(fromRequest, newFormatExtension);
 
@@ -134,7 +156,7 @@ namespace AsposeImagingCloudSDKExamples
         }
 
         /// <summary>
-        /// Saves the updated image to output folder.
+        ///     Saves the updated image to output folder.
         /// </summary>
         /// <param name="imageName">Name of the image.</param>
         /// <param name="updatedImage">The updated image.</param>
@@ -151,7 +173,7 @@ namespace AsposeImagingCloudSDKExamples
         }
 
         /// <summary>
-        /// Outputs the properties to file.
+        ///     Outputs the properties to file.
         /// </summary>
         /// <param name="fileName">Name of the file.</param>
         /// <param name="imagingResponse">The imaging response.</param>
@@ -167,7 +189,7 @@ namespace AsposeImagingCloudSDKExamples
                 writer.WriteLine($"Vertical resolution: {imagingResponse.VerticalResolution}");
                 writer.WriteLine($"Bits per pixel: {imagingResponse.BitsPerPixel}");
 
-                if (imagingResponse.TiffProperties!=null)
+                if (imagingResponse.TiffProperties != null)
                 {
                     writer.WriteLine("Tiff properties:");
 
@@ -181,7 +203,7 @@ namespace AsposeImagingCloudSDKExamples
         }
 
         /// <summary>
-        /// Prints the example header.
+        ///     Prints the example header.
         /// </summary>
         /// <param name="header">The example header.</param>
         protected static void PrintHeader(string header)
