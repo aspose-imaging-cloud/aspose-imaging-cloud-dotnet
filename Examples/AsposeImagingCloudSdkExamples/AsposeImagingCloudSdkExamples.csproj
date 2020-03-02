@@ -53,9 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CropImage.cs" />
-    <Compile Include="GrayscaleImage.cs" />
     <Compile Include="FilterImage.cs" />
     <Compile Include="DeskewImage.cs" />
+    <Compile Include="GrayscaleImage.cs" />
     <Compile Include="ImageProperties.cs" />
     <Compile Include="ImagingBase.cs" />
     <Compile Include="ImagingExamples.cs" />
