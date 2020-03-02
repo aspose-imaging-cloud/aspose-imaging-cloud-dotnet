@@ -72,6 +72,12 @@ namespace AsposeImagingCloudSdkExamples
                 deskewImage.DeskewImageAndUploadToStorage();
                 deskewImage.CreateDeskewedImageFromRequestBody();
 
+                // grayscale an existing image
+                var grayscaleImage = new GrayscaleImage(api);
+                grayscaleImage.GrayscaleImageFromStorage();
+                grayscaleImage.GrayscaleImageAndUploadToStorage();
+                grayscaleImage.CreateGrayscaledImageFromRequestBody();
+
                 // Process existing EMF imaging using given parameters
                 var updateEmfImage = new UpdateEmfImage(api);
                 updateEmfImage.ModifyEmfFromStorage();
