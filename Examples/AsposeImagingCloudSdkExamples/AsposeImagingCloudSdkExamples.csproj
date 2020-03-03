@@ -34,9 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Imaging.Cloud.Sdk, Version=20.1.0.0, Culture=neutral, PublicKeyToken=70f46a67678f77f1">
-      <HintPath>..\packages\Aspose.Imaging-Cloud.20.1.1\lib\net45\Aspose.Imaging.Cloud.Sdk.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Aspose.Imaging.Cloud.Sdk, Version=20.2.0.0, Culture=neutral, PublicKeyToken=70f46a67678f77f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.Imaging-Cloud.20.2.0\lib\net45\Aspose.Imaging.Cloud.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -56,6 +55,7 @@
     <Compile Include="CropImage.cs" />
     <Compile Include="FilterImage.cs" />
     <Compile Include="DeskewImage.cs" />
+    <Compile Include="GrayscaleImage.cs" />
     <Compile Include="ImageProperties.cs" />
     <Compile Include="ImagingBase.cs" />
     <Compile Include="ImagingExamples.cs" />
