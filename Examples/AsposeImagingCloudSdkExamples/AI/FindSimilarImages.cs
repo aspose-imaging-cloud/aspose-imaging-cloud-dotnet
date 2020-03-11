@@ -63,7 +63,7 @@ namespace AsposeImagingCloudSdkExamples.AI
         {
             Console.WriteLine("Finds the similar images");
 
-            var findImageId = $"{CloudPath}/{ImageToFind}";
+            var findImageId = $"{CloudPath}/{ImagesPath}/{ImageToFind}";
             double? similarityThreshold = 60; // The similarity threshold
             int? maxCount = 3; // The maximum count
             string folder = null;
