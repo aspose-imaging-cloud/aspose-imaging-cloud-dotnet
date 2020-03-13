@@ -125,16 +125,12 @@ namespace AsposeImagingCloudSdkExamples.AI
                 : new CreateImageFeaturesRequest(SearchContextId, imageId: Path.Combine(CloudPath, sourcePath));
             ImagingApi.CreateImageFeatures(request);
 
-            if (isFolder)
-            {
-                Console.WriteLine("Creating Search context image features...");
 
-                WaitIdle(SearchContextId);
-            }
-            else
-            {
-                Console.WriteLine($"Created Search context image features for {sourcePath}");
-            }
+            Console.WriteLine(isFolder
+                ? "Creating Search context image features..."
+                : $"Created Search context image features for {sourcePath}");
+            
+            WaitIdle(SearchContextId);
         }
 
         /// <summary>
