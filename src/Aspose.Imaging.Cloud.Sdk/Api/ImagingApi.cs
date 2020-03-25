@@ -1832,8 +1832,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 null, 
                 null, 
                 formParams);
-            return response;
             
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (System.IO.Stream)SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
         }
         
         /// <summary>
@@ -3565,12 +3570,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 throw new ApiException(400, "Missing required parameter 'path' when calling UploadFile");
             }
 
-            // verify the required parameter 'file' is set
-            if (request.File == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'file' when calling UploadFile");
-            }
-
             // create path and map variables
             var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/storage/file/{path}";
             resourcePath = Regex
@@ -3581,10 +3580,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "path", request.path);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storageName", request.storageName);
             
-            if (request.File != null) 
-            {
-                formParams.Add("file", this.apiInvoker.ToFileInfo(request.File, "File"));
-            }
             var response = this.apiInvoker.InvokeApi(
                 resourcePath, 
                 "PUT", 
