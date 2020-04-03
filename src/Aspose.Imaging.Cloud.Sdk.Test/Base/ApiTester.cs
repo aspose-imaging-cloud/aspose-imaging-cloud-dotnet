@@ -23,6 +23,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Linq;
+using MimeDetective.InMemory;
+
 namespace Aspose.Imaging.Cloud.Sdk.Test.Base
 {
     using System;
@@ -88,6 +91,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         /// The input test files
         /// </summary>
         protected List<StorageFile> InputTestFiles;
+        
+        /// <summary>
+        /// The basic input test files
+        /// </summary>
+        protected List<StorageFile> BasicInputTestFiles;
+        
+        /// <summary>
+        /// The multipage input test files
+        /// </summary>
+        protected List<StorageFile> MultipageInputTestFiles;
 
         /// <summary>
         /// Aspose.Imaging API
@@ -263,6 +276,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                 new ImagingApi(appKey, appSid, baseUrl, apiVersion);
             
             InputTestFiles = this.FetchInputTestFilesInfo();
+            BasicInputTestFiles = InputTestFiles.Where(p => !p.Name.StartsWith("multipage_")).ToList();
+            MultipageInputTestFiles = InputTestFiles.Where(p => p.Name.StartsWith("multipage_")).ToList();
         }
 
         /// <summary>
@@ -470,17 +485,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         {
             WriteLineEverywhere(testMethodName);
 
-            if (!CheckInputFileExists(inputFileName))
-            {
-                throw new ArgumentException(
-                    $"Input file {inputFileName} doesn't exist in the specified storage folder: {folder}. Please, upload it first.");
-            }
-
-            if (!this.ImagingApi.ObjectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage)).Exists.Value)
-            {
-                this.ImagingApi.CopyFile(
-                    new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage));
-            }
+            CopyInputFileToTestFolder(inputFileName, folder, storage);
 
             bool passed = false;
             string outPath = null;
@@ -514,15 +519,25 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                                 $"Result isn't present in the storage by an unknown reason.");
                         }
 
-                        resultProperties =
-                            this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
-                        Assert.NotNull(resultProperties);
+                        if (!resultFileName.EndsWith(".pdf"))
+                        {
+                            resultProperties =
+                                this.ImagingApi.GetImageProperties(
+                                    new GetImagePropertiesRequest(resultFileName, folder, storage));
+                            Assert.NotNull(resultProperties);
+                        }
                     }
                     else
                     {
-                        resultProperties =
-                            this.ImagingApi.ExtractImageProperties(new ExtractImagePropertiesRequest(response));
-                        Assert.NotNull(resultProperties);
+                        var responseMemoryStream = new MemoryStream();
+                        response.CopyTo(responseMemoryStream);
+                        response.Seek(0, SeekOrigin.Begin);
+                        if (!responseMemoryStream.GetBuffer().DetectMimeType().Mime.EndsWith("pdf"))
+                        {
+                            resultProperties =
+                                this.ImagingApi.ExtractImageProperties(new ExtractImagePropertiesRequest(response));
+                            Assert.NotNull(resultProperties);
+                        }
                     }
 
                     ImagingResponse originalProperties =
@@ -552,6 +567,28 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                 }
 
                 WriteLineEverywhere($"Test passed: {passed}");
+            }
+        }
+
+        /// <summary>
+        /// Copies original input file to test folder
+        /// </summary>
+        /// <param name="inputFileName">The original input file</param>
+        /// <param name="folder">The folder</param>
+        /// <param name="storage">The storage</param>
+        protected void CopyInputFileToTestFolder(string inputFileName, string folder, string storage)
+        {
+            if (!CheckInputFileExists(inputFileName))
+            {
+                throw new ArgumentException(
+                    $"Input file {inputFileName} doesn't exist in the specified storage folder: {folder}. Please, upload it first.");
+            }
+
+            if (!this.ImagingApi.ObjectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage)).Exists.GetValueOrDefault(false))
+            {
+                this.ImagingApi.CopyFile(
+                    new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage,
+                        storage));
             }
         }
 
