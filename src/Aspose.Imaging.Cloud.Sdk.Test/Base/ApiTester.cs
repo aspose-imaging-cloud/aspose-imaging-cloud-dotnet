@@ -23,8 +23,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Linq;
-using MimeDetective.InMemory;
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Base
 {
@@ -32,6 +30,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
     using System.Collections.Generic;
     using System.IO;
     using System.Reflection;
+    using System.Linq;
 
     using Aspose.Imaging.Cloud.Sdk.Api;
     using Aspose.Imaging.Cloud.Sdk.Model;
@@ -529,10 +528,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                     }
                     else
                     {
-                        var responseMemoryStream = new MemoryStream();
-                        response.CopyTo(responseMemoryStream);
-                        response.Seek(0, SeekOrigin.Begin);
-                        if (!responseMemoryStream.GetBuffer().DetectMimeType().Mime.EndsWith("pdf"))
+                        if (!FileIsPdf(response))
                         {
                             resultProperties =
                                 this.ImagingApi.ExtractImageProperties(new ExtractImagePropertiesRequest(response));
@@ -613,6 +609,29 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             return (Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Process) ??
                     Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.User))
                    ?? Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Machine);
+        }
+
+        /// <summary>
+        /// Checks that stream represents PDF file
+        /// </summary>
+        /// <param name="file">The file stream</param>
+        /// <returns><c>true</c> - if file is a PDF, <c>false</c> otherwise</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="file"/> is null</exception>
+        private bool FileIsPdf(Stream file)
+        {
+            if(file == null)
+                throw new ArgumentNullException(nameof(file));
+            
+            var buffer = new byte[5];
+            var originalPosition = file.Position;
+            
+            file.Seek(0, SeekOrigin.Begin);
+            file.Read(buffer, 0, 5);
+            file.Seek(originalPosition, SeekOrigin.Begin);
+            
+            // That's the direct magic bytes check
+            return buffer[0] == 0x25 && buffer[1] == 0x50 && buffer[2] == 0x44 && buffer[3] == 0x46 &&
+                    buffer[4] == 0x2d;
         }
 
         #endregion
