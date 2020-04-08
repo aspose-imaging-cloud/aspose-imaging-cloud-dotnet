@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Aspose.Imaging.Cloud.Sdk.Api;
+using AsposeImagingCloudSdkExamples.AI;
 
 namespace AsposeImagingCloudSdkExamples
 {
@@ -59,59 +60,59 @@ namespace AsposeImagingCloudSdkExamples
                 bmpImage.ModifyBmpFromStorage();
                 bmpImage.ModifyBmpAndUploadToStorage();
                 bmpImage.CreateModifiedBmpFromRequestBody();
-
+                
                 // Crop an existing image
                 var cropImage = new CropImage(api);
                 cropImage.CropImageFromStorage();
                 cropImage.CropImageAndUploadToStorage();
                 cropImage.CreateCroppedImageFromRequestBody();
-
+                
                 // Deskew an existing image
                 var deskewImage = new DeskewImage(api);
                 deskewImage.DeskewImageFromStorage();
                 deskewImage.DeskewImageAndUploadToStorage();
                 deskewImage.CreateDeskewedImageFromRequestBody();
-
+                
                 // grayscale an existing image
                 var grayscaleImage = new GrayscaleImage(api);
                 grayscaleImage.GrayscaleImageFromStorage();
                 grayscaleImage.GrayscaleImageAndUploadToStorage();
                 grayscaleImage.CreateGrayscaledImageFromRequestBody();
-
+                
                 // Process existing EMF imaging using given parameters
                 var updateEmfImage = new UpdateEmfImage(api);
                 updateEmfImage.ModifyEmfFromStorage();
                 updateEmfImage.ModifyEmfAndUploadToStorage();
                 updateEmfImage.CreateModifiedEmfFromRequestBody();
-
+                
                 // Export existing image to another format
                 var exportImage = new ExportImage(api);
                 exportImage.SaveImageAsFromStorage();
                 exportImage.SaveImageAsAndUploadToStorage();
                 exportImage.CreateSavedImageAsFromRequestBody();
-
+                
                 // Apply a filtering effect to an image
                 var filterImage = new FilterImage(api);
                 filterImage.FilterImageFromStorage();
                 filterImage.FilterImageAndUploadToStorage();
-
+                
                 // Get properties of an image
                 var imageProperties = new ImageProperties(api);
                 imageProperties.GetImagePropertiesFromStorage();
                 imageProperties.ExtractImagePropertiesFromRequestBody();
-
+                
                 // Resize an existing image
                 var resizeImage = new ResizeImage(api);
                 resizeImage.ResizeImageFromStorage();
                 resizeImage.ResizeImageAndUploadToStorage();
                 resizeImage.CreateResizedImageFromRequestBody();
-
+                
                 // Rotate and/or flip an existing image
                 var rotateFlipImage = new RotateFlipImage(api);
                 rotateFlipImage.RotateFlipImageFromStorage();
                 rotateFlipImage.RotateFlipImageAndUploadToStorage();
                 rotateFlipImage.CreateRotateFlippedImageFromRequestBody();
-
+                
                 // TIFF Frames
                 var tiffFrames = new TiffFrames(api);
                 // Get a specified frame from existing TIFF image
@@ -134,7 +135,7 @@ namespace AsposeImagingCloudSdkExamples
                 // Get separate frame properties of existing TIFF image.
                 // Image data is passed as zero-indexed multipart/form-data content or as raw body stream
                 tiffFrames.ExtractImageFramePropertiesFromRequestBody();
-
+                
                 // Update parameters of existing TIFF image
                 var tiffImage = new TiffImage(api);
                 tiffImage.ModifyTiffFromStorage();
@@ -142,48 +143,73 @@ namespace AsposeImagingCloudSdkExamples
                 tiffImage.CreateModifiedTiffFromRequestBody();
                 tiffImage.ConvertTiffToFaxFromStorage();
                 tiffImage.AppendTiffFromStorage();
-
+                
                 // Update parameters of existing GIF image
                 var updateGifImage = new UpdateGifImage(api);
                 updateGifImage.ModifyGifFromStorage();
                 updateGifImage.ModifyGifAndUploadToStorage();
                 updateGifImage.CreateModifiedGifFromRequestBody();
-
+                
                 // Perform scaling, cropping and flipping of an existing image in a single request
                 var updateImage = new UpdateImage(api);
                 updateImage.UpdateImageFromStorage();
                 updateImage.UpdateImageAndUploadToStorage();
                 updateImage.CreateUpdatedImageFromRequestBody();
-
+                
                 // Update parameters of existing JPEG2000 image
                 var updateJpeg2000Image = new UpdateJpeg2000Image(api);
                 updateJpeg2000Image.ModifyJpeg2000FromStorage();
                 updateJpeg2000Image.ModifyJpeg2000AndUploadToStorage();
                 updateJpeg2000Image.CreateModifiedJpeg2000FromRequestBody();
-
+                
                 // Update parameters of existing JPEG image
                 var updateJpegImage = new UpdateJpegImage(api);
                 updateJpegImage.ModifyJpegFromStorage();
                 updateJpegImage.ModifyJpegAndUploadToStorage();
                 updateJpegImage.CreateModifiedJpegFromRequestBody();
-
+                
                 // Update parameters of existing PSD image
                 var updatePsdImage = new UpdatePsdImage(api);
                 updatePsdImage.ModifyPsdFromStorage();
                 updatePsdImage.ModifyPsdAndUploadToStorage();
                 updatePsdImage.CreateModifiedPsdFromRequestBody();
-
+                
                 // Update parameters of existing WEBP image
                 var webpImage = new UpdateWebPImage(api);
                 webpImage.ModifyWebPFromStorage();
                 webpImage.ModifyWebPAndUploadToStorage();
                 webpImage.CreateModifiedWebPFromRequestBody();
-
+                
                 // Process existing WMF image using given parameters
                 var wmfImage = new UpdateWmfImage(api);
                 wmfImage.ModifyWmfFromStorage();
                 wmfImage.ModifyWmfAndUploadToStorage();
                 wmfImage.CreateModifiedWmfFromRequestBody();
+
+                // AI APIs
+                Console.WriteLine("Running AI examples:");
+                Console.WriteLine();
+
+                // Compare two images
+                var compareImages = new CompareImages(api);
+                compareImages.PrepareSearchContext();
+                compareImages.CompareTwoImagesInCloud();
+                compareImages.CompareLoadedImageToImageInCloud();
+                compareImages.DeleteSearchContext();
+
+                // Find Duplicate Images
+                var findDuplicateImages = new FindDuplicateImages(api);
+                findDuplicateImages.PrepareSearchContext();
+                findDuplicateImages.FindImageDuplicates();
+                findDuplicateImages.DeleteSearchContext();
+
+                // Find Similar Images
+                var findImages = new FindSimilarImages(api);
+                findImages.PrepareSearchContext();
+                findImages.FindImagesSimilar();
+                findImages.FindImagesByTag();
+                findImages.SearchImageFromWebSource();
+                findImages.DeleteSearchContext();
             }
             catch (Exception ex)
             {
