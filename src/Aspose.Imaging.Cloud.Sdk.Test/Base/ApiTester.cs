@@ -284,9 +284,59 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
 #endif 
             PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
         {
-            this.TestRequest(testMethodName, false, parametersLine, inputFileName, null, 
+            this.TestRequest(
+                testMethodName, 
+                false, 
+                parametersLine, 
+                inputFileName, 
+                null, 
                 () => this.ObtainGetResponse(requestInvoker),
-                propertiesTester, folder, storage);
+                propertiesTester, 
+                folder, 
+                storage);
+        }
+
+        protected void ExecuteTestCommand(
+            ITestCommand testCommand,
+            string testMethodName, 
+            string parametersLine,
+            string inputFileName,
+            string folder, 
+            string storage = DefaultStorage)
+        {
+            WriteLineEverywhere(testMethodName);
+
+            if (!CheckInputFileExists(inputFileName))
+            {
+                throw new ArgumentException(
+                    $"Input file {inputFileName} doesn't exist in the specified storage folder: {folder}. Please, upload it first.");
+            }
+
+            if (!this.ImagingApi.ObjectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage)).Exists.Value)
+            {
+                this.ImagingApi.CopyFile(
+                    new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage));
+            }
+
+            bool passed = false;
+            try
+            {
+                WriteLineEverywhere(parametersLine);
+
+                testCommand.InvokeRequest();
+                testCommand.AssertResponse();
+                passed = true;
+            }
+            catch (Exception ex)
+            {
+                FailedAnyTest = true;
+                WriteLineEverywhere(ex.Message);
+                throw;
+            }
+            finally
+            {
+                WriteLineEverywhere($"Test passed: {passed}");
+            }
         }
 
         /// <summary>

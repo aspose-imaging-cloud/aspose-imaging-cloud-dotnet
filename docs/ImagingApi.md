@@ -796,6 +796,40 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createobjectbounds"></a>
+## **CreateObjectBounds**
+> [List<DetectedObject>](DetectedObject.md) CreateObjectBounds(CreateObjectBoundsRequest request)
+
+Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### **CreateObjectBoundsRequest** Parameters
+```csharp
+CreateObjectBoundsRequest(
+    System.IO.Stream imageData, 
+    string method = null, 
+    int? threshold = null, 
+    bool? includeClass = null, 
+    bool? includeScore = null, 
+    string outPath = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **System.IO.Stream**| Input image | 
+ **method** | **string**| Object detection method | [optional] [default to ssd]
+ **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
+ **includeClass** | **bool?**| Draw detected objects classes | [optional] [default to true]
+ **includeScore** | **bool?**| Draw detected objects scores | [optional] [default to true]
+ **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+
+### Return type
+
+[**List<DetectedObject>**](DetectedObject.md)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createresizedimage"></a>
 ## **CreateResizedImage**
 > System.IO.Stream CreateResizedImage(CreateResizedImageRequest request)
@@ -920,6 +954,40 @@ Name | Type | Description  | Notes
  **rotateFlipMethod** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | 
  **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
  **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+
+### Return type
+
+**System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createvisualobjectbounds"></a>
+## **CreateVisualObjectBounds**
+> System.IO.Stream CreateVisualObjectBounds(CreateVisualObjectBoundsRequest request)
+
+Detect objects bounds and draw them on the original image
+
+### **CreateVisualObjectBoundsRequest** Parameters
+```csharp
+CreateVisualObjectBoundsRequest(
+    System.IO.Stream imageData, 
+    string method = null, 
+    int? threshold = null, 
+    bool? includeClass = null, 
+    bool? includeScore = null, 
+    string outPath = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **System.IO.Stream**| Input image | 
+ **method** | **string**| Object detection method | [optional] [default to ssd]
+ **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
+ **includeClass** | **bool?**| Draw detected objects classes | [optional] [default to true]
+ **includeScore** | **bool?**| Draw detected objects scores | [optional] [default to true]
+ **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
 ### Return type
@@ -2090,6 +2158,40 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="objectbounds"></a>
+## **ObjectBounds**
+> [List<DetectedObject>](DetectedObject.md) ObjectBounds(ObjectBoundsRequest request)
+
+Detect objects' bounds
+
+### **ObjectBoundsRequest** Parameters
+```csharp
+ObjectBoundsRequest(
+    string name, 
+    string method = null, 
+    int? threshold = null, 
+    bool? inlcudeClass = null, 
+    bool? includeScore = null, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Image file name. | 
+ **method** | **string**| Object detection method | [optional] [default to ssd]
+ **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
+ **inlcudeClass** | **bool?**| Return detected objects classes | [optional] [default to true]
+ **includeScore** | **bool?**| Return detected objects score | [optional] [default to true]
+ **folder** | **string**| Folder | [optional] 
+ **storage** | **string**| Storage | [optional] 
+
+### Return type
+
+[**List<DetectedObject>**](DetectedObject.md)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="objectexists"></a>
 ## **ObjectExists**
 > [ObjectExist](ObjectExist.md) ObjectExists(ObjectExistsRequest request)
@@ -2353,6 +2455,40 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FilesUploadResult**](FilesUploadResult.md)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="visualobjectbounds"></a>
+## **VisualObjectBounds**
+> System.IO.Stream VisualObjectBounds(VisualObjectBoundsRequest request)
+
+Detect objects bounds and draw them on the original image
+
+### **VisualObjectBoundsRequest** Parameters
+```csharp
+VisualObjectBoundsRequest(
+    string name, 
+    string method = null, 
+    int? threshold = null, 
+    bool? includeClass = null, 
+    bool? includeScore = null, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| The image features detector. | 
+ **method** | **string**| Object detection method | [optional] [default to ssd]
+ **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
+ **includeClass** | **bool?**| Draw detected objects classes | [optional] [default to true]
+ **includeScore** | **bool?**| Draw detected objects scores | [optional] [default to true]
+ **folder** | **string**| The folder. | [optional] 
+ **storage** | **string**| The storage. | [optional] 
+
+### Return type
+
+**System.IO.Stream**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
