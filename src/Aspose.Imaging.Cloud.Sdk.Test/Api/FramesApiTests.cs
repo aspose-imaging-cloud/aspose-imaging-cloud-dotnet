@@ -100,7 +100,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         var resultFormatProperties =
                             typeof(ImagingResponse)
                                 .GetProperty(propertiesName, BindingFlags.Instance | BindingFlags.Public)
-                                ?.GetValue(resultProperties);
+                                ?.GetValue(resultProperties, null);
                         Assert.IsNotNull(resultFormatProperties);
                     },
                     folder,
@@ -176,7 +176,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         var resultFormatProperties =
                             typeof(ImagingResponse)
                                 .GetProperty(propertiesName, BindingFlags.Instance | BindingFlags.Public)
-                                ?.GetValue(resultProperties);
+                                ?.GetValue(resultProperties, null);
                         Assert.IsNotNull(resultFormatProperties);
                     },
                     folder,
@@ -239,7 +239,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         var resultFormatProperties =
                             typeof(ImagingResponse)
                                 .GetProperty(propertiesName, BindingFlags.Instance | BindingFlags.Public)
-                                ?.GetValue(resultProperties);
+                                ?.GetValue(resultProperties, null);
                         Assert.IsNotNull(resultFormatProperties);
                     },
                     folder,
@@ -316,7 +316,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         var resultFormatProperties =
                             typeof(ImagingResponse)
                                 .GetProperty(propertiesName, BindingFlags.Instance | BindingFlags.Public)
-                                ?.GetValue(resultProperties);
+                                ?.GetValue(resultProperties, null);
                         Assert.IsNotNull(resultFormatProperties);
                     },
                     folder,
@@ -373,7 +373,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 var propertiesName = GetPropertiesName(formatExtension);
                 var resultFormatProperties =
                     typeof(ImagingResponse).GetProperty(propertiesName, BindingFlags.Instance | BindingFlags.Public)
-                        ?.GetValue(responseMessage);
+                        ?.GetValue(responseMessage, null);
                 Assert.IsNotNull(resultFormatProperties);
             }
         }
@@ -428,7 +428,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 var propertiesName = GetPropertiesName(formatExtension);
                 var resultFormatProperties =
                     typeof(ImagingResponse).GetProperty(propertiesName, BindingFlags.Instance | BindingFlags.Public)
-                        ?.GetValue(responseMessage);
+                        ?.GetValue(responseMessage, null);
                 Assert.IsNotNull(resultFormatProperties);
             }
         }
