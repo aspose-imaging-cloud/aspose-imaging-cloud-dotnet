@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="CreateUpdatedImageRequest.cs">
+// <copyright company="Aspose" file="CreateImageFrameRangeRequest.cs">
 //   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -28,34 +28,38 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.CreateUpdatedImage" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.CreateImageFrameRange" /> operation.
   /// </summary>  
-  public class CreateUpdatedImageRequest  
+  public class CreateImageFrameRangeRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateUpdatedImageRequest"/> class.
+        /// Initializes a new instance of the <see cref="CreateImageFrameRangeRequest"/> class.
         /// </summary>        
-        public CreateUpdatedImageRequest()
+        public CreateImageFrameRangeRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateUpdatedImageRequest"/> class.
+        /// Initializes a new instance of the <see cref="CreateImageFrameRangeRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="newWidth">New width of the scaled image.</param>
-        /// <param name="newHeight">New height of the scaled image.</param>
+        /// <param name="startFrameId">Index of the first frame in range.</param>
+        /// <param name="endFrameId">Index of the last frame in range.</param>
+        /// <param name="newWidth">New width.</param>
+        /// <param name="newHeight">New height.</param>
         /// <param name="x">X position of start point for cropping rectangle.</param>
         /// <param name="y">Y position of start point for cropping rectangle.</param>
         /// <param name="rectWidth">Width of cropping rectangle.</param>
         /// <param name="rectHeight">Height of cropping rectangle.</param>
         /// <param name="rotateFlipMethod">RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.</param>
-        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
+        /// <param name="saveOtherFrames">If result will include all other frames or just a specified frame.</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public CreateUpdatedImageRequest(System.IO.Stream imageData, int? newWidth, int? newHeight, int? x, int? y, int? rectWidth, int? rectHeight, string rotateFlipMethod, string format = null, string outPath = null, string storage = null)             
+        public CreateImageFrameRangeRequest(System.IO.Stream imageData, int? startFrameId, int? endFrameId, int? newWidth = null, int? newHeight = null, int? x = null, int? y = null, int? rectWidth = null, int? rectHeight = null, string rotateFlipMethod = null, bool? saveOtherFrames = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
+            this.startFrameId = startFrameId;
+            this.endFrameId = endFrameId;
             this.newWidth = newWidth;
             this.newHeight = newHeight;
             this.x = x;
@@ -63,7 +67,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
             this.rectWidth = rectWidth;
             this.rectHeight = rectHeight;
             this.rotateFlipMethod = rotateFlipMethod;
-            this.format = format;
+            this.saveOtherFrames = saveOtherFrames;
             this.outPath = outPath;
             this.storage = storage;
         }
@@ -74,12 +78,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// New width of the scaled image.
+        /// Index of the first frame in range.
+        /// </summary>  
+        public int? startFrameId { get; set; }
+
+        /// <summary>
+        /// Index of the last frame in range.
+        /// </summary>  
+        public int? endFrameId { get; set; }
+
+        /// <summary>
+        /// New width.
         /// </summary>  
         public int? newWidth { get; set; }
 
         /// <summary>
-        /// New height of the scaled image.
+        /// New height.
         /// </summary>  
         public int? newHeight { get; set; }
 
@@ -109,9 +123,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string rotateFlipMethod { get; set; }
 
         /// <summary>
-        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+        /// If result will include all other frames or just a specified frame.
         /// </summary>  
-        public string format { get; set; }
+        public bool? saveOtherFrames { get; set; }
 
         /// <summary>
         /// Path to updated file (if this is empty, response contains streamed image).

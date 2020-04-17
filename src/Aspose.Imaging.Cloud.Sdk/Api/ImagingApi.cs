@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="ImagingApi.cs">
-//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -589,7 +589,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
-        /// Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
+        /// Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="CreateImageFrameRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -615,6 +615,65 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "frameId", request.frameId);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "x", request.x);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "y", request.y);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectWidth", request.rectWidth);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "saveOtherFrames", request.saveOtherFrames);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
+        }
+        
+        /// <summary>
+        /// Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CreateImageFrameRangeRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream CreateImageFrameRange(CreateImageFrameRangeRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateImageFrameRange");
+            }
+
+            // verify the required parameter 'startFrameId' is set
+            if (request.startFrameId == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'startFrameId' when calling CreateImageFrameRange");
+            }
+
+            // verify the required parameter 'endFrameId' is set
+            if (request.endFrameId == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'endFrameId' when calling CreateImageFrameRange");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/frames/range";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "startFrameId", request.startFrameId);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "endFrameId", request.endFrameId);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "x", request.x);
@@ -1887,7 +1946,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
-        /// Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
+        /// Get separate frame properties of existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="ExtractImageFramePropertiesRequest" /></param>
         /// <returns><see cref="ImagingResponse"/></returns>            
@@ -2342,7 +2401,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
-        /// Get separate frame from existing TIFF image. 
+        /// Get separate frame from existing image. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="GetImageFrameRequest" /></param>
         /// <returns><see cref="System.IO.Stream"/></returns>            
@@ -2391,7 +2450,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
-        /// Get separate frame properties of existing TIFF image. 
+        /// Get separate frame properties of existing image. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="GetImageFramePropertiesRequest" /></param>
         /// <returns><see cref="ImagingResponse"/></returns>            
@@ -2434,6 +2493,62 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             }
       
             return (ImagingResponse)SerializationHelper.Deserialize<ImagingResponse>(StreamHelper.ToString(response));
+        }
+        
+        /// <summary>
+        /// Get frames range from existing image. 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="GetImageFrameRangeRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream GetImageFrameRange(GetImageFrameRangeRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.name == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'name' when calling GetImageFrameRange");
+            }
+
+            // verify the required parameter 'startFrameId' is set
+            if (request.startFrameId == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'startFrameId' when calling GetImageFrameRange");
+            }
+
+            // verify the required parameter 'endFrameId' is set
+            if (request.endFrameId == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'endFrameId' when calling GetImageFrameRange");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/frames/range";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "startFrameId", request.startFrameId);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "endFrameId", request.endFrameId);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newWidth", request.newWidth);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "newHeight", request.newHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "x", request.x);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "y", request.y);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectWidth", request.rectWidth);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "saveOtherFrames", request.saveOtherFrames);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
         }
         
         /// <summary>

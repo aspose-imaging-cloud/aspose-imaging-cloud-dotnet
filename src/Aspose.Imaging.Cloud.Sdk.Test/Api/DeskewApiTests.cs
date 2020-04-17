@@ -71,7 +71,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 #endif
         public void DeskewImageTest(string formatExtension, bool resizeProportionally, string bkColor = null)
         {
-            foreach (StorageFile inputFile in InputTestFiles.Where(f => f.Name.EndsWith("." + formatExtension)))
+            foreach (StorageFile inputFile in BasicInputTestFiles.Where(f => f.Name.EndsWith("." + formatExtension)))
             {
                 this.TestGetRequest(
                     "DeskewImageTest",
@@ -129,7 +129,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             bool resizeProportionally,
             string bkColor = null)
         {
-            foreach (StorageFile inputFile in InputTestFiles.Where(f => f.Name.EndsWith(formatExtension)))
+            foreach (StorageFile inputFile in BasicInputTestFiles.Where(f => f.Name.EndsWith(formatExtension)))
             {
                 string outName = $"{inputFile.Name}_deskew.{formatExtension}";
 

@@ -69,7 +69,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 }
             }
 
-            foreach (var inputFile in InputTestFiles)
+            foreach (var inputFile in BasicInputTestFiles)
             {
                 if (inputFile.Name.EndsWith(formatExtension))
                 {
