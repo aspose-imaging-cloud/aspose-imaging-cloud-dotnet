@@ -16,8 +16,7 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**CreateFolder**](ImagingApi.md#createfolder) | **PUT** /imaging/storage/folder/{path} | Create the folder
 *ImagingApi* | [**CreateGrayscaledImage**](ImagingApi.md#creategrayscaledimage) | **POST** /imaging/grayscale | Grayscales an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**CreateImageFeatures**](ImagingApi.md#createimagefeatures) | **POST** /imaging/ai/imageSearch/{searchContextId}/features | Extract images features and add them to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
-*ImagingApi* | [**CreateImageFrame**](ImagingApi.md#createimageframe) | **POST** /imaging/frames/{frameId} | Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-*ImagingApi* | [**CreateImageFrameRange**](ImagingApi.md#createimageframerange) | **POST** /imaging/frames/range | Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+*ImagingApi* | [**CreateImageFrame**](ImagingApi.md#createimageframe) | **POST** /imaging/frames/{frameId} | Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**CreateImageSearch**](ImagingApi.md#createimagesearch) | **POST** /imaging/ai/imageSearch/create | Create new search context.
 *ImagingApi* | [**CreateImageTag**](ImagingApi.md#createimagetag) | **POST** /imaging/ai/imageSearch/{searchContextId}/addTag | Add tag and reference image to search context. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**CreateModifiedBmp**](ImagingApi.md#createmodifiedbmp) | **POST** /imaging/bmp | Update parameters of BMP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
@@ -44,7 +43,7 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**DeskewImage**](ImagingApi.md#deskewimage) | **GET** /imaging/{name}/deskew | Deskew an existing image.
 *ImagingApi* | [**DownloadFile**](ImagingApi.md#downloadfile) | **GET** /imaging/storage/file/{path} | Download file
 *ImagingApi* | [**ExtractImageFeatures**](ImagingApi.md#extractimagefeatures) | **GET** /imaging/ai/imageSearch/{searchContextId}/image2features | Extract features from image without adding to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
-*ImagingApi* | [**ExtractImageFrameProperties**](ImagingApi.md#extractimageframeproperties) | **POST** /imaging/frames/{frameId}/properties | Get separate frame properties of existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+*ImagingApi* | [**ExtractImageFrameProperties**](ImagingApi.md#extractimageframeproperties) | **POST** /imaging/frames/{frameId}/properties | Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**ExtractImageProperties**](ImagingApi.md#extractimageproperties) | **POST** /imaging/properties | Get properties of an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 *ImagingApi* | [**FilterEffectImage**](ImagingApi.md#filtereffectimage) | **PUT** /imaging/{name}/filterEffect | Apply filtering effects to an existing image.
 *ImagingApi* | [**FindImageDuplicates**](ImagingApi.md#findimageduplicates) | **GET** /imaging/ai/imageSearch/{searchContextId}/findDuplicates | Find images duplicates.
@@ -54,9 +53,8 @@ Class | Method | HTTP request | Description
 *ImagingApi* | [**GetFileVersions**](ImagingApi.md#getfileversions) | **GET** /imaging/storage/version/{path} | Get file versions
 *ImagingApi* | [**GetFilesList**](ImagingApi.md#getfileslist) | **GET** /imaging/storage/folder/{path} | Get all files and folders within a folder
 *ImagingApi* | [**GetImageFeatures**](ImagingApi.md#getimagefeatures) | **GET** /imaging/ai/imageSearch/{searchContextId}/features | Gets image features from search context.
-*ImagingApi* | [**GetImageFrame**](ImagingApi.md#getimageframe) | **GET** /imaging/{name}/frames/{frameId} | Get separate frame from existing image.
-*ImagingApi* | [**GetImageFrameProperties**](ImagingApi.md#getimageframeproperties) | **GET** /imaging/{name}/frames/{frameId}/properties | Get separate frame properties of existing image.
-*ImagingApi* | [**GetImageFrameRange**](ImagingApi.md#getimageframerange) | **GET** /imaging/{name}/frames/range | Get frames range from existing image.
+*ImagingApi* | [**GetImageFrame**](ImagingApi.md#getimageframe) | **GET** /imaging/{name}/frames/{frameId} | Get separate frame from existing TIFF image.
+*ImagingApi* | [**GetImageFrameProperties**](ImagingApi.md#getimageframeproperties) | **GET** /imaging/{name}/frames/{frameId}/properties | Get separate frame properties of existing TIFF image.
 *ImagingApi* | [**GetImageProperties**](ImagingApi.md#getimageproperties) | **GET** /imaging/{name}/properties | Get properties of an image.
 *ImagingApi* | [**GetImageSearchStatus**](ImagingApi.md#getimagesearchstatus) | **GET** /imaging/ai/imageSearch/{searchContextId}/status | Gets the search context status.
 *ImagingApi* | [**GetSearchImage**](ImagingApi.md#getsearchimage) | **GET** /imaging/ai/imageSearch/{searchContextId}/image | Get image from search context

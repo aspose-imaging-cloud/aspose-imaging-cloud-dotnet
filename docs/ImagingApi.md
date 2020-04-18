@@ -326,7 +326,7 @@ void (empty response body)
 ## **CreateImageFrame**
 > System.IO.Stream CreateImageFrame(CreateImageFrameRequest request)
 
-Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get separate frame from existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **CreateImageFrameRequest** Parameters
 ```csharp
@@ -349,52 +349,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
  **frameId** | **int?**| Number of a frame. | 
- **newWidth** | **int?**| New width. | [optional] 
- **newHeight** | **int?**| New height. | [optional] 
- **x** | **int?**| X position of start point for cropping rectangle. | [optional] 
- **y** | **int?**| Y position of start point for cropping rectangle. | [optional] 
- **rectWidth** | **int?**| Width of cropping rectangle. | [optional] 
- **rectHeight** | **int?**| Height of cropping rectangle. | [optional] 
- **rotateFlipMethod** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | [optional] 
- **saveOtherFrames** | **bool?**| If result will include all other frames or just a specified frame. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
-
-### Return type
-
-**System.IO.Stream**
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
-<a name="createimageframerange"></a>
-## **CreateImageFrameRange**
-> System.IO.Stream CreateImageFrameRange(CreateImageFrameRangeRequest request)
-
-Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
-
-### **CreateImageFrameRangeRequest** Parameters
-```csharp
-CreateImageFrameRangeRequest(
-    System.IO.Stream imageData, 
-    int? startFrameId, 
-    int? endFrameId, 
-    int? newWidth = null, 
-    int? newHeight = null, 
-    int? x = null, 
-    int? y = null, 
-    int? rectWidth = null, 
-    int? rectHeight = null, 
-    string rotateFlipMethod = null, 
-    bool? saveOtherFrames = null, 
-    string outPath = null, 
-    string storage = null)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **imageData** | **System.IO.Stream**| Input image | 
- **startFrameId** | **int?**| Index of the first frame in range. | 
- **endFrameId** | **int?**| Index of the last frame in range. | 
  **newWidth** | **int?**| New width. | [optional] 
  **newHeight** | **int?**| New height. | [optional] 
  **x** | **int?**| X position of start point for cropping rectangle. | [optional] 
@@ -1262,7 +1216,7 @@ Name | Type | Description  | Notes
 ## **ExtractImageFrameProperties**
 > [ImagingResponse](ImagingResponse.md) ExtractImageFrameProperties(ExtractImageFramePropertiesRequest request)
 
-Get separate frame properties of existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get separate frame properties of existing TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **ExtractImageFramePropertiesRequest** Parameters
 ```csharp
@@ -1532,7 +1486,7 @@ Name | Type | Description  | Notes
 ## **GetImageFrame**
 > System.IO.Stream GetImageFrame(GetImageFrameRequest request)
 
-Get separate frame from existing image.
+Get separate frame from existing TIFF image.
 
 ### **GetImageFrameRequest** Parameters
 ```csharp
@@ -1576,7 +1530,7 @@ Name | Type | Description  | Notes
 ## **GetImageFrameProperties**
 > [ImagingResponse](ImagingResponse.md) GetImageFrameProperties(GetImageFramePropertiesRequest request)
 
-Get separate frame properties of existing image.
+Get separate frame properties of existing TIFF image.
 
 ### **GetImageFramePropertiesRequest** Parameters
 ```csharp
@@ -1597,52 +1551,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ImagingResponse**](ImagingResponse.md)
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
-<a name="getimageframerange"></a>
-## **GetImageFrameRange**
-> System.IO.Stream GetImageFrameRange(GetImageFrameRangeRequest request)
-
-Get frames range from existing image.
-
-### **GetImageFrameRangeRequest** Parameters
-```csharp
-GetImageFrameRangeRequest(
-    string name, 
-    int? startFrameId, 
-    int? endFrameId, 
-    int? newWidth = null, 
-    int? newHeight = null, 
-    int? x = null, 
-    int? y = null, 
-    int? rectWidth = null, 
-    int? rectHeight = null, 
-    string rotateFlipMethod = null, 
-    bool? saveOtherFrames = null, 
-    string folder = null, 
-    string storage = null)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **startFrameId** | **int?**| Index of the first frame in range. | 
- **endFrameId** | **int?**| Index of the last frame in range. | 
- **newWidth** | **int?**| New width. | [optional] 
- **newHeight** | **int?**| New height. | [optional] 
- **x** | **int?**| X position of start point for cropping rectangle. | [optional] 
- **y** | **int?**| Y position of start point for cropping rectangle. | [optional] 
- **rectWidth** | **int?**| Width of cropping rectangle. | [optional] 
- **rectHeight** | **int?**| Height of cropping rectangle. | [optional] 
- **rotateFlipMethod** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | [optional] 
- **saveOtherFrames** | **bool?**| If result will include all other frames or just a specified frame. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
-
-### Return type
-
-**System.IO.Stream**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
