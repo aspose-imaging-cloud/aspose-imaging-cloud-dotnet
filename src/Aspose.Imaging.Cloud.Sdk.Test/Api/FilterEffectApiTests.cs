@@ -24,10 +24,9 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-using System.IO;
-
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
+    using System.Linq;
     using NUnit.Framework;
     using System.Collections.Generic;
     using Aspose.Imaging.Cloud.Sdk.Model;
@@ -60,7 +59,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
             string folder = TempFolder;
             string storage = this.TestStorage;
             
-            List<string> formatsToExport = new List<string>(this.BasicExportFormats);
+            List<string> formatsToExport = new List<string>(this.BasicExportFormats);           
+
             foreach (string additionalExportFormat in additionalExportFormats)
             {
                 if (!formatsToExport.Contains(additionalExportFormat))
@@ -84,6 +84,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 {
                     foreach (var format in formatsToExport)
                     {
+                        if (formatExtension == ".psd" && format == "webp")
+                        {
+                            continue;
+                        }
+
                         this.TestGetRequest(
                             "FilterEffectTest",
                             $"Input image: {name}; Output format: {format ?? "null"}; Filter type: {filter.FilterType}",
