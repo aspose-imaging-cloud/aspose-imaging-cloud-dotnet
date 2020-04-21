@@ -296,6 +296,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                 storage);
         }
 
+        /// <summary>
+        /// Execute test command
+        /// </summary>
+        /// <param name="testCommand">Test command</param>
+        /// <param name="testMethodName">Test method name</param>
+        /// <param name="parametersLine">Parameters line</param>
+        /// <param name="inputFileName">Input file name</param>
+        /// <param name="folder">Folder</param>
+        /// <param name="storage">Storage</param>
         protected void ExecuteTestCommand(
             ITestCommand testCommand,
             string testMethodName, 
