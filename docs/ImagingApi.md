@@ -240,6 +240,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createfaxtiff"></a>
+## **CreateFaxTiff**
+> System.IO.Stream CreateFaxTiff(CreateFaxTiffRequest request)
+
+Update parameters of TIFF image accordingly to fax parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
+### **CreateFaxTiffRequest** Parameters
+```csharp
+CreateFaxTiffRequest(
+    System.IO.Stream imageData, 
+    string outPath = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **System.IO.Stream**| Input image | 
+ **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+
+### Return type
+
+**System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createfolder"></a>
 ## **CreateFolder**
 > void CreateFolder(CreateFolderRequest request)

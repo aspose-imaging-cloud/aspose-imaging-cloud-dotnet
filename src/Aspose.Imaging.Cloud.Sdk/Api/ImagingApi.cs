@@ -485,6 +485,43 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
+        /// Update parameters of TIFF image accordingly to fax parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CreateFaxTiffRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream CreateFaxTiff(CreateFaxTiffRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateFaxTiff");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/tiff/toFax";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
+        }
+        
+        /// <summary>
         /// Create the folder 
         /// </summary>
         /// <param name="request">Specific request.<see cref="CreateFolderRequest" /></param>            
