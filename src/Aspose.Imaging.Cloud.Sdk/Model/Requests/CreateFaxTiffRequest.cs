@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="CreateWebSiteImageFeaturesRequest.cs">
+// <copyright company="Aspose" file="CreateFaxTiffRequest.cs">
 //   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -28,49 +28,42 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.CreateWebSiteImageFeatures" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.CreateFaxTiff" /> operation.
   /// </summary>  
-  public class CreateWebSiteImageFeaturesRequest  
+  public class CreateFaxTiffRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateWebSiteImageFeaturesRequest"/> class.
+        /// Initializes a new instance of the <see cref="CreateFaxTiffRequest"/> class.
         /// </summary>        
-        public CreateWebSiteImageFeaturesRequest()
+        public CreateFaxTiffRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateWebSiteImageFeaturesRequest"/> class.
+        /// Initializes a new instance of the <see cref="CreateFaxTiffRequest"/> class.
         /// </summary>
-        /// <param name="searchContextId">The search context identifier.</param>
-        /// <param name="imagesSource">Images source - a web page</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
-        public CreateWebSiteImageFeaturesRequest(string searchContextId, string imagesSource, string folder = null, string storage = null)             
+        /// <param name="imageData">Input image</param>
+        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
+        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        public CreateFaxTiffRequest(System.IO.Stream imageData, string outPath = null, string storage = null)             
         {
-            this.searchContextId = searchContextId;
-            this.imagesSource = imagesSource;
-            this.folder = folder;
+            this.imageData = imageData;
+            this.outPath = outPath;
             this.storage = storage;
         }
         
         /// <summary>
-        /// The search context identifier.
+        /// Input image
         /// </summary>  
-        public string searchContextId { get; set; }
+        public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Images source - a web page
+        /// Path to updated file (if this is empty, response contains streamed image).
         /// </summary>  
-        public string imagesSource { get; set; }
+        public string outPath { get; set; }
 
         /// <summary>
-        /// The folder.
-        /// </summary>  
-        public string folder { get; set; }
-
-        /// <summary>
-        /// The storage.
+        /// Your Aspose Cloud Storage name.
         /// </summary>  
         public string storage { get; set; }
   }

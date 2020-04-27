@@ -71,6 +71,44 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 folder,
                 storage);
         }
+        
+        /// <summary>
+        /// Test CreateFaxTiff
+        /// </summary>
+        /// <param name="saveResultToStorage">If result should be saved to storage</param>
+        [TestCase(true)]
+        [TestCase(false)]
+        [Test]
+        public void CreateFaxTiff(bool saveResultToStorage)
+        {
+            string name = "test.tiff";
+            string folder = TempFolder;
+            string storage = this.TestStorage;
+            string outName = $"{name}_specific.tiff";
+
+            this.TestPostRequest(
+                "CreateFaxTiff",
+                saveResultToStorage,
+                $"Input image: {name}",
+                name,
+                outName,
+                delegate (Stream inputStream, string outPath)
+                {
+                    var request = new CreateFaxTiffRequest(inputStream, outPath, storage);
+                    return ImagingApi.CreateFaxTiff(request);
+                },
+                delegate (ImagingResponse originalProperties, ImagingResponse resultProperties, Stream resultStream)
+                {
+                    Assert.NotNull(resultProperties.TiffProperties);
+                    Assert.AreEqual(1, resultProperties.BitsPerPixel);
+                    Assert.AreEqual(196, (int)Math.Ceiling((double)resultProperties.VerticalResolution));
+                    Assert.AreEqual(204, (int)Math.Ceiling((double)resultProperties.HorizontalResolution));
+                    Assert.AreEqual(1728, resultProperties.Width);
+                    Assert.AreEqual(2200, resultProperties.Height);
+                },
+                folder,
+                storage);
+        }
 
         /// <summary>
         /// Test ModifyTiff
