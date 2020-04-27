@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
 
  - [Model.BmpProperties](BmpProperties.md)
  - [Model.DetectedObject](DetectedObject.md)
+ - [Model.DetectedObjectList](DetectedObjectList.md)
  - [Model.DicomProperties](DicomProperties.md)
  - [Model.DiscUsage](DiscUsage.md)
  - [Model.DjvuProperties](DjvuProperties.md)

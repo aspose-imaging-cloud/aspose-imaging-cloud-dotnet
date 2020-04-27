@@ -68,4 +68,3 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string storageName { get; set; }
   }
 }
-

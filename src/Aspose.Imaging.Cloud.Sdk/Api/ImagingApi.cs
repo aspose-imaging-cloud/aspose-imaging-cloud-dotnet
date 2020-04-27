@@ -1362,8 +1362,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         /// Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="CreateObjectBoundsRequest" /></param>
-        /// <returns><see cref="List&lt;DetectedObject&gt;"/></returns>            
-        public List<DetectedObject> CreateObjectBounds(CreateObjectBoundsRequest request)
+        /// <returns><see cref="DetectedObjectList"/></returns>            
+        public DetectedObjectList CreateObjectBounds(CreateObjectBoundsRequest request)
         {
             // verify the required parameter 'imageData' is set
             if (request.imageData == null) 
@@ -1401,7 +1401,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 return null;
             }
       
-            return (List<DetectedObject>)SerializationHelper.Deserialize<List<DetectedObject>>(StreamHelper.ToString(response));
+            return (DetectedObjectList)SerializationHelper.Deserialize<DetectedObjectList>(StreamHelper.ToString(response));
         }
         
         /// <summary>
@@ -3419,8 +3419,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         /// Detect objects&#39; bounds 
         /// </summary>
         /// <param name="request">Specific request.<see cref="ObjectBoundsRequest" /></param>
-        /// <returns><see cref="List&lt;DetectedObject&gt;"/></returns>            
-        public List<DetectedObject> ObjectBounds(ObjectBoundsRequest request)
+        /// <returns><see cref="DetectedObjectList"/></returns>            
+        public DetectedObjectList ObjectBounds(ObjectBoundsRequest request)
         {
             // verify the required parameter 'name' is set
             if (request.name == null) 
@@ -3438,7 +3438,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "inlcudeClass", request.inlcudeClass);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeClass", request.includeClass);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
@@ -3455,7 +3455,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 return null;
             }
       
-            return (List<DetectedObject>)SerializationHelper.Deserialize<List<DetectedObject>>(StreamHelper.ToString(response));
+            return (DetectedObjectList)SerializationHelper.Deserialize<DetectedObjectList>(StreamHelper.ToString(response));
         }
         
         /// <summary>

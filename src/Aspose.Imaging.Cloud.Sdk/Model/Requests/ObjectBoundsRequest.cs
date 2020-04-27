@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="ObjectBoundsRequest.cs">
-//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,16 +45,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="name">Image file name.</param>
         /// <param name="method">Object detection method</param>
         /// <param name="threshold">Object detection probability threshold in percents</param>
-        /// <param name="inlcudeClass">Return detected objects classes</param>
+        /// <param name="includeClass">Return detected objects classes</param>
         /// <param name="includeScore">Return detected objects score</param>
         /// <param name="folder">Folder</param>
         /// <param name="storage">Storage</param>
-        public ObjectBoundsRequest(string name, string method = null, int? threshold = null, bool? inlcudeClass = null, bool? includeScore = null, string folder = null, string storage = null)             
+        public ObjectBoundsRequest(string name, string method = null, int? threshold = null, bool? includeClass = null, bool? includeScore = null, string folder = null, string storage = null)             
         {
             this.name = name;
             this.method = method;
             this.threshold = threshold;
-            this.inlcudeClass = inlcudeClass;
+            this.includeClass = includeClass;
             this.includeScore = includeScore;
             this.folder = folder;
             this.storage = storage;
@@ -78,7 +78,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Return detected objects classes
         /// </summary>  
-        public bool? inlcudeClass { get; set; }
+        public bool? includeClass { get; set; }
 
         /// <summary>
         /// Return detected objects score

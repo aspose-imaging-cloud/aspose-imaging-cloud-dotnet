@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="Rectangle.cs">
+// <copyright company="Aspose" file="DetectedObjectList.cs">
 //   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -34,29 +34,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// 
+  /// Wrapper for detected objects array
   /// </summary>  
-  public class Rectangle 
+  public class DetectedObjectList 
   {                       
         /// <summary>
-        /// Gets or sets X
+        /// detected objects
         /// </summary>  
-        public double? X { get; set; }
-
-        /// <summary>
-        /// Gets or sets Y
-        /// </summary>  
-        public double? Y { get; set; }
-
-        /// <summary>
-        /// Gets or sets Width
-        /// </summary>  
-        public double? Width { get; set; }
-
-        /// <summary>
-        /// Gets or sets Height
-        /// </summary>  
-        public double? Height { get; set; }
+        public List<DetectedObject> DetectedObjects { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object
@@ -65,11 +50,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class Rectangle {\n");
-          sb.Append("  X: ").Append(this.X).Append("\n");
-          sb.Append("  Y: ").Append(this.Y).Append("\n");
-          sb.Append("  Width: ").Append(this.Width).Append("\n");
-          sb.Append("  Height: ").Append(this.Height).Append("\n");
+          sb.Append("class DetectedObjectList {\n");
+          sb.Append("  DetectedObjects: ").Append(this.DetectedObjects).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

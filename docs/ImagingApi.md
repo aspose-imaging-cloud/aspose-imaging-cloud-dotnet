@@ -870,7 +870,7 @@ Name | Type | Description  | Notes
 
 <a name="createobjectbounds"></a>
 ## **CreateObjectBounds**
-> [List<DetectedObject>](DetectedObject.md) CreateObjectBounds(CreateObjectBoundsRequest request)
+> [DetectedObjectList](DetectedObjectList.md) CreateObjectBounds(CreateObjectBoundsRequest request)
 
 Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
@@ -898,7 +898,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<DetectedObject>**](DetectedObject.md)
+[**DetectedObjectList**](DetectedObjectList.md)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
@@ -2278,7 +2278,7 @@ void (empty response body)
 
 <a name="objectbounds"></a>
 ## **ObjectBounds**
-> [List<DetectedObject>](DetectedObject.md) ObjectBounds(ObjectBoundsRequest request)
+> [DetectedObjectList](DetectedObjectList.md) ObjectBounds(ObjectBoundsRequest request)
 
 Detect objects' bounds
 
@@ -2288,7 +2288,7 @@ ObjectBoundsRequest(
     string name, 
     string method = null, 
     int? threshold = null, 
-    bool? inlcudeClass = null, 
+    bool? includeClass = null, 
     bool? includeScore = null, 
     string folder = null, 
     string storage = null)
@@ -2299,14 +2299,14 @@ Name | Type | Description  | Notes
  **name** | **string**| Image file name. | 
  **method** | **string**| Object detection method | [optional] [default to ssd]
  **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
- **inlcudeClass** | **bool?**| Return detected objects classes | [optional] [default to true]
+ **includeClass** | **bool?**| Return detected objects classes | [optional] [default to true]
  **includeScore** | **bool?**| Return detected objects score | [optional] [default to true]
  **folder** | **string**| Folder | [optional] 
  **storage** | **string**| Storage | [optional] 
 
 ### Return type
 
-[**List<DetectedObject>**](DetectedObject.md)
+[**DetectedObjectList**](DetectedObjectList.md)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 

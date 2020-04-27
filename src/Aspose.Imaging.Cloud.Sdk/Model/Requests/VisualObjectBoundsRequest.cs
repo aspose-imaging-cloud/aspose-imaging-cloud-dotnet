@@ -1,6 +1,6 @@
 // --------------------------------------------------------------------------------------------------------------------
 // <copyright company="Aspose" file="VisualObjectBoundsRequest.cs">
-//   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
+//   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
 //   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -96,3 +96,4 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string storage { get; set; }
   }
 }
+

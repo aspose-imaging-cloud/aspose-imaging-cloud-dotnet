@@ -39,7 +39,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         private readonly bool saveResultToStorage;
         private readonly bool removeResult;
         private readonly string storage;
-        private List<DetectedObject> response = null;
+        private DetectedObjectList response = null;
         private string outPath;
         private bool passed = false;
 
@@ -84,7 +84,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         public void AssertResponse()
         {
             Assert.NotNull(response);
-            Assert.IsTrue(response.Count > 0);
+            Assert.NotNull(response.DetectedObjects);
+            Assert.IsTrue(response.DetectedObjects.Count > 0);
             passed = true;
         }
 
