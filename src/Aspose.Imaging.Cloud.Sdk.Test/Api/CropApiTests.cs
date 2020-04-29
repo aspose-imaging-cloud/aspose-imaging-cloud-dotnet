@@ -76,7 +76,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 }
             }
             
-            foreach (StorageFile inputFile in InputTestFiles)
+            foreach (StorageFile inputFile in BasicInputTestFiles)
             {
                 if (inputFile.Name.EndsWith(formatExtension))
                 {
@@ -156,7 +156,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 }
             }
 
-            foreach (StorageFile inputFile in InputTestFiles)
+            foreach (StorageFile inputFile in BasicInputTestFiles)
             {
                 if (inputFile.Name.EndsWith(formatExtension))
                 {

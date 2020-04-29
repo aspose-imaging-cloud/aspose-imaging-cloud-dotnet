@@ -43,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase("jpg")]
         public void GrayscaleImageTest(string formatExtension)
         {
-            foreach (StorageFile inputFile in InputTestFiles.Where(f => f.Name.EndsWith("." + formatExtension)))
+            foreach (StorageFile inputFile in BasicInputTestFiles.Where(f => f.Name.EndsWith("." + formatExtension)))
             {
                 this.TestGetRequest(
                     "GrayscaleImageTest",
@@ -73,7 +73,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase("jpg", false)]
         public void CreateGrayscaleedImageTest(string formatExtension, bool saveResultToStorage)
         {
-            foreach (StorageFile inputFile in InputTestFiles.Where(f => f.Name.EndsWith(formatExtension)))
+            foreach (StorageFile inputFile in BasicInputTestFiles.Where(f => f.Name.EndsWith(formatExtension)))
             {
                 string outName = $"{inputFile.Name}_grayscale.{formatExtension}";
 
