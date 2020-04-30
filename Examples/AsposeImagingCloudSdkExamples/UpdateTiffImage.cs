@@ -180,6 +180,34 @@ namespace AsposeImagingCloudSdkExamples
 
             Console.WriteLine();
         }
+        
+        /// <summary>
+        ///     Update parameters of TIFF image according to fax parameters. Image data is passed in a request stream.
+        /// </summary>
+        public void ConvertTiffToFaxFromRequestBody()
+        {
+            using (var inputImageStream = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
+            {
+                Console.WriteLine("Update parameters of TIFF image from request body according to fax parameters.");
+
+                UploadSampleImageToCloud();
+
+                // Update TIFF Image parameters according to fax parameters
+                string outPath = null;
+                string storage = null; // We are using default Cloud Storage
+
+                var createFaxTiffRequest = new CreateFaxTiffRequest(inputImageStream, outPath, storage);
+
+                Console.WriteLine("Call CreateFaxTiff");
+
+                using (var updatedImage = ImagingApi.CreateFaxTiff(createFaxTiffRequest))
+                {
+                    SaveUpdatedSampleImageToOutput(updatedImage, true);
+                }
+
+                Console.WriteLine();
+            }
+        }
 
         /// <summary>
         ///     Appends existing TIFF image to another existing TIFF image (i.e. merges TIFF images).

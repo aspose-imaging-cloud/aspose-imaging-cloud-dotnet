@@ -110,6 +110,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 storage);
         }
 
+        public void Testestest()
+        {
+            var pathToLocalFile = "test.tiff";
+            using (var imageData = File.OpenRead(pathToLocalFile))
+            {
+                var request = new CreateFaxTiffRequest(imageData);
+                var faxTiff = ImagingApi.CreateFaxTiff(request);
+            }
+        }
+        
+        
+
         /// <summary>
         /// Test ModifyTiff
         /// </summary>

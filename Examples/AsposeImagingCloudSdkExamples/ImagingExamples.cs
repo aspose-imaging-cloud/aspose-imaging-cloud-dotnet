@@ -113,28 +113,16 @@ namespace AsposeImagingCloudSdkExamples
                 rotateFlipImage.RotateFlipImageAndUploadToStorage();
                 rotateFlipImage.CreateRotateFlippedImageFromRequestBody();
                 
-                // TIFF Frames
-                var tiffFrames = new TiffFrames(api);
-                // Get a specified frame from existing TIFF image
-                tiffFrames.GetImageFrameFromStorage();
-                // Get a specified frame from existing TIFF image, and upload the frame to Cloud Storage
-                tiffFrames.GetImageFrameAndUploadToStorage();
-                // Resize a TIFF frame
-                tiffFrames.ResizeImageFrameFromStorage();
-                // Crop a TIFF frame
-                tiffFrames.CropImageFrameFromStorage();
-                // RotateFlip a TIFF frame
-                tiffFrames.RotateFlipImageFrameFromStorage();
-                // Get other frames from existing TIFF image
-                tiffFrames.GetAllImageFramesFromStorage();
-                // Get separate frame from existing TIFF image.
-                // Image data is passed as zero-indexed multipart/form-data content or as raw body stream
-                tiffFrames.CreateImageFrameFromRequestBody();
-                // Get separate frame properties of existing TIFF image
-                tiffFrames.GetImageFramePropertiesFromStorage();
-                // Get separate frame properties of existing TIFF image.
-                // Image data is passed as zero-indexed multipart/form-data content or as raw body stream
-                tiffFrames.ExtractImageFramePropertiesFromRequestBody();
+                // Multiframe image
+                var multiframeImage = new MultiframeImage(api);
+                multiframeImage.GetImageFrameFromStorage();
+                multiframeImage.GetImageFrameAndUploadToStorage();
+                multiframeImage.CreateImageFrameFromRequestBody();
+                multiframeImage.GetImageFrameRangeFromStorage();
+                multiframeImage.GetImageFrameRangeAndUploadToStorage();
+                multiframeImage.CreateImageFrameRangeFromRequestBody();
+                multiframeImage.GetImageFramePropertiesFromStorage();
+                multiframeImage.ExtractImageFramePropertiesFromRequestBody();
                 
                 // Update parameters of existing TIFF image
                 var tiffImage = new TiffImage(api);
@@ -142,6 +130,7 @@ namespace AsposeImagingCloudSdkExamples
                 tiffImage.ModifyTiffAndUploadToStorage();
                 tiffImage.CreateModifiedTiffFromRequestBody();
                 tiffImage.ConvertTiffToFaxFromStorage();
+                tiffImage.ConvertTiffToFaxFromRequestBody();
                 tiffImage.AppendTiffFromStorage();
                 
                 // Update parameters of existing GIF image
@@ -185,24 +174,24 @@ namespace AsposeImagingCloudSdkExamples
                 wmfImage.ModifyWmfFromStorage();
                 wmfImage.ModifyWmfAndUploadToStorage();
                 wmfImage.CreateModifiedWmfFromRequestBody();
-
+                
                 // AI APIs
                 Console.WriteLine("Running AI examples:");
                 Console.WriteLine();
-
+                
                 // Compare two images
                 var compareImages = new CompareImages(api);
                 compareImages.PrepareSearchContext();
                 compareImages.CompareTwoImagesInCloud();
                 compareImages.CompareLoadedImageToImageInCloud();
                 compareImages.DeleteSearchContext();
-
+                
                 // Find Duplicate Images
                 var findDuplicateImages = new FindDuplicateImages(api);
                 findDuplicateImages.PrepareSearchContext();
                 findDuplicateImages.FindImageDuplicates();
                 findDuplicateImages.DeleteSearchContext();
-
+                
                 // Find Similar Images
                 var findImages = new FindSimilarImages(api);
                 findImages.PrepareSearchContext();
