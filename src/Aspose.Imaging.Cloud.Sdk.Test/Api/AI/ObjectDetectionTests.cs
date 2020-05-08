@@ -36,6 +36,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     using Aspose.Imaging.Cloud.Sdk.Test.Base;
 
     [TestFixture]
+    [Category("ObjectDetection")]
     public class ObjectDetectionTests : ImagingApiTester
     {
         private const string TestImage = "object_detection_example.jpg";
