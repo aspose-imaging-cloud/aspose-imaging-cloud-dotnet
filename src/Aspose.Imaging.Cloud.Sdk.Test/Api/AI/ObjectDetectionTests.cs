@@ -39,7 +39,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
     [Category("ObjectDetection")]
     public class ObjectDetectionTests : ImagingApiTester
     {
-        private const string TestImage = "object_detection_example.jpg";
+        private const string TestImage = "test.bmp";
 
         [Test]
         public void ObjectBoundsTest()
@@ -49,7 +49,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             {
                 storage = TestStorage,
                 folder = TempFolder,
-                threshold = 60
+                threshold = 20
             };
 
             using (var command = new ObjectDetectionTestCommand(
@@ -61,7 +61,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 TestStorage,
                 null))
             {
-                ExecuteTestCommand(command, nameof(ObjectBoundsTest), $"Input image: {inputFile.Name};", inputFile.Name,
+                ExecuteTestCommand(command, "objectDetection_objectbounds_test", $"Input image: {inputFile.Name};", inputFile.Name,
                     TempFolder, TestStorage);
             }
         }
@@ -74,7 +74,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             {
                 storage = TestStorage,
                 folder = TempFolder,
-                threshold = 60,
+                threshold = 20,
                 includeClass = true,
                 includeScore = true
             };
@@ -88,7 +88,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 TestStorage,
                 null))
             {
-                ExecuteTestCommand(command, nameof(VisualObjectBoundsTest), $"Input image: {inputFile.Name};", inputFile.Name,
+                ExecuteTestCommand(command, "objectDetection_visualobjectbounds_test", $"Input image: {inputFile.Name};", inputFile.Name,
                     TempFolder, TestStorage);
             }
         }
@@ -115,7 +115,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 using (var command = new CreateObjectDetectionTestCommand(request, ImagingApi,
                     saveResultToStorage, removeResult))
                 {
-                    ExecuteTestCommand(command, nameof(CreateObjectBoundsTest), $"Input image: {inputFile.Name};", inputFile.Name,
+                    ExecuteTestCommand(command, "objectDetection_createobjectbounds_test", $"Input image: {inputFile.Name};", inputFile.Name,
                         TempFolder, TestStorage);
                 }
             }
@@ -135,7 +135,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                     imageData = stream,
                     storage = TestStorage,
                     outPath = saveResultToStorage ? TempFolder + "/" + inputFile.Name : null,
-                    threshold = 60,
+                    threshold = 20,
                     includeClass = true,
                     includeScore = true
                 };
@@ -143,7 +143,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 using (var command = new CreateVisualObjectDetectionTestCommand(request, ImagingApi,
                     saveResultToStorage, removeResult))
                 {
-                    ExecuteTestCommand(command, nameof(CreateVisualObjectBoundsTest), $"Input image: {inputFile.Name};", inputFile.Name,
+                    ExecuteTestCommand(command, "objectDetection_createvisualobjectbounds_test", $"Input image: {inputFile.Name};", inputFile.Name,
                         TempFolder, TestStorage);
                 }
             }
