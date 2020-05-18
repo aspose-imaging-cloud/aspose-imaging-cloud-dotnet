@@ -64,12 +64,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                     imagingApi.DeleteFile(new DeleteFileRequest(request.outPath, request.storage));
                 }
             }
-
+            request.imageData.Position = 0;
             response = imagingApi.CreateObjectBounds(request);
         }
 
         public void AssertResponse()
         {
+            if (saveResultToStorage)
+            {
+                var fileExist = imagingApi.ObjectExists(new ObjectExistsRequest(request.outPath, request.storage)).Exists.Value;
+                Assert.True(fileExist);
+            }
+
             Assert.NotNull(response);
             Assert.NotNull(response.DetectedObjects);
             Assert.IsTrue(response.DetectedObjects.Count > 0);

@@ -93,8 +93,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             }
         }
 
-        [TestCase(false)]
         [TestCase(true)]
+        [TestCase(false)]
         public void CreateObjectBoundsTest(bool saveResultToStorage)
         {
             var inputFile = InputTestFiles.FirstOrDefault(f => string.Equals(f.Name, TestImage));

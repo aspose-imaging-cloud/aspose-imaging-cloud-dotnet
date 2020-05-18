@@ -64,7 +64,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                     imagingApi.DeleteFile(new DeleteFileRequest(request.outPath, request.storage));
                 }
             }
-
+            request.imageData.Position = 0;
             response = imagingApi.CreateVisualObjectBounds(request);
         }
 

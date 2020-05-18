@@ -38,6 +38,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
     using Newtonsoft.Json;
 
     using NUnit.Framework;
+    using Aspose.Imaging.Cloud.Sdk.Client;
+    using System.Net;
+    using System.Threading;
 
     /// <summary>
     /// Base class for API tester
@@ -346,7 +349,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             {
                 WriteLineEverywhere(parametersLine);
 
-                testCommand.InvokeRequest();
+                InvokeRequestWithRetry(testCommand, 5);
                 testCommand.AssertResponse();
                 passed = true;
             }
@@ -359,6 +362,31 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             finally
             {
                 WriteLineEverywhere($"Test passed: {passed}");
+            }
+        }
+
+        private void InvokeRequestWithRetry(ITestCommand testCommand, int retryCount)
+        {
+            try
+            {
+                testCommand.InvokeRequest();
+            }
+            catch (ApiException ex)
+            {
+                if(retryCount <= 1)
+                {
+                    throw;
+                }
+                else
+                {
+                    //if(ex.ErrorCode == (int)HttpStatusCode.BadGateway)
+                    //{
+                    Thread.Sleep(3000);
+                    InvokeRequestWithRetry(testCommand, --retryCount);
+                    //}
+
+                    //throw;
+                }
             }
         }
 
