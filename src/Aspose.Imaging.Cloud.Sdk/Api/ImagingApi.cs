@@ -1359,6 +1359,52 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
+        /// Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CreateObjectBoundsRequest" /></param>
+        /// <returns><see cref="DetectedObjectList"/></returns>            
+        public DetectedObjectList CreateObjectBounds(CreateObjectBoundsRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateObjectBounds");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/objectdetection/bounds";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeClass", request.includeClass);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (DetectedObjectList)SerializationHelper.Deserialize<DetectedObjectList>(StreamHelper.ToString(response));
+        }
+        
+        /// <summary>
         /// Resize an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="CreateResizedImageRequest" /></param>
@@ -1569,6 +1615,47 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rectHeight", request.rectHeight);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "rotateFlipMethod", request.rotateFlipMethod);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
+        }
+        
+        /// <summary>
+        /// Detect objects bounds and draw them on the original image 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CreateVisualObjectBoundsRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream CreateVisualObjectBounds(CreateVisualObjectBoundsRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateVisualObjectBounds");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/objectdetection/visualbounds";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeClass", request.includeClass);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -3329,6 +3416,49 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
+        /// Detect objects&#39; bounds 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="ObjectBoundsRequest" /></param>
+        /// <returns><see cref="DetectedObjectList"/></returns>            
+        public DetectedObjectList ObjectBounds(ObjectBoundsRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.name == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'name' when calling ObjectBounds");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/objectdetection/bounds";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "name", request.name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeClass", request.includeClass);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (DetectedObjectList)SerializationHelper.Deserialize<DetectedObjectList>(StreamHelper.ToString(response));
+        }
+        
+        /// <summary>
         /// Check if file or folder exists 
         /// </summary>
         /// <param name="request">Specific request.<see cref="ObjectExistsRequest" /></param>
@@ -3750,6 +3880,44 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             }
       
             return (FilesUploadResult)SerializationHelper.Deserialize<FilesUploadResult>(StreamHelper.ToString(response));
+        }
+        
+        /// <summary>
+        /// Detect objects bounds and draw them on the original image 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="VisualObjectBoundsRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream VisualObjectBounds(VisualObjectBoundsRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.name == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'name' when calling VisualObjectBounds");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/objectdetection/visualbounds";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "name", request.name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeClass", request.includeClass);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
         }
         
         #endregion
