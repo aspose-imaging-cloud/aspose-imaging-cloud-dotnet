@@ -54,7 +54,7 @@ namespace AsposeImagingCloudSdkExamples
 
                 Console.WriteLine("Running Imaging Cloud examples:");
                 Console.WriteLine();
-
+                
                 // Update parameters of existing BMP image
                 var bmpImage = new UpdateBmpImage(api);
                 bmpImage.ModifyBmpFromStorage();
@@ -210,6 +210,13 @@ namespace AsposeImagingCloudSdkExamples
                 findImages.FindImagesByTag();
                 findImages.SearchImageFromWebSource();
                 findImages.DeleteSearchContext();
+                
+                // Image object detection
+                var objectDetection = new ObjectDetection(api);
+                objectDetection.DetectObjectsImageFromStorage();
+                objectDetection.VisualiizeDetectObjectsAndUploadToStorage();
+                objectDetection.VisualizeDetectedObjectsImageFromRequestBody();
+                objectDetection.DetectedObjectsImageFromRequestBody();
             }
             catch (Exception ex)
             {

@@ -34,11 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Imaging.Cloud.Sdk, Version=20.2.0.0, Culture=neutral, PublicKeyToken=70f46a67678f77f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\Aspose.Imaging-Cloud.20.2.0\lib\net45\Aspose.Imaging.Cloud.Sdk.dll</HintPath>
+    <Reference Include="Aspose.Imaging.Cloud.Sdk">
+      <HintPath>..\..\src\Aspose.Imaging.Cloud.Sdk\bin\Debug\net45\Aspose.Imaging.Cloud.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\src\Aspose.Imaging.Cloud.Sdk\bin\Debug\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -56,6 +56,7 @@
     <Compile Include="AI\FindDuplicateImages.cs" />
     <Compile Include="AI\FindSimilarImages.cs" />
     <Compile Include="AI\ImagingAIBase.cs" />
+    <Compile Include="AI\ObjectDetection.cs" />
     <Compile Include="CropImage.cs" />
     <Compile Include="FilterImage.cs" />
     <Compile Include="DeskewImage.cs" />
