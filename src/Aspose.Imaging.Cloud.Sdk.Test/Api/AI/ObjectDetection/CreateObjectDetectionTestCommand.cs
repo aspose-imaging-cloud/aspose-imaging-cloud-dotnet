@@ -80,8 +80,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             Assert.NotNull(response.DetectedObjects);
             Assert.IsTrue(response.DetectedObjects.Count > 0);
             Assert.NotNull(response.DetectedObjects[0]);
-            Assert.NotNull(response.DetectedObjects[0].Label);
-            Assert.NotNull(response.DetectedObjects[0].Score);
+            if (request.includeClass == true)
+            {
+                Assert.NotNull(response.DetectedObjects[0].Label);
+            }
+            else
+            {
+                Assert.Null(response.DetectedObjects[0].Label);
+            }
+            if (request.includeScore == true)
+            {
+                Assert.NotNull(response.DetectedObjects[0].Score);
+            }
+            else
+            {
+                Assert.Null(response.DetectedObjects[0].Score);
+            }
             passed = true;
         }
 

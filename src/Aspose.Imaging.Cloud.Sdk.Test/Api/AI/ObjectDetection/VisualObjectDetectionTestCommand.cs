@@ -96,41 +96,5 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                 imagingApi.DeleteFile(new DeleteFileRequest(outPath, storage));
             }
         }
-
-        //вынести в бейс класс для imagestreamcommand
-        /*
-        using (Stream response = invokeRequestAction.Invoke())
-                {
-                    if (saveResultToStorage)
-                    {
-                        StorageFile resultInfo = this.GetStorageFileInfo(folder, resultFileName, storage);
-                        if (resultInfo == null)
-                        {
-                            throw new ArgumentException(
-                                $"Result file {resultFileName} doesn't exist in the specified storage folder: {folder}. " +
-                                $"Result isn't present in the storage by an unknown reason.");
-}
-
-resultProperties =
-                            this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(resultFileName, folder, storage));
-                        Assert.NotNull(resultProperties);
-                    }
-                    else
-                    {
-                        resultProperties =
-                            this.ImagingApi.ExtractImageProperties(new ExtractImagePropertiesRequest(response));
-                        Assert.NotNull(resultProperties);
-                    }
-
-                    ImagingResponse originalProperties =
-                        this.ImagingApi.GetImageProperties(new GetImagePropertiesRequest(inputFileName, folder, storage));
-Assert.NotNull(originalProperties);
-
-                    if (resultProperties != null)
-                    {
-                        propertiesTester?.Invoke(originalProperties, resultProperties, response);
-                    }
-                }
-                */
     }
 }
