@@ -76,7 +76,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 folder = TempFolder,
                 threshold = 20,
                 includeClass = true,
-                includeScore = true
+                includeScore = true,
+                color = "blue"
             };
 
             using (var command = new VisualObjectDetectionTestCommand(
@@ -137,7 +138,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                     outPath = saveResultToStorage ? TempFolder + "/" + inputFile.Name : null,
                     threshold = 20,
                     includeClass = true,
-                    includeScore = true
+                    includeScore = true,
+                    color = "blue"
                 };
 
                 using (var command = new CreateVisualObjectDetectionTestCommand(request, ImagingApi,

@@ -47,15 +47,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="threshold">Object detection probability threshold in percents</param>
         /// <param name="includeClass">Draw detected objects classes</param>
         /// <param name="includeScore">Draw detected objects scores</param>
+        /// <param name="color">Bounds, labels, and scores text color</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image)</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public CreateVisualObjectBoundsRequest(System.IO.Stream imageData, string method = null, int? threshold = null, bool? includeClass = null, bool? includeScore = null, string outPath = null, string storage = null)             
+        public CreateVisualObjectBoundsRequest(System.IO.Stream imageData, string method = null, int? threshold = null, bool? includeClass = null, bool? includeScore = null, string color = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
             this.method = method;
             this.threshold = threshold;
             this.includeClass = includeClass;
             this.includeScore = includeScore;
+            this.color = color;
             this.outPath = outPath;
             this.storage = storage;
         }
@@ -84,6 +86,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Draw detected objects scores
         /// </summary>  
         public bool? includeScore { get; set; }
+
+        /// <summary>
+        /// Bounds, labels, and scores text color
+        /// </summary>  
+        public string color { get; set; }
 
         /// <summary>
         /// Path to updated file (if this is empty, response contains streamed image)

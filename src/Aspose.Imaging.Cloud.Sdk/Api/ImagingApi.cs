@@ -1656,6 +1656,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeClass", request.includeClass);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "color", request.color);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -3907,6 +3908,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeClass", request.includeClass);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "color", request.color);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
