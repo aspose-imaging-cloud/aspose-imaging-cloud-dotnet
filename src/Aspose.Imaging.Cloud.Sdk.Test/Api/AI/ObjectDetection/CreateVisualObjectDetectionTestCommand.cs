@@ -72,6 +72,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         {
             Assert.NotNull(response);
             Assert.IsTrue(response.Length > 0);
+
             passed = true;
         }
 

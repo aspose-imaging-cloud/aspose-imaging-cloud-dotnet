@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="VisualObjectBoundsRequest.cs">
+// <copyright company="Aspose" file="GetVisualObjectBoundsRequest.cs">
 //   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -28,34 +28,36 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.VisualObjectBounds" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.GetVisualObjectBounds" /> operation.
   /// </summary>  
-  public class VisualObjectBoundsRequest  
+  public class GetVisualObjectBoundsRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="VisualObjectBoundsRequest"/> class.
+        /// Initializes a new instance of the <see cref="GetVisualObjectBoundsRequest"/> class.
         /// </summary>        
-        public VisualObjectBoundsRequest()
+        public GetVisualObjectBoundsRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VisualObjectBoundsRequest"/> class.
+        /// Initializes a new instance of the <see cref="GetVisualObjectBoundsRequest"/> class.
         /// </summary>
         /// <param name="name">The image features detector.</param>
         /// <param name="method">Object detection method</param>
         /// <param name="threshold">Object detection probability threshold in percents</param>
-        /// <param name="includeClass">Draw detected objects classes</param>
+        /// <param name="includeLabel">Draw detected objects labels</param>
         /// <param name="includeScore">Draw detected objects scores</param>
+        /// <param name="color">Bounds, labels, and scores text color</param>
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
-        public VisualObjectBoundsRequest(string name, string method = null, int? threshold = null, bool? includeClass = null, bool? includeScore = null, string folder = null, string storage = null)             
+        public GetVisualObjectBoundsRequest(string name, string method = null, int? threshold = null, bool? includeLabel = null, bool? includeScore = null, string color = null, string folder = null, string storage = null)             
         {
             this.name = name;
             this.method = method;
             this.threshold = threshold;
-            this.includeClass = includeClass;
+            this.includeLabel = includeLabel;
             this.includeScore = includeScore;
+            this.color = color;
             this.folder = folder;
             this.storage = storage;
         }
@@ -76,14 +78,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public int? threshold { get; set; }
 
         /// <summary>
-        /// Draw detected objects classes
+        /// Draw detected objects labels
         /// </summary>  
-        public bool? includeClass { get; set; }
+        public bool? includeLabel { get; set; }
 
         /// <summary>
         /// Draw detected objects scores
         /// </summary>  
         public bool? includeScore { get; set; }
+
+        /// <summary>
+        /// Bounds, labels, and scores text color
+        /// </summary>  
+        public string color { get; set; }
 
         /// <summary>
         /// The folder.
@@ -96,4 +103,3 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string storage { get; set; }
   }
 }
-

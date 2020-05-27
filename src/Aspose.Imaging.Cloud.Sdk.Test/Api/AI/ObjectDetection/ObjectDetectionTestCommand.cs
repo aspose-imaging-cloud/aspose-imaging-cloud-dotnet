@@ -34,7 +34,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
 {
     public class ObjectDetectionTestCommand : ITestCommand
     {
-        private readonly ObjectBoundsRequest request = null;
+        private readonly GetObjectBoundsRequest request = null;
         private readonly ImagingApi imagingApi;
         private readonly bool saveResultToStorage;
         private readonly bool removeResult;
@@ -44,7 +44,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         private bool passed = false;
 
         public ObjectDetectionTestCommand(
-            ObjectBoundsRequest request,
+            GetObjectBoundsRequest request,
             ImagingApi imagingApi,
             bool saveResultToStorage,
             bool removeResult,
@@ -66,7 +66,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         public void InvokeRequest()
         {
             Prepare();
-            response = imagingApi.ObjectBounds(request);
+            response = imagingApi.GetObjectBounds(request);
         }
 
         private void Prepare()
@@ -87,7 +87,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             Assert.NotNull(response.DetectedObjects);
             Assert.IsTrue(response.DetectedObjects.Count > 0);
             Assert.NotNull(response.DetectedObjects[0]);
-            if (request.includeClass == true)
+            if (request.includeLabel == true)
             {
                 Assert.NotNull(response.DetectedObjects[0].Label);
             }

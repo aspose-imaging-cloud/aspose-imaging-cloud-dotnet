@@ -34,7 +34,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
 {
     public class VisualObjectDetectionTestCommand : ITestCommand
     {
-        private readonly VisualObjectBoundsRequest request = null;
+        private readonly GetVisualObjectBoundsRequest request = null;
         private readonly ImagingApi imagingApi;
         private readonly bool saveResultToStorage;
         private readonly bool removeResult;
@@ -44,7 +44,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         private bool passed = false;
 
         public VisualObjectDetectionTestCommand(
-            VisualObjectBoundsRequest request,
+            GetVisualObjectBoundsRequest request,
             ImagingApi imagingApi,
             bool saveResultToStorage,
             bool removeResult,
@@ -66,7 +66,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         public void InvokeRequest()
         {
             Prepare();
-            response = imagingApi.VisualObjectBounds(request);
+            response = imagingApi.GetVisualObjectBounds(request);
         }
 
         private void Prepare()
