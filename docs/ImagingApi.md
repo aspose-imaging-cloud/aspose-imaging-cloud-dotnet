@@ -396,7 +396,7 @@ Name | Type | Description  | Notes
 ## **CreateImageFrameRange**
 > System.IO.Stream CreateImageFrameRange(CreateImageFrameRangeRequest request)
 
-Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+Get frames range from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
 
 ### **CreateImageFrameRangeRequest** Parameters
 ```csharp
@@ -880,7 +880,7 @@ CreateObjectBoundsRequest(
     System.IO.Stream imageData, 
     string method = null, 
     int? threshold = null, 
-    bool? includeClass = null, 
+    bool? includeLabel = null, 
     bool? includeScore = null, 
     string outPath = null, 
     string storage = null)
@@ -891,7 +891,7 @@ Name | Type | Description  | Notes
  **imageData** | **System.IO.Stream**| Input image | 
  **method** | **string**| Object detection method | [optional] [default to ssd]
  **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **bool?**| Draw detected objects classes | [optional] [default to false]
+ **includeLabel** | **bool?**| Draw detected objects labels | [optional] [default to false]
  **includeScore** | **bool?**| Draw detected objects scores | [optional] [default to false]
  **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
@@ -1038,7 +1038,7 @@ Name | Type | Description  | Notes
 ## **CreateVisualObjectBounds**
 > System.IO.Stream CreateVisualObjectBounds(CreateVisualObjectBoundsRequest request)
 
-Detect objects bounds and draw them on the original image
+Detects objects bounds and draw them on the original image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream
 
 ### **CreateVisualObjectBoundsRequest** Parameters
 ```csharp
@@ -1046,7 +1046,7 @@ CreateVisualObjectBoundsRequest(
     System.IO.Stream imageData, 
     string method = null, 
     int? threshold = null, 
-    bool? includeClass = null, 
+    bool? includeLabel = null, 
     bool? includeScore = null, 
     string color = null, 
     string outPath = null, 
@@ -1058,9 +1058,9 @@ Name | Type | Description  | Notes
  **imageData** | **System.IO.Stream**| Input image | 
  **method** | **string**| Object detection method | [optional] [default to ssd]
  **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **bool?**| Draw detected objects classes | [optional] [default to false]
+ **includeLabel** | **bool?**| Draw detected objects classes | [optional] [default to false]
  **includeScore** | **bool?**| Draw detected objects scores | [optional] [default to false]
- **color** | **string**| Bounds, labels, and scores text color | [optional] [default to red]
+ **color** | **string**| Bounds, labels, and scores text color | [optional] 
  **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
@@ -1794,6 +1794,40 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="getobjectbounds"></a>
+## **GetObjectBounds**
+> [DetectedObjectList](DetectedObjectList.md) GetObjectBounds(GetObjectBoundsRequest request)
+
+Detects objects' bounds
+
+### **GetObjectBoundsRequest** Parameters
+```csharp
+GetObjectBoundsRequest(
+    string name, 
+    string method = null, 
+    int? threshold = null, 
+    bool? includeLabel = null, 
+    bool? includeScore = null, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Image file name. | 
+ **method** | **string**| Object detection method | [optional] [default to ssd]
+ **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
+ **includeLabel** | **bool?**| Return detected objects labels | [optional] [default to false]
+ **includeScore** | **bool?**| Return detected objects score | [optional] [default to false]
+ **folder** | **string**| Folder | [optional] 
+ **storage** | **string**| Storage | [optional] 
+
+### Return type
+
+[**DetectedObjectList**](DetectedObjectList.md)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="getsearchimage"></a>
 ## **GetSearchImage**
 > System.IO.Stream GetSearchImage(GetSearchImageRequest request)
@@ -1815,6 +1849,42 @@ Name | Type | Description  | Notes
  **imageId** | **string**| Image identifier. | 
  **folder** | **string**| Folder. | [optional] 
  **storage** | **string**| Storage | [optional] 
+
+### Return type
+
+**System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="getvisualobjectbounds"></a>
+## **GetVisualObjectBounds**
+> System.IO.Stream GetVisualObjectBounds(GetVisualObjectBoundsRequest request)
+
+Detects objects bounds and draw them on the original image
+
+### **GetVisualObjectBoundsRequest** Parameters
+```csharp
+GetVisualObjectBoundsRequest(
+    string name, 
+    string method = null, 
+    int? threshold = null, 
+    bool? includeLabel = null, 
+    bool? includeScore = null, 
+    string color = null, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| The image features detector. | 
+ **method** | **string**| Object detection method | [optional] [default to ssd]
+ **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
+ **includeLabel** | **bool?**| Draw detected objects labels | [optional] [default to false]
+ **includeScore** | **bool?**| Draw detected objects scores | [optional] [default to false]
+ **color** | **string**| Bounds, labels, and scores text color | [optional] 
+ **folder** | **string**| The folder. | [optional] 
+ **storage** | **string**| The storage. | [optional] 
 
 ### Return type
 
@@ -2278,40 +2348,6 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
-<a name="objectbounds"></a>
-## **ObjectBounds**
-> [DetectedObjectList](DetectedObjectList.md) ObjectBounds(ObjectBoundsRequest request)
-
-Detect objects' bounds
-
-### **ObjectBoundsRequest** Parameters
-```csharp
-ObjectBoundsRequest(
-    string name, 
-    string method = null, 
-    int? threshold = null, 
-    bool? includeClass = null, 
-    bool? includeScore = null, 
-    string folder = null, 
-    string storage = null)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| Image file name. | 
- **method** | **string**| Object detection method | [optional] [default to ssd]
- **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **bool?**| Return detected objects classes | [optional] [default to false]
- **includeScore** | **bool?**| Return detected objects score | [optional] [default to false]
- **folder** | **string**| Folder | [optional] 
- **storage** | **string**| Storage | [optional] 
-
-### Return type
-
-[**DetectedObjectList**](DetectedObjectList.md)
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
 <a name="objectexists"></a>
 ## **ObjectExists**
 > [ObjectExist](ObjectExist.md) ObjectExists(ObjectExistsRequest request)
@@ -2575,42 +2611,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FilesUploadResult**](FilesUploadResult.md)
-
-[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
-
-<a name="visualobjectbounds"></a>
-## **VisualObjectBounds**
-> System.IO.Stream VisualObjectBounds(VisualObjectBoundsRequest request)
-
-Detect objects bounds and draw them on the original image
-
-### **VisualObjectBoundsRequest** Parameters
-```csharp
-VisualObjectBoundsRequest(
-    string name, 
-    string method = null, 
-    int? threshold = null, 
-    bool? includeClass = null, 
-    bool? includeScore = null, 
-    string color = null, 
-    string folder = null, 
-    string storage = null)
-```
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string**| The image features detector. | 
- **method** | **string**| Object detection method | [optional] [default to ssd]
- **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeClass** | **bool?**| Draw detected objects classes | [optional] [default to false]
- **includeScore** | **bool?**| Draw detected objects scores | [optional] [default to false]
- **color** | **string**| Bounds, labels, and scores text color | [optional] [default to red]
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
-
-### Return type
-
-**System.IO.Stream**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 

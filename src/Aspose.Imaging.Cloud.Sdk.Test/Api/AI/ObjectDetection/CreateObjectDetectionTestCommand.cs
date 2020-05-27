@@ -80,7 +80,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             Assert.NotNull(response.DetectedObjects);
             Assert.IsTrue(response.DetectedObjects.Count > 0);
             Assert.NotNull(response.DetectedObjects[0]);
-            if (request.includeClass == true)
+            if (request.includeLabel == true)
             {
                 Assert.NotNull(response.DetectedObjects[0].Label);
             }

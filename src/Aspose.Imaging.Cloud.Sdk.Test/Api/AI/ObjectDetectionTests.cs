@@ -45,7 +45,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         public void ObjectBoundsTest()
         {
             var inputFile = InputTestFiles.FirstOrDefault(f=>string.Equals(f.Name, TestImage));
-            var request = new ObjectBoundsRequest(inputFile.Name)
+            var request = new GetObjectBoundsRequest(inputFile.Name)
             {
                 storage = TestStorage,
                 folder = TempFolder,
@@ -70,12 +70,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         public void VisualObjectBoundsTest()
         {
             var inputFile = InputTestFiles.FirstOrDefault(f => string.Equals(f.Name, TestImage));
-            var request = new VisualObjectBoundsRequest(inputFile.Name)
+            var request = new GetVisualObjectBoundsRequest(inputFile.Name)
             {
                 storage = TestStorage,
                 folder = TempFolder,
                 threshold = 20,
-                includeClass = true,
+                includeLabel = true,
                 includeScore = true,
                 color = "blue"
             };
@@ -109,7 +109,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                     storage = TestStorage,
                     outPath = saveResultToStorage ? TempFolder + "/" + inputFile.Name : null,
                     threshold = 60,
-                    includeClass = true,
+                    includeLabel = true,
                     includeScore = true
                 };
 
@@ -137,7 +137,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                     storage = TestStorage,
                     outPath = saveResultToStorage ? TempFolder + "/" + inputFile.Name : null,
                     threshold = 20,
-                    includeClass = true,
+                    includeLabel = true,
                     includeScore = true,
                     color = "blue"
                 };

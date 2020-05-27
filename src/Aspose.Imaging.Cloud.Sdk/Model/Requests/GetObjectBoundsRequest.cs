@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="ObjectBoundsRequest.cs">
+// <copyright company="Aspose" file="GetObjectBoundsRequest.cs">
 //   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -28,33 +28,33 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.ObjectBounds" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.GetObjectBounds" /> operation.
   /// </summary>  
-  public class ObjectBoundsRequest  
+  public class GetObjectBoundsRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ObjectBoundsRequest"/> class.
+        /// Initializes a new instance of the <see cref="GetObjectBoundsRequest"/> class.
         /// </summary>        
-        public ObjectBoundsRequest()
+        public GetObjectBoundsRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ObjectBoundsRequest"/> class.
+        /// Initializes a new instance of the <see cref="GetObjectBoundsRequest"/> class.
         /// </summary>
         /// <param name="name">Image file name.</param>
         /// <param name="method">Object detection method</param>
         /// <param name="threshold">Object detection probability threshold in percents</param>
-        /// <param name="includeClass">Return detected objects classes</param>
+        /// <param name="includeLabel">Return detected objects labels</param>
         /// <param name="includeScore">Return detected objects score</param>
         /// <param name="folder">Folder</param>
         /// <param name="storage">Storage</param>
-        public ObjectBoundsRequest(string name, string method = null, int? threshold = null, bool? includeClass = null, bool? includeScore = null, string folder = null, string storage = null)             
+        public GetObjectBoundsRequest(string name, string method = null, int? threshold = null, bool? includeLabel = null, bool? includeScore = null, string folder = null, string storage = null)             
         {
             this.name = name;
             this.method = method;
             this.threshold = threshold;
-            this.includeClass = includeClass;
+            this.includeLabel = includeLabel;
             this.includeScore = includeScore;
             this.folder = folder;
             this.storage = storage;
@@ -76,9 +76,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public int? threshold { get; set; }
 
         /// <summary>
-        /// Return detected objects classes
+        /// Return detected objects labels
         /// </summary>  
-        public bool? includeClass { get; set; }
+        public bool? includeLabel { get; set; }
 
         /// <summary>
         /// Return detected objects score

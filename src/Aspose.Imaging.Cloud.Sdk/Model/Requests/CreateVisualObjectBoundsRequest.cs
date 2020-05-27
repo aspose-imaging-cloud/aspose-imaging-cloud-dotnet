@@ -45,17 +45,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="imageData">Input image</param>
         /// <param name="method">Object detection method</param>
         /// <param name="threshold">Object detection probability threshold in percents</param>
-        /// <param name="includeClass">Draw detected objects classes</param>
+        /// <param name="includeLabel">Draw detected objects classes</param>
         /// <param name="includeScore">Draw detected objects scores</param>
         /// <param name="color">Bounds, labels, and scores text color</param>
         /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image)</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public CreateVisualObjectBoundsRequest(System.IO.Stream imageData, string method = null, int? threshold = null, bool? includeClass = null, bool? includeScore = null, string color = null, string outPath = null, string storage = null)             
+        public CreateVisualObjectBoundsRequest(System.IO.Stream imageData, string method = null, int? threshold = null, bool? includeLabel = null, bool? includeScore = null, string color = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
             this.method = method;
             this.threshold = threshold;
-            this.includeClass = includeClass;
+            this.includeLabel = includeLabel;
             this.includeScore = includeScore;
             this.color = color;
             this.outPath = outPath;
@@ -80,7 +80,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Draw detected objects classes
         /// </summary>  
-        public bool? includeClass { get; set; }
+        public bool? includeLabel { get; set; }
 
         /// <summary>
         /// Draw detected objects scores
