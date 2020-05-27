@@ -114,27 +114,15 @@ namespace AsposeImagingCloudSdkExamples
                 rotateFlipImage.CreateRotateFlippedImageFromRequestBody();
                 
                 // TIFF Frames
-                var tiffFrames = new TiffFrames(api);
-                // Get a specified frame from existing TIFF image
-                tiffFrames.GetImageFrameFromStorage();
-                // Get a specified frame from existing TIFF image, and upload the frame to Cloud Storage
-                tiffFrames.GetImageFrameAndUploadToStorage();
-                // Resize a TIFF frame
-                tiffFrames.ResizeImageFrameFromStorage();
-                // Crop a TIFF frame
-                tiffFrames.CropImageFrameFromStorage();
-                // RotateFlip a TIFF frame
-                tiffFrames.RotateFlipImageFrameFromStorage();
-                // Get other frames from existing TIFF image
-                tiffFrames.GetAllImageFramesFromStorage();
-                // Get separate frame from existing TIFF image.
-                // Image data is passed as zero-indexed multipart/form-data content or as raw body stream
-                tiffFrames.CreateImageFrameFromRequestBody();
-                // Get separate frame properties of existing TIFF image
-                tiffFrames.GetImageFramePropertiesFromStorage();
-                // Get separate frame properties of existing TIFF image.
-                // Image data is passed as zero-indexed multipart/form-data content or as raw body stream
-                tiffFrames.ExtractImageFramePropertiesFromRequestBody();
+                var multiframeImage = new MultiframeImage(api);
+                multiframeImage.GetImageFrameFromStorage();
+                multiframeImage.GetImageFrameAndUploadToStorage();
+                multiframeImage.CreateImageFrameFromRequestBody();
+                multiframeImage.GetImageFrameRangeFromStorage();
+                multiframeImage.GetImageFrameRangeAndUploadToStorage();
+                multiframeImage.CreateImageFrameRangeFromRequestBody();
+                multiframeImage.GetImageFramePropertiesFromStorage();
+                multiframeImage.ExtractImageFramePropertiesFromRequestBody();
                 
                 // Update parameters of existing TIFF image
                 var tiffImage = new TiffImage(api);
