@@ -38,6 +38,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
     using Newtonsoft.Json;
 
     using NUnit.Framework;
+    using Aspose.Imaging.Cloud.Sdk.Client;
+    using System.Net;
+    using System.Threading;
 
     /// <summary>
     /// Base class for API tester
@@ -298,9 +301,93 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
 #endif 
             PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
         {
-            this.TestRequest(testMethodName, false, parametersLine, inputFileName, null, 
+            this.TestRequest(
+                testMethodName, 
+                false, 
+                parametersLine, 
+                inputFileName, 
+                null, 
                 () => this.ObtainGetResponse(requestInvoker),
-                propertiesTester, folder, storage);
+                propertiesTester, 
+                folder, 
+                storage);
+        }
+
+        /// <summary>
+        /// Execute test command
+        /// </summary>
+        /// <param name="testCommand">Test command</param>
+        /// <param name="testMethodName">Test method name</param>
+        /// <param name="parametersLine">Parameters line</param>
+        /// <param name="inputFileName">Input file name</param>
+        /// <param name="folder">Folder</param>
+        /// <param name="storage">Storage</param>
+        protected void ExecuteTestCommand(
+            ITestCommand testCommand,
+            string testMethodName, 
+            string parametersLine,
+            string inputFileName,
+            string folder, 
+            string storage = DefaultStorage)
+        {
+            WriteLineEverywhere(testMethodName);
+
+            if (!CheckInputFileExists(inputFileName))
+            {
+                throw new ArgumentException(
+                    $"Input file {inputFileName} doesn't exist in the specified storage folder: {folder}. Please, upload it first.");
+            }
+
+            if (!this.ImagingApi.ObjectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage)).Exists.Value)
+            {
+                this.ImagingApi.CopyFile(
+                    new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage));
+            }
+
+            bool passed = false;
+            try
+            {
+                WriteLineEverywhere(parametersLine);
+
+                InvokeRequestWithRetry(testCommand, 5);
+                testCommand.AssertResponse();
+                passed = true;
+            }
+            catch (Exception ex)
+            {
+                FailedAnyTest = true;
+                WriteLineEverywhere(ex.Message);
+                throw;
+            }
+            finally
+            {
+                WriteLineEverywhere($"Test passed: {passed}");
+            }
+        }
+
+        private void InvokeRequestWithRetry(ITestCommand testCommand, int retryCount)
+        {
+            try
+            {
+                testCommand.InvokeRequest();
+            }
+            catch (ApiException ex)
+            {
+                if(retryCount <= 1)
+                {
+                    throw;
+                }
+                else
+                {
+                    //if(ex.ErrorCode == (int)HttpStatusCode.BadGateway)
+                    //{
+                    Thread.Sleep(3000);
+                    InvokeRequestWithRetry(testCommand, --retryCount);
+                    //}
+
+                    //throw;
+                }
+            }
         }
 
         /// <summary>
