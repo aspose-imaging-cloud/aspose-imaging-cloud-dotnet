@@ -17,31 +17,31 @@ namespace AsposeImagingCloudSdkExamples.AI
             PrintHeader("Object detection example:");
         }
 
-        protected override string SampleImageFileName => "object_detection_example.jpg";
+        protected override string SampleImageFileName => "test.bmp";
 
-        private const string SaveImageFormat = "jpg";
+        private const string SaveImageFormat = "bmp";
 
         /// <summary>
         /// Detect objects on an image from a cloud storage.
         /// </summary>
         public void DetectObjectsImageFromStorage()
         {
-            Console.WriteLine("Detect object on th image from cloud storage");
+            Console.WriteLine("Detect object on the image from cloud storage");
 
             UploadSampleImageToCloud();
 
             string method = "ssd";
             int threshold = 50;
-            bool includeClass = true;
+            bool includeLabel = true;
             bool includeScore = true;
             string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            var request = new ObjectBoundsRequest(SampleImageFileName, method, threshold, includeClass, includeScore, folder, storage);
+            var request = new GetObjectBoundsRequest(SampleImageFileName, method, threshold, includeLabel, includeScore, folder, storage);
 
-            Console.WriteLine($"Call ObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include class: {includeClass}, includeScore: {includeScore}");
+            Console.WriteLine($"Call ObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include label: {includeLabel}, includeScore: {includeScore}");
 
-            DetectedObjectList detectedObjectList = this.ImagingApi.ObjectBounds(request);
+            DetectedObjectList detectedObjectList = this.ImagingApi.GetObjectBounds(request);
 
             Console.WriteLine("Objects detected: " + detectedObjectList.DetectedObjects.Count);
 
@@ -59,16 +59,17 @@ namespace AsposeImagingCloudSdkExamples.AI
 
             string method = "ssd";
             int threshold = 50;
-            bool includeClass = true;
+            bool includeLabel = true;
             bool includeScore = true;
+            string color = "blue";
             string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            var request = new VisualObjectBoundsRequest(SampleImageFileName, method, threshold, includeClass, includeScore, folder, storage);
+            var request = new GetVisualObjectBoundsRequest(SampleImageFileName, method, threshold, includeLabel, includeScore, color, folder, storage);
 
-            Console.WriteLine($"Call VisualObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include class: {includeClass}, includeScore: {includeScore}");
+            Console.WriteLine($"Call VisualObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include label: {includeLabel}, includeScore: {includeScore}, color: {color}");
 
-            using (Stream updatedImage = this.ImagingApi.VisualObjectBounds(request))
+            using (Stream updatedImage = this.ImagingApi.GetVisualObjectBounds(request))
             {
                 UploadImageToCloud(GetModifiedSampleImageFileName(false, SaveImageFormat), updatedImage);
             }
@@ -87,14 +88,14 @@ namespace AsposeImagingCloudSdkExamples.AI
             {
                 string method = "ssd";
                 int threshold = 50;
-                bool includeClass = true;
+                bool includeLabel = true;
                 bool includeScore = true;
                 string outPath = null;
                 string storage = null; // We are using default Cloud Storage
 
-                var request = new CreateObjectBoundsRequest(inputImageStream, method, threshold, includeClass, includeScore, outPath, storage);
+                var request = new CreateObjectBoundsRequest(inputImageStream, method, threshold, includeLabel, includeScore, outPath, storage);
 
-                Console.WriteLine($"Call CreateObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include class: {includeClass}, includeScore: {includeScore}");
+                Console.WriteLine($"Call CreateObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include label: {includeLabel}, includeScore: {includeScore}");
 
                 DetectedObjectList detectedObjectList = this.ImagingApi.CreateObjectBounds(request);
                 Console.WriteLine("Objects detected: " + detectedObjectList.DetectedObjects.Count);
@@ -114,14 +115,15 @@ namespace AsposeImagingCloudSdkExamples.AI
             {
                 string method = "ssd";
                 int threshold = 50;
-                bool includeClass = true;
+                bool includeLabel = true;
                 bool includeScore = true;
+                string color = null;
                 string outPath = null;
                 string storage = null; // We are using default Cloud Storage
 
-                var request = new CreateVisualObjectBoundsRequest(inputImageStream, method, threshold, includeClass, includeScore, outPath, storage);
+                var request = new CreateVisualObjectBoundsRequest(inputImageStream, method, threshold, includeLabel, includeScore, color, outPath, storage);
 
-                Console.WriteLine($"Call CreateVisualObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include class: {includeClass}, includeScore: {includeScore}");
+                Console.WriteLine($"Call CreateVisualObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include label: {includeLabel}, include score: {includeScore}");
 
                 using (Stream updatedImage = this.ImagingApi.CreateVisualObjectBounds(request))
                 {
