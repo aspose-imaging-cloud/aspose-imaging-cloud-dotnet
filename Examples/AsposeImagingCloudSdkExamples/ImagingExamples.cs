@@ -198,6 +198,13 @@ namespace AsposeImagingCloudSdkExamples
                 findImages.FindImagesByTag();
                 findImages.SearchImageFromWebSource();
                 findImages.DeleteSearchContext();
+                
+                //object detection
+                var objectDetection = new ObjectDetection(api);
+                objectDetection.DetectObjectsImageFromStorage();
+                objectDetection.DetectedObjectsImageFromRequestBody();
+                objectDetection.VisualiizeDetectObjectsAndUploadToStorage();
+                objectDetection.VisualizeDetectedObjectsImageFromRequestBody();
             }
             catch (Exception ex)
             {
