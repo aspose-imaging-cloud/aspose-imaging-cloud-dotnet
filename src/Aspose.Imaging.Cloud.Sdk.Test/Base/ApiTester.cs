@@ -332,16 +332,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         {
             WriteLineEverywhere(testMethodName);
 
-            if (!CheckInputFileExists(inputFileName))
+            if (!string.IsNullOrEmpty(inputFileName))
             {
-                throw new ArgumentException(
-                    $"Input file {inputFileName} doesn't exist in the specified storage folder: {folder}. Please, upload it first.");
-            }
+                if (!CheckInputFileExists(inputFileName))
+                {
+                    throw new ArgumentException(
+                        $"Input file {inputFileName} doesn't exist in the specified storage folder: {folder}. Please, upload it first.");
+                }
 
-            if (!this.ImagingApi.ObjectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage)).Exists.Value)
-            {
-                this.ImagingApi.CopyFile(
-                    new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage));
+                if (!this.ImagingApi.ObjectExists(new ObjectExistsRequest(folder + "/" + inputFileName, storage)).Exists.Value)
+                {
+                    this.ImagingApi.CopyFile(
+                        new CopyFileRequest(OriginalDataFolder + "/" + inputFileName, folder + "/" + inputFileName, storage, storage));
+                }
             }
 
             bool passed = false;
