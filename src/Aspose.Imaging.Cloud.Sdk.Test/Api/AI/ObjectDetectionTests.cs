@@ -25,14 +25,9 @@
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
 {
-    using System.Web;
-    using System.IO;
-    using Client;
-    using Model;
     using Model.Requests;
     using NUnit.Framework;
     using System.Linq;
-    using System.Collections.Generic;
     using Aspose.Imaging.Cloud.Sdk.Test.Base;
     using Aspose.Imaging.Cloud.Sdk.Test.Api.AI.ObjectDetection;
 
@@ -51,7 +46,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 storage = TestStorage,
                 folder = TempFolder,
                 threshold = 20,
-                allowedLabels = "cat",
+                allowedLabels = "dog",
                 includeLabel = true
             };
 
@@ -80,7 +75,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                 threshold = 20,
                 includeLabel = true,
                 includeScore = true,
-                allowedLabels = "cat",
+                allowedLabels = "dog",
                 color = "blue"
             };
 
@@ -112,10 +107,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                     imageData = stream,
                     storage = TestStorage,
                     outPath = saveResultToStorage ? TempFolder + "/" + inputFile.Name : null,
-                    threshold = 60,
+                    threshold = 10,
                     includeLabel = true,
                     includeScore = true,
-                    allowedLabels = "cat",
+                    allowedLabels = "dog",
                 };
 
                 using (var command = new CreateObjectDetectionTestCommand(request, ImagingApi,
@@ -145,7 +140,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                     includeLabel = true,
                     includeScore = true,
                     color = "blue",
-                    allowedLabels = "cat",
+                    allowedLabels = "dog",
                 };
 
                 using (var command = new CreateVisualObjectDetectionTestCommand(request, ImagingApi,
