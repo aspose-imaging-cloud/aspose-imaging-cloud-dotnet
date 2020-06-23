@@ -1587,6 +1587,45 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
+        /// Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.              
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CreateSavedImageAsRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream CreateSavedImageAs(CreateSavedImageAsRequest request)
+        {
+            // verify the required parameter 'format' is set
+            if (request.format == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'format' when calling CreateSavedImageAs");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/saveAs";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (System.IO.Stream)SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
+        }
+        
+        /// <summary>
         /// Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="CreateUpdatedImageRequest" /></param>
@@ -3667,6 +3706,52 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 formParams);
             return response;
             
+        }
+        
+        /// <summary>
+        /// Export existing image to another format. 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="SaveImageAsRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream SaveImageAs(SaveImageAsRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.name == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'name' when calling SaveImageAs");
+            }
+
+            // verify the required parameter 'format' is set
+            if (request.format == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'format' when calling SaveImageAs");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/saveAs";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (System.IO.Stream)SerializationHelper.Deserialize<System.IO.Stream>(StreamHelper.ToString(response));
         }
         
         /// <summary>

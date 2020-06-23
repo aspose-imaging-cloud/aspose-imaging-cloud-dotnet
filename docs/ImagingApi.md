@@ -1020,6 +1020,32 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="createsavedimageas"></a>
+## **CreateSavedImageAs**
+> System.IO.Stream CreateSavedImageAs(CreateSavedImageAsRequest request)
+
+Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
+
+### **CreateSavedImageAsRequest** Parameters
+```csharp
+CreateSavedImageAsRequest(
+    string format, 
+    string outPath = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
+ **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+
+### Return type
+
+**System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="createupdatedimage"></a>
 ## **CreateUpdatedImage**
 > System.IO.Stream CreateUpdatedImage(CreateUpdatedImageRequest request)
@@ -2455,6 +2481,34 @@ Name | Type | Description  | Notes
  **name** | **string**| Filename of an image. | 
  **method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). | 
  **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
+ **folder** | **string**| Folder with image to process. | [optional] 
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+
+### Return type
+
+**System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="saveimageas"></a>
+## **SaveImageAs**
+> System.IO.Stream SaveImageAs(SaveImageAsRequest request)
+
+Export existing image to another format.
+
+### **SaveImageAsRequest** Parameters
+```csharp
+SaveImageAsRequest(
+    string name, 
+    string format, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Filename of image. | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
  **folder** | **string**| Folder with image to process. | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
 
