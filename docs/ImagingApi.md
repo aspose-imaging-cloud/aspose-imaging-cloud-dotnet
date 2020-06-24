@@ -90,6 +90,34 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
+<a name="convertimage"></a>
+## **ConvertImage**
+> System.IO.Stream ConvertImage(ConvertImageRequest request)
+
+Convert existing image to another format.
+
+### **ConvertImageRequest** Parameters
+```csharp
+ConvertImageRequest(
+    string name, 
+    string format, 
+    string folder = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **name** | **string**| Filename of image. | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
+ **folder** | **string**| Folder with image to process. | [optional] 
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+
+### Return type
+
+**System.IO.Stream**
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
 <a name="converttifftofax"></a>
 ## **ConvertTiffToFax**
 > System.IO.Stream ConvertTiffToFax(ConvertTiffToFaxRequest request)
@@ -171,6 +199,34 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+[[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
+
+<a name="createconvertedimage"></a>
+## **CreateConvertedImage**
+> System.IO.Stream CreateConvertedImage(CreateConvertedImageRequest request)
+
+Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
+
+### **CreateConvertedImageRequest** Parameters
+```csharp
+CreateConvertedImageRequest(
+    System.IO.Stream imageData, 
+    string format, 
+    string outPath = null, 
+    string storage = null)
+```
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **imageData** | **System.IO.Stream**| Input image | 
+ **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
+ **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
+ **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+
+### Return type
+
+**System.IO.Stream**
 
 [[Back to top]](#) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API_README]](API_README.md)
 
@@ -977,7 +1033,6 @@ Export existing image to another format. Image data is passed as zero-indexed mu
 ### **CreateSavedImageAsRequest** Parameters
 ```csharp
 CreateSavedImageAsRequest(
-    System.IO.Stream imageData, 
     string format, 
     string outPath = null, 
     string storage = null)
@@ -985,7 +1040,6 @@ CreateSavedImageAsRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **imageData** | **System.IO.Stream**| Input image | 
  **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
  **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
  **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
