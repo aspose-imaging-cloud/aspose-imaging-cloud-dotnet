@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="SaveAsApiTests.cs">
+// <copyright company="Aspose" file="ConvertApiTests.cs">
 //   Copyright (c) 2018-2019 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -33,15 +33,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
     /// <summary>
-    ///  Class for testing SaveAsApi
+    ///  Class for testing ConvertApi
     /// </summary>
     [Category("v3.0")]
-    [Category("SaveAs")]
+    [Category("Convert")]
     [TestFixture]
-    public class SaveAsApiTests : ImagingApiTester
+    public class ConvertApiTests : ImagingApiTester
     {
         /// <summary>
-        /// Performs SaveAs (export to another format) operation test with GET method, taking input data from storage.
+        /// Performs Convert (export to another format) operation test with GET method, taking input data from storage.
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="additionalExportFormats">Additional formats to export to</param>
@@ -57,7 +57,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".tiff")]
         [TestCase(".webp")]
 #endif
-        public void SaveImageAsTest(string formatExtension, params string[] additionalExportFormats)
+        public void ConvertImageTest(string formatExtension, params string[] additionalExportFormats)
         {
             string name = null;
             string folder = TempFolder;
@@ -91,8 +91,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         name,
                         delegate
                         {
-                            var request = new SaveImageAsRequest(name, format, folder, storage);
-                            return ImagingApi.SaveImageAs(request);
+                            var request = new ConvertImageRequest(name, format, folder, storage);
+                            return ImagingApi.ConvertImage(request);
                         },
                         null,
                         folder,
@@ -102,7 +102,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Performs SaveAs (export to another format) operation test with POST method, sending input data in request stream.
+        /// Performs Convert (export to another format) operation test with POST method, sending input data in request stream.
         /// </summary>
         /// <param name="formatExtension">Format extension to search for input images in the test folder</param>
         /// <param name="saveResultToStorage">If resulting image should be saved to storage</param>
@@ -128,7 +128,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         [TestCase(".webp", true)]
         [TestCase(".webp", false)]
 #endif
-        public void CreateSavedImageAsTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
+        public void CreateConvertedImageTest(string formatExtension, bool saveResultToStorage, params string[] additionalExportFormats)
         {
             string name = null;
             string folder = TempFolder;
@@ -168,8 +168,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         delegate (Stream inputStream, string outPath)
                         {
                             var request =
-                                new CreateSavedImageAsRequest(inputStream, format, outPath, storage);
-                            return ImagingApi.CreateSavedImageAs(request);
+                                new CreateConvertedImageRequest(inputStream, format, outPath, storage);
+                            return ImagingApi.CreateConvertedImage(request);
                         },
                         null,
                         folder,
