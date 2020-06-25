@@ -1382,6 +1382,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -1656,6 +1658,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "color", request.color);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
@@ -2373,6 +2377,43 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
+        /// Detects objects bounds and draw them on the original image 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="GetAvailableLabelsRequest" /></param>
+        /// <returns><see cref="AvailableLabelsList"/></returns>            
+        public AvailableLabelsList GetAvailableLabels(GetAvailableLabelsRequest request)
+        {
+            // verify the required parameter 'method' is set
+            if (request.method == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'method' when calling GetAvailableLabels");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/objectdetection/availablelabels/{method}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "method", request.method);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (AvailableLabelsList)SerializationHelper.Deserialize<AvailableLabelsList>(StreamHelper.ToString(response));
+        }
+        
+        /// <summary>
         /// Get disc usage 
         /// </summary>
         /// <param name="request">Specific request.<see cref="GetDiscUsageRequest" /></param>
@@ -2779,6 +2820,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -2863,6 +2906,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "color", request.color);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);

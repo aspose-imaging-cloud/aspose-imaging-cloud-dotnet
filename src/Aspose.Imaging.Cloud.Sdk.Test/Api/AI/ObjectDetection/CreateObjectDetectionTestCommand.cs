@@ -24,8 +24,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 
-using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using Aspose.Imaging.Cloud.Sdk.Api;
 using Aspose.Imaging.Cloud.Sdk.Model;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
@@ -83,6 +82,26 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             if (request.includeLabel == true)
             {
                 Assert.NotNull(response.DetectedObjects[0].Label);
+                if (!string.IsNullOrEmpty(request.allowedLabels))
+                {
+                    foreach (var label in request.allowedLabels.Split(',').Select(f => f.Trim()))
+                    {
+                        foreach (var obj in response.DetectedObjects)
+                        {
+                            Assert.True(label.Equals(obj.Label, System.StringComparison.OrdinalIgnoreCase));
+                        }
+                    }
+                }
+                if (!string.IsNullOrEmpty(request.blockedLabels))
+                {
+                    foreach (var label in request.blockedLabels.Split(',').Select(f => f.Trim()))
+                    {
+                        foreach (var obj in response.DetectedObjects)
+                        {
+                            Assert.False(label.Equals(obj.Label, System.StringComparison.OrdinalIgnoreCase));
+                        }
+                    }
+                }
             }
             else
             {

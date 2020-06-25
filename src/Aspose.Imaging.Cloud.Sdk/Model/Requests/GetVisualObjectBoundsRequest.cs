@@ -47,16 +47,20 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="threshold">Object detection probability threshold in percents</param>
         /// <param name="includeLabel">Draw detected objects labels</param>
         /// <param name="includeScore">Draw detected objects scores</param>
+        /// <param name="allowedLabels">Comma-separated list of allowed labels</param>
+        /// <param name="blockedLabels">Comma-separated list of blocked labels</param>
         /// <param name="color">Bounds, labels, and scores text color</param>
         /// <param name="folder">The folder.</param>
         /// <param name="storage">The storage.</param>
-        public GetVisualObjectBoundsRequest(string name, string method = null, int? threshold = null, bool? includeLabel = null, bool? includeScore = null, string color = null, string folder = null, string storage = null)             
+        public GetVisualObjectBoundsRequest(string name, string method = null, int? threshold = null, bool? includeLabel = null, bool? includeScore = null, string allowedLabels = null, string blockedLabels = null, string color = null, string folder = null, string storage = null)             
         {
             this.name = name;
             this.method = method;
             this.threshold = threshold;
             this.includeLabel = includeLabel;
             this.includeScore = includeScore;
+            this.allowedLabels = allowedLabels;
+            this.blockedLabels = blockedLabels;
             this.color = color;
             this.folder = folder;
             this.storage = storage;
@@ -86,6 +90,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Draw detected objects scores
         /// </summary>  
         public bool? includeScore { get; set; }
+
+        /// <summary>
+        /// Comma-separated list of allowed labels
+        /// </summary>  
+        public string allowedLabels { get; set; }
+
+        /// <summary>
+        /// Comma-separated list of blocked labels
+        /// </summary>  
+        public string blockedLabels { get; set; }
 
         /// <summary>
         /// Bounds, labels, and scores text color
