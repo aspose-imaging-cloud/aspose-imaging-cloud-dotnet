@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="SaveImageAsRequest.cs">
+// <copyright company="Aspose" file="CreateConvertedImageRequest.cs">
 //   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -28,36 +28,36 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.SaveImageAs" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.CreateConvertedImage" /> operation.
   /// </summary>  
-  public class SaveImageAsRequest  
+  public class CreateConvertedImageRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SaveImageAsRequest"/> class.
+        /// Initializes a new instance of the <see cref="CreateConvertedImageRequest"/> class.
         /// </summary>        
-        public SaveImageAsRequest()
+        public CreateConvertedImageRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SaveImageAsRequest"/> class.
+        /// Initializes a new instance of the <see cref="CreateConvertedImageRequest"/> class.
         /// </summary>
-        /// <param name="name">Filename of image.</param>
+        /// <param name="imageData">Input image</param>
         /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
-        /// <param name="folder">Folder with image to process.</param>
+        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
         /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public SaveImageAsRequest(string name, string format, string folder = null, string storage = null)             
+        public CreateConvertedImageRequest(System.IO.Stream imageData, string format, string outPath = null, string storage = null)             
         {
-            this.name = name;
+            this.imageData = imageData;
             this.format = format;
-            this.folder = folder;
+            this.outPath = outPath;
             this.storage = storage;
         }
         
         /// <summary>
-        /// Filename of image.
+        /// Input image
         /// </summary>  
-        public string name { get; set; }
+        public System.IO.Stream imageData { get; set; }
 
         /// <summary>
         /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
@@ -65,9 +65,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string format { get; set; }
 
         /// <summary>
-        /// Folder with image to process.
+        /// Path to updated file (if this is empty, response contains streamed image).
         /// </summary>  
-        public string folder { get; set; }
+        public string outPath { get; set; }
 
         /// <summary>
         /// Your Aspose Cloud Storage name.

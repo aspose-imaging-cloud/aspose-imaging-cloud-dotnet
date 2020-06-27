@@ -24,10 +24,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     public class ExamplesTests : ApiTester
     {
         /// <summary>
-        /// Saves as from storage example test.
+        /// Convert from storage example test.
         /// </summary>
         [Test]
-        public void SaveAsFromStorageExampleTest()
+        public void ConvertFromStorageExampleTest()
         {
             var config = this.ImagingApi.Configuration;
             var imagingApi = config.OnPremise ? new ImagingApi(config.ApiBaseUrl, config.ApiVersion, config.DebugMode) 
@@ -47,11 +47,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                 }
 
                 // convert image from storage to JPEG
-                var getSaveAsRequest =
-                    new SaveImageAsRequest("inputImage.png", "jpg", "ExampleFolderNet",
+                var getConvertRequest =
+                    new ConvertImageRequest("inputImage.png", "jpg", "ExampleFolderNet",
                         config.OnPremise ? this.TestStorage : null);
 
-                using (Stream convertedImage = imagingApi.SaveImageAs(getSaveAsRequest))
+                using (Stream convertedImage = imagingApi.ConvertImage(getConvertRequest))
                 {
                     // process resulting image
                     // for example, save it to storage
@@ -74,10 +74,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         }
 
         /// <summary>
-        /// Saves as from stream example test.
+        /// Convert from stream example test.
         /// </summary>
         [Test]
-        public void SaveAsFromStreamExampleTest()
+        public void ConvertFromStreamExampleTest()
         {
             var config = this.ImagingApi.Configuration;
             var imagingApi = config.OnPremise ? new ImagingApi(config.ApiBaseUrl, config.ApiVersion, config.DebugMode)
@@ -91,10 +91,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     // convert image from request stream to JPEG and save it to storage
                     // please, use outPath parameter for saving the result to storage
                     var postSaveToStorageRequest =
-                        new CreateSavedImageAsRequest(localInputImage, "jpg", "ExampleFolderNet/resultImage.jpg",
+                        new CreateConvertedImageRequest(localInputImage, "jpg", "ExampleFolderNet/resultImage.jpg",
                             config.OnPremise ? this.TestStorage : null);
 
-                    imagingApi.CreateSavedImageAs(postSaveToStorageRequest);
+                    imagingApi.CreateConvertedImage(postSaveToStorageRequest);
 
                     // download saved image from storage
                     using (Stream savedFile =
@@ -109,10 +109,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                     // convert image from request stream to JPEG and read it from resulting stream
                     // please, set outPath parameter as null to return result in request stream instead of saving to storage
                     var postSaveToStreamRequest =
-                        new CreateSavedImageAsRequest(localInputImage, "jpg", null, 
+                        new CreateConvertedImageRequest(localInputImage, "jpg", null, 
                             config.OnPremise ? this.TestStorage : null);
 
-                    using (Stream resultPostImageStream = imagingApi.CreateSavedImageAs(postSaveToStreamRequest))
+                    using (Stream resultPostImageStream = imagingApi.CreateConvertedImage(postSaveToStreamRequest))
                     {
                         // process resulting image from response stream
                     }
