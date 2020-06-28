@@ -89,16 +89,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         public string PhotoInterpretation { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether width tag found.
-        /// </summary>  
-        public bool? WidthTagFound { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether height tag found.
-        /// </summary>  
-        public bool? HeightTagFound { get; set; }
-
-        /// <summary>
         /// Gets or sets the width.
         /// </summary>  
         public int? Width { get; set; }
@@ -139,11 +129,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         public int? NumberOfFrames { get; set; }
 
         /// <summary>
-        /// Gets or sets the length of element.
-        /// </summary>  
-        public int? LengthValue { get; set; }
-
-        /// <summary>
         /// Indicates if DICOM image has little endian byte order.
         /// </summary>  
         public bool? IsLittleEndian { get; set; }
@@ -152,11 +137,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         /// Gets or sets the offset.
         /// </summary>  
         public int? Offset { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether \"DICOM\" data is found.
-        /// </summary>  
-        public bool? DicomFound { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object
@@ -176,8 +156,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
           sb.Append("  SamplesPerPixel: ").Append(this.SamplesPerPixel).Append("\n");
           sb.Append("  BitsAllocated: ").Append(this.BitsAllocated).Append("\n");
           sb.Append("  PhotoInterpretation: ").Append(this.PhotoInterpretation).Append("\n");
-          sb.Append("  WidthTagFound: ").Append(this.WidthTagFound).Append("\n");
-          sb.Append("  HeightTagFound: ").Append(this.HeightTagFound).Append("\n");
           sb.Append("  Width: ").Append(this.Width).Append("\n");
           sb.Append("  Height: ").Append(this.Height).Append("\n");
           sb.Append("  WindowCentre: ").Append(this.WindowCentre).Append("\n");
@@ -186,10 +164,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
           sb.Append("  RescaleIntercept: ").Append(this.RescaleIntercept).Append("\n");
           sb.Append("  RescaleSlope: ").Append(this.RescaleSlope).Append("\n");
           sb.Append("  NumberOfFrames: ").Append(this.NumberOfFrames).Append("\n");
-          sb.Append("  LengthValue: ").Append(this.LengthValue).Append("\n");
           sb.Append("  IsLittleEndian: ").Append(this.IsLittleEndian).Append("\n");
           sb.Append("  Offset: ").Append(this.Offset).Append("\n");
-          sb.Append("  DicomFound: ").Append(this.DicomFound).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }
