@@ -263,6 +263,47 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
+        /// Convert existing image to another format. 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="ConvertImageRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream ConvertImage(ConvertImageRequest request)
+        {
+            // verify the required parameter 'name' is set
+            if (request.name == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'name' when calling ConvertImage");
+            }
+
+            // verify the required parameter 'format' is set
+            if (request.format == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'format' when calling ConvertImage");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/convert";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
+        }
+        
+        /// <summary>
         /// Update parameters of existing TIFF image accordingly to fax parameters. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="ConvertTiffToFaxRequest" /></param>
@@ -371,6 +412,50 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                 null, 
                 null, 
                 formParams);
+        }
+        
+        /// <summary>
+        /// Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.              
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="CreateConvertedImageRequest" /></param>
+        /// <returns><see cref="System.IO.Stream"/></returns>            
+        public System.IO.Stream CreateConvertedImage(CreateConvertedImageRequest request)
+        {
+            // verify the required parameter 'imageData' is set
+            if (request.imageData == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateConvertedImage");
+            }
+
+            // verify the required parameter 'format' is set
+            if (request.format == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'format' when calling CreateConvertedImage");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/convert";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
+            
+            if (request.imageData != null) 
+            {
+                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
+            }
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "POST", 
+                null, 
+                null, 
+                formParams);
+            return response;
+            
         }
         
         /// <summary>
@@ -1382,6 +1467,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -1483,50 +1570,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
                         .Replace("/?", "?");
             var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            if (request.imageData != null) 
-            {
-                formParams.Add("imageData", this.apiInvoker.ToFileInfo(request.imageData, "imageData"));
-            }
-            var response = this.apiInvoker.InvokeApi(
-                resourcePath, 
-                "POST", 
-                null, 
-                null, 
-                formParams);
-            return response;
-            
-        }
-        
-        /// <summary>
-        /// Export existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.              
-        /// </summary>
-        /// <param name="request">Specific request.<see cref="CreateSavedImageAsRequest" /></param>
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream CreateSavedImageAs(CreateSavedImageAsRequest request)
-        {
-            // verify the required parameter 'imageData' is set
-            if (request.imageData == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'imageData' when calling CreateSavedImageAs");
-            }
-
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling CreateSavedImageAs");
-            }
-
-            // create path and map variables
-            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/saveAs";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-            var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
@@ -1656,6 +1699,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "color", request.color);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "outPath", request.outPath);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
@@ -2373,6 +2418,43 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
+        /// Detects objects bounds and draw them on the original image 
+        /// </summary>
+        /// <param name="request">Specific request.<see cref="GetAvailableLabelsRequest" /></param>
+        /// <returns><see cref="AvailableLabelsList"/></returns>            
+        public AvailableLabelsList GetAvailableLabels(GetAvailableLabelsRequest request)
+        {
+            // verify the required parameter 'method' is set
+            if (request.method == null) 
+            {
+                throw new ApiException(400, "Missing required parameter 'method' when calling GetAvailableLabels");
+            }
+
+            // create path and map variables
+            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/ai/objectdetection/availablelabels/{method}";
+            resourcePath = Regex
+                        .Replace(resourcePath, "\\*", string.Empty)
+                        .Replace("&amp;", "&")
+                        .Replace("/?", "?");
+            var formParams = new Dictionary<string, object>();
+            resourcePath = UrlHelper.AddPathParameter(resourcePath, "method", request.method);
+            
+            var response = this.apiInvoker.InvokeApi(
+                resourcePath, 
+                "GET", 
+                null, 
+                null, 
+                formParams);
+            
+            if (response == null)
+            {
+                return null;
+            }
+      
+            return (AvailableLabelsList)SerializationHelper.Deserialize<AvailableLabelsList>(StreamHelper.ToString(response));
+        }
+        
+        /// <summary>
         /// Get disc usage 
         /// </summary>
         /// <param name="request">Specific request.<see cref="GetDiscUsageRequest" /></param>
@@ -2779,6 +2861,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
             
@@ -2863,6 +2947,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "threshold", request.threshold);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeLabel", request.includeLabel);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "includeScore", request.includeScore);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "allowedLabels", request.allowedLabels);
+            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "blockedLabels", request.blockedLabels);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "color", request.color);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
@@ -3614,47 +3700,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
             var formParams = new Dictionary<string, object>();
             resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "method", request.method);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
-            resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);
-            
-            var response = this.apiInvoker.InvokeApi(
-                resourcePath, 
-                "GET", 
-                null, 
-                null, 
-                formParams);
-            return response;
-            
-        }
-        
-        /// <summary>
-        /// Export existing image to another format. 
-        /// </summary>
-        /// <param name="request">Specific request.<see cref="SaveImageAsRequest" /></param>
-        /// <returns><see cref="System.IO.Stream"/></returns>            
-        public System.IO.Stream SaveImageAs(SaveImageAsRequest request)
-        {
-            // verify the required parameter 'name' is set
-            if (request.name == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'name' when calling SaveImageAs");
-            }
-
-            // verify the required parameter 'format' is set
-            if (request.format == null) 
-            {
-                throw new ApiException(400, "Missing required parameter 'format' when calling SaveImageAs");
-            }
-
-            // create path and map variables
-            var resourcePath = this.Configuration.GetApiRootUrl() + "/imaging/{name}/saveAs";
-            resourcePath = Regex
-                        .Replace(resourcePath, "\\*", string.Empty)
-                        .Replace("&amp;", "&")
-                        .Replace("/?", "?");
-            var formParams = new Dictionary<string, object>();
-            resourcePath = UrlHelper.AddPathParameter(resourcePath, "name", request.name);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "format", request.format);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "folder", request.folder);
             resourcePath = UrlHelper.AddQueryParameterToUrl(resourcePath, "storage", request.storage);

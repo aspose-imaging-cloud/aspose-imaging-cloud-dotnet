@@ -47,15 +47,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <param name="threshold">Object detection probability threshold in percents</param>
         /// <param name="includeLabel">Return detected objects labels</param>
         /// <param name="includeScore">Return detected objects score</param>
+        /// <param name="allowedLabels">Comma-separated list of allowed labels</param>
+        /// <param name="blockedLabels">Comma-separated list of blocked labels</param>
         /// <param name="folder">Folder</param>
         /// <param name="storage">Storage</param>
-        public GetObjectBoundsRequest(string name, string method = null, int? threshold = null, bool? includeLabel = null, bool? includeScore = null, string folder = null, string storage = null)             
+        public GetObjectBoundsRequest(string name, string method = null, int? threshold = null, bool? includeLabel = null, bool? includeScore = null, string allowedLabels = null, string blockedLabels = null, string folder = null, string storage = null)             
         {
             this.name = name;
             this.method = method;
             this.threshold = threshold;
             this.includeLabel = includeLabel;
             this.includeScore = includeScore;
+            this.allowedLabels = allowedLabels;
+            this.blockedLabels = blockedLabels;
             this.folder = folder;
             this.storage = storage;
         }
@@ -84,6 +88,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Return detected objects score
         /// </summary>  
         public bool? includeScore { get; set; }
+
+        /// <summary>
+        /// Comma-separated list of allowed labels
+        /// </summary>  
+        public string allowedLabels { get; set; }
+
+        /// <summary>
+        /// Comma-separated list of blocked labels
+        /// </summary>  
+        public string blockedLabels { get; set; }
 
         /// <summary>
         /// Folder

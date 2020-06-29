@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="SaveImageAsRequest.cs">
+// <copyright company="Aspose" file="GetAvailableLabelsRequest.cs">
 //   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -28,50 +28,29 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
   using Aspose.Imaging.Cloud.Sdk.Model; 
 
   /// <summary>
-  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.SaveImageAs" /> operation.
+  /// Request model for <see cref="Aspose.Imaging.Cloud.Sdk.Api.ImagingApi.GetAvailableLabels" /> operation.
   /// </summary>  
-  public class SaveImageAsRequest  
+  public class GetAvailableLabelsRequest  
   {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SaveImageAsRequest"/> class.
+        /// Initializes a new instance of the <see cref="GetAvailableLabelsRequest"/> class.
         /// </summary>        
-        public SaveImageAsRequest()
+        public GetAvailableLabelsRequest()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SaveImageAsRequest"/> class.
+        /// Initializes a new instance of the <see cref="GetAvailableLabelsRequest"/> class.
         /// </summary>
-        /// <param name="name">Filename of image.</param>
-        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
-        /// <param name="folder">Folder with image to process.</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        public SaveImageAsRequest(string name, string format, string folder = null, string storage = null)             
+        /// <param name="method">Object detection method</param>
+        public GetAvailableLabelsRequest(string method)             
         {
-            this.name = name;
-            this.format = format;
-            this.folder = folder;
-            this.storage = storage;
+            this.method = method;
         }
         
         /// <summary>
-        /// Filename of image.
+        /// Object detection method
         /// </summary>  
-        public string name { get; set; }
-
-        /// <summary>
-        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
-        /// </summary>  
-        public string format { get; set; }
-
-        /// <summary>
-        /// Folder with image to process.
-        /// </summary>  
-        public string folder { get; set; }
-
-        /// <summary>
-        /// Your Aspose Cloud Storage name.
-        /// </summary>  
-        public string storage { get; set; }
+        public string method { get; set; }
   }
 }
