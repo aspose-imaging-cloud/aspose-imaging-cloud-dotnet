@@ -72,11 +72,11 @@ namespace AsposeImagingCloudSdkExamples
             var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // Cloud Storage name
 
-            var request = new SaveImageAsRequest(SampleImageFileName, format, folder, storage);
+            var request = new ConvertImageRequest(SampleImageFileName, format, folder, storage);
 
             Console.WriteLine($"Call SaveImageAs with params: format:{format}");
 
-            using (var updatedImage = ImagingApi.SaveImageAs(request))
+            using (var updatedImage = ImagingApi.ConvertImage(request))
             {
                 SaveUpdatedSampleImageToOutput(updatedImage, false, format);
             }
@@ -99,11 +99,11 @@ namespace AsposeImagingCloudSdkExamples
             var folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // Cloud Storage name
 
-            var request = new SaveImageAsRequest(SampleImageFileName, format, folder, storage);
+            var request = new ConvertImageRequest(SampleImageFileName, format, folder, storage);
 
             Console.WriteLine($"Call SaveImageAs with params: format:{format}");
 
-            using (var updatedImage = ImagingApi.SaveImageAs(request))
+            using (var updatedImage = ImagingApi.ConvertImage(request))
             {
                 UploadImageToCloud(GetModifiedSampleImageFileName(false, format), updatedImage);
             }
@@ -126,11 +126,11 @@ namespace AsposeImagingCloudSdkExamples
                 string outPath = null; // Path to updated file (if this is empty, response contains streamed image)
                 string storage = null; // Cloud Storage name
 
-                var request = new CreateSavedImageAsRequest(inputImageStream, format, outPath, storage);
+                var request = new CreateConvertedImageRequest(inputImageStream, format, outPath, storage);
 
                 Console.WriteLine($"Call CreateSavedImageAs with params: format:{format}");
 
-                using (var updatedImage = ImagingApi.CreateSavedImageAs(request))
+                using (var updatedImage = ImagingApi.CreateConvertedImage(request))
                 {
                     SaveUpdatedSampleImageToOutput(updatedImage, true, format);
                 }

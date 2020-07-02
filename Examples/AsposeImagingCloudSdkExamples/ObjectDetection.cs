@@ -30,10 +30,12 @@ namespace AsposeImagingCloudSdkExamples.AI
             int threshold = 50;
             bool includeLabel = true;
             bool includeScore = true;
+            string allowedLabels = "cat";
+            string blockedLabels = "dog";
             string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            var request = new GetObjectBoundsRequest(SampleImageFileName, method, threshold, includeLabel, includeScore, folder, storage);
+            var request = new GetObjectBoundsRequest(SampleImageFileName, method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, folder, storage);
 
             Console.WriteLine($"Call ObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include label: {includeLabel}, includeScore: {includeScore}");
 
@@ -57,11 +59,13 @@ namespace AsposeImagingCloudSdkExamples.AI
             int threshold = 50;
             bool includeLabel = true;
             bool includeScore = true;
+            string allowedLabels = "cat";
+            string blockedLabels = "dog";
             string color = "blue";
             string folder = CloudPath; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
-            var request = new GetVisualObjectBoundsRequest(SampleImageFileName, method, threshold, includeLabel, includeScore, color, folder, storage);
+            var request = new GetVisualObjectBoundsRequest(SampleImageFileName, method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, color, folder, storage);
 
             Console.WriteLine($"Call VisualObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include label: {includeLabel}, includeScore: {includeScore}, color: {color}");
 
@@ -86,10 +90,12 @@ namespace AsposeImagingCloudSdkExamples.AI
                 int threshold = 50;
                 bool includeLabel = true;
                 bool includeScore = true;
+                string allowedLabels = "cat";
+                string blockedLabels = "dog";
                 string outPath = null;
                 string storage = null; // We are using default Cloud Storage
 
-                var request = new CreateObjectBoundsRequest(inputImageStream, method, threshold, includeLabel, includeScore, outPath, storage);
+                var request = new CreateObjectBoundsRequest(inputImageStream, method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, outPath, storage);
 
                 Console.WriteLine($"Call CreateObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include label: {includeLabel}, includeScore: {includeScore}");
 
@@ -113,11 +119,13 @@ namespace AsposeImagingCloudSdkExamples.AI
                 int threshold = 50;
                 bool includeLabel = true;
                 bool includeScore = true;
+                string allowedLabels = "cat";
+                string blockedLabels = "dog";
                 string color = null;
                 string outPath = null;
                 string storage = null; // We are using default Cloud Storage
 
-                var request = new CreateVisualObjectBoundsRequest(inputImageStream, method, threshold, includeLabel, includeScore, color, outPath, storage);
+                var request = new CreateVisualObjectBoundsRequest(inputImageStream, method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, color, outPath, storage);
 
                 Console.WriteLine($"Call CreateVisualObjectBoundsRequest with params: method:{method}, threshold:{threshold}, include label: {includeLabel}, include score: {includeScore}");
 
