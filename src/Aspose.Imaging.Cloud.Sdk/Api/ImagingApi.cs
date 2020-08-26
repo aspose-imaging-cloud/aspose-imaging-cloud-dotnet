@@ -2418,7 +2418,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         }
         
         /// <summary>
-        /// Detects objects bounds and draw them on the original image 
+        /// Gets available labels for selected object detection method. 
         /// </summary>
         /// <param name="request">Specific request.<see cref="GetAvailableLabelsRequest" /></param>
         /// <returns><see cref="AvailableLabelsList"/></returns>            
