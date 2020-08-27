@@ -39,16 +39,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   public class EpsProperties 
   {                       
         /// <summary>
-        /// Gets the width.
-        /// </summary>  
-        public int? Width { get; set; }
-
-        /// <summary>
-        /// Gets the height.
-        /// </summary>  
-        public int? Height { get; set; }
-
-        /// <summary>
         /// Gets the BoundingBox.
         /// </summary>  
         public string BoundingBoxString { get; set; }
@@ -81,8 +71,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         {
           var sb = new StringBuilder();
           sb.Append("class EpsProperties {\n");
-          sb.Append("  Width: ").Append(this.Width).Append("\n");
-          sb.Append("  Height: ").Append(this.Height).Append("\n");
           sb.Append("  BoundingBoxString: ").Append(this.BoundingBoxString).Append("\n");
           sb.Append("  CreationDateString: ").Append(this.CreationDateString).Append("\n");
           sb.Append("  Creator: ").Append(this.Creator).Append("\n");

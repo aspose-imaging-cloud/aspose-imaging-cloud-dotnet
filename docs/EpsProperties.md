@@ -3,8 +3,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Width** | **int?** | Gets the width. | 
-**Height** | **int?** | Gets the height. | 
 **BoundingBoxString** | **string** | Gets the BoundingBox. | [optional] 
 **CreationDateString** | **string** | Gets the CreationDate. | [optional] 
 **Creator** | **string** | Gets the Creator. | [optional] 
