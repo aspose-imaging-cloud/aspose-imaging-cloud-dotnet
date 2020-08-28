@@ -1566,7 +1566,7 @@ Name | Type | Description  | Notes
 ## **GetAvailableLabels**
 > [AvailableLabelsList](AvailableLabelsList.md) GetAvailableLabels(GetAvailableLabelsRequest request)
 
-Detects objects bounds and draw them on the original image
+Gets available labels for selected object detection method.
 
 ### **GetAvailableLabelsRequest** Parameters
 ```csharp
