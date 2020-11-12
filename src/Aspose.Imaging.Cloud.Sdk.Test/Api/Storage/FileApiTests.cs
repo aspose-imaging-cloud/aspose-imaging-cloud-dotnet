@@ -263,6 +263,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
         }
 
         [Test]
+        [Ignore("IMAGINGCLOUD-644")]
         public void FileVersionsCreateTest()
         {
             if (this.ImagingApi.Configuration.OnPremise)
@@ -319,6 +320,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
         }
 
         [Test]
+        [Ignore("IMAGINGCLOUD-644")]
         public void FileVersionsDownloadTest()
         {
             if (this.ImagingApi.Configuration.OnPremise)
@@ -380,6 +382,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
         }
 
         [Test]
+        [Ignore("IMAGINGCLOUD-644")]
         public void FileVersionsCopyTest()
         {
             if (this.ImagingApi.Configuration.OnPremise)
@@ -445,6 +448,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
         }
 
         [Test]
+        [Ignore("IMAGINGCLOUD-644")]
         public void FileVersionsMoveTest()
         {
             if (this.ImagingApi.Configuration.OnPremise)
@@ -519,6 +523,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.Storage
         }
 
         [Test]
+        [Ignore("IMAGINGCLOUD-644")]
         public void FileVersionsDeleteTest()
         {
             if (this.ImagingApi.Configuration.OnPremise)
