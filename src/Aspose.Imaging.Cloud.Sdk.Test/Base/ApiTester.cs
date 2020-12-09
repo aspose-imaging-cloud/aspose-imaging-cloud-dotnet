@@ -213,19 +213,19 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         /// <summary>
         /// Creates the API instances using given access parameters.
         /// </summary>
-        /// <exception cref="System.ArgumentException">Please, specify valid access data (AppKey, AppSid, Base URL)</exception>
+        /// <exception cref="System.ArgumentException">Please, specify valid access data (ClientSecret, ClientId, Base URL)</exception>
         protected void CreateApiInstances()
         {
             WriteLineEverywhere("Trying to obtain configuration from environment variables.");
             string onPremiseString = this.GetEnvironmentVariable("OnPremise");
             bool onPremise = !string.IsNullOrEmpty(onPremiseString) &&
                              bool.Parse(this.GetEnvironmentVariable("OnPremise"));
-            string appKey = onPremise ? string.Empty : this.GetEnvironmentVariable("AppKey");
-            string appSid = onPremise ? string.Empty : this.GetEnvironmentVariable("AppSid");
+            string clientSecret = onPremise ? string.Empty : this.GetEnvironmentVariable("ClientSecret");
+            string clientId = onPremise ? string.Empty : this.GetEnvironmentVariable("ClientId");
             string baseUrl = this.GetEnvironmentVariable("ApiEndpoint");
             string apiVersion = this.GetEnvironmentVariable("ApiVersion");
 
-            if ((!onPremise && (string.IsNullOrEmpty(appKey) || string.IsNullOrEmpty(appSid)))
+            if ((!onPremise && (string.IsNullOrEmpty(clientSecret) || string.IsNullOrEmpty(clientId)))
                 || string.IsNullOrEmpty(baseUrl) || string.IsNullOrEmpty(apiVersion))
             {
                 WriteLineEverywhere("Access data isn't set completely by environment variables. " +
@@ -244,16 +244,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             if (serverFileInfo.Exists && serverFileInfo.Length > 0)
             {
                 var accessData = JsonConvert.DeserializeObject<ServerAccessData>(File.ReadAllText(serverAccessPath));
-                if (string.IsNullOrEmpty(appKey) && !onPremise)
+                if (string.IsNullOrEmpty(clientSecret) && !onPremise)
                 {
-                    appKey = accessData.AppKey;
-                    WriteLineEverywhere("Set default App key");
+                    clientSecret = accessData.ClientSecret;
+                    WriteLineEverywhere("Set default Client Secret");
                 }
 
-                if (string.IsNullOrEmpty(appSid) && !onPremise)
+                if (string.IsNullOrEmpty(clientId) && !onPremise)
                 {
-                    appSid = accessData.AppSid;
-                    WriteLineEverywhere("Set default App SID");
+                    clientId = accessData.ClientId;
+                    WriteLineEverywhere("Set default Client ID");
                 }
 
                 if (string.IsNullOrEmpty(baseUrl))
@@ -265,17 +265,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             }
             else if (!onPremise)
             {
-                throw new ArgumentException("Please, specify valid access data (AppKey, AppSid, Base URL)");
+                throw new ArgumentException("Please, specify valid access data (ClientSecret, ClientId, Base URL)");
             }
 
             WriteLineEverywhere($"On-premise: {onPremise}");
-            WriteLineEverywhere($"App key: {appKey}");
-            WriteLineEverywhere($"App SID: {appSid}");
+            WriteLineEverywhere($"Client Secret: {clientSecret}");
+            WriteLineEverywhere($"Client ID: {clientId}");
             WriteLineEverywhere($"Storage: {this.TestStorage}");
             WriteLineEverywhere($"Base URL: {baseUrl}");
             WriteLineEverywhere($"API version: {apiVersion}");
             this.ImagingApi = onPremise ? new ImagingApi(baseUrl, apiVersion, false) : 
-                new ImagingApi(appKey, appSid, baseUrl, apiVersion);
+                new ImagingApi(clientSecret, clientId, baseUrl, apiVersion);
             
             InputTestFiles = this.FetchInputTestFilesInfo();
             BasicInputTestFiles = InputTestFiles.Where(p => !p.Name.StartsWith("multipage_")).ToList();

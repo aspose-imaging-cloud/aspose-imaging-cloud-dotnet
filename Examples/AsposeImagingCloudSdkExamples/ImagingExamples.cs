@@ -40,15 +40,15 @@ namespace AsposeImagingCloudSdkExamples
         /// <summary>
         ///     Main function.
         /// </summary>
-        /// <param name="args"><c>--appKey</c> and <c>--appSid</c> are required arguments, <c>--baseUrl</c> is optional.</param>
+        /// <param name="args"><c>--clientSecret</c> and <c>--clientId</c> are required arguments, <c>--baseUrl</c> is optional.</param>
         private static void Main(string[] args)
         {
-            string appKey, appSid, baseUrl;
-            ProcessArguments(args, out appKey, out appSid, out baseUrl);
+            string clientSecret, clientId, baseUrl;
+            ProcessArguments(args, out clientSecret, out clientId, out baseUrl);
 
             try
             {
-                var api = new ImagingApi(appKey, appSid, baseUrl);
+                var api = new ImagingApi(clientSecret, clientId, baseUrl);
 
                 PrepareOutput();
 
@@ -61,150 +61,150 @@ namespace AsposeImagingCloudSdkExamples
                 bmpImage.ModifyBmpAndUploadToStorage();
                 bmpImage.CreateModifiedBmpFromRequestBody();
                 
-                // Crop an existing image
-                var cropImage = new CropImage(api);
-                cropImage.CropImageFromStorage();
-                cropImage.CropImageAndUploadToStorage();
-                cropImage.CreateCroppedImageFromRequestBody();
-                
-                // Deskew an existing image
-                var deskewImage = new DeskewImage(api);
-                deskewImage.DeskewImageFromStorage();
-                deskewImage.DeskewImageAndUploadToStorage();
-                deskewImage.CreateDeskewedImageFromRequestBody();
-                
-                // grayscale an existing image
-                var grayscaleImage = new GrayscaleImage(api);
-                grayscaleImage.GrayscaleImageFromStorage();
-                grayscaleImage.GrayscaleImageAndUploadToStorage();
-                grayscaleImage.CreateGrayscaledImageFromRequestBody();
-                
-                // Process existing EMF imaging using given parameters
-                var updateEmfImage = new UpdateEmfImage(api);
-                updateEmfImage.ModifyEmfFromStorage();
-                updateEmfImage.ModifyEmfAndUploadToStorage();
-                updateEmfImage.CreateModifiedEmfFromRequestBody();
-                
-                // Export existing image to another format
-                var exportImage = new ExportImage(api);
-                exportImage.SaveImageAsFromStorage();
-                exportImage.SaveImageAsAndUploadToStorage();
-                exportImage.CreateSavedImageAsFromRequestBody();
-                
-                // Apply a filtering effect to an image
-                var filterImage = new FilterImage(api);
-                filterImage.FilterImageFromStorage();
-                filterImage.FilterImageAndUploadToStorage();
-                
-                // Get properties of an image
-                var imageProperties = new ImageProperties(api);
-                imageProperties.GetImagePropertiesFromStorage();
-                imageProperties.ExtractImagePropertiesFromRequestBody();
-                
-                // Resize an existing image
-                var resizeImage = new ResizeImage(api);
-                resizeImage.ResizeImageFromStorage();
-                resizeImage.ResizeImageAndUploadToStorage();
-                resizeImage.CreateResizedImageFromRequestBody();
-                
-                // Rotate and/or flip an existing image
-                var rotateFlipImage = new RotateFlipImage(api);
-                rotateFlipImage.RotateFlipImageFromStorage();
-                rotateFlipImage.RotateFlipImageAndUploadToStorage();
-                rotateFlipImage.CreateRotateFlippedImageFromRequestBody();
-                
-                // TIFF Frames
-                var multiframeImage = new MultiframeImage(api);
-                multiframeImage.GetImageFrameFromStorage();
-                multiframeImage.GetImageFrameAndUploadToStorage();
-                multiframeImage.CreateImageFrameFromRequestBody();
-                multiframeImage.GetImageFrameRangeFromStorage();
-                multiframeImage.GetImageFrameRangeAndUploadToStorage();
-                multiframeImage.CreateImageFrameRangeFromRequestBody();
-                multiframeImage.GetImageFramePropertiesFromStorage();
-                multiframeImage.ExtractImageFramePropertiesFromRequestBody();
-                
-                // Update parameters of existing TIFF image
-                var tiffImage = new TiffImage(api);
-                tiffImage.ModifyTiffFromStorage();
-                tiffImage.ModifyTiffAndUploadToStorage();
-                tiffImage.CreateModifiedTiffFromRequestBody();
-                tiffImage.ConvertTiffToFaxFromStorage();
-                tiffImage.AppendTiffFromStorage();
-                
-                // Update parameters of existing GIF image
-                var updateGifImage = new UpdateGifImage(api);
-                updateGifImage.ModifyGifFromStorage();
-                updateGifImage.ModifyGifAndUploadToStorage();
-                updateGifImage.CreateModifiedGifFromRequestBody();
-                
-                // Perform scaling, cropping and flipping of an existing image in a single request
-                var updateImage = new UpdateImage(api);
-                updateImage.UpdateImageFromStorage();
-                updateImage.UpdateImageAndUploadToStorage();
-                updateImage.CreateUpdatedImageFromRequestBody();
-                
-                // Update parameters of existing JPEG2000 image
-                var updateJpeg2000Image = new UpdateJpeg2000Image(api);
-                updateJpeg2000Image.ModifyJpeg2000FromStorage();
-                updateJpeg2000Image.ModifyJpeg2000AndUploadToStorage();
-                updateJpeg2000Image.CreateModifiedJpeg2000FromRequestBody();
-                
-                // Update parameters of existing JPEG image
-                var updateJpegImage = new UpdateJpegImage(api);
-                updateJpegImage.ModifyJpegFromStorage();
-                updateJpegImage.ModifyJpegAndUploadToStorage();
-                updateJpegImage.CreateModifiedJpegFromRequestBody();
-                
-                // Update parameters of existing PSD image
-                var updatePsdImage = new UpdatePsdImage(api);
-                updatePsdImage.ModifyPsdFromStorage();
-                updatePsdImage.ModifyPsdAndUploadToStorage();
-                updatePsdImage.CreateModifiedPsdFromRequestBody();
-                
-                // Update parameters of existing WEBP image
-                var webpImage = new UpdateWebPImage(api);
-                webpImage.ModifyWebPFromStorage();
-                webpImage.ModifyWebPAndUploadToStorage();
-                webpImage.CreateModifiedWebPFromRequestBody();
-                
-                // Process existing WMF image using given parameters
-                var wmfImage = new UpdateWmfImage(api);
-                wmfImage.ModifyWmfFromStorage();
-                wmfImage.ModifyWmfAndUploadToStorage();
-                wmfImage.CreateModifiedWmfFromRequestBody();
-
-                // AI APIs
-                Console.WriteLine("Running AI examples:");
-                Console.WriteLine();
-
-                // Compare two images
-                var compareImages = new CompareImages(api);
-                compareImages.PrepareSearchContext();
-                compareImages.CompareTwoImagesInCloud();
-                compareImages.CompareLoadedImageToImageInCloud();
-                compareImages.DeleteSearchContext();
-
-                // Find Duplicate Images
-                var findDuplicateImages = new FindDuplicateImages(api);
-                findDuplicateImages.PrepareSearchContext();
-                findDuplicateImages.FindImageDuplicates();
-                findDuplicateImages.DeleteSearchContext();
-
-                // Find Similar Images
-                var findImages = new FindSimilarImages(api);
-                findImages.PrepareSearchContext();
-                findImages.FindImagesSimilar();
-                findImages.FindImagesByTag();
-                findImages.SearchImageFromWebSource();
-                findImages.DeleteSearchContext();
-                
-                //object detection
-                var objectDetection = new ObjectDetection(api);
-                objectDetection.DetectObjectsImageFromStorage();
-                objectDetection.DetectedObjectsImageFromRequestBody();
-                objectDetection.VisualiizeDetectObjectsAndUploadToStorage();
-                objectDetection.VisualizeDetectedObjectsImageFromRequestBody();
+                // // Crop an existing image
+                // var cropImage = new CropImage(api);
+                // cropImage.CropImageFromStorage();
+                // cropImage.CropImageAndUploadToStorage();
+                // cropImage.CreateCroppedImageFromRequestBody();
+                //
+                // // Deskew an existing image
+                // var deskewImage = new DeskewImage(api);
+                // deskewImage.DeskewImageFromStorage();
+                // deskewImage.DeskewImageAndUploadToStorage();
+                // deskewImage.CreateDeskewedImageFromRequestBody();
+                //
+                // // grayscale an existing image
+                // var grayscaleImage = new GrayscaleImage(api);
+                // grayscaleImage.GrayscaleImageFromStorage();
+                // grayscaleImage.GrayscaleImageAndUploadToStorage();
+                // grayscaleImage.CreateGrayscaledImageFromRequestBody();
+                //
+                // // Process existing EMF imaging using given parameters
+                // var updateEmfImage = new UpdateEmfImage(api);
+                // updateEmfImage.ModifyEmfFromStorage();
+                // updateEmfImage.ModifyEmfAndUploadToStorage();
+                // updateEmfImage.CreateModifiedEmfFromRequestBody();
+                //
+                // // Export existing image to another format
+                // var exportImage = new ExportImage(api);
+                // exportImage.SaveImageAsFromStorage();
+                // exportImage.SaveImageAsAndUploadToStorage();
+                // exportImage.CreateSavedImageAsFromRequestBody();
+                //
+                // // Apply a filtering effect to an image
+                // var filterImage = new FilterImage(api);
+                // filterImage.FilterImageFromStorage();
+                // filterImage.FilterImageAndUploadToStorage();
+                //
+                // // Get properties of an image
+                // var imageProperties = new ImageProperties(api);
+                // imageProperties.GetImagePropertiesFromStorage();
+                // imageProperties.ExtractImagePropertiesFromRequestBody();
+                //
+                // // Resize an existing image
+                // var resizeImage = new ResizeImage(api);
+                // resizeImage.ResizeImageFromStorage();
+                // resizeImage.ResizeImageAndUploadToStorage();
+                // resizeImage.CreateResizedImageFromRequestBody();
+                //
+                // // Rotate and/or flip an existing image
+                // var rotateFlipImage = new RotateFlipImage(api);
+                // rotateFlipImage.RotateFlipImageFromStorage();
+                // rotateFlipImage.RotateFlipImageAndUploadToStorage();
+                // rotateFlipImage.CreateRotateFlippedImageFromRequestBody();
+                //
+                // // TIFF Frames
+                // var multiframeImage = new MultiframeImage(api);
+                // multiframeImage.GetImageFrameFromStorage();
+                // multiframeImage.GetImageFrameAndUploadToStorage();
+                // multiframeImage.CreateImageFrameFromRequestBody();
+                // multiframeImage.GetImageFrameRangeFromStorage();
+                // multiframeImage.GetImageFrameRangeAndUploadToStorage();
+                // multiframeImage.CreateImageFrameRangeFromRequestBody();
+                // multiframeImage.GetImageFramePropertiesFromStorage();
+                // multiframeImage.ExtractImageFramePropertiesFromRequestBody();
+                //
+                // // Update parameters of existing TIFF image
+                // var tiffImage = new TiffImage(api);
+                // tiffImage.ModifyTiffFromStorage();
+                // tiffImage.ModifyTiffAndUploadToStorage();
+                // tiffImage.CreateModifiedTiffFromRequestBody();
+                // tiffImage.ConvertTiffToFaxFromStorage();
+                // tiffImage.AppendTiffFromStorage();
+                //
+                // // Update parameters of existing GIF image
+                // var updateGifImage = new UpdateGifImage(api);
+                // updateGifImage.ModifyGifFromStorage();
+                // updateGifImage.ModifyGifAndUploadToStorage();
+                // updateGifImage.CreateModifiedGifFromRequestBody();
+                //
+                // // Perform scaling, cropping and flipping of an existing image in a single request
+                // var updateImage = new UpdateImage(api);
+                // updateImage.UpdateImageFromStorage();
+                // updateImage.UpdateImageAndUploadToStorage();
+                // updateImage.CreateUpdatedImageFromRequestBody();
+                //
+                // // Update parameters of existing JPEG2000 image
+                // var updateJpeg2000Image = new UpdateJpeg2000Image(api);
+                // updateJpeg2000Image.ModifyJpeg2000FromStorage();
+                // updateJpeg2000Image.ModifyJpeg2000AndUploadToStorage();
+                // updateJpeg2000Image.CreateModifiedJpeg2000FromRequestBody();
+                //
+                // // Update parameters of existing JPEG image
+                // var updateJpegImage = new UpdateJpegImage(api);
+                // updateJpegImage.ModifyJpegFromStorage();
+                // updateJpegImage.ModifyJpegAndUploadToStorage();
+                // updateJpegImage.CreateModifiedJpegFromRequestBody();
+                //
+                // // Update parameters of existing PSD image
+                // var updatePsdImage = new UpdatePsdImage(api);
+                // updatePsdImage.ModifyPsdFromStorage();
+                // updatePsdImage.ModifyPsdAndUploadToStorage();
+                // updatePsdImage.CreateModifiedPsdFromRequestBody();
+                //
+                // // Update parameters of existing WEBP image
+                // var webpImage = new UpdateWebPImage(api);
+                // webpImage.ModifyWebPFromStorage();
+                // webpImage.ModifyWebPAndUploadToStorage();
+                // webpImage.CreateModifiedWebPFromRequestBody();
+                //
+                // // Process existing WMF image using given parameters
+                // var wmfImage = new UpdateWmfImage(api);
+                // wmfImage.ModifyWmfFromStorage();
+                // wmfImage.ModifyWmfAndUploadToStorage();
+                // wmfImage.CreateModifiedWmfFromRequestBody();
+                //
+                // // AI APIs
+                // Console.WriteLine("Running AI examples:");
+                // Console.WriteLine();
+                //
+                // // Compare two images
+                // var compareImages = new CompareImages(api);
+                // compareImages.PrepareSearchContext();
+                // compareImages.CompareTwoImagesInCloud();
+                // compareImages.CompareLoadedImageToImageInCloud();
+                // compareImages.DeleteSearchContext();
+                //
+                // // Find Duplicate Images
+                // var findDuplicateImages = new FindDuplicateImages(api);
+                // findDuplicateImages.PrepareSearchContext();
+                // findDuplicateImages.FindImageDuplicates();
+                // findDuplicateImages.DeleteSearchContext();
+                //
+                // // Find Similar Images
+                // var findImages = new FindSimilarImages(api);
+                // findImages.PrepareSearchContext();
+                // findImages.FindImagesSimilar();
+                // findImages.FindImagesByTag();
+                // findImages.SearchImageFromWebSource();
+                // findImages.DeleteSearchContext();
+                //
+                // //object detection
+                // var objectDetection = new ObjectDetection(api);
+                // objectDetection.DetectObjectsImageFromStorage();
+                // objectDetection.DetectedObjectsImageFromRequestBody();
+                // objectDetection.VisualiizeDetectObjectsAndUploadToStorage();
+                // objectDetection.VisualizeDetectedObjectsImageFromRequestBody();
             }
             catch (Exception ex)
             {
@@ -229,16 +229,16 @@ namespace AsposeImagingCloudSdkExamples
         ///     Process CLI arguments, exit on invalid input.
         /// </summary>
         /// <param name="args">CLI arguments.</param>
-        /// <param name="appKey">The app key.</param>
-        /// <param name="appSid">The app SID.</param>
+        /// <param name="clientSecret">The Client Secret.</param>
+        /// <param name="clientId">The Client ID.</param>
         /// <param name="baseUrl">The base URL.</param>
-        private static void ProcessArguments(string[] args, out string appKey, out string appSid,
+        private static void ProcessArguments(string[] args, out string clientSecret, out string clientId,
             out string baseUrl)
         {
             var errors = new List<string>(2);
 
-            appKey = ProcessArgument(args, "--appKey", "app key", errors);
-            appSid = ProcessArgument(args, "--appSid", "app sid", errors);
+            clientSecret = ProcessArgument(args, "--clientSecret", "Client Secret", errors);
+            clientId = ProcessArgument(args, "--clientId", "Client ID", errors);
             baseUrl = ProcessArgument(args, "--baseUrl", "Base url", errors, "https://api.aspose.cloud/");
 
             if (!errors.Any()) return;

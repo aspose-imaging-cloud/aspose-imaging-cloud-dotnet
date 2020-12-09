@@ -31,20 +31,20 @@ namespace Aspose.Imaging.Cloud.Sdk.Test
     public class ServerAccessData
     {
         /// <summary>
-        /// Gets or sets the application SID.
+        /// Gets or sets the Client ID.
         /// </summary>
         /// <value>
-        /// The application SID.
+        /// The Client ID.
         /// </value>
-        public string AppSid { get; set; }
+        public string ClientId { get; set; }
 
         /// <summary>
-        /// Gets or sets the application key.
+        /// Gets or sets the Client Secret.
         /// </summary>
         /// <value>
-        /// The application key.
+        /// The Client Secret.
         /// </value>
-        public string AppKey { get; set; }
+        public string ClientSecret { get; set; }
 
         /// <summary>
         /// Gets or sets the base URL.

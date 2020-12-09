@@ -31,7 +31,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         {
             var config = this.ImagingApi.Configuration;
             var imagingApi = config.OnPremise ? new ImagingApi(config.ApiBaseUrl, config.ApiVersion, config.DebugMode) 
-                : new ImagingApi(config.AppKey, config.AppSid, config.ApiBaseUrl);
+                : new ImagingApi(config.ClientSecret, config.ClientId, config.ApiBaseUrl);
 
             try
             {
@@ -81,7 +81,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
         {
             var config = this.ImagingApi.Configuration;
             var imagingApi = config.OnPremise ? new ImagingApi(config.ApiBaseUrl, config.ApiVersion, config.DebugMode)
-                : new ImagingApi(config.AppKey, config.AppSid, config.ApiBaseUrl);
+                : new ImagingApi(config.ClientSecret, config.ClientId, config.ApiBaseUrl);
 
             try
             {
