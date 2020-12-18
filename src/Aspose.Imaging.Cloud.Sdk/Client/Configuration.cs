@@ -92,12 +92,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Client
         /// <summary>
         /// Gets or sets the app key.
         /// </summary>
-        public string AppKey { get; set; }
+        public string ClientSecret { get; set; }
 
         /// <summary>
-        /// Gets or sets the app sid.
+        /// Gets or sets the client ID.
         /// </summary>
-        public string AppSid { get; set; }
+        public string ClientId { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether debug mode.
