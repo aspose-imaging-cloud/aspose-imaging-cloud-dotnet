@@ -1,7 +1,7 @@
 ### Imaging - Save as: convert image from storage to another format
 ```csharp
 // optional parameters are base URL, API version and debug mode
-var imagingApi = new ImagingApi("yourAppKey", "yourAppSid");
+var imagingApi = new ImagingApi("yourClientSecret", "yourClientId");
 try
 {
     // upload local image to storage
@@ -41,7 +41,7 @@ finally
 ### Imaging - Save as: convert image from request stream to another format
 ```csharp
 // optional parameters are base URL, API version and debug mode
-var imagingApi = new ImagingApi("yourAppKey", "yourAppSid");
+var imagingApi = new ImagingApi("yourClientSecret", "yourClientId");
     
 try
 {
@@ -87,7 +87,7 @@ finally
 
 ### Imaging - Apply a filter to an image
 ```csharp
-ImagingApi imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+ImagingApi imagingApi = new ImagingApi("yourClientSecret", "yourClientId");
 
 // set the filter properties
 var filterProperties = new Filter("GaussianBlur", new GaussianBlurFilterProperties
@@ -104,7 +104,7 @@ var filteredImage = ImagingApi.FilterEffectImage(
 ### Imaging.AI - Compare two images
 ```csharp
 // optional parameters are base URL, API version and debug mode
-var imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+var imagingApi = new ImagingApi("yourClientSecret", "yourClientId");
  
 // create search context or use existing search context ID if search context was created earlier
 var apiResponse = imagingApi.CreateImageSearch(new CreateImageSearchRequest());
@@ -124,7 +124,7 @@ var similarity = response.Results[0].Similarity;
 ### Imaging.AI - Find similar images
 ```csharp
 // optional parameters are base URL, API version and debug mode
-var imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+var imagingApi = new ImagingApi("yourClientSecret", "yourClientId");
  
 // create search context or use existing search context ID if search context was created earlier
 var apiResponse = imagingApi.CreateImageSearch(new CreateImageSearchRequest());
@@ -173,7 +173,7 @@ foreach (var searchResult in results.Results)
 ### Imaging.AI - Find duplicate images
 ```csharp
 // optional parameters are base URL, API version and debug mode
-var imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+var imagingApi = new ImagingApi("yourClientSecret", "yourClientId");
  
 // create search context or use existing search context ID if search context was created earlier
 var apiResponse = imagingApi.CreateImageSearch(new CreateImageSearchRequest());
@@ -210,7 +210,7 @@ foreach (var duplicates in response.Duplicates)
 ### Imaging.AI - Search images by tags
 ```csharp
 // optional parameters are base URL, API version and debug mode
-var imagingApi = new ImagingApi("yourAppKey", "yourAppSID");
+var imagingApi = new ImagingApi("yourClientSecret", "yourClientId");
  
 // create search context or use existing search context ID if search context was created earlier
 var apiResponse = imagingApi.CreateImageSearch(new CreateImageSearchRequest());
