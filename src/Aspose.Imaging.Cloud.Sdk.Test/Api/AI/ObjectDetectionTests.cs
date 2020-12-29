@@ -41,7 +41,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         public void ObjectBoundsTest()
         {
             var inputFile = InputTestFiles.FirstOrDefault(f=>string.Equals(f.Name, TestImage));
-            var request = new GetObjectBoundsRequest(inputFile.Name)
+            var request = new GetObjectBoundsRequest(inputFile.Name, folder: TempFolder, storage: this.TestStorage)
             {
                 storage = TestStorage,
                 folder = TempFolder,
@@ -68,7 +68,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
         public void VisualObjectBoundsTest()
         {
             var inputFile = InputTestFiles.FirstOrDefault(f => string.Equals(f.Name, TestImage));
-            var request = new GetVisualObjectBoundsRequest(inputFile.Name)
+            var request = new GetVisualObjectBoundsRequest(inputFile.Name, folder: TempFolder, storage: this.TestStorage)
             {
                 storage = TestStorage,
                 folder = TempFolder,
@@ -100,7 +100,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var inputFile = InputTestFiles.FirstOrDefault(f => string.Equals(f.Name, TestImage));
 
             bool removeResult = true;
-            using (var stream = ImagingApi.DownloadFile(new DownloadFileRequest(inputFile.Path)))
+            using (var stream = ImagingApi.DownloadFile(new DownloadFileRequest(inputFile.Path, this.TestStorage)))
             {
                 var request = new CreateObjectBoundsRequest()
                 {
@@ -129,7 +129,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
             var inputFile = InputTestFiles.FirstOrDefault(f => string.Equals(f.Name, TestImage));
 
             bool removeResult = true;
-            using (var stream = ImagingApi.DownloadFile(new DownloadFileRequest(inputFile.Path)))
+            using (var stream = ImagingApi.DownloadFile(new DownloadFileRequest(inputFile.Path, this.TestStorage)))
             {
                 var request = new CreateVisualObjectBoundsRequest()
                 {

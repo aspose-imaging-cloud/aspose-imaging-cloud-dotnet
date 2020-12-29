@@ -57,11 +57,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         /// <summary>
         /// Initializes a new instance of the <see cref="ImagingApi"/> class for Aspose Cloud-hosted solution usage.
         /// </summary>
-        /// <param name="appKey">
-        /// The app key.
+        /// <param name="clientSecret">
+        /// The Client Secret.
         /// </param>
-        /// <param name="appSid">
-        /// The app SID.
+        /// <param name="clientId">
+        /// The Client ID.
         /// </param>
         /// <param name="baseUrl">
         /// The base URL. Use <see cref="Configuration.DefaultBaseUrl"/> to set the default base URL.
@@ -72,12 +72,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Api
         /// <param name="debug">
         /// If debug mode is enabled.
         /// </param>
-        public ImagingApi(string appKey, string appSid, string baseUrl = Configuration.DefaultBaseUrl, 
+        public ImagingApi(string clientSecret, string clientId, string baseUrl = Configuration.DefaultBaseUrl, 
             string apiVersion = Configuration.DefaultApiVersion, bool debug = false)
             : this(new Configuration
             {
-                AppKey = appKey,
-                AppSid = appSid,
+                ClientSecret = clientSecret,
+                ClientId = clientId,
                 ApiBaseUrl = baseUrl,
                 ApiVersion = apiVersion,
                 DebugMode = debug,
