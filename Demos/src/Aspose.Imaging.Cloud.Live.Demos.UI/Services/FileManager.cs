@@ -1,16 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Net.Http;
 using System.IO;
 using System.Diagnostics;
-using System.Net.Http.Headers;
-using Aspose.Imaging.Cloud.Live.Demos.UI.Config;
 using Aspose.Imaging.Cloud.Live.Demos.UI.Models;
-using System.Net;
-using System.Web.Http;
-using Aspose.Storage.Cloud.Sdk.Api;
-using Aspose.Storage.Cloud.Sdk.Model.Requests;
 
 namespace Aspose.Imaging.Cloud.Live.Demos.UI.Services
 {
@@ -22,7 +13,6 @@ namespace Aspose.Imaging.Cloud.Live.Demos.UI.Services
 			FileUploadResult uploadResult = null;
 			string fn = "";
 
-			StorageApi storageApi = new StorageApi(Config.Configuration.AppKey, Config.Configuration.AppSID);
 			try
 			{
 				string folderName = Guid.NewGuid().ToString();
@@ -41,11 +31,6 @@ namespace Aspose.Imaging.Cloud.Live.Demos.UI.Services
 
 					postedFile.SaveAs(uploadPath + "\\" + fn);
 				}
-
-				//PutCreateRequest request = new PutCreateRequest(fn, File.OpenRead(uploadPath + "\\" + fn), null, null);
-
-				// Upload original document to Cloud Storage
-				//storageApi.PutCreate(request);
 
 				// Create response
 				return new FileUploadResult

@@ -1,13 +1,11 @@
-using System;
 using System.Web;
-using System.Text;
 using System.Collections.Generic;
 using System.Threading;
 
 namespace Aspose.Imaging.Cloud.Live.Demos.UI.Config
 {
 	/// <summary>
-	/// Wrapper class for Aspose.HTML Cloud Tools context access to Pages and controls
+	/// Wrapper class for Aspose.Cloud Cloud Tools context access to Pages and controls
 	/// </summary>
 	public class AsposeImagingCloudContext : Context
 	{

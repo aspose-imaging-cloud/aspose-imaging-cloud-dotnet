@@ -1,12 +1,5 @@
-using System;
 using System.IO;
 using System.Web.Http;
-using System.Threading.Tasks;
-using System.IO.Compression;
-using System.Drawing;
-using System.Drawing.Imaging;
-using Aspose.Imaging.Cloud.Sdk.Api;
-using Aspose.Storage.Cloud.Sdk.Api;
 
 namespace  Aspose.Imaging.Cloud.Live.Demos.UI.Models
 {
@@ -16,8 +9,6 @@ namespace  Aspose.Imaging.Cloud.Live.Demos.UI.Models
 
 	public abstract class AsposeImagingCloudBase : ApiController
     {
-		//protected ImagingApi imgApi = new ImagingApi(Config.Configuration.AppKey, Config.Configuration.AppSID);
-		protected StorageApi storageApi = new StorageApi(Config.Configuration.AppKey, Config.Configuration.AppSID);
 		///<Summary>
 		/// Get File extension
 		///</Summary>

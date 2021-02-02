@@ -1,12 +1,7 @@
 using Aspose.Imaging.Cloud.Live.Demos.UI.Config;
 using Aspose.Imaging.Cloud.Live.Demos.UI.Models;
-using Aspose.Imaging.Cloud.Live.Demos.UI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Net.Http;
 
 namespace Aspose.Imaging.Cloud.Live.Demos.UI.Controllers
 {

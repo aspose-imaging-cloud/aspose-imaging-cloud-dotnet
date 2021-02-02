@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-
-namespace Aspose.CAD.Cloud.Live.Demos.UI.Models
+namespace Aspose.Imaging.Cloud.Live.Demos.UI.Models
 {
 	public class UploadFileModel  
 	{

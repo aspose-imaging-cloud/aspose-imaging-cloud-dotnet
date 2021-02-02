@@ -1,4 +1,3 @@
-using Aspose.Imaging.Cloud.Live.Demos.UI.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

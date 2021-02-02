@@ -1,15 +1,6 @@
-using Aspose.Imaging.Cloud.Live.Demos.UI.Models;
-using Aspose.Imaging.Cloud.Live.Demos.UI.Services;
-using System;
-using System.Collections;
-using System.IO;
-using System.Net;
 using System.Web.Mvc;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Aspose.Storage.Cloud.Sdk.Api;
-using Aspose.Storage.Cloud.Sdk.Model.Requests;
-using Aspose.Imaging.Cloud.Live.Demos.UI;
+using Aspose.Imaging.Cloud.Sdk.Api;
+using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 
 namespace Aspose.Imaging.Cloud.Live.Demos.UI.Controllers
 {
@@ -20,7 +11,8 @@ namespace Aspose.Imaging.Cloud.Live.Demos.UI.Controllers
 	public  class CommonController : BaseController
 	{
 		public override string Product => (string)RouteData.Values["product"];
-		StorageApi storageApi = new StorageApi(Config.Configuration.AppKey, Config.Configuration.AppSID);
+
+		ImagingApi imagingApi = new ImagingApi(Config.Configuration.AppKey, Config.Configuration.AppSID, "https://api.aspose.cloud/");
 		/// <summary>
 		/// Sends back specified file from specified folder inside OutputDirectory.
 		/// </summary>
@@ -31,8 +23,8 @@ namespace Aspose.Imaging.Cloud.Live.Demos.UI.Controllers
 
 		public FileResult DownloadFile(string file)
 		{
-			GetDownloadRequest getDownloadRequest = new GetDownloadRequest(file);
-			return File(storageApi.GetDownload(getDownloadRequest), "application/octet-stream", file);
+			DownloadFileRequest dfr = new DownloadFileRequest(file);	
+			return File(imagingApi.DownloadFile(dfr), "application/octet-stream", file);
 		}
 		
 	}

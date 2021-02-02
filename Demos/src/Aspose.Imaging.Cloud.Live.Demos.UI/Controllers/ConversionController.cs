@@ -1,7 +1,6 @@
 using Aspose.Imaging.Cloud.Live.Demos.UI.Models;
 using Aspose.Imaging.Cloud.Live.Demos.UI.Services;
 using System;
-using System.Collections;
 using System.Web;
 using System.Web.Mvc;
 

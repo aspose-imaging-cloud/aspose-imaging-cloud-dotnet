@@ -25,7 +25,7 @@
   <res name="DownLoadNow">DOWNLOAD NOW</res>
   <res name="FileWrongTypeMessage">You are trying to upload document(s) of unsupported type: </res>
   <res name="imagingConversionPageTitle">Free Online Convert Images with High Quality.</res>
-  <res name="imagingConversionMetaDescription">Free online image conversion app for many popular image, photo, picture formats. Convert to PDF, PSD, JPG, GIF, SVG and others, including HTML5 Canvas.</res>
+  <res name="imagingConversionMetaDescription">Free online image conversion app for many popular image, photo, picture formats. Convert image formats to PDF.</res>
   <res name="imagingConversionTitle">Free Online Convert Images with High Quality.</res>
   <res name="imagingConversionSubTitle">Just upload your image &amp; select the output format to get the result for free from any device, with a modern browser like Chrome, Opera and Firefox.</res>
   <!-- Conversion App - How To-->

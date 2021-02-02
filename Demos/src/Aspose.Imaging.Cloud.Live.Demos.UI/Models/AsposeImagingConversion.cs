@@ -1,9 +1,4 @@
-using System.Threading.Tasks;
 using System.IO;
-using System.Web.Http;
-using Aspose.Imaging.Cloud.Live.Demos.UI.Models;
-using System.Diagnostics;
-using Newtonsoft.Json.Linq;
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using Aspose.Imaging.Cloud.Sdk.Model;
 using Aspose.Imaging.Cloud.Sdk.Api;
@@ -11,7 +6,7 @@ using Aspose.Imaging.Cloud.Sdk.Api;
 namespace Aspose.Imaging.Cloud.Live.Demos.UI.Models
 {
     ///<Summary>
-    /// Aspose.HTML Cloud API convert method to convert word document file to other format
+    /// Aspose.Imaging Cloud API convert method to convert word document file to other format
     ///</Summary>
 
     public class AsposeImagingConversion : AsposeImagingCloudBase
@@ -45,8 +40,8 @@ namespace Aspose.Imaging.Cloud.Live.Demos.UI.Models
             string fileNamewithOutExtension = Path.GetFileNameWithoutExtension(filenamepath);
             string outputFileName = fileNamewithOutExtension + "." + outputType;
 
-            Aspose.Storage.Cloud.Sdk.Model.Requests.PutCreateRequest putCreateRequest = new Aspose.Storage.Cloud.Sdk.Model.Requests.PutCreateRequest(outputFileName, updatedImage, null, null);
-            storageApi.PutCreate(putCreateRequest);
+            UploadFileRequest ufr = new UploadFileRequest(outputFileName, updatedImage);
+            imagingApi.UploadFile(ufr);
 
             bool foundSaveOption = true;
 

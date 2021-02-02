@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace Aspose.CAD.Cloud.Live.Demos.UI.Helpers
+namespace Aspose.Imaging.Cloud.Live.Demos.UI.Helpers
 {
 	public class XmlActionResult<T> : ActionResult
 	{

@@ -1,5 +1,3 @@
-using System;
-using System.Data;
 using System.Configuration;
 using System.Web;
 
@@ -11,7 +9,7 @@ namespace Aspose.Imaging.Cloud.Live.Demos.UI.Config
 	public static class Configuration
 	{
 
-		private static string _asposeImagingCloudLiveDemosPath = ConfigurationManager.AppSettings["AsposeHTMLCloudLiveDemosPath"].ToString();
+		private static string _asposeImagingCloudLiveDemosPath = ConfigurationManager.AppSettings["AsposeImagingCloudLiveDemosPath"].ToString();
 		private static string _resourceFileSessionName = ConfigurationManager.AppSettings["ResourceFileSessionName"];
 		private static string _fileViewLink = ConfigurationManager.AppSettings["FileViewLink"];
 		private static string _asposeImagingCloudAppsAssetURL = ConfigurationManager.AppSettings["AsposeImagingCloudAppsAssetURL"];

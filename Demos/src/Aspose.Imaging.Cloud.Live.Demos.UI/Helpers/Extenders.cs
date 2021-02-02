@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace Aspose.CAD.Cloud.Live.Demos.UI.Helpers
+namespace Aspose.Imaging.Cloud.Live.Demos.UI.Helpers
 {
 	/// <summary>
 	/// Extenders
