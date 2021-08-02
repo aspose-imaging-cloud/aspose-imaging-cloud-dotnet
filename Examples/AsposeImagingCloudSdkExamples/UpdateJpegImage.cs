@@ -103,7 +103,7 @@ namespace AsposeImagingCloudSdkExamples
 
             using (var updatedImage = ImagingApi.ModifyJpeg(modifyJpegRequest))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(), updatedImage);
+                UploadImageToCloudExample(updatedImage, GetModifiedSampleImageFileName());
             }
 
             Console.WriteLine();

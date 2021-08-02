@@ -67,7 +67,7 @@ namespace AsposeImagingCloudSdkExamples
 
             using (var imageFrame = ImagingApi.GetImageFrame(getImageFrameRequest))
             {
-                UploadImageToCloud("SingleFrame.djvu", imageFrame);
+                UploadImageToCloudExample(imageFrame, "SingleFrame.djvu");
             }
 
             Console.WriteLine();
@@ -148,7 +148,7 @@ namespace AsposeImagingCloudSdkExamples
 
             using (var imageFrame = ImagingApi.GetImageFrameRange(getImageFrameRangeRequest))
             {
-                UploadImageToCloud("FrameRange.djvu", imageFrame);
+                UploadImageToCloudExample(imageFrame, "FrameRange.djvu");
             }
 
             Console.WriteLine();

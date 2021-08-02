@@ -105,7 +105,7 @@ namespace AsposeImagingCloudSdkExamples
 
             using (Stream updatedImage = this.ImagingApi.DeskewImage(request))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(false, SaveImageFormat), updatedImage);
+                UploadImageToCloudExample(updatedImage, GetModifiedSampleImageFileName(false, SaveImageFormat));
             }
 
             Console.WriteLine();

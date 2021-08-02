@@ -123,22 +123,26 @@ namespace AsposeImagingCloudSdkExamples
         {
             using (var localInputImage = File.OpenRead(Path.Combine(ExampleImagesFolder, SampleImageFileName)))
             {
-                UploadImageToCloud(SampleImageFileName, localInputImage);
+                UploadImageToCloudExample(localInputImage, SampleImageFileName);
             }
         }
 
         /// <summary>
         ///     Uploads the image to cloud.
         /// </summary>
-        /// <param name="imageName">Name of the image.</param>
         /// <param name="image">The image.</param>
-        protected void UploadImageToCloud(string imageName, Stream image)
+        /// <param name="imageFileName">Name of the image.</param>
+        protected void UploadImageToCloudExample(Stream image, string imageFileName, string storageImageFolder = CloudPath)
         {
-            var uploadFileRequest = new UploadFileRequest(Path.Combine(CloudPath, imageName), image);
-            var result = ImagingApi.UploadFile(uploadFileRequest);
-            Console.WriteLine(result.Errors?.Count > 0
-                ? $"Uploading errors count: {result.Errors.Count}"
-                : $"Image {imageName} is uploaded to cloud storage");
+            // Create an instance of upload file request
+            var uploadFileRequest = new UploadFileRequest(Path.Combine(storageImageFolder, imageFileName), image);
+            
+            // Upload image to storage
+            var uploadResult = ImagingApi.UploadFile(uploadFileRequest);
+            
+            Console.WriteLine(uploadResult.Errors?.Count > 0
+                ? $"Uploading errors count: {uploadResult.Errors.Count}"
+                : $"Image {imageFileName} is uploaded to cloud storage");
         }
 
         /// <summary>

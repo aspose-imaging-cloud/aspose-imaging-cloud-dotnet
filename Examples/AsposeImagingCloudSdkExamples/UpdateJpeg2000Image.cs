@@ -101,7 +101,7 @@ namespace AsposeImagingCloudSdkExamples
 
             using (var updatedImage = ImagingApi.ModifyJpeg2000(getImageJpeg2000Request))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(), updatedImage);
+                UploadImageToCloudExample(updatedImage, GetModifiedSampleImageFileName());
             }
 
             Console.WriteLine();

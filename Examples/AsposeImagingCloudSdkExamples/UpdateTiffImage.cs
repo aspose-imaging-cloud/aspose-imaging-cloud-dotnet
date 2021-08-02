@@ -115,7 +115,7 @@ namespace AsposeImagingCloudSdkExamples
 
             using (var updatedImage = ImagingApi.ModifyTiff(getImageTiffRequest))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(), updatedImage);
+                UploadImageToCloudExample(updatedImage, GetModifiedSampleImageFileName());
             }
 
             Console.WriteLine();
@@ -195,7 +195,7 @@ namespace AsposeImagingCloudSdkExamples
             // Upload file be appended to cloud storage
             using (var localInputImage = File.OpenRead(Path.Combine(ExampleImagesFolder, appendFileName)))
             {
-                UploadImageToCloud(appendFileName, localInputImage);
+                UploadImageToCloudExample(localInputImage, appendFileName);
             }
 
             // Update TIFF Image parameters according to fax parameters

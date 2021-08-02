@@ -101,7 +101,7 @@ namespace AsposeImagingCloudSdkExamples
 
             using (Stream updatedImage = this.ImagingApi.GrayscaleImage(request))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(false, SaveImageFormat), updatedImage);
+                UploadImageToCloudExample(updatedImage, GetModifiedSampleImageFileName(false, SaveImageFormat));
             }
 
             Console.WriteLine();

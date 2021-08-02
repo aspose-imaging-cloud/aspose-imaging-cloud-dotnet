@@ -112,7 +112,7 @@ namespace AsposeImagingCloudSdkExamples
             using (var updatedImage = ImagingApi.ModifyBmp(request))
             {
                 // Upload updated image to Cloud Storage
-                UploadImageToCloud(GetModifiedSampleImageFileName(), updatedImage);
+                UploadImageToCloudExample(updatedImage, GetModifiedSampleImageFileName());
             }
 
             Console.WriteLine();

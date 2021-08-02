@@ -107,7 +107,7 @@ namespace AsposeImagingCloudSdkExamples
 
             using (var updatedImage = ImagingApi.ModifyPsd(modifyPsdRequest))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(), updatedImage);
+                UploadImageToCloudExample(updatedImage, GetModifiedSampleImageFileName());
             }
 
             Console.WriteLine();

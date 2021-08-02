@@ -117,7 +117,7 @@ namespace AsposeImagingCloudSdkExamples
             using (var updatedImage = ImagingApi.ResizeImage(resizeImageRequest))
             {
                 // Upload updated image to Cloud Storage
-                UploadImageToCloud(GetModifiedSampleImageFileName(false, format), updatedImage);
+                UploadImageToCloudExample(updatedImage, GetModifiedSampleImageFileName(false, format));
             }
 
             Console.WriteLine();

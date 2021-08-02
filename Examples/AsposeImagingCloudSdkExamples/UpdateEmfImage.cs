@@ -121,7 +121,7 @@ namespace AsposeImagingCloudSdkExamples
 
             using (var updatedImage = ImagingApi.ModifyEmf(request))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(false, format), updatedImage);
+                UploadImageToCloudExample(updatedImage, GetModifiedSampleImageFileName(false, format));
             }
 
             Console.WriteLine();

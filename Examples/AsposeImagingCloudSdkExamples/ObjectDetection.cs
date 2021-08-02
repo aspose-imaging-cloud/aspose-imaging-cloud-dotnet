@@ -71,7 +71,7 @@ namespace AsposeImagingCloudSdkExamples.AI
 
             using (Stream updatedImage = this.ImagingApi.GetVisualObjectBounds(request))
             {
-                UploadImageToCloud(GetModifiedSampleImageFileName(false, SaveImageFormat), updatedImage);
+                UploadImageToCloudExample(updatedImage, GetModifiedSampleImageFileName(false, SaveImageFormat));
             }
 
             Console.WriteLine();
