@@ -70,7 +70,7 @@ namespace AsposeImagingCloudSdkExamples
             // If this is true – they will be taken from default values for standard image,
             // if it is false – they will be saved from current image. Default is false.
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageWebPRequest = new ModifyWebPRequest(SampleImageFileName, lossless, quality,
@@ -104,7 +104,7 @@ namespace AsposeImagingCloudSdkExamples
             // If this is true – they will be taken from default values for standard image,
             // if it is false – they will be saved from current image. Default is false.
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageWebPRequest = new ModifyWebPRequest(SampleImageFileName, lossless, quality,

@@ -68,7 +68,7 @@ namespace AsposeImagingCloudSdkExamples
 
             UploadSampleImageToCloud();
 
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var request = new GrayscaleImageRequest(SampleImageFileName, folder, storage);
@@ -92,7 +92,7 @@ namespace AsposeImagingCloudSdkExamples
 
             UploadSampleImageToCloud();
 
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var request = new GrayscaleImageRequest(SampleImageFileName, folder, storage);

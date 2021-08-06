@@ -73,7 +73,7 @@ namespace AsposeImagingCloudSdkExamples
                 Sigma = 2.1
             };
             var format = "bmp";
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var filterEffectRequest = new FilterEffectImageRequest(SampleImageFileName, filterType, filterProperties,
@@ -106,7 +106,7 @@ namespace AsposeImagingCloudSdkExamples
                 Sigma = 1.1
             };
             var format = "bmp";
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var filterEffectRequest = new FilterEffectImageRequest(SampleImageFileName, filterType, filterProperties,

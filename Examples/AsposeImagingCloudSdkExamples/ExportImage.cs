@@ -69,7 +69,7 @@ namespace AsposeImagingCloudSdkExamples
             // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs) 
             // for possible output formats
             var format = "pdf";
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // Cloud Storage name
 
             var request = new ConvertImageRequest(SampleImageFileName, format, folder, storage);
@@ -96,7 +96,7 @@ namespace AsposeImagingCloudSdkExamples
             // Please refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-Export(SaveAs)
             // for possible output formats
             var format = "pdf";
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // Cloud Storage name
 
             var request = new ConvertImageRequest(SampleImageFileName, format, folder, storage);

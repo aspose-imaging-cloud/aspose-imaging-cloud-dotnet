@@ -39,7 +39,7 @@ namespace AsposeImagingCloudSdkExamples
         /// <summary>
         ///     The cloud path.
         /// </summary>
-        protected const string CloudPath = "Examples";
+        protected const string CloudImageFolder = "Examples";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImagingBase" /> class.
@@ -130,12 +130,12 @@ namespace AsposeImagingCloudSdkExamples
         /// <summary>
         ///     Uploads the image to cloud.
         /// </summary>
-        /// <param name="image">The image.</param>
+        /// <param name="imageStream">The image stream.</param>
         /// <param name="imageFileName">Name of the image.</param>
-        protected void UploadImageToCloudExample(Stream image, string imageFileName, string storageImageFolder = CloudPath)
+        protected void UploadImageToCloudExample(Stream imageStream, string imageFileName)
         {
             // Create an instance of upload file request
-            var uploadFileRequest = new UploadFileRequest(Path.Combine(storageImageFolder, imageFileName), image);
+            var uploadFileRequest = new UploadFileRequest(Path.Combine(CloudImageFolder, imageFileName), imageStream);
             
             // Upload image to storage
             var uploadResult = ImagingApi.UploadFile(uploadFileRequest);

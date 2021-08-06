@@ -70,7 +70,7 @@ namespace AsposeImagingCloudSdkExamples
 
             bool resizeProportionally = true;
             string bkColor = "white";
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var request = new DeskewImageRequest(SampleImageFileName, resizeProportionally, bkColor, folder, storage);
@@ -96,7 +96,7 @@ namespace AsposeImagingCloudSdkExamples
 
             bool resizeProportionally = true;
             string bkColor = null;
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var request = new DeskewImageRequest(SampleImageFileName, resizeProportionally, bkColor, folder, storage);

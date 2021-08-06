@@ -76,7 +76,7 @@ namespace AsposeImagingCloudSdkExamples
             int? rectWidth = 200;
             int? rectHeight = 300;
             var rotateFlipMethod = "Rotate90FlipX";
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageUpdateRequest = new UpdateImageRequest(SampleImageFileName, newWidth, newHeight, x, y,
@@ -113,7 +113,7 @@ namespace AsposeImagingCloudSdkExamples
             int? rectWidth = 200;
             int? rectHeight = 300;
             var rotateFlipMethod = "Rotate90FlipX";
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageUpdateRequest = new UpdateImageRequest(SampleImageFileName, newWidth, newHeight, x, y, rectWidth, rectHeight, rotateFlipMethod, format, folder, storage);

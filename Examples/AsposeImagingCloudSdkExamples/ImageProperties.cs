@@ -62,7 +62,7 @@ namespace AsposeImagingCloudSdkExamples
 
             UploadSampleImageToCloud();
 
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImagePropertiesRequest = new GetImagePropertiesRequest(

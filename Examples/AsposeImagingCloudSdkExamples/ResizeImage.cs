@@ -72,7 +72,7 @@ namespace AsposeImagingCloudSdkExamples
             var format = "gif";
             int? newWidth = 100;
             int? newHeight = 150;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var resizeImageRequest = new ResizeImageRequest(
@@ -105,7 +105,7 @@ namespace AsposeImagingCloudSdkExamples
             var format = "gif";
             int? newWidth = 100;
             int? newHeight = 150;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var resizeImageRequest = new ResizeImageRequest(

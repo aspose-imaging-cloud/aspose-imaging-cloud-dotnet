@@ -32,7 +32,7 @@ namespace AsposeImagingCloudSdkExamples.AI
             bool includeScore = true;
             string allowedLabels = "cat";
             string blockedLabels = "dog";
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var request = new GetObjectBoundsRequest(SampleImageFileName, method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, folder, storage);
@@ -62,7 +62,7 @@ namespace AsposeImagingCloudSdkExamples.AI
             string allowedLabels = "cat";
             string blockedLabels = "dog";
             string color = "blue";
-            string folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            string folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var request = new GetVisualObjectBoundsRequest(SampleImageFileName, method, threshold, includeLabel, includeScore, allowedLabels, blockedLabels, color, folder, storage);

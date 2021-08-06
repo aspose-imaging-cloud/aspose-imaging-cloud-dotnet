@@ -69,7 +69,7 @@ namespace AsposeImagingCloudSdkExamples
             double horizontalResolution = 150;
             double verticalResolution = 150;
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageTiffRequest =
@@ -103,7 +103,7 @@ namespace AsposeImagingCloudSdkExamples
             double horizontalResolution = 150;
             double verticalResolution = 150;
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageTiffRequest =
@@ -165,7 +165,7 @@ namespace AsposeImagingCloudSdkExamples
             UploadSampleImageToCloud();
 
             // Update TIFF Image parameters according to fax parameters
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getTiffToFaxRequest = new ConvertTiffToFaxRequest(
@@ -199,7 +199,7 @@ namespace AsposeImagingCloudSdkExamples
             }
 
             // Update TIFF Image parameters according to fax parameters
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var request = new AppendTiffRequest(SampleImageFileName, appendFileName, storage, folder);
@@ -210,7 +210,7 @@ namespace AsposeImagingCloudSdkExamples
 
             // Download updated file to local storage
             var downloadFileRequest = new DownloadFileRequest(
-                Path.Combine(CloudPath, SampleImageFileName), storage);
+                Path.Combine(CloudImageFolder, SampleImageFileName), storage);
             using (var updatedImage = ImagingApi.DownloadFile(downloadFileRequest))
             {
                 SaveUpdatedImageToOutput("AppendToTiff.tiff", updatedImage);

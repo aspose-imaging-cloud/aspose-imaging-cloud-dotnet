@@ -32,7 +32,7 @@ namespace AsposeImagingCloudSdkExamples
             UploadSampleImageToCloud();
 
             int? frameId = 1; // Index of the frame
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageFrameRequest = new GetImageFrameRequest(SampleImageFileName, frameId, folder:folder, storage: storage);
@@ -57,7 +57,7 @@ namespace AsposeImagingCloudSdkExamples
             UploadSampleImageToCloud();
 
             int? frameId = 1; // Index of the frame
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageFrameRequest =
@@ -111,7 +111,7 @@ namespace AsposeImagingCloudSdkExamples
 
             int? startFrameId = 1; // Index of the first frame in range
             int? endFrameId = 4; // Index of the last frame in range
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageFrameRangeRequest = new GetImageFrameRangeRequest(SampleImageFileName, startFrameId, endFrameId,
@@ -138,7 +138,7 @@ namespace AsposeImagingCloudSdkExamples
 
             int? startFrameId = 1; // Index of the first frame in range
             int? endFrameId = 4; // Index of the last frame in range
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageFrameRangeRequest = new GetImageFrameRangeRequest(SampleImageFileName, startFrameId, endFrameId,
@@ -192,7 +192,7 @@ namespace AsposeImagingCloudSdkExamples
             UploadSampleImageToCloud();
 
             int? frameId = 1; // Number of a frame
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var imageFramePropertiesRequest =

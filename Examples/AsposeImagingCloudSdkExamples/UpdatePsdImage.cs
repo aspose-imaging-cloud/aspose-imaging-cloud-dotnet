@@ -65,7 +65,7 @@ namespace AsposeImagingCloudSdkExamples
             int? channelsCount = 3;
             var compressionMethod = "raw";
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var modifyPsdRequest =
@@ -95,7 +95,7 @@ namespace AsposeImagingCloudSdkExamples
             int? channelsCount = 3;
             var compressionMethod = "raw";
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var modifyPsdRequest =

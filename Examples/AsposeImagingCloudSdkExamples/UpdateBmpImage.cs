@@ -68,7 +68,7 @@ namespace AsposeImagingCloudSdkExamples
             int? horizontalResolution = 300;
             int? verticalResolution = 300;
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var request = new ModifyBmpRequest(
@@ -99,7 +99,7 @@ namespace AsposeImagingCloudSdkExamples
             int? horizontalResolution = 300;
             int? verticalResolution = 300;
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var request = new ModifyBmpRequest(

@@ -69,7 +69,7 @@ namespace AsposeImagingCloudSdkExamples
             int? borderX = 50;
             int? borderY = 50;
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
 
             string storage = null; // We are using default Cloud Storage
             var exportFormat = "png";
@@ -105,7 +105,7 @@ namespace AsposeImagingCloudSdkExamples
             int? borderX = 50;
             int? borderY = 50;
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
 
             string storage = null; // We are using default Cloud Storage
             var exportFormat = "png";

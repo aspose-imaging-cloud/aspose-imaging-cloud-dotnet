@@ -63,7 +63,7 @@ namespace AsposeImagingCloudSdkExamples
             var codec = "jp2";
             var comment = "Aspose";
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageJpeg2000Request =
@@ -91,7 +91,7 @@ namespace AsposeImagingCloudSdkExamples
             var codec = "jp2";
             var comment = "Aspose";
             bool? fromScratch = null;
-            var folder = CloudPath; // Input file is saved at the Examples folder in the storage
+            var folder = CloudImageFolder; // Input file is saved at the Examples folder in the storage
             string storage = null; // We are using default Cloud Storage
 
             var getImageJpeg2000Request =
