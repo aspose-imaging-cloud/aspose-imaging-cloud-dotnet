@@ -65,7 +65,7 @@ namespace AsposeImagingCloudSdkExamples
             // Please refer to https://docs.aspose.cloud/imaging/supported-file-formats/#convert 
             // for possible output formats
             var outFormat = "pdf";
-            using (var updatedImage = ConvertImageFromStorageExample(SampleImageFileName, CloudImageFolder, "outFormat"))
+            using (var updatedImage = ConvertImageFromStorageExample(SampleImageFileName, CloudImageFolder, outFormat))
             {
                 SaveUpdatedSampleImageToOutput(updatedImage, false, outFormat);
             }
