@@ -26,6 +26,7 @@
 using Aspose.Imaging.Cloud.Sdk.Model.Requests;
 using NUnit.Framework;
 using System;
+using System.IO;
 
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
@@ -42,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             var imageName = "image.emz";
             var format = "png";
-            string folder = TempFolder;
+            string folder = Path.Combine(TempFolder, "UseCases");
             string storage = this.TestStorage;
 
             this.TestGetRequest(
