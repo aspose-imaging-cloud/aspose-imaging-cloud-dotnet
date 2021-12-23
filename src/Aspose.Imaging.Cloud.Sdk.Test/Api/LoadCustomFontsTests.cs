@@ -35,6 +35,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
     [TestFixture]
     public class LoadCustomFontsTests : ImagingApiTester
     {
+        protected override string OriginalDataFolder => base.OriginalDataFolder + "/UseCases";
+
         [Test]
         public void UsingCustomFontsForVectorImageTest()
         {   
@@ -43,7 +45,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 
             var imageName = "image.emz";
             var format = "png";
-            string folder = Path.Combine(TempFolder, "UseCases");
+            string folder =this.TempFolder;
             string storage = this.TestStorage;
 
             this.TestGetRequest(
