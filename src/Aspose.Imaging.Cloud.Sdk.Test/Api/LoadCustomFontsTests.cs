@@ -31,7 +31,7 @@ using System.IO;
 namespace Aspose.Imaging.Cloud.Sdk.Test.Api
 {
     [Category("v3.0")]
-    [Category("CustomFonts")]
+    [Category("LoadCustomFonts")]
     [TestFixture]
     public class LoadCustomFontsTests : ImagingApiTester
     {
