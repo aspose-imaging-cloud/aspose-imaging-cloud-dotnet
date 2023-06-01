@@ -4,9 +4,9 @@
   <PropertyGroup>
     <SuppressDependenciesWhenPacking>false</SuppressDependenciesWhenPacking>
     <TargetFrameworks>net20;net35;net4;net45;netstandard2.0</TargetFrameworks>
-    <AssemblyVersion>22.4.0.0</AssemblyVersion>
-    <FileVersion>22.4.0.0</FileVersion>
-    <Version>22.4.0</Version>
+    <AssemblyVersion>23.5.0.0</AssemblyVersion>
+    <FileVersion>23.5.0.0</FileVersion>
+    <Version>23.5.0</Version>
     <DebugType>full</DebugType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Aspose.Imaging.Cloud.Sdk.xml</DocumentationFile>
@@ -15,19 +15,19 @@
   
   <PropertyGroup>
     <PackageId>Aspose.Imaging-Cloud</PackageId>
-    <PackageVersion>22.4.0</PackageVersion>
+    <PackageVersion>23.5.0</PackageVersion>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>aspose imaging cloud rest api sdk image object detection reverse search image-effects image-filters deskewing image-resize image-crop image-rotate image-conversion image-metadata bmp dicom dng djvu djv emf gif jpg jpe jpeg jpeg2000 jp2 jpx jpm j2k odg otg png psd tiff tif webp wmf cdr cmx pdf svg html5</PackageTags>
     <PackageProjectUrl>https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-dotnet</PackageProjectUrl>
     <PackageIconUrl>https://www.aspose.cloud/templates/aspose/App_Themes/V3/images/imaging/272x272/aspose_imaging-for-net-min.png</PackageIconUrl>
-    <PackageReleaseNotes>https://docs.aspose.cloud/imaging/aspose-imaging-cloud-22-4-release-notes/</PackageReleaseNotes>
+    <PackageReleaseNotes>https://docs.aspose.cloud/imaging/aspose-imaging-cloud-23-5-release-notes/</PackageReleaseNotes>
     <RepositoryUrl>https://github.com/aspose-imaging-cloud/aspose-imaging-cloud-dotnet</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Title>Aspose.Imaging Cloud .NET SDK</Title>
     <Company>Aspose</Company>
     <Authors>Aspose</Authors>
     <ProductName>Aspose.Imaging Cloud .NET SDK</ProductName>
-    <ProductVersion>22.4</ProductVersion>
+    <ProductVersion>23.5</ProductVersion>
     <Description>      Aspose.Imaging Cloud lets you use a REST API to inspect, convert, and transform images in the cloud; do reverse image search. It supports the most popular image formats such as PSD, PNG, GIF, BMP, TIFF, and JPEG, and conversion between them.
 
       Aspose.Imaging Cloud also provides a rich set of features for manipulating images on-the-fly with cloud based image transformations. You can resize, crop and/or rotate images various ways by simply creating a request that includes the correct transformation instructions.
@@ -35,7 +35,7 @@
       The most demanding imaging routines, for example TIFF concatenation and image conversion to fax compatible format, are available through efficient and reliable specialized resources.
 
       Reverse image search features include: search for sample image in the image set, duplicates recognition, search image by associated tags, etc. You can perform these operations without needing to know what's going on under the hood so that you can focus on the core business goals.</Description>
-    <Copyright>Copyright © 2002-2022 Aspose Pty Ltd. All Rights Reserved.</Copyright>
+    <Copyright>Copyright © 2002-2023 Aspose Pty Ltd. All Rights Reserved.</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <IncludeSymbols>true</IncludeSymbols>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
