@@ -34,7 +34,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Filter Options Base, abstract class
+  /// 
   /// </summary>  
   public class FilterPropertiesBase 
   {                       

@@ -34,12 +34,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Search results set.
+  /// 
   /// </summary>  
   public class SearchResultsSet 
   {                       
         /// <summary>
-        /// Gets the results.
+        /// Gets or sets Results
         /// </summary>  
         public List<SearchResult> Results { get; set; }
 

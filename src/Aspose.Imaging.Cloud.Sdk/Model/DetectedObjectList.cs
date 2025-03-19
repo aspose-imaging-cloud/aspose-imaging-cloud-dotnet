@@ -34,12 +34,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Wrapper for detected objects array
+  /// 
   /// </summary>  
   public class DetectedObjectList 
   {                       
         /// <summary>
-        /// detected objects
+        /// Gets or sets DetectedObjects
         /// </summary>  
         public List<DetectedObject> DetectedObjects { get; set; }
 

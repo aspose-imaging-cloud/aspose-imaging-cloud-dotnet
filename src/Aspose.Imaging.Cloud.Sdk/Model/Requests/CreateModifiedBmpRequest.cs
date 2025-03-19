@@ -43,12 +43,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="CreateModifiedBmpRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="bitsPerPixel">Color depth.</param>
-        /// <param name="horizontalResolution">New horizontal resolution.</param>
-        /// <param name="verticalResolution">New vertical resolution.</param>
-        /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="bitsPerPixel"></param>
+        /// <param name="horizontalResolution"></param>
+        /// <param name="verticalResolution"></param>
+        /// <param name="fromScratch"></param>
+        /// <param name="outPath"></param>
+        /// <param name="storage"></param>
         public CreateModifiedBmpRequest(System.IO.Stream imageData, int? bitsPerPixel, int? horizontalResolution, int? verticalResolution, bool? fromScratch = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
@@ -66,32 +66,32 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Color depth.
+        /// Gets or sets bitsPerPixel
         /// </summary>  
         public int? bitsPerPixel { get; set; }
 
         /// <summary>
-        /// New horizontal resolution.
+        /// Gets or sets horizontalResolution
         /// </summary>  
         public int? horizontalResolution { get; set; }
 
         /// <summary>
-        /// New vertical resolution.
+        /// Gets or sets verticalResolution
         /// </summary>  
         public int? verticalResolution { get; set; }
 
         /// <summary>
-        /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+        /// Gets or sets fromScratch
         /// </summary>  
         public bool? fromScratch { get; set; }
 
         /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
+        /// Gets or sets outPath
         /// </summary>  
         public string outPath { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

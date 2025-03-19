@@ -42,16 +42,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="ModifyWmfRequest"/> class.
         /// </summary>
-        /// <param name="name">Filename of image.</param>
-        /// <param name="bkColor">Color of the background.</param>
-        /// <param name="pageWidth">Width of the page.</param>
-        /// <param name="pageHeight">Height of the page.</param>
-        /// <param name="borderX">Border width.</param>
-        /// <param name="borderY">Border height.</param>
-        /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="folder">Folder with image to process.</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        /// <param name="format">Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
+        /// <param name="name"></param>
+        /// <param name="bkColor"></param>
+        /// <param name="pageWidth"></param>
+        /// <param name="pageHeight"></param>
+        /// <param name="borderX"></param>
+        /// <param name="borderY"></param>
+        /// <param name="fromScratch"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
+        /// <param name="format"></param>
         public ModifyWmfRequest(string name, string bkColor, int? pageWidth, int? pageHeight, int? borderX, int? borderY, bool? fromScratch = null, string folder = null, string storage = null, string format = null)             
         {
             this.name = name;
@@ -67,52 +67,52 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// Filename of image.
+        /// Gets or sets name
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// Color of the background.
+        /// Gets or sets bkColor
         /// </summary>  
         public string bkColor { get; set; }
 
         /// <summary>
-        /// Width of the page.
+        /// Gets or sets pageWidth
         /// </summary>  
         public int? pageWidth { get; set; }
 
         /// <summary>
-        /// Height of the page.
+        /// Gets or sets pageHeight
         /// </summary>  
         public int? pageHeight { get; set; }
 
         /// <summary>
-        /// Border width.
+        /// Gets or sets borderX
         /// </summary>  
         public int? borderX { get; set; }
 
         /// <summary>
-        /// Border height.
+        /// Gets or sets borderY
         /// </summary>  
         public int? borderY { get; set; }
 
         /// <summary>
-        /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+        /// Gets or sets fromScratch
         /// </summary>  
         public bool? fromScratch { get; set; }
 
         /// <summary>
-        /// Folder with image to process.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
 
         /// <summary>
-        /// Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+        /// Gets or sets format
         /// </summary>  
         public string format { get; set; }
   }

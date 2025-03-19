@@ -34,17 +34,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents information about image in JPEG2000 format.
+  /// 
   /// </summary>  
   public class Jpeg2000Properties 
   {                       
         /// <summary>
-        /// Gets or sets the JPEG comment markers.
+        /// Gets or sets Comments
         /// </summary>  
         public List<string> Comments { get; set; }
 
         /// <summary>
-        /// Gets or sets the JPEG2000 codec
+        /// Gets or sets Codec
         /// </summary>  
         public string Codec { get; set; }
 

@@ -42,14 +42,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="GetAvailableLabelsRequest"/> class.
         /// </summary>
-        /// <param name="method">Object detection method</param>
+        /// <param name="method"></param>
         public GetAvailableLabelsRequest(string method)             
         {
             this.method = method;
         }
         
         /// <summary>
-        /// Object detection method
+        /// Gets or sets method
         /// </summary>  
         public string method { get; set; }
   }

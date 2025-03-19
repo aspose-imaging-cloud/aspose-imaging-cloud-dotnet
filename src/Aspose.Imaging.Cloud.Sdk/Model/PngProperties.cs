@@ -34,7 +34,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents information about image in PNG format.
+  /// 
   /// </summary>  
   public class PngProperties 
   {                       

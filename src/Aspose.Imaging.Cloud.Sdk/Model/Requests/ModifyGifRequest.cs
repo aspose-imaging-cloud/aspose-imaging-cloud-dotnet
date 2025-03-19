@@ -42,16 +42,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="ModifyGifRequest"/> class.
         /// </summary>
-        /// <param name="name">Filename of image.</param>
-        /// <param name="backgroundColorIndex">Index of the background color.</param>
-        /// <param name="colorResolution">Color resolution.</param>
-        /// <param name="hasTrailer">Specifies if image has trailer.</param>
-        /// <param name="interlaced">Specifies if image is interlaced.</param>
-        /// <param name="isPaletteSorted">Specifies if palette is sorted.</param>
-        /// <param name="pixelAspectRatio">Pixel aspect ratio.</param>
-        /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="folder">Folder with image to process.</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="name"></param>
+        /// <param name="backgroundColorIndex"></param>
+        /// <param name="colorResolution"></param>
+        /// <param name="hasTrailer"></param>
+        /// <param name="interlaced"></param>
+        /// <param name="isPaletteSorted"></param>
+        /// <param name="pixelAspectRatio"></param>
+        /// <param name="fromScratch"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public ModifyGifRequest(string name, int? backgroundColorIndex = null, int? colorResolution = null, bool? hasTrailer = null, bool? interlaced = null, bool? isPaletteSorted = null, int? pixelAspectRatio = null, bool? fromScratch = null, string folder = null, string storage = null)             
         {
             this.name = name;
@@ -67,52 +67,52 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// Filename of image.
+        /// Gets or sets name
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// Index of the background color.
+        /// Gets or sets backgroundColorIndex
         /// </summary>  
         public int? backgroundColorIndex { get; set; }
 
         /// <summary>
-        /// Color resolution.
+        /// Gets or sets colorResolution
         /// </summary>  
         public int? colorResolution { get; set; }
 
         /// <summary>
-        /// Specifies if image has trailer.
+        /// Gets or sets hasTrailer
         /// </summary>  
         public bool? hasTrailer { get; set; }
 
         /// <summary>
-        /// Specifies if image is interlaced.
+        /// Gets or sets interlaced
         /// </summary>  
         public bool? interlaced { get; set; }
 
         /// <summary>
-        /// Specifies if palette is sorted.
+        /// Gets or sets isPaletteSorted
         /// </summary>  
         public bool? isPaletteSorted { get; set; }
 
         /// <summary>
-        /// Pixel aspect ratio.
+        /// Gets or sets pixelAspectRatio
         /// </summary>  
         public int? pixelAspectRatio { get; set; }
 
         /// <summary>
-        /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+        /// Gets or sets fromScratch
         /// </summary>  
         public bool? fromScratch { get; set; }
 
         /// <summary>
-        /// Folder with image to process.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

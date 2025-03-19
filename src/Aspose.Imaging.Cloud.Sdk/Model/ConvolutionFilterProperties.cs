@@ -34,17 +34,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// The convolution filter.
+  /// 
   /// </summary>  
   public class ConvolutionFilterProperties : FilterPropertiesBase 
   {                       
         /// <summary>
-        /// Gets or sets the factor.
+        /// Gets or sets Kernel
+        /// </summary>  
+        public List<double?> Kernel { get; set; }
+
+        /// <summary>
+        /// Gets or sets Factor
         /// </summary>  
         public double? Factor { get; set; }
 
         /// <summary>
-        /// Gets or sets the bias.
+        /// Gets or sets Bias
         /// </summary>  
         public int? Bias { get; set; }
 
@@ -56,6 +61,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         {
           var sb = new StringBuilder();
           sb.Append("class ConvolutionFilterProperties {\n");
+          sb.Append("  Kernel: ").Append(this.Kernel).Append("\n");
           sb.Append("  Factor: ").Append(this.Factor).Append("\n");
           sb.Append("  Bias: ").Append(this.Bias).Append("\n");
           sb.Append("}\n");

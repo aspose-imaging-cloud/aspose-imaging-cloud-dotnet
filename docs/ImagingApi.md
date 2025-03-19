@@ -4,7 +4,7 @@
 ## **AddSearchImage**
 > void AddSearchImage(AddSearchImageRequest request)
 
-Add image and images features to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **AddSearchImageRequest** Parameters
 ```csharp
@@ -18,11 +18,11 @@ AddSearchImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| Search context identifier. | 
- **imageId** | **string**| Image identifier. | 
+ **searchContextId** | **string**|  | 
+ **imageId** | **string**|  | 
  **imageData** | **System.IO.Stream**| Input image | [optional] 
- **folder** | **string**| Folder. | [optional] 
- **storage** | **string**| Storage | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -34,7 +34,7 @@ void (empty response body)
 ## **AppendTiff**
 > void AppendTiff(AppendTiffRequest request)
 
-Appends existing TIFF image to another existing TIFF image (i.e. merges TIFF images).
+
 
 ### **AppendTiffRequest** Parameters
 ```csharp
@@ -47,10 +47,10 @@ AppendTiffRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Original image file name. | 
- **appendFile** | **string**| Image file name to be appended to original one. | 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
- **folder** | **string**| Folder with images to process. | [optional] 
+ **name** | **string**|  | 
+ **appendFile** | **string**|  | 
+ **storage** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
 
 ### Return type
 
@@ -62,7 +62,7 @@ void (empty response body)
 ## **CompareImages**
 > [SearchResultsSet](SearchResultsSet.md) CompareImages(CompareImagesRequest request)
 
-Compare two images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CompareImagesRequest** Parameters
 ```csharp
@@ -77,12 +77,12 @@ CompareImagesRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| The search context identifier. | 
- **imageId1** | **string**| The first image Id in storage. | 
+ **searchContextId** | **string**|  | 
+ **imageId1** | **string**|  | 
  **imageData** | **System.IO.Stream**| Input image | [optional] 
- **imageId2** | **string**| The second image Id in storage or null (if image loading in request). | [optional] 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **imageId2** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 ## **ConvertImage**
 > System.IO.Stream ConvertImage(ConvertImageRequest request)
 
-Convert existing image to another format.
+
 
 ### **ConvertImageRequest** Parameters
 ```csharp
@@ -107,10 +107,10 @@ ConvertImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **format** | **string**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 ## **ConvertTiffToFax**
 > System.IO.Stream ConvertTiffToFax(ConvertTiffToFaxRequest request)
 
-Update parameters of existing TIFF image accordingly to fax parameters.
+
 
 ### **ConvertTiffToFaxRequest** Parameters
 ```csharp
@@ -134,9 +134,9 @@ ConvertTiffToFaxRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
- **folder** | **string**| Folder with image to process. | [optional] 
+ **name** | **string**|  | 
+ **storage** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
 
 ### Return type
 
@@ -206,7 +206,7 @@ void (empty response body)
 ## **CreateConvertedImage**
 > System.IO.Stream CreateConvertedImage(CreateConvertedImageRequest request)
 
-Convert existing image to another format. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.             
+
 
 ### **CreateConvertedImageRequest** Parameters
 ```csharp
@@ -220,9 +220,9 @@ CreateConvertedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | 
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **format** | **string**|  | 
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 ## **CreateCroppedImage**
 > System.IO.Stream CreateCroppedImage(CreateCroppedImageRequest request)
 
-Crop an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateCroppedImageRequest** Parameters
 ```csharp
@@ -252,13 +252,13 @@ CreateCroppedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **x** | **int?**| X position of start point for cropping rectangle. | 
- **y** | **int?**| Y position of start point for cropping rectangle. | 
- **width** | **int?**| Width of cropping rectangle. | 
- **height** | **int?**| Height of cropping rectangle. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **x** | **int?**|  | 
+ **y** | **int?**|  | 
+ **width** | **int?**|  | 
+ **height** | **int?**|  | 
+ **format** | **string**|  | [optional] 
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 ## **CreateDeskewedImage**
 > System.IO.Stream CreateDeskewedImage(CreateDeskewedImageRequest request)
 
-Deskew an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateDeskewedImageRequest** Parameters
 ```csharp
@@ -285,10 +285,10 @@ CreateDeskewedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **resizeProportionally** | **bool?**| Resize proportionally | 
- **bkColor** | **string**| Background color | [optional] 
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **resizeProportionally** | **bool?**|  | 
+ **bkColor** | **string**|  | [optional] 
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 ## **CreateFaxTiff**
 > System.IO.Stream CreateFaxTiff(CreateFaxTiffRequest request)
 
-Update parameters of TIFF image accordingly to fax parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateFaxTiffRequest** Parameters
 ```csharp
@@ -313,8 +313,8 @@ CreateFaxTiffRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -350,7 +350,7 @@ void (empty response body)
 ## **CreateGrayscaledImage**
 > System.IO.Stream CreateGrayscaledImage(CreateGrayscaledImageRequest request)
 
-Grayscales an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateGrayscaledImageRequest** Parameters
 ```csharp
@@ -363,8 +363,8 @@ CreateGrayscaledImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -376,7 +376,7 @@ Name | Type | Description  | Notes
 ## **CreateImageFeatures**
 > void CreateImageFeatures(CreateImageFeaturesRequest request)
 
-Extract images features and add them to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateImageFeaturesRequest** Parameters
 ```csharp
@@ -391,12 +391,12 @@ CreateImageFeaturesRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| The search context identifier. | 
+ **searchContextId** | **string**|  | 
  **imageData** | **System.IO.Stream**| Input image | [optional] 
- **imageId** | **string**| The image identifier. | [optional] 
- **imagesFolder** | **string**| Images source - a folder | [optional] 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **imageId** | **string**|  | [optional] 
+ **imagesFolder** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -408,7 +408,7 @@ void (empty response body)
 ## **CreateImageFrame**
 > System.IO.Stream CreateImageFrame(CreateImageFrameRequest request)
 
-Get separate frame from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateImageFrameRequest** Parameters
 ```csharp
@@ -430,17 +430,17 @@ CreateImageFrameRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **frameId** | **int?**| Number of a frame. | 
- **newWidth** | **int?**| New width. | [optional] 
- **newHeight** | **int?**| New height. | [optional] 
- **x** | **int?**| X position of start point for cropping rectangle. | [optional] 
- **y** | **int?**| Y position of start point for cropping rectangle. | [optional] 
- **rectWidth** | **int?**| Width of cropping rectangle. | [optional] 
- **rectHeight** | **int?**| Height of cropping rectangle. | [optional] 
- **rotateFlipMethod** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | [optional] 
- **saveOtherFrames** | **bool?**| If result will include all other frames or just a specified frame. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **frameId** | **int?**|  | 
+ **newWidth** | **int?**|  | [optional] 
+ **newHeight** | **int?**|  | [optional] 
+ **x** | **int?**|  | [optional] 
+ **y** | **int?**|  | [optional] 
+ **rectWidth** | **int?**|  | [optional] 
+ **rectHeight** | **int?**|  | [optional] 
+ **rotateFlipMethod** | **string**|  | [optional] 
+ **saveOtherFrames** | **bool?**|  | [optional] [default to false]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -452,7 +452,7 @@ Name | Type | Description  | Notes
 ## **CreateImageFrameRange**
 > System.IO.Stream CreateImageFrameRange(CreateImageFrameRangeRequest request)
 
-Get frames range from existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateImageFrameRangeRequest** Parameters
 ```csharp
@@ -475,18 +475,18 @@ CreateImageFrameRangeRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **startFrameId** | **int?**| Index of the first frame in range. | 
- **endFrameId** | **int?**| Index of the last frame in range. | 
- **newWidth** | **int?**| New width. | [optional] 
- **newHeight** | **int?**| New height. | [optional] 
- **x** | **int?**| X position of start point for cropping rectangle. | [optional] 
- **y** | **int?**| Y position of start point for cropping rectangle. | [optional] 
- **rectWidth** | **int?**| Width of cropping rectangle. | [optional] 
- **rectHeight** | **int?**| Height of cropping rectangle. | [optional] 
- **rotateFlipMethod** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | [optional] 
- **saveOtherFrames** | **bool?**| If result will include all other frames or just a specified frame. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **startFrameId** | **int?**|  | 
+ **endFrameId** | **int?**|  | 
+ **newWidth** | **int?**|  | [optional] 
+ **newHeight** | **int?**|  | [optional] 
+ **x** | **int?**|  | [optional] 
+ **y** | **int?**|  | [optional] 
+ **rectWidth** | **int?**|  | [optional] 
+ **rectHeight** | **int?**|  | [optional] 
+ **rotateFlipMethod** | **string**|  | [optional] 
+ **saveOtherFrames** | **bool?**|  | [optional] [default to false]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 ## **CreateImageSearch**
 > [SearchContextStatus](SearchContextStatus.md) CreateImageSearch(CreateImageSearchRequest request)
 
-Create new search context.
+
 
 ### **CreateImageSearchRequest** Parameters
 ```csharp
@@ -511,10 +511,10 @@ CreateImageSearchRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **detector** | **string**| The image features detector. | [optional] [default to akaze]
- **matchingAlgorithm** | **string**| The matching algorithm. | [optional] [default to randomBinaryTree]
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **detector** | **string**|  | [optional] [default to akaze]
+ **matchingAlgorithm** | **string**|  | [optional] [default to randomBinaryTree]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -526,7 +526,7 @@ Name | Type | Description  | Notes
 ## **CreateImageTag**
 > void CreateImageTag(CreateImageTagRequest request)
 
-Add tag and reference image to search context. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateImageTagRequest** Parameters
 ```csharp
@@ -541,10 +541,10 @@ CreateImageTagRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **searchContextId** | **string**| The search context identifier. | 
- **tagName** | **string**| The tag. | 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **searchContextId** | **string**|  | 
+ **tagName** | **string**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -556,7 +556,7 @@ void (empty response body)
 ## **CreateModifiedBmp**
 > System.IO.Stream CreateModifiedBmp(CreateModifiedBmpRequest request)
 
-Update parameters of BMP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateModifiedBmpRequest** Parameters
 ```csharp
@@ -573,12 +573,12 @@ CreateModifiedBmpRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **bitsPerPixel** | **int?**| Color depth. | 
- **horizontalResolution** | **int?**| New horizontal resolution. | 
- **verticalResolution** | **int?**| New vertical resolution. | 
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **bitsPerPixel** | **int?**|  | 
+ **horizontalResolution** | **int?**|  | 
+ **verticalResolution** | **int?**|  | 
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -590,7 +590,7 @@ Name | Type | Description  | Notes
 ## **CreateModifiedEmf**
 > System.IO.Stream CreateModifiedEmf(CreateModifiedEmfRequest request)
 
-Process existing EMF imaging using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateModifiedEmfRequest** Parameters
 ```csharp
@@ -610,15 +610,15 @@ CreateModifiedEmfRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **bkColor** | **string**| Color of the background. | 
- **pageWidth** | **int?**| Width of the page. | 
- **pageHeight** | **int?**| Height of the page. | 
- **borderX** | **int?**| Border width. | 
- **borderY** | **int?**| Border height. | 
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
- **format** | **string**| Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] [default to png]
+ **bkColor** | **string**|  | 
+ **pageWidth** | **int?**|  | 
+ **pageHeight** | **int?**|  | 
+ **borderX** | **int?**|  | 
+ **borderY** | **int?**|  | 
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
+ **format** | **string**|  | [optional] [default to png]
 
 ### Return type
 
@@ -630,7 +630,7 @@ Name | Type | Description  | Notes
 ## **CreateModifiedGif**
 > System.IO.Stream CreateModifiedGif(CreateModifiedGifRequest request)
 
-Update parameters of GIF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateModifiedGifRequest** Parameters
 ```csharp
@@ -650,15 +650,15 @@ CreateModifiedGifRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **backgroundColorIndex** | **int?**| Index of the background color. | [optional] [default to 32]
- **colorResolution** | **int?**| Color resolution. | [optional] [default to 3]
- **hasTrailer** | **bool?**| Specifies if image has trailer. | [optional] [default to true]
- **interlaced** | **bool?**| Specifies if image is interlaced. | [optional] [default to true]
- **isPaletteSorted** | **bool?**| Specifies if palette is sorted. | [optional] [default to false]
- **pixelAspectRatio** | **int?**| Pixel aspect ratio. | [optional] [default to 3]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to true]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **backgroundColorIndex** | **int?**|  | [optional] [default to 32]
+ **colorResolution** | **int?**|  | [optional] [default to 3]
+ **hasTrailer** | **bool?**|  | [optional] [default to true]
+ **interlaced** | **bool?**|  | [optional] [default to true]
+ **isPaletteSorted** | **bool?**|  | [optional] [default to false]
+ **pixelAspectRatio** | **int?**|  | [optional] [default to 3]
+ **fromScratch** | **bool?**|  | [optional] [default to true]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -670,7 +670,7 @@ Name | Type | Description  | Notes
 ## **CreateModifiedJpeg**
 > System.IO.Stream CreateModifiedJpeg(CreateModifiedJpegRequest request)
 
-Update parameters of JPEG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateModifiedJpegRequest** Parameters
 ```csharp
@@ -686,11 +686,11 @@ CreateModifiedJpegRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **quality** | **int?**| Quality of an image from 0 to 100. Default is 75. | [optional] [default to 75]
- **compressionType** | **string**| Compression type: baseline (default), progressive, lossless or jpegls. | [optional] [default to baseline]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **quality** | **int?**|  | [optional] [default to 75]
+ **compressionType** | **string**|  | [optional] [default to baseline]
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -702,7 +702,7 @@ Name | Type | Description  | Notes
 ## **CreateModifiedJpeg2000**
 > System.IO.Stream CreateModifiedJpeg2000(CreateModifiedJpeg2000Request request)
 
-Update parameters of JPEG2000 image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateModifiedJpeg2000Request** Parameters
 ```csharp
@@ -718,11 +718,11 @@ CreateModifiedJpeg2000Request(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **comment** | **string**| The comment (can be either single or comma-separated). | 
- **codec** | **string**| The codec (j2k or jp2). | [optional] [default to j2k]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **comment** | **string**|  | 
+ **codec** | **string**|  | [optional] [default to j2k]
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -734,7 +734,7 @@ Name | Type | Description  | Notes
 ## **CreateModifiedPsd**
 > System.IO.Stream CreateModifiedPsd(CreateModifiedPsdRequest request)
 
-Update parameters of PSD image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateModifiedPsdRequest** Parameters
 ```csharp
@@ -750,11 +750,11 @@ CreateModifiedPsdRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **channelsCount** | **int?**| Count of color channels. | [optional] [default to 4]
- **compressionMethod** | **string**| Compression method (for now, raw and RLE are supported). | [optional] [default to rle]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **channelsCount** | **int?**|  | [optional] [default to 4]
+ **compressionMethod** | **string**|  | [optional] [default to rle]
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -766,7 +766,7 @@ Name | Type | Description  | Notes
 ## **CreateModifiedSvg**
 > System.IO.Stream CreateModifiedSvg(CreateModifiedSvgRequest request)
 
-Update parameters of SVG image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateModifiedSvgRequest** Parameters
 ```csharp
@@ -790,19 +790,19 @@ CreateModifiedSvgRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **colorType** | **string**| Color type for SVG image. Only RGB is supported for now. | [optional] [default to Rgb]
- **textAsShapes** | **bool?**| Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false | [optional] [default to false]
- **scaleX** | **double?**| Scale X. | [optional] [default to 0.0]
- **scaleY** | **double?**| Scale Y. | [optional] [default to 0.0]
- **pageWidth** | **int?**| Width of the page. | [optional] 
- **pageHeight** | **int?**| Height of the page. | [optional] 
- **borderX** | **int?**| Border width. Only 0 is supported for now. | [optional] 
- **borderY** | **int?**| Border height. Only 0 is supported for now. | [optional] 
- **bkColor** | **string**| Background color (Default is white). | [optional] [default to white]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
- **format** | **string**| Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] [default to png]
+ **colorType** | **string**|  | [optional] [default to Rgb]
+ **textAsShapes** | **bool?**|  | [optional] [default to false]
+ **scaleX** | **double?**|  | [optional] [default to 0.0]
+ **scaleY** | **double?**|  | [optional] [default to 0.0]
+ **pageWidth** | **int?**|  | [optional] 
+ **pageHeight** | **int?**|  | [optional] 
+ **borderX** | **int?**|  | [optional] 
+ **borderY** | **int?**|  | [optional] 
+ **bkColor** | **string**|  | [optional] [default to white]
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
+ **format** | **string**|  | [optional] [default to png]
 
 ### Return type
 
@@ -814,7 +814,7 @@ Name | Type | Description  | Notes
 ## **CreateModifiedTiff**
 > System.IO.Stream CreateModifiedTiff(CreateModifiedTiffRequest request)
 
-Update parameters of TIFF image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateModifiedTiffRequest** Parameters
 ```csharp
@@ -833,14 +833,14 @@ CreateModifiedTiffRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **bitDepth** | **int?**| Bit depth. | 
- **compression** | **string**| Compression (none is default). Please, refer to https://apireference.aspose.com/net/imaging/aspose.imaging.fileformats.tiff.enums/tiffcompressions for all possible values. | [optional] 
- **resolutionUnit** | **string**| New resolution unit (none - the default one, inch or centimeter). | [optional] 
- **horizontalResolution** | **double?**| New horizontal resolution. | [optional] [default to 0.0]
- **verticalResolution** | **double?**| New vertical resolution. | [optional] [default to 0.0]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **bitDepth** | **int?**|  | 
+ **compression** | **string**|  | [optional] 
+ **resolutionUnit** | **string**|  | [optional] 
+ **horizontalResolution** | **double?**|  | [optional] [default to 0.0]
+ **verticalResolution** | **double?**|  | [optional] [default to 0.0]
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -852,7 +852,7 @@ Name | Type | Description  | Notes
 ## **CreateModifiedWebP**
 > System.IO.Stream CreateModifiedWebP(CreateModifiedWebPRequest request)
 
-Update parameters of WEBP image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateModifiedWebPRequest** Parameters
 ```csharp
@@ -870,13 +870,13 @@ CreateModifiedWebPRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **lossLess** | **bool?**| If WEBP should be in lossless format. | 
- **quality** | **int?**| Quality (0-100). | 
- **animLoopCount** | **int?**| The animation loop count. | 
- **animBackgroundColor** | **string**| Color of the animation background. | 
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **lossLess** | **bool?**|  | 
+ **quality** | **int?**|  | 
+ **animLoopCount** | **int?**|  | 
+ **animBackgroundColor** | **string**|  | 
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -888,7 +888,7 @@ Name | Type | Description  | Notes
 ## **CreateModifiedWmf**
 > System.IO.Stream CreateModifiedWmf(CreateModifiedWmfRequest request)
 
-Process existing WMF image using given parameters. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateModifiedWmfRequest** Parameters
 ```csharp
@@ -908,15 +908,15 @@ CreateModifiedWmfRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **bkColor** | **string**| Color of the background. | 
- **pageWidth** | **int?**| Width of the page. | 
- **pageHeight** | **int?**| Height of the page. | 
- **borderX** | **int?**| Border width. | 
- **borderY** | **int?**| Border height. | 
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
- **format** | **string**| Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] [default to png]
+ **bkColor** | **string**|  | 
+ **pageWidth** | **int?**|  | 
+ **pageHeight** | **int?**|  | 
+ **borderX** | **int?**|  | 
+ **borderY** | **int?**|  | 
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
+ **format** | **string**|  | [optional] [default to png]
 
 ### Return type
 
@@ -928,7 +928,7 @@ Name | Type | Description  | Notes
 ## **CreateObjectBounds**
 > [DetectedObjectList](DetectedObjectList.md) CreateObjectBounds(CreateObjectBoundsRequest request)
 
-Detects objects bounds. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateObjectBoundsRequest** Parameters
 ```csharp
@@ -947,14 +947,14 @@ CreateObjectBoundsRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **method** | **string**| Object detection method | [optional] [default to ssd]
- **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeLabel** | **bool?**| Draw detected objects labels | [optional] [default to false]
- **includeScore** | **bool?**| Draw detected objects scores | [optional] [default to false]
- **allowedLabels** | **string**| Comma-separated list of allowed labels | [optional] 
- **blockedLabels** | **string**| Comma-separated list of blocked labels | [optional] 
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **method** | **string**|  | [optional] [default to ssd]
+ **threshold** | **int?**|  | [optional] [default to 50]
+ **includeLabel** | **bool?**|  | [optional] [default to false]
+ **includeScore** | **bool?**|  | [optional] [default to false]
+ **allowedLabels** | **string**|  | [optional] 
+ **blockedLabels** | **string**|  | [optional] 
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -966,7 +966,7 @@ Name | Type | Description  | Notes
 ## **CreateResizedImage**
 > System.IO.Stream CreateResizedImage(CreateResizedImageRequest request)
 
-Resize an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateResizedImageRequest** Parameters
 ```csharp
@@ -982,11 +982,11 @@ CreateResizedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **newWidth** | **int?**| New width. | 
- **newHeight** | **int?**| New height. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **newWidth** | **int?**|  | 
+ **newHeight** | **int?**|  | 
+ **format** | **string**|  | [optional] 
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -998,7 +998,7 @@ Name | Type | Description  | Notes
 ## **CreateRotateFlippedImage**
 > System.IO.Stream CreateRotateFlippedImage(CreateRotateFlippedImageRequest request)
 
-Rotate and/or flip an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateRotateFlippedImageRequest** Parameters
 ```csharp
@@ -1013,10 +1013,10 @@ CreateRotateFlippedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **method** | **string**|  | 
+ **format** | **string**|  | [optional] 
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1028,7 +1028,7 @@ Name | Type | Description  | Notes
 ## **CreateUpdatedImage**
 > System.IO.Stream CreateUpdatedImage(CreateUpdatedImageRequest request)
 
-Perform scaling, cropping and flipping of an image in a single request. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **CreateUpdatedImageRequest** Parameters
 ```csharp
@@ -1049,16 +1049,16 @@ CreateUpdatedImageRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **newWidth** | **int?**| New width of the scaled image. | 
- **newHeight** | **int?**| New height of the scaled image. | 
- **x** | **int?**| X position of start point for cropping rectangle. | 
- **y** | **int?**| Y position of start point for cropping rectangle. | 
- **rectWidth** | **int?**| Width of cropping rectangle. | 
- **rectHeight** | **int?**| Height of cropping rectangle. | 
- **rotateFlipMethod** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image). | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **newWidth** | **int?**|  | 
+ **newHeight** | **int?**|  | 
+ **x** | **int?**|  | 
+ **y** | **int?**|  | 
+ **rectWidth** | **int?**|  | 
+ **rectHeight** | **int?**|  | 
+ **rotateFlipMethod** | **string**|  | 
+ **format** | **string**|  | [optional] 
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1070,7 +1070,7 @@ Name | Type | Description  | Notes
 ## **CreateVisualObjectBounds**
 > System.IO.Stream CreateVisualObjectBounds(CreateVisualObjectBoundsRequest request)
 
-Detects objects bounds and draw them on the original image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream
+
 
 ### **CreateVisualObjectBoundsRequest** Parameters
 ```csharp
@@ -1090,15 +1090,15 @@ CreateVisualObjectBoundsRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **method** | **string**| Object detection method | [optional] [default to ssd]
- **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeLabel** | **bool?**| Draw detected objects classes | [optional] [default to false]
- **includeScore** | **bool?**| Draw detected objects scores | [optional] [default to false]
- **allowedLabels** | **string**| Comma-separated list of allowed labels | [optional] 
- **blockedLabels** | **string**| Comma-separated list of blocked labels | [optional] 
- **color** | **string**| Bounds, labels, and scores text color | [optional] 
- **outPath** | **string**| Path to updated file (if this is empty, response contains streamed image) | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **method** | **string**|  | [optional] [default to ssd]
+ **threshold** | **int?**|  | [optional] [default to 50]
+ **includeLabel** | **bool?**|  | [optional] [default to false]
+ **includeScore** | **bool?**|  | [optional] [default to false]
+ **allowedLabels** | **string**|  | [optional] 
+ **blockedLabels** | **string**|  | [optional] 
+ **color** | **string**|  | [optional] 
+ **outPath** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1110,7 +1110,7 @@ Name | Type | Description  | Notes
 ## **CreateWebSiteImageFeatures**
 > void CreateWebSiteImageFeatures(CreateWebSiteImageFeaturesRequest request)
 
-Extract images features from web page and add them to search context
+
 
 ### **CreateWebSiteImageFeaturesRequest** Parameters
 ```csharp
@@ -1123,10 +1123,10 @@ CreateWebSiteImageFeaturesRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| The search context identifier. | 
- **imagesSource** | **string**| Images source - a web page | 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **searchContextId** | **string**|  | 
+ **imagesSource** | **string**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1138,7 +1138,7 @@ void (empty response body)
 ## **CropImage**
 > System.IO.Stream CropImage(CropImageRequest request)
 
-Crop an existing image.
+
 
 ### **CropImageRequest** Parameters
 ```csharp
@@ -1155,14 +1155,14 @@ CropImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of an image. | 
- **x** | **int?**| X position of start point for cropping rectangle. | 
- **y** | **int?**| Y position of start point for cropping rectangle. | 
- **width** | **int?**| Width of cropping rectangle | 
- **height** | **int?**| Height of cropping rectangle. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **x** | **int?**|  | 
+ **y** | **int?**|  | 
+ **width** | **int?**|  | 
+ **height** | **int?**|  | 
+ **format** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1226,7 +1226,7 @@ void (empty response body)
 ## **DeleteImageFeatures**
 > void DeleteImageFeatures(DeleteImageFeaturesRequest request)
 
-Deletes image features from search context.
+
 
 ### **DeleteImageFeaturesRequest** Parameters
 ```csharp
@@ -1239,10 +1239,10 @@ DeleteImageFeaturesRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| The search context identifier. | 
- **imageId** | **string**| The image identifier. | 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **searchContextId** | **string**|  | 
+ **imageId** | **string**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1254,7 +1254,7 @@ void (empty response body)
 ## **DeleteImageSearch**
 > void DeleteImageSearch(DeleteImageSearchRequest request)
 
-Deletes the search context.
+
 
 ### **DeleteImageSearchRequest** Parameters
 ```csharp
@@ -1266,9 +1266,9 @@ DeleteImageSearchRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| The search context identifier. | 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **searchContextId** | **string**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1280,7 +1280,7 @@ void (empty response body)
 ## **DeleteSearchImage**
 > void DeleteSearchImage(DeleteSearchImageRequest request)
 
-Delete image and images features from search context
+
 
 ### **DeleteSearchImageRequest** Parameters
 ```csharp
@@ -1293,10 +1293,10 @@ DeleteSearchImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| Search context identifier. | 
- **imageId** | **string**| Image identifier. | 
- **folder** | **string**| Folder. | [optional] 
- **storage** | **string**| Storage | [optional] 
+ **searchContextId** | **string**|  | 
+ **imageId** | **string**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1308,7 +1308,7 @@ void (empty response body)
 ## **DeskewImage**
 > System.IO.Stream DeskewImage(DeskewImageRequest request)
 
-Deskew an existing image.
+
 
 ### **DeskewImageRequest** Parameters
 ```csharp
@@ -1322,11 +1322,11 @@ DeskewImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Image file name. | 
- **resizeProportionally** | **bool?**| Resize proportionally | 
- **bkColor** | **string**| Background color | [optional] 
- **folder** | **string**| Folder | [optional] 
- **storage** | **string**| Storage | [optional] 
+ **name** | **string**|  | 
+ **resizeProportionally** | **bool?**|  | 
+ **bkColor** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1364,7 +1364,7 @@ Name | Type | Description  | Notes
 ## **ExtractImageFeatures**
 > [ImageFeatures](ImageFeatures.md) ExtractImageFeatures(ExtractImageFeaturesRequest request)
 
-Extract features from image without adding to search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **ExtractImageFeaturesRequest** Parameters
 ```csharp
@@ -1378,11 +1378,11 @@ ExtractImageFeaturesRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| The search context identifier. | 
- **imageId** | **string**| The image identifier. | 
+ **searchContextId** | **string**|  | 
+ **imageId** | **string**|  | 
  **imageData** | **System.IO.Stream**| Input image | [optional] 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1394,7 +1394,7 @@ Name | Type | Description  | Notes
 ## **ExtractImageFrameProperties**
 > [ImagingResponse](ImagingResponse.md) ExtractImageFrameProperties(ExtractImageFramePropertiesRequest request)
 
-Get separate frame properties of existing image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **ExtractImageFramePropertiesRequest** Parameters
 ```csharp
@@ -1406,7 +1406,7 @@ ExtractImageFramePropertiesRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **imageData** | **System.IO.Stream**| Input image | 
- **frameId** | **int?**| Number of a frame. | 
+ **frameId** | **int?**|  | 
 
 ### Return type
 
@@ -1418,7 +1418,7 @@ Name | Type | Description  | Notes
 ## **ExtractImageProperties**
 > [ImagingResponse](ImagingResponse.md) ExtractImageProperties(ExtractImagePropertiesRequest request)
 
-Get properties of an image. Image data is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **ExtractImagePropertiesRequest** Parameters
 ```csharp
@@ -1440,7 +1440,7 @@ Name | Type | Description  | Notes
 ## **FilterEffectImage**
 > System.IO.Stream FilterEffectImage(FilterEffectImageRequest request)
 
-Apply filtering effects to an existing image.
+
 
 ### **FilterEffectImageRequest** Parameters
 ```csharp
@@ -1455,12 +1455,12 @@ FilterEffectImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of an image. | 
- **filterType** | **string**| Filter type (BigRectangular, SmallRectangular, Median, GaussWiener, MotionWiener, GaussianBlur, Sharpen, BilateralSmoothing). | 
- **filterProperties** | [**FilterPropertiesBase**](FilterPropertiesBase.md)| Filter properties. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **filterType** | **string**|  | 
+ **filterProperties** | [**FilterPropertiesBase**](FilterPropertiesBase.md)|  | 
+ **format** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1472,7 +1472,7 @@ Name | Type | Description  | Notes
 ## **FindImageDuplicates**
 > [ImageDuplicatesSet](ImageDuplicatesSet.md) FindImageDuplicates(FindImageDuplicatesRequest request)
 
-Find images duplicates.
+
 
 ### **FindImageDuplicatesRequest** Parameters
 ```csharp
@@ -1485,10 +1485,10 @@ FindImageDuplicatesRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| The search context identifier. | 
- **similarityThreshold** | **double?**| The similarity threshold. | 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **searchContextId** | **string**|  | 
+ **similarityThreshold** | **double?**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1500,7 +1500,7 @@ Name | Type | Description  | Notes
 ## **FindImagesByTags**
 > [SearchResultsSet](SearchResultsSet.md) FindImagesByTags(FindImagesByTagsRequest request)
 
-Find images by tags. Tags JSON string is passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **FindImagesByTagsRequest** Parameters
 ```csharp
@@ -1516,11 +1516,11 @@ FindImagesByTagsRequest(
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **tags** | **string**| Tags array for searching | 
- **searchContextId** | **string**| The search context identifier. | 
- **similarityThreshold** | **double?**| The similarity threshold. | 
- **maxCount** | **int?**| The maximum count. | 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **searchContextId** | **string**|  | 
+ **similarityThreshold** | **double?**|  | 
+ **maxCount** | **int?**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1532,7 +1532,7 @@ Name | Type | Description  | Notes
 ## **FindSimilarImages**
 > [SearchResultsSet](SearchResultsSet.md) FindSimilarImages(FindSimilarImagesRequest request)
 
-Find similar images. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **FindSimilarImagesRequest** Parameters
 ```csharp
@@ -1548,13 +1548,13 @@ FindSimilarImagesRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| The search context identifier. | 
- **similarityThreshold** | **double?**| The similarity threshold. | 
- **maxCount** | **int?**| The maximum count. | 
+ **searchContextId** | **string**|  | 
+ **similarityThreshold** | **double?**|  | 
+ **maxCount** | **int?**|  | 
  **imageData** | **System.IO.Stream**| Input image | [optional] 
- **imageId** | **string**| The search image identifier. | [optional] 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **imageId** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1566,7 +1566,7 @@ Name | Type | Description  | Notes
 ## **GetAvailableLabels**
 > [AvailableLabelsList](AvailableLabelsList.md) GetAvailableLabels(GetAvailableLabelsRequest request)
 
-Gets available labels for selected object detection method.
+
 
 ### **GetAvailableLabelsRequest** Parameters
 ```csharp
@@ -1576,7 +1576,7 @@ GetAvailableLabelsRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **method** | **string**| Object detection method | 
+ **method** | **string**|  | 
 
 ### Return type
 
@@ -1658,7 +1658,7 @@ Name | Type | Description  | Notes
 ## **GetImageFeatures**
 > [ImageFeatures](ImageFeatures.md) GetImageFeatures(GetImageFeaturesRequest request)
 
-Gets image features from search context.
+
 
 ### **GetImageFeaturesRequest** Parameters
 ```csharp
@@ -1671,10 +1671,10 @@ GetImageFeaturesRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| The search context identifier. | 
- **imageId** | **string**| The image identifier. | 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **searchContextId** | **string**|  | 
+ **imageId** | **string**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1686,7 +1686,7 @@ Name | Type | Description  | Notes
 ## **GetImageFrame**
 > System.IO.Stream GetImageFrame(GetImageFrameRequest request)
 
-Get separate frame from existing image.
+
 
 ### **GetImageFrameRequest** Parameters
 ```csharp
@@ -1707,18 +1707,18 @@ GetImageFrameRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **frameId** | **int?**| Number of a frame. | 
- **newWidth** | **int?**| New width. | [optional] 
- **newHeight** | **int?**| New height. | [optional] 
- **x** | **int?**| X position of start point for cropping rectangle. | [optional] 
- **y** | **int?**| Y position of start point for cropping rectangle. | [optional] 
- **rectWidth** | **int?**| Width of cropping rectangle. | [optional] 
- **rectHeight** | **int?**| Height of cropping rectangle. | [optional] 
- **rotateFlipMethod** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | [optional] 
- **saveOtherFrames** | **bool?**| If result will include all other frames or just a specified frame. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **frameId** | **int?**|  | 
+ **newWidth** | **int?**|  | [optional] 
+ **newHeight** | **int?**|  | [optional] 
+ **x** | **int?**|  | [optional] 
+ **y** | **int?**|  | [optional] 
+ **rectWidth** | **int?**|  | [optional] 
+ **rectHeight** | **int?**|  | [optional] 
+ **rotateFlipMethod** | **string**|  | [optional] 
+ **saveOtherFrames** | **bool?**|  | [optional] [default to false]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1730,7 +1730,7 @@ Name | Type | Description  | Notes
 ## **GetImageFrameProperties**
 > [ImagingResponse](ImagingResponse.md) GetImageFrameProperties(GetImageFramePropertiesRequest request)
 
-Get separate frame properties of existing image.
+
 
 ### **GetImageFramePropertiesRequest** Parameters
 ```csharp
@@ -1743,10 +1743,10 @@ GetImageFramePropertiesRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename with image. | 
- **frameId** | **int?**| Number of a frame. | 
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **frameId** | **int?**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1758,7 +1758,7 @@ Name | Type | Description  | Notes
 ## **GetImageFrameRange**
 > System.IO.Stream GetImageFrameRange(GetImageFrameRangeRequest request)
 
-Get frames range from existing image.
+
 
 ### **GetImageFrameRangeRequest** Parameters
 ```csharp
@@ -1780,19 +1780,19 @@ GetImageFrameRangeRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **startFrameId** | **int?**| Index of the first frame in range. | 
- **endFrameId** | **int?**| Index of the last frame in range. | 
- **newWidth** | **int?**| New width. | [optional] 
- **newHeight** | **int?**| New height. | [optional] 
- **x** | **int?**| X position of start point for cropping rectangle. | [optional] 
- **y** | **int?**| Y position of start point for cropping rectangle. | [optional] 
- **rectWidth** | **int?**| Width of cropping rectangle. | [optional] 
- **rectHeight** | **int?**| Height of cropping rectangle. | [optional] 
- **rotateFlipMethod** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | [optional] 
- **saveOtherFrames** | **bool?**| If result will include all other frames or just a specified frame. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **startFrameId** | **int?**|  | 
+ **endFrameId** | **int?**|  | 
+ **newWidth** | **int?**|  | [optional] 
+ **newHeight** | **int?**|  | [optional] 
+ **x** | **int?**|  | [optional] 
+ **y** | **int?**|  | [optional] 
+ **rectWidth** | **int?**|  | [optional] 
+ **rectHeight** | **int?**|  | [optional] 
+ **rotateFlipMethod** | **string**|  | [optional] 
+ **saveOtherFrames** | **bool?**|  | [optional] [default to false]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1804,7 +1804,7 @@ Name | Type | Description  | Notes
 ## **GetImageProperties**
 > [ImagingResponse](ImagingResponse.md) GetImageProperties(GetImagePropertiesRequest request)
 
-Get properties of an image.
+
 
 ### **GetImagePropertiesRequest** Parameters
 ```csharp
@@ -1816,9 +1816,9 @@ GetImagePropertiesRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of an image. | 
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1830,7 +1830,7 @@ Name | Type | Description  | Notes
 ## **GetImageSearchStatus**
 > [SearchContextStatus](SearchContextStatus.md) GetImageSearchStatus(GetImageSearchStatusRequest request)
 
-Gets the search context status.
+
 
 ### **GetImageSearchStatusRequest** Parameters
 ```csharp
@@ -1842,9 +1842,9 @@ GetImageSearchStatusRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| The search context identifier. | 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **searchContextId** | **string**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1856,7 +1856,7 @@ Name | Type | Description  | Notes
 ## **GetObjectBounds**
 > [DetectedObjectList](DetectedObjectList.md) GetObjectBounds(GetObjectBoundsRequest request)
 
-Detects objects' bounds
+
 
 ### **GetObjectBoundsRequest** Parameters
 ```csharp
@@ -1874,15 +1874,15 @@ GetObjectBoundsRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Image file name. | 
- **method** | **string**| Object detection method | [optional] [default to ssd]
- **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeLabel** | **bool?**| Return detected objects labels | [optional] [default to false]
- **includeScore** | **bool?**| Return detected objects score | [optional] [default to false]
- **allowedLabels** | **string**| Comma-separated list of allowed labels | [optional] 
- **blockedLabels** | **string**| Comma-separated list of blocked labels | [optional] 
- **folder** | **string**| Folder | [optional] 
- **storage** | **string**| Storage | [optional] 
+ **name** | **string**|  | 
+ **method** | **string**|  | [optional] [default to ssd]
+ **threshold** | **int?**|  | [optional] [default to 50]
+ **includeLabel** | **bool?**|  | [optional] [default to false]
+ **includeScore** | **bool?**|  | [optional] [default to false]
+ **allowedLabels** | **string**|  | [optional] 
+ **blockedLabels** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1894,7 +1894,7 @@ Name | Type | Description  | Notes
 ## **GetSearchImage**
 > System.IO.Stream GetSearchImage(GetSearchImageRequest request)
 
-Get image from search context
+
 
 ### **GetSearchImageRequest** Parameters
 ```csharp
@@ -1907,10 +1907,10 @@ GetSearchImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| Search context identifier. | 
- **imageId** | **string**| Image identifier. | 
- **folder** | **string**| Folder. | [optional] 
- **storage** | **string**| Storage | [optional] 
+ **searchContextId** | **string**|  | 
+ **imageId** | **string**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1922,7 +1922,7 @@ Name | Type | Description  | Notes
 ## **GetVisualObjectBounds**
 > System.IO.Stream GetVisualObjectBounds(GetVisualObjectBoundsRequest request)
 
-Detects objects bounds and draw them on the original image
+
 
 ### **GetVisualObjectBoundsRequest** Parameters
 ```csharp
@@ -1941,16 +1941,16 @@ GetVisualObjectBoundsRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| The image features detector. | 
- **method** | **string**| Object detection method | [optional] [default to ssd]
- **threshold** | **int?**| Object detection probability threshold in percents | [optional] [default to 50]
- **includeLabel** | **bool?**| Draw detected objects labels | [optional] [default to false]
- **includeScore** | **bool?**| Draw detected objects scores | [optional] [default to false]
- **allowedLabels** | **string**| Comma-separated list of allowed labels | [optional] 
- **blockedLabels** | **string**| Comma-separated list of blocked labels | [optional] 
- **color** | **string**| Bounds, labels, and scores text color | [optional] 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **name** | **string**|  | 
+ **method** | **string**|  | [optional] [default to ssd]
+ **threshold** | **int?**|  | [optional] [default to 50]
+ **includeLabel** | **bool?**|  | [optional] [default to false]
+ **includeScore** | **bool?**|  | [optional] [default to false]
+ **allowedLabels** | **string**|  | [optional] 
+ **blockedLabels** | **string**|  | [optional] 
+ **color** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1962,7 +1962,7 @@ Name | Type | Description  | Notes
 ## **GrayscaleImage**
 > System.IO.Stream GrayscaleImage(GrayscaleImageRequest request)
 
-Grayscale an existing image.
+
 
 ### **GrayscaleImageRequest** Parameters
 ```csharp
@@ -1974,9 +1974,9 @@ GrayscaleImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Image file name. | 
- **folder** | **string**| Folder | [optional] 
- **storage** | **string**| Storage | [optional] 
+ **name** | **string**|  | 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -1988,7 +1988,7 @@ Name | Type | Description  | Notes
 ## **ModifyBmp**
 > System.IO.Stream ModifyBmp(ModifyBmpRequest request)
 
-Update parameters of existing BMP image.
+
 
 ### **ModifyBmpRequest** Parameters
 ```csharp
@@ -2004,13 +2004,13 @@ ModifyBmpRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **bitsPerPixel** | **int?**| Color depth. | 
- **horizontalResolution** | **int?**| New horizontal resolution. | 
- **verticalResolution** | **int?**| New vertical resolution. | 
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **bitsPerPixel** | **int?**|  | 
+ **horizontalResolution** | **int?**|  | 
+ **verticalResolution** | **int?**|  | 
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2022,7 +2022,7 @@ Name | Type | Description  | Notes
 ## **ModifyEmf**
 > System.IO.Stream ModifyEmf(ModifyEmfRequest request)
 
-Process existing EMF imaging using given parameters.
+
 
 ### **ModifyEmfRequest** Parameters
 ```csharp
@@ -2041,16 +2041,16 @@ ModifyEmfRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **bkColor** | **string**| Color of the background. | 
- **pageWidth** | **int?**| Width of the page. | 
- **pageHeight** | **int?**| Height of the page. | 
- **borderX** | **int?**| Border width. | 
- **borderY** | **int?**| Border height. | 
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
- **format** | **string**| Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] [default to png]
+ **name** | **string**|  | 
+ **bkColor** | **string**|  | 
+ **pageWidth** | **int?**|  | 
+ **pageHeight** | **int?**|  | 
+ **borderX** | **int?**|  | 
+ **borderY** | **int?**|  | 
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
+ **format** | **string**|  | [optional] [default to png]
 
 ### Return type
 
@@ -2062,7 +2062,7 @@ Name | Type | Description  | Notes
 ## **ModifyGif**
 > System.IO.Stream ModifyGif(ModifyGifRequest request)
 
-Update parameters of existing GIF image.
+
 
 ### **ModifyGifRequest** Parameters
 ```csharp
@@ -2081,16 +2081,16 @@ ModifyGifRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **backgroundColorIndex** | **int?**| Index of the background color. | [optional] [default to 32]
- **colorResolution** | **int?**| Color resolution. | [optional] [default to 3]
- **hasTrailer** | **bool?**| Specifies if image has trailer. | [optional] [default to true]
- **interlaced** | **bool?**| Specifies if image is interlaced. | [optional] [default to true]
- **isPaletteSorted** | **bool?**| Specifies if palette is sorted. | [optional] [default to false]
- **pixelAspectRatio** | **int?**| Pixel aspect ratio. | [optional] [default to 3]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to true]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **backgroundColorIndex** | **int?**|  | [optional] [default to 32]
+ **colorResolution** | **int?**|  | [optional] [default to 3]
+ **hasTrailer** | **bool?**|  | [optional] [default to true]
+ **interlaced** | **bool?**|  | [optional] [default to true]
+ **isPaletteSorted** | **bool?**|  | [optional] [default to false]
+ **pixelAspectRatio** | **int?**|  | [optional] [default to 3]
+ **fromScratch** | **bool?**|  | [optional] [default to true]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2102,7 +2102,7 @@ Name | Type | Description  | Notes
 ## **ModifyJpeg**
 > System.IO.Stream ModifyJpeg(ModifyJpegRequest request)
 
-Update parameters of existing JPEG image.
+
 
 ### **ModifyJpegRequest** Parameters
 ```csharp
@@ -2117,12 +2117,12 @@ ModifyJpegRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **quality** | **int?**| Quality of an image from 0 to 100. Default is 75. | [optional] [default to 75]
- **compressionType** | **string**| Compression type: baseline (default), progressive, lossless or jpegls. | [optional] [default to baseline]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **quality** | **int?**|  | [optional] [default to 75]
+ **compressionType** | **string**|  | [optional] [default to baseline]
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2134,7 +2134,7 @@ Name | Type | Description  | Notes
 ## **ModifyJpeg2000**
 > System.IO.Stream ModifyJpeg2000(ModifyJpeg2000Request request)
 
-Update parameters of existing JPEG2000 image.
+
 
 ### **ModifyJpeg2000Request** Parameters
 ```csharp
@@ -2149,12 +2149,12 @@ ModifyJpeg2000Request(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **comment** | **string**| The comment (can be either single or comma-separated). | 
- **codec** | **string**| The codec (j2k or jp2). | [optional] [default to j2k]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **comment** | **string**|  | 
+ **codec** | **string**|  | [optional] [default to j2k]
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2166,7 +2166,7 @@ Name | Type | Description  | Notes
 ## **ModifyPsd**
 > System.IO.Stream ModifyPsd(ModifyPsdRequest request)
 
-Update parameters of existing PSD image.
+
 
 ### **ModifyPsdRequest** Parameters
 ```csharp
@@ -2181,12 +2181,12 @@ ModifyPsdRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **channelsCount** | **int?**| Count of color channels. | [optional] [default to 4]
- **compressionMethod** | **string**| Compression method (for now, raw and RLE are supported). | [optional] [default to rle]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **channelsCount** | **int?**|  | [optional] [default to 4]
+ **compressionMethod** | **string**|  | [optional] [default to rle]
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2198,7 +2198,7 @@ Name | Type | Description  | Notes
 ## **ModifySvg**
 > System.IO.Stream ModifySvg(ModifySvgRequest request)
 
-Update parameters of existing SVG image.
+
 
 ### **ModifySvgRequest** Parameters
 ```csharp
@@ -2221,20 +2221,20 @@ ModifySvgRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **colorType** | **string**| Color type for SVG image. Only RGB is supported for now. | [optional] [default to Rgb]
- **textAsShapes** | **bool?**| Whether text must be converted as shapes. true if all text is turned into SVG shapes in the convertion; otherwise, false | [optional] [default to false]
- **scaleX** | **double?**| Scale X. | [optional] [default to 0.0]
- **scaleY** | **double?**| Scale Y. | [optional] [default to 0.0]
- **pageWidth** | **int?**| Width of the page. | [optional] 
- **pageHeight** | **int?**| Height of the page. | [optional] 
- **borderX** | **int?**| Border width. Only 0 is supported for now. | [optional] 
- **borderY** | **int?**| Border height. Only 0 is supported for now. | [optional] 
- **bkColor** | **string**| Background color (Default is white). | [optional] [default to white]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
- **format** | **string**| Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] [default to svg]
+ **name** | **string**|  | 
+ **colorType** | **string**|  | [optional] [default to Rgb]
+ **textAsShapes** | **bool?**|  | [optional] [default to false]
+ **scaleX** | **double?**|  | [optional] [default to 0.0]
+ **scaleY** | **double?**|  | [optional] [default to 0.0]
+ **pageWidth** | **int?**|  | [optional] 
+ **pageHeight** | **int?**|  | [optional] 
+ **borderX** | **int?**|  | [optional] 
+ **borderY** | **int?**|  | [optional] 
+ **bkColor** | **string**|  | [optional] [default to white]
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
+ **format** | **string**|  | [optional] [default to svg]
 
 ### Return type
 
@@ -2246,7 +2246,7 @@ Name | Type | Description  | Notes
 ## **ModifyTiff**
 > System.IO.Stream ModifyTiff(ModifyTiffRequest request)
 
-Update parameters of existing TIFF image.
+
 
 ### **ModifyTiffRequest** Parameters
 ```csharp
@@ -2264,15 +2264,15 @@ ModifyTiffRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **bitDepth** | **int?**| Bit depth. | 
- **compression** | **string**| Compression (none is default). Please, refer to https://apireference.aspose.com/net/imaging/aspose.imaging.fileformats.tiff.enums/tiffcompressions for all possible values. | [optional] 
- **resolutionUnit** | **string**| New resolution unit (none - the default one, inch or centimeter). | [optional] 
- **horizontalResolution** | **double?**| New horizontal resolution. | [optional] [default to 0.0]
- **verticalResolution** | **double?**| New vertical resolution. | [optional] [default to 0.0]
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **bitDepth** | **int?**|  | 
+ **compression** | **string**|  | [optional] 
+ **resolutionUnit** | **string**|  | [optional] 
+ **horizontalResolution** | **double?**|  | [optional] [default to 0.0]
+ **verticalResolution** | **double?**|  | [optional] [default to 0.0]
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2284,7 +2284,7 @@ Name | Type | Description  | Notes
 ## **ModifyWebP**
 > System.IO.Stream ModifyWebP(ModifyWebPRequest request)
 
-Update parameters of existing WEBP image.
+
 
 ### **ModifyWebPRequest** Parameters
 ```csharp
@@ -2301,14 +2301,14 @@ ModifyWebPRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **lossLess** | **bool?**| If WEBP should be in lossless format. | 
- **quality** | **int?**| Quality (0-100). | 
- **animLoopCount** | **int?**| The animation loop count. | 
- **animBackgroundColor** | **string**| Color of the animation background. | 
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **lossLess** | **bool?**|  | 
+ **quality** | **int?**|  | 
+ **animLoopCount** | **int?**|  | 
+ **animBackgroundColor** | **string**|  | 
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2320,7 +2320,7 @@ Name | Type | Description  | Notes
 ## **ModifyWmf**
 > System.IO.Stream ModifyWmf(ModifyWmfRequest request)
 
-Process existing WMF image using given parameters.
+
 
 ### **ModifyWmfRequest** Parameters
 ```csharp
@@ -2339,16 +2339,16 @@ ModifyWmfRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of image. | 
- **bkColor** | **string**| Color of the background. | 
- **pageWidth** | **int?**| Width of the page. | 
- **pageHeight** | **int?**| Height of the page. | 
- **borderX** | **int?**| Border width. | 
- **borderY** | **int?**| Border height. | 
- **fromScratch** | **bool?**| Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false. | [optional] [default to false]
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
- **format** | **string**| Export format (PNG is the default one). Please, refer to the export table from https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] [default to png]
+ **name** | **string**|  | 
+ **bkColor** | **string**|  | 
+ **pageWidth** | **int?**|  | 
+ **pageHeight** | **int?**|  | 
+ **borderX** | **int?**|  | 
+ **borderY** | **int?**|  | 
+ **fromScratch** | **bool?**|  | [optional] [default to false]
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
+ **format** | **string**|  | [optional] [default to png]
 
 ### Return type
 
@@ -2444,7 +2444,7 @@ Name | Type | Description  | Notes
 ## **ResizeImage**
 > System.IO.Stream ResizeImage(ResizeImageRequest request)
 
-Resize an existing image.
+
 
 ### **ResizeImageRequest** Parameters
 ```csharp
@@ -2459,12 +2459,12 @@ ResizeImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of an image. | 
- **newWidth** | **int?**| New width. | 
- **newHeight** | **int?**| New height. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **newWidth** | **int?**|  | 
+ **newHeight** | **int?**|  | 
+ **format** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2476,7 +2476,7 @@ Name | Type | Description  | Notes
 ## **RotateFlipImage**
 > System.IO.Stream RotateFlipImage(RotateFlipImageRequest request)
 
-Rotate and/or flip an existing image.
+
 
 ### **RotateFlipImageRequest** Parameters
 ```csharp
@@ -2490,11 +2490,11 @@ RotateFlipImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of an image. | 
- **method** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **method** | **string**|  | 
+ **format** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2528,7 +2528,7 @@ Name | Type | Description  | Notes
 ## **UpdateImage**
 > System.IO.Stream UpdateImage(UpdateImageRequest request)
 
-Perform scaling, cropping and flipping of an existing image in a single request.
+
 
 ### **UpdateImageRequest** Parameters
 ```csharp
@@ -2548,17 +2548,17 @@ UpdateImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **string**| Filename of an image. | 
- **newWidth** | **int?**| New width of the scaled image. | 
- **newHeight** | **int?**| New height of the scaled image. | 
- **x** | **int?**| X position of start point for cropping rectangle. | 
- **y** | **int?**| Y position of start point for cropping rectangle. | 
- **rectWidth** | **int?**| Width of cropping rectangle. | 
- **rectHeight** | **int?**| Height of cropping rectangle. | 
- **rotateFlipMethod** | **string**| RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone. | 
- **format** | **string**| Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases. | [optional] 
- **folder** | **string**| Folder with image to process. | [optional] 
- **storage** | **string**| Your Aspose Cloud Storage name. | [optional] 
+ **name** | **string**|  | 
+ **newWidth** | **int?**|  | 
+ **newHeight** | **int?**|  | 
+ **x** | **int?**|  | 
+ **y** | **int?**|  | 
+ **rectWidth** | **int?**|  | 
+ **rectHeight** | **int?**|  | 
+ **rotateFlipMethod** | **string**|  | 
+ **format** | **string**|  | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2570,7 +2570,7 @@ Name | Type | Description  | Notes
 ## **UpdateImageFeatures**
 > void UpdateImageFeatures(UpdateImageFeaturesRequest request)
 
-Update images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **UpdateImageFeaturesRequest** Parameters
 ```csharp
@@ -2584,11 +2584,11 @@ UpdateImageFeaturesRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| The search context identifier. | 
- **imageId** | **string**| The image identifier. | 
+ **searchContextId** | **string**|  | 
+ **imageId** | **string**|  | 
  **imageData** | **System.IO.Stream**| Input image | [optional] 
- **folder** | **string**| The folder. | [optional] 
- **storage** | **string**| The storage. | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 
@@ -2600,7 +2600,7 @@ void (empty response body)
 ## **UpdateSearchImage**
 > void UpdateSearchImage(UpdateSearchImageRequest request)
 
-Update image and images features in search context. Image data may be passed as zero-indexed multipart/form-data content or as raw body stream.
+
 
 ### **UpdateSearchImageRequest** Parameters
 ```csharp
@@ -2614,11 +2614,11 @@ UpdateSearchImageRequest(
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchContextId** | **string**| Search context identifier. | 
- **imageId** | **string**| Image identifier. | 
+ **searchContextId** | **string**|  | 
+ **imageId** | **string**|  | 
  **imageData** | **System.IO.Stream**| Input image | [optional] 
- **folder** | **string**| Folder. | [optional] 
- **storage** | **string**| Storage | [optional] 
+ **folder** | **string**|  | [optional] 
+ **storage** | **string**|  | [optional] 
 
 ### Return type
 

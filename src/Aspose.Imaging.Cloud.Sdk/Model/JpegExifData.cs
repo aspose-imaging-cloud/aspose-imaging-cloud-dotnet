@@ -34,87 +34,87 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents EXIF data for JPEG
+  /// 
   /// </summary>  
   public class JpegExifData : ExifData 
   {                       
         /// <summary>
-        /// Gets or sets the artist.
+        /// Gets or sets Artist
         /// </summary>  
         public string Artist { get; set; }
 
         /// <summary>
-        /// Gets or sets the copyright info.
+        /// Gets or sets Copyright
         /// </summary>  
         public string Copyright { get; set; }
 
         /// <summary>
-        /// Gets or sets the date and time.
+        /// Gets or sets DateTime
         /// </summary>  
         public string DateTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the image description.
+        /// Gets or sets ImageDescription
         /// </summary>  
         public string ImageDescription { get; set; }
 
         /// <summary>
-        /// Gets or sets the manufacturer.
+        /// Gets or sets Make
         /// </summary>  
         public string Make { get; set; }
 
         /// <summary>
-        /// Gets or sets the model.
+        /// Gets or sets Model
         /// </summary>  
         public string Model { get; set; }
 
         /// <summary>
-        /// Gets or sets the orientation.
+        /// Gets or sets Orientation
         /// </summary>  
         public string Orientation { get; set; }
 
         /// <summary>
-        /// Gets or sets the primary chromaticities.
+        /// Gets or sets PrimaryChromaticities
         /// </summary>  
         public List<double?> PrimaryChromaticities { get; set; }
 
         /// <summary>
-        /// Gets or sets the reference black and white.
+        /// Gets or sets ReferenceBlackWhite
         /// </summary>  
         public List<double?> ReferenceBlackWhite { get; set; }
 
         /// <summary>
-        /// Gets or sets the resolution unit.
+        /// Gets or sets ResolutionUnit
         /// </summary>  
         public string ResolutionUnit { get; set; }
 
         /// <summary>
-        /// Gets or sets the software.
+        /// Gets or sets Software
         /// </summary>  
         public string Software { get; set; }
 
         /// <summary>
-        /// Gets or sets the transfer function.
+        /// Gets or sets TransferFunction
         /// </summary>  
         public List<int?> TransferFunction { get; set; }
 
         /// <summary>
-        /// Gets or sets the X resolution.
+        /// Gets or sets XResolution
         /// </summary>  
         public double? XResolution { get; set; }
 
         /// <summary>
-        /// Gets or sets the YCbCr coefficients.
+        /// Gets or sets YCbCrCoefficients
         /// </summary>  
         public List<double?> YCbCrCoefficients { get; set; }
 
         /// <summary>
-        /// Gets or sets the YCbCr positioning.
+        /// Gets or sets YCbCrPositioning
         /// </summary>  
         public string YCbCrPositioning { get; set; }
 
         /// <summary>
-        /// Gets or sets the Y resolution.
+        /// Gets or sets YResolution
         /// </summary>  
         public double? YResolution { get; set; }
 

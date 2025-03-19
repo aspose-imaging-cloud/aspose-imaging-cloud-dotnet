@@ -42,15 +42,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="ModifyTiffRequest"/> class.
         /// </summary>
-        /// <param name="name">Filename of image.</param>
-        /// <param name="bitDepth">Bit depth.</param>
-        /// <param name="compression">Compression (none is default). Please, refer to https://apireference.aspose.com/net/imaging/aspose.imaging.fileformats.tiff.enums/tiffcompressions for all possible values.</param>
-        /// <param name="resolutionUnit">New resolution unit (none - the default one, inch or centimeter).</param>
-        /// <param name="horizontalResolution">New horizontal resolution.</param>
-        /// <param name="verticalResolution">New vertical resolution.</param>
-        /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="folder">Folder with image to process.</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="name"></param>
+        /// <param name="bitDepth"></param>
+        /// <param name="compression"></param>
+        /// <param name="resolutionUnit"></param>
+        /// <param name="horizontalResolution"></param>
+        /// <param name="verticalResolution"></param>
+        /// <param name="fromScratch"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public ModifyTiffRequest(string name, int? bitDepth, string compression = null, string resolutionUnit = null, double? horizontalResolution = null, double? verticalResolution = null, bool? fromScratch = null, string folder = null, string storage = null)             
         {
             this.name = name;
@@ -65,47 +65,47 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// Filename of image.
+        /// Gets or sets name
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// Bit depth.
+        /// Gets or sets bitDepth
         /// </summary>  
         public int? bitDepth { get; set; }
 
         /// <summary>
-        /// Compression (none is default). Please, refer to https://apireference.aspose.com/net/imaging/aspose.imaging.fileformats.tiff.enums/tiffcompressions for all possible values.
+        /// Gets or sets compression
         /// </summary>  
         public string compression { get; set; }
 
         /// <summary>
-        /// New resolution unit (none - the default one, inch or centimeter).
+        /// Gets or sets resolutionUnit
         /// </summary>  
         public string resolutionUnit { get; set; }
 
         /// <summary>
-        /// New horizontal resolution.
+        /// Gets or sets horizontalResolution
         /// </summary>  
         public double? horizontalResolution { get; set; }
 
         /// <summary>
-        /// New vertical resolution.
+        /// Gets or sets verticalResolution
         /// </summary>  
         public double? verticalResolution { get; set; }
 
         /// <summary>
-        /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+        /// Gets or sets fromScratch
         /// </summary>  
         public bool? fromScratch { get; set; }
 
         /// <summary>
-        /// Folder with image to process.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

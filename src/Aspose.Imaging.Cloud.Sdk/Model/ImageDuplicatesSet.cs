@@ -34,12 +34,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Duplicate images set.  
+  /// 
   /// </summary>  
   public class ImageDuplicatesSet 
   {                       
         /// <summary>
-        /// Gets the duplicate images.
+        /// Gets or sets Duplicates
         /// </summary>  
         public List<ImageDuplicates> Duplicates { get; set; }
 

@@ -34,27 +34,27 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents information about image in GIF format.
+  /// 
   /// </summary>  
   public class GifProperties 
   {                       
         /// <summary>
-        /// Gets or sets the background color.
+        /// Gets or sets BackgroundColor
         /// </summary>  
         public string BackgroundColor { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether background color is used.
+        /// Gets or sets HasBackgroundColor
         /// </summary>  
         public bool? HasBackgroundColor { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether image has trailer.
+        /// Gets or sets HasTrailer
         /// </summary>  
         public bool? HasTrailer { get; set; }
 
         /// <summary>
-        /// Gets or sets the pixel aspect ratio.
+        /// Gets or sets PixelAspectRatio
         /// </summary>  
         public int? PixelAspectRatio { get; set; }
 

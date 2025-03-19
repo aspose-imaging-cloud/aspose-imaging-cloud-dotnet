@@ -34,62 +34,62 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents information about image in DNG format.
+  /// 
   /// </summary>  
   public class DngProperties 
   {                       
         /// <summary>
-        /// Gets or sets the DNG version.
+        /// Gets or sets DngVersion
         /// </summary>  
         public long? DngVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets the description of colors (RGBG, RGBE, GMCY or GBTG).
+        /// Gets or sets Description
         /// </summary>  
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the camera model.
+        /// Gets or sets Model
         /// </summary>  
         public string Model { get; set; }
 
         /// <summary>
-        /// Gets or sets the camera manufacturer.
+        /// Gets or sets CameraManufacturer
         /// </summary>  
         public string CameraManufacturer { get; set; }
 
         /// <summary>
-        /// Gets or sets the value indicating whether it's a Foveon matrix.
+        /// Gets or sets IsFoveon
         /// </summary>  
         public long? IsFoveon { get; set; }
 
         /// <summary>
-        /// Gets or sets the software.
+        /// Gets or sets Software
         /// </summary>  
         public string Software { get; set; }
 
         /// <summary>
-        /// Gets or sets the number of RAW images in file (0 means that the file has not been recognized).
+        /// Gets or sets RawCount
         /// </summary>  
         public long? RawCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the bit mask describing the order of color pixels in the matrix.
+        /// Gets or sets Filters
         /// </summary>  
         public long? Filters { get; set; }
 
         /// <summary>
-        /// Gets or sets the colors count.
+        /// Gets or sets ColorsCount
         /// </summary>  
         public int? ColorsCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the XMP data.
+        /// Gets or sets XmpData
         /// </summary>  
         public string XmpData { get; set; }
 
         /// <summary>
-        /// Gets or sets the translation array for CFA mosaic of DNG format.
+        /// Gets or sets TranslationCfaDng
         /// </summary>  
         public List<string> TranslationCfaDng { get; set; }
 

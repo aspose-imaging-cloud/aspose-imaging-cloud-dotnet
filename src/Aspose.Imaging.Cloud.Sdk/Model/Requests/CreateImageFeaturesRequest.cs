@@ -42,12 +42,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateImageFeaturesRequest"/> class.
         /// </summary>
-        /// <param name="searchContextId">The search context identifier.</param>
+        /// <param name="searchContextId"></param>
         /// <param name="imageData">Input image</param>
-        /// <param name="imageId">The image identifier.</param>
-        /// <param name="imagesFolder">Images source - a folder</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
+        /// <param name="imageId"></param>
+        /// <param name="imagesFolder"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public CreateImageFeaturesRequest(string searchContextId, System.IO.Stream imageData = null, string imageId = null, string imagesFolder = null, string folder = null, string storage = null)             
         {
             this.searchContextId = searchContextId;
@@ -59,7 +59,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// The search context identifier.
+        /// Gets or sets searchContextId
         /// </summary>  
         public string searchContextId { get; set; }
 
@@ -69,22 +69,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// The image identifier.
+        /// Gets or sets imageId
         /// </summary>  
         public string imageId { get; set; }
 
         /// <summary>
-        /// Images source - a folder
+        /// Gets or sets imagesFolder
         /// </summary>  
         public string imagesFolder { get; set; }
 
         /// <summary>
-        /// The folder.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// The storage.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

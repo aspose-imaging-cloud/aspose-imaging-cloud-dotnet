@@ -34,12 +34,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents information about image in bmp format.
+  /// 
   /// </summary>  
   public class BmpProperties 
   {                       
         /// <summary>
-        /// Gets or sets compression of bitmap.
+        /// Gets or sets Compression
         /// </summary>  
         public string Compression { get; set; }
 

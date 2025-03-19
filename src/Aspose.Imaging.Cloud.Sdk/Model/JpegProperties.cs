@@ -34,22 +34,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents information about image in JPEG format.
+  /// 
   /// </summary>  
   public class JpegProperties 
   {                       
         /// <summary>
-        /// Gets or sets the comment.
+        /// Gets or sets Comment
         /// </summary>  
         public string Comment { get; set; }
 
         /// <summary>
-        /// Gets or sets the JPEG EXIF data.
+        /// Gets or sets JpegExifData
         /// </summary>  
         public JpegExifData JpegExifData { get; set; }
 
         /// <summary>
-        /// Gets or sets the JPEG JFIF data.
+        /// Gets or sets JpegJfifData
         /// </summary>  
         public JfifData JpegJfifData { get; set; }
 

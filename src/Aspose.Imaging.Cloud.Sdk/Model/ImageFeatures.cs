@@ -34,27 +34,27 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Image features.
+  /// 
   /// </summary>  
   public class ImageFeatures 
   {                       
         /// <summary>
-        /// Gets the image identifier.
+        /// Gets or sets ImageId
         /// </summary>  
         public string ImageId { get; set; }
 
         /// <summary>
-        /// Gets the features count.
+        /// Gets or sets FeaturesCount
         /// </summary>  
         public int? FeaturesCount { get; set; }
 
         /// <summary>
-        /// Gets the feature length in bits.
+        /// Gets or sets FeatureLengthInBits
         /// </summary>  
         public int? FeatureLengthInBits { get; set; }
 
         /// <summary>
-        /// Gets the features.
+        /// Gets or sets Features
         /// </summary>  
         public byte[] Features { get; set; }
 

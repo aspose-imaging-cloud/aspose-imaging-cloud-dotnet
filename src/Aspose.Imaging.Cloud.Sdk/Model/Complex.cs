@@ -1,5 +1,5 @@
 // --------------------------------------------------------------------------------------------------------------------
-// <copyright company="Aspose" file="AvailableLabelsList.cs">
+// <copyright company="Aspose" file="Complex.cs">
 //   Copyright (c) 2018-2020 Aspose Pty Ltd. All rights reserved.
 // </copyright>
 // <summary>
@@ -36,12 +36,32 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   /// <summary>
   /// 
   /// </summary>  
-  public class AvailableLabelsList 
+  public class Complex 
   {                       
         /// <summary>
-        /// Gets or sets AvailableLabels
+        /// Gets or sets Re
         /// </summary>  
-        public List<string> AvailableLabels { get; set; }
+        public double? Re { get; set; }
+
+        /// <summary>
+        /// Gets or sets Im
+        /// </summary>  
+        public double? Im { get; set; }
+
+        /// <summary>
+        /// Gets or sets Magnitude
+        /// </summary>  
+        public double? Magnitude { get; set; }
+
+        /// <summary>
+        /// Gets or sets Phase
+        /// </summary>  
+        public double? Phase { get; set; }
+
+        /// <summary>
+        /// Gets or sets SquaredMagnitude
+        /// </summary>  
+        public double? SquaredMagnitude { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object
@@ -50,8 +70,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         public override string ToString()  
         {
           var sb = new StringBuilder();
-          sb.Append("class AvailableLabelsList {\n");
-          sb.Append("  AvailableLabels: ").Append(this.AvailableLabels).Append("\n");
+          sb.Append("class Complex {\n");
+          sb.Append("  Re: ").Append(this.Re).Append("\n");
+          sb.Append("  Im: ").Append(this.Im).Append("\n");
+          sb.Append("  Magnitude: ").Append(this.Magnitude).Append("\n");
+          sb.Append("  Phase: ").Append(this.Phase).Append("\n");
+          sb.Append("  SquaredMagnitude: ").Append(this.SquaredMagnitude).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

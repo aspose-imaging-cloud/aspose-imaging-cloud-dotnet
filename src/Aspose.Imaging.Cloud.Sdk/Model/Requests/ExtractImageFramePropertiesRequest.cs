@@ -43,7 +43,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="ExtractImageFramePropertiesRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="frameId">Number of a frame.</param>
+        /// <param name="frameId"></param>
         public ExtractImageFramePropertiesRequest(System.IO.Stream imageData, int? frameId)             
         {
             this.imageData = imageData;
@@ -56,7 +56,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Number of a frame.
+        /// Gets or sets frameId
         /// </summary>  
         public int? frameId { get; set; }
   }

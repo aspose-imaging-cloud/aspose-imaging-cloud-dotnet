@@ -42,12 +42,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="ResizeImageRequest"/> class.
         /// </summary>
-        /// <param name="name">Filename of an image.</param>
-        /// <param name="newWidth">New width.</param>
-        /// <param name="newHeight">New height.</param>
-        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
-        /// <param name="folder">Folder with image to process.</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="name"></param>
+        /// <param name="newWidth"></param>
+        /// <param name="newHeight"></param>
+        /// <param name="format"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public ResizeImageRequest(string name, int? newWidth, int? newHeight, string format = null, string folder = null, string storage = null)             
         {
             this.name = name;
@@ -59,32 +59,32 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// Filename of an image.
+        /// Gets or sets name
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// New width.
+        /// Gets or sets newWidth
         /// </summary>  
         public int? newWidth { get; set; }
 
         /// <summary>
-        /// New height.
+        /// Gets or sets newHeight
         /// </summary>  
         public int? newHeight { get; set; }
 
         /// <summary>
-        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+        /// Gets or sets format
         /// </summary>  
         public string format { get; set; }
 
         /// <summary>
-        /// Folder with image to process.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

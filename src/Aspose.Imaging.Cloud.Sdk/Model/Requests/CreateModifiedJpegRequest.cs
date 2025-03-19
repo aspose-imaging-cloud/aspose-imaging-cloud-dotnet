@@ -43,11 +43,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="CreateModifiedJpegRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="quality">Quality of an image from 0 to 100. Default is 75.</param>
-        /// <param name="compressionType">Compression type: baseline (default), progressive, lossless or jpegls.</param>
-        /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="quality"></param>
+        /// <param name="compressionType"></param>
+        /// <param name="fromScratch"></param>
+        /// <param name="outPath"></param>
+        /// <param name="storage"></param>
         public CreateModifiedJpegRequest(System.IO.Stream imageData, int? quality = null, string compressionType = null, bool? fromScratch = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
@@ -64,27 +64,27 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Quality of an image from 0 to 100. Default is 75.
+        /// Gets or sets quality
         /// </summary>  
         public int? quality { get; set; }
 
         /// <summary>
-        /// Compression type: baseline (default), progressive, lossless or jpegls.
+        /// Gets or sets compressionType
         /// </summary>  
         public string compressionType { get; set; }
 
         /// <summary>
-        /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+        /// Gets or sets fromScratch
         /// </summary>  
         public bool? fromScratch { get; set; }
 
         /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
+        /// Gets or sets outPath
         /// </summary>  
         public string outPath { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

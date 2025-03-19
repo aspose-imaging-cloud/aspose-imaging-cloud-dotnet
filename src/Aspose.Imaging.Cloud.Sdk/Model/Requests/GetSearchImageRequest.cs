@@ -42,10 +42,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="GetSearchImageRequest"/> class.
         /// </summary>
-        /// <param name="searchContextId">Search context identifier.</param>
-        /// <param name="imageId">Image identifier.</param>
-        /// <param name="folder">Folder.</param>
-        /// <param name="storage">Storage</param>
+        /// <param name="searchContextId"></param>
+        /// <param name="imageId"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public GetSearchImageRequest(string searchContextId, string imageId, string folder = null, string storage = null)             
         {
             this.searchContextId = searchContextId;
@@ -55,22 +55,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// Search context identifier.
+        /// Gets or sets searchContextId
         /// </summary>  
         public string searchContextId { get; set; }
 
         /// <summary>
-        /// Image identifier.
+        /// Gets or sets imageId
         /// </summary>  
         public string imageId { get; set; }
 
         /// <summary>
-        /// Folder.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// Storage
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

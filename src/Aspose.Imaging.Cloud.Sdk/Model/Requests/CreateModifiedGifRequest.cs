@@ -43,15 +43,15 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="CreateModifiedGifRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="backgroundColorIndex">Index of the background color.</param>
-        /// <param name="colorResolution">Color resolution.</param>
-        /// <param name="hasTrailer">Specifies if image has trailer.</param>
-        /// <param name="interlaced">Specifies if image is interlaced.</param>
-        /// <param name="isPaletteSorted">Specifies if palette is sorted.</param>
-        /// <param name="pixelAspectRatio">Pixel aspect ratio.</param>
-        /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="backgroundColorIndex"></param>
+        /// <param name="colorResolution"></param>
+        /// <param name="hasTrailer"></param>
+        /// <param name="interlaced"></param>
+        /// <param name="isPaletteSorted"></param>
+        /// <param name="pixelAspectRatio"></param>
+        /// <param name="fromScratch"></param>
+        /// <param name="outPath"></param>
+        /// <param name="storage"></param>
         public CreateModifiedGifRequest(System.IO.Stream imageData, int? backgroundColorIndex = null, int? colorResolution = null, bool? hasTrailer = null, bool? interlaced = null, bool? isPaletteSorted = null, int? pixelAspectRatio = null, bool? fromScratch = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
@@ -72,47 +72,47 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Index of the background color.
+        /// Gets or sets backgroundColorIndex
         /// </summary>  
         public int? backgroundColorIndex { get; set; }
 
         /// <summary>
-        /// Color resolution.
+        /// Gets or sets colorResolution
         /// </summary>  
         public int? colorResolution { get; set; }
 
         /// <summary>
-        /// Specifies if image has trailer.
+        /// Gets or sets hasTrailer
         /// </summary>  
         public bool? hasTrailer { get; set; }
 
         /// <summary>
-        /// Specifies if image is interlaced.
+        /// Gets or sets interlaced
         /// </summary>  
         public bool? interlaced { get; set; }
 
         /// <summary>
-        /// Specifies if palette is sorted.
+        /// Gets or sets isPaletteSorted
         /// </summary>  
         public bool? isPaletteSorted { get; set; }
 
         /// <summary>
-        /// Pixel aspect ratio.
+        /// Gets or sets pixelAspectRatio
         /// </summary>  
         public int? pixelAspectRatio { get; set; }
 
         /// <summary>
-        /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+        /// Gets or sets fromScratch
         /// </summary>  
         public bool? fromScratch { get; set; }
 
         /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
+        /// Gets or sets outPath
         /// </summary>  
         public string outPath { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

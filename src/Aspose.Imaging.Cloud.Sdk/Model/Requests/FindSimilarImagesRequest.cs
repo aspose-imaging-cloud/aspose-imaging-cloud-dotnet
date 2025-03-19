@@ -42,13 +42,13 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="FindSimilarImagesRequest"/> class.
         /// </summary>
-        /// <param name="searchContextId">The search context identifier.</param>
-        /// <param name="similarityThreshold">The similarity threshold.</param>
-        /// <param name="maxCount">The maximum count.</param>
+        /// <param name="searchContextId"></param>
+        /// <param name="similarityThreshold"></param>
+        /// <param name="maxCount"></param>
         /// <param name="imageData">Input image</param>
-        /// <param name="imageId">The search image identifier.</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
+        /// <param name="imageId"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public FindSimilarImagesRequest(string searchContextId, double? similarityThreshold, int? maxCount, System.IO.Stream imageData = null, string imageId = null, string folder = null, string storage = null)             
         {
             this.searchContextId = searchContextId;
@@ -61,17 +61,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// The search context identifier.
+        /// Gets or sets searchContextId
         /// </summary>  
         public string searchContextId { get; set; }
 
         /// <summary>
-        /// The similarity threshold.
+        /// Gets or sets similarityThreshold
         /// </summary>  
         public double? similarityThreshold { get; set; }
 
         /// <summary>
-        /// The maximum count.
+        /// Gets or sets maxCount
         /// </summary>  
         public int? maxCount { get; set; }
 
@@ -81,17 +81,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// The search image identifier.
+        /// Gets or sets imageId
         /// </summary>  
         public string imageId { get; set; }
 
         /// <summary>
-        /// The folder.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// The storage.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

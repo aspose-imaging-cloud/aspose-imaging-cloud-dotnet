@@ -34,107 +34,107 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents information about image.
+  /// 
   /// </summary>  
   public class ImagingResponse 
   {                       
         /// <summary>
-        /// Gets or sets the height of image.
+        /// Gets or sets Height
         /// </summary>  
         public int? Height { get; set; }
 
         /// <summary>
-        /// Gets or sets the width of image.
+        /// Gets or sets Width
         /// </summary>  
         public int? Width { get; set; }
 
         /// <summary>
-        /// Gets or sets the bits per pixel for image.
+        /// Gets or sets BitsPerPixel
         /// </summary>  
         public int? BitsPerPixel { get; set; }
 
         /// <summary>
-        /// Gets or sets the BMP properties.
+        /// Gets or sets BmpProperties
         /// </summary>  
         public BmpProperties BmpProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the GIF properties.
+        /// Gets or sets GifProperties
         /// </summary>  
         public GifProperties GifProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the JPEG properties.
+        /// Gets or sets JpegProperties
         /// </summary>  
         public JpegProperties JpegProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the PNG properties.
+        /// Gets or sets PngProperties
         /// </summary>  
         public PngProperties PngProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the TIFF properties.
+        /// Gets or sets TiffProperties
         /// </summary>  
         public TiffProperties TiffProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the PSD properties.
+        /// Gets or sets PsdProperties
         /// </summary>  
         public PsdProperties PsdProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the DJVU properties.
+        /// Gets or sets DjvuProperties
         /// </summary>  
         public DjvuProperties DjvuProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the WEBP properties.
+        /// Gets or sets WebPProperties
         /// </summary>  
         public WebPProperties WebPProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the JPEG2000 properties.
+        /// Gets or sets Jpeg2000Properties
         /// </summary>  
         public Jpeg2000Properties Jpeg2000Properties { get; set; }
 
         /// <summary>
-        /// Gets or sets the DICOM properties.
+        /// Gets or sets DicomProperties
         /// </summary>  
         public DicomProperties DicomProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the DNG properties.
+        /// Gets or sets DngProperties
         /// </summary>  
         public DngProperties DngProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the the ODG properties.
+        /// Gets or sets OdgProperties
         /// </summary>  
         public OdgProperties OdgProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the SVG properties.
+        /// Gets or sets SvgProperties
         /// </summary>  
         public SvgProperties SvgProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the EPS properties.
+        /// Gets or sets EpsProperties
         /// </summary>  
         public EpsProperties EpsProperties { get; set; }
 
         /// <summary>
-        /// Gets or sets the horizontal resolution of an image.
+        /// Gets or sets HorizontalResolution
         /// </summary>  
         public double? HorizontalResolution { get; set; }
 
         /// <summary>
-        /// Gets or sets the vertical resolution of an image.
+        /// Gets or sets VerticalResolution
         /// </summary>  
         public double? VerticalResolution { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether image is cached.
+        /// Gets or sets IsCached
         /// </summary>  
         public bool? IsCached { get; set; }
 

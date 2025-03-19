@@ -34,19 +34,29 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// The Gaussian blur
+  /// 
   /// </summary>  
   public class GaussianBlurFilterProperties : ConvolutionFilterProperties 
   {                       
         /// <summary>
-        /// Gets or sets the radius.
+        /// Gets or sets Kernel
         /// </summary>  
-        public int? Radius { get; set; }
+        public List<double?> Kernel { get; set; }
 
         /// <summary>
-        /// Gets or sets the sigma.
+        /// Gets or sets Size
+        /// </summary>  
+        public int? Size { get; set; }
+
+        /// <summary>
+        /// Gets or sets Sigma
         /// </summary>  
         public double? Sigma { get; set; }
+
+        /// <summary>
+        /// Gets or sets Radius
+        /// </summary>  
+        public int? Radius { get; set; }
 
         /// <summary>
         /// Get the string presentation of the object
@@ -56,8 +66,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         {
           var sb = new StringBuilder();
           sb.Append("class GaussianBlurFilterProperties {\n");
-          sb.Append("  Radius: ").Append(this.Radius).Append("\n");
+          sb.Append("  Kernel: ").Append(this.Kernel).Append("\n");
+          sb.Append("  Size: ").Append(this.Size).Append("\n");
           sb.Append("  Sigma: ").Append(this.Sigma).Append("\n");
+          sb.Append("  Radius: ").Append(this.Radius).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

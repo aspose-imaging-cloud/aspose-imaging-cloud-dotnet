@@ -43,10 +43,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="CreateDeskewedImageRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="resizeProportionally">Resize proportionally</param>
-        /// <param name="bkColor">Background color</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image)</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="resizeProportionally"></param>
+        /// <param name="bkColor"></param>
+        /// <param name="outPath"></param>
+        /// <param name="storage"></param>
         public CreateDeskewedImageRequest(System.IO.Stream imageData, bool? resizeProportionally, string bkColor = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
@@ -62,22 +62,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Resize proportionally
+        /// Gets or sets resizeProportionally
         /// </summary>  
         public bool? resizeProportionally { get; set; }
 
         /// <summary>
-        /// Background color
+        /// Gets or sets bkColor
         /// </summary>  
         public string bkColor { get; set; }
 
         /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image)
+        /// Gets or sets outPath
         /// </summary>  
         public string outPath { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

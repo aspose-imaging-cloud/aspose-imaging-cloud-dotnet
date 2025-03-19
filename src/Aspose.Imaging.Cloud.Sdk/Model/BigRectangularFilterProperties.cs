@@ -34,7 +34,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Big Rectangular Filter Options
+  /// 
   /// </summary>  
   public class BigRectangularFilterProperties : FilterPropertiesBase 
   {                       

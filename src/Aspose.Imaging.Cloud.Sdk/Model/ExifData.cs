@@ -34,512 +34,512 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents common EXIF data section.
+  /// 
   /// </summary>  
   public class ExifData 
   {                       
         /// <summary>
-        /// Gets or sets the aperture.
+        /// Gets or sets ApertureValue
         /// </summary>  
         public double? ApertureValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the body serial number.
+        /// Gets or sets BodySerialNumber
         /// </summary>  
         public string BodySerialNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets the brightness.
+        /// Gets or sets BrightnessValue
         /// </summary>  
         public double? BrightnessValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the CFA pattern.
+        /// Gets or sets CFAPattern
         /// </summary>  
         public byte[] CFAPattern { get; set; }
 
         /// <summary>
-        /// Gets or sets the camera owner name.
+        /// Gets or sets CameraOwnerName
         /// </summary>  
         public string CameraOwnerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the color space.
+        /// Gets or sets ColorSpace
         /// </summary>  
         public string ColorSpace { get; set; }
 
         /// <summary>
-        /// Gets or sets the components configuration.
+        /// Gets or sets ComponentsConfiguration
         /// </summary>  
         public byte[] ComponentsConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets the compressed bits per pixel.
+        /// Gets or sets CompressedBitsPerPixel
         /// </summary>  
         public double? CompressedBitsPerPixel { get; set; }
 
         /// <summary>
-        /// Gets or sets the contrast.
+        /// Gets or sets Contrast
         /// </summary>  
         public string Contrast { get; set; }
 
         /// <summary>
-        /// Gets or sets the value indincating if custom rendering is performed.
+        /// Gets or sets CustomRendered
         /// </summary>  
         public string CustomRendered { get; set; }
 
         /// <summary>
-        /// Gets or sets date and time when image was digitized.
+        /// Gets or sets DateTimeDigitized
         /// </summary>  
         public string DateTimeDigitized { get; set; }
 
         /// <summary>
-        /// Gets or sets date and time of the original image.
+        /// Gets or sets DateTimeOriginal
         /// </summary>  
         public string DateTimeOriginal { get; set; }
 
         /// <summary>
-        /// Gets or sets the device setting description.
+        /// Gets or sets DeviceSettingDescription
         /// </summary>  
         public byte[] DeviceSettingDescription { get; set; }
 
         /// <summary>
-        /// Gets or sets the digital zoom ratio.
+        /// Gets or sets DigitalZoomRatio
         /// </summary>  
         public double? DigitalZoomRatio { get; set; }
 
         /// <summary>
-        /// Gets or sets EXIF version.
+        /// Gets or sets ExifVersion
         /// </summary>  
         public byte[] ExifVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets the exposure bias.
+        /// Gets or sets ExposureBiasValue
         /// </summary>  
         public double? ExposureBiasValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the exposure index.
+        /// Gets or sets ExposureIndex
         /// </summary>  
         public double? ExposureIndex { get; set; }
 
         /// <summary>
-        /// Gets or sets the exposure mode.
+        /// Gets or sets ExposureMode
         /// </summary>  
         public string ExposureMode { get; set; }
 
         /// <summary>
-        /// Gets or sets the exposure program.
+        /// Gets or sets ExposureProgram
         /// </summary>  
         public string ExposureProgram { get; set; }
 
         /// <summary>
-        /// Gets or sets the exposure time.
+        /// Gets or sets ExposureTime
         /// </summary>  
         public double? ExposureTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the focal number.
+        /// Gets or sets FNumber
         /// </summary>  
         public double? FNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets the file source.
+        /// Gets or sets FileSource
         /// </summary>  
         public string FileSource { get; set; }
 
         /// <summary>
-        /// Gets or sets the flash.
+        /// Gets or sets Flash
         /// </summary>  
         public string Flash { get; set; }
 
         /// <summary>
-        /// Gets or sets the flash energy.
+        /// Gets or sets FlashEnergy
         /// </summary>  
         public double? FlashEnergy { get; set; }
 
         /// <summary>
-        /// Gets or sets the Flashpix version.
+        /// Gets or sets FlashpixVersion
         /// </summary>  
         public byte[] FlashpixVersion { get; set; }
 
         /// <summary>
-        /// Gets or sets the focal length.
+        /// Gets or sets FocalLength
         /// </summary>  
         public double? FocalLength { get; set; }
 
         /// <summary>
-        /// Gets or sets the focal length in 35mm film.
+        /// Gets or sets FocalLengthIn35MmFilm
         /// </summary>  
         public int? FocalLengthIn35MmFilm { get; set; }
 
         /// <summary>
-        /// Gets or sets the focal plane resolution unit.
+        /// Gets or sets FocalPlaneResolutionUnit
         /// </summary>  
         public string FocalPlaneResolutionUnit { get; set; }
 
         /// <summary>
-        /// Gets or sets the focal plane X resolution.
+        /// Gets or sets FocalPlaneXResolution
         /// </summary>  
         public double? FocalPlaneXResolution { get; set; }
 
         /// <summary>
-        /// Gets or sets the focal plane Y resolution.
+        /// Gets or sets FocalPlaneYResolution
         /// </summary>  
         public double? FocalPlaneYResolution { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS altitude.
+        /// Gets or sets GPSAltitude
         /// </summary>  
         public double? GPSAltitude { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS altitude reference (if it's above or below sea level).
+        /// Gets or sets GPSAltitudeRef
         /// </summary>  
         public string GPSAltitudeRef { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS area information.
+        /// Gets or sets GPSAreaInformation
         /// </summary>  
         public byte[] GPSAreaInformation { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS DOP (data degree of precision).
+        /// Gets or sets GPSDOP
         /// </summary>  
         public double? GPSDOP { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS bearing of the destination.
+        /// Gets or sets GPSDestBearing
         /// </summary>  
         public double? GPSDestBearing { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS reference unit for bearing of the destination.
+        /// Gets or sets GPSDestBearingRef
         /// </summary>  
         public string GPSDestBearingRef { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS destination distance.
+        /// Gets or sets GPSDestDistance
         /// </summary>  
         public double? GPSDestDistance { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS reference unit for destination distance.
+        /// Gets or sets GPSDestDistanceRef
         /// </summary>  
         public string GPSDestDistanceRef { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS destination latitude.
+        /// Gets or sets GPSDestLatitude
         /// </summary>  
         public List<double?> GPSDestLatitude { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS reference destination latitude (north or south).
+        /// Gets or sets GPSDestLatitudeRef
         /// </summary>  
         public string GPSDestLatitudeRef { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS destination longtitude.
+        /// Gets or sets GPSDestLongitude
         /// </summary>  
         public List<double?> GPSDestLongitude { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS reference destination longtitude (east or west).
+        /// Gets or sets GPSDestLongitudeRef
         /// </summary>  
         public string GPSDestLongitudeRef { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS differential.
+        /// Gets or sets GPSDifferential
         /// </summary>  
         public int? GPSDifferential { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS image direction.
+        /// Gets or sets GPSImgDirection
         /// </summary>  
         public double? GPSImgDirection { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS reference image direction.
+        /// Gets or sets GPSImgDirectionRef
         /// </summary>  
         public string GPSImgDirectionRef { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS date stamp.
+        /// Gets or sets GPSDateStamp
         /// </summary>  
         public string GPSDateStamp { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS latitude.
+        /// Gets or sets GPSLatitude
         /// </summary>  
         public List<double?> GPSLatitude { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS latitude reference (north or south).
+        /// Gets or sets GPSLatitudeRef
         /// </summary>  
         public string GPSLatitudeRef { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS longitude.
+        /// Gets or sets GPSLongitude
         /// </summary>  
         public List<double?> GPSLongitude { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS longitude reference (east or west).
+        /// Gets or sets GPSLongitudeRef
         /// </summary>  
         public string GPSLongitudeRef { get; set; }
 
         /// <summary>
-        /// Gets or sets the geodetic survey data used by the GPS receiver.
+        /// Gets or sets GPSMapDatum
         /// </summary>  
         public string GPSMapDatum { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS measure mode.
+        /// Gets or sets GPSMeasureMode
         /// </summary>  
         public string GPSMeasureMode { get; set; }
 
         /// <summary>
-        /// Gets or setsthe GPS processing method.
+        /// Gets or sets GPSProcessingMethod
         /// </summary>  
         public byte[] GPSProcessingMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS satellites info.
+        /// Gets or sets GPSSatellites
         /// </summary>  
         public string GPSSatellites { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS speed.
+        /// Gets or sets GPSSpeed
         /// </summary>  
         public double? GPSSpeed { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS speed reference unit.
+        /// Gets or sets GPSSpeedRef
         /// </summary>  
         public string GPSSpeedRef { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS status.
+        /// Gets or sets GPSStatus
         /// </summary>  
         public string GPSStatus { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS times tamp.
+        /// Gets or sets GPSTimestamp
         /// </summary>  
         public List<double?> GPSTimestamp { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS track.
+        /// Gets or sets GPSTrack
         /// </summary>  
         public string GPSTrack { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS track reference.
+        /// Gets or sets GPSTrackRef
         /// </summary>  
         public string GPSTrackRef { get; set; }
 
         /// <summary>
-        /// Gets or sets the GPS version ID.
+        /// Gets or sets GPSVersionID
         /// </summary>  
         public byte[] GPSVersionID { get; set; }
 
         /// <summary>
-        /// Gets or sets the gain control.
+        /// Gets or sets GainControl
         /// </summary>  
         public string GainControl { get; set; }
 
         /// <summary>
-        /// Gets or sets the gamma.
+        /// Gets or sets Gamma
         /// </summary>  
         public double? Gamma { get; set; }
 
         /// <summary>
-        /// Gets or sets the ISO speed.
+        /// Gets or sets ISOSpeed
         /// </summary>  
         public long? ISOSpeed { get; set; }
 
         /// <summary>
-        /// Gets or sets the ISO speed latitude YYY value.
+        /// Gets or sets ISOSpeedLatitudeYYY
         /// </summary>  
         public long? ISOSpeedLatitudeYYY { get; set; }
 
         /// <summary>
-        /// Gets or sets the ISO speed latitude ZZZ value.
+        /// Gets or sets ISOSpeedLatitudeZZZ
         /// </summary>  
         public long? ISOSpeedLatitudeZZZ { get; set; }
 
         /// <summary>
-        /// Gets or sets the photographic sensitivity.
+        /// Gets or sets PhotographicSensitivity
         /// </summary>  
         public long? PhotographicSensitivity { get; set; }
 
         /// <summary>
-        /// Gets or sets the image unique ID.
+        /// Gets or sets ImageUniqueID
         /// </summary>  
         public string ImageUniqueID { get; set; }
 
         /// <summary>
-        /// Gets or sets the lens manufacturer.
+        /// Gets or sets LensMake
         /// </summary>  
         public string LensMake { get; set; }
 
         /// <summary>
-        /// Gets or sets the lens model.
+        /// Gets or sets LensModel
         /// </summary>  
         public string LensModel { get; set; }
 
         /// <summary>
-        /// Gets or sets the lens serial number.
+        /// Gets or sets LensSerialNumber
         /// </summary>  
         public string LensSerialNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets the lens specification.
+        /// Gets or sets LensSpecification
         /// </summary>  
         public List<double?> LensSpecification { get; set; }
 
         /// <summary>
-        /// Gets or sets the light source.
+        /// Gets or sets LightSource
         /// </summary>  
         public string LightSource { get; set; }
 
         /// <summary>
-        /// Gets or sets the maker note raw data.
+        /// Gets or sets MakerNoteRawData
         /// </summary>  
         public byte[] MakerNoteRawData { get; set; }
 
         /// <summary>
-        /// Gets or sets the max aperture.
+        /// Gets or sets MaxApertureValue
         /// </summary>  
         public double? MaxApertureValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the metering mode.
+        /// Gets or sets MeteringMode
         /// </summary>  
         public string MeteringMode { get; set; }
 
         /// <summary>
-        /// Gets or sets the OECF (Opto-Electric Conversion Function).
+        /// Gets or sets OECF
         /// </summary>  
         public byte[] OECF { get; set; }
 
         /// <summary>
-        /// Gets or sets the pixel X dimension.
+        /// Gets or sets PixelXDimension
         /// </summary>  
         public long? PixelXDimension { get; set; }
 
         /// <summary>
-        /// Gets or sets the pixel Y dimension.
+        /// Gets or sets PixelYDimension
         /// </summary>  
         public long? PixelYDimension { get; set; }
 
         /// <summary>
-        /// Gets or sets the recommended exposure index.
+        /// Gets or sets RecommendedExposureIndex
         /// </summary>  
         public long? RecommendedExposureIndex { get; set; }
 
         /// <summary>
-        /// Gets or sets the related sound file.
+        /// Gets or sets RelatedSoundFile
         /// </summary>  
         public string RelatedSoundFile { get; set; }
 
         /// <summary>
-        /// Gets or sets the saturation.
+        /// Gets or sets Saturation
         /// </summary>  
         public string Saturation { get; set; }
 
         /// <summary>
-        /// Gets or sets the scene capture type.
+        /// Gets or sets SceneCaptureType
         /// </summary>  
         public string SceneCaptureType { get; set; }
 
         /// <summary>
-        /// Gets or sets the scene type.
+        /// Gets or sets SceneType
         /// </summary>  
         public int? SceneType { get; set; }
 
         /// <summary>
-        /// Gets or sets the sensing method.
+        /// Gets or sets SensingMethod
         /// </summary>  
         public string SensingMethod { get; set; }
 
         /// <summary>
-        /// Gets or sets the sensitivity type.
+        /// Gets or sets SensitivityType
         /// </summary>  
         public int? SensitivityType { get; set; }
 
         /// <summary>
-        /// Gets or sets the sharpness.
+        /// Gets or sets Sharpness
         /// </summary>  
         public int? Sharpness { get; set; }
 
         /// <summary>
-        /// Gets or sets the shutter speed.
+        /// Gets or sets ShutterSpeedValue
         /// </summary>  
         public double? ShutterSpeedValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the spatial frequency response.
+        /// Gets or sets SpatialFrequencyResponse
         /// </summary>  
         public byte[] SpatialFrequencyResponse { get; set; }
 
         /// <summary>
-        /// Gets or sets the spectral sensitivity.
+        /// Gets or sets SpectralSensitivity
         /// </summary>  
         public string SpectralSensitivity { get; set; }
 
         /// <summary>
-        /// Gets or sets the standard output sensitivity.
+        /// Gets or sets StandardOutputSensitivity
         /// </summary>  
         public long? StandardOutputSensitivity { get; set; }
 
         /// <summary>
-        /// Gets or sets the subject area.
+        /// Gets or sets SubjectArea
         /// </summary>  
         public List<int?> SubjectArea { get; set; }
 
         /// <summary>
-        /// Gets or sets the subject distance.
+        /// Gets or sets SubjectDistance
         /// </summary>  
         public double? SubjectDistance { get; set; }
 
         /// <summary>
-        /// Gets or sets the subject distance range.
+        /// Gets or sets SubjectDistanceRange
         /// </summary>  
         public string SubjectDistanceRange { get; set; }
 
         /// <summary>
-        /// Gets or sets the subject location.
+        /// Gets or sets SubjectLocation
         /// </summary>  
         public List<int?> SubjectLocation { get; set; }
 
         /// <summary>
-        /// Gets or sets the fractions of seconds for the DateTime tag.
+        /// Gets or sets SubsecTime
         /// </summary>  
         public string SubsecTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the fractions of seconds for the DateTimeDigitized tag.
+        /// Gets or sets SubsecTimeDigitized
         /// </summary>  
         public string SubsecTimeDigitized { get; set; }
 
         /// <summary>
-        /// Gets or sets the fractions of seconds for the DateTimeOriginal tag.
+        /// Gets or sets SubsecTimeOriginal
         /// </summary>  
         public string SubsecTimeOriginal { get; set; }
 
         /// <summary>
-        /// Gets or sets the user comment.
+        /// Gets or sets UserComment
         /// </summary>  
         public string UserComment { get; set; }
 
         /// <summary>
-        /// Gets or sets the white balance.
+        /// Gets or sets WhiteBalance
         /// </summary>  
         public string WhiteBalance { get; set; }
 
         /// <summary>
-        /// Gets or sets the white point.
+        /// Gets or sets WhitePoint
         /// </summary>  
         public List<double?> WhitePoint { get; set; }
 

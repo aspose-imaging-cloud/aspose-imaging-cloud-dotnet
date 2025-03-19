@@ -34,17 +34,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Search context status.
+  /// 
   /// </summary>  
   public class SearchContextStatus 
   {                       
         /// <summary>
-        /// Gets or sets the identifier.
+        /// Gets or sets Id
         /// </summary>  
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the status.
+        /// Gets or sets SearchStatus
         /// </summary>  
         public string SearchStatus { get; set; }
 

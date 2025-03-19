@@ -3,10 +3,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Factor** | **double?** | Gets or sets the factor. | 
-**Bias** | **int?** | Gets or sets the bias. | 
-**Radius** | **int?** | Gets or sets the radius. | 
-**Sigma** | **double?** | Gets or sets the sigma. | 
+**Factor** | **double?** |  | 
+**Bias** | **int?** |  | 
+**Kernel** | **List&lt;double?&gt;** |  | [optional] 
+**Size** | **int?** |  | 
+**Sigma** | **double?** |  | 
+**Radius** | **int?** |  | 
 
 [[Back to Model list]](API_README.md#documentation-for-models) [[Back to API list]](API_README.md#documentation-for-api-endpoints) [[Back to API_README]](API_README.md)
 

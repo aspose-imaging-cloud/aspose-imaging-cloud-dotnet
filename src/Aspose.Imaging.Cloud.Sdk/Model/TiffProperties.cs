@@ -34,22 +34,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents properties of TIFF image.
+  /// 
   /// </summary>  
   public class TiffProperties 
   {                       
         /// <summary>
-        /// Frames information.
+        /// Gets or sets Frames
         /// </summary>  
         public List<TiffFrame> Frames { get; set; }
 
         /// <summary>
-        /// Gets or sets the byte order.
+        /// Gets or sets ByteOrder
         /// </summary>  
         public string ByteOrder { get; set; }
 
         /// <summary>
-        /// Gets or sets the EXIF data.
+        /// Gets or sets ExifData
         /// </summary>  
         public ExifData ExifData { get; set; }
 

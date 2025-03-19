@@ -43,18 +43,18 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="CreateImageFrameRangeRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="startFrameId">Index of the first frame in range.</param>
-        /// <param name="endFrameId">Index of the last frame in range.</param>
-        /// <param name="newWidth">New width.</param>
-        /// <param name="newHeight">New height.</param>
-        /// <param name="x">X position of start point for cropping rectangle.</param>
-        /// <param name="y">Y position of start point for cropping rectangle.</param>
-        /// <param name="rectWidth">Width of cropping rectangle.</param>
-        /// <param name="rectHeight">Height of cropping rectangle.</param>
-        /// <param name="rotateFlipMethod">RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.</param>
-        /// <param name="saveOtherFrames">If result will include all other frames or just a specified frame.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="startFrameId"></param>
+        /// <param name="endFrameId"></param>
+        /// <param name="newWidth"></param>
+        /// <param name="newHeight"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="rectWidth"></param>
+        /// <param name="rectHeight"></param>
+        /// <param name="rotateFlipMethod"></param>
+        /// <param name="saveOtherFrames"></param>
+        /// <param name="outPath"></param>
+        /// <param name="storage"></param>
         public CreateImageFrameRangeRequest(System.IO.Stream imageData, int? startFrameId, int? endFrameId, int? newWidth = null, int? newHeight = null, int? x = null, int? y = null, int? rectWidth = null, int? rectHeight = null, string rotateFlipMethod = null, bool? saveOtherFrames = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
@@ -78,62 +78,62 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Index of the first frame in range.
+        /// Gets or sets startFrameId
         /// </summary>  
         public int? startFrameId { get; set; }
 
         /// <summary>
-        /// Index of the last frame in range.
+        /// Gets or sets endFrameId
         /// </summary>  
         public int? endFrameId { get; set; }
 
         /// <summary>
-        /// New width.
+        /// Gets or sets newWidth
         /// </summary>  
         public int? newWidth { get; set; }
 
         /// <summary>
-        /// New height.
+        /// Gets or sets newHeight
         /// </summary>  
         public int? newHeight { get; set; }
 
         /// <summary>
-        /// X position of start point for cropping rectangle.
+        /// Gets or sets x
         /// </summary>  
         public int? x { get; set; }
 
         /// <summary>
-        /// Y position of start point for cropping rectangle.
+        /// Gets or sets y
         /// </summary>  
         public int? y { get; set; }
 
         /// <summary>
-        /// Width of cropping rectangle.
+        /// Gets or sets rectWidth
         /// </summary>  
         public int? rectWidth { get; set; }
 
         /// <summary>
-        /// Height of cropping rectangle.
+        /// Gets or sets rectHeight
         /// </summary>  
         public int? rectHeight { get; set; }
 
         /// <summary>
-        /// RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
+        /// Gets or sets rotateFlipMethod
         /// </summary>  
         public string rotateFlipMethod { get; set; }
 
         /// <summary>
-        /// If result will include all other frames or just a specified frame.
+        /// Gets or sets saveOtherFrames
         /// </summary>  
         public bool? saveOtherFrames { get; set; }
 
         /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
+        /// Gets or sets outPath
         /// </summary>  
         public string outPath { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

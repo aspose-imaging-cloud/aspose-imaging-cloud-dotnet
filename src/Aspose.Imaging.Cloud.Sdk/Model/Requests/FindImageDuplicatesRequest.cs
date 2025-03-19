@@ -42,10 +42,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="FindImageDuplicatesRequest"/> class.
         /// </summary>
-        /// <param name="searchContextId">The search context identifier.</param>
-        /// <param name="similarityThreshold">The similarity threshold.</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
+        /// <param name="searchContextId"></param>
+        /// <param name="similarityThreshold"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public FindImageDuplicatesRequest(string searchContextId, double? similarityThreshold, string folder = null, string storage = null)             
         {
             this.searchContextId = searchContextId;
@@ -55,22 +55,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// The search context identifier.
+        /// Gets or sets searchContextId
         /// </summary>  
         public string searchContextId { get; set; }
 
         /// <summary>
-        /// The similarity threshold.
+        /// Gets or sets similarityThreshold
         /// </summary>  
         public double? similarityThreshold { get; set; }
 
         /// <summary>
-        /// The folder.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// The storage.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

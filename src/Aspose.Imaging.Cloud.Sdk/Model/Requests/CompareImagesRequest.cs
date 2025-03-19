@@ -42,12 +42,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="CompareImagesRequest"/> class.
         /// </summary>
-        /// <param name="searchContextId">The search context identifier.</param>
-        /// <param name="imageId1">The first image Id in storage.</param>
+        /// <param name="searchContextId"></param>
+        /// <param name="imageId1"></param>
         /// <param name="imageData">Input image</param>
-        /// <param name="imageId2">The second image Id in storage or null (if image loading in request).</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
+        /// <param name="imageId2"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public CompareImagesRequest(string searchContextId, string imageId1, System.IO.Stream imageData = null, string imageId2 = null, string folder = null, string storage = null)             
         {
             this.searchContextId = searchContextId;
@@ -59,12 +59,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// The search context identifier.
+        /// Gets or sets searchContextId
         /// </summary>  
         public string searchContextId { get; set; }
 
         /// <summary>
-        /// The first image Id in storage.
+        /// Gets or sets imageId1
         /// </summary>  
         public string imageId1 { get; set; }
 
@@ -74,17 +74,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// The second image Id in storage or null (if image loading in request).
+        /// Gets or sets imageId2
         /// </summary>  
         public string imageId2 { get; set; }
 
         /// <summary>
-        /// The folder.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// The storage.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

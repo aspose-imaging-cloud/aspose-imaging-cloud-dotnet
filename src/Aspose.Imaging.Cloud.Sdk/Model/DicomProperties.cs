@@ -34,107 +34,107 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents information about image in dicom format.
+  /// 
   /// </summary>  
   public class DicomProperties 
   {                       
         /// <summary>
-        /// Gets or sets the planar configuration.
+        /// Gets or sets PlanarConfiguration
         /// </summary>  
         public int? PlanarConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets the array of red colors.
+        /// Gets or sets Reds
         /// </summary>  
         public byte[] Reds { get; set; }
 
         /// <summary>
-        /// Gets or sets the array of green colors.
+        /// Gets or sets Greens
         /// </summary>  
         public byte[] Greens { get; set; }
 
         /// <summary>
-        /// Gets or sets the array of blue colors.
+        /// Gets or sets Blues
         /// </summary>  
         public byte[] Blues { get; set; }
 
         /// <summary>
-        /// Gets or sets the header information by bytes.
+        /// Gets or sets DicomHeaderInfoByBytes
         /// </summary>  
         public byte[] DicomHeaderInfoByBytes { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether it's a signed image.
+        /// Gets or sets SignedImage
         /// </summary>  
         public bool? SignedImage { get; set; }
 
         /// <summary>
-        /// Gets or sets the header information of the DICOM file.
+        /// Gets or sets DicomInfo
         /// </summary>  
         public List<string> DicomInfo { get; set; }
 
         /// <summary>
-        /// Gets or sets samples per pixel count.
+        /// Gets or sets SamplesPerPixel
         /// </summary>  
         public int? SamplesPerPixel { get; set; }
 
         /// <summary>
-        /// Gets or sets allocated bits count.
+        /// Gets or sets BitsAllocated
         /// </summary>  
         public int? BitsAllocated { get; set; }
 
         /// <summary>
-        /// Gets or sets the photo interpretation.
+        /// Gets or sets PhotoInterpretation
         /// </summary>  
         public string PhotoInterpretation { get; set; }
 
         /// <summary>
-        /// Gets or sets the width.
+        /// Gets or sets Width
         /// </summary>  
         public int? Width { get; set; }
 
         /// <summary>
-        /// Gets or sets the height.
+        /// Gets or sets Height
         /// </summary>  
         public int? Height { get; set; }
 
         /// <summary>
-        /// Gets or sets the window centre.
+        /// Gets or sets WindowCentre
         /// </summary>  
         public double? WindowCentre { get; set; }
 
         /// <summary>
-        /// Gets or sets the width of the window.
+        /// Gets or sets WindowWidth
         /// </summary>  
         public double? WindowWidth { get; set; }
 
         /// <summary>
-        /// Gets or sets data representation of the pixel samples.
+        /// Gets or sets PixelRepresentation
         /// </summary>  
         public int? PixelRepresentation { get; set; }
 
         /// <summary>
-        /// Gets or sets a value of the rescale intercept.
+        /// Gets or sets RescaleIntercept
         /// </summary>  
         public double? RescaleIntercept { get; set; }
 
         /// <summary>
-        /// Gets or sets a value of the rescale slope.
+        /// Gets or sets RescaleSlope
         /// </summary>  
         public double? RescaleSlope { get; set; }
 
         /// <summary>
-        /// Gets or sets the number of frames.
+        /// Gets or sets NumberOfFrames
         /// </summary>  
         public int? NumberOfFrames { get; set; }
 
         /// <summary>
-        /// Indicates if DICOM image has little endian byte order.
+        /// Gets or sets IsLittleEndian
         /// </summary>  
         public bool? IsLittleEndian { get; set; }
 
         /// <summary>
-        /// Gets or sets the offset.
+        /// Gets or sets Offset
         /// </summary>  
         public int? Offset { get; set; }
 

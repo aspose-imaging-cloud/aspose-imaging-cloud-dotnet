@@ -42,12 +42,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="ModifyJpeg2000Request"/> class.
         /// </summary>
-        /// <param name="name">Filename of image.</param>
-        /// <param name="comment">The comment (can be either single or comma-separated).</param>
-        /// <param name="codec">The codec (j2k or jp2).</param>
-        /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="folder">Folder with image to process.</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="name"></param>
+        /// <param name="comment"></param>
+        /// <param name="codec"></param>
+        /// <param name="fromScratch"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public ModifyJpeg2000Request(string name, string comment, string codec = null, bool? fromScratch = null, string folder = null, string storage = null)             
         {
             this.name = name;
@@ -59,32 +59,32 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// Filename of image.
+        /// Gets or sets name
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// The comment (can be either single or comma-separated).
+        /// Gets or sets comment
         /// </summary>  
         public string comment { get; set; }
 
         /// <summary>
-        /// The codec (j2k or jp2).
+        /// Gets or sets codec
         /// </summary>  
         public string codec { get; set; }
 
         /// <summary>
-        /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+        /// Gets or sets fromScratch
         /// </summary>  
         public bool? fromScratch { get; set; }
 
         /// <summary>
-        /// Folder with image to process.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

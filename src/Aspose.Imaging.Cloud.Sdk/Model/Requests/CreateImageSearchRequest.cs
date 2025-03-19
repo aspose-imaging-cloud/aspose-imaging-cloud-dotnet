@@ -42,10 +42,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateImageSearchRequest"/> class.
         /// </summary>
-        /// <param name="detector">The image features detector.</param>
-        /// <param name="matchingAlgorithm">The matching algorithm.</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
+        /// <param name="detector"></param>
+        /// <param name="matchingAlgorithm"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public CreateImageSearchRequest(string detector = null, string matchingAlgorithm = null, string folder = null, string storage = null)             
         {
             this.detector = detector;
@@ -55,22 +55,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// The image features detector.
+        /// Gets or sets detector
         /// </summary>  
         public string detector { get; set; }
 
         /// <summary>
-        /// The matching algorithm.
+        /// Gets or sets matchingAlgorithm
         /// </summary>  
         public string matchingAlgorithm { get; set; }
 
         /// <summary>
-        /// The folder.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// The storage.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

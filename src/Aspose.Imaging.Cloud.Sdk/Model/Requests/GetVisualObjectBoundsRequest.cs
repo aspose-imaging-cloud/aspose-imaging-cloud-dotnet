@@ -42,16 +42,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="GetVisualObjectBoundsRequest"/> class.
         /// </summary>
-        /// <param name="name">The image features detector.</param>
-        /// <param name="method">Object detection method</param>
-        /// <param name="threshold">Object detection probability threshold in percents</param>
-        /// <param name="includeLabel">Draw detected objects labels</param>
-        /// <param name="includeScore">Draw detected objects scores</param>
-        /// <param name="allowedLabels">Comma-separated list of allowed labels</param>
-        /// <param name="blockedLabels">Comma-separated list of blocked labels</param>
-        /// <param name="color">Bounds, labels, and scores text color</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
+        /// <param name="name"></param>
+        /// <param name="method"></param>
+        /// <param name="threshold"></param>
+        /// <param name="includeLabel"></param>
+        /// <param name="includeScore"></param>
+        /// <param name="allowedLabels"></param>
+        /// <param name="blockedLabels"></param>
+        /// <param name="color"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public GetVisualObjectBoundsRequest(string name, string method = null, int? threshold = null, bool? includeLabel = null, bool? includeScore = null, string allowedLabels = null, string blockedLabels = null, string color = null, string folder = null, string storage = null)             
         {
             this.name = name;
@@ -67,52 +67,52 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// The image features detector.
+        /// Gets or sets name
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// Object detection method
+        /// Gets or sets method
         /// </summary>  
         public string method { get; set; }
 
         /// <summary>
-        /// Object detection probability threshold in percents
+        /// Gets or sets threshold
         /// </summary>  
         public int? threshold { get; set; }
 
         /// <summary>
-        /// Draw detected objects labels
+        /// Gets or sets includeLabel
         /// </summary>  
         public bool? includeLabel { get; set; }
 
         /// <summary>
-        /// Draw detected objects scores
+        /// Gets or sets includeScore
         /// </summary>  
         public bool? includeScore { get; set; }
 
         /// <summary>
-        /// Comma-separated list of allowed labels
+        /// Gets or sets allowedLabels
         /// </summary>  
         public string allowedLabels { get; set; }
 
         /// <summary>
-        /// Comma-separated list of blocked labels
+        /// Gets or sets blockedLabels
         /// </summary>  
         public string blockedLabels { get; set; }
 
         /// <summary>
-        /// Bounds, labels, and scores text color
+        /// Gets or sets color
         /// </summary>  
         public string color { get; set; }
 
         /// <summary>
-        /// The folder.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// The storage.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

@@ -34,32 +34,32 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// The Bilateral Smoothing Filter Options.
+  /// 
   /// </summary>  
   public class BilateralSmoothingFilterProperties : FilterPropertiesBase 
   {                       
         /// <summary>
-        /// Gets or sets the size of the kernel.
+        /// Gets or sets Size
         /// </summary>  
         public int? Size { get; set; }
 
         /// <summary>
-        /// Gets or sets the spatial factor.
+        /// Gets or sets SpatialFactor
         /// </summary>  
         public double? SpatialFactor { get; set; }
 
         /// <summary>
-        /// Gets or sets the spatial power.
+        /// Gets or sets SpatialPower
         /// </summary>  
         public double? SpatialPower { get; set; }
 
         /// <summary>
-        /// Gets or sets the color factor.
+        /// Gets or sets ColorFactor
         /// </summary>  
         public double? ColorFactor { get; set; }
 
         /// <summary>
-        /// Gets or sets the color power.
+        /// Gets or sets ColorPower
         /// </summary>  
         public double? ColorPower { get; set; }
 

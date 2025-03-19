@@ -43,11 +43,11 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="FindImagesByTagsRequest"/> class.
         /// </summary>
         /// <param name="tags">Tags array for searching</param>
-        /// <param name="searchContextId">The search context identifier.</param>
-        /// <param name="similarityThreshold">The similarity threshold.</param>
-        /// <param name="maxCount">The maximum count.</param>
-        /// <param name="folder">The folder.</param>
-        /// <param name="storage">The storage.</param>
+        /// <param name="searchContextId"></param>
+        /// <param name="similarityThreshold"></param>
+        /// <param name="maxCount"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public FindImagesByTagsRequest(string tags, string searchContextId, double? similarityThreshold, int? maxCount, string folder = null, string storage = null)             
         {
             this.tags = tags;
@@ -64,27 +64,27 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public string tags { get; set; }
 
         /// <summary>
-        /// The search context identifier.
+        /// Gets or sets searchContextId
         /// </summary>  
         public string searchContextId { get; set; }
 
         /// <summary>
-        /// The similarity threshold.
+        /// Gets or sets similarityThreshold
         /// </summary>  
         public double? similarityThreshold { get; set; }
 
         /// <summary>
-        /// The maximum count.
+        /// Gets or sets maxCount
         /// </summary>  
         public int? maxCount { get; set; }
 
         /// <summary>
-        /// The folder.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// The storage.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

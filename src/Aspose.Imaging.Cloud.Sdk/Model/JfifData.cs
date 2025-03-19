@@ -34,27 +34,27 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents JFIF data.
+  /// 
   /// </summary>  
   public class JfifData 
   {                       
         /// <summary>
-        /// Gets or sets the density units.
+        /// Gets or sets DensityUnits
         /// </summary>  
         public string DensityUnits { get; set; }
 
         /// <summary>
-        /// Gets or sets the version.
+        /// Gets or sets Version
         /// </summary>  
         public int? Version { get; set; }
 
         /// <summary>
-        /// Gets or sets the X density.
+        /// Gets or sets XDensity
         /// </summary>  
         public int? XDensity { get; set; }
 
         /// <summary>
-        /// Gets or sets the Y density.
+        /// Gets or sets YDensity
         /// </summary>  
         public int? YDensity { get; set; }
 

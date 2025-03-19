@@ -34,97 +34,97 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// ODG format metadata
+  /// 
   /// </summary>  
   public class OdgMetadata 
   {                       
         /// <summary>
-        /// Gets or sets the generator.
+        /// Gets or sets Generator
         /// </summary>  
         public string Generator { get; set; }
 
         /// <summary>
-        /// Gets or sets the title.
+        /// Gets or sets Title
         /// </summary>  
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or sets the description.
+        /// Gets or sets Description
         /// </summary>  
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the subject.
+        /// Gets or sets Subject
         /// </summary>  
         public string Subject { get; set; }
 
         /// <summary>
-        /// Gets or sets the keywords.
+        /// Gets or sets Keywords
         /// </summary>  
         public string Keywords { get; set; }
 
         /// <summary>
-        /// Gets or sets the initial creator.
+        /// Gets or sets InitialCreator
         /// </summary>  
         public string InitialCreator { get; set; }
 
         /// <summary>
-        /// Gets or sets the creator.
+        /// Gets or sets Creator
         /// </summary>  
         public string Creator { get; set; }
 
         /// <summary>
-        /// Gets or sets the \"PrintedBy\" record.
+        /// Gets or sets PrintedBy
         /// </summary>  
         public string PrintedBy { get; set; }
 
         /// <summary>
-        /// Gets or sets the creation date and time.
+        /// Gets or sets CreationDateTime
         /// </summary>  
         public string CreationDateTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the modification date and time.
+        /// Gets or sets ModificationDateTime
         /// </summary>  
         public string ModificationDateTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the print date and time.
+        /// Gets or sets PrintDateTime
         /// </summary>  
         public string PrintDateTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the document template.
+        /// Gets or sets DocumentTemplate
         /// </summary>  
         public string DocumentTemplate { get; set; }
 
         /// <summary>
-        /// Gets or sets the automatic reload.
+        /// Gets or sets AutomaticReload
         /// </summary>  
         public string AutomaticReload { get; set; }
 
         /// <summary>
-        /// Gets or sets the hyperlink behavior.
+        /// Gets or sets HyperlinkBehavior
         /// </summary>  
         public string HyperlinkBehavior { get; set; }
 
         /// <summary>
-        /// Gets or sets the language.
+        /// Gets or sets Language
         /// </summary>  
         public string Language { get; set; }
 
         /// <summary>
-        /// Gets or sets the editing cycles.
+        /// Gets or sets EditingCycles
         /// </summary>  
         public string EditingCycles { get; set; }
 
         /// <summary>
-        /// Gets or sets the duration of the editing.
+        /// Gets or sets EditingDuration
         /// </summary>  
         public string EditingDuration { get; set; }
 
         /// <summary>
-        /// Gets or sets the document statistics.
+        /// Gets or sets DocumentStatistics
         /// </summary>  
         public string DocumentStatistics { get; set; }
 

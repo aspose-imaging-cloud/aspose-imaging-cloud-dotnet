@@ -42,9 +42,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="GetImagePropertiesRequest"/> class.
         /// </summary>
-        /// <param name="name">Filename of an image.</param>
-        /// <param name="folder">Folder with image to process.</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="name"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public GetImagePropertiesRequest(string name, string folder = null, string storage = null)             
         {
             this.name = name;
@@ -53,17 +53,17 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// Filename of an image.
+        /// Gets or sets name
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// Folder with image to process.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

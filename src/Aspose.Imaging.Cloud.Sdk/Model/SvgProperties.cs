@@ -34,12 +34,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents information about image in PNG format.
+  /// 
   /// </summary>  
   public class SvgProperties 
   {                       
         /// <summary>
-        /// Gets or sets the color type for SVG image.
+        /// Gets or sets ColorType
         /// </summary>  
         public string ColorType { get; set; }
 

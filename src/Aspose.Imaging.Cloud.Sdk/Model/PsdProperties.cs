@@ -34,27 +34,27 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents information about PSD image
+  /// 
   /// </summary>  
   public class PsdProperties 
   {                       
         /// <summary>
-        /// Gets or sets the bits per channel.
+        /// Gets or sets BitsPerChannel
         /// </summary>  
         public int? BitsPerChannel { get; set; }
 
         /// <summary>
-        /// Gets or sets the channels count.
+        /// Gets or sets ChannelsCount
         /// </summary>  
         public int? ChannelsCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the color mode.
+        /// Gets or sets ColorMode
         /// </summary>  
         public string ColorMode { get; set; }
 
         /// <summary>
-        /// Gets or sets the compression.
+        /// Gets or sets Compression
         /// </summary>  
         public string Compression { get; set; }
 

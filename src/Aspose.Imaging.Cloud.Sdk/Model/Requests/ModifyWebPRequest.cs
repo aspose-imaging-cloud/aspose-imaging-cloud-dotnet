@@ -42,14 +42,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="ModifyWebPRequest"/> class.
         /// </summary>
-        /// <param name="name">Filename of image.</param>
-        /// <param name="lossLess">If WEBP should be in lossless format.</param>
-        /// <param name="quality">Quality (0-100).</param>
-        /// <param name="animLoopCount">The animation loop count.</param>
-        /// <param name="animBackgroundColor">Color of the animation background.</param>
-        /// <param name="fromScratch">Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.</param>
-        /// <param name="folder">Folder with image to process.</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="name"></param>
+        /// <param name="lossLess"></param>
+        /// <param name="quality"></param>
+        /// <param name="animLoopCount"></param>
+        /// <param name="animBackgroundColor"></param>
+        /// <param name="fromScratch"></param>
+        /// <param name="folder"></param>
+        /// <param name="storage"></param>
         public ModifyWebPRequest(string name, bool? lossLess, int? quality, int? animLoopCount, string animBackgroundColor, bool? fromScratch = null, string folder = null, string storage = null)             
         {
             this.name = name;
@@ -63,42 +63,42 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// Filename of image.
+        /// Gets or sets name
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// If WEBP should be in lossless format.
+        /// Gets or sets lossLess
         /// </summary>  
         public bool? lossLess { get; set; }
 
         /// <summary>
-        /// Quality (0-100).
+        /// Gets or sets quality
         /// </summary>  
         public int? quality { get; set; }
 
         /// <summary>
-        /// The animation loop count.
+        /// Gets or sets animLoopCount
         /// </summary>  
         public int? animLoopCount { get; set; }
 
         /// <summary>
-        /// Color of the animation background.
+        /// Gets or sets animBackgroundColor
         /// </summary>  
         public string animBackgroundColor { get; set; }
 
         /// <summary>
-        /// Specifies where additional parameters we do not support should be taken from. If this is true – they will be taken from default values for standard image, if it is false – they will be saved from current image. Default is false.
+        /// Gets or sets fromScratch
         /// </summary>  
         public bool? fromScratch { get; set; }
 
         /// <summary>
-        /// Folder with image to process.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

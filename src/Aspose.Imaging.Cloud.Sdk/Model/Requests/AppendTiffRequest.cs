@@ -42,10 +42,10 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// <summary>
         /// Initializes a new instance of the <see cref="AppendTiffRequest"/> class.
         /// </summary>
-        /// <param name="name">Original image file name.</param>
-        /// <param name="appendFile">Image file name to be appended to original one.</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
-        /// <param name="folder">Folder with images to process.</param>
+        /// <param name="name"></param>
+        /// <param name="appendFile"></param>
+        /// <param name="storage"></param>
+        /// <param name="folder"></param>
         public AppendTiffRequest(string name, string appendFile, string storage = null, string folder = null)             
         {
             this.name = name;
@@ -55,22 +55,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         }
         
         /// <summary>
-        /// Original image file name.
+        /// Gets or sets name
         /// </summary>  
         public string name { get; set; }
 
         /// <summary>
-        /// Image file name to be appended to original one.
+        /// Gets or sets appendFile
         /// </summary>  
         public string appendFile { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
 
         /// <summary>
-        /// Folder with images to process.
+        /// Gets or sets folder
         /// </summary>  
         public string folder { get; set; }
   }

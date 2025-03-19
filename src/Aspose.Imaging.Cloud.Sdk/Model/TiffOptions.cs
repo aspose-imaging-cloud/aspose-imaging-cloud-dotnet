@@ -34,237 +34,237 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents options for TIFF frame.
+  /// 
   /// </summary>  
   public class TiffOptions 
   {                       
         /// <summary>
-        /// Gets or sets a value indicating whether TIFF image has valid data.
+        /// Gets or sets IsValid
         /// </summary>  
         public bool? IsValid { get; set; }
 
         /// <summary>
-        /// Gets or sets the artist.
+        /// Gets or sets Artist
         /// </summary>  
         public string Artist { get; set; }
 
         /// <summary>
-        /// Gets or sets the byte order.
+        /// Gets or sets ByteOrder
         /// </summary>  
         public string ByteOrder { get; set; }
 
         /// <summary>
-        /// Gets or sets the bits per sample.
+        /// Gets or sets BitsPerSample
         /// </summary>  
         public List<int?> BitsPerSample { get; set; }
 
         /// <summary>
-        /// Gets or sets the compression.
+        /// Gets or sets Compression
         /// </summary>  
         public string Compression { get; set; }
 
         /// <summary>
-        /// Gets or sets the copyright info.
+        /// Gets or sets Copyright
         /// </summary>  
         public string Copyright { get; set; }
 
         /// <summary>
-        /// Gets or sets the color map.
+        /// Gets or sets ColorMap
         /// </summary>  
         public List<int?> ColorMap { get; set; }
 
         /// <summary>
-        /// Gets or sets the date and time.
+        /// Gets or sets DateTime
         /// </summary>  
         public string DateTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the document name.
+        /// Gets or sets DocumentName
         /// </summary>  
         public string DocumentName { get; set; }
 
         /// <summary>
-        /// Gets or sets the alpha storage.
+        /// Gets or sets AlphaStorage
         /// </summary>  
         public string AlphaStorage { get; set; }
 
         /// <summary>
-        /// Gets or sets the fill order.
+        /// Gets or sets FillOrder
         /// </summary>  
         public string FillOrder { get; set; }
 
         /// <summary>
-        /// Gets or sets the half-tone hints.
+        /// Gets or sets HalfToneHints
         /// </summary>  
         public List<int?> HalfToneHints { get; set; }
 
         /// <summary>
-        /// Gets or sets the image description.
+        /// Gets or sets ImageDescription
         /// </summary>  
         public string ImageDescription { get; set; }
 
         /// <summary>
-        /// Gets or sets the ink names.
+        /// Gets or sets InkNames
         /// </summary>  
         public string InkNames { get; set; }
 
         /// <summary>
-        /// Gets or sets the scanner manufacturer.
+        /// Gets or sets ScannerManufacturer
         /// </summary>  
         public string ScannerManufacturer { get; set; }
 
         /// <summary>
-        /// Gets or sets the max sample value.
+        /// Gets or sets MaxSampleValue
         /// </summary>  
         public List<int?> MaxSampleValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the min sample value.
+        /// Gets or sets MinSampleValue
         /// </summary>  
         public List<int?> MinSampleValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the scanner model.
+        /// Gets or sets ScannerModel
         /// </summary>  
         public string ScannerModel { get; set; }
 
         /// <summary>
-        /// Gets or sets the page name.
+        /// Gets or sets PageName
         /// </summary>  
         public string PageName { get; set; }
 
         /// <summary>
-        /// Gets or sets the orientation.
+        /// Gets or sets Orientation
         /// </summary>  
         public string Orientation { get; set; }
 
         /// <summary>
-        /// Gets or sets the page number.
+        /// Gets or sets PageNumber
         /// </summary>  
         public List<int?> PageNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets the photometric interpretation.
+        /// Gets or sets Photometric
         /// </summary>  
         public string Photometric { get; set; }
 
         /// <summary>
-        /// Gets or sets the planar configuration.
+        /// Gets or sets PlanarConfiguration
         /// </summary>  
         public string PlanarConfiguration { get; set; }
 
         /// <summary>
-        /// Gets or sets the resolution unit.
+        /// Gets or sets ResolutionUnit
         /// </summary>  
         public string ResolutionUnit { get; set; }
 
         /// <summary>
-        /// Gets or sets the rows per strip.
+        /// Gets or sets RowsPerStrip
         /// </summary>  
         public long? RowsPerStrip { get; set; }
 
         /// <summary>
-        /// Gets or sets the sample format.
+        /// Gets or sets SampleFormat
         /// </summary>  
         public List<string> SampleFormat { get; set; }
 
         /// <summary>
-        /// Gets or sets the samples per pixel.
+        /// Gets or sets SamplesPerPixel
         /// </summary>  
         public int? SamplesPerPixel { get; set; }
 
         /// <summary>
-        /// Gets or sets the Smax sample value.
+        /// Gets or sets SmaxSampleValue
         /// </summary>  
         public List<long?> SmaxSampleValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the Smin sample value.
+        /// Gets or sets SminSampleValue
         /// </summary>  
         public List<long?> SminSampleValue { get; set; }
 
         /// <summary>
-        /// Gets or sets the software type.
+        /// Gets or sets SoftwareType
         /// </summary>  
         public string SoftwareType { get; set; }
 
         /// <summary>
-        /// Gets or sets the strip byte counts.
+        /// Gets or sets StripByteCounts
         /// </summary>  
         public List<long?> StripByteCounts { get; set; }
 
         /// <summary>
-        /// Gets or sets the strip offsets.
+        /// Gets or sets StripOffsets
         /// </summary>  
         public List<long?> StripOffsets { get; set; }
 
         /// <summary>
-        /// Gets or sets the subfile type.
+        /// Gets or sets SubFileType
         /// </summary>  
         public string SubFileType { get; set; }
 
         /// <summary>
-        /// Gets or sets the target printer.
+        /// Gets or sets TargetPrinter
         /// </summary>  
         public string TargetPrinter { get; set; }
 
         /// <summary>
-        /// Gets or sets the threshholding.
+        /// Gets or sets Threshholding
         /// </summary>  
         public string Threshholding { get; set; }
 
         /// <summary>
-        /// Gets or sets the total pages count.
+        /// Gets or sets TotalPages
         /// </summary>  
         public int? TotalPages { get; set; }
 
         /// <summary>
-        /// Gets or sets the X position.
+        /// Gets or sets Xposition
         /// </summary>  
         public double? Xposition { get; set; }
 
         /// <summary>
-        /// Gets or sets the X resolution.
+        /// Gets or sets Xresolution
         /// </summary>  
         public double? Xresolution { get; set; }
 
         /// <summary>
-        /// Gets or sets the Y position.
+        /// Gets or sets Yposition
         /// </summary>  
         public double? Yposition { get; set; }
 
         /// <summary>
-        /// Gets or sets the Y resolution.
+        /// Gets or sets Yresolution
         /// </summary>  
         public double? Yresolution { get; set; }
 
         /// <summary>
-        /// Gets or sets the FaxT4 Options.
+        /// Gets or sets FaxT4Options
         /// </summary>  
         public string FaxT4Options { get; set; }
 
         /// <summary>
-        /// Gets or sets the predictor (a mathematical operator that is applied to the image data before an encoding scheme is applied).
+        /// Gets or sets Predictor
         /// </summary>  
         public string Predictor { get; set; }
 
         /// <summary>
-        /// Gets or sets the image length.
+        /// Gets or sets ImageLength
         /// </summary>  
         public long? ImageLength { get; set; }
 
         /// <summary>
-        /// Gets or sets the image width.
+        /// Gets or sets ImageWidth
         /// </summary>  
         public long? ImageWidth { get; set; }
 
         /// <summary>
-        /// Gets or sets the valid tag count.
+        /// Gets or sets ValidTagCount
         /// </summary>  
         public int? ValidTagCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the bits per pixel.
+        /// Gets or sets BitsPerPixel
         /// </summary>  
         public int? BitsPerPixel { get; set; }
 

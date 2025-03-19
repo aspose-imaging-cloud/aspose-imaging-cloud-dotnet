@@ -34,22 +34,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents properties of djvu file.
+  /// 
   /// </summary>  
   public class DjvuProperties 
   {                       
         /// <summary>
-        /// Gets or sets background color.
+        /// Gets or sets BackgroundColor
         /// </summary>  
         public string BackgroundColor { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether background color is used.
+        /// Gets or sets HasBackgroundColor
         /// </summary>  
         public bool? HasBackgroundColor { get; set; }
 
         /// <summary>
-        /// Gets or sets pages count.
+        /// Gets or sets PagesCount
         /// </summary>  
         public int? PagesCount { get; set; }
 

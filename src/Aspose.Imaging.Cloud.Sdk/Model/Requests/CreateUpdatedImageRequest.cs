@@ -43,16 +43,16 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="CreateUpdatedImageRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="newWidth">New width of the scaled image.</param>
-        /// <param name="newHeight">New height of the scaled image.</param>
-        /// <param name="x">X position of start point for cropping rectangle.</param>
-        /// <param name="y">Y position of start point for cropping rectangle.</param>
-        /// <param name="rectWidth">Width of cropping rectangle.</param>
-        /// <param name="rectHeight">Height of cropping rectangle.</param>
-        /// <param name="rotateFlipMethod">RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.</param>
-        /// <param name="format">Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image).</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="newWidth"></param>
+        /// <param name="newHeight"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="rectWidth"></param>
+        /// <param name="rectHeight"></param>
+        /// <param name="rotateFlipMethod"></param>
+        /// <param name="format"></param>
+        /// <param name="outPath"></param>
+        /// <param name="storage"></param>
         public CreateUpdatedImageRequest(System.IO.Stream imageData, int? newWidth, int? newHeight, int? x, int? y, int? rectWidth, int? rectHeight, string rotateFlipMethod, string format = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
@@ -74,52 +74,52 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// New width of the scaled image.
+        /// Gets or sets newWidth
         /// </summary>  
         public int? newWidth { get; set; }
 
         /// <summary>
-        /// New height of the scaled image.
+        /// Gets or sets newHeight
         /// </summary>  
         public int? newHeight { get; set; }
 
         /// <summary>
-        /// X position of start point for cropping rectangle.
+        /// Gets or sets x
         /// </summary>  
         public int? x { get; set; }
 
         /// <summary>
-        /// Y position of start point for cropping rectangle.
+        /// Gets or sets y
         /// </summary>  
         public int? y { get; set; }
 
         /// <summary>
-        /// Width of cropping rectangle.
+        /// Gets or sets rectWidth
         /// </summary>  
         public int? rectWidth { get; set; }
 
         /// <summary>
-        /// Height of cropping rectangle.
+        /// Gets or sets rectHeight
         /// </summary>  
         public int? rectHeight { get; set; }
 
         /// <summary>
-        /// RotateFlip method (Rotate180FlipNone, Rotate180FlipX, Rotate180FlipXY, Rotate180FlipY, Rotate270FlipNone, Rotate270FlipX, Rotate270FlipXY, Rotate270FlipY, Rotate90FlipNone, Rotate90FlipX, Rotate90FlipXY, Rotate90FlipY, RotateNoneFlipNone, RotateNoneFlipX, RotateNoneFlipXY, RotateNoneFlipY). Default is RotateNoneFlipNone.
+        /// Gets or sets rotateFlipMethod
         /// </summary>  
         public string rotateFlipMethod { get; set; }
 
         /// <summary>
-        /// Resulting image format. Please, refer to https://docs.aspose.cloud/display/imagingcloud/Supported+File+Formats#SupportedFileFormats-CommonOperationsFormatSupportMap for possible use-cases.
+        /// Gets or sets format
         /// </summary>  
         public string format { get; set; }
 
         /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image).
+        /// Gets or sets outPath
         /// </summary>  
         public string outPath { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

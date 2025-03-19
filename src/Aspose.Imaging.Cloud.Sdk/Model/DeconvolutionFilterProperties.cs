@@ -34,27 +34,32 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Deconvolution Filter Options, abstract class
+  /// 
   /// </summary>  
   public class DeconvolutionFilterProperties : FilterPropertiesBase 
   {                       
         /// <summary>
-        /// Gets or sets the SNR(signal-to-noise ratio) recommended range 0.002 - 0.009, default value = 0.007
+        /// Gets or sets Kernel
+        /// </summary>  
+        public List<Complex> Kernel { get; set; }
+
+        /// <summary>
+        /// Gets or sets Snr
         /// </summary>  
         public double? Snr { get; set; }
 
         /// <summary>
-        /// Gets or sets the brightness. recommended range 1 - 1.5 default value = 1.15
+        /// Gets or sets Brightness
         /// </summary>  
         public double? Brightness { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this DeconvolutionFilterProperties is grayscale. Return grayscale mode or RGB mode.
+        /// Gets or sets Grayscale
         /// </summary>  
         public bool? Grayscale { get; set; }
 
         /// <summary>
-        /// Gets a value indicating whether this instance is partial loaded.
+        /// Gets or sets IsPartialLoaded
         /// </summary>  
         public bool? IsPartialLoaded { get; set; }
 
@@ -66,6 +71,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         {
           var sb = new StringBuilder();
           sb.Append("class DeconvolutionFilterProperties {\n");
+          sb.Append("  Kernel: ").Append(this.Kernel).Append("\n");
           sb.Append("  Snr: ").Append(this.Snr).Append("\n");
           sb.Append("  Brightness: ").Append(this.Brightness).Append("\n");
           sb.Append("  Grayscale: ").Append(this.Grayscale).Append("\n");

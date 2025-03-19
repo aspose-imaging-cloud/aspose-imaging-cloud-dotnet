@@ -39,27 +39,27 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   public class EpsProperties 
   {                       
         /// <summary>
-        /// Gets the BoundingBox.
+        /// Gets or sets BoundingBoxString
         /// </summary>  
         public string BoundingBoxString { get; set; }
 
         /// <summary>
-        /// Gets the CreationDate.
+        /// Gets or sets CreationDateString
         /// </summary>  
         public string CreationDateString { get; set; }
 
         /// <summary>
-        /// Gets the Creator.
+        /// Gets or sets Creator
         /// </summary>  
         public string Creator { get; set; }
 
         /// <summary>
-        /// Gets the PostScript version.
+        /// Gets or sets PostScriptVersion
         /// </summary>  
         public string PostScriptVersion { get; set; }
 
         /// <summary>
-        /// Gets the Title.
+        /// Gets or sets Title
         /// </summary>  
         public string Title { get; set; }
 

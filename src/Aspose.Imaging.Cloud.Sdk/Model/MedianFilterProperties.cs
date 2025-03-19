@@ -34,12 +34,12 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Median filter
+  /// 
   /// </summary>  
   public class MedianFilterProperties : FilterPropertiesBase 
   {                       
         /// <summary>
-        /// Gets or sets the size.
+        /// Gets or sets Size
         /// </summary>  
         public int? Size { get; set; }
 

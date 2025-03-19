@@ -34,22 +34,22 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// ODG format specific properties
+  /// 
   /// </summary>  
   public class OdgProperties 
   {                       
         /// <summary>
-        /// Gets or sets the page count.
+        /// Gets or sets PageCount
         /// </summary>  
         public int? PageCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the metadata.
+        /// Gets or sets Metadata
         /// </summary>  
         public OdgMetadata Metadata { get; set; }
 
         /// <summary>
-        /// Gets or sets the pages.
+        /// Gets or sets Pages
         /// </summary>  
         public List<OdgPage> Pages { get; set; }
 

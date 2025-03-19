@@ -43,14 +43,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         /// Initializes a new instance of the <see cref="CreateObjectBoundsRequest"/> class.
         /// </summary>
         /// <param name="imageData">Input image</param>
-        /// <param name="method">Object detection method</param>
-        /// <param name="threshold">Object detection probability threshold in percents</param>
-        /// <param name="includeLabel">Draw detected objects labels</param>
-        /// <param name="includeScore">Draw detected objects scores</param>
-        /// <param name="allowedLabels">Comma-separated list of allowed labels</param>
-        /// <param name="blockedLabels">Comma-separated list of blocked labels</param>
-        /// <param name="outPath">Path to updated file (if this is empty, response contains streamed image)</param>
-        /// <param name="storage">Your Aspose Cloud Storage name.</param>
+        /// <param name="method"></param>
+        /// <param name="threshold"></param>
+        /// <param name="includeLabel"></param>
+        /// <param name="includeScore"></param>
+        /// <param name="allowedLabels"></param>
+        /// <param name="blockedLabels"></param>
+        /// <param name="outPath"></param>
+        /// <param name="storage"></param>
         public CreateObjectBoundsRequest(System.IO.Stream imageData, string method = null, int? threshold = null, bool? includeLabel = null, bool? includeScore = null, string allowedLabels = null, string blockedLabels = null, string outPath = null, string storage = null)             
         {
             this.imageData = imageData;
@@ -70,42 +70,42 @@ namespace Aspose.Imaging.Cloud.Sdk.Model.Requests
         public System.IO.Stream imageData { get; set; }
 
         /// <summary>
-        /// Object detection method
+        /// Gets or sets method
         /// </summary>  
         public string method { get; set; }
 
         /// <summary>
-        /// Object detection probability threshold in percents
+        /// Gets or sets threshold
         /// </summary>  
         public int? threshold { get; set; }
 
         /// <summary>
-        /// Draw detected objects labels
+        /// Gets or sets includeLabel
         /// </summary>  
         public bool? includeLabel { get; set; }
 
         /// <summary>
-        /// Draw detected objects scores
+        /// Gets or sets includeScore
         /// </summary>  
         public bool? includeScore { get; set; }
 
         /// <summary>
-        /// Comma-separated list of allowed labels
+        /// Gets or sets allowedLabels
         /// </summary>  
         public string allowedLabels { get; set; }
 
         /// <summary>
-        /// Comma-separated list of blocked labels
+        /// Gets or sets blockedLabels
         /// </summary>  
         public string blockedLabels { get; set; }
 
         /// <summary>
-        /// Path to updated file (if this is empty, response contains streamed image)
+        /// Gets or sets outPath
         /// </summary>  
         public string outPath { get; set; }
 
         /// <summary>
-        /// Your Aspose Cloud Storage name.
+        /// Gets or sets storage
         /// </summary>  
         public string storage { get; set; }
   }

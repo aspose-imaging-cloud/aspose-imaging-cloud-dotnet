@@ -34,27 +34,27 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   using Newtonsoft.Json.Converters;
 
   /// <summary>
-  /// Represents information about image in WEBP format.
+  /// 
   /// </summary>  
   public class WebPProperties 
   {                       
         /// <summary>
-        /// Gets or sets a value indicating whether these WebPOptions is lossless.
+        /// Gets or sets Lossless
         /// </summary>  
         public bool? Lossless { get; set; }
 
         /// <summary>
-        /// Gets or sets the quality.
+        /// Gets or sets Quality
         /// </summary>  
         public double? Quality { get; set; }
 
         /// <summary>
-        /// Gets or sets the animation loop count.
+        /// Gets or sets AnimLoopCount
         /// </summary>  
         public int? AnimLoopCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the color of the animation background.
+        /// Gets or sets AnimBackgroundColor
         /// </summary>  
         public long? AnimBackgroundColor { get; set; }
 
