@@ -54,11 +54,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         public double? Angle { get; set; }
 
         /// <summary>
-        /// Gets or sets Radius
-        /// </summary>  
-        public int? Radius { get; set; }
-
-        /// <summary>
         /// Get the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -69,7 +64,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
           sb.Append("  Size: ").Append(this.Size).Append("\n");
           sb.Append("  Sigma: ").Append(this.Sigma).Append("\n");
           sb.Append("  Angle: ").Append(this.Angle).Append("\n");
-          sb.Append("  Radius: ").Append(this.Radius).Append("\n");
           sb.Append("}\n");
           return sb.ToString();
         }

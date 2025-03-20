@@ -39,16 +39,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   public class GaussWienerFilterProperties : DeconvolutionFilterProperties 
   {                       
         /// <summary>
-        /// Gets or sets Kernel
-        /// </summary>  
-        public List<Complex> Kernel { get; set; }
-
-        /// <summary>
-        /// Gets or sets Radius
-        /// </summary>  
-        public int? Radius { get; set; }
-
-        /// <summary>
         /// Gets or sets Sigma
         /// </summary>  
         public double? Sigma { get; set; }
@@ -66,8 +56,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         {
           var sb = new StringBuilder();
           sb.Append("class GaussWienerFilterProperties {\n");
-          sb.Append("  Kernel: ").Append(this.Kernel).Append("\n");
-          sb.Append("  Radius: ").Append(this.Radius).Append("\n");
           sb.Append("  Sigma: ").Append(this.Sigma).Append("\n");
           sb.Append("  Size: ").Append(this.Size).Append("\n");
           sb.Append("}\n");

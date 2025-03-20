@@ -3,12 +3,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Kernel** | [**List&lt;Complex&gt;**](Complex.md) |  | [optional] 
 **Snr** | **double?** |  | 
 **Brightness** | **double?** |  | 
 **Grayscale** | **bool?** |  | 
 **IsPartialLoaded** | **bool?** |  | 
-**Kernel** | [**List&lt;Complex&gt;**](Complex.md) |  | [optional] 
-**Radius** | **int?** |  | 
 **Sigma** | **double?** |  | 
 **Size** | **int?** |  | 
 

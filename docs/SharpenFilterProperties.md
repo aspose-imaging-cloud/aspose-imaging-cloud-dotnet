@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 **Kernel** | **List&lt;double?&gt;** |  | [optional] 
 **Factor** | **double?** |  | 
 **Bias** | **int?** |  | 
-**Radius** | **int?** |  | 
 **Size** | **int?** |  | 
 **Sigma** | **double?** |  | 
 
