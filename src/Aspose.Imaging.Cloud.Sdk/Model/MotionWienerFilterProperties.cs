@@ -39,14 +39,14 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   public class MotionWienerFilterProperties : DeconvolutionFilterProperties 
   {                       
         /// <summary>
-        /// Gets or sets Size
+        /// Gets or sets Length
         /// </summary>  
-        public int? Size { get; set; }
+        public int? Length { get; set; }
 
         /// <summary>
-        /// Gets or sets Sigma
+        /// Gets or sets Smooth
         /// </summary>  
-        public double? Sigma { get; set; }
+        public double? Smooth { get; set; }
 
         /// <summary>
         /// Gets or sets Angle
@@ -61,8 +61,8 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         {
           var sb = new StringBuilder();
           sb.Append("class MotionWienerFilterProperties {\n");
-          sb.Append("  Size: ").Append(this.Size).Append("\n");
-          sb.Append("  Sigma: ").Append(this.Sigma).Append("\n");
+          sb.Append("  Length: ").Append(this.Length).Append("\n");
+          sb.Append("  Smooth: ").Append(this.Smooth).Append("\n");
           sb.Append("  Angle: ").Append(this.Angle).Append("\n");
           sb.Append("}\n");
           return sb.ToString();

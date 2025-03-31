@@ -39,11 +39,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   public class DeconvolutionFilterProperties : FilterPropertiesBase 
   {                       
         /// <summary>
-        /// Gets or sets Kernel
-        /// </summary>  
-        public List<Complex> Kernel { get; set; }
-
-        /// <summary>
         /// Gets or sets Snr
         /// </summary>  
         public double? Snr { get; set; }
@@ -71,7 +66,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         {
           var sb = new StringBuilder();
           sb.Append("class DeconvolutionFilterProperties {\n");
-          sb.Append("  Kernel: ").Append(this.Kernel).Append("\n");
           sb.Append("  Snr: ").Append(this.Snr).Append("\n");
           sb.Append("  Brightness: ").Append(this.Brightness).Append("\n");
           sb.Append("  Grayscale: ").Append(this.Grayscale).Append("\n");

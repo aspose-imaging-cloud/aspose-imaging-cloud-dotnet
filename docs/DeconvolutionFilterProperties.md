@@ -4,7 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Discriminator** | **string** |  | 
-**Kernel** | [**List&lt;Complex&gt;**](Complex.md) |  | [optional] 
 **Snr** | **double?** |  | 
 **Brightness** | **double?** |  | 
 **Grayscale** | **bool?** |  | 

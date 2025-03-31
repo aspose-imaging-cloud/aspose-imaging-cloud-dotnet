@@ -39,14 +39,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   public class GaussianBlurFilterProperties : ConvolutionFilterProperties 
   {                       
         /// <summary>
-        /// Gets or sets Kernel
+        /// Gets or sets Radius
         /// </summary>  
-        public List<double?> Kernel { get; set; }
-
-        /// <summary>
-        /// Gets or sets Size
-        /// </summary>  
-        public int? Size { get; set; }
+        public int? Radius { get; set; }
 
         /// <summary>
         /// Gets or sets Sigma
@@ -61,8 +56,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         {
           var sb = new StringBuilder();
           sb.Append("class GaussianBlurFilterProperties {\n");
-          sb.Append("  Kernel: ").Append(this.Kernel).Append("\n");
-          sb.Append("  Size: ").Append(this.Size).Append("\n");
+          sb.Append("  Radius: ").Append(this.Radius).Append("\n");
           sb.Append("  Sigma: ").Append(this.Sigma).Append("\n");
           sb.Append("}\n");
           return sb.ToString();

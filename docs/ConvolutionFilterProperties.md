@@ -4,7 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Discriminator** | **string** |  | 
-**Kernel** | **List&lt;double?&gt;** |  | [optional] 
 **Factor** | **double?** |  | 
 **Bias** | **int?** |  | 
 

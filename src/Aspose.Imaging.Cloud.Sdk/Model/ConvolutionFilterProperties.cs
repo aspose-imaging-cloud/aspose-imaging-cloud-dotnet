@@ -39,11 +39,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
   public class ConvolutionFilterProperties : FilterPropertiesBase 
   {                       
         /// <summary>
-        /// Gets or sets Kernel
-        /// </summary>  
-        public List<double?> Kernel { get; set; }
-
-        /// <summary>
         /// Gets or sets Factor
         /// </summary>  
         public double? Factor { get; set; }
@@ -61,7 +56,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Model
         {
           var sb = new StringBuilder();
           sb.Append("class ConvolutionFilterProperties {\n");
-          sb.Append("  Kernel: ").Append(this.Kernel).Append("\n");
           sb.Append("  Factor: ").Append(this.Factor).Append("\n");
           sb.Append("  Bias: ").Append(this.Bias).Append("\n");
           sb.Append("}\n");

@@ -95,7 +95,6 @@ Class | Method | HTTP request | Description
 
  - [Model.AvailableLabelsList](AvailableLabelsList.md)
  - [Model.BmpProperties](BmpProperties.md)
- - [Model.Complex](Complex.md)
  - [Model.DetectedObject](DetectedObject.md)
  - [Model.DetectedObjectList](DetectedObjectList.md)
  - [Model.DicomProperties](DicomProperties.md)
