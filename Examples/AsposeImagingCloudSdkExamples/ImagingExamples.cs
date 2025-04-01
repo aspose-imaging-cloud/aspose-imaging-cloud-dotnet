@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using Aspose.Imaging.Cloud.Sdk.Api;
 using AsposeImagingCloudSdkExamples.AI;
 
@@ -46,7 +47,10 @@ namespace AsposeImagingCloudSdkExamples
             string clientSecret, clientId, baseUrl;
             ProcessArguments(args, out clientSecret, out clientId, out baseUrl);
 
-            try
+			ServicePointManager.Expect100Continue = true;
+			ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+			try
             {
                 var api = new ImagingApi(clientSecret, clientId, baseUrl);
 
@@ -213,10 +217,12 @@ namespace AsposeImagingCloudSdkExamples
             catch (Exception ex)
             {
                 Console.WriteLine($"Something goes wrong: {ex}");
+                Console.ReadLine();
                 Environment.Exit(1);
             }
 
-            Environment.Exit(0);
+			Console.ReadLine();
+			Environment.Exit(0);
         }
 
         /// <summary>
