@@ -186,7 +186,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api.AI
                     this.WaitSearchContextIdle();
 
 
-                    var imageUrl = HttpUtility.UrlEncode("https://cdn.f1ne.ws/userfiles/hamilton/140909.jpg");
+                    var imageUrl = HttpUtility.UrlEncode("https://c.f1news.ru/userfiles/hamilton/140909.jpg");
                     var response = this.ImagingApi.GetImageFeatures(
                         new GetImageFeaturesRequest(this.SearchContextId, imageUrl, storage: this.TestStorage));
 

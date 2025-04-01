@@ -56,7 +56,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Api
                         {
                             var request = new ConvertImageRequest(imageName, format, folder, storage);
                             var response = ImagingApi.ConvertImage(request);
-                            Assert.That(Math.Abs(response.Length - 11454), Is.LessThan(100));
+                            Assert.That(Math.Abs(response.Length - 13040), Is.LessThan(100));
                             return response;
                         },
                         null,

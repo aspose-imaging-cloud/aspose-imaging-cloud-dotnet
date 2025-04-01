@@ -696,9 +696,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         /// <returns>Environment variable value</returns>
         private string GetEnvironmentVariable(string variableName)
         {
-            return (Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Process) ??
+            return (Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Machine) ??
                     Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.User))
-                   ?? Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Machine);
+                   ?? Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Process);
         }
 
         /// <summary>
