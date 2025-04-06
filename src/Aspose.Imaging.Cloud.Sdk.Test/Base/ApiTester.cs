@@ -216,10 +216,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         /// <exception cref="System.ArgumentException">Please, specify valid access data (ClientSecret, ClientId, Base URL)</exception>
         protected void CreateApiInstances()
         {
-#if !NET20
 			ServicePointManager.Expect100Continue = true;
-			ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-#endif
+			ServicePointManager.SecurityProtocol = SecurityProtocolTypeExtensions.Tls12;
+            
             WriteLineEverywhere("Trying to obtain configuration from environment variables.");
             string onPremiseString = this.GetEnvironmentVariable("OnPremise");
             bool onPremise = !string.IsNullOrEmpty(onPremiseString) &&
