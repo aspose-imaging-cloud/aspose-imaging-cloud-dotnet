@@ -216,6 +216,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         /// <exception cref="System.ArgumentException">Please, specify valid access data (ClientSecret, ClientId, Base URL)</exception>
         protected void CreateApiInstances()
         {
+			ServicePointManager.Expect100Continue = true;
+			ServicePointManager.SecurityProtocol = SecurityProtocolTypeExtensions.Tls12;
+            
             WriteLineEverywhere("Trying to obtain configuration from environment variables.");
             string onPremiseString = this.GetEnvironmentVariable("OnPremise");
             bool onPremise = !string.IsNullOrEmpty(onPremiseString) &&
@@ -298,7 +301,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             Newtonsoft.Json.Serialization.Func<Stream> requestInvoker,
 #else
             System.Func<Stream> requestInvoker,
-#endif 
+#endif
             PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
         {
             this.TestRequest(
@@ -409,7 +412,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             Newtonsoft.Json.Serialization.Func<Stream> requestInvoker,
 #else
             System.Func<Stream> requestInvoker,
-#endif 
+#endif
             PropertiesTesterDelegate propertiesTester, string folder, string storage = DefaultStorage)
         {
             this.TestRequest(testMethodName, false, parametersLine, inputFileName, null, 
@@ -499,7 +502,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             Newtonsoft.Json.Serialization.Func<Stream> requestInvoker
 #else
             System.Func<Stream> requestInvoker
-#endif 
+#endif
             )
         {
             var response = requestInvoker.Invoke();
@@ -517,7 +520,7 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
             Newtonsoft.Json.Serialization.Func<Stream> requestInvoker
 #else
             System.Func<Stream> requestInvoker
-#endif 
+#endif
         )
         {
             var response = requestInvoker.Invoke();
@@ -696,9 +699,9 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
         /// <returns>Environment variable value</returns>
         private string GetEnvironmentVariable(string variableName)
         {
-            return (Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Process) ??
+            return (Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Machine) ??
                     Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.User))
-                   ?? Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Machine);
+                   ?? Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.Process);
         }
 
         /// <summary>
@@ -724,6 +727,6 @@ namespace Aspose.Imaging.Cloud.Sdk.Test.Base
                     buffer[4] == 0x2d;
         }
 
-        #endregion
+#endregion
     }
 }
